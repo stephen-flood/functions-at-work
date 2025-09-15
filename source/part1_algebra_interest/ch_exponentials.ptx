@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_exponentials" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Compound Interest and Depreciation</title>
+
+  <introduction>
+    <p>
+      In the last chapter, we have looked at polynomials, where the terms are monomials like <m>5\cdot x^2</m>.  
+      In a monomial, the base is a variable <m>x</m>, and the coefficient and power are both  constant numbers.
+    </p>
+    <p>
+      In this chapter, we will look at <term>exponential</term> functions like <m>5\cdot 2^x</m>. 
+      In this example, the <em>exponent</em> is a variable <m>x</m>, ad the coefficient and base are both constant numbers. 
+    </p>
+  </introduction>
+
+
+<section xml:id="sec_introducing_exponentials">
+  <title>Exponential Functions</title>
+  
+
+
+  <p>
+    To see what this looks like, it is helpful to try out a few examples. 
+  </p>
+
+  <exploration xml:id="ex_computing_exponentials">
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 5\cdot 2^x</m>.
+          Compute  <m>f(-1)</m>, <m>f(0)</m>, <m>f(1)</m>, and <m>f(2)</m>.
+          Then, sketch the graph of <m>y=5\cdot 2^x</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Be very careful to follow the order of operations PEMDAS.  
+        </p>
+        <p>
+          <me>f(-1) = 5\cdot 2^{-1} = 5 \cdot 0.5 = 2.5</me>
+          <me>f(0) = 5\cdot 2^{0} = 5 \cdot 1 = 5</me>
+          <me>f(1) = 5\cdot 2^{1} = 5 \cdot 2 = 10</me>
+          <me>f(2) = 5\cdot 2^{2} = 5 \cdot 4 = 20</me>
+        </p>
+        <p>
+          Graphing these points and connecting them gives the following picture 
+        </p>
+        <image xml:id="img_eg_exp1a" width="50%">
+          <latex-image>	
+            \begin{tikzpicture}
+                [scale=0.5,
+                declare function = {
+                f(\x) = 5*(2)^(\x);
+                xmin=-2.5;
+                xmax=2.5;
+                ymin=-0.5;
+                ymax=20.5;
+                pad=1;
+                domainstart=-3;
+                domainstop=2.1;
+                }]
+              \draw[axes] (0,ymin-pad)--(0,ymax+pad);
+              \draw[axes] (xmin-pad,0)--(xmax+pad,0);
+
+              % Graph the function defined in the TikZ environment
+              \draw [color=blue,curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+              
+              \draw[color=red,fill] (-1,{f(-1)}) circle (3pt);
+              \draw[color=red,fill] (0,{f(0)}) circle (3pt);
+              \draw[color=red,fill] (1,{f(1)}) circle (3pt);
+              \draw[color=red,fill] (2,{f(2)}) circle (3pt);
+
+            \end{tikzpicture}
+          </latex-image>				
+        </image>			
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 5\cdot 1.1^x</m>.
+          Compute  <m>f(-1)</m>, <m>f(0)</m>, <m>f(1)</m>, and <m>f(2)</m>.
+          Then, sketch the graph of <m>y=5\cdot 1.1^x</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Be very careful to follow the order of operations PEMDAS.  
+        </p>
+        <p>
+          <me>f(-1) = 5\cdot 1.1^{-1} = 5 \cdot 0.9090\dots = 4.5454\dots</me>
+          <me>f(0) = 5\cdot 1.1^{0} = 5 \cdot 1 = 5</me>
+          <me>f(1) = 5\cdot 1.1^{1} = 5 \cdot 1.1 = 5.5</me>
+          <me>f(2) = 5\cdot 1.1^{2} = 5 \cdot 1.21 = 6.05</me>
+        </p>        <p>
+          Graphing these points and connecting them gives the following picture 
+        </p>
+        <image xml:id="img_eg_exp1b" width="50%">
+          <latex-image>	
+            \begin{tikzpicture}
+                [scale=0.5,
+                declare function = {
+                f(\x) = 5*(1.1)^(\x);
+                xmin=-2.5;
+                xmax=3.5;
+                ymin=-0.5;
+                ymax=7.5;
+                pad=1;
+                domainstart=-3;
+                domainstop=4.5;
+                }]
+              \draw[axes] (0,ymin-pad)--(0,ymax+pad);
+              \draw[axes](xmin-pad,0)--(xmax+pad,0);
+
+              % Graph the function defined in the TikZ environment
+              \draw [color=blue,curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+              
+              \draw[color=red,fill] (-1,{f(-1)}) circle (3pt);
+              \draw[color=red,fill] (0,{f(0)}) circle (3pt);
+              \draw[color=red,fill] (1,{f(1)}) circle (3pt);
+              \draw[color=red,fill] (2,{f(2)}) circle (3pt);
+           \end{tikzpicture}
+          </latex-image>				
+        </image>			
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 5\cdot (0.75)^x</m>.
+            Compute  <m>f(-1)</m>, <m>f(0)</m>, <m>f(1)</m>, and <m>f(2)</m>.
+           Then, sketch the graph of <m>y=5\cdot (0.75)^x</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Be very careful to follow the order of operations PEMDAS.  
+        </p>
+        <p>
+          <me>f(-1) = 5\cdot 0.75^{-1} = 5 \cdot 1.333\dots  = 6.666\dots</me>
+          <me>f(0) = 5\cdot 0.75^{0} = 5 \cdot 1 = 5</me>
+          <me>f(1) = 5\cdot 0.75^{1} = 5 \cdot 0.75 = 3.75</me>
+          <me>f(2) = 5\cdot 0.75^{2} = 5 \cdot 0.5625 = 2.8125</me>
+        </p>        <p>
+          Graphing these points and connecting them gives the following picture 
+        </p>
+        <image xml:id="img_eg_exp1c" width="50%">
+          <latex-image>	
+            \begin{tikzpicture}
+                [scale=0.5,
+                declare function = {
+                f(\x) = 5*(0.75)^(\x);
+                xmin=-1.5;
+                xmax=2.5;
+                ymin=-0.5;
+                ymax=6.5;
+                pad=1;
+                domainstart=-1.25;
+                domainstop=3;
+                }]
+              \draw[axes] (0,ymin-pad)--(0,ymax+pad);
+              \draw[axes] (xmin-pad,0)--(xmax+pad,0);
+
+              % Graph the function defined in the TikZ environment
+              \draw [color=blue,curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+              
+              \draw[color=red,fill] (-1,{f(-1)}) circle (3pt);
+              \draw[color=red,fill] (0,{f(0)}) circle (3pt);
+              \draw[color=red,fill] (1,{f(1)}) circle (3pt);
+              \draw[color=red,fill] (2,{f(2)}) circle (3pt);
+
+            \end{tikzpicture}
+          </latex-image>				
+        </image>			
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    <em>A picture is worth a thousand words</em>.  
+    When you chose a different number for the coefficient <m>a</m> or base <m>b</m>, you get a different function.  In the graphic below, use the sliders to change these two numbers, and get a sense of how fast the different functions grow or decay. 
+  </p>
+  
+  <figure xml:id="interactive_exponentials">
+    <interactive platform="jsxgraph"  source="jsxgraph/algebra-general-exponential.js" preview="jsxgraph-algebra-general-exponential.png" >
+      <slate xml:id="jsxgraph-algebra-general-exponential" surface="jsxboard"   /> 
+    </interactive>
+  </figure>
+
+  <p>
+    In this chapter, we will make extensive use of the <xref text="custom" ref="exponential-arithmetic">Properties of Exponential Functions</xref>.  
+    If you get stuck duing a computation, it is a good idea to see if there is a property that you may find useful. 
+  </p>
+
+  <exploration xml:id="ex_exponential-sandard-form">
+    <introduction>
+      <p>
+        Use the laws of exponents to rewrite the following functions in the form <m>f(x) = a \cdot b^x</m>
+        where <m>a,b</m> are numbers.
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Rewrite <m>f(x) = 2^{-2x}</m> as an exponential function in standard form. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>f(x) \amp = 2^{-2x} \amp \qquad\amp </mrow>
+            <mrow>     \amp = \dfrac{1}{2^{2x}} \amp \qquad\amp \text{Using } a^{-r} = \frac{1}{a^r} </mrow>
+            <mrow>     \amp = \dfrac{1}{ (2^2)^{x}} \amp \qquad\amp \text{Using } a^{r\cdot s} = (a^r)^s </mrow>
+            <mrow>     \amp = \dfrac{1}{ (4)^{x}} \amp \qquad\amp   </mrow>
+            <mrow>     \amp = \left(\dfrac{1}{ 4}\right)^{x} \amp \qquad\amp \text{Using } \frac{1}{a^{s}} =  \left(\frac{1}{a}\right)^s</mrow>
+            <mrow>     \amp = {\color{red} 1\cdot} \left(0.25\right)^{x} \amp \qquad\amp </mrow>
+          </md>
+          Note that in the second to last step, we only had a base and a power.  In the last step, we introduce a coefficient of <m>1</m>, which does not change the value of the expression. 
+        </p>
+        <p>
+            We have shown that <m>f(x)</m> is equal to <m>a\cdot b^x</m> with <m>a=1</m> and <m>b=0.25</m>.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Rewrite <m>f(x) = \left(\dfrac{1}{2}\right)^{2x+1}</m> as an exponential function in standard form. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>f(x) \amp = \left(\dfrac{1}{2}\right)^{2x+1} \amp \qquad\amp </mrow>
+            <mrow>     \amp = \left(\dfrac{1}{2}\right)^{2x} \cdot \left(\dfrac{1}{2}\right)^{1} \amp \qquad\amp \text{Using } a^{r+s} =  a^r\cdot a^s</mrow>
+            <mrow>     \amp = \left(\dfrac{1}{2}\right)^{2x} \cdot \dfrac{1}{2}  \amp \qquad\amp </mrow>
+            <mrow>     \amp = \left(\left(\dfrac{1}{2}\right)^{2}\right)^x \cdot \dfrac{1}{2} \amp \qquad\amp \text{Using } {\left(a^{r}\right)}^s=  a^{r\cdot s}  </mrow>
+            <mrow>     \amp = \left(\dfrac{1}{4}\right)^x \cdot \dfrac{1}{2} \amp \qquad\amp \text{Using } \frac{1}{a^{s}} =  \left(\frac{1}{a}\right)^s</mrow>
+            <mrow>     \amp =  \dfrac{1}{2} \cdot \left(\dfrac{1}{4}\right)^x \cdot \amp </mrow>
+          </md>
+          We have shown that <m>f(x)</m> is equal to <m>a\cdot b^x</m> with <m>a=\frac{1}{2}</m> and <m>b=\frac{1}{4}</m>.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Rewrite <m>f(t) = 100 \cdot \left(1 + \dfrac{0.2}{4}\right)^{4t}</m> as an exponential function in standard form. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>f(x) \amp =  100 \cdot \left(1 + 0.05\right)^{4t} \qquad\amp </mrow>
+            <mrow>f(x) \amp =  100 \cdot \left(1.05\right)^{4t} \qquad\amp </mrow>
+            <mrow>f(x) \amp =  100 \cdot \Big(\left(1.05\right)^{4}\Big)^t \qquad\amp \text{Using }{\left(a^{r}\right)}^s=  a^{r\cdot s}</mrow>
+            <mrow>f(x) \amp =  100 \cdot \Big(1.2155\Big)^t \qquad\amp </mrow>
+          </md>
+          We have shown that <m>f(t)</m> is equal to <m>a\cdot b^t</m> with <m>a=100</m> and <m>b=1.2155</m>.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+
+</section>
+
+<section xml:id="sec_percent_change">
+  <title>Percents and Percent Change</title>
+  
+
+
+  <p>
+    You should already be familiar with the concept of percents. 
+    But because percents play an essential role in many  topics in economics and business, we briefly review the definitions before moving on to our main applications.
+  </p>
+
+  <p>
+    The english word <em>cent</em> derives from the Latin word <em>centum</em> which means <q>hundred</q>.  
+    In other words, <em>20 percent</em> literally means <em>20 per hundred</em> or <m>\dfrac{20}{100} = 0.2</m> 
+  </p>
+  <definition xml:id="def-percent">
+    <statement>
+      <p>
+        Given any number <m>A</m>, the expression <em><m>A</m> percent</em> (also written <m>A</m>%) refers to the <em>decimal rate</em>
+        <me>
+          r = \dfrac{A}{100}
+        </me>
+      </p>
+      <p>
+        Given any numbers <m>A,P</m>, you can find <em><m>A</m>% of <m>P</m></em> by multiplying <m>P</m> by the decimal rate <m>r = \frac{A}{100}</m>
+      </p>
+    </statement>
+  </definition>
+  <example xml:id="ex_basic-percentages">
+    <title>Basic Percentages</title>
+    <p>
+      <ul>
+        <li>
+          <p><m>15</m>% is equal to the decimal <m>r = \frac{15}{100} = 0.15</m></p>
+        </li>
+        <li>
+          <p><m>2</m>% is equal to the decimal <m>r = \frac{2}{100} = 0.02</m></p>
+        </li>
+        <li>
+          <p><m>0.12</m>% is equal to the decimal <m>r = \frac{0.12}{100} = 0.0012</m></p>
+        </li>
+        <li>
+          <p><m>15</m>% of $<m>40</m> is equal to <m>40 ( 0.15 )= 6</m></p>
+        </li>
+        <li>
+          <p><m>2</m>% of $<m>500</m> is equal to <m>500 (0.02) = 10</m></p>
+        </li>
+        <li>
+          <p><m>0.12</m>% of $<m>30</m> is equal to <m>30 (0.0012) = 0.036</m></p>
+        </li>
+      </ul>
+    </p>
+  </example>
+  
+
+  <insight>
+    <title>Understanding percent change</title>
+    
+    <p>
+      It is common to talk about an economic quanity by changing by a  given percentage. 
+    </p>
+    <p>
+      The term <term>percent</term> is an abbreviation of the expression <em>per cent</em>, which means <em>per one hundred</em>.
+      In other words, <m>25</m>% is the same thing as <m>25</m> hundreds, or a decimal rate of <m>\dfrac{25}{100}=0.25</m>.
+    </p>
+    <p>
+      For example, <m>25</m>% of <m>1000</m>, is equal to <m>1000\cdot 0.25 = 250</m>.
+    </p>
+    <p>
+      Now, suppose that you say that <m>1000</m> <em> increases</em> by <m>25</m> percent.  How much do you have after this increase?
+    </p>
+    <p>
+      If you are <em>increasing</em> the value by 25%, you <em>keep</em> the original <m>1000</m>, and <em>add</em> the new <m>250</m>.  In other words, you have <me>1000 + 1000\cdot 0.25 = 1250</me>.
+    </p>
+    <p>
+      Suppose that you increase <m>700</m> by 25%.  You take the original <m>700</m>, and add the <m>700\cdot 0.25=175</m> to get the final value 
+      <me>
+        700 + 700\cdot 0.25 = 875
+      </me>
+    </p>
+    <p>
+      There is a pattern here.  If you take a principal value of <m>P</m>, and increase it by a decimal rate of <m>r</m>, the final value will be 
+      <me>
+        P + P \cdot r 
+      </me>
+      We can factor a <m>P</m> out of each term, to get that the result of increasing <m>P</m> by a decimal rate of <m>r</m> results in a final value of 
+      <me>
+        P\cdot (1+r)
+      </me>
+    </p>
+    <p>
+      To <em>decrease</em> <m>1000</m> by <m>25</m>%, subtract <m>0.25 \cdot 1000 = 250</m> from <m>1000</m>, resulting in 
+      <me>
+        1000 - 1000\cdot 0.25 = 1000 - 250 = 750
+      </me>
+    </p>
+    <p>
+      To decrease a principal value of <m>P</m> by a decimal rate of <m>r</m>, compute 
+      <me>
+        P - P\cdot r = P(1-r)
+      </me>
+      
+    </p>
+  </insight>
+
+  <definition xml:id="def-percentchange">
+    <title>Percent Change</title>
+    
+    
+    <statement>
+      <p>
+        Suppose that <m>r</m> is a decimal rate, and that <m>P</m> is any value.
+        <m>F</m> is the result of <term> <em>increasing</em> <m>P</m> by the rate <m>r</m></term> if <m>F = P+rP</m>, also written  
+        <me>F = P\cdot (1+r)</me>.
+      </p>
+      <p>
+        If <m>F</m> is the result of <term><em>decreasing</em> <m>P</m> by the rate of <m>r</m> </term>, we subtract <m>rP</m> instead, resulting in the formula <me> F = P\cdot (1-r) </me>
+        
+      </p>
+    </statement>
+  </definition>
+
+  <exploration xml:id="ex_percentchange1">
+    <statement>
+      <p>
+        Suppose you begin with $1000.  How much do you have if the value is increased by 25%, and then decreased by 30%?
+      </p>
+    </statement>
+    <solution>
+      <p>
+        25% corresponds to a decimal rate of <m>r=\frac{25}{100} = 0.25</m>. 
+        To increase $1000 by 25%, add $1000 to <m>1000(0.25)</m> 
+        <me>
+          1000 + 1000(0.25) = 1000 + 250 = 1250
+        </me>
+        We could also just have multiplied <m>1000</m> by <m>1+0.25 = 1.25</m>
+      </p>
+      <p>
+        30% corresponds to a decimal rate of <m>r = 0.3</m>.  To decrease $1250 by 30%, take $1250 and subtract <m>1250(0.3)</m> 
+        <me>
+          1250 - 1250(0.3)=875
+        </me>
+        We could also just have multiplied <m>1000</m> by <m>1  + (-0.3) = 0.7</m>
+      </p>
+      
+    </solution>
+  </exploration>
+
+  <p>To <em>find</em> the percent change between <m>F</m> and <m>P</m>, set up the equation <me>F = P(1+r)</me> and solve for <m>r</m></p>
+
+  <exploration xml:id="ex_percentchange2">
+	<task>
+	    <statement>
+		<p>
+		  If the balance of your investment goes from $<m>300</m> to $<m>412</m>, by what percent has it changed? 
+		</p>
+	    </statement>
+	    <solution>
+		<p>
+		  We want to find the percent <m>r</m> so that 
+			<me>412 = 300\cdot (1 + r) </me>
+		Solving for <m>r</m> gives 
+			<me>1 + r = \frac{412}{300}  = 1.373333333333333 </me>
+			<me>1 + r = 1.373333333333333 </me>
+			<me> r = 0.373333333333333</me>
+		The value has increased by 37.33%
+		</p>
+	    </solution>
+	</task>
+	<task>
+	    <statement>
+		<p>
+		  If the balance of your investment goes from $<m>300</m> to $<m>234</m>, by what percent has it changed? 
+		</p>
+	    </statement>
+	    <solution>
+		<p>
+		  We want to find the percent <m>r</m> so that 
+			<me>234 = 300\cdot (1 + r) </me>
+		Solving for <m>r</m> gives 
+			<me>1 + r = \frac{234}{300}  = 0.78 </me>
+			<me>1 + r = 0.78 </me>
+			<me> r = -0.22</me>
+		The value has decreased by 22%
+		</p>
+	    </solution>
+	</task>
+  </exploration>
+
+
+  <exploration xml:id="ex_percentchange3">
+    <introduction>
+      <p>
+        Let <m>P</m> be any principal value.  
+        For each of the following final values, find out whether the principal has been increased or decreased, and the find the corresponding decimal rate and percent of this change. 
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          By what percent has <m>P</m> been changed, if you end up with a final value of <m>1.1 P</m>?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to rewrite <m>1.1 P</m> in the form <m>P(1+r)</m> for some number <m>r</m>.
+          Here we have <me>1.1P = P(1.1) = P(1 + 0.1)</me>
+          In other words, the principal <m>P</m> has been increased by a decimal rate of <m>0.1</m>, which corresponds to an increase of <m>10 </m>%.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          By what percent has <m>P</m> been changed, if you end up with a final value of <m>0.85 P</m>?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to rewrite <m>0.85 P</m> in the form <m>P(1+r)</m> for some number <m>r</m>.
+          Here we have <me>0.85P = P(0.85) = P(1 - 0.15)</me>
+          In other words, the principal <m>P</m> has been decreased by a decimal rate of <m>0.15</m>, which corresponds to an decrease of <m>15 </m>%.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          By what percent has <m>P</m> been changed, if you end up with a final value of <m>3 P</m>?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to rewrite <m>3 P</m> in the form <m>P(1+r)</m> for some number <m>r</m>.
+          Here we have <me>3P = P(3) = P(1 +2)</me>
+          In other words, the principal <m>P</m> has been increased by a decimal rate of <m>2</m>, which corresponds to an increased of <m>200 </m>%.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p> 
+    We have focused above on understanding and applying the definition of percent change <m>F = P(1+r)</m>, since this will be important to understand compound interest below. 
+    However, there are also a variety of other equivalent formulas that can be used to find percent change.
+  </p>
+  <corollary xml:id="cor-percentchange">
+    <statement>
+      <p>
+        The percent change from <m>P</m> to <m>F</m> is given by
+        <m> r = \dfrac{F}{P}-1</m>, or equivalently by <m>r = \dfrac{F-P}{P}</m>
+      </p>
+    </statement>
+    <proof>
+      <p>
+        To get both equations, solve <m>F = P(1+r)</m> for <m>r</m>.
+        For the first, 
+        <md>
+          <mrow> F \amp = P(1+r) </mrow>
+          <mrow>\dfrac{F}{P} \amp = 1 + r</mrow>
+          <mrow>\dfrac{F}{P} - 1 \amp = r</mrow>
+        </md>
+
+        For the second,
+        <md>
+          <mrow> F \amp = P(1+r) </mrow>
+          <mrow> F \amp = P+ Pr </mrow>
+          <mrow> F - P \amp = Pr </mrow>
+          <mrow> \dfrac{F - P}{P} \amp = r </mrow>
+        </md>
+      </p>
+    </proof>
+  </corollary>
+</section>
+
+<section xml:id="sec_compound_interest">
+  <title>Compound Interest and Depreciation</title>
+  
+
+
+  <p>
+    The power mathematics comes from the fact that the same basic tools apply in a surprisingly wide variety of contexts. 
+    For example, percent changes occur in many contexts including 
+    <ul>
+      <li>
+        <p>
+          loan payments,
+        </p>
+      </li>
+      <li>
+        <p>
+          inflation, and 
+        </p>
+      </li>
+      <li>
+        <p>
+          the change in value of physical objects.
+        </p>
+      </li>
+    </ul>
+    In finance, your hope is that the value of your investments will increase over time.
+    In other contexts (manufacturing, purchasing a car, etc.), you understand that the value of your investment will <em>decrease</em> over time. 
+    The process of an object losing value over time is called <term>depreciation</term>.
+  </p>
+  <p>
+    To describe the results of inflation at a fixed percent (say, 4%) over several years, or to describe an object that repeatedly decreases in value by a fixed percent over several years, we will need a formula for repeated percent changes. 
+  </p>
+
+
+  <insight>
+    <title>Repeated percent changes</title>
+    
+    <p>
+      Inflation refers to the process of prices increasing over time.  
+      Often, we talk about prices increasing at the same rate per year, over a period of several years. 
+    </p>
+    <p>
+      For example, suppose that prices are increasing at <m>5</m>% per year, which corresponds to a decimal rate <m>r = \frac{5}{100}=0.05</m>. 
+      Suppose also that a certain product costs <m>100</m>$ in the first year. 
+    </p>
+    <p>
+      One year later, the cost is the original amount <m>P=100</m> plus a change of <m>rP = 0.05\cdot 100 = 5</m> dollars.  In other words, the value one year later is 
+      <me>
+        V(1) = 100 + 0.05\cdot 100 = 105.
+      </me>
+      In our notation for percent change, we can also write this as 
+      <me>
+        V(1) = 100 \cdot (1+0.05) = 105.
+      </me>
+    </p>
+    <p>
+      How much will the value be after two years?
+      In the second year, the value of <m>105</m> increases a second time, also by 5%, or a rate of <m>r=0.05</m>.  That means 
+      <me>
+        V(2) = 105 + 105\cdot 0.05 = 110.25
+      </me>
+      In our notation for percent change, we can write this as 
+      <me>
+        V(2) = 105\cdot (1+0.05) = 105\cdot (1.05)
+      </me>
+      But the leading coefficent of <m>105</m> can also be rewritten, since <m>105 = 100\cdot (1.05)</m>.  In other words, 
+      <me>
+        V(2) = 100 \cdot (1.05) \cdot (1.05) = 100\cdot (1.05)^2
+      </me>
+    </p>
+    <p>
+      We can find the value after three years in the same way. We will take the value from the second year, and increase it by a rate of <m>r=0.05</m>.
+      Furthermore, that increase is equivalent to multiplying the value from the second year by another coefficient of <m>1+0.05=1.05</m>.
+      <me>
+        V(3) = 100 \cdot (1.05)\cdot (1.05)\cdot (1.05) = 100\cdot (1.05)^3
+      </me>
+    </p>
+    <p>
+      This line of reasoning works for any positive period of time <m>t</m>, giving us a formula for the value of an object with original value <m>100</m>, where the price has been increased 5% for <m>t</m> years. 
+      <me>
+        V(t) = 100 \cdot (1.05)^t = 100\cdot (1 + 0.05)^t
+      </me>
+    </p>
+    
+  </insight>
+
+  <proposition xml:id="prop-compounding">
+    <statement>
+      <p>
+        Suppose that an original principal value of <m>P</m> is repeatedly changed by a fixed decimal rate of <m>r</m> <alert>one time per year</alert>.  The value after <m>t</m> years will be given by 
+        <me>
+          V(t) = P \cdot \Big( 1 + r \Big)^t
+        </me>.
+      </p>
+      <p>
+        If the value is being increased, use a posive value for the rate <m>r</m>.  If the value is being decreased, use a negative value for the rate <m>r</m>.
+      </p>
+    </statement>
+  </proposition>
+
+
+  <p>
+    Accountants often keep track of the present value of a larged investment or fixed asset. 
+    The term <term>depreciation</term> refers to a decrease in the value of the asset.  
+    You can find a more complete introduction to the concept on Investopedia at <url href="https://www.investopedia.com/terms/d/depreciation.asp" />.
+  </p>
+
+  <insight xml:id="insight-depreciation">
+    <title>Accounting and depreciation</title>
+    
+    <p>
+      Value can be measured in many ways. 
+      For example, suppose that you purchase a car and that you somehow know that it will last 200,000 miles, and that you will drive 20,000 miles each year. By how much has the value value of the car decreased after 3 years?
+    </p>
+    <p>
+      The "correct" answer to this question depends on a surprising number of factors.  
+      <ul>
+        <li>
+          <p>
+            If you are measuring value as "percent of lifetime miles remaining", there would be <m>160,000</m> of the total <m>200,000</m> miles remaining, so the value of the car would be <m>\frac{160,000}{200,000} = 0.8</m>, or 80%, of its original value.
+          </p>
+          <p>
+            After four years, the value of the car would be  <m>\frac{140,000}{200,000} = 0.7</m>, or 70%, of its original value.
+            And after five years, the value of the car would be  <m>\frac{120,000}{200,000} = 0.6</m>, or 60%, of its original value.
+          </p>
+          <p>
+            In this case, the value is decreasing at a constant amount per year.  This is often called <term>straight line depreciation</term>, since connecting the dots yields a linear equation 
+            <me>
+              \text{(value at year t)} = \text{(starting value)} - \text{(amount of value used per year)} t
+            </me>
+            
+          </p>
+        </li>
+        <li>
+          <p>
+            On the other hand, cars are known to break more and more frequently as they get older.  If you knew which repairs would be required each year, you could make a table of values telling you the value of the vechicle at each point in time (or at each number of miles).  For each year, you would take its value from the previous year, decrease the value based on the reduced mileage of the car, and subtract the expected maintenence from that point of time. 
+          </p>
+          <p>
+            This way of tracking the decrease, or depreciation, is in some ways more accurate than straightline depreciation but is much more complicated to compute. 
+          </p>
+        </li>
+        <li>
+          <p>
+            From a different perspective, it is clear that new cars have many features that older cars do not.  To oversimplify things, suppose  that a new car always has 10% more features than an older car.  If you are going to buy a car that is one year older, you will want the price to decrease enough to make up for that loss in additional features.  
+          </p>
+          <p>
+            Said another way, many investments will lose a fixed percent of their value every year.  This is called <term>declining balance</term> depreciation.
+          </p>
+          <p>
+            Suppose that the value of a different car decreases by 25% each year.  After one year, 75% of the value is retained.  After 2 years, 75% of the original 75% is retained, resulting in <m>0.75\cdot 0.75= 0.5625</m>, or 56.25% of the value remains.  After 3 years, the value that remains is  <m>0.75\cdot 0.75\cdot 0.75= 0.421875</m>, or 42.19% of the original value.
+          </p>
+          <p>
+            More generally, the value after <m>t</m> years is defined by the exponential equation
+            <me>
+              \text{(value in year t)} = \text{(starting value)}\cdot \text{(percent of value retained after a year)}^t
+            </me>
+          </p>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Deciding when to use each depreciation scheme is an important question in Accounting, and is well beyond the scope of this course.
+      As a result, in this course, we will restrict our attention to declining balance depreciation, and we will usually state explicitly that a fixed percentage of value is lost each year. 
+    </p>
+  </insight>
+
+
+  <exploration xml:id="ex_depreciation1">
+    <introduction>
+      <p>
+        Your company has recently invested in a $500,000 CNC machine for a high throughput production line. 
+        After some research, you have decided that each year, the machine will lose 20% of its remaining value.  
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          What is the net value of the asset after one year?  After two years?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          After one year, the value is 
+          <md>
+            <mrow> V(1) \amp = 500,000 - 0.2\cdot 500,000</mrow>
+            <mrow>      \amp = 500,000 - 100,000</mrow>
+            <mrow>      \amp = 400,000 </mrow>
+          </md>
+          After two years, the value is 
+          <md>
+            <mrow> V(2) \amp = 400,000 - 0.2\cdot 400,000</mrow>
+            <mrow>      \amp = 400,000 - 80,000</mrow>
+            <mrow>      \amp = 320,000 </mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find a formula for the future value of the asset as a function of the number of years <m>t</m> in the future.  
+          Sketch a graph of this function.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are repeatedly reducing the principal (original value) <m>P=500,000</m> by 20%, or a decimal rate of <m>r= -0.2</m>.
+          Using <xref ref="prop-compounding"/>, we see that the value of the investment at time <m>t</m> is given by 
+          <md>
+            <mrow> V(t) = \amp  P\cdot (1 + r)^t </mrow>
+            <mrow>      = \amp 500,000\cdot (1 + (-0.2))^t </mrow>
+            <mrow>      = \amp 500,000\cdot (0.8)^t </mrow>
+          </md>
+        </p>
+        <p>
+          In other words, 80% of the value is retained each year.  We can now use this formula to answer the first part of the question:
+          <me>
+            V(1) = 500,000 \cdot ( 1 - 0.2 )^1 = 500,000 \cdot 0.8 = 400,000
+          </me>
+          <me>
+            V(2) = 500,000 \cdot ( 1 - 0.2 )^2 = 500,000 \cdot (0.8)^2 = 320,000
+          </me>
+        </p>
+        <image xml:id="img_depreciation1" width="50%">
+          <latex-image>	
+            \begin{tikzpicture}
+                [scale=0.5,
+                declare function = {
+                f(\x) = 5*(0.8)^(\x);
+                xmin=-2.5;
+                xmax=5.5;
+                ymin=-0.5;
+                ymax=7.5;
+                pad=1;
+                domainstart=-1;
+                domainstop=4.5;
+                }]
+              \draw[axes] (0,ymin-pad)--(0,ymax+pad);
+              \draw[axes] (xmin-pad,0)--(xmax+pad,0);
+
+              % Graph the function defined in the TikZ environment
+              \draw [color=blue,curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+              
+              \draw[color=red,fill] (0,{f(0)}) circle (3pt);
+              \draw[color=red,fill] (1,{f(1)}) circle (3pt);
+              \draw[color=red,fill] (2,{f(2)}) circle (3pt);
+              \draw[color=red,fill] (3,{f(3)}) circle (3pt);
+              \draw[color=red,fill] (4,{f(4)}) circle (3pt);
+
+            \end{tikzpicture}
+          </latex-image>				
+        </image>			
+
+      </solution>
+    </task>
+  </exploration>
+
+
+<insight>
+  <title>Compound interest</title>
+
+    <p>
+    The process of repeatedly increasing a value by a fixed percent is called <term>compounding</term>. 
+    If you increase the value every year, you are said to be compounding yearly. 
+    If you increase the value 12 times per year, you are said to be compounding monthly. 
+  </p>
+
+  <p>
+    The term <term>interest</term> refers to a very specfic kind of compounding.  As Investopedia puts it, 
+    <q>Interest is the monetary charge for borrowing money—generally expressed as a percentage, such as an annual percentage rate (APR). </q> (<url href="https://www.investopedia.com/terms/i/interest.asp"/>)
+  </p>
+  <p>
+    In <term>compound interest</term>, you pay interest on both the principal and on the interest accrued so far.
+  </p>  
+  <p>
+    The term <term>compounding</term> refers to the action of computing the new interest, and adding it back into the principal.  
+  </p>
+  <p>
+    The simplest example (which we have already mentioned above) happens when the For example, suppose that you borrow $100, at an interest rate of 3%, and that the interest is compounded (or added to the principal value) <m>one time</m> each year.  
+  </p>
+  <table>
+    <title>Interest Compounded Yearly</title>
+    <tabular>
+      <col right="minor" /><col right="minor" /><col right="minor" /><col />
+      <row bottom="minor">
+        <cell>Years Elapsed</cell>
+        <cell>Previous Debt</cell>
+        <cell>New interest</cell>
+        <cell>New Debt</cell>
+      </row>
+      <row bottom="minor">
+        <cell><m>1</m> </cell>
+        <cell><m>100</m> </cell>
+        <cell><m>100\cdot 0.03=3</m></cell>
+        <cell><m>100+3=103</m></cell>
+      </row>
+      <row>
+        <cell><m>2</m> </cell>
+        <cell><m>100</m> </cell>
+        <cell><m>100\cdot 0.03=3.09</m></cell>
+        <cell><m>103+3.09=106.09</m></cell>
+      </row>
+      <!--row bottom="minor">
+        <cell><m>3</m> </cell>
+        <cell><m>106.09</m> </cell>
+        <cell><m>106.09\cdot 0.03=3.1827</m></cell>
+        <cell><m>106.09+3.1827=109.2727</m></cell>
+      </row>
+      <row >
+        <cell><m>4</m> </cell>
+        <cell><m>109.2727</m> </cell>
+        <cell><m>109.2727\cdot 0.03=3.278181</m></cell>
+        <cell><m>109.2727+3.278181=112.550881</m></cell>
+      </row-->
+    </tabular>
+  </table>
+
+  <p>
+    Often, interest will be compounded multiple times each year.  Suppose, for example, that you borrow money at 3% interest, compounded <em>twice</em> each year.  
+  </p>
+  <p>
+    Does this mean that you need to pay 3% interest after 6 months, and a <em>second</em> 3% interest after the next 6 months?  
+    Absolutely not - that would be like paying 6% interest over the year!
+  </p>
+  <p>
+    Instead, the convention is to divide the state <term>annual percentage rate</term> evenly among the number of compoundings per year.  For example, if you borrow at 3% compounded twice per year, then the <em>interest per compounding</em> is <m>\frac{3 \%}{2\text{ compoundings}} = 1.5</m> % per compounding, or a decimal rate of 0.015 per compounding.  
+  </p>
+  
+  <table>
+    <title>Interest Compounded Biannualy</title>
+    <tabular>
+      <col right="minor" /><col right="minor" /><col right="minor" /><col />
+      <row bottom="minor">
+        <cell>Years Elapsed</cell>
+        <cell>Previous Debt</cell>
+        <cell>New interest</cell>
+        <cell>New Debt</cell>
+      </row>
+      <row bottom="minor">
+        <cell><m>0.5</m> </cell>
+        <cell><m>100</m> </cell>
+        <cell><m>100\cdot 0.015=1.5</m></cell>
+        <cell><m>100+1.5 = 101.5</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell><m>1.0</m> </cell>
+        <cell><m>101.5</m> </cell>
+        <cell><m>101.5\cdot 0.015=1.5225</m></cell>
+        <cell><m>101.5+1.5225=103.0225</m></cell>
+      </row>
+      <row bottom="minor">
+        <cell><m>1.5</m> </cell>
+        <cell><m>103.0225</m> </cell>
+        <cell><m>103.0225\cdot 0.015=1.5453375 </m></cell>
+        <cell><m>103.0225+1.5453375=104.5678375</m></cell>
+      </row>
+      <row>
+        <cell><m>2.0</m> </cell>
+        <cell><m>104.5678375</m> </cell>
+        <cell><m>104.5678375\cdot 0.015=1.5685175625</m></cell>
+        <cell><m>104.5678375+1.5685175625= 106.136355062 </m></cell>
+      </row>
+    </tabular>
+  </table>
+
+  <p>
+    Most banking instruments are compounded monthly, or more frequently.  
+    That means that you would compound <m>m=12</m> times each year, with an interest per compounding of <m>\dfrac{3\%}{12\text{ compoundings}}=0.25</m> % per compounding, or a decimal rate of <m>r = 0.0025</m>.
+  </p>
+  <p>
+    We could compute this using a table, but you can see that this rapidly becomes unworkable.  Instead, we can modfiy the for repeatedly changing the principal by a fixed value. 
+  </p>
+</insight>
+
+
+  <definition xml:id="def-compoundinterest">
+    <statement>
+      <p>
+        Suppose that a principal <m>P</m> is invested at an annual decimal rate <m>r</m>, and compounded <m>m</m> times each year.  The value of the investment after <m>t</m> years is equal to 
+        <me>
+          F(t) = P \cdot \left(1 + \frac{r}{m}\right)^{m\cdot t}
+        </me>
+      </p>
+      <p>
+        The rate <m>r</m> is called the <term>annual percentage rate</term>, and the value at year <m>t</m> is called the <term>future value</term> of the investment at time <m>t</m>. 
+      </p>
+      <p>
+        The <em>interest earned</em> is the difference between the principle and the future value.  
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    To remember the formula, remember that you are increasing the principal by the decimal rate <m>\frac{r}{m}</m> each compounding.  Because you are computing <m>m</m> times per year, after <m>t</m> years, you will have repeated this process <m>m\cdot t</m> times.
+  </p>
+
+  <exploration xml:id="ex_compoundinterest1">
+    <introduction>
+      <p>
+        Suppose that you have invested $1000 at an APR of 3%, compounded monthly.  
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find the future value of this instrument as a function of the number years <m>t</m>.  
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Use the compound interest formula with <m>P=1000</m>, <m>r=0.03</m>, <m>m=12</m>, and time represented by the variable <m>t</m>.
+          <me>
+            F(t) = 1000\cdot \left( 1 + \frac{0.03}{12}\right)^{12 t}
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the future value after 10 years and six months.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          10 years and 6 months corresponds to 10.5 years.  Using the compound interest formula, 
+          <me>
+            F(10.5) = 1000\cdot \left( 1 + \frac{0.03}{12}\right)^{12 (10.5)} = 136.972077476
+          </me>
+          The future value after 10.5 years is approximately $<m>1369.72</m> 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Rewrite the future value function in the form <m>a\cdot b^t</m> where <m>a,b</m> are numbers. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In the expression 
+          <me>
+             F(t) = 1000\cdot \left( 1 + \frac{0.03}{12}\right)^{12 t}
+          </me>
+          the base <m>1 + \frac{0.03}{12} = 1.0025 </m> is a single number.  That lets us rewrite the expression as 
+          <me>
+             F(t) = 1000\cdot \left( 1.0025 \right)^{12 t}
+          </me>
+          Next, we can use the property of exponents <m>a^{r\cdot s} = {\left(a^{r}\right)}^s</m> to rewrite the expression as 
+          <me>
+             F(t) = 1000\cdot \left( 1.0025^{12} \right)^{t}
+          </me>
+          Now we can again simplify the base <m> 1.0025^{12} = 1.03041595691</m>, which gives the expression 
+          <me>
+             F(t) = 1000\cdot \left( 1.03041595691 \right)^{t}
+          </me>
+          We have now written <m>F(t) = a \cdot b^t</m> with <m>a=1000</m> and <m>b = 1.03041595691</m>.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          What is the <term>effective</term> annual interest rate?  In other words, what is the  <em>actual</em> percentage by which the balance increases every year? 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that <m>P\cdot (1+ r)^t</m> gives the result of increasing the value <m>P</m> by a rate of<m>r</m>, repeated <m>t</m> times.  
+        </p>
+        <p>
+          We have shown above that the future value is given by 
+          <me>
+             F(t) = 1000\cdot \left( 1.03041595691 \right)^{t}
+          </me>
+          Rewriting this we get 
+          <me>
+             F(t) = 1000\cdot \left( 1 + 0.03041595691 \right)^{t}
+          </me>
+          In other words, this is equivalent to increasing the value by an <em>actual</em>, or <em>effective</em>, rate of <m>3.041\dots</m> percent each year. 
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <definition xml:id="def-effectiveapr">
+    <statement>
+      <p>
+        The <term>effective APR</term> of an investment is the rate <m>r_{eff}</m> such that 
+        <me>
+          P \cdot \Big(1 + \frac{r}{m}\Big)^{m\cdot t} = P \cdot \Big(1 + r_{eff}\Big)^{t}
+        </me>
+        
+      </p>
+    </statement>
+  </definition>
+
+  <insight>
+    <title>Another way to find Effective APR</title>
+      <p>
+        Given the definition of effective APR, it is generally easist to find the effective APR by using the laws of exponents to simplify the compound interest formula with your given values. 
+      </p>
+      <p>
+        This approach may, however, make it a bit more difficult to see the actual meaning of <m>r_{eff}</m>.  
+        To make this meaning more clear, we will introduce another more numerical way to compute <m>r_{eff}</m>.
+      </p>
+      <p>
+        Recall that the <em>effective APR</em> of an investment tells you the <em>actual</em> percent by which the value grows each year.  
+        That means that you can also find the effective APR by <em>computing and comparing the value of the investment at any conscutive two years</em>.
+      </p>
+      <p>
+        For example, in the the exercise above, we found that the future value was given by 
+        <me>
+           F(t) = 1000\cdot \left( 1 + \frac{0.03}{12}\right)^{12 t}
+        </me>.
+        That means that the value in year <m>0</m> is <me> F(0) = 1000\cdot \left( 1 + \frac{0.03}{12}\right)^{12 (0) = 1000}</me>
+        and that the value in year <m>1</m> is <me> F(1) = 1000\cdot \left( 1 + \frac{0.03}{12}\right)^{12 (1)} = 1030.41595691</me>.
+        
+        To find the percent change from years 0 to 1, we can compute the ratio <me>
+          \dfrac{F(1)}{F(0)} = \dfrac{1030.41595691}{1000} = 1.03041595691
+        </me>
+        Between years 0 and 1, the principal has been increased by a multiple of 
+        <me>
+          1.03041595691 = 1 + 0.03041595691
+        </me>
+        which corresponds to a decimal rate of  <m>r_{eff}=  0.03041595691</m>, or a percent rate of 3.041595691%
+      </p>
+  </insight>
+  
+  <exploration  xml:id="ex_compoundinterest2">
+    <introduction>
+      <p>
+        You invest in a company at 20%, compounded quarterly. 
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          If you start with $100, find the balance as a function of time <m>t</m> in years.  What is the balance after 1 year?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Start by writing down the formula for  <xref ref="def-compoundinterest"/>.
+        <me>
+          F(t) = P \cdot \left(1 + \frac{r}{m}\right)^{m\cdot t}
+        </me>
+        Using the principal <m>P=100</m>, decimal rate <m>r=0.2</m>, and frequency of compounding <m>m=4</m>, since there are four quarters in each year. 
+        </p>
+        <p>
+          That gives the equation
+          <me>
+            F(t) = 100 \cdot \left(1 + \frac{0.2}{4}\right)^{4\cdot t}
+          </me>
+          We could stop there, but it is often nice to clean this up by  simplifying the base of the exponent to get a formula for the value after <m>t</m> years
+          <me>
+            F(t) = 100 \cdot \left(1.05 \right)^{4\cdot t}
+          </me>
+        </p>
+        <p>
+          To find the value after one year, plug in <m>t=1</m> and simplify, 
+          <me>
+            F(1) = 100 \cdot \left(1.05 \right)^{4\cdot 1} = \dots = 100\cdot 1.2155 = 121.55
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How much should you start with to get $1000 after 5 years?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Again, start by writing down the formula for  <xref ref="def-compoundinterest"/>
+          <me>
+            F(t) = P \cdot \left(1 + \frac{r}{m}\right)^{m\cdot t}
+          </me>.
+          Next, fill in the values given.  In this problem, we want the <em>future value</em> <m>F=1000</m> at the <em>future time</em> <m>t=5</m>. We are also given <m>r=0.2</m> and <m>m=4</m>. 
+          <me>
+            1000 = P \cdot \left(1 + \frac{0.2}{4}\right)^{4\cdot 5}
+          </me>.
+          Note that now the unknown variable is the starting (or present) value <m>P</m>.
+        </p>
+        <p>
+          Simplifying the base and exponents gives 
+          <me>
+            1000 = P \cdot \left(1.05\right)^{20}
+          </me>
+          Using a calculator, we obtain 
+          <me>
+            1000 = P \cdot 2.6532
+          </me>
+          Solve for <m>P</m> by dividing both sides by <m>2.6532</m>
+          <me>
+            P = \dfrac{1000}{2.632} = 376.89
+          </me>
+          You must start with a present value <m>P=376.89</m> to achieve the desired future value in 5 years. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Rewrite <m>F(t)</m> in the form <m>a\cdot b^t</m>.  What is the effective APR?  
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Again, start by writing down the formula for  <xref ref="def-compoundinterest"/>
+          <me>
+            F(t) = P \cdot \left(1 + \frac{r}{m}\right)^{m\cdot t}
+          </me>.
+          Next, fill in the values given.  
+          <me>
+            F(t) = P \cdot \left(1 + \frac{0.2}{4}\right)^{4\cdot t}
+          </me>.
+          No other values are given in this part, so we now simplify. 
+          <me>
+            F(t) = P \cdot \left(1.05\right)^{4\cdot t}
+          </me>
+          Using the law of algebra <m>a^{rs} = (a^r)^s</m>, we get 
+          <md>
+            <mrow>F(t) = \amp P \cdot \left(1.05^4\right)^{t}</mrow>
+            <mrow>= \amp P \cdot \left(1.2155\dots \right)^{t} </mrow>             
+            <mrow>= \amp P \cdot \left(1 + 0.2155\dots \right)^{t} </mrow>             
+          </md>
+          Recall <xref ref="prop-compounding"/>.  This reminds us that the expression above coressponds to the process of repeatedly increasing the principal <m>P</m> by <m>21.55\dots</m>% each year.  
+        </p>
+        <p>
+          In other words, the effective APR is <m>21.55\dots</m>%.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+
+  <exercise xml:id="ex_compoundinterest3">
+    <statement>
+      <p>
+        How much must you invest at 3% interest, compounded monthly, to have 10,000 after 5 years?
+      </p>
+    </statement>
+    <solution>
+      <p>
+        
+          Again, start by writing down the formula for  <xref ref="def-compoundinterest"/>
+          <me>
+            F(t) = P \cdot \left(1 + \frac{r}{m}\right)^{m\cdot t}
+          </me>.
+          Next, fill in the values given.  
+          <me>
+            10000 = P \cdot \left(1 + \frac{0.03}{12}\right)^{12\cdot 5}
+          </me>.
+          We want to solve for the unknown variable <m>P</m>.  We could simplify the expression using a calculator, or we could just use the fact that <m>\left(1 + \frac{0.03}{12}\right)^{12\cdot 5}</m> is a constant number and divide both sides by it to get.
+          <me>
+            P = \dfrac{10,000}{\left(1 + \frac{0.03}{12}\right)^{12\cdot 5}} = 8,609
+          </me>.
+      </p>
+      <p>
+        
+      </p>
+    </solution>
+  </exercise>
+
+
+
+  <p>
+    <em>A picture is worth a thousand words</em>.  
+    The present value will grow more fast or slow based on the value of the principal <m>P</m>, APR <m>r</m>, and frequency of compounding <m>m</m>.  In the graphic below, use the sliders to change these two numbers, and get a sense of how fast each of these parameters impact the growth of a balance compounded continuously. 
+  </p>
+  
+  <figure>
+    <caption>Compound interest as a function of time</caption>
+    <interactive platform="jsxgraph"  source="jsxgraph/algebra-compound-interest.js" preview="jsxgraph-algebra-compound-interest.png" >
+      <slate xml:id="jsxgraph-algebra-compound-interest" surface="jsxboard"   /> 
+      <instructions>
+        <ul>
+          <li>
+            <p>
+              How does the interest rate impact the rate of growth of the balance?  Compare the shape of the curve with an APR of 2%, of 5%, 10% and of 20%.  
+            </p>
+          </li>
+          <li>
+            <p>
+              How does changing the frequency of compounding impact the rate of growth?  Compare the shape of the curve when <m>m=1</m>, <m>=4</m>, <m>m=12</m>, and <m>m=356</m>
+            </p>
+          </li>
+        </ul>
+      </instructions>
+    </interactive>
+
+  </figure>
+
+  <paragraphs xml:id="subsec-naturalexp">
+    <title>The Natural Exponential for Calculus</title>
+
+    <insight>
+      <title>Compounding Faster and Faster</title>
+      <p>
+        In the interactive graphic above, note that once you increase the frequency <m>m</m> above about 20, the graph of compound interest appears to stop changing. 
+      </p>
+      <p>
+        Actually, if you compute things out with a calculator, you will see that there <em>are</em> differences when you change <m>m</m>, but those changes get smaller and smaller as you increase <m>m</m>.
+      </p>
+      <p>
+        Fix an APR of <m>r=1</m> (a rate  of 100%).
+      </p>
+      <tabular>
+        <col right="medium" /><col right="medium" /><col />
+        <row bottom="medium">
+          <cell>Frequency of compounding <m>m</m></cell>
+          <cell>Future Value function <m>F(t)</m> </cell>
+          <cell>Effective APR <m>r_{eff}</m></cell>
+        </row>
+        <row bottom="medium">
+          <cell>1</cell>
+          <cell><m>F = P\cdot(1+\frac{1}{1})^{1t} = P\cdot (2)^t</m> </cell>
+          <cell><m>r_{eff} = 2- 1 = 1</m></cell>
+        </row>
+        <row bottom="medium">
+          <cell>10</cell>
+          <cell><m>F = P\cdot(1+\frac{1}{10})^{10t} = P\cdot (2.59\dots)^t</m> </cell>
+          <cell><m>r_{eff} \approx 2.59-1 = 1.59</m> </cell>
+        </row>
+        <row bottom="medium">
+          <cell>20</cell>
+          <cell><m>F = P\cdot(1+\frac{1}{20})^{20t} = P\cdot (2.59\dots)^t</m> </cell>
+          <cell><m>r_{eff}\approx 2.65-1 = 1.65</m> </cell>
+        </row>
+        <row bottom="medium">
+          <cell>100</cell>
+          <cell><m>F = P\cdot(1+\frac{1}{100})^{100t} = P\cdot (2.70\dots)^t</m> </cell>
+          <cell><m>r_{eff}\approx 2.70-1 = 1.70</m> </cell>
+        </row>
+        <row bottom="medium">
+          <cell>1000</cell>
+          <cell><m>F = P\cdot(1+\frac{1}{1000})^{1000t} = P\cdot (2.71\dots)^t</m> </cell>
+          <cell><m>r_{eff}\approx 2.71-1=1.71\dots</m> </cell>
+        </row>
+      </tabular>
+      <p>
+        In other words, as you compound more and more frequently at an APR of 100%, the <em>effective</em> APR settles down to a specific number (171%).  
+      </p>
+      <p>
+        Said another way, as you compound more and more frequently at 100%, the base settles down on a specific number <m>2.71\dots</m>.  
+        Mathematicians use the letter <m>e</m> to denote this number. 
+      </p>
+    </insight>
+    
+    <p>
+      Surprisingly, there is a very simple equation for what happens when you compound continuously.  
+    </p>
+
+    <theorem xml:id="thm-continuouscompounding">
+      <statement>
+        <p>
+          If you compound <term>continuously</term> at a rate <m>r</m>, the value after <m>t</m> years is given by the function 
+          <me>
+            F(t) = P\cdot \Big(e^r\Big)^t
+          </me>
+          where <m>e</m> is a number that is approximately <m>2.71\dots</m>.
+        </p>
+      </statement>
+    </theorem>
+    
+    <p>
+      Surprisingly, exponential functions with base <m>e</m> play a very important role in calculus.  Because of this, we call it the <em>natural</em> base to use for the exponential function.  More precisely, we make the following definition.
+    </p>
+
+    <definition xml:id="def-naturalexp">
+      <statement>
+        <p>
+          The function <m>y = e^{x}</m> is called the <term>natural exponential function</term>.  Sometimes, we denote this function by writing 
+          <me>
+            exp(x) = e^x
+          </me>
+        </p>
+      </statement>
+    </definition>
+
+    
+  </paragraphs>
+
+
+</section>
+
+</chapter>

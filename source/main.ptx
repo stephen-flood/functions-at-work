@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pretext xml:lang="en-US" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <docinfo xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <blurb shelf="functions_at_work">  
+    Functions at Work is an open, business-first introduction to calculus using clear graphs, plain language, and step-by-step worked examples.  
+    An emphasis on economic concepts and applications anchors the math in business contexts. 
+    Carefully scaffolded exercises help students progress from basic understanding to mastery through practice and reflection.  
+    </blurb>
+
+    <brandlogo source = "logo_gpt4.png"/>
+    <document-id>functions_at_work</document-id>
+
+    <!-- macros for defining latex math shortcuts. It is good practice  -->
+    <!-- to define these semantically, so that the macro relates to what-->
+    <!-- it defines.                                                    -->
+    <macros>
+      \newcommand{\N}{\mathbb N}
+      \newcommand{\Z}{\mathbb Z}
+      \newcommand{\Q}{\mathbb Q}
+      \newcommand{\R}{\mathbb R}
+
+      \newcommand{\red}[1]{   {\color{red}   #1}   }
+      \newcommand{\blue}[1]{  {\color{blue}  #1}  }
+      \newcommand{\green}[1]{ {\color{green} #1} }
+
+      \newcommand{\ddx}[1]{ \dfrac{d}{dx} \Big[ #1 \Big]  } 
+      \newcommand{\ddt}[1]{ \dfrac{d}{dt} \Big[ #1 \Big]  } 
+      \newcommand{\ddu}[1]{ \dfrac{d}{du} \Big[ #1 \Big]  } 
+      \newcommand{\ddxfrac}[1]{ \dfrac{d}{dx} \left[ #1 \right]  } 
+      \newcommand{\D}[1]{ \Big[ #1 \Big]'  } 
+
+      \newcommand{\intdx}[1]{{\,\int#1\,\,dx}}
+      \newcommand{\dint}[1]{\displaystyle\intdx{#1}}
+
+      \def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+    </macros>
+
+    <!-- If you put any latex-image elements you can include preambles  -->
+    <!-- for those in the next element.                                 -->
+    <latex-image-preamble>
+      \usepackage{tikz, pgfplots}
+      \usetikzlibrary{positioning,matrix,arrows}
+      \usetikzlibrary{shapes,decorations,shadows,fadings,patterns}
+      \usetikzlibrary{decorations.markings} 
+
+      \usetikzlibrary{arrows,calc,decorations.markings}
+
+      \pgfarrowsdeclarecombine*{|&lt;}{&gt;|}{latex}{latex}{|}{|}
+      \tikzset{dimen/.style={|&lt;-&gt;|,&gt;=latex,thin,every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+
+      %%%% Begin: Set up TikZ Package and Styles %%%%
+      \tikzset{grid/.style={dotted}}
+      \tikzset{major gridlines/.style={thin}}
+      \tikzset{minor gridlines/.style={dotted, thick}}
+      \tikzset{vertical gridlines/.style={ultra thin}}
+      \tikzset{axes/.style={latex-latex}}
+      \tikzset{curve/.style={thick}}
+      \tikzset{open circle/.style={color=black, very thick, fill=white}}
+      \tikzset{closed circle/.style={color=black, very thick, fill=black}}
+      %%%% End: Set up TikZ Package and Styles %%%%
+
+      \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+
+    </latex-image-preamble>
+
+    <!-- It is possible to rename elements using the tags below -->
+    <rename element="investigation" xml:lang="en-US">Puzzle</rename>
+    <rename element="assemblage" xml:lang="en-US">Summary</rename>
+    <rename element="insight" xml:lang="en-US">Application</rename>
+
+    <!-- Specify the default type of cross reference:           -->
+    <cross-references text="type-global" />
+
+  </docinfo>
+  <book xml:id="home">
+
+      <title>Functions at Work</title>
+      <subtitle>Business Calculus</subtitle>
+
+      <xi:include href="./meta_frontmatter.ptx" />
+
+      <part xml:id="part-algebra">
+        <title>Algebra For Business</title>
+
+        <xi:include href="./part1_algebra_interest/ch_functions.ptx" />
+        <xi:include href="./part1_algebra_interest/ch_workingwithfns.ptx" />
+        <xi:include href="./part1_algebra_interest/ch_algebra_linearfunctions.ptx" />
+        <xi:include href="./part1_algebra_interest/ch_algebra_polynomials.ptx" />
+        <xi:include href="./part1_algebra_interest/ch_exponentials.ptx" />
+        <xi:include href="./part1_algebra_interest/ch_logarithms.ptx" />
+
+      </part>
+
+
+      <part xml:id="part-rates">
+        <title>Change and Rates</title>
+
+        <xi:include href="./part2_change_rates/ch_limits.ptx" />
+        <xi:include href="./part2_change_rates/ch_averate_rates.ptx" />
+        <xi:include href="./part2_change_rates/ch_introslope.ptx" />
+        <xi:include href="./part2_change_rates/ch_basicderivativerules.ptx"/>
+        <xi:include href="./part2_change_rates/ch_marginal_change_and_approximation.ptx" />
+        <xi:include href="./part2_change_rates/ch_productquotient.ptx" />
+        <xi:include href="./part2_change_rates/ch_chainrule.ptx" />
+      </part>
+
+      <part xml:id="part-applyingslopes">
+        <title>Applying Marginals and Slopes</title>
+
+        <xi:include href="./part3_applying_slope/ch_maxmin.ptx" />
+        <xi:include href="./part3_applying_slope/ch_secondderivative.ptx" />
+
+      </part>
+
+    <part xml:id="part-integrals">
+      <title>Integral Calculus</title>
+
+      <xi:include href="./part4_integrals/ch_antiderivatives.ptx" />
+      <xi:include href="./part4_integrals/ch_introducingarea.ptx" />
+
+    </part>
+
+
+    <backmatter xml:id="meta_backmatter">
+      <title>Backmatter</title>
+
+      <!-- Begin Appendices -->
+      <xi:include href="./part0_review/ch_algebrareview.ptx" />
+      <!-- End Appendices-->
+
+
+      <!--solutions divisional="hint">
+        <title>Selected Hints</title>
+      </solutions>
+      
+      <solutions divisional="solution">
+        <title>Selected Solutions</title>
+      </solutions>
+      
+      <appendix>
+        <title>List of Symbols</title>
+        <notation-list/>
+      </appendix>
+
+      <index>
+        <title>Index</title>
+        <index-list/>
+      </index-->
+
+      <colophon>
+        <p>
+          This book was authored in <pretext/>.
+        </p>
+      </colophon>
+    </backmatter>
+
+  </book>
+</pretext>

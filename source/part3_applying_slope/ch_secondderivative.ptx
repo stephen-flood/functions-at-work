@@ -1,0 +1,1562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch-secondderivatives" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Dimishing Returns and Changing Rates</title>
+
+<introduction>
+  <p>
+  </p>
+</introduction>
+
+<section xml:id="sec-secondderivative">
+	<title>The Second Derivative</title>
+	
+	<p>
+		Recall that if <m>P(x)</m> is total profit, then it's slope function <m>P'(x)</m> is used to approximate the profit from the <em>next</em> item. 
+	</p>
+	<p>	
+		The concept of <term>diminishing returns</term> plays an important role in economics. 
+		<image width="40%" xml:id="image_diminishingreturns">
+			<latex-image>
+				\def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+				
+				\begin{tikzpicture}
+					\draw (0,-0.4) -- (0,3);
+					\draw (-2,0) -- (3,0); 
+
+					\drawtikzspline( -1,0.25,0, 1,1.5,2 );
+					\drawtikzspline( 1,1.5,2,  2,2.75,0 );
+					\drawtikzspline( 2,2.75,0,  3,1.5,-2);
+					
+					\draw[fill,red] (1,1.5) circle (2pt); 
+					\draw[red,dotted] (1,3) -- (1,0);
+					\draw[red,stealth-] (1,-0.1) -- (1,-0.5) node[below] {point of diminishing returns};
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+		<ul>
+			<li>
+				<p>
+					To the left of the point of diminishing returns, 
+					the <em>slope is increasing</em>.
+				</p>
+				<p>
+					That means that each item contributes more and more to the total profit. 
+					In other words, <em>returns are accelerating</em>. 
+				</p>
+			</li>
+			<li>
+				<p>
+					To the right of the point of diminishing returns, the <em>slope is decreasing</em>.
+				</p>
+				<p>
+					That means that each item contributes less and less to the total profit.  
+					In other words, <em>returns are decellerating</em>.
+					At first, the items increase the profit, but by less and less.
+					Eventually, the items cause the profit to decrease. 
+				</p>
+			</li>
+		</ul>
+	</p>
+	<p>
+		Most descriptions in economics of diminishing returns are very wordy, and somewhat vague. 
+		To make this concept precise, we need an additional mathematical concept. 
+	</p>
+
+	<definition xml:id="def-secondderivative">
+		<statement>
+			<p>
+				Suppose that <m>f</m> is a differentiable function. 
+				The <term>second derivative</term> of <m>f</m>, written <m>f''</m>, is a function that gives the <em>slope of <m>f'</m></em>.  In symbols,
+				<me>
+					f''(x) = \ddx{ f'(x) } = \ddxfrac{\frac{df}{dx} } = \dfrac{d^2f}{dx^2}
+				</me>
+				In practice, find the second derivative by finding the derivative of the derivative. 
+			</p>
+		</statement>
+	</definition>
+
+	<p>
+		In physics, 
+		<ul>
+			<li>
+				<p>
+					If <m>s(t) = </m> position 
+				</p>
+			</li>
+			<li>
+				<p>
+					then <m>s'(t) = </m> velocity
+				</p>
+			</li>
+			<li>
+				<p>
+					and <m>s''(t) = </m> acceleration.
+				</p>
+			</li>
+		</ul>
+	</p>
+
+	<exploration xml:id="ex_secondderivative_profit">
+		<introduction>
+			<p>
+				Suppose that <m>P(x) = -0.1x^2  + 30x - 1000 </m>.
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find the marginal profit from items #10, #11, and #12. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The marginal profit function is <m>P'(x)</m>
+					<md>
+						<mrow>P'(x) \amp = \ddx{-0.1x^2  + 30x - 1000 }</mrow>
+						<mrow> \amp =-0.1\cdot 2x + 30 - 0 </mrow>
+						<mrow> \amp = -0.2 x + 30</mrow>
+					</md>
+					The marginal profit function is equal to 
+					<m>P' = -0.2 x + 30 </m>. 
+					This tells us how much the <em>next item</em> contributes to the total profit.
+					<md>
+						<mrow>P'(10) \amp = 28 \$/item </mrow>
+						<mrow>P'(11) \amp = 27.8 \$/item </mrow>
+						<mrow>P'(12) \amp = 27.6 \$/item </mrow>
+					</md>
+					Notice that the 10th, 11th, and 12th items all increase the total profit. 
+					However, they contribute less and less to the total profit. 
+					In fact, the addional profit is decreasing by $0.20 every additional item. 
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Find <m>P''(x)</m>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					We have already found <m>P'(x)</m>.
+				</p>
+				<p>
+					We can now find the second derivative 
+					<md>
+						<mrow>P''(x) \amp = \ddx{ P'(x) } </mrow>
+						<mrow> \amp = \ddx{ -0.2 x + 30 } </mrow>
+						<mrow> \amp = -0.2 + 0 </mrow>
+						<mrow> \amp = -0.2 \ \$/item\text{ per } item </mrow>
+					</md>
+					This tells us that the <em>unit profit</em> is decreasing by $0.20 $/item for each additional item sold. 
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<exploration xml:id="ex_secondderivativeposition">
+		<statement>
+			<p>
+				Let <m> f(x) = \dfrac{3}{2x+1}</m> is the position function. 
+				Find the acceleration <m>\dfrac{d^2f}{dx^2}</m>.
+			</p>
+		</statement>
+		<solution>
+			<p>
+				We must take the derivative twice. 
+				<md>
+					<mrow>f' \amp = \ddxfrac{\frac{\red{3}}{\blue{2x+1}} } </mrow>
+				</md>
+				You can find this derivative as written using the quotient rule.  
+				You can also rewrite the derivative as <m>\ddx{ 3\cdot(2x+1)^{-1}}</m> and use the chain rule. 
+			</p>
+			<p>
+				We will use the quotient rule <m>\D{\frac{\red{t}}{\blue{b}}} = \frac{\blue{b}\red{t'}-\red{t}\blue{b'}}{\blue{b}^2}</m>
+				<md>
+					<mrow>f' \amp = \dfrac{\blue{(2x+1)}\red{0} - \red{3}\blue{(2+0)}}{\blue{(2x+1)^2}}  </mrow>
+					<mrow> \amp = \dfrac{-6}{(2x+1)^2}  </mrow>
+					<mrow> \amp = \dfrac{-6}{4x^2 + 4x + 1}  </mrow>
+				</md>
+			</p>
+			<p>
+				We can now take the derivative the second time, also using the quotient rule 
+				<md>
+					<mrow>f'' \amp = \ddx{f'} </mrow>
+					<mrow> \amp = \ddxfrac{ \dfrac{\red{-6}}{\blue{4x^2 + 4x + 1}} }</mrow>
+					<mrow> \amp =  \dfrac{\blue{(4x^2 + 4x + 1)}\red{0}-\red{-6}\blue{(4\cdot 2x + 4 + 0)}}{\blue{ (4x^2 + 4x + 1)^2}} </mrow>
+					<mrow>f'' \amp =  \dfrac{  48x + 16  }{  (4x^2 + 4x + 1)^2  } </mrow>
+				</md>
+			</p>
+		</solution>
+	</exploration>
+
+	<paragraphs xml:id="par_acceleration">
+		<title>Understanding Acceleration</title>
+		
+		<p>
+			A physical perspective provides one of the most straightforward ways to think about the connection between position, velocity, and acceleration. 
+			To make things concrete, suppose that you are driving on a highway, and that 
+		</p>
+		<p>
+		<ul>
+			<li>
+				<p>
+					If <m>s(t) = </m> your mile marker at time <m>t</m>
+				</p>
+			</li>
+			<li>
+				<p>
+					then <m>s'(t) = </m> is your velocity at time <m>t</m>
+				</p>
+			</li>
+			<li>
+				<p>
+					and <m>s''(t) = </m> your acceleration at time <m>t</m>.
+					This tells us <em>how fast</em> the velocity <m>s'</m> is changing.
+				</p>
+			</li>
+		</ul>
+			In other words, 
+		</p>
+		<p>
+			<em>Positive</em> acceleration <m>s''</m> means that velocity is <em>increasing</em>.  This happens when you put your foot on the gas, as long as the car is in drive. 
+		</p>
+		<p>
+			<em>Negative</em> acceleration <m>s''</m> means that your velocity is <em>decreasing</em>.  This happens when you put your foot on the break, as long as you are moving forward.
+		</p>
+	</paragraphs>
+
+	<exploration xml:id="ex_accfromveltable">
+		<introduction>
+			<p>
+				Suppose that your <em>velocity</em> is given by the following table
+				<tabular>
+					<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+					<row bottom="medium">
+						<cell><m>t</m></cell>
+						<cell>0</cell>
+						<cell>1</cell>
+						<cell>2</cell>
+						<cell>3</cell>
+						<cell>4</cell>
+						<cell>5</cell>
+					</row>
+					<row>
+						<cell><m>s'(t)</m></cell>
+						<cell>60</cell>
+						<cell>65</cell>
+						<cell>85</cell>
+						<cell>30</cell>
+						<cell>10</cell>
+						<cell>0</cell>
+					</row>
+				</tabular>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					On what interval is your acceleration <m>s''</m> positive?  
+					Justify your answer
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Positive acceleration means increasing velocity.
+					The velocity increases between <m>t=0</m> and <m>t=2</m> (the velocity increases from 60 to 65 to 85).
+				</p>
+				<p>
+					That means that acceleration is positive between <m>t=0</m> and <m>t=2</m>, which corresponds to the interval <m>(0,2)</m>
+				</p>
+			</solution>
+		</task>
+		<task>	
+			<statement>
+				<p>
+					On what interval is your acceleration <m>s''</m> negative?  
+					Justify your answer
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Negative acceleration means decreasing velocity.
+					The velocity decreases between <m>t=2</m> and <m>t=5</m> (the velocity increases from 85 to 30, to 10, to 0).
+				</p>
+				<p>
+					That means that acceleration is negative between <m>t=2</m> and <m>t=5</m>, which corresponds to the interval <m>(2,5)</m>.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<example>
+		<title>Finding Maximum and Minimum Velocity </title>
+		
+		<p>
+			The above examples show that the <em>velocity</em> function <m>f'</m> has a maxmium or minimum value when the <em>acceleration</em> goes from <m>f''=(+)</m> to <m>f''=(-)</m> (for a maximum velocity <m>f'</m>) or from <m>f''=(-)</m> to <m>f''=(+)</m> (for a minimum velocity <m>f'</m>).
+		</p>
+		
+	</example>
+
+</section>
+
+<section xml:id="sec-concavity">
+	<title>Concavity and Graphs</title>
+	
+	<p>
+		In <xref ref="ch-maxmin"/>, we used the derivative function <m>f'</m> to give a very rough sketch of a height function <m>f</m>.
+		However, this sketch is only a partial description of the original function.
+	</p>
+	<p>
+		For example, the following graph is more than just the sketch <m>\nearrow\,\searrow</m>
+		<image width="30%" xml:id="image_bellcurve1">
+			<latex-image>
+				\begin{tikzpicture}
+					\drawtikzspline(-0.25,1,0, 1,2,2); 
+					\drawtikzspline(1,2,2, 2,3,0);
+					\drawtikzspline(2,3,0, 3,2,-2);
+					\drawtikzspline(3,2,-2, 4.25,1,0); 
+					\draw[fill] (1,2) circle (2pt);
+					\draw[fill] (3,2) circle (2pt);
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+		In particular, the graph first curves up, then curves down, and then curves up again. 
+	</p>
+	<definition xml:id="def-concave">
+		<statement>
+			<p>
+				The term <term>concave</term> means "curved like a bowl."
+				In our context, there are two kinds of bowls: ones that open up, and ones that open down. 
+				Graphically, you can tell if a curve is concave up by putting eyes over the curve, and seeing if it is <m>\stackrel{\cdot\,\cdot}{\smile}</m> or <m>\stackrel{\cdot\,\cdot}{\frown}</m>
+			</p>
+		</statement>
+	</definition>
+	<dl>
+		<li>
+			<title>Concave Up</title>
+			<p>	
+				The curve <em>opens up</em>
+				<image width="50%" xml:id="image_concaveupfaces">
+					<latex-image>
+						\begin{tikzpicture}
+							\draw[rounded corners,dotted] (-1.5,-1.5) rectangle (1.5,1);
+							\draw[fill] (-0.25,0.2) circle (2pt);
+							\draw[fill] ( 0.25,0.2) circle (2pt);
+							\drawtikzspline(-1,0,-2, 1,0,2);
+							
+							\begin{scope}[shift={(3.5,0)}]
+								\draw[rounded corners,dotted] (-1.5,-1.5) rectangle (1.0,1);
+								\draw[fill] (-0.4,0.2) circle (2pt);
+								\draw[fill] ( 0.1,0.2) circle (2pt);
+								\drawtikzspline(-1,0,-2, 0,-1,0);
+							\end{scope}
+
+							\begin{scope}[shift={(6,0)}]
+								\draw[rounded corners,dotted] (-1.0,-1.5) rectangle (1.5,1);
+								\draw[fill] (-0.1,0.2) circle (2pt);
+								\draw[fill] ( 0.4,0.2) circle (2pt);
+								\drawtikzspline(0,-1,0, 1,0,2);
+							\end{scope}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+				
+			<p>
+				The <em>slope <m>f'</m></em> is <em>increasing</em>
+				<image width="30%" xml:id="image_slopeincreasing">
+					<latex-image>
+						\begin{tikzpicture}
+							\draw[curve,domain=-1.5:1.5] plot ({\x},{(\x)^2});
+							\draw[red, domain=-1.3:-0.7,curve] plot ({\x}, {-2*(\x+1) + 1} );
+							\node[red, below left] at (-1,1.25) {$f'=-2$};
+							\draw[blue,domain= 0.7: 1.3,curve] plot ({\x}, { 2*(\x-1) + 1} );
+							\node[blue, below right] at (1,1.25) {$f'=2$};
+							\draw[black!20!green,domain=-0.4:0.4,curve] plot ({\x},{0}) ;
+							\node[black!20!green,below] at (0,0) {$f'=0$};
+							\draw[->,line width=0.4,double,double distance=3pt] (-1.75,-0.75) -- (1.75,-0.75);
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+
+			<p>
+				Because <m>f'</m> is increasing, the second derivative <em><m>f''</m> is positive</em>. 
+			</p> 
+
+		</li>
+		<li>
+			<title>Concave Down</title>
+			<p>
+				The curve <em>opens down</em>
+				<image width="50%" xml:id="image_concavedownface">
+					<latex-image>
+						\begin{tikzpicture}
+							\draw[rounded corners,dotted ] (-1.5,-1.5) rectangle (1.5,1);
+							\draw[fill] (-0.3,0.5) circle (2pt);
+							\draw[fill] ( 0.3,0.5) circle (2pt);
+							\drawtikzspline(-1,-1,2,1,-1,-2);
+							
+							\begin{scope}[shift={(3.5,0)}]
+								\draw[rounded corners,dotted ] (-1.5,-1.5) rectangle (0.7,1);
+								\draw[fill] (-0.6,0.5) circle (2pt);
+								\draw[fill] (-0.1,0.5) circle (2pt);
+								\drawtikzspline(-1,-1,2,0,0,0);
+							\end{scope}
+
+							\begin{scope}[shift={(5.4,0)}]
+								\draw[rounded corners,dotted] (-0.7,-1.5) rectangle (1.5,1);
+								\draw[fill] (0.1,0.5) circle (2pt);
+								\draw[fill] (0.6,0.5) circle (2pt);
+								\drawtikzspline(0,0,0,1,-1,-2);
+							\end{scope}
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+
+
+			<p>
+				The <em>slope <m>f'</m></em> is <em>decreasing</em>
+				<image width="30%" xml:id="image_slopedecreasing">
+					<latex-image>
+						\begin{tikzpicture}
+							\draw[curve,domain=-1.5:1.5] plot ({\x},{-(\x)^2+2});
+							\draw[red, domain=-1.3:-0.7,curve] plot ({\x}, { 2*(\x+1) + 1} );
+							\node[red, above left] at (-1,1.25) {$f'=-2$};
+							\draw[blue,domain= 0.7: 1.3,curve] plot ({\x}, {-2*(\x-1) + 1} );
+							\node[blue, above right] at (1,1.25) {$f'=2$};
+							\draw[black!20!green,domain=-0.4:0.4,curve] plot ({\x},{2}) ;
+							\node[black!20!green,above] at (0,2) {$f'=0$};
+							\draw[->,line width=0.4,double,double distance=3pt] (-1.75,-0.75) -- (1.75,-0.75);
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+			</p>
+			<p>
+				Because <m>f'</m> is decreasing, the second derivative <em><m>f''</m> is negative</em>. 
+			</p> 
+
+		</li>
+	</dl>
+
+	
+	<p>
+		We can summarize this as the following result. 
+	</p>
+	<theorem xml:id="thm-testingconcavity">
+		<statement>
+			<p>
+				Suppose that <m>f</m> is a function with second derivative <m>f''</m>.  <ul>
+					<li>
+						<p>
+							<m>f</m> is <term>concave up</term> on an interval <em>if and only if</em> the second derivative <m>f''=(+)</m> on that interval.  
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>f</m> is <term>concave down</term> on an interval <em>if and only if</em> the second derivative <m>f''=(-)</m> on that interval.  
+						</p>
+					</li>
+				</ul>
+			</p>
+		</statement>
+	</theorem>
+
+	<p>
+		Something interesting happens when concavity changes.  
+		Suppose the bell curve below represents the number of people ill with a new illness.
+		In the bell curve below, the curve starts out concave up (CU), becomes concave down (CD), and ends concave up (CU).
+		<image width="30%" xml:id="image_bellcurve2">
+			<latex-image>
+				\begin{tikzpicture}
+					\drawtikzspline(-0.25,1,0, 1,2,2); 
+					\drawtikzspline(1,2,2, 2,3,0);
+					\drawtikzspline(2,3,0, 3,2,-2);
+					\drawtikzspline(3,2,-2, 4.25,1,0); 
+					\draw[fill] (1,2) circle (2pt);
+					\draw[fill] (3,2) circle (2pt);
+					\draw[red,|-|] (-0.2,0.5) -- (0.95,0.5) node[midway, below] { CU } ;
+					\draw[red,|-|] (1.05,0.5) -- (2.95,0.5) node[midway, below] { CD } ;
+					\draw[red,|-|] (3.05,0.5) -- (4.20,0.5) node[midway, below] { CU } ;
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+		The curve is <em>bent</em> at the two transitions.  
+		<ul>
+			<li>
+				<p>
+					At the first "bending point," the number of new cases continues to rise.
+					However, the daily change in cases (i.e. the slope <m>f'</m>) stops getting bigger and starts getting smaller. 
+				</p>
+				<p>
+					In other words, because the second derivative  goes from <m>f''=(+)</m> to <m>f''=(-)</m>, the fastest daily change in cases occurs at the first bend in the curve. 
+				</p>
+			</li>
+			<li>
+				<p>
+					At the second "bending point," the number of new cases continues to decrease.  
+					However, the daily change in cases (i.e. the slope <m>f'</m>) starts to decrease less rapidly.  
+				</p>
+			</li>
+		</ul>
+		This is an important mathematical feature, but "bending point" does not a mathematical term.  The word <term>inflect</term> means to bend, to change pitch, or to alter noticeably.
+	</p>
+	<definition xml:id="def-inflection">
+		<statement>
+			<p>
+				Suppose that <m>f</m> is a function with second derivative <m>f''</m>.
+				We say that <m>f</m> has an <term> inflection point</term> at <m>x</m> <em>if and only if</em> 
+				<m>f</m> changes concavity at <m>x</m>. 
+			</p>
+			<p>
+				In other words, <m>f</m> has an inflection point at <m>x</m> if <m>f''</m> goes between <m>(+)</m> and <m>(-)</m> at <m>x</m>.
+			</p>
+		</statement>
+	</definition>
+
+	<assemblage xml:id="assemblage-findingconcavity">
+		<title>To Find Intervals of Concavity</title>
+		<p>
+			<ol>
+				<li>
+					<p>
+						Find an equation for <m>f''</m>.
+					</p>
+					<p>
+						If you are given an equation for <m>f</m>, take the derivative twice. 
+						If you are given an equation for <m>f'</m>, take the derivative once.
+						If you are given an equation for <m>f''</m>, no derivative rules are needed.
+					</p>
+				</li>
+				<li>
+					<p>
+						Find all <m>x</m> such that <m>f''(x)=0</m>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Find all <m>x</m> such that <m>f''(x)\ DNE</m>
+					</p>
+				</li>
+				<li>
+					<p>
+						Make a sign chart for <m>f''</m>
+					</p>
+				</li>
+				<li>
+					<p>
+						Read off your answer.  If <m>f''=(+)</m>, then <m>f</m> is <m>\stackrel{\cdot\,\cdot}{\smile}</m>.  If <m>f''=(-)</m>, then <m>f</m> is <m>\stackrel{\cdot\,\cdot}{\frown}</m>.
+					</p>
+				</li>
+			</ol>
+		</p>
+	</assemblage>
+
+	<exploration xml:id="ex_concavity1">
+		<introduction>
+			<p>
+				Let <m>f(x) = x^3 - 9x^2 + 24x - 3 </m> be a function that gives the height of a mountain.
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find where <m>f</m> is concave up, where it is concave down, and find all inflection points. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					To find concavity and inflection points, we must work with the <em>second</em> derivative <m>f''</m>.
+					First, we must find <m>f''</m>. 
+					<me>
+						f'(x) = \ddx{x^3 - 9x^2 + 24x - 3 } = 3x^2 -18x +24
+					</me>
+					<me>
+						f''(x) = \ddx{3x^2 -18x +24} = 6x - 18
+					</me>
+				</p>
+				<p>
+					Next, find when <m>f''=0</m> by solving 
+					<md>
+						<mrow>6x-18 \amp =0</mrow>
+						<mrow>6x    \amp =18</mrow>
+						<mrow>x 	\amp =3</mrow>
+					</md>
+					Because <m>f''</m> is a polynomial, it is defined on all <m>x</m>.  In other words, there are no <m>x</m> that make <m>f''\ DNE</m>
+				</p>
+				<p>
+					Next, make a sign chart for <m>f''</m> as before, checking whether  <m>f''</m> is positive or negative on each interval.
+					<image width="50%" xml:id="image_concavityexample1_signchartv1">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[axes, very thick] (0,0) -- (6,0);
+								\node at (-1,0.4) {$f$};
+								\node at (-1,-0.6 ) {$f''$};
+								\def\xval{3} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{1} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(-)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\frown}$};
+								\def\xval{5} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(+)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\smile}$};
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+					Using our graph, we see that the function is concave up on the interval <m>(3,\infty)</m>, it is concave down on the interval <m>(-\infty,3)</m>, and has a point of inflection at <m>x=3</m>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Find all local maxima and minima.  
+				</p>
+			</statement>
+			<solution>
+				<p>
+					To find maxima and minima, we must work with the <em>first</em> derivative <m>f'</m>.
+					We have already found that <m>f'(x) = \ddx{x^3 - 9x^2 + 24x - 3 } = 3x^2 -18x +24 </m>.
+				</p>
+				<p>
+					Next, we must find when <m>f'=0</m> by solving the equation
+					<md>
+						<mrow>3x^2 - 18x + 24 \amp = 0</mrow>
+						<mrow>3(x^2 - 6x +  8) \amp =0</mrow>
+						<mrow>3(x - 4)(x - 2) \amp =0</mrow>
+					</md>
+					<m>f'=0</m> if and only if <m>x=4</m> or <m>x=2</m>.
+				</p>
+				<p>
+					Because <m>f'</m> is a polynomial, it is defined for all <m>x</m>.  In other words, there are no places where <m>f'\ DNE</m>.
+				</p>
+				<p>
+					We now make a sign chart for <m>f'</m> as usual.
+					<image width="50%" xml:id="image_concavityexample2_maxminsignchart">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-1,0) -- (6,0);
+								\def\xval{2 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{4 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+
+								\def\xval{0} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+								\def\xval{3} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{5} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+							\end{tikzpicture}
+						</latex-image>				
+					</image>
+					The function has a local maximum at <m>x=2</m>, and a local minimum at <m>x=4</m>.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<exploration xml:id="ex_concavity2_mystery">
+		<introduction>
+			<p>
+				Suppose that <m>f</m> is an unknown (mystery) function with known <em>acceleration</em> function 
+				<me>
+					f'' = \dfrac{(x+2)(x-7)}{x^2}
+				</me>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find where the original function <m>f</m> is concave up or down. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					You are <em>given</em> the formula for the derivative <m>f''</m>, so you do <em>not</em> need to do any calculus.
+					<me>
+						f'' = \dfrac{(x+2)(x-7)}{x^2} = \dfrac{A}{B}
+					</me>
+					Recall that for fractions, <m>\frac{A}{B}=0</m> if and only if <m>A=0</m>, and <m>\frac{A}{B}\ DNE</m> if and only if <m>B=0</m>
+				</p>
+				<p>
+					To find when <m>f''=0</m>, solve the equation 
+					<md>
+						<mrow>(x+2)(x-7) \amp = 0 </mrow>
+					</md>
+					which happens when <m>x=-2</m> or <m>x=7</m>.
+				</p>
+				<p>
+					To find when <m>f''\ DNE</m>, solve the equation 
+					<md>
+						<mrow>x^2 \amp =0</mrow>
+					</md>
+					which happens when <m>x=0</m>
+				</p>
+				<p>
+					Using these values, we can make the sign chart as before
+					<image width="75%" xml:id="image_concavityexample3_signchartv1">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-4,0) -- (9,0);
+								\node at (-5,0.4) {$f$};
+								\node at (-5,-0.6 ) {$f''$};
+
+								\def\xval{-2} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{ 0} \draw[fill=white] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{ 7} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+
+								\def\xval{-3} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(+)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\smile}$};
+								
+								\def\xval{-1} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(-)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\frown}$};
+								
+								\def\xval{1} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(-)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\frown}$};
+								
+								\def\xval{8} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(+)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\smile}$};
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+				</p>
+				<p>
+					Using the sign chart, we see that the <em>original/mystery</em> function <m>f</m> is concave up on the interval <m>(-\infty,-2)\cup(7,\infty)</m>.  <m>f</m> is concave down on the interval <m>(-2,0)\cup(0,7)</m>.
+				</p>
+				<p>
+					There are inflection points (the curve bends) at <m>x=-2</m> and <m>x=7</m>.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<p>
+		We can combine all of the techinques we have used in the past section into a single problem. 
+	</p>
+
+	<exploration xml:id="ex_concavity3">
+		<introduction>
+			<p>
+				Let <m>f(x) = \frac{1}{5}x^5 - x^4</m>.
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find all maxima and minima for <m>f</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<md>
+						<mrow>f' \amp = \ddx{ \frac{1}{5}x^5 - x^4}</mrow>
+						<mrow> \amp = \frac{1}{5}5x^4 - 4x^3</mrow>
+						<mrow> \amp = x^4 - 4x^3</mrow>
+					</md>
+					<m>f'=0</m> if and only if 
+					<md>
+						<mrow>x^4-4x^3 \amp =0</mrow>
+						<mrow>x^3(x-4) \amp =0</mrow>
+					</md>
+					<m>f'=0</m> if <m>x=0</m> or <m>x=4</m>.
+				</p>
+				<p>
+					<m>f'</m> is a polynomial so there are no values where <m>f'\ DNE</m>.
+					<image width="50%" xml:id="image_concavityexample4_maxminsignchart">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-2,0) -- (6,0);
+								\def\xval{0 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{4 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+
+								\def\xval{-1} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+								\def\xval{1} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{5} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+							\end{tikzpicture}
+						</latex-image>				
+					</image>
+					<m>f</m> has a local maximum at <m>x=0</m>, and a local mininmum at <m>x=4</m>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Find all intervals of concavity for <m>f</m>. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<md>
+						<mrow>f'' \amp = \ddx{f'} = \ddx{x^4 - 4x^3} </mrow>
+						<mrow> \amp = 4x^3-12x^2</mrow>
+					</md>
+					<m>f''=0</m> when 
+					<md>
+						<mrow>4x^3 -12x^2 \amp = 0</mrow>
+						<mrow>4x^2( x - 3)\amp = 0 </mrow>
+					</md>
+					<m>f''=0</m> when <m>x=0</m> or <m>x=3</m>
+				</p>
+				<p>
+					<m>f''</m> is a polynomial, so it is always defined.  Making the sign chart for <m>f''</m> gives.
+					<image width="50%" xml:id="image_concavityexample4_signchartv1">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-2,0) -- (5,0);
+								\node at (-3,0.4) {$f$};
+								\node at (-3,-0.6 ) {$f''$};
+								\def\xval{0} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{3} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{-1} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(-)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\frown}$};
+								\def\xval{1} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(-)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\frown}$};
+								\def\xval{4} \draw[stealth-,double,blue] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f''(\xval)=(+)$};  \node[blue] at (\xval,0.4) {\large $\stackrel{\cdot\,\cdot}{\smile}$};
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+					The original function <m>f</m> is concave up on the interal <m>(3,\infty)</m>. 
+					The function <m>f</m> is concave down on the interval <m>(-\infty,0)\cup(0,3)</m>.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+</section>
+
+<section xml:id="sec_seconderivativeconcavityandchange">
+	<title>The Second Derivative and Change Graphs</title>
+
+	<p>
+		So far, we've seen that if <m>f(x)</m> is a function that represents a total amount of something, then the derivative function <m>f'(x)</m> tells us how fast that total is changing.
+	</p>
+
+	<p>
+		We have also seen that simply computing the change function <m>\Delta y</m> gives a nice discrete analog of the derivative.
+	</p>
+
+	<p>
+		We have recently begun studying the second derivative. Recall that <m>f''(x)</m> tells us how fast the slope of our function is changing.
+	</p>
+
+	<p>
+		As it turns out, we can get a discrete analog of the second derivative by computing the change in <m>\Delta y</m>. We might call the <q>change in the change</q> function <m>\Delta^2 y</m> , since it involves finding two different changes.
+	</p>
+
+	<exploration>
+		<introduction>
+			<p>
+				<image xml:id="image_totalchange_seconderivative">
+					
+					<latex-image>
+						%%%% EXAMPLE 1 %%%%
+						%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+						\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+						\def \xmin {0}
+						\def \xmax {10}
+						\def \xunits {day}
+						\def \yunits {profit}
+						\def \dyunits{change in profit}
+						\def \xscale {0.36*0.8}
+						\def \yscale {0.3}
+						%% Information about the total (y) graph
+						\def \ymin {-5}								%% First height to be be drawn with dashed lines
+						\def \ysecondmajoraxis {-4}		%% Second height to be be drawn with dashed lines
+						\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+						\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+						\def \ymax {10}
+						%% Information about the change (\Delta y) graph
+						\def \dymin {-5}
+						\def \dysecondmajoraxis {-4}
+						\def \dyfirstminoraxis  {-3.5}
+						\def \dysecondminoraxis {-2.5}
+						\def \dymax {5}
+
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Total %%
+							%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+							\node at ({(\xmin+\xmax)/2},{\ymin-3}) {Total profit \ $P$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+								%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-2pt] at (\i, \ymin) {\small $\i$};
+							\foreach \i in {\ymin,...,\ymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+
+							\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+							
+							%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+								
+							\tikzhistogram(0,-4); 
+							\tikzhistogram(1,-2);	
+							\tikzhistogram(2,2);	
+							\tikzhistogram(3,6);	
+							\tikzhistogram(4,9);	
+							\tikzhistogram(5,9);	
+							\tikzhistogram(6,6);	
+							\tikzhistogram(7,3);	
+							\tikzhistogram(8,3);	
+							\tikzhistogram(9,5);	
+							\tikzhistogram(10,9);	
+							
+							
+						\end{tikzpicture}
+						%
+						\quad
+						%
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+							\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Change \ $\Delta P$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+								%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							
+							\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+							
+							
+							
+							%\tikzhistogram(0,0);  
+							\tikzhistogram(1,2);	
+							\tikzhistogram(2,4);	
+							\tikzhistogram(3,4);	
+							\tikzhistogram(4,3);	
+							\tikzhistogram(5,0);	
+							\tikzhistogram(6,-3);	
+							\tikzhistogram(7,-3);	
+							\tikzhistogram(8,0);	
+							\tikzhistogram(9,2);	
+							\tikzhistogram(10,4);	
+
+							
+						\end{tikzpicture}
+						%
+						\quad
+						%
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+							\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Change-in-Change \par $\Delta^2 P$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+								%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{change in change in profit};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+
+							\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+							
+							
+							%\tikzhistogram(0, 0);  % Delta 0
+							%\tikzhistogram(1, 2);	% Delta 4
+							\tikzhistogram(2, 2);	% Delta 3
+							\tikzhistogram(3, 0);	% Delta 2 
+							\tikzhistogram(4,-1);	% Delta 1
+							\tikzhistogram(5,-3);	% Delta 1
+							\tikzhistogram(6,-3);	% Delta 1
+							\tikzhistogram(7, 0);	% Delta 1
+							\tikzhistogram(8, 3);	% Delta 2
+							\tikzhistogram(9, 2);	% Delta 2
+							\tikzhistogram(10,2);	% Delta 4
+
+							
+						\end{tikzpicture}
+						%%%% END EXAMPLE 1 %%%% 
+					</latex-image>
+				</image>
+			</p>
+		</introduction>
+	</exploration>
+
+	<table>
+		<title></title>
+		<tabular>
+		<row >
+			<cell halign="center">day (<m>x</m>)</cell>
+			<cell halign="center">0</cell>
+			<cell halign="center">1</cell>
+			<cell halign="center">2</cell>
+			<cell halign="center">3</cell>
+			<cell halign="center">4</cell>
+			<cell halign="center">5</cell>
+			<cell halign="center">6</cell>
+			<cell halign="center">7</cell>
+			<cell halign="center">8</cell>
+			<cell halign="center">9</cell>
+			<cell halign="center">10</cell>
+		</row>
+		<row >
+			<cell halign="center"><m>P</m></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		<row >
+			<cell halign="center"><m>\Delta P</m></cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		<row >
+			<cell halign="center"><m>\Delta^2 P</m></cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		</tabular>
+	</table>
+
+	<p><ol>
+		<li>
+				<p>
+		What is the change in value <m>\Delta P</m> due to the 2nd, 4th, and 6th items?
+	</p>
+		</li>
+
+		<li>
+				<p>
+		When is the function changing the fastest and slowest?
+	</p>
+		</li>
+
+		<li>
+				<p>
+		Which items contribute the maximum value? Which items contribute the minimum value?
+	</p>
+		</li>
+
+		<li>
+				<p>
+		How fast is the value changing between items 1 and 2? What about between items 2 and 3?
+	</p>
+		</li>
+
+		<li>
+				<p>
+		Fill in the remainder of the table above.
+	</p>
+		</li>
+
+	</ol></p>
+
+	<p>
+		<term>Exercise:</term> Let <m>P(x) = 0.1x^3 -1.4x^2 + 4.5x - 1</m> be a function that describes the total profit as a function of the number of units <m>x</m> to be sold.
+	</p>
+
+	<image xml:id="image_totalchange_seconderivative2">
+		
+		<latex-image>
+			%%%% EXAMPLE 2 %%%%
+			%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+			\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+			\def \xmin {0}
+			\def \xmax {10}
+			\def \xunits {day}
+			\def \yunits {profit}
+			\def \dyunits{change in profit}
+			\def \xscale {0.36*0.8}
+			\def \yscale {0.3}
+			%% Information about the total (y) graph
+			\def \ymin {-5}								%% First height to be be drawn with dashed lines
+			\def \ysecondmajoraxis {-4}		%% Second height to be be drawn with dashed lines
+			\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+			\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+			\def \ymax {10}
+			%% Information about the change (\Delta y) graph
+			\def \dymin {-5}
+			\def \dysecondmajoraxis {-4}
+			\def \dyfirstminoraxis  {-3.5}
+			\def \dysecondminoraxis {-2.5}
+			\def \dymax {5}
+
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Total %%
+				%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\ymin-3}) {Total profit \ $P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-2pt] at (\i, \ymin) {\small $\i$};
+				\foreach \i in {\ymin,...,\ymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+					
+				\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+				
+				%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+					
+				%\tikzhistogram(0,-4); 
+				%\tikzhistogram(1,-2);	
+				%\tikzhistogram(2,2);	
+				%\tikzhistogram(3,6);	
+				%\tikzhistogram(4,9);	
+				%\tikzhistogram(5,9);	
+				%\tikzhistogram(6,6);	
+				%\tikzhistogram(7,3);	
+				%\tikzhistogram(8,3);	
+				%\tikzhistogram(9,5);	
+				%\tikzhistogram(10,9);	
+				
+				
+			\end{tikzpicture}
+			%
+			\quad
+			%
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Change %%
+				%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Change \ $\Delta P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+				\foreach \i in {\dymin,...,\dymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+				
+				\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+				
+				
+				
+				%\tikzhistogram(0,0);  
+				%\tikzhistogram(1,2);	
+				%\tikzhistogram(2,4);	
+				%\tikzhistogram(3,4);	
+				%\tikzhistogram(4,3);	
+				%\tikzhistogram(5,0);	
+				%\tikzhistogram(6,-3);	
+				%\tikzhistogram(7,-3);	
+				%\tikzhistogram(8,0);	
+				%\tikzhistogram(9,2);	
+				%\tikzhistogram(10,4);	
+
+				
+			\end{tikzpicture}
+			%
+			\quad
+			%
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Change %%
+				%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Change-in-Change \par $\Delta^2 P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{change in change in profit};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+				\foreach \i in {\dymin,...,\dymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+
+				\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+				
+				
+				%\tikzhistogram(0, 0);  
+				%\tikzhistogram(1, 2);	 
+				%\tikzhistogram(2, 2);	 
+				%\tikzhistogram(3, 0);	 
+				%\tikzhistogram(4,-1);	 
+				%\tikzhistogram(5,-3);	 
+				%\tikzhistogram(6,-3);	 
+				%\tikzhistogram(7, 0);	 
+				%\tikzhistogram(8, 3);	 
+				%\tikzhistogram(9, 2);	 
+				%\tikzhistogram(10,2);	 
+
+				
+			\end{tikzpicture}
+			%%%% END EXAMPLE 2 %%%% 
+		</latex-image>
+	</image>
+
+
+	<table>
+		<tabular>
+		<row >
+			<cell halign="center">day (<m>x</m>)</cell>
+			<cell halign="center">0</cell>
+			<cell halign="center">1</cell>
+			<cell halign="center">2</cell>
+			<cell halign="center">3</cell>
+			<cell halign="center">4</cell>
+			<cell halign="center">5</cell>
+			<cell halign="center">6</cell>
+			<cell halign="center">7</cell>
+			<cell halign="center">8</cell>
+			<cell halign="center">9</cell>
+			<cell halign="center">10</cell>
+		</row>
+		<row >
+			<cell halign="center"><m>P</m></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		<row >
+			<cell halign="center"><m>\Delta P</m></cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		<row >
+			<cell halign="center"><m>\Delta^2 P</m></cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		</tabular>
+	</table>
+
+	<p><ol>
+		<li>
+				<p>
+		Fill in the table above describing the total profit <m>P</m>, the change in profit <m>\Delta P</m>, and the change in the change of profit <m>\Delta^2 P</m>. Then sketch graphs of all three functions.
+	</p>
+		</li>
+
+		<li>
+				<p>
+		For what intervals of <m>x</m> is the <term>change</term> in profit <m>\Delta P</m> <term>increasing</term>? For what intervals of <m>x</m> is <m>\Delta P</m> decreasing?
+	</p>
+		</li>
+
+		<li>
+				<p>
+		When is <m>\Delta P</m> changing the fastest? How is this related to <m>\Delta^2 P</m>?
+	</p>
+		</li>
+
+	</ol></p>
+
+	<p>
+		<term>Exercise:</term> Let <m>P(x) = -0.6x^2 + 3x - 1.4</m> be a function that describes the total profit as a function of the number of units <m>x</m> to be sold.
+	</p>
+	<image xml:id="image_totalchange_seconderivative3">
+		
+		<latex-image>
+			%%%% EXAMPLE 3 %%%%
+			%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+			\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+			\def \xmin {0}
+			\def \xmax {5}
+			\def \xunits {day}
+			\def \yunits {profit}
+			\def \dyunits{change in profit}
+			\def \xscale {0.6*0.8}
+			\def \yscale {0.3}
+			%% Information about the total (y) graph
+			\def \ymin {-5}								%% First height to be be drawn with dashed lines
+			\def \ysecondmajoraxis {-4}		%% Second height to be be drawn with dashed lines
+			\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+			\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+			\def \ymax {10}
+			%% Information about the change (\Delta y) graph
+			\def \dymin {-5}
+			\def \dysecondmajoraxis {-4}
+			\def \dyfirstminoraxis  {-3.5}
+			\def \dysecondminoraxis {-2.5}
+			\def \dymax {5}
+
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Total %%
+				%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\ymin-3}) {Total profit \ $P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-2pt] at (\i, \ymin) {\small $\i$};
+				\foreach \i in {\ymin,...,\ymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+					
+				\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+				
+				%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+					
+				%\tikzhistogram(0,-4); 
+				%\tikzhistogram(1,-2);	
+				%\tikzhistogram(2,2);	
+				%\tikzhistogram(3,6);	
+				%\tikzhistogram(4,9);	
+				%\tikzhistogram(5,9);	
+				%\tikzhistogram(6,6);	
+				%\tikzhistogram(7,3);	
+				%\tikzhistogram(8,3);	
+				%\tikzhistogram(9,5);	
+				%\tikzhistogram(10,9);	
+				
+				
+			\end{tikzpicture}
+			%
+			\quad
+			%
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Change %%
+				%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Change \ $\Delta P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+				\foreach \i in {\dymin,...,\dymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+				
+				\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+				
+				
+				
+				%\tikzhistogram(0,0);  
+				%\tikzhistogram(1,2);	
+				%\tikzhistogram(2,4);	
+				%\tikzhistogram(3,4);	
+				%\tikzhistogram(4,3);	
+				%\tikzhistogram(5,0);	
+				%\tikzhistogram(6,-3);	
+				%\tikzhistogram(7,-3);	
+				%\tikzhistogram(8,0);	
+				%\tikzhistogram(9,2);	
+				%\tikzhistogram(10,4);	
+
+				
+			\end{tikzpicture}
+			%
+			\quad
+			%
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Change %%
+				%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Change-in-Change \par $\Delta^2 P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				%\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{change in change in profit};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+				\foreach \i in {\dymin,...,\dymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+
+				\draw[axes,-latex]({\xmin-0.25},0) -- ({\xmax+1+0.25},0);
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+				
+				
+				%\tikzhistogram(0, 0);  
+				%\tikzhistogram(1, 2);	 
+				%\tikzhistogram(2, 2);	 
+				%\tikzhistogram(3, 0);	 
+				%\tikzhistogram(4,-1);	 
+				%\tikzhistogram(5,-3);	 
+				%\tikzhistogram(6,-3);	 
+				%\tikzhistogram(7, 0);	 
+				%\tikzhistogram(8, 3);	 
+				%\tikzhistogram(9, 2);	 
+				%\tikzhistogram(10,2);	 
+
+				
+			\end{tikzpicture}
+			%%%% END EXAMPLE 3 %%%% 
+		</latex-image>
+		
+	</image>
+
+	<table>
+		<title></title>
+		<tabular>
+		<row >
+			<cell halign="center">day (<m>x</m>)</cell>
+			<cell halign="center">0</cell>
+			<cell halign="center">1</cell>
+			<cell halign="center">2</cell>
+			<cell halign="center">3</cell>
+			<cell halign="center">4</cell>
+			<cell halign="center">5</cell>
+		</row>
+		<row >
+			<cell halign="center"><m>P</m></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		<row >
+			<cell halign="center"><m>\Delta P</m></cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		<row >
+			<cell halign="center"><m>\Delta^2 P</m></cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center">N/A</cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+			<cell halign="center"></cell>
+		</row>
+		</tabular>
+	</table>
+
+	<p><ol>
+		<li>
+				<p>
+		Fill in the table above describing the total profit <m>P</m>, the change in profit <m>\Delta P</m>, and the change in the change of profit <m>\Delta^2 P</m>. Then sketch graphs of all three functions.
+	</p>
+		</li>
+
+		<li>
+				<p>
+		For what intervals of <m>x</m> is the <term>change</term> in profit <m>\Delta P</m> <term>increasing</term>? For what intervals of <m>x</m> is <m>\Delta P</m> decreasing?
+	</p>
+		</li>
+
+		<li>
+				<p>
+		What does the fact that <m>\Delta^2 P</m> is constant tell us about the graph of <m>P</m>? What does this say about the relationship between the total profit function <m>P</m> and the various possible numbers of items <m>x</m> that you might intend to sell?
+	</p>
+		</li>
+
+	</ol></p>
+</section>
+
+</chapter>

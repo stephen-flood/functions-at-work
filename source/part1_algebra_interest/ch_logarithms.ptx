@@ -1,0 +1,1397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_logarithms" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Logarithms and Solving for Time</title>
+
+<introduction>
+  <p>
+    In the previous section, we used exponential functions to compute the value of compound interest as a function of time.  For example, Investing $100 and 25% interest compounded yearly follows the function 
+    <me>
+      F = 100\cdot (1.25)^t
+    </me>
+    
+  </p>
+  <p>
+    Often, you will be given the principal, rate, and frequency of compounding, and you will need to <em>find the amount of time</em> you will have to wait to achieve a certain future balance.  If, in the example above, you want to find the time needed to achieve a balance of $4000, you will need to solve the equation 
+    <me>
+      4000 = 100\cdot (1.25)^t
+    </me>.
+    This is equivalent to 
+    <me>
+      40 = \cdot (1.25)^t
+    </me>,
+    but now we are stuck, since the <m>t</m> is trapped inside the exponent.
+  </p>
+  <p>
+    To get further, we will need to "undo" our compound interest calculation.
+    Mathematically, this means that we will need an <em>inverse</em> function.
+  </p>
+</introduction>
+
+<section xml:id="sec-inverses">
+  <title>Inverse Functions</title>
+  
+  <p>
+    Recall that a <term>one-to-one</term> function sends each input to a <em>different</em> output.
+  </p>
+
+  <example xml:id="eg_onetoone">
+    <title>Exploring the definition of one-to-one</title>
+    
+    <p>
+      This definition is easiest to apply when you are thinking about functions defined using arrow diagrams.  
+    </p>
+    <image xml:id="img_onetoone">
+      <shortdescription>
+          The function f  is one-to-one.
+          The function g  is not one-to-one because  g(2)=b  and  g(3)=b 
+      </shortdescription>
+      <latex-image>
+        \begin{tikzpicture}
+            \draw (0,0) ellipse [x radius=1cm,y radius=2cm];
+            \draw (3,0) ellipse [x radius=1cm,y radius=2cm];
+            \node(1) at (0,1) {$1$};
+            \node(2) at (0,0) {$2$};
+            \node(3) at (0,-1) {$3$};
+            \node(a) at (3,1) {$a$};
+            \node(b) at (3,0) {$b$};
+            \node(c) at (3,-1) {$c$};
+            \draw[-latex,very thick,red] (1)--(a) node [midway,above] {$f$};
+            \draw[-latex,very thick,blue] (2)--(c);
+            \draw[-latex,very thick,green] (3)--(b);
+            \node at (1,-3) {The function $f$ \emph{is} 1-1};
+        \end{tikzpicture}
+        \qquad
+        \begin{tikzpicture}
+            \draw (0,0) ellipse [x radius=1cm,y radius=2cm];
+            \draw (3,0) ellipse [x radius=1cm,y radius=2cm];
+            \node(1) at (0,1) {$1$};
+            \node(2) at (0,0) {$2$};
+            \node(3) at (0,-1) {$3$};
+            \node(a) at (3,1) {$a$};
+            \node(b) at (3,0) {$b$};
+            \node(c) at (3,-1) {$c$};
+            \draw[-latex,very thick,red] (1)--(a) node [midway,above] {$g$};
+            \draw[-latex,very thick,blue] (2)--(b);
+            \draw[-latex,very thick,green] (3)--(b);
+            \node at (1,-3) {The function $g$ is \emph{not} 1-1};
+        \end{tikzpicture}
+      </latex-image>
+    </image>
+    
+  </example>
+
+  <p>
+    If your function is one-to-one, then flipping the arrows gives you a <em>new</em> function that <em>undoes</em> your original function. 
+    That new function is called the <term>inverse</term> of the original function.  
+  </p>
+
+  <definition xml:id="def-inverse">
+    <statement>
+      <p>
+        Let <m>f</m> be a one-to-one function.
+        Its <term>inverse</term> is the function, written <m>f^{-1}</m>, which satisfies 
+        <md>
+          <mrow> f(x)   =    y </mrow>
+          <mrow>      \iff      </mrow>
+          <mrow>  x     =    f^{-1}(y) </mrow>
+        </md>
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    In <xref ref="eg_onetoone"/>, the function <m>f</m> has an inverse function <m>f^{-1}</m>, defined by flipping each of the arrows. 
+    For example, because <m>f(2) = c</m>, we have <m>f^{-1}(c) = 2</m>.
+  </p>
+
+  <p>
+    <alert>Danger Zone:</alert>
+      In general, the inverse <m>f^{-1}</m> is <alert>not</alert> the same thing as the reciprocal.  In other words, <m>f^{-1}(x)</m> is <alert>not</alert> <m>\dfrac{1}{f(x)}</m> in general.
+  </p>
+
+  <assemblage xml:id="assemblage-inverses">
+    <title>Key Idea</title>
+    <p>
+      Inverse functions swich the roles of <m>x</m> and <m>y</m> (of input and ouput). 
+    </p>
+  </assemblage>
+
+  <example>
+    <title>Understanding Inverses Graphically</title>
+     <p>
+      Graphically, reversing the roles of input and ouput is the same thing as reflecting the graph of the function across the diagonal line <m>y=x</m>.
+    </p>
+
+    <image xml:id="img_graphinginverses">
+      
+      
+      <latex-image>
+        \begin{tikzpicture}
+          \draw[axes] (0,2) -- (0,-2);
+          \draw[axes] (2,0) -- (-2,0);
+          \draw [domain=-1.259:1.259,curve] plot ({\x}, {(\x)^3}) node[above] {$y = f(x)$};
+          \draw [dashed] (-1.75,-1.75) -- (1.75,1.75) node [right] {$y=x$};
+
+%          \begin{scope}[shift={(5,0)}]
+%            \draw (0,2) -- (0,-2);
+%            \draw (2,0) -- (-2,0);	
+%            \draw [domain=0:2,curve] plot ({\x}, {(\x)^(0.333)}) node [below right] {$y = f^{-1}(x)$};
+%            \draw [domain=0:2,curve] plot ({-\x}, {-(\x)^(0.333)});
+%            \draw [dashed] (-1.75,-1.75) -- (1.75,1.75) node [right] {$y=x$};
+%          \end{scope}
+          
+          \begin{scope}[shift={(5,0)}]
+            \draw[axes] (0,2) -- (0,-2);
+            \draw[axes] (2,0) -- (-2,0);	
+            \draw [domain=-1.259:1.259,curve] plot ({(\x)^3},{\x}) node [below right] {$y = f^{-1}(x)$};
+            \draw [dashed] (-1.75,-1.75) -- (1.75,1.75) node [right] {$y=x$};
+          \end{scope}
+        \end{tikzpicture}
+      </latex-image>
+    </image>
+  </example>
+ 
+  <p>
+    Recall that the function <m>f^{-1}</m> <em>undoes</em> <m>f(x)</m>.
+    Mathematically, this means 
+    <me>
+      f\Big( f^{-1}(x) \Big) = x
+    </me>
+    and 
+    <me>
+      f^{-1}\Big( f(x) \Big) = x
+    </me>
+  </p>
+  <p>
+    Finding inverses and solving equations are two sides of the same coin. 
+  </p>
+  <exploration>
+    <introduction>
+      <p>
+        Let <m>f(x) = 2x+1</m>
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find an equation for <m>f^{-1}(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          First, write down the equation <m>y=f(x)</m>.  In this case, 
+          <me>
+            y = 2x + 1
+          </me>
+          Next, solve this equation for <m>x</m>.  
+          <md>
+            <mrow> \amp y \amp \amp= \amp 2x \amp + 1 </mrow>
+            <mrow> \amp   \amp -1 \amp \amp \amp -1 </mrow>
+            <mrow> \amp y \amp -1 \amp= \amp 2x \amp  </mrow>
+            
+            <mrow> \amp  \amp  \amp  \amp  \amp </mrow>
+
+            <mrow> \amp (y \amp -1)\amp= \amp (2x) \amp  </mrow>
+            <mrow>  \times\frac{1}{2} \amp   \amp \amp \amp \amp \times\frac{1}{2} </mrow>
+            <mrow> \frac{1}{2}\amp (y \amp -1)\amp= \amp x \amp  </mrow>
+          </md>
+          Finally, reverse the roles of <m>x</m> and <m>y</m>.  This gives the equation 
+          <me>
+            y = \frac{1}{2} ( x - 1) = 0.5 x -0.5
+          </me>
+          The equation for our inverse is 
+          <me>
+            f^{-1}(x) = 0.5 x -0.5
+          </me>
+          
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Use your equation for <m>f^{-1}</m> to evaluate <m>f\Big(f^{-1}(x)\Big)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are given that <m>\color{blue} f({\color{red} x}) = 2{\color{red} x} + 1</m>.  We have also found that <m>f^{-1}(x) = 0.5x - 0.5</m>.
+        </p>
+        <p>
+          To compute <m>{ \color{blue} f\Big({\color{red} f^{-1}(x)}\Big) }</m>, replace every <m>\color{red} x</m> in the equation for <m>\color{blue} f({\color{red} x}) </m> with the equation <m>\color{red} f^{-1}(x) = 0.5x - 0.5</m>.
+          <md>
+            <mrow> { \color{blue} f\Big({\color{red} f^{-1}(x)}\Big) }= \amp {\color{blue} f\Big( { \color{red} 0.5x - 0.5}\Big)}</mrow>
+            <mrow>= \amp {\color{blue}  2\cdot \Big({ \color{red} 0.5x - 0.5}\Big) + 1}</mrow>
+            <mrow>= \amp 2\cdot 0.5x - 2\cdot 0.5 + 1</mrow>
+            <mrow>= \amp 2\cdot 0.5x - 2\cdot 0.5 + 1</mrow>
+            <mrow>= \amp x - 1 + 1</mrow>
+            <mrow>= \amp x</mrow>
+          </md>
+          We have shown in this case that <m>f\Big(f^{-1}(x)\Big)=x</m>.  
+          In other words, we have shown that the function and inverse undo eachother.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+</section>
+
+<section xml:id="sec_logartims">
+  <title>Logarithms Undo Exponentials</title>
+  
+  <p>
+    Our main goal is to use logarithms to solve for time in a compound interest equation.  
+    Those equations involve many parts, so we will start with a few slightly simpler questions, in the form of a riddle.
+  </p>
+
+  <exploration xml:id="ex_motivatinglogs">
+    <task>
+      <statement>
+        <p>
+          How many times do you need to double the number <m>10</m> to achieve an eight-fold increase?  
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Just start doubling 10, and see what works!
+          <md>
+            <mrow> 10 \cdot 2 = 20 </mrow>
+            <mrow> 10 \cdot 2 \cdot 2 = 40 </mrow>
+            <mrow> 10 \cdot 2 \cdot 2 \cdot 2 = 80 </mrow>
+          </md>
+          You need to double 10 <em>three times</em> to get from 10 to 80 (an eight-fold increase).
+          In other words, 
+          <me>
+            80 = 10 \cdot 2^3
+          </me>
+          
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How many times do you need to double any number <m>P</m> to achieve an eight fold increase of <m>P</m>?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Our strategy for the first example works the same here:
+          <md>
+            <mrow>  P \cdot 2 = 2 P </mrow>
+            <mrow>  P \cdot 2 \cdot 2 = 4 P </mrow>
+            <mrow>  P \cdot 2 \cdot 2 \cdot 2 = 8 P  </mrow>
+          </md>
+          You need to double any number <em>three times</em> to get an eight-fold increase.
+          This is the same as saying that , 
+          <me>
+            8 =  2^3
+          </me>
+          
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How many times do you need to triple <m>P</m> to get an 81-fold increase? 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Our strategy for the first example works the same here:
+          <md>
+            <mrow>  P \cdot 3 = 3 P </mrow>
+            <mrow>  P \cdot 3 \cdot 3 = 9 P </mrow>
+            <mrow>  P \cdot 3\cdot 3 \cdot 3 = 21 P</mrow>
+            <mrow>  P \cdot 3\cdot 3 \cdot 3 \cdot 3 = 81 P</mrow>
+          </md>
+          You need to triple any number <em>four times</em> to get an eighty one-fold increase.
+          This is the same as saying that , 
+          <me>
+            81 =  3^4
+          </me>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    <term>Logarithms</term> are functions that answer the riddle "how many times do I need to multiply by a number <m>b</m>" to increase by a given factor. More precisely, we make the following definition.
+  </p>
+
+  <definition xml:id="def-logs">
+    <statement>
+      <p>
+        Given any numbers <m>b,x>0</m>, 
+        <me>
+          \log_{\color{blue}b}(x) = {\color{red} r}
+        </me>
+        is equal to the exponent <m>r</m> such that 
+        <me>
+          {\color{blue}b}^{\color{red} r} = x
+        </me>
+        
+      </p>
+    </statement>
+  </definition>
+  <p>
+    We can now rephrase <xref ref="ex_motivatinglogs"/> in logarithmic language. 
+    Because <m>8 = {\color{blue}2}^{\color{red}3}</m>, we say that <m>\log_{\color{blue} 2}(8) = {\color{red}3}</m>.
+    Similarly, because <m>81 = {\color{blue}3}^{\color{red}4}</m>, we say that <m>\log_{\color{blue} 3} (81) = {\color{red}4}</m>.
+    More precisely, we can now answer the following question. 
+  </p>
+  
+  <exploration xml:id="ex_computinglogs">
+    <task>
+      <statement>
+        <p>
+          Compute <m>\log_2(8)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Written in exponential form, finding <m>\log_2(8) = r</m> is the same as finding the exponent <m>r</m> such that 
+          <me>
+            2^r = 8
+          </me>
+          Here, because <m>8 = {\color{blue}2}^{\color{red}3}</m>, we say that <m>\log_{\color{blue} 2}(8) = {\color{red}3}</m>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\log_3(81)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Written in exponential form, finding <m>\log_3(31) = r</m> is the same as finding the exponent <m>r</m> such that 
+          <me>
+            3^r = 81
+          </me>
+          Here, because <m>81 = {\color{blue}3}^{\color{red}4}</m>, we say that <m>\log_{\color{blue} 3} (81) = {\color{red}4}</m>.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\log_{10}(1,000,000,000)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Written in exponential form, finding <m>\log_10(1,000,000,000) = r</m> is the same as finding the exponent <m>r</m> such that 
+          <me>
+            10^r = 1,000,000,000
+          </me>
+          To get the right hand side, we must multiply 10 nine times.  That means <m>1,000,000,000 = {\color{blue}10}^{\color{red}9}</m>.  Therefore, we have that <m>\log_{\color{blue} 10} (1,000,000,000) = {\color{red}9}</m>.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+
+  <proposition xml:id="prop-logsareinverses">
+    <statement>
+      <p>
+        Fix any base <m>b>1</m>.
+        The function <m>y = \log_b(x)</m> is the inverse of the the base <m>b</m> exponential function <m>exp_b(x) = b^x</m>.  
+      </p>
+    </statement>
+    <!--proof>
+      <p>
+        By the definition of <m>\log_b</m>, 
+        <m>
+          \log_{\color{blue}b}(x) = {\color{red} r}
+        </m>
+        means exactly the same thing as 
+        <m>
+          {\color{blue}b}^{\color{red} r} = x
+        </m>.
+      </p>
+      <p>
+        But this is exactly the definition of an inverse
+        (TODO: Add formal defn of inverse above, and reference it here.)
+      </p>
+    </proof-->
+  </proposition>
+
+  <interactive platform="jsxgraph" width="75%" preview="jsxgraph-algebra-loggraph.png">
+    <slate xml:id="jsxgraph-algebra-loggraph"  surface="jessiecode" axis="true" grid="true">
+      
+      b = slider(
+            // Specify slider location
+              [-4.5,3.5], [-1.5,3.5], 
+            // Specify smallest/starting/largest value for slider
+              [1.1,2.718,4])
+          &lt;&lt;
+              name:"b",
+              snapWidth:0.01
+          &gt;&gt;  ;
+      
+      fGraph1 = functiongraph(function(x) {return 
+                    // Define Function Here
+                    log(x)/ log( b.Value() ) 
+                    //
+                ;}) &lt;&lt; 
+                    strokeColor:"red"  
+                &gt;&gt; ;
+      fName1 = text(1.1,-0.5, function(){ return ( 
+                        '&lt;span class="process-math"&gt;' + 
+                            //Typeset Math Text Here
+                            'y = \log_{' + b.Value().toFixed(2) + '}(x)' + 
+                            //
+                        '&lt;/span&gt;'
+                      );} ) &lt;&lt; 
+                            color:"red"  
+                      &gt;&gt;  ;
+      fGraph2 = functiongraph(function(x) { return 
+                    // Define Function Here
+                    pow( b.Value() , x )  
+                    //
+                ;})  &lt;&lt; 
+                    strokeColor:"blue"  
+                &gt;&gt;;
+      fName2 = text(-0.9,1.5, function(){ return ( 
+                        '&lt;span class="process-math"&gt;' + 
+                            //Typeset Math Text Here
+                            'y = ' + b.Value().toFixed(2) + '^x' + 
+                            //
+                        '&lt;/span&gt;'
+                      );} )  &lt;&lt; 
+                            color:"blue"  
+                      &gt;&gt;;
+
+      diagonal = line([0,0],[1,1])
+                &lt;&lt;
+                  fixed:true,
+                  dash:2
+                &gt;&gt; ;
+    </slate>
+  </interactive>
+
+  <paragraphs xml:id="subsec-naturallogs">
+    <title>The Natural Logarithm for Calculus</title>
+    
+    <p>
+      Recall that the function <m>y = e^x</m> is called the <em>natural exponential function</em>.  We call it's inverse the <term>natural logarithm</term>.
+    </p>
+
+    <definition xml:id="def-naturallog">
+      <statement>
+        <p>
+          We write <m>\ln(x) = \log_e(x)</m> where <m>e\approx 2.718\dots</m>
+        </p>
+        <p>
+          In other words, the <term>natural logarithm</term> <m>y = \ln(x)</m> is the inverse of the natural exponential function <m>exp(x) = e^x</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <exploration xml:id="ex_computingln">
+      <task>
+        <statement>
+          <p>
+            Compute <m>\ln(\sqrt{e})</m>
+          </p>
+        </statement>
+        <solution>
+          <p>
+            There are two ways to answer this question.  Algebraically, we know that <m>\ln</m> undoes base <m>e</m> exponentiation.  So simply rewrite the argument of the function as a power of <m>e</m>
+            <me>\ln(\sqrt{e}) = \ln(e^{1/2}) = \frac{1}{2}</me>
+          </p>
+          <p>
+            Alternatively, you can answer the question by playing the riddle game: what does the exponent <m>r</m> of <m>e</m> need to be for <m>e^{r}</m> to equal <m>\sqrt{e}</m>?
+          </p>
+          <p>
+            We know that <m>\sqrt{e} = e^{1/2}</m>.  In other words, we need the exponent of <m>e</m> to be <m>\frac{1}{2}</m>.  That tells us that <m>\ln(\sqrt{e}) = \frac{1}{2}</m>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Compute <m>\ln\left(\dfrac{1}{e}\right)</m>
+          </p>
+        </statement>
+        <solution>
+          <p>
+            Again, there are two ways to answer this question.  Algebraically, we know that <m>\ln</m> undoes base <m>e</m> exponentiation.  So simply rewrite the argument of the function as a power of <m>e</m>
+            <me>\ln\left(\dfrac{1}{e}\right) = \ln(e^{-1}) = -1</me>
+          </p>
+          <p>
+            Alternatively, you can answer the question by playing the riddle game: what does the exponent <m>r</m> of <m>e</m> need to be for <m>e^{r}</m> to equal <m>\frac{1}{e}</m>?
+          </p>
+          <p>
+            We know that <m>\frac{1}{e} = e^{-1}</m>.  In other words, we need the exponent of <m>e</m> to be <m>-1</m>.  That tells us that <m>\ln\left(\dfrac{1}{e}\right) = -1</m>
+          </p>
+        </solution>
+      </task>
+	<task>
+	  <statement>
+		<p>
+			Let <m>f(x) = \ln(x)</m> and <m>g(x) = e^x</m>.
+			Simplify <m>f(g(3))</m>, <m>f(g(-2))</m>, <m>f(g(45))</m>, and <m>f(g(x))</m>
+		</p>
+	  </statement>
+	  <solution>
+		<p>
+			This is just a more complex way of asking us to simplify the natural log of e to various numbers.  
+			Reasoning as above gives
+			<me>f(g(3)) = \ln(e^3) = 3</me>
+			<me>f(g(-2)) = \ln(e^{-2}) = -2</me>
+			<me>f(g(45)) = \ln(e^{45}) = 45</me>
+			<me>f(g(x)) = \ln(e^{x}) = x</me>
+		</p>
+	  </solution>
+	</task>
+    </exploration>
+    
+    <assemblage xml:id="assemblage-naturalexplog">
+      <title>Key Facts</title>
+      <p>
+        The functions <m>f(x) = \ln(x)</m> and <m>g(x) = exp(x) = e^x</m> <em>undo</em> eachother. 
+        <md>
+          <mrow> \ln\left(e^x\right) = x </mrow>
+          <mrow> e^{\ln(x)} = x </mrow>
+        </md>
+      </p>
+    </assemblage>
+  </paragraphs>
+
+  <exercise>
+    <statement>
+      <p>
+        Simplify <m>e^{2\cdot \ln(5)}</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <md>
+          <mrow>e^{2\cdot \ln(5)} = \amp e^{\ln(5)\cdot 2}      
+                \amp \text{ Because } a^{rs} = a^{sr}    </mrow>
+          <mrow>                  = \amp \Big(e^{\ln(5)}\Big)^2
+                \amp \text{ Because } a^{rs} = (a^r)^{s} </mrow>
+          <mrow>                  = \amp \Big(5\Big)^2         
+                \amp  \text{ Because } e^{\ln(5)} = 5     </mrow>
+          <mrow>                  = \amp 25                     
+                \amp </mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+
+</section>
+
+<section xml:id="sec-lawsoflogs">
+  <title>Laws of Logarithms</title>
+  
+  <p>
+    Logarithms have three important properties, which will play a central role in our computations.
+  </p>
+
+  <assemblage xml:id="assemblage-lawsoflogs">
+    <title>Laws of Logarithms</title>
+    <p>
+      <me>
+        \ln\Big( x^r \Big)= r\cdot \ln(x)
+      </me>
+    </p>
+    <p>
+      <me>
+        \ln\Big( x\cdot y \Big)= \ln(x) + \ln(y)
+      </me>
+    </p>
+    <p>
+      <me>
+        \ln\left( \dfrac{x}{y} \right)= \ln(x) - \ln(y)
+      </me>
+    </p>
+  </assemblage>
+
+  <exploration xml:id="ex_usingloglaws">
+    <introduction>
+      <p>
+        Expand the following completely using the laws of logarithms.
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          <m>\ln(5^3)</m>
+        </p>
+      </statement>
+      <solution>
+        <p> 
+          When you look at this expression, you <em>see</em> a power, so <em>write</em> down the first law of logarithms <m>\ln\Big( x^r \Big)= r\cdot \ln(x)</m>.  Using the numbers we're given, we obtain
+          <me>\ln(5^3) = 3\cdot \ln(5)</me>. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          <m>\ln(10\cdot 5^3) </m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          When you look at this expression, you <em>see</em> that the input is the product <m>10</m> and <m>5^3</m>, so <em>write</em> down the second law of logarithms <m>\ln\Big( x\cdot y \Big)= \ln(x) + \ln(y)</m>.   Applying that in our example, we get 
+          <me>\ln(10\cdot 5^3) = \ln(10) + \ln( 5^3 )</me>.
+        </p>
+        <p>
+          Recopy the first logarithm <m>\ln(10)</m>.  
+          For the second logarithm, <em>see</em> that the input is a power, so <em>write</em> down the first law of logarithms <m>\ln\Big( x^r \Big)= r\cdot \ln(x)</m>.  That gives 
+          <me>\ln(10\cdot 5^3) = \ln(10) + 3\cdot \ln( 5 )</me>.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    <alert>Warning:</alert>
+    Note that our three laws of logarithms only apply when the exponential, product, or fraction is <em>inside</em> the logarithm.
+  </p>
+  <p>
+    If you try to divide logarithms, such as in <m> \dfrac{\ln(5)}{\ln(2)}</m>, you will get something very different than our log laws.  
+    This is because of the surprising fact that 
+    <me>
+      \log_b(x) = \dfrac{\ln(x)}{\ln(b)}
+    </me>
+    For example, if you divide   <m> \dfrac{\ln(5)}{\ln(2)}</m>, you actually get 
+    <m>
+      \dfrac{\ln(5)}{\ln(2)} = \log_2(5) = 0.9162\dots
+    </m>, which is <alert>not</alert> the same thing as <m>\ln\left(\frac{2}{5}
+  \right)=0.4306\dots</m>.
+  </p>
+    
+  <p>
+    Again, for the remainder of the course, we will almost always restrict our attention to natural logarithms.  
+    But this last property is useful in many applications, and may help you remember when you can (and when you can't) perform a simplification using the laws of logarithms. 
+  </p>
+    
+    
+
+</section>
+
+
+
+
+<section xml:id="sec_solvingfortime">
+  <title>Solving Compound Interest for Time</title>
+  
+
+  <p>
+    We can now use the laws of logarithms to help us solve equations where the variable is in the exponent. 
+  </p>
+  <p>
+    As with everything else in algebra, if we have the equation <m>A = B</m>, we can replace it with the equation <m>\ln(A) = \ln(B)</m>.
+  </p>
+
+  <exploration xml:id="ex_solving_exponentials">
+    <task>
+      <statement>
+        <p>
+          Solve for <m>x</m> satisfying <m>2^{3x} = 5</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The key idea of algebra is that if you have the equation <m>A = B</m>, you can do the same thing to both sides and have another true equation.  
+          Here, we are given that 
+          <me>2^{3x} = 5</me>
+          That means that we also know that the equation <m>\ln(A) = \ln(B)</m> is true, replacing <m>A=2^{3x}</m> and <m>B=5</m>.  This gives
+          <me>
+            \ln\Big(2^{3x}\Big) = \ln\Big( 5 \Big)
+          </me>
+          We have the property of logarithms that <m>\ln(x^r) = r\cdot\ln(x)</m> on the left, to get the equation 
+          <me>
+            3x \cdot \ln\Big(2\Big) = \ln\Big( 5 \Big)
+          </me>
+          Now, this looks complicated, but we can use a calculator to simplify <m>\ln(2) = 0.693\dots</m> and <m>\ln(5) = 1.609\dots</m>.  This gives us the equation 
+          <me>
+            3x \cdot 0.693{\dots} = 1.609\dots
+          </me>
+          Rearranging the left side, we have 
+          <me>
+            3\cdot 0.693{\dots}\cdot x = 1.609\dots
+          </me>
+          Using a calculator, we see that <m>3\cdot 0.693\dots = 2.079\dots</m>, which gives 
+          <me>
+            2.079\dots x = 1.609\dots 
+          </me>
+          Dividing both sides by <m>2.079\dots</m>, we get 
+          <me>
+            x = \dfrac{1.609\dots}{2.079\dots} = 0.773\dots
+          </me>
+          You could also have done this with the original <m>3x \cdot \ln\Big(2\Big) = \ln\Big( 5 \Big)</m> by dividing both sides by <m>3\cdot\ln(2)</m> to get 
+          <me>
+            x = \dfrac{\ln(5)}{3\cdot \ln(2)}
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Solve for <m>x</m> satisfying <m>4\cdot(1.95)^{2x} = 16</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+        There are two different approaches for solving an equation like this, planning ahead or using brute force. 
+          <dl>
+            <li>
+              <title>Planning Ahead</title>
+              <p>
+                We wish to solve the equation 
+                <me>4\cdot(1.95)^{2x} = 16</me>
+                We want to eventually introduce logarithms to allow us to apply Log Law 3, to pull the <m>2x</m> out of the exponent. 
+                However, that law will not apply to <m>4\cdot (1.95)^{2x}</m> because of the coefficient of <m>4</m>. 
+              </p>
+              <p>
+                But we can divide both sides of the equation by 4.  This gives us 
+                <md>
+                  <mrow> \amp 4\cdot (1.95)^{2x} \amp = \amp 16 \amp </mrow>
+                  <mrow> \times\frac{1}{4} \amp \amp\amp \amp \times\frac{1}{4} </mrow>
+                  <mrow> \amp (1.95)^{2x} \amp = \amp 4 \amp </mrow>
+                </md>  
+                Now, we can take the logarithm of both sides 
+                <me>
+                  \ln\Big( {\color{red}(1.95)}^{\color{blue}2x} \Big) = \ln\Big( 4 \Big)
+                </me>
+                Now we can apply the law of logs <m>\ln({\color{red}x}^{\color{blue}r})= {\color{blue}r}\ln({\color{red}x})</m> on the left with <m>\color{red} x = 1.95</m> and <m>\color{blue} r = 2x</m>
+                <me>
+                  {\color{blue} 2x} \cdot \ln\Big({\color{red} 1.95}\Big) = \ln\Big(4\Big)
+                </me>
+                We can now divide both sides by <m>2\cdot \ln(1.95)</m> to get 
+                <me>
+                  x = \dfrac{\ln\Big(4\Big)}{2\ln\Big(1.95\Big)}
+                </me>
+                This example is exact, but it can be a bit overwhelming.  You can also use your calculator to simplify 
+                <md>
+                  <mrow> 2x \cdot \ln\Big(1.95\Big) \amp = \ln\Big(4\Big) </mrow>
+                  <mrow> </mrow>
+                  <mrow> 2x \cdot 0.667\dots \amp = 1.386\dots </mrow>
+                  <mrow> </mrow>
+                  <mrow> x\cdot 1.335\dots  \amp = 1.386\dots</mrow>
+                  <mrow> </mrow>
+                  <mrow>x \amp = \dfrac{1.386\dots}{1.335\dots} = 1.038\dots</mrow>
+                </md>
+
+                If you do use your calculator, try to use as many decimal places as possible.  Rounding errors can grow if you do a lot of calculations.  It is possible to understand how these errors grow, but that question is beyond the scope of this course. 
+              </p>
+            </li>
+            <li>
+              <title>Brute Force</title>
+              <p>
+                We have seen how to solve this equation with a bit of planning ahead.  But what happens if you <em>start</em> by taking the natural log of both sides of the quation
+                <me>4\cdot(1.95)^{2x} = 16</me>
+                You get 
+                <me>
+                  \ln\Big( {\color{red} 4}\cdot{\color{blue} (1.95)^{2x}} \Big) = \ln\Big(16\Big)
+                </me>
+                On the left side, we have <m>\ln\Big( {\color{red} 4}\cdot{\color{blue} (1.95)^{2x}} \Big)</m>.  We <em>cannot</em> use Log Law 1, since this is a product.  Instead, we need to use Log Law 2 <m>\ln({\color{red} a}\cdot {\color{blue} b}) = \ln({\color{red} a}) + \ln({\color{blue} b})</m> with <m>\color{red} a=4</m> and <m>\color{blue} b=(1.95)^{2x}</m>.  This gives 
+                <me>
+                  \ln\Big( {\color{red} 4}\Big) + \ln\Big({\color{blue} (1.95)^{2x}} \Big) = \ln\Big(16\Big)
+                </me>
+                Now we can use Law Log 1 <m>\ln(a^r) = r\cdot \ln(a)</m> with <m>a=1.95</m> and <m>r=2x</m> to get 
+                <me>
+                  \ln\Big( { 4}\Big) + 2x\cdot \ln\Big({ (1.95)} \Big) = \ln\Big(16\Big)
+                </me>
+                You can simplify this using a calculator to get 
+                <me>
+                  {1.386\dots} + 2\cdot x\cdot 0.667\dots = 2.772\dots
+                </me>
+                You can solve this as usual to get
+                <me>
+                  x = \dfrac{{2.772\dots} - 1.386\dots}{2\cdot 0.667\dots} = 1.038\dots
+                </me>
+                Alternatively, you can solve the exact equation to get 
+                <me>
+                  x = \dfrac{\ln(16) - \ln(4)}{2\cdot \ln(1.95)}
+                </me>
+              </p>
+            </li>
+          </dl>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          The balance of a certain investment is given by <m>F(t) = 10\cdot 2^t</m> as a function of the number of years <m>t</m>.  
+          How long must you wait until the balance reaches 80?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Note that <em>this specific function</em> is very simple, so it is possible to answer this numerically.  After one year, the balance will be <m>F(1) = 20</m>, after two years the balance will be <m>F(2)=40</m>, and after three years the balance will be <m>F(3)=80</m>.   It will take 3 years for the balance to reach <m>80</m>.
+        </p>
+        <p>
+          For more complex equations, we will need to set up and solve an exponential equation.  In this case, we want to find a <m>t</m> such that <m>F(t) = 10 \cdot 2^t</m> equals 80.
+          This gives us the equation 
+          <md>
+            <mrow> 80 \amp=\amp 10 \cdot 2^t \amp </mrow>
+            <mrow> 8 \amp=\amp 2^t \amp \qquad\text{ Multiply both sides by }\dfrac{1}{10}</mrow>
+            <mrow> \ln\Big(8\Big) \amp=\amp \ln\Big(2^t\Big) \amp  \qquad\text{ Take }\ln\text{ of both sides}</mrow>
+            <mrow> \ln\Big(8\Big) \amp=\amp t\cdot \ln\Big(2\Big) \amp \qquad\text{ Log Law 1 } \ln(a^r)=r\ln(a)</mrow>
+            <mrow> \dfrac{\ln\Big(8\Big)}{\ln\Big(2\Big)} \amp=\amp t  \amp \qquad\text{ Divide both sides by } \ln\Big(2\Big)</mrow>
+          </md>
+          Alternatively, we could have simplified the natural log terms and solved as follows
+          <md>
+            <mrow> \ln\Big(8\Big) = t\cdot \ln\Big(2\Big) </mrow>
+            <mrow> 2.079{\dots}= t\cdot {0.693\dots} </mrow>
+            <mrow>t =  \dfrac{2.079{\dots}}{0.693\dots} = 3</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    We can now apply these techinques to solve the equations that arise in questions of compound interest.
+  </p>
+
+  <exploration xml:id="ex_compoundinterestfortime">
+    <introduction>
+      <p>
+        You invest $1000 at 15% interest compounded monthly.
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          How many years are required until you double your money?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          First, write down the compound interest formula from  <xref ref="def-compoundinterest"/>.
+          <me>
+            F = P\cdot \left(1 + \frac{r}{m}\right)^{mt}
+          </me>
+          with <m>P=1000</m>, <m>r=0.15</m>, and <m>m=12</m>.  
+          Furthermore, we want the <em>future value</em>to be twice 1000.  In other words, we want <m>F=2000</m>
+          This gives 
+          <me>
+            2000 = 1000 \cdot \left(1 + \dfrac{0.15}{12}\right)^{12t}
+          </me>
+          Dividing both sides by 1000 gives 
+          <me>
+            2 = \left(1 + \dfrac{0.15}{12}\right)^{12t}
+          </me>
+        </p>
+        <p>
+          Next, we can simplify this equation using a calculator and the <xref ref="exponential-arithmetic">properties of exponents</xref>
+        </p>
+        <p>
+          <md>
+            <mrow> 2 = \amp \left(1 + \dfrac{0.15}{12}\right)^{12t} \amp </mrow>
+            <mrow> 2 = \amp \left(\ 1.0125\ \right)^{12t} \amp </mrow>
+            <mrow> 2 = \amp \left(\ 1.0125^{12}\ \right)^{t} \amp \qquad\text{Because } a^{rs}=(a^r)^s</mrow>
+            <mrow> 2 = \amp \left(\ 1.16075\dots\ \right)^{t} \amp </mrow>
+          </md>
+        </p>
+        <p>
+          Finally, finish solving the exponential equation as above using the  <xref ref="assemblage-lawsoflogs" text="custom">Laws of Logs</xref>.
+          <md>
+            <mrow> \ln\Big(2\Big) = \amp \ln\Big( \left(\ 1.16075\dots\ \right)^{t} \Big) \amp </mrow>
+            <mrow> \ln\Big(2\Big) = \amp t\cdot \ln\Big(  1.16075\dots \Big) \amp \qquad\text{Using }\ln(a^r) = r\ln(a)</mrow>
+            <mrow>t = \amp \dfrac{ \ln\Big(2\Big)}{\ln\Big(  1.16075\dots \Big) }\amp \qquad\text{Dividing both sides by }\ln\Big(  1.16075\dots \Big)</mrow>
+            <mrow>t = \amp 4.64\dots</mrow>
+          </md>
+          With 15% interest, it will take about 4.64 years for the balance to double.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How long will it be until the balance reaches $10,000?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          First, write down the compound interest formula 
+            <me>
+              F = P\cdot \left(1 + \frac{r}{m}\right)^{mt}
+            </me>
+          and plug in the values we are given.  Note that we want the time when the future value <m>F=10,000</m>.  That gives 
+          <me>
+            10,000 = 1,000 \cdot (1 + \frac{0.15}{12})^{12t}
+          </me>
+          Simplifying this with a calculator and the laws of exponents gives 
+          <md>
+            <mrow>10 \amp = (1 + \frac{0.15}{12})^{12t}</mrow>
+            <mrow>10 \amp = (1.0125 )^{12t}</mrow>
+            <mrow>10 \amp = (1.16075\dots )^{t}</mrow>
+          </md>
+          Taking <m>\ln</m> of both sides and applying the laws of logarithms, we get 
+          <md>
+            <mrow>\ln\Big(10\Big) \amp = \ln\Big( (1.16075\dots )^{t} \Big)</mrow>
+            <mrow>\ln\Big(10\Big) \amp = t\cdot \ln\Big( 1.16075\dots  \Big)</mrow>
+            <mrow>\dfrac{\ln\Big(10\Big)}{\ln\Big( 1.16075\dots  \Big)} \amp = t  </mrow>
+            <mrow>t \amp = 14.868\dots \amp </mrow>
+          </md>
+          The balance will increase to $10,000 in about 15 years. 
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    As an exercise, find how long it takes for a balance of $1000 to double at 2% interest, at 5% interest, and at 30% interest. 
+  </p>
+
+  <p>
+    For our last application, we will return to the concept of <term>depreciation</term>, discussed in more depth in <xref ref="insight-depreciation"/> and <xref ref="ex_depreciation1"/>
+  </p>
+
+  <exploration xml:id="ex_depreciation2">
+    <introduction>
+      <p>
+        Suppose that a certain asset loses 30% of its value each year. 
+        In other words, suppose that the value of the asset after <m>t</m> years is given by 
+        <me>
+          V(t) = P\cdot (1-0.3)^t
+        </me>
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Suppose that  the asset starts with value <m>P=1000</m>. 
+          Find the value after 12 years. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The future value function is 
+          <me>
+            V(t) = 1000 \cdot (1-0.3)^t = 1000\cdot 0.7^t
+          </me>
+          After <m>12</m> years, 
+          <me>
+            V(12) = 1000 \cdot (1-0.3)^{12} = 13.841
+          </me>
+          After <m>12</m> years, the value of the asset will be approximately $13.84
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Suppose that the value after 12 years is $50.  Find the starting value <m>P</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The future value function is 
+          <me>
+            V = P \cdot (1-0.3)^t 
+          </me>
+          We know that when <m>t=12</m>, that <m>V=50</m>.  Plugging this in gives
+          <md>
+            <mrow>50 \amp = P \cdot (1-0.3)^{12}</mrow>
+            <mrow>50 \amp = P \cdot 0.0138\dots</mrow>
+            <mrow>\frac{50}{0.138} \amp = P</mrow>
+            <mrow>P \amp = 3612.380\dots</mrow>
+          </md>
+          The starting value must have been about $3,612.38
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Suppose that the asset starts with a value <m>P=1000</m>.  
+          Find the number of years <m>t</m> for the value to decrease to <m>100</m>.  
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The future value function is 
+          <me>
+            V = P \cdot (1-0.3)^t 
+          </me>
+          We want the time <m>t</m> when the value reaches <m>V=100</m> when from a starting value of <m>P=1,000</m>.  Plugging this in gives
+          <md>
+            <mrow> 100 \amp = 1000 \cdot (0.7)^t</mrow>
+            <mrow> 0.1 \amp =  (0.7)^t</mrow>
+            <mrow> \ln\Big(0.1\Big) \amp =  \ln\Big((0.7)^t\Big)</mrow>
+            <mrow> \ln\Big(0.1\Big) \amp =  t\cdot \ln\Big(0.7\Big)</mrow>
+            <mrow>t \amp = \dfrac{ \ln\Big(0.1\Big)}{\ln\Big(0.7\Big)} = 6.45\dots</mrow>
+          </md>
+          It will take about 6.45 years for the balance to decline from 1000 to 100.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+
+  
+  <insight>
+    <title>Depreciating Assets and Scrap Value</title>
+    
+    <p>
+      In this class, our focus is on the mathematical tools that underly economics, business, and accounting.  
+    </p>
+    <p>
+      In accounting, you will learn about how to decide which mathematical too to use (straight line versus declining balance depreciation), and to find a numerical value for the rate of depreciation. 
+    </p>
+    <p>
+      Rates of depreciation can be found in many ways.  
+      For example, you can use the actual sales price for cars based on their mileage to emperically determine how much the value drops per mile. 
+    </p>
+    <p>
+      But there are also other ways of calculating the rate of depreciation. 
+      For example, some assets have a known or conventional "scrap value" and "expected lifespan."
+    </p>
+    <p>
+      Once you know the starting value, the scrap value, and the expected lifespan, you can actually compute the yearly depreciation you should use.  
+      Mathematically, that means solving 
+      <me>
+        F = P ( 1- r)^t
+      </me>
+      for the rate <m>r</m> to get 
+      <me>
+        r = 1- \sqrt[t]{\frac{F}{P}}
+      </me>
+      
+      
+    </p>
+    
+  </insight>
+
+  <interactive platform="jsxgraph" width="75%" xml:id="interactive_depreciation">
+    <slate xml:id="jsxgraph-business-depreciation"  surface="jessiecode" axis="true" grid="true">
+      $board.setBoundingBox( [ -2, 5, 8, -5 ] , keepaspectratio=false) ;
+
+      r = slider(
+            // Specify slider location
+              [0.5,-1.5], [3.5,-1.5], 
+            // Specify smallest/starting/largest value for slider
+              [0,0.3,1])
+          &lt;&lt;
+              name:"r",
+              snapWidth:0.01
+          &gt;&gt;  ;
+
+      P = slider(
+            // Specify slider location
+              [0.5,-2.5], [3.5,-2.5], 
+            // Specify smallest/starting/largest value for slider
+              [2,3,5])
+          &lt;&lt;
+              name:"start value",
+              snapWidth:0.01
+          &gt;&gt;  ;      
+
+      scrap = slider(
+            // Specify slider location
+              [0.5,-3.5], [3.5,-3.5], 
+            // Specify smallest/starting/largest value for slider
+              [0,0.75,1.5])
+          &lt;&lt;
+              name:"scrap value",
+              snapWidth:0.01
+          &gt;&gt;  ;      
+      
+      fGraph1 = functiongraph(function(x) { return 
+                    // Define Function Here
+                    P.Value() * pow( (1-r.Value()) , x )  
+                    //
+                ;})  &lt;&lt; 
+                    strokeColor:"red"  
+                &gt;&gt;;
+      fName1 = text(0.5,-0.75, function(){ return ( 
+                        '&lt;span class="process-math"&gt;' + 
+                            //Typeset Math Text Here
+                            'V(t) = ' + P.Value().toFixed(2) + ' (1-' + r.Value().toFixed(2) + ')^t' + 
+                            //
+                        '&lt;/span&gt;'
+                      );} )  &lt;&lt; 
+                            color:"red"  
+                      &gt;&gt;;
+
+      fGraph2 = functiongraph(function(x) { return 
+                    // Define Function Here
+                    scrap.Value() 
+                    //
+                ;})  &lt;&lt; 
+                    strokeColor:"green", 
+                    dash:2  
+                &gt;&gt;;
+      
+    </slate>
+    <instructions>
+      <p>
+        Using the sliders on this graphic, explore the concept of declining balance depreciation.
+        <ul>
+          <li>
+            <p>
+              Explore the relationship between percent depreciation <m>r</m> and the shape of the value curve. 
+            </p>
+          </li>
+          <li>
+            <p>
+              For different values of <m>r</m>, see how changing the starting value and  scrap value impact the lifespan of the item. 
+            </p>
+          </li>
+        </ul>
+      </p>
+    </instructions>
+  </interactive>
+
+
+</section>
+
+<section xml:id="sec-logapplications">
+  <title>Applications of Logarithms</title>
+  
+  <p>
+    Although logarithms are less familiar than lines, polynomials, and rational functions, they do play an important role in the physical and economic sciences.  In this section we will introduce two examples of logarithms.
+    These examples are somewhat simplified for mathematical clarity, but the interested reader is encouraged to continue their study to understand the relevant nuances. 
+  </p>
+
+  <p>
+    Logarithmic models often arise when discussing quantities that are more meaningful when compared to a baseline than when viewed as isolated numbers. 
+  </p>
+
+  <p>
+    For example, it is hard to say how happy it would make someone to win a $1000 prize.  
+    Presumably this win would make someone with $5,000 in their bank account would be much happier than a similar win would make someone with $5,000,000 in wealth. 
+  </p>
+  <p>
+    Similarly, a cell phone ringer might seem very loud in a quiet library, but the same ringer would sound very quiet at a packed concert.  
+  </p>
+   
+  <exploration>
+    <title>Sound Perception and Logarithms</title>    
+    <introduction>
+      <p>
+        Let <m>x</m> denote the magnitude of a sound, measured by the amplitude of the sound wave itself. 
+        The <em>percieved sound level</em> is given by 
+        <me>
+          dB(x) = 10\cdot \log_{10}(x)
+        </me>
+      </p>
+      <aside> 
+        <p>This formula is a slight oversimplificaiton.  See, for example, <url href="https://en.wikipedia.org/wiki/Decibel#Perception">Wikipedia</url> for more details.</p>
+      </aside> 
+  </introduction>
+    <task>
+      <statement>
+        <p>
+          The sound waves of rustling leaves have power <m>x=100</m>. 
+          Find <m>dB(100)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>dB(100)=10\cdot\log_{10}(100) = 10\cdot\log_{10}(10^2)  = 20</m> decibels
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          The sound waves in a quiet library have power <m>10,000</m>. 
+          Find <m>dB(10,000)</m>. 
+          How much louder does this sound compared to rustling leaves?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>dB(10,000)=10\cdot\log_{10}(10,000) = 10\cdot\log_{10}(10^4) = 40</m> decibels.
+        </p>
+        <p>
+          The decibel rating of a quiet library (40 dB) is twice the decibel rating of leaves (20 dB), so the library sounds twice as loud.  
+        </p>
+        <p>
+          But surprisingly, this apparent doubling is actually the result of a 
+          <m>
+            \frac{10,000}{100}=100
+          </m>-fold increase in the power of the waves. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          The sound waves from an alarm clock have power <m>100,000,000</m>. 
+          Find <m>dB(100,000,000)</m>. 
+          How much louder does this sound compared to a quiet library?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>dB(100,000,000)=10\cdot\log_{10}(100,000,000) = 10\cdot\log_{10}(10^8) = 80</m> decibels.
+        </p>
+        <p>
+          The decibel rating of an alarm clock (80 dB) is twice the decibel rating of a quiet library (40 dB), so the library sounds twice as loud.  
+        </p>
+        <p>
+          But surprisingly, this apparent doubling is actually the result of a 
+          <m>
+            \frac{100,000,000}{10,000}=10,000
+          </m>-fold increase in the power of the waves. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How much does doubling the power of the sound waves increase the decibel rating of a given frequency <m>x</m>? 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to understand the decibel rating of <m>2x</m>. Using the definition of <m>dB</m> gives
+          <md>
+            <mrow>dB(2x) \amp = 10 \log_{10}(2x) \amp </mrow>
+            <mrow>\amp = 10\Big(\log_{10}(2) + \log_{10}(x)\Big) \amp \ln(ab)=\ln(a)+\ln(b)</mrow>
+            <mrow>\amp = 10\Big(0.301029 + \log_{10}(x)\Big) \amp \text{calculator}</mrow>
+            <mrow>\amp = 3.01029 + 10\log_{10}(x)  \amp </mrow>
+            <mrow>\amp = 3.01029 + dB(x)  \amp </mrow>
+          </md>
+          Doubling the power of the sound waves only increases the decibel rating by about <m>3dB</m> 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How much does increasing the power of the sound waves by a factor of 100 change the decibel rating of a given frequency <m>x</m>? 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to understand the decibel rating of <m>100x</m>. Using the definition of <m>dB</m> gives
+          <md>
+            <mrow>dB(10x) \amp = 100 \log_{10}(10x) \amp </mrow>
+            <mrow>\amp = 10\Big(\log_{100}(10) + \log_{10}(x)\Big) \amp \ln(ab)=\ln(a)+\ln(b)</mrow>
+            <mrow>\amp = 10\Big(2 + \log_{10}(x)\Big) \amp \text{calculator}</mrow>
+            <mrow>\amp = 20 + 10\log_{10}(x)  \amp </mrow>
+            <mrow>\amp = 20 + dB(x)  \amp </mrow>
+          </md>
+          <em>Multiplying the power of sound waves by a factor of <m>100</m></em> only increases the decibel rating by the <em>addition of <m>20dB</m></em>.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <exploration>
+    <title>Utility and Logarithms</title>
+    <introduction>
+      <p>
+        Some economists argue that the <em>percieved value of money</em> (often called the <em>utility</em> of money) is logarithmic. 
+        Of course, different people will have different utility functions. 
+        To see why, we will explore a specific utility function.
+      </p>
+      <aside>
+        <p>
+          You can find more on this in Chapter 25 of <em>Thinking Fast and Slow</em>.
+          <!--TODO look up and incorporate "Prospect Theory", Feckner, Bernoulli (cited by Thinking Fast and Slow) -->
+        </p>
+      </aside>
+      <p>
+        Given <em>life savings</em> of money <m>x</m> in dollars, let the utility of $<m>x</m> of these savings be given by
+        <me>
+          U(x) = 21.7\ln(x) + 150
+        </me>
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find the utility of $0, $10, $100, $1000, $10,000, $100,000, and $1,000,000.
+        </p>
+        <p>Explain the meaning of these numbers.  Why are some negative? Why are some positive?  How do they change as your life savings increases?</p>
+      </statement>
+      <solution>
+        <p>
+
+          <me>
+            \begin{array}{c|c|c|c|c|c|c|c}
+            \text{dollars }x         
+                  &amp;  0 
+                  &amp;  10   
+                  &amp;  100  
+                  &amp;  1,000  
+                  &amp;  10,000 
+                  &amp;  100,000
+                  &amp;  1,000,000
+              \\ \hline
+              \text{utility }U(x)
+                  &amp; DNE
+                  &amp; -100.0	
+                  &amp; -50.06
+                  &amp; -0.10
+                  &amp; 49.86
+                  &amp; 99.83
+                  &amp; 149.79
+            \end{array}
+          </me>
+          The first thing to note is that <m>U(0)</m> is undefined.  Mathematically, this is because <m>\ln(0)</m> is undefined.  Practically, this is because you would be <em>very</em> unhappy if you did not have any money to use to pay rent, buy food, etc. 
+        </p>
+        <p>
+          Next, note that this person has negative utility until approximately <m>x=1,000</m>.  Perhaps this would mean that the individual needs at least $1000 for basic necessities.  Then a balance of less than $1000 implies unmet necesseties, which would make the individual unhappy indeed. 
+        </p>
+        <p>
+          Finally, consider the values above $1000.  Note that increasing the balance by a factor of 10 <em>approximately</em> increases their happiness by 50 utility points. 
+          Often, this is because the individual will start with a list of very clear and very productive uses of the money.  As those clear producive uses are taken care of, the individual needs to look for less clear or less productive uses for their money.  Thus, each dollar does not have the same value to the individual!
+        </p>
+        <p>
+          Of course, this is an overly simplified example.  In fact, utility functions are much more complex.  But even these more complex functions will share many of the above properties with our logarithmic utility. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How does doubling a wealth of $<m>x</m> impact utility? 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are asked to understand the utility of $<m>2x</m> dollars.  Using the utility function given, we have
+          <md>
+            <mrow> U(2x) \amp = 21.7\ln(2x) + 150 \amp </mrow>
+            <mrow>  \amp = 21.7\Big(\ln(2) + \ln(x) \Big) + 150 \amp \ln(ab)=\ln(a)+\ln(b) </mrow>
+            <mrow>  \amp = 21.7\ln(2) + 21.7\ln(2x) + 150 \amp </mrow>
+            <mrow>  \amp = 15.04 + 21.7\ln(2x) + 150 \amp </mrow>
+            <mrow>  \amp = 15.04 + U(x) \amp </mrow>
+          </md>
+          <em>Doubling</em> the amount of money available <em>adds</em> 15.04 utility (or "happiness") points. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          How does multiplying a wealth of $<m>x</m> by a factor of 10 impact utility? 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are asked to understand the utility of $<m>10x</m> dollars.  Using the utility function given, we have
+          <md>
+            <mrow> U(10x) \amp = 21.7\ln(10x) + 150 \amp </mrow>
+            <mrow>  \amp = 21.7\Big(\ln(10) + \ln(x) \Big) + 150 \amp \ln(ab)=\ln(a)+\ln(b) </mrow>
+            <mrow>  \amp = 21.7\ln(10) + 21.7\ln(x) + 150 \amp </mrow>
+            <mrow>  \amp = 49.97 + 21.7\ln(x) + 150 \amp </mrow>
+            <mrow>  \amp = 49.97 + U(x) \amp </mrow>
+          </md>
+          <em>Multipling by 10</em> the amount of money available <em>adds</em> 49.97 utility (or "happiness") points. 
+        </p>
+      </solution>
+    </task>
+  </exploration>
+</section>
+
+</chapter>

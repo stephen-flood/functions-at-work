@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_chainrule" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Chain Rule</title>
+
+<introduction>
+  <p>
+    So far, we have seen rules for sums, products, and quotients
+  <assemblage xml:id="assemblage-basicderivatives3">
+    <title>Basic Derivative Rules (So Far)</title>
+    <p>
+      Suppose that <m>f,g</m> are differentiable functions of <m>x</m>, that <m>m,c</m> are constant numbers.  Then 
+      <ul>
+        <li>
+              <m>\D{c}=0</m>
+        </li>
+        <li>
+              <m>\D{m\cdot x+b}=m</m> and <m>\D{x} = 1</m>
+        </li>
+        <li>
+            <m>\D{x^m}=m\cdot x^{m-1}</m>
+        </li>
+        <li>
+            <m>\D{ c\cdot f(x)}=c\cdot \D{f(x)}</m>
+        </li>
+        <li>
+            <m>\D{f(x) \pm g(x)} = \D{f(x)} \pm \D{g(x)}</m>
+        </li>
+        <li>
+          <m>\D{ e^x } = e^x </m>
+        </li>
+        <li>
+          <m>\D{ \ln(x) } = \frac{1}{x}</m>
+        </li>
+        <li>
+          <m> \Big[f\cdot g\Big]' = f\cdot \Big[g\Big]' + g\cdot \Big[f\Big]' = f\cdot g' + g\cdot f' </m>
+        </li>
+        <li>
+          <m>\left[\dfrac{t}{b}\right]' = \dfrac{b\cdot t' - t\cdot b'}{(b)^2} </m>
+        </li>
+      </ul>
+    </p>  
+  </assemblage>
+  </p>
+  <p>
+    But what happens if you have a function <em>inside</em> of another function? 
+  </p>
+  <p>
+    For example, in Excel you will often see an expression like 
+    <me>
+      \ln\Big( x^2 \Big)
+    </me>
+    Here, the function <m>\red{x^2}</m> is <em>inside</em> the function <m>\ln\Big(\red{u}\Big)</m>.
+    In this case, we call
+    <ul>
+      <li>
+        <p>
+          the inside function <m>\red{g(x)} = \red{x^2}</m> the <term>argument</term> or <term>inner function</term>
+        </p>
+      </li>
+      <li>
+        <p>
+           the outside function <m>f(\red{u}) = \ln\Big(\red{u}\Big)</m> is the <term>outer function</term>
+        </p>
+      </li>
+      <li>
+        <p>
+          the original function <m>f(\red{g(x)}) = \ln\Big( \red{x^2} \Big)</m> is the <term>composition</term> of the outside function and the argument. 
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    In this chapter, we will introduce one final rule (or set of rules) that will let us compute derivatives of compositions of functions.
+  </p>
+</introduction>
+
+
+<section xml:id="sec_generalizedpowerrule">
+  <title>The Generalized Power Rule</title>
+  
+  <p>
+    Compositions where the outside function is a power is the simplest case to work with. 
+  </p>
+
+  <exercise xml:id="ex_generalizedpower_decomposing">
+    <statement>
+      <p>
+        Let <m>h(x) = (3x+2)^2</m>. 
+        Write this function in the form <m>f\Big(g(x)\Big)</m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        The easiest way to interpret compositions is to try to <em>circle the inside function</em>.
+        <me>
+          h(x) = \Big( \red{\framebox{3x+2}} \Big)^2
+        </me>
+        <ul>
+          <li>
+            <p>
+              The <term>argument</term> is the circled inside term <m>\red{g(x)} = \color{red} \framebox{3x+2}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              To find the <term>outside function</term>, replace the circled box with the letter <m>u</m>. 
+              <md>
+                <mrow> h(u) = \amp \Big( \red{\framebox{3x+2}} \Big)^2  </mrow>
+                <mrow>      = \amp \Big( \red{\framebox{u}} \Big)^2  </mrow>
+                <mrow> h(u) = \amp \red{u}^2</mrow>
+              </md>
+            </p>
+          </li>
+        </ul>
+        If <m>f(u) = u^2</m> and <m>g(x) = 3x+2</m>, then 
+        <me>
+          f\Big(g(x)\Big) = f\Big(3x+2\Big) = (3x+2)^2
+        </me>
+        as desired.
+      </p>
+    </solution>
+  </exercise>
+
+  <p>
+    In very simple cases, we can compute the derivative of a composition with the rules we already have.
+  </p>
+  <exercise xml:id="ex_powerrule-nopower">
+    <statement>
+      <p>
+        Let <m>f(x) = (3x+2)^2</m>.  Find <m>f'(x)</m> using only the rules from the previous sections. 
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          f'(x) = \ddx{ \Big(3x+2\Big)^2 } 
+        </me>
+        No rule applies, but we can rewrite the function using algebra first.
+        <md>
+          <mrow>f'(x) = \amp  \ddx{ \Big(3x+2\Big)^2 } </mrow>
+          <mrow>= \amp \ddx{  \Big(3x+2\Big)\cdot  \Big(3x+2\Big) }</mrow>
+          <mrow>= \amp \ddx{  9x^2 + 12x + 4 }</mrow>
+          <mrow>= \amp \ddx{9x^2} + \ddx{12x} + \ddx{4} </mrow>
+          <mrow>= \amp 9\ddx{x^2} + 12 + 0 </mrow>
+          <mrow>= \amp 9\cdot 2x + 12  </mrow>
+          <mrow>= \amp 18x + 12  </mrow>
+        </md>
+        On the face of it, there is no clear connection between the equations for <m>f(x)</m> and <m>f'(x)</m>. We need a new shortcut.  
+      </p>
+    </solution>
+  </exercise>
+
+  <theorem xml:id="thm-generalizedpowerrule">
+    <title>The Generalized Power Rule</title>
+    <statement>
+      <p>
+        Suppose that <m>g(x)</m> is a differentiable function, and that <m>m</m> is a constant number.
+        <me>
+          \ddx{ \Big( g(x) \Big)^m} = m\cdot \Big( g(x) \Big)^{m-1} \cdot \ddx{g(x)} 
+        </me>
+        In other words, if you have a composition <m>h(x) = \Big(g(x)\Big)^m</m>,
+        the derivative is the same thing as following the power rule and multiplying by the derivative of the argument. 
+      </p>
+      <p>
+        In bracket notation, this rule is written 
+        <me>
+          \D{ \Big(g(x)\Big)^m } = m\cdot \Big(g(x)\Big)^{m-1}\cdot g'(x)
+        </me>
+        
+      </p>
+    </statement>
+  </theorem>
+
+  <exercise xml:id="ex_powerrule1">
+    <statement>
+      <p>
+        Let <m>h(x) = (3x+2)^2</m> as before.  Find <m>h'(x)</m> using the generalized power rule. 
+      </p>
+    </statement>
+    <solution>
+      <p>
+        As always, start by writing 
+        <me>
+          h'(x) = \ddx{ \blue{(\red{3x+2})^2} } 
+        </me>
+          As in <xref ref="ex_generalizedpower_decomposing"/>, this is a composition with argument <m>g(x) = 3x+2</m> and outside function <m>f(u) = u^2</m>.  
+          We must use the generalized power rule <m>\ddx{ \blue{ \Big( \red{g(x)} \Big)^m}} = \blue{ m\cdot \Big( \red{g(x)} \Big)^{m-1} } \cdot \ddx{\red{g(x)}} </m>
+        <md>
+          <mrow>h'(x) = \amp \ddx{ \blue{ ( \red{3x+2} )^2 } }</mrow>
+          <mrow>= \amp \ddx{\blue{ ( \red{g(x)} )^2 } } </mrow>
+          <mrow>= \amp \blue{ 2\cdot ( \red{g(x)} )^1 }\cdot \ddx{ \red{g(x)} }</mrow>
+          <mrow>= \amp \blue{2\cdot ( \red{3x+2} ) }\cdot \ddx{ \red{3x+2} }</mrow>
+          <mrow>= \amp 2\cdot (3x+2) \cdot (3+0)</mrow>
+          <mrow>= \amp 18x+12</mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+  
+  <exercise xml:id="ex_powerrule2">
+    <statement>
+      <p>
+        Let <m>h = \Big(3-\ln(x)\Big)^{10}</m>.
+        Find <m>\frac{dh}{dx}</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          \frac{dh}{dx} = \ddx{ \blue{ \Big( \red{3-\ln(x)}\Big)^{10} } } 
+        </me>
+        This is a composition of two functions, with the inside function (argument) <m>\red{g(x) = 3-\ln(x)} </m> and outside function <m>\blue{f(u)} = \blue {u^{10}}</m>
+        <md>
+          <mrow>\frac{dh}{dx} =  \amp \ddx{ \blue{ \Big( \red{3-\ln(x)}\Big)^{10} } } </mrow>
+          <mrow>= \amp \ddx{\blue{ ( \red{g(x)} )^{10} } } </mrow>
+          <mrow>= \amp \blue{ 10\cdot ( \red{g(x)} )^9 }\cdot \ddx{ \red{g(x)} }</mrow>
+          <mrow>= \amp \blue{10\cdot ( \red{3-\ln(x)} )^9 }\cdot \ddx{ \red{3-\ln(x)} }</mrow>
+          <mrow>= \amp 10\cdot \Big(3-\ln(x)\Big)^9\cdot \Big( 0 - \frac{1}{x}\Big)</mrow>
+          <mrow>= \amp -10 \Big(3-\ln(x)\Big)^9\cdot \frac{1}{x}</mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="ex_powerrule3">
+    <statement>
+      <p>
+        Let <m>y = \dfrac{1}{x^2-3x}</m>.  Find <m>\frac{dy}{dx}</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          \ddxfrac{\frac{dy}{dx}} = \ddxfrac{  \dfrac{1}{x^2-3x} }
+        </me>
+        You can compute this derivative using the quotient rule, as in <xref ref="sec_quotientrule"/>.
+        You can also rewrite this as a power, and use the generalized power rule. 
+        <me>
+          \ddxfrac{\frac{dy}{dx}} = \ddxfrac{  \Big(x^2-3x\Big)^{-1} }
+        </me>
+        You are now taking the derivative of a composition with argument <m>\red{g(x)} = \red{x^2-3x}</m> and outside function <m>\blue{f(u)} = \blue{u^{-1}} </m>.
+        <md>
+          <mrow>\frac{dy}{dx} = \amp \ddxfrac{ \blue{ \Big(\red{x^2-3x}\Big)^{-1} } } </mrow>
+          <mrow>= \amp \ddx{\blue{ ( \red{g(x)} )^{-1} } } </mrow>
+          <mrow>= \amp \blue{ -1\cdot ( \red{g(x)} )^{-1-1} }\cdot \ddx{ \red{g(x)} }</mrow>
+          <mrow>= \amp \blue{ -1\cdot ( \red{x^2-3x} )^{-2} }\cdot \ddx{ \red{x^2-3x} }</mrow>
+          <mrow>= \amp  -1\cdot ( x^2-3x )^{-2} \cdot \Big(2x-3\Big) </mrow>
+          <mrow>= \amp  -1\cdot \dfrac{1}{( x^2-3x )^{2}} \cdot \Big(2x-3\Big) </mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+  
+  <exercise xml:id="ex_powerrule4">
+    <statement>
+      <p>
+        Use the product and chain rules to derive equation for the quotient rule. 
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Suppose that  <m>f(x)</m> and <m>g(x)</m> are differentiable functions.  We wish to compute 
+        <me>
+          \ddx{ \dfrac{f(x)}{g(x)} } 
+        </me>
+        To use the product and generalized power rule, we can get rid of the fraction by using an exponent of <m>-1</m>. 
+        
+        <me>
+           \ddx{ \dfrac{f(x)}{g(x)} }  = \ddx{ \red{f(x)}\cdot \blue{ \Big(g(x)\Big)^{-1}} } 
+        </me>
+        Using the product rule, we get 
+        <me>
+           \ddx{ \dfrac{f(x)}{g(x)} }  = \red{f(x)}\cdot \ddx{ \blue{ \Big(g(x)\Big)^{-1}} } +  \blue{ \Big(g(x)\Big)^{-1}}\cdot \ddx{ \red{f(x)}  } 
+        </me>
+        There are two <m>\ddx{\dots}</m> that remain.  The second one is simply notation: <m>\ddx{f(x)} = f'(x)</m>. 
+        The first requires the chain rule 
+        <md>
+          <mrow> \ddx{ \blue{ \Big( \red{g(x)} \Big)^{-1} }  } = \amp \blue{-1 \Big(\red{g(x)} \Big)^{-1-1}} \cdot \ddx{\red{g(x)}} </mrow> 
+          <mrow>= \amp -1 \Big(g(x)\Big)^{-2}\cdot g'(x)</mrow>
+        </md>
+        Putting this back into the broader derivative 
+        <md>
+          <mrow> \ddx{ \dfrac{f(x)}{g(x)} }  = \amp f(x) \cdot -1 \Big(g(x))^{-2}\cdot g'(x) +   \Big(g(x)\Big)^{-1}\cdot  f'(x)   </mrow>
+          <mrow>=  \amp \frac{-f(x)\cdot g'(x)}{\Big(g(x)\Big)^2} + \frac{f'(x)}{g(x)} </mrow>
+        </md>
+        To combine these fractions, we need a common denominator 
+        <md>
+          <mrow>=  \amp \frac{-f(x)\cdot g'(x)}{\Big(g(x)\Big)^2} + \frac{f'(x)\cdot g(x)}{\Big(g(x)\Big)^2} </mrow>
+          <mrow>=  \amp \frac{-f(x)\cdot g'(x) + f'(x)\cdot g(x)}{\Big(g(x)\Big)^2} </mrow>
+        </md>
+        Rearranging the top gives 
+        <md>
+          <mrow>=  \amp \frac{ g(x)\cdot f'(x) - f(x)\cdot g'(x) }{\Big(g(x)\Big)^2} </mrow>
+        </md>
+        This is exactly the quotient rule from <xref ref="thm-quotientrule"/>.
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="ex_powerrule5">
+    <statement>
+      <p>
+        Let <m>f(x) = \sqrt{5-3x+x^5} + 10 </m>.  Find <m>f'(x)</m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Recall that <m>\sqrt{g(x)} = \Big(g(x)\Big)^{1/2} =\Big(g(x)\Big)^{0.5}  </m>.  That means we can rephrase the question given as follows.
+        <md>
+          <mrow>f'(x) \amp = \D{ (5-3x+x^5)^{0.5} + 10 } </mrow>
+          <mrow> \amp =  \D{ (5-3x+x^5)^{0.5} }  + \D{ 10 } \amp \text{sum rule}</mrow>
+          <mrow> \amp =  \D{ \blue{(\red{5-3x+x^5})^{0.5}} }  + 0 \amp \text{constant  rule} </mrow>
+          <mrow> \amp = \blue{0.5 \Big(\red{5-3x+x^5}\Big)^{0.5-1}}\cdot\D{\red{5-3x+x^5}} \amp \text{chain rule} </mrow>
+          <mrow> \amp = 0.5 \Big( 5-3x+x^5 \Big)^{-0.5}\cdot\Big( 0-3+5x^4\Big) </mrow>
+        </md>
+        Note that both sets of parentheses in the last term are required for a correct answer.  
+      </p>
+    </solution>
+  </exercise>
+
+  <p>
+    Recall that for root functions, we have an optional derivative shortcut <m>\ddx{\sqrt{x}}=\frac{1}{2}x^{-1/2}</m>.  Combined with the generalized power rule, this gives an optional shortcut.
+  </p>
+  <corollary xml:id="cor_generalizedroot">
+    <statement>
+      <p>
+        Let <m>f(x) = \sqrt{g(x)}</m>. 
+        Then <m>f'(x) = \frac{1}{2} \Big(g(x)\Big)^{-1/2}\cdot g'(x)</m>
+      </p>
+    </statement>
+    <proof>
+      <p> 
+        Recall that roots correspond to fractional powers.  In particular, <m>\sqrt{u} = u^{1/2}</m>.  This allows us to rewrite the function before taking the derivative. 
+        <md>
+          <mrow>f'(x) \amp = \ddx{\sqrt{g(x)}}</mrow>
+          <mrow> \amp = \ddx{\Big(g(x)\Big)^{1/2}} </mrow>
+          <mrow> \amp = \frac{1}{2} \Big(g(x)\Big)^{-1/2}\cdot \ddx{g(x)}</mrow>
+          <mrow> \amp = \frac{1}{2} \Big(g(x)\Big)^{-1/2}\cdot g'(x)</mrow>
+        </md>
+      </p>
+    </proof>
+  </corollary>
+  
+
+  <p>
+    There is a consistent strategy when using the generalized power rule in all of the examples above. 
+    <ol>
+      <li>
+        <p>
+          See a composition <m>h(x) = \blue{ f\Big(\red{g(x)}\Big) } </m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identify the argument <m>\red{g(x)}</m> and the outside function <m>\blue{f(u)} = \blue{u^m}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the derivative of the outside 
+          <me>
+            \blue{f'(u)} = \blue{m\cdot u^{m-1}}
+          </me>
+        </p>
+      </li>
+      <li>
+        <p>
+          Apply the rule 
+          <me>\ddx{\blue{ ( \red{g(x)} )^{m} } } 
+              = \blue{ m\cdot ( \red{g(x)} )^{m-1} }\cdot \ddx{ \red{g(x)} }
+          </me>
+        </p>
+      </li>
+    </ol>
+    An easy way to summarize this is to write 
+    <me>
+      \ddx{ \blue{ f\Big(\red{g(x)}\Big) } } = \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+    </me>
+    But is this more general formula true for <em>any</em> outside function <m>g(x)</m>? 
+  </p>
+
+</section>
+
+<section xml:id="sec-chainrule">
+  <title>The Chain Rule</title>
+  
+  <theorem xml:id="thm-chainrule">
+    <statement>
+      <p>
+        Suppose that <m>f(x)</m> and <m>g(x)</m> are differentiable functions.  
+        <me>
+          \ddx{ \blue{ f\Big(\red{g(x)}\Big) } } = \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+        </me>
+      </p>
+      <p>
+        To memorize this formula, use one of the abbreviations 
+        <me>
+          \D{ \blue{f(\red{g})} } = \blue{f'(\red{g})} \cdot \red{g'}
+        </me>
+        <me>
+          \dfrac{dy}{dx} = \dfrac{dy}{du}\cdot \dfrac{du}{dx}
+        </me>
+      </p>
+    </statement>
+  </theorem>
+  
+  <p>
+    Because there are so many moving pieces in the chain rule, we will generally compute <m>\ddx{ \blue{ f\Big(\red{g(x)}\Big) } }</m> using the following steps
+    <ol>
+      <li>
+        <p>
+          Identify the argument <m>\red{g(x)}</m> and the outer function <m>\blue{f(u)}</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Using scrap work, separately compute <m>\blue{f'(u)}</m> and <m>\red{g'(x)}</m>. 
+        </p>
+      </li>
+      <li>
+        <p>
+          Use your scrap work above to answer the original question using the Chain Rule formula
+          <me>
+            \ddx{ \blue{ f\Big(\red{g(x)}\Big) } } = \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+          </me>
+          
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <exercise xml:id="ex_powerrule_exp1">
+    <statement>
+      <p>
+        Let <m>y= e^{3x^2+x}</m>.  Find <m>\frac{dy}{dx}</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        We wish to compute 
+        <me>
+          \frac{dy}{dx} = \ddx{\blue{ e^{\big(\red{3x^2+x}\big)} } } 
+        </me>
+        This is a composition with argument <m>\red{g(x)} = \red{3x^2+x}</m> and outside function <m>\blue{f(u)} = \blue{ e^u }</m>.  
+      </p>
+      <p>
+        Using our regular derivative rules, we know that <m>\red{g'(x)} = \red{ \ddx{3x^2 +x} } = \red{6x+1} </m> and that <m>\blue{f'(u)} = \blue{\ddu{ e^u }} = \blue{e^u} </m>
+      </p>
+      <p>
+        Now that we have done our scrap work, we can return to our original question 
+        <md>
+          <mrow>\frac{dy}{dx} = \amp \ddx{\blue{ e^{\big(\red{3x^2+x}\big)} } }  </mrow>
+          <mrow>= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }</mrow>
+          <mrow>= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}</mrow>
+        </md>
+        Substituting the values first for <m>\blue{f'}</m>, and then for  <m>\red{g}</m> and <m>\red{g'}</m>, into the above equation gives  
+        <md>
+          <mrow>\frac{dy}{dx} = \amp \blue{ e^{(\red{g(x)})} }\cdot \red{g'(x)}</mrow>
+          <mrow>     = \amp \blue{ e^{(\red{3x^2+x})} }\cdot \Big(\red{6x+1}\Big)</mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise xml:id="ex_powerrule_exp2">
+    <statement>
+      <p>
+        Let <m>h(x) = e^{5-x^2}</m>.  Find <m>h'(x)</m>. 
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          h'(x) = \ddx{ \blue{ e^{\big( \red{5-x^2} \big)} } }
+        </me>
+        This is a composition with argument 
+          <m>\red{g(x)} = \red{5-x^2}</m> 
+        and outside function 
+          <m>\blue{f(u)} = \blue{ e^u }</m>.  
+      </p>
+      <p>
+        Using our regular derivative rules, we know that 
+        <m>\red{g'(x)} 
+          = \red{ \ddx{5-x^2} } = \red{-2x} </m> 
+        and that <m>\blue{f'(u)} 
+          = \blue{\ddu{ e^u }} = \blue{e^u} </m>
+      </p>
+      <p>
+        Now that we have done our scrap work, we can return to our original question 
+        <md>
+          <mrow>h'(x) = \amp 
+            \ddx{\blue{ e^{\big(\red{5-x^2}\big)} } }  
+          </mrow>
+          <mrow>= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }</mrow>
+          <mrow>= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}</mrow>
+        </md>
+        Substituting the values first for <m>\blue{f'}</m>, and then for  <m>\red{g}</m> and <m>\red{g'}</m>, into the above equation gives  
+        <md>
+          <mrow>h'(x) = \amp 
+            \blue{ e^{(\red{g(x)})} }\cdot \red{g'(x)}</mrow>
+          <mrow> = \amp 
+            \blue{ e^{(\red{5-x^2})} }\cdot \Big(\red{-2x}\Big)</mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+
+  <p>
+    In the previous two examples, there was a pattern that arose because outside function was <m>\blue{f(u)} = \blue{e^{u}}</m> in both cases.  This gives a new "optional shortcut" derivative rule. 
+    <me>
+      \ddx{ e^{g(x)}} = e^{g(x)} \cdot g'(x) 
+    </me>
+  </p>
+
+  <p>
+    The one last function we have studied in this course is the natural logarithm.  
+  </p>
+
+  <exercise xml:id="ex_powerrule_log1">
+    <statement>
+      <p>
+        Let <m>F(x) = \ln( 1- 2x^3)</m>.  Find <m>F'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          F'(x) = \ddx{ \blue{ \ln\big( \red{1-2x^3} \big) } }
+        </me>
+        This is a composition with argument 
+          <m>\red{g(x)} = \red{1-2x^3}</m> 
+        and outside function 
+          <m>\blue{f(u)} = \blue{ \ln(u) }</m>.  
+      </p>
+      <p>
+        Using our regular derivative rules, we know that 
+        <m>\red{g'(x)} 
+          = \red{ \ddx{1-2x^3} } = \red{-6x^2} </m> 
+        and that <m>\blue{f'(u)} 
+          = \blue{\ddu{ \ln(u) }} = \blue{\dfrac{1}{u}} </m>
+      </p>
+      <p>
+        Now that we have done our scrap work, we can return to our original question 
+        <md>
+          <mrow>F'(x) = \amp 
+            \ddx{\blue{ \ln\big(\red{1-2x^3}\big) } }  
+          </mrow>
+          <mrow>= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }</mrow>
+          <mrow>= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}</mrow>
+        </md>
+        Substituting the values first for <m>\blue{f'}= \frac{1}{u}</m>, and then for  <m>\red{g}</m> and <m>\red{g'}</m>, into the above equation gives  
+        <md>
+          <mrow>F'(x) = \amp 
+            \blue{ \frac{1}{\ \red{g(x)}\ } }\cdot \red{g'(x)}</mrow>
+          <mrow> = \amp 
+            \blue{ \frac{1}{\ \red{1-2x^3}}\ }\cdot \Big(\red{-6x^2}\Big)</mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+
+  <exercise  xml:id="ex_powerrule_log2">
+    <statement>
+      <p>
+        Let <m>y = \ln( x^2- 2x)</m>.  Find <m>y'</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          y'(x) = \ddx{ \blue{ \ln\big( \red{x^2- 2x} \big) } }
+        </me>
+        This is a composition with argument 
+          <m>\red{g(x)} = \red{x^2- 2x}</m> 
+        and outside function 
+          <m>\blue{f(u)} = \blue{ \ln(u) }</m>.  
+      </p>
+      <p>
+        Using our regular derivative rules, we know that 
+        <m>\red{g'(x)} 
+          = \red{ \ddx{x^2- 2x} } = \red{2x-2} </m> 
+        and that <m>\blue{f'(u)} 
+          = \blue{\ddu{ \ln(u) }} = \blue{\dfrac{1}{u}} </m>
+      </p>
+      <p>
+        Now that we have done our scrap work, we can return to our original question 
+        <md>
+          <mrow>y'(x) = \amp 
+            \ddx{\blue{ \ln\big(\red{x^2- 2x}\big) } }  
+          </mrow>
+          <mrow>= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }</mrow>
+          <mrow>= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}</mrow>
+        </md>
+        Substituting the values first for <m>\blue{f'}= \frac{1}{u}</m>, and then for  <m>\red{g}</m> and <m>\red{g'}</m>, into the above equation gives  
+        <md>
+          <mrow>y'(x) = \amp 
+            \blue{ \frac{1}{\ \red{g(x)}\ } }\cdot \red{g'(x)}</mrow>
+          <mrow> = \amp 
+            \blue{ \frac{1}{\ \red{x^2- 2x}}\ }\cdot \Big(\red{2x-2}\Big)</mrow>
+        </md>
+      </p>
+    </solution>
+  </exercise>
+
+  <p>
+    There is a pattern in the previous two examples, which results from the fact that in both cases, the outside function is <m>\blue{f(u)} = \blue{\ln(u)}</m>.  This gives another "optional shortcut" derivative rule
+    <me>
+      \ddx{\ln\Big( g(x) \Big)} = \dfrac{1}{\ g(x)\ }\cdot g'(x)
+    </me>
+  </p>
+
+  <exercise>
+    <statement>
+      <p>
+        Suppose that <m>b</m> is a constant base (not necessarily <m>e=2.714\dots</m>).  
+        Find a formula for <m>\displaystyle\ddx{ b^x } </m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        In this derivative, the variable <m>x</m> is in the exponent. The only related rule we have is the formula <m>\ddx{e^x}=e^x</m>, but this only applies when the base is <m>e=2.714\dots</m>. 
+      </p>
+      <p>
+        The trick is to use properties of exponentials and logarithms to rewrite the number <m>b</m> as <m>e^{\ln(b)}</m>. With that, we can find the derivative as follows
+      </p>
+      <p>
+        <md>
+          <mrow>\ddx{ b^{x} } = \amp \ddx{ \Big(e^{\ln(b)}\Big)^x } </mrow>
+          <mrow>= \amp \ddx{ \blue {e^{\big(\red{\ln(b)\cdot x}\big)} } } </mrow>
+        </md>
+        This is a chain rule problem, with outside function <m>\blue{f(u)}=\blue{e^u}</m> and inside function <m>\red{g(x)} = \red{\ln(b)\cdot x}</m>. Clearly, <m>\blue{f'} = \blue{e^u}</m>.  
+        And because  <m>b</m> and <m>\ln(b)</m> are constants, <m>\red{g'} = \red{\ddx{\ln(b)\cdot x}} = \red{\ln(b)}</m>
+      </p>
+      <p>
+        Now that we have done our scrap work, we can return to our original question 
+        <md>
+          <mrow>h'(x) = \amp 
+            \ddx{\blue{ e^{\big(\red{\ln(b)\cdot x}\big)} } }  
+          </mrow>
+          <mrow>= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }</mrow>
+          <mrow>= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}</mrow>
+        </md>
+        Substituting the values first for <m>\blue{f'}</m>, and then for  <m>\red{g}</m> and <m>\red{g'}</m>, into the above equation gives  
+        <md>
+          <mrow>h'(x) = \amp 
+            \blue{ e^{(\red{g(x)})} }\cdot \red{g'(x)}</mrow>
+          <mrow> = \amp 
+            \blue{ e^{(\red{\ln(b)\cdot x})} }\cdot \Big(\red{\ln(b)}\Big)</mrow>
+          <mrow>= \amp b^x \cdot \ln(b)</mrow>
+        </md>        
+      </p>
+    </solution>
+  </exercise>
+
+  <p>
+    The previous exercise gives us one last derivative rule.  If <m>b</m> is any constant number, 
+    <me>
+      \ddx{b^x} = b^x \cdot \ln(b)
+    </me>
+    For example, 
+    <me>
+      \ddx{5^x} = 5^x \cdot \ln(5)
+    </me>
+  </p>
+
+  <p>
+    In this chapter, we have learned many different derivative rules.  Make sure that you are 
+    <ol>
+      <li>
+        <p>
+          comfortable using the rules correctly and efficiently, and 
+        </p>
+      </li>
+      <li>
+        <p>
+          able to accurately identify which rule to use in any given situation. 
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <exploration xml:id="ex_complexchainrule">
+    <title>Be Careful When Deciding Which Rule To Use</title>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 15 \Big( \ln(x)\Big)^2</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Always start by setting up the derivative 
+          <me>
+            f'(x) = \ddx{ 15 \Big( \ln(x)\Big)^2}
+          </me>
+          Use order of operations to identify the outermost operation.
+          In case, after you pull the constant coefficient of 15 through the derivaitve, the outermost operation is the fact that <m>\red{g(x) = \ln(x)}</m> is inside the <em>power of 2 function</em> <m>\blue{f(u) = u^2}</m>
+          <md>
+            <mrow>f'(x)  \amp =  \ddx{ 15 \Big( \ln(x)\Big)^2} </mrow>
+            <mrow> \amp = 15  \ddx{ \blue{\Big( \red{\ln(x)}\Big)^2}} \amp \text{constant coefficient}</mrow>
+            <mrow> \amp = 15\cdot  2\cdot \Big( \ln(x)\Big)^{2-1}\ddx{\ln(x)} \amp \text{chain rule}</mrow>
+            <mrow> \amp = 30\cdot \Big( \ln(x)\Big)\dfrac{1}{x} </mrow>
+            <mrow> \amp = \dfrac{30\ln(x)}{x}</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = \ln(x) 15x^2</m>. Find <m>f'(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Always start by setting up the derivative 
+          <me>
+            f'(x) = \ddx{\ln(x) 15x^2}
+          </me>
+          Use order of operations to identify the outermost operation.  In this case, the function is the <alert>prodcut</alert> of <m>\ln(x)</m> and <m>15x^2</m>, so we must use the product rule 
+          <m>\D{f\cdot g} = f\cdot g' + g\cdot f' </m>.
+          <md>
+            <mrow>f'(x) = \amp \ddx{ \red{\ln(x)} \blue{15x^2} }</mrow> 
+            <mrow>= \amp \red{\ln(x)}\ddx{ \blue{15x^2} } + \blue{15x^2} \ddx{ \red{\ln(x)} }</mrow>
+            <mrow>= \amp \ln(x)\cdot 15\cdot 2x + 15x^2\cdot \frac{1}{x}</mrow>
+            <mrow>= \amp 30 x \ln(x) + 15x</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = \ln\big(15x^2\big)</m>.  
+          Find <m>f'(x)</m>. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Always start by setting up the derivative 
+          <me>
+            f'(x) = \ddx{\ln\big(15x^2\big)}
+          </me>
+          Use order of operations to identify the outermost operation.
+          In this case the outermost operation is the <alert>logarithmic function</alert> <m>\blue{f(u)} = \blue{\ln(u)}</m>, and the argument is <m>\red{g(x)} = \red{15x^2}</m>.  That means we can either use the full chain rule <m>\D{ f(g) } = f'(g)\cdot g'</m>, or we can use the shortcut <m>\D{\ln\big(g(x)\big)} = \frac{1}{g(x)}\cdot g'(x)</m>.  In either case, we get
+          <md>
+            <mrow>f'(x) = \amp \ddx{ \blue{\ln\big(\red{15x^2}\big)} }  </mrow>
+            <mrow>= \amp \blue{f'(\red{g(x)})}\cdot \ddx{\red{g(x)}}</mrow>
+            <mrow>= \amp \blue{\dfrac{1}{\ \red{15x^2} \ }}\cdot (\red{30x})  </mrow>
+            <mrow>= \amp \dfrac{30x}{15x^2}</mrow>
+            <mrow>= \amp \dfrac{2}{x}</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = e^{(\ln(x))^2}</m>.  Find <m>f'(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Always start by setting up the derivative 
+          <me>
+            f'(x) = \ddx{e^{(\ln(x))^2}}
+          </me>
+          Use order of operations to identify the outermost operation.
+          In this case the outermost operation is the <alert>exponential function</alert> <m>\blue{f(u)} = \blue{e^u}</m>, and the argument is <m>\red{g(x)} = \red{(\ln(x))^2}</m>.  That means we can either use the full chain rule <m>\D{ f(g) } = f'(g)\cdot g'</m>, or we can use the shortcut <m>\D{e^{g(x)}} = e^{g(x)}\cdot g'(x)</m>.  In either case, we get
+          <md>
+            <mrow>f'(x) \amp = \ddx{ \blue{e^{\red{(\ln(x))^2}}} }</mrow>
+            <mrow> \amp =  \blue{e^{\red{(\ln(x))^2}}} \ddx{ \red{(\ln(x))^2} }</mrow>
+          </md>
+          Now we must take the derivative of the inside function <m> {(\ln(x))^2}</m>.  This is also a composition with outside function <m>\blue{f(u)= u^2}</m> and inside function <m>\red{g(x) = \ln(x)}</m>. 
+          <md>
+            <mrow>\phantom{f'(x) } \amp = {e^{{(\ln(x))^2}}} 2\cdot  {(\ln(x))^{2-1}}\cdot \ddx{\ln(x)}</mrow>
+            <mrow> \amp = {e^{{(\ln(x))^2}}} 2\cdot  {(\ln(x))}\cdot \frac{1}{x}</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+</section>
+
+<section xml:id="sec-derivativesummary">
+  <title>List of All Derivative Rules</title>
+  
+
+  <assemblage xml:id="assemblage-derivativesummary">
+    <title>Complete List of Derivative Rules</title>
+    <p>
+      Suppose that <m>f,g</m> are differentiable functions of <m>x</m>, that <m>m,c</m> are constant numbers.  Then 
+      <ul>
+        <li>
+              <m>\D{c}=0</m>
+        </li>
+        <li>
+              <m>\D{m\cdot x+b}=m</m> and <m>\D{x} = 1</m>
+        </li>
+        <li>
+            <m>\D{x^m}=m\cdot x^{m-1}</m>
+        </li>
+        <li>
+            <m>\D{ c\cdot f(x)}=c\cdot \D{f(x)}</m>
+        </li>
+        <li>
+            <m>\D{f(x) \pm g(x)} = \D{f(x)} \pm \D{g(x)}</m>
+        </li>
+        <li>
+          <m>\D{ e^x } = e^x </m>
+        </li>
+        <li>
+          <m>\D{ \ln(x) } = \frac{1}{x}</m>
+        </li>
+        <li>
+          <m> \Big[f\cdot g\Big]' = f\cdot \Big[g\Big]' + g\cdot \Big[f\Big]' = f\cdot g' + g\cdot f' </m>
+        </li>
+        <li>
+          <m>\left[\dfrac{t}{b}\right]' = \dfrac{b\cdot t' - t\cdot b'}{(b)^2} </m>
+        </li>
+        <li>
+          <m>\D{ f(g) } = f'(g)\cdot g'</m>
+          <ul>
+            <li>
+              <m>\D{ \big(g(x)\big)^m } = m \big(g(x)\big)^{m-1}\cdot g'</m>
+            </li>
+            <li>
+              <m>\left[ \sqrt{g(x)} \right]' = \frac{1}{2}\Big( g(x) \Big)^{-1/2}\cdot g' </m>
+            </li>
+            <li>
+              <m>\D{ e^{g(x)} } = e^{g(x)}\cdot g'</m>
+            </li>
+            <li>
+              <m>\D{ \ln\big(g(x)\big) } = \dfrac{1}{g(x)}\cdot g'</m>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            If <m>b</m> is any constant number, <m>\D{ b^x } = b^x\cdot \ln(b)</m>
+          </p>
+        </li>
+      </ul>
+    </p>  
+  </assemblage>
+
+</section>
+
+</chapter>

@@ -1,0 +1,1352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_basicderivativerules" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Slope Shortcuts for Basic Functions</title>
+
+<introduction>
+  <p>
+    Before introducing the shortcut rules for finding slope functions, let's review where we have been so far. If <m>C(x) = </m> <alert>total</alert> cost of <m>x</m> items, then <m>C'</m> is the derivative function.  
+  </p>
+  <p>
+    More precisely, <m>C(5)</m> refers to the total cost of making items 1-5 in <em>dollars</em>, and <m>C'(5)</m> refers to <em>how fast</em> the total cost is changing when the number of items is 5 in <em>dollars <alert>per item</alert> </em>, which is equal to the <em>slope</em> of the cost function at <m>x=5</m>. 
+  </p>
+  <p>
+    Graphically, 
+    <image xml:id="img_reviewingtangent">
+      <latex-image>
+        \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+        \begin{tikzpicture}
+          \draw[axes] (-1,0)--(4,0);
+          \draw[axes] (0,-1)--(0,4);
+          
+          \drawtikzspline(-1,0,1,1,1,0);
+          \drawtikzspline(1,1,0,2,1,1);
+          %\drawtikzspline(2,1,1,3,2,2.1);
+          \drawtikzspline(2,1,1,3,1.5,1.5);
+
+          \draw [curve,domain=0.25:4,color=blue] plot ({\x},{(\x-2)+1}) node[right] {slope is $C'(5)$ in dollars/item}; 
+          \filldraw [color=red] (2,1) circle (2pt);
+          \node [below,color=red] at (2,0) {$5$};
+          \node [left,color=red] at (0,1) {  };
+          \draw[dashed,color=red] (2,0) -- (2,1) -- (0,1);
+
+        \end{tikzpicture}
+      </latex-image>    
+    </image>
+    Algebraically, <m>C'(x) = \displaystyle\lim_{\Delta x\rightarrow 0} \dfrac{\Delta y}{\Delta x} = \dfrac{dy}{dx}</m>
+  </p>
+  <p>
+    Our goal in this section will be to <em>find</em> or <em>take</em> the derivative of a given function.  We will use the following notation 
+    <me>
+      f'(x) = \dfrac{d}{dx}\Big[ \ f(x) \ \Big]
+    </me>
+    as a shorthand for the sentence 
+    "Find the derivative of <m>f(x)</m> with respect to <m>x</m>"
+  </p>
+  <p>
+    Some students find the <m>\ddx{\cdots}</m> notation difficult to read because of the large number of symbols involved. 
+    In that case, you can use an alternate notation:
+    <me>
+      f'(x) = \D{ f(x) } 
+    </me>
+    In this notation, we use square brackets with an apostraphe on the right to say "take the derivative of the function inside the brackets. " 
+  </p>
+</introduction>
+
+
+<section xml:id="sec_basicrules1">
+  <title>Basic Derivative Rules</title>
+  
+  <example>
+    <title>Slope of a Constant Function</title>
+    
+    <p>
+      Some functions always output the same number <m>c</m>, regardless of the input <m>x</m>.  These functions have the form <m>f(x) = c</m>, and their graphs are horizontal lines. 
+      <image xml:id="img_constantfn" width="50%">
+        <latex-image>
+          \begin{tikzpicture}
+            \draw[axes] (-1,0)--(4,0);
+            \draw[axes] (0,-1)--(0,4);
+            \draw[curve, dashed] (-1,3) -- (4,3) node [above right] {$f(x) = c$};
+            \node[above left] at (0,3) {$c$};
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+      This function is horizontal everywhere, so has a slope of <m>0</m> for all <m>x</m>.  In other words, we have 
+      <me>
+        f'(x) = \ddx{c} = 0 
+      </me>
+      which is the same as saying 
+      <me>
+        \D{ c } = 0
+      </me>
+      
+    </p>
+  </example>
+
+  <exploration>
+    <statement>
+      <p>
+        Let <m>f(x) = 3</m>.  Find <m>f'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <m>f'(x) = \ddx{3} = 0</m>
+      </p>
+      <p>
+        Equivalently, we could use our bracket notation to write <m>\D{ 3 } = 0</m>
+      </p>
+    </solution>
+  </exploration>
+
+  <example>
+    <title>Slope of a Linear Function</title>
+
+    <p>
+      Some functions are lines.  These functions have the form <m>f(x) = m x + b</m> for some number <m>m,b</m>. 
+      <image xml:id="img_linearfn" width="50%">
+        <latex-image>
+          \begin{tikzpicture}
+            \draw[axes] (-1,0)--(4,0);
+            \draw[axes] (0,-1)--(0,4);
+            \draw[grid] (-0.5,-0.5) grid (3.5,3.5);
+            \draw[curve, dashed] (-1,1) -- (4,3.5) node [above right] {$f(x) = c$};
+            \node[above left] at (0,3) {$c$};
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+
+      This function has the same slope everywhere, which is equal to the slope <m>m</m> of the line.  In other words, we have 
+      <me>
+        f'(x) = \ddx{ m x + b } = m  
+      </me>
+      which is the same as saying 
+      <me>
+        \D{ m x + b} = m
+      </me>
+    </p>    
+  </example>
+
+  <exploration>
+    <statement>
+      <p>
+        Let <m>f(x) = 3x + 2</m>.  Find <m>f'(x) </m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <m>f'(x) = \ddx{3x + 2} = 3</m>
+      </p>
+      <p>
+        Equivalently, we could use our bracket notation to write <m>\D{ 3x + 2} = 3</m>
+      </p>
+    </solution>
+  </exploration>
+
+  <paragraphs>
+    <title>Slopes of Lines and Constant Functions</title>
+    <p>
+      Suppose that <m>c,m,b</m> are constant numbers.  We have the following derivative shortcuts
+    </p>
+    <ul>
+      <li>  
+        <m>\ddx{c} = 0</m>
+      </li>
+      <li>
+          <m>\ddx{m\cdot x + b} = m</m>
+      </li>
+      <li>
+          <m>\ddx{x} = 1</m>
+      </li>
+    </ul>
+    In bracket notation, this is
+    <ul>
+      <li>  
+        <m>\D{c} = 0</m>
+      </li>
+      <li>
+          <m>\D{m\cdot x + b} = m</m>
+      </li>
+      <li>
+          <m>\D{x} = 1</m>
+      </li>
+    </ul>
+  </paragraphs>
+
+  <p>
+    More complex functions need derivative <em>templates</em> or <em>shortcut rules</em>.  
+    For example, the function <m>f(x) = x^2</m> has <em>different slopes</em> at different values of <m>x</m>.
+          <interactive platform="jsxgraph" width="30%" preview="jsxgraph-findingslopefromtangent-exercise2b.png">
+            <slate xml:id="jsxgraph-findingslopefromtangent-exercise2b"  surface="jessiecode" axis="true" grid="true" >
+              $board.setBoundingBox( [ -2, 2, 2, -2 ] , keepaspectratio=true) ;
+
+              xslider = slider(
+                    // Specify slider location
+                      [0.25,-1.25], [1.5,-1.25], 
+                    // Specify smallest/starting/largest value for slider
+                      [-2,0.5,2])
+                  &lt;&lt;
+                      name:"a",
+                      snapWidth:0.1
+                  &gt;&gt;  ;      
+
+                f1 = function(x) { 
+                  return x^2 ; 
+                } ;
+                tangentline = function(x) {
+                  x0 =  xslider.Value();
+                  m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                  return m*(x-x0) + f1(x0) ; 
+                } ;
+
+                // Graph the function and 
+                f1Graph = functiongraph( f1 )  
+                  &lt;&lt; 
+                      strokeColor:"blue"  
+                  &gt;&gt;;
+                tangentGraph = functiongraph( tangentline )  
+                  &lt;&lt; 
+                      strokeColor:"black",
+                      dash:3  
+                  &gt;&gt;;
+                text( -1.75,-0.75,function() {
+                      x0 =  xslider.Value();
+                      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                      return  "f \' (" + trunc(x0,2) + ") = "+ trunc(m,2);
+                      } 
+                    ) 
+                          &lt;&lt; 
+                            color:"black",
+                            fontSize:16
+                          &gt;&gt; ;
+
+                // Graph the lines from the point to the x and y axis
+                //    (put these first so they go behind the function and points)
+                line( [function() {return xslider.Value();} ,
+                            function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                          &lt;&lt; 
+                            color:"red",
+                            straightFirst:false, 
+                            straightLast:false,
+                            dash:1
+                          &gt;&gt; ;
+                line( [function() {return xslider.Value();} ,
+                            function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                          &lt;&lt; 
+                            color:"red",
+                            straightFirst:false, 
+                            straightLast:false,
+                            dash:1
+                          &gt;&gt; ;
+
+
+                // Graph point that follows the function
+                point( function() {return xslider.Value();} ,
+                            function() {return f1(xslider.Value());}) 
+                          &lt;&lt; 
+                            name:"(a,f(a))",
+                            color:"red" 
+                          &gt;&gt; ;
+                text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                          &lt;&lt; 
+                            color:"red" 
+                          &gt;&gt; ;
+                text( function() {return xslider.Value();} , -0.25 , "a") 
+                          &lt;&lt; 
+                            color:"red" 
+                          &gt;&gt; ;
+
+            </slate>
+          </interactive>
+    The same thing is true for other power functions like <m>x^3</m>, <m>x^4</m>, <m>x^{1/2}</m>, <m>x^{-5}</m>, and so on.
+  </p>
+
+  <p>
+    In <xref ref="explore_derivativeofx2"/>, we showed that when <m>f(x) = x^2</m>, then <m>f'(x) = 2x</m> using the limit definition of the derivative.
+  </p>
+  <p>
+    In theory, you could use the limit definition of the derivative to find <m>f'</m> for <em>every</em> power function <m>f(x) = x^m</m> for any constant power <m>m</m>.  
+    Fortunately, there is a pattern in these derivatives which gives a much easier formula to remember.
+  </p>
+  
+  <paragraphs>
+    <title>The Power Rule</title>
+    
+    <p>
+      If the exponent <m>m</m> is a constant number, 
+      <me>
+        \dfrac{d}{dx}\Big[   {\color{blue} x}^{\color{red} m}= {\color{red} m} \cdot {\color{blue} x}^{{\color{red} m}-1} \Big] 
+      </me>
+    </p>
+    <p>
+      In bracket notation, this is 
+      <me>
+        \D{x^m} = m \cdot x^{m-1}
+      </me>
+      
+    </p>
+  </paragraphs>
+
+  <exploration xml:id="ex_usingslopefn">
+    <statement>
+      <p> Find the slope of 
+        Let <m>f(x) = x^4</m>.  Find the slope of <m>f</m> at <m>x=10</m>, at <m>x=-10</m>, and at <m>x=0</m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        First, we must find the slope function using the power rule
+        <me>
+          f'(x) = \ddx{x^4} = 4 \cdot x^{4-1} = 4 x^3
+        </me>
+        In bracket notation, this is 
+        <me>
+          f'(x) = \D{x^4} = 4 x^{4-1} = 4x^3
+        </me>
+      </p>
+      <p>
+        Next, we can use the  <em>slope function</em> to find the slope at each given <m>x</m> value. 
+        <dl>
+          <li>
+            <title>Slope at <m>x=10</m></title>
+            <p> <m>f'(10) = 4 \cdot 10^3 = 4000 </m> </p>
+          </li>
+          <li>
+            <title>Slope at <m>x=-10</m></title>
+            <p> <m>f'(-10) = 4 \cdot (-10)^3 = -4000 </m> </p>
+          </li>
+          <li>
+            <title>Slope at <m>x=10</m></title>
+            <p> <m>f'(0) = 4 \cdot (0)^3 = 0 </m> </p>
+          </li>
+        </dl>
+        
+      </p>
+    </solution>
+  </exploration>
+  
+
+  <exploration xml:id="ex_powerruleroots">
+    <statement>
+      <p>
+        Let <m>f(x) = \sqrt[4]{x^3} </m>. 
+        Find <m>f'(x)</m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        We always start by <em>setting up the right notation</em>
+        <me>
+          f'(x) = \dfrac{d}{dx}\Big[  \sqrt[4]{x^3} \Big]
+        </me>
+        Now, we need to find a derivative rule to apply. So far, the rule we have are 
+        <m>\ddx{c} = 0</m>, <m>\ddx{mx+b} = m</m>, and <m>\ddx{x^m} = m\cdot x^{m-1}</m>. 
+        None of those rules have a root in them.  Fortunately, we can use our knowledge of algebra to rewrite the <em>original function</em> (without taking the derivative) to see that <m>\sqrt[4]{x^3} = x^{3/4}</m>.  That means we can rewrite the derivative as follows
+        <md>
+          <mrow> f'(x) = \amp \dfrac{d}{dx}\Big[  \sqrt[4]{x^3} \Big] </mrow>
+          <mrow> =  \amp \dfrac{d}{dx}\Big[  {\color{blue} x}^{\color{red} 3/4}  \Big]</mrow>
+        </md>
+        Now we can use the power rule  
+        <m>
+          \dfrac{d}{dx}\Big[   {\color{blue} x}^{\color{red} m}= {\color{red} m}\cdot {\color{blue} x}^{{\color{red} m}-1} \Big] 
+        </m>
+        <md>
+          <mrow> = \amp {\color{red} 3/4} \cdot {\color{blue} x}^{{\color{red} 3/4}-1} </mrow>
+          <mrow> = \amp \frac{3}{4} \cdot x^{-1/4} </mrow>
+        </md>
+        This is an acceptable answer, but you can also rewrite if you like
+        <md>
+          <mrow> = \amp \frac{3}{4} \cdot \dfrac{1}{\sqrt[4]{x}} </mrow>
+        </md>
+      </p>
+    </solution>
+  </exploration>
+
+  <p>
+    Square roots are particularly common, so it may be helpful to remember a specific derivative rule for square roots. 
+  </p>
+
+  <corollary xml:id="cor_powerruleroots">
+    <statement>
+      <p>
+        Let <m>f(x) = \sqrt{x}</m>.  Then <m>f'(x) = \frac{1}{2} x^{-1/2}</m>
+      </p>
+    </statement>
+  </corollary>
+  <proof>
+    <p>
+      Recall from <em>algebra</em> that roots correspond to fractional powers.  In particular<m>\sqrt{x} = x^{1/2}</m>.  
+      Using this, 
+      <md>
+        <mrow>f'(x) \amp = \ddx{x^{1/2}} </mrow>
+        <mrow> \amp = \frac{1}{2} x^{1/2 - 1}</mrow>
+        <mrow> \amp = \frac{1}{2} x^{-1/2}</mrow>
+      </md>
+    </p>
+  </proof>
+
+  <p>
+    After enough practice, you should be able to use the derivative shortcut rules in this section off the top of your head. 
+  </p>
+  <p>
+    But we will eventually learn much more complicated derivative rules, and need to apply them to more complicated functions.  To help build the skills you will need to do this, it is important to <em>learn how to use the shortcuts using <m>\dfrac{d}{dx}\Big[\dots\Big]</m> or <m>[ \dots ]'</m> notation </em>. 
+  </p>
+  <p>
+    Recall from section <xref ref="sec-combining_functions"/> that can break more compex functions into combinations of simpler funtions.  
+    Mathematically, we say that we build functions <em>recursively</em> (layer by layer) from the inside out.
+  </p>
+  <p>
+    As a simple example, <m>f(x) = 3x^2</m> is build by taking <m>x^2</m>, and then tripling it.  In other words, <m>f(x) = triple(x^2) </m>. 
+  </p>
+  <p>
+    Our derivative rules will allow us to compute derivatives from the outside in (removing one layer at a time). 
+  </p>
+
+  <paragraphs>
+    <title>Derivatives and Constant Coefficients</title>
+    <p>
+      If <m>c</m> is a constant number,m and <m>f(x)</m> is any differentiable function, 
+      <me>
+        \dfrac{d}{dx}\Big[c\cdot f(x) \Big] = c\cdot \dfrac{d}{dx}\Big[f(x)\Big]
+      </me>
+      In bracket notation, this is 
+      <me>
+        \D{c \cdot f(x)}  = c\cdot \D{f(x)}
+      </me>
+    </p>
+  </paragraphs>
+
+  <exploration xml:id="ex_coefficientrule1">
+    <statement>
+      <p>
+        Let <m>f(x) = 3x^2</m>.  Find <m>\dfrac{df}{dx}</m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Recall that <m>\dfrac{df}{dx}</m> is just another way of saying <m>f'(x)</m>.
+        So we can start by writing 
+        <me>
+          f'(x) = \dfrac{d}{dx}\Big[ 3x^2 \Big]
+        </me>
+        Now, we must use one of the four rules we have so far: 
+         <m>\ddx{c} = 0</m>, <m>\ddx{mx+b} = m</m>, <m>\ddx{x^m} = m\cdot x^{m-1}</m>, and <m>\dfrac{d}{dx}\Big[c\cdot f(x)\Big] = c\cdot \dfrac{d}{dx}\Big[f(x)\Big]</m>.  
+      </p>
+      <p>
+        The only rule that can handle the coefficient of <m>3</m> is the last one: 
+        <m>\dfrac{d}{dx}\Big[ {\color{red}c}\cdot {\color{blue}f(x)}
+            \Big]
+            = 
+            {\color{red} c}\cdot \dfrac{d}{dx}\Big[\color{blue} f(x)\Big]</m>
+        That means we must interpret the problem as follows, first using the coefficient rule, and then using the power rule`
+        <md>
+          <mrow>f'(x) =  \amp \dfrac{d}{dx}\Big[{\color{red} 3}\cdot {\color{blue}x^2} \Big]</mrow>
+          <mrow>= \amp {\color{red} 3}  \cdot \ddx{{\color{blue}x^2} } </mrow>
+          <mrow>= \amp 3 \cdot 2\cdot x^{2-1}</mrow>
+          <mrow>= \amp 6\cdot x^{1}</mrow>
+          <mrow>= \amp 6\cdot x</mrow>
+        </md>
+
+      </p>
+      <p>
+        In bracket notation, the computation is exactly the same
+        <me>
+          \D{3x^2} = 3\D{x^2} = 3\cdot 2 x^1 = 6x
+        </me>
+        
+      </p>
+    </solution>
+  </exploration>
+
+  <p>
+    In words, the constant coefficient rule says that you can <em>pull constant coefficients through the derivative.</em>
+  </p>
+
+  <exploration xml:id="ex_coefficientrule2">
+    <statement>
+      <p>
+        Let <m>f(x) = \dfrac{-2}{x}</m>. 
+        Find <m>f'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        The first step is <em>always</em> to set up the problem in <m>\ddx{\dots}</m> or <m>[ \dots ]'</m>.
+        <me>
+          f'(x) = \ddxfrac{ \dfrac{-2}{x} }
+        </me>
+        Next, we look at our list of derivative rules 
+        <m>\ddx{c}=0</m>, <m>\ddx{mx+b}=m</m>, <m>\ddx{x^m}=mx^{m-1}</m>, and <m>\ddx{ cf(x)}=c\ddx{f(x)}</m>.
+      </p>
+      <p>
+        Unfortunately, none of these apply as written.  
+        That  means that you need to <alert>rewrite</alert> the original function <em>before</em> we can apply any rules.  
+        Here, we can use  the basic property of algebra that <m>\frac{1}{x} = x^{-1}</m>
+        <md>
+          <mrow> f'(x)  = \amp  \ddxfrac{ \dfrac{-2}{x} }</mrow>
+          <mrow>= \amp \ddx{ {\red -2} \cdot {\blue x^{-1} } }</mrow>
+        </md>
+        Now we can apply the derivative rule <m>\ddx{ \red c} {\blue f(x) } = {\red c} \ddx{\blue f(x) }</m>
+        <md>
+          <mrow>= \amp \ddx{ {\red -2} \cdot { \blue x^{-1} } }</mrow>
+          <mrow>= \amp {\red -2} \cdot \ddx{ {\blue x^{-1} } }</mrow>
+        </md>
+        Now we can use the power rule <m>\ddx{ {\blue x}^{\green m} } = {\green m}\cdot {\blue x}^{{\green m}-1} </m>
+        <md>
+          <mrow>= \amp { -2} \cdot \ddx{ {\blue x}^{\green -1}  }</mrow>
+          <mrow>= \amp { -2} \cdot {\green -1} { {\blue x}^{{\green -1} -1 }  }</mrow>
+          <mrow>= \amp { -2} \cdot { -1} { { x}^{-2 }  }</mrow>
+          <mrow>= \amp 2 { { x}^{-2 }  } = 2\dfrac{1}{x^2} = \dfrac{2}{x^2} </mrow>
+        </md>
+      </p>
+    </solution>
+  </exploration>
+
+    <p>
+      The key idea of each of the computation above is that derivative rules attack functions from the outside in.  
+    </p>
+
+    <paragraphs>
+      <title>Derivatives of Sums and Differences</title>
+      <p>
+        Suppose that <m>f(x)</m> and <m>g(x)</m> are differentiable functions.  Then 
+        <me>
+          \ddx{ f(x) + g(x) } = \ddx{f(x)} + \ddx{g(x)}
+        </me>
+        and 
+        <me>
+          \ddx{f(x) - g(x) } = \ddx{f(x) } - \ddx{g(x)}
+        </me>
+        In bracket notation, this is written 
+        <m>\D{f(x) + g(x)} = \D{f(x)} + \D{g(x)} </m> 
+        and
+        <m>\D{f(x) - g(x)} = \D{f(x)} - \D{g(x)} </m>
+      </p>
+    </paragraphs>
+    
+    <exploration xml:id="ex_summdifferencerule">
+      <statement>
+        <p>
+          Let <m>f(x) = 15x^4 + 2x^{-1} + 13</m>. 
+          Find <m>f'(x)</m>, and find the slope of <m>f</m> at <m>x=2</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          As always, we need to set up 
+          <me>
+            f'(x) = \ddx{ 15x^4 + 2x^{-1} + 13 }
+          </me>
+          and we look at our list of derivative rules 
+          <m>\ddx{c}=0</m>, <m>\ddx{mx+b}=m</m>, <m>\ddx{x^m}=mx^{m-1}</m>,  <m>\ddx{\frac cf(x)}=c\ddx{f(x)}</m>, and <m>\ddx{f(x) \pm g(x)} = \ddx{f(x)} \pm \ddx{g(x)}</m>.
+        </p>
+        <p>
+          How do we decide which rule we can use?  
+          We use the order of operations to figure out the "outermost" or "weakest" operation.  
+          Following the acronym PEMDAS, subtraction and addition are the <em>weakest</em> operations, so we can think of the expression as 
+          <me>
+            f'(x) = \ddx{ \red{15x^4} + \red{2x^{-1}} + \red{13} }
+          </me>
+          Now we have the derivative of a sum, which is equal to the sum of the derivatives 
+          <me>
+            f'(x) = \ddx{ \red{15x^4} } + \ddx{ \red{2x^{-1} } } + \ddx{\red{13}} 
+          </me>
+          Using the other, more familiar rules we can now compute 
+          <md>
+            <mrow>= \amp 15\ddx{x^4} + 2\ddx{x^{-1}} + \ddx{13}</mrow>
+            <mrow>= \amp 15\cdot 4x^3 + 2\cdot -1 x^{-2} + 0</mrow>
+            <mrow>= \amp 60x^3 - 2 x^{-2} = 60 x^3 - \dfrac{2}{x^2}</mrow>
+          </md>
+        </p>
+        <p>
+          To find the slope at <m>x=2</m>, just plug 2 into the formula for <m>f'(x)</m>. 
+          <me>
+            f'(2) = 60 \cdot 2^3 - 2\cdot \frac{1}{2^2} = 480 - 0.5 = 479.5
+          </me>
+          
+        </p>
+      </solution>
+    </exploration>
+
+    <assemblage xml:id="assemblage-basicderivatives">
+      <title>Basic Derivative Rules</title>
+      <p>
+        Suppose that <m>f,g</m> are differentiable functions of <m>x</m>, that <m>m,c</m> are constant numbers.  Then 
+        <ul>
+          <li>
+               <m>\ddx{c}=0</m>
+          </li>
+          <li>
+               <m>\ddx{m\cdot x+b}=m</m> and <m>\ddx{x} = 1</m>
+          </li>
+          <li>
+              <m>\ddx{x^m}=m\cdot x^{m-1}</m>
+          </li>
+          <li>
+            <m>\ddx{ \sqrt{x}}=\frac{1}{2}\cdot x^{-1/2}</m>
+          </li>
+          <li>
+              <m>\ddx{ c\cdot f(x)}=c\cdot \ddx{f(x)}</m>
+          </li>
+          <li>
+              <m>\ddx{f(x) \pm g(x)} = \ddx{f(x)} \pm \ddx{g(x)}</m>
+          </li>
+        </ul>
+      </p>  
+      <p>
+        <alert>Danger!</alert> The derivative rules for <m>\times</m> and <m>\div</m> are <em>much</em> more complicated.  We will address those rules in a later section.
+      </p>
+      <p>
+        In bracket notation, these rules are written 
+       <ul>
+          <li>
+               <m>\D{c}=0</m>
+          </li>
+          <li>
+               <m>\D{m\cdot x+b} =m</m> and <m>[x]' = 1 </m>
+          </li>
+          <li>
+              <m>\D{x^m} =m\cdot x^{m-1}</m>
+          </li>
+          <li>
+            <m>\D{\sqrt{x}}=\frac{1}{2}\cdot x^{-1/2}</m>
+          </li>
+          <li>
+              <m>\D{ c\cdot f(x)} =c\cdot \D{f(x)}</m>
+          </li>
+          <li>
+              <m>\D{f(x) \pm g(x)}  = \D{f(x)} \pm \D{g(x)}</m>
+          </li>
+        </ul>      
+      </p>
+    </assemblage>
+
+  <exploration xml:id="ex_basicderivativesprofit">
+    <statement>
+      <p>
+        Suppose that the total profit in the scenario where you sell <m>x</m> items is equal to <m>P(x) = -0.1x^2 + 30x - 10</m>. 
+        Find how fast the profit is changing when <m>x=100</m> items, and when <m>x=200</m> items.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        We will study many applications of derivatives, beginning in the next section.  For now, recall that if <m>y=P(x)</m> gives the <em>total</em> profit in $ in the scenario when you sell <m>x</m> items, then the <em>slope of profit</em> <m>P'(x)</m> is in $/item, and tells you approximately how much a single additional item will change the total proift. 
+      </p>
+      <p>
+        The first step is to find the slope function by writing 
+        <md>
+          <mrow>P'(x) = \amp \ddx{ -0.1x^2 + 30x - 10 } </mrow>
+          <mrow>= \amp \ddx{ \red{-0.1x^2} + \red{30x} - \red{10} } </mrow>
+          <mrow> = \amp \ddx{\red{-0.1x^2}} + \ddx{\red{30x}} - \ddx{ \red{10} }  </mrow>
+          <mrow> = \amp \ddx{ \red{-0.1}\blue{x^2} } + \ddx{ \red{30} \blue{x} } - \ddx{ 10}  </mrow>
+          <mrow> = \amp \red{-0.1} \ddx{ \blue{x^2} } + \red{30}\ddx{ \blue{x} } - \ddx{ 10}  </mrow>
+          <mrow> = \amp { -0.1} \ddx{ \blue{x}^{\red{2}} } + {30}\ddx{ \blue{x} }  - \ddx{ 10}  </mrow>
+          <mrow> = \amp { -0.1} \cdot{ \red{2} \blue{x}^{\red{2}-1}} + {30} \cdot{ 1 } - \ddx{ 10}  </mrow>
+          <mrow> = \amp { -0.1} \cdot 2 \blue{x}^{1} + {30} \cdot{ 1 } - 0 </mrow>
+          <mrow> = \amp -0.2 x + 30  </mrow>
+        </md>
+      </p>
+      <p>
+        In the scenario where you are selling <m>x=100</m> items, we have
+        <me>
+          P'(100) = -0.2(100) + 30 = 10
+        </me>
+        in $/item. 
+        In other words, selling an additional item (going from 100 to 101 items) will <em>increase</em> total profit by approximately 10$ for that single item.
+      </p>
+      <p>
+        In the scenario where you are selling <m>x=100</m> items, we have
+        <me>
+          P'(200) = -0.2(200) + 30 = -10
+        </me>
+        in $/item. 
+        In other words, selling an additional item (going from 200 to 201 items) will <em>decrease</em> total profit by approximately 10$ for that single item.
+      </p>
+    </solution>
+  </exploration>
+
+  <p>
+    We will frequently have questions that combine <em>several</em> of the strategies and concepts that we have learned in this course.  These are often called <em>synthesis problems</em>. 
+  </p>
+  <p>
+     Finding the equation for tangent lines is a classic kind of synthesis problem.
+  </p>
+  <exploration xml:id="ex_basicderivativestangent">
+    <statement>
+      <p>
+        Let <m>f(x) = 3x^2 - 2x + 4</m>.
+        Find the equation for the line tangent to <m>f(x)</m> at <m>x=1</m>. 
+      </p>
+    </statement>
+    <solution>
+      <p>
+        We want to find the equation of a <em>line</em>.  That means we will need to use point slope form
+        <me>
+          y = \red{m} (x- \red{x_1}) + \red{y_1}
+        </me>
+        Furthermore, we want the line to pass through our function at the point <m>x=1</m>, <em>and</em> we want the line to have the same slope as our function at this point.
+      </p>
+      <p>
+        To make sure the line passes through our curve, we set
+        <me>
+          x_1 = 1
+        </me>
+        and 
+        <me>y_1 = f(1) = 3\cdot 1^2 - 2\cdot 1 + 4 = 5</me>
+      </p>
+      <p>
+        To make sure the slope of this line matches the slope of the curve, we want to set 
+        <me>
+          m = f'(1)
+        </me>
+        That means to find <m>m</m>, we first need an equation for <m>f'(x)</m>. 
+        <md>
+          <mrow>f'(x) = \amp \ddx{ 3x^2 - 2x + 4} </mrow>
+          <mrow>= \amp \ddx{3x^2} - \ddx{2x} + \ddx{4} </mrow>
+          <mrow>= \amp 3\ddx{x^2} - 2\ddx{x} + \ddx{4} </mrow>
+          <mrow>= \amp 3\cdot 2x - 2\cdot 1 + 0 </mrow>
+          <mrow>= \amp 6x -2</mrow>
+        </md>
+        That means that 
+        <me>
+          m=f'(1) = 6\cdot 1 -2 =4
+        </me>
+        Putting this all together, the equation for the line tangent to <m>f</m> at <m>x=1 </m> is 
+        <me>
+          y = 4 (x-1) + 5
+        </me>
+        If you wanted, you could simplify this to get 
+        <me>
+          y = 4x + 1
+        </me>
+      </p>
+    </solution>
+  </exploration>
+
+  <exploration xml:id="ex_basicderivatives_synthesis">
+    <statement>
+      <p>
+        Suppose that under current market conditions, your revenue is going up at 5$/unit and that your costs are going up at 12 $/unit.  How fast is your cost changing?
+      </p>
+    </statement>
+    <solution>
+      <p>
+        The key concept here is to remember that 
+        <me>
+          \text{Profit} = \text{Revenue} - \text{Cost}
+        </me>
+        Mathematically, this is 
+        <me>
+          P(x) = R(x) - C(x)
+        </me>
+        To understand <em>how fast profit is changing</em>, we must take the <em>derivative</em> of profit
+        <me>
+          P'(x) = \ddx{ R(x) - C(x) }
+        </me>
+        Using our derivative rules, 
+        <md>
+          <mrow>P'(x) = \amp \ddx{R(x) } - \ddx{C(x)} </mrow>
+          <mrow>= \amp R'(x) - C'(x)</mrow>
+        </md>
+        In the text of the problem, we are told the values of <m>R'</m> and <m>C'</m> that "under current market conditions".  In other words, we are told <m>R'(x) = 5</m> and <m>C'(x)=12</m> for whatever the "current" value of <m>x</m> is.  That means we can plug this information into our formula for <m>P'</m>
+        <me>
+          P'(x) = 5 - 12 = -7
+        </me>
+        Under current market conditions (for the current value of <m>x</m>), profit is decreasing by 7 $/item. 
+      </p>
+    </solution>
+  </exploration>
+
+  <exploration xml:id="ex_basicderivatives">
+    <task>
+      <statement>
+        <p>
+          Suppose that <m>f(x) = 17x - 3</m>.  Find <m>f'(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          There are two ways to find this derivative.  First, note that <m>f(x) = \red{ 17} x - {\blue 3} = {\red m} x + {\blue b} </m> where <m>m=17</m> and <m>b=-3</m>.  Using the shortcut <m>[mx + b]' = m</m>, we get
+          <me>
+            [mx + b]' = 17
+          </me>
+        </p>
+        <p>
+          You can also find this derivative using the formula for derivatives of sums and differences, for constant coefficients <m>[m\cdot f(x)]' = m\cdot [f(x)]'</m> and the formulas  <m>[x]' = 1</m> and <m>[m]' = 0</m> for any number <m>m</m>.
+          <md>
+            <mrow>[ \red{ 17x}  - {\blue 3}] \amp = [17x]' - [3]' \amp \text{sum rule}</mrow>
+            <mrow> \amp = 17[x]' - [3]' \amp \text{coefficient rule}</mrow>
+            <mrow> \amp = 17\cdot 1 - 0\amp\text{basic rules}</mrow>
+            <mrow> \amp = 17</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 6x^5</m>.  Find <m>f'(x)</m>. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>[6x^5]' \amp = 6\cdot [x^5]' \amp \text{coefficient rule}</mrow>
+            <mrow> \amp = 6\cdot 5x^4 \amp\text{power rule}</mrow>
+            <mrow> \amp = 30 x^4</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 5 - 2 x^7 + 3x</m>.  Find <m>f'(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>[5 - 2x^5 + 3x]' \amp = [5]' - [2x^7]' + [3x]' \amp \text{sum rule}</mrow>
+            <mrow> \amp = [5]' - 2\cdot [x^7]' + 3\cdot[x]' \amp \text{coefficient rule}</mrow>
+            <mrow> \amp = [5]' - 2\cdot 7 x^6 + 3\cdot[x]' \amp\text{power rule}</mrow>
+            <mrow> \amp = 0 - 14 x^6 + 3\cdot 1 \amp\text{basic rules}</mrow>
+            <mrow> \amp = -14x^6 + 3</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = \dfrac{3}{x} + \dfrac{5}{x^2}</m>.  
+          Find <m>f'(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that <m>\frac{3}{x} = 3\frac{1}{x} = 3\cdot x^{-1}</m> and that <m>\frac{5}{x^2} = 5\cdot\frac{1}{x^2} = 5\cdot x^{-2}</m>. 
+          That means we are being asked to find  
+          <md>
+            <mrow>[3x^{-1} + 5x^{-2}]' \amp = [3x^{-1}]' + [5x^{-2}]' </mrow>
+            <mrow> \amp = 3[x^{-1}]' + 5[x^{-2}]' </mrow>
+            <mrow> \amp = 3(-1) x^{-1-1} + 5(-2)x^{-2-1}</mrow>
+            <mrow> \amp = -3 x^{-2} - 10 x^{-3}</mrow>
+            <mrow> \amp = \dfrac{-3}{x^2} - \dfrac{10}{x^3}</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 3\sqrt{x} - 2 \sqrt[4]{x}</m>.  Find <m>f'(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that <m>\sqrt{x} = x^{1/2}</m> and that <m>\sqrt[4]{x} = x^{1/4}</m>.  That means that we are asked to compute 
+          <md>
+            <mrow> [3 x^{1/2} - 2 x^{1/4}]' \amp = [3x^{0.5} - 2x^{0.25}]'</mrow>
+            <mrow> \amp =  [3 x^{0.5}]' - [2 x^{0.25}]'</mrow>
+            <mrow> \amp = 3[x^{0.5}]' -2[x^{0.25}]' </mrow>
+            <mrow> \amp = 3\cdot 0.5x^{0.5-1} - 2\cdot 0.25x^{0.25-1}</mrow>
+            <mrow> \amp = </mrow>
+            <mrow> \amp = 1.5 x^{-1/2} - 0.5 x^{-3/4}</mrow>
+            <mrow> \amp = 1.5 \frac{1}{\sqrt{x}} - 0.5 \frac{1}{\sqrt[4]{x^3}}</mrow>
+          </md>
+          In most problems, you get to chose how to write your answer.  For example, you don't need to do all of the simplifications above. 
+          They are shown here to remind you of some algebra that you might need to do in other problems. 
+        </p> 
+        <p>
+          A perfectly acceptable answer to this question would be something like 
+          <me>
+            f'(x) = 1.5 x^{-0.5} - 0.5 x^{-0.75}
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = \dfrac{5}{\sqrt[3]{x}}</m>.  Find the equation for the line tangent to <m>f(x)</m> at <m>x=1</m>. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that the equation of the line tangent to <m>f(x)</m> at <m>x=1</m> will have the form 
+          <me>
+            y = \red{ m} (x - \blue{ {x_1}}) + \green{{ y_1}}
+          </me>
+          where <m>\blue{x_1} = \blue 1</m>, <m>\green{y_1} = \green{ f(1)}</m>, and <m>\red m = \red{ f'(1)}</m>.  We can immediately compute 
+          <me>
+            \green{ y_1} = \green{f(1)} = \green{\dfrac{5}{\sqrt[3]{1}}} = \green{5}
+          </me>
+          To find <m>\red m</m>, we first need an equation for <m>f'(x)</m>. 
+          <md>
+            <mrow>f'(x) \amp  = \left[ \dfrac{5}{\sqrt[3]{x}} \right]'</mrow>
+            <mrow> \amp = [ 5x^{-1/3}]'</mrow>
+            <mrow> \amp = [5 x^{-0.333\dots}]'</mrow>
+            <mrow> \amp = 5 [ x^{-0.333\dots}]'</mrow>
+            <mrow> \amp = 5 \cdot (-0.333) x^{-0.333-1}</mrow>
+            <mrow> \amp = 5 \cdot (-0.333) x^{-1.333}</mrow>
+          </md>
+          Using this, we can find that 
+          <me>
+            \red m = f'(1) = 5\cdot (-0.333)\cdot 1^{-1.333} = -1.666\dots
+          </me>
+          Putting it all together, we get that the equation for the tangent line to <m>y = f(x)</m> at <m>x=1</m> is 
+          <me>
+            y = \red{-1.666} (x-\blue{1}) + \green{5}
+          </me>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+
+  <assemblage>
+    <title>Tips for Taking Derivatives</title>
+    <p>
+      <ol>
+        <li>
+          <p>
+            Always start by writing down 
+            <me>
+              f'(x) = \ddx{\dots}
+            </me>, 
+            filling in the original function you are given. 
+          </p>
+        </li>
+        <li>
+          <p>
+            Write down the derivative rules every time you use them.  To identify which rules you are <em>allowed</em>, think about Order of Operations (PEMDAS).  You will be able to use the rule that goes along with the <em>weakest</em> operation that you see in your expression. 
+          </p>
+        </li>
+        <li>
+          <p>
+            If you cannot use any derivative rule with the function as written, use algebra to rewrite the <em>original</em> function.  
+          </p>
+          <ul>
+            <li>
+              <p>
+                For example, rewriting
+                <m>
+                  \dfrac{5}{x^2} = 5\dfrac{1}{x^2} = 5x^{-2}
+                </m>
+                can help you find the derivative of 
+                <me>
+                  \ddxfrac{\dfrac{5}{x^2}} = \ddx{5x^{-2}}
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                Rewriting 
+                <m>
+                  4\cdot \sqrt[3]{x^2} = 4\cdot (x^{2/3}) </m> can help you find the derivative of 
+                <me>
+                  \ddx{4\cdot \sqrt[3]{x^2}} = \ddx{4\cdot (x^{2/3})} 
+                </me>
+                
+              </p>
+            </li>
+            <li>
+              <p>
+                Rewriting 
+                <m>
+                  \dfrac{1}{\sqrt{x}} = \dfrac{1}{x^{1/2}}= x^{-1/2}
+                </m>
+                can help you find the derivative of 
+                <me>
+                  \ddxfrac{\dfrac{1}{\sqrt{x}} } = \ddx{x^{-1/2} } 
+                </me>
+                
+              </p>
+            </li>
+          </ul>
+          
+        </li>
+      </ol>
+    </p>
+  </assemblage>
+</section>
+
+<section xml:id="sec-derivativesexplog">
+  <title>Derivatives of Exponentials and Logarithms</title>
+  
+  <p>
+    In <xref text="custom" ref="subsec-naturalexp">a previous section</xref>, we have already noted that the number <em>e\approx 2.714\dots</em> will play an important role in calculus. 
+  </p>
+  <p>
+    More precisely, we said that <m>f(x) = e^x = exp(x) = (2.714\dots)^x </m> is the <em>natural</em> exponential for <em>calculus</em>, so we will call it the <term>natural exponential</term> function. 
+  </p>
+  <p>
+    Just like polynomials, the <em>slope</em> of the nautral exponenital function is different at different values of <m>x</m>
+      <interactive platform="jsxgraph" width="30%" preview="jsxgraph-findingslopefromtangent-exercise2c.png">
+        <slate xml:id="jsxgraph-findingslopefromtangent-exercise2c"  surface="jessiecode" axis="true" grid="true" >
+          $board.setBoundingBox( [ -2, 2, 2, -2 ] , keepaspectratio=true) ;
+
+          xslider = slider(
+                // Specify slider location
+                  [0.25,-1.25], [1.5,-1.25], 
+                // Specify smallest/starting/largest value for slider
+                  [-2,0.5,2])
+              &lt;&lt;
+                  name:"a",
+                  snapWidth:0.1
+              &gt;&gt;  ;      
+
+            f1 = function(x) { 
+              return 2.714^x ; 
+            } ;
+            tangentline = function(x) {
+              x0 =  xslider.Value();
+              m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              return m*(x-x0) + f1(x0) ; 
+            } ;
+
+            // Graph the function and 
+            f1Graph = functiongraph( f1 )  
+              &lt;&lt; 
+                  strokeColor:"blue"  
+              &gt;&gt;;
+            tangentGraph = functiongraph( tangentline )  
+              &lt;&lt; 
+                  strokeColor:"black",
+                  dash:3  
+              &gt;&gt;;
+            text( -1.75,-0.75,function() {
+                  x0 =  xslider.Value();
+                  m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                  return  "f \' (" + trunc(x0,2) + ") = "+ trunc(m,2);
+                  } 
+                ) 
+                      &lt;&lt; 
+                        color:"black",
+                        fontSize:16
+                      &gt;&gt; ;
+
+            // Graph the lines from the point to the x and y axis
+            //    (put these first so they go behind the function and points)
+            line( [function() {return xslider.Value();} ,
+                        function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                      &lt;&lt; 
+                        color:"red",
+                        straightFirst:false, 
+                        straightLast:false,
+                        dash:1
+                      &gt;&gt; ;
+            line( [function() {return xslider.Value();} ,
+                        function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                      &lt;&lt; 
+                        color:"red",
+                        straightFirst:false, 
+                        straightLast:false,
+                        dash:1
+                      &gt;&gt; ;
+
+
+            // Graph point that follows the function
+            point( function() {return xslider.Value();} ,
+                        function() {return f1(xslider.Value());}) 
+                      &lt;&lt; 
+                        name:"(a,f(a))",
+                        color:"red" 
+                      &gt;&gt; ;
+            text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                      &lt;&lt; 
+                        color:"red" 
+                      &gt;&gt; ;
+            text( function() {return xslider.Value();} , -0.25 , "a") 
+                      &lt;&lt; 
+                        color:"red" 
+                      &gt;&gt; ;
+
+        </slate>
+      </interactive>
+    Is there a nice <em>formula</em> that gives us the slope as a function of <m>x</m>?  Surprisingly, the answer is yes.
+  </p>
+  <paragraphs>
+    <title>The Derivative of <m>e^x</m></title>
+    <me>
+      \ddx{e^x} = e^x
+    </me>
+    In bracket notation, this is 
+    <me>
+      [e^x ]' = e^x
+    </me>
+    In other words, the <em>slope</em> of any point on the curve is equal to the <em>height</em> of that point on the curve. 
+  </paragraphs>
+
+  <exploration>
+    <statement>
+      <p>
+        Let <m>f(x) = 6e^x - 2</m>.  
+        Find <m>f'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <md>
+          <mrow>f'(x) = \amp \ddx{ 6e^x - 2 }</mrow>
+          <mrow>= \amp \ddx{6e^x} - \ddx{2} </mrow>
+          <mrow>= \amp 6\ddx{e^x} - 0</mrow>
+          <mrow>= \amp 6 e^x </mrow>
+        </md>
+        Note that the only new thing in this compoutation was the last step, where we used our new formula that we can replace <m>\ddx{e^x}</m> with <m>e^x</m>
+      </p>
+    </solution>
+  </exploration>
+
+  <p>
+    Recall also that <m>\ln(x)</m>, called the <term>natural logarithm</term> is the inverse of <m>e^x</m>.  This function also has different slopes at different values of <m>x</m>
+      <interactive platform="jsxgraph" width="30%" preview="jsxgraph-findingslopefromtangent-exercise2d.png">
+        <slate xml:id="jsxgraph-findingslopefromtangent-exercise2d"  surface="jessiecode" axis="true" grid="true" >
+          $board.setBoundingBox( [ -2, 2, 2, -2 ] , keepaspectratio=true) ;
+
+          xslider = slider(
+                // Specify slider location
+                  [0.25,-1.25], [1.5,-1.25], 
+                // Specify smallest/starting/largest value for slider
+                  [-2,0.5,2])
+              &lt;&lt;
+                  name:"a",
+                  snapWidth:0.1
+              &gt;&gt;  ;      
+
+            f1 = function(x) { 
+              return ln(x) ; 
+            } ;
+            tangentline = function(x) {
+              x0 =  xslider.Value();
+              m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              return m*(x-x0) + f1(x0) ; 
+            } ;
+
+            // Graph the function and 
+            f1Graph = functiongraph( f1 )  
+              &lt;&lt; 
+                  strokeColor:"blue"  
+              &gt;&gt;;
+            tangentGraph = functiongraph( tangentline )  
+              &lt;&lt; 
+                  strokeColor:"black",
+                  dash:3  
+              &gt;&gt;;
+            text( -1.75,-0.75,function() {
+                  x0 =  xslider.Value();
+                  m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                  return  "f \' (" + trunc(x0,2) + ") = "+ trunc(m,2);
+                  } 
+                ) 
+                      &lt;&lt; 
+                        color:"black",
+                        fontSize:16
+                      &gt;&gt; ;
+
+            // Graph the lines from the point to the x and y axis
+            //    (put these first so they go behind the function and points)
+            line( [function() {return xslider.Value();} ,
+                        function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                      &lt;&lt; 
+                        color:"red",
+                        straightFirst:false, 
+                        straightLast:false,
+                        dash:1
+                      &gt;&gt; ;
+            line( [function() {return xslider.Value();} ,
+                        function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                      &lt;&lt; 
+                        color:"red",
+                        straightFirst:false, 
+                        straightLast:false,
+                        dash:1
+                      &gt;&gt; ;
+
+
+            // Graph point that follows the function
+            point( function() {return xslider.Value();} ,
+                        function() {return f1(xslider.Value());}) 
+                      &lt;&lt; 
+                        name:"(a,f(a))",
+                        color:"red" 
+                      &gt;&gt; ;
+            text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                      &lt;&lt; 
+                        color:"red" 
+                      &gt;&gt; ;
+            text( function() {return xslider.Value();} , -0.25 , "a") 
+                      &lt;&lt; 
+                        color:"red" 
+                      &gt;&gt; ;
+
+        </slate>
+      </interactive>
+    Is there a nice <em>formula</em> that gives us the slope as a function of <m>x</m>?  Surprisingly, the answer is <em>also</em> yes.
+  </p>
+
+  <paragraphs>
+    <title>The Derivative of <m>\ln(x)</m></title>
+    <me>
+      \ddx{\ln(x) } = \dfrac{1}{x}
+    </me>
+    In bracket notation, this is 
+    <me>
+      [ \ln(x) ]' = \dfrac{1}{x}
+    </me>
+  </paragraphs>
+
+  <exploration>
+    <statement>
+      <p>
+        Let <m>f(x) = 3\ln(x) - x^{1/3}</m>.  
+        Find <m>f'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <md>
+          <mrow> f'(x) = \amp  \ddx{ 3\ln(x) - x^{1/3} } </mrow>
+          <mrow>= \amp \ddx{3\ln(x)} - \ddx{x^{1/3}}</mrow>
+          <mrow>= \amp 3\ddx{\ln(x)} - \frac{1}{3} \cdot x^{\frac{1}{3}-1} </mrow>
+          <mrow>= \amp 3\cdot \dfrac{1}{x} - \frac{1}{3} \cdot x^{-2/3} </mrow>        
+        </md>
+      </p>
+    </solution>
+  </exploration>
+
+  <assemblage xml:id="assemblage-deriv-explog">
+    <title>Derivatives of Exponentials and Logarithms</title>
+    <p>
+      <ul>
+        <li>
+          <p>
+            <m>\ddx{e^x} = e^x </m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\ddx{\ln(x)} = \frac{1}{x}</m>
+          </p>
+        </li>
+      </ul>
+
+    </p>
+  </assemblage>
+
+  <exploration xml:id="ex_derivatives_explog">
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 12e^x - 2</m>.  Find <m>f'(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>[12e^x - 2]'  \amp = [12e^x]' - [2]'</mrow>
+            <mrow> \amp = 12 [e^x]' - 0</mrow>
+            <mrow> \amp 12 e^x</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 7\ln(x) + 5</m>.  Find <m>f'(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>[7\ln(x) +5]'\amp = [7\ln(x)]' + [5]' </mrow>
+            <mrow> \amp =  7[\ln(x)]' + 0 </mrow> 
+            <mrow> \amp = 7\cdot \frac{1}{x} </mrow>
+            <mrow> \amp = \frac{7}{x}</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 3x^8 + 2e^x - 4\ln(x)</m>.  Find <m>f'(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow> [3x^8 + 2e^x - 4\ln(x)] \amp = [3x^8]' + [2e^x]' - [4\ln(x)]' </mrow>
+            <mrow> \amp  = 3[x^8]' + 2[e^x]' - 4[\ln(x)]'</mrow>
+            <mrow> \amp = 3\cdot 8x^7 + 2e^x - 4\cdot \frac{1}{x}</mrow>
+            <mrow> \amp = 24 x^7 + 2e^x - \frac{4}{x}</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = e^x + x^e </m>.  Find <m>f'(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          This problem requires <em>very careful reading</em>.  
+          The key is to remember that our <em>only variable is <m>\red x</m></em>.  The other characters <m>e</m> and <m>2</m> both refer to constant numbers.
+          This is where <m>\frac{d}{dx}</m> notation shines, since it reminds us that the vairable is <m>\red x</m>. 
+          <md>
+            <mrow> f'(x) \amp = \ddx{ e^{\red x} + {\red x}^e} </mrow>
+            <mrow> \amp = \ddx{e^{\red x}} + \ddx{{\red x}^e}  </mrow>
+          </md>
+          Look very carefully about where the variable is in each term.  In the first term, <m>x</m> is in the exponent, so use the exponential rule
+          <me>
+            \ddx{e^{\red x}} = e^{\red x}
+          </me>
+          In the second term, <m>x</m> is in the base, so use the power rule with <m>\blue m = \blue e = \blue 2.718\dots</m>
+          <me>
+            \ddx{{\red x}^{\blue m} = \blue m {\red x}^{\blue m - 1}}
+          </me>
+          Putting this all together  gives the following
+          <md>
+            <mrow> f'(x) \amp = \ddx{ e^{\red x} + {\red x}^e} </mrow>
+            <mrow> \amp = \ddx{e^{\red x}} + \ddx{{\red x}^e}  </mrow>
+            <mrow> \amp = e^{\red x} + {\blue e}{\red x}^{\blue e-1}  </mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = e^2 + 2^e</m>.  Find <m>f'(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          This problem requires <em>very careful reading</em>.  
+          The key is to remember that our <em>only variable is <m>\red x</m></em>.  The other characters <m>e</m> and <m>2</m> both refer to constant numbers.
+          This is where <m>\frac{d}{dx}</m> notation shines, since it reminds us that the vairable is <m>\red x</m>. 
+          <md>
+            <mrow> f'(x) \amp = \ddx{  e^2 + 2^e} </mrow>
+          </md>
+          Note that there are no <m>\red x</m>'s in either term.  That means we can type them into our calculator and replace them with numbers: <m>e^2 = 7.389\dots</m> and <m>2^e = 6.580\dots</m>.  Putting this in and using our derivative rules gives the following
+          <md>
+            <mrow> f'(x) \amp = \ddx{  7.389 + 6.580} </mrow>
+            <mrow> \amp = \ddx{7.389} + \ddx{6.580} </mrow>
+            <mrow> \amp = 0 + 0 </mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+</section>
+
+
+
+
+</chapter>

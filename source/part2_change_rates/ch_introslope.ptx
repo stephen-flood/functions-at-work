@@ -1,0 +1,2374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_tangentsecant" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Understanding Slope</title>
+
+<introduction>
+  <p>
+    The concepts contained in <xref first="ch_limits" last="ch_tangentsecant"/> are all connected in important, but sometimes tricky to follow ways.  As you go through this section, you can refer to the diagram below to see how what we are covering here is related to, and also distinct from, what we have already covered. 
+  </p>
+    <image xml:id="img_limit-rate-slope-conceptmap">
+      <shortdescription>A concept map of the relationship between concepts of limits, rates of change, and slope.</shortdescription>
+      <latex-image>
+        \begin{tikzpicture}
+          \node[inner sep=0pt] (O) at (0,0) {};
+          \node (limg) at (3,1.5) {graphical limits};
+          \node (limn) at (7,1.5) {numerical limits};
+          \node (change) at (3,0) {change $\Delta C$};
+          \node (aroc) at (7,0) {average change $\frac{\Delta C}{\Delta x}$} ;
+          \node (slopeg) at (3,-1.5) {slopes from tangents};
+          \node (slopesec) at (8,-1.5) {approx (secant) slope $\frac{\Delta C}{\Delta x}$};
+          \node (velocity) at (12,0) {\begin{minipage}{1.25in}\centering velocity and IROC \\ $\lim_{\Delta x\rightarrow 0}\frac{\Delta y}{\Delta x}$\end{minipage}} ;
+          \node (slopen) at (14,-1.5) {\begin{minipage}{1.25in}\centering  slope numerically \\ $\lim_{h\rightarrow 0}\frac{f(a+h) - f(a)}{h}$\end{minipage}};
+          
+          \draw[fill] (O) circle (2pt);
+          \draw[-latex] (O) -- (limg);
+          \draw[-latex] (limg) -- (limn);
+          \draw[-latex] (limn) -- (velocity);
+          \draw (O) -- (change) ;
+          \draw[-latex] (change) -- (aroc) ;
+          \draw[-latex] (aroc) -- (velocity) ; 
+          \draw[-latex] (velocity) -- (slopen) ;
+          \draw[-latex](O) -- (slopeg)  ; 
+          \draw[-latex]	(slopeg) -- (slopesec) ; 
+          \draw[-latex] (slopesec) -- (slopen) ;
+        \end{tikzpicture}
+      </latex-image>
+      
+    </image>
+</introduction>
+
+<section xml:id="sec_slope">
+  <title>Slopes and Rates of Change</title>
+  
+  <p>
+    In general, the <term>average rate of change</term> (AROC) of any function <m>f(x)</m> over the interval <m>[a,b]</m> is given by 
+    <me>
+      \left(\dfrac{\text{change in output}}{\text{change in input}}\right) = \dfrac{\Delta y}{\Delta x} = \dfrac{f(b)-f(a)}{b-a}
+    </me>
+  </p>
+  <p>
+    <alert>Note:</alert> the AROC formula is the <em>same formula</em> as the one for the slope of a line. 
+    In other words, the concepts of AROC and slope are closely related. 
+  </p>
+  <p>
+    The concept of "slope" is easier to understand for some functions than for others. 
+    <dl>
+      <li>
+        <title>Linear Functions</title>
+        <p>
+          If <m>f(x)</m> is a line, the following are always the same, regardless of the points <m>a,b</m> chosen
+          <ol>
+            <li>
+              <p>
+                the slope of <m>f</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                the average rate of change of <m>f</m> on <m>[a,b]</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                the instantaneous rate of change of <m>f</m> at <m>a</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+
+          <image width="75%" xml:id="img_slopeAROC">
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[axes] (-1,0)--(3,0);
+                \draw[axes] (0,-1)--(0,3);
+                \node[below,color=red] at (1,0) {$a$};
+                \node[below,color=red] at (2,0) {$b$};
+                \node[left,color=red] at (0,1.5) {$f(a)$};
+                \node[left,color=red] at (0,2) {$f(b)$};
+                \draw[dashed,color=red] (1,0) -- (1,1.5) -- (0,1.5);
+                \draw[dashed,color=red] (2,0) -- (2,2) -- (0,2);
+                \draw[curve,color=blue,domain=-1:3] plot ({\x},{0.5*\x + 1});
+              \end{tikzpicture}
+            </latex-image>          
+          </image>
+      </li>
+      <li>
+        <title>Quadratic Functions</title>
+        <p>
+          Quadratic functions do not have a <em>constant slope</em>.
+          In other words, if you imagine standing on the curve, the slope of the hill you are standing on will be steeper in some places, and flatter in other places. 
+        </p>
+          <image xml:id="img_quadratic_changing_slope">
+            <latex-image>
+              %% Input 1 is the \xshift, input 2 is the \yshift, input 3 is the \scaling
+              \def\stickfigure(#1,#2,#3){
+                \draw[thick] ({#1-0.0625*#3}, {#2 }	) -- ({#1},{#2 + 0.125*#3}) -- ({#1+0.0625*#3},{#2});
+                \draw[thick] ({#1},{#2 + 0.125*#3}) -- ({#1},{#2 + 0.38125*#3});
+                \draw[thick] ({#1-0.0625*#3}, {#2 + 0.2125*#3}) -- ({#1+0.0625*#3}, {#2 + 0.2625*#3});
+                \draw[fill=white,thick] ({#1},{#2 + 0.38125*#3}) circle (1.75*#3 pt);
+              }
+
+    
+              \begin{tikzpicture}
+                \draw[axes] (-1,0)--(3,0);
+                \draw[axes] (0,-1)--(0,3);
+                \draw[curve,domain=0:3,color=blue] plot ({\x},{ -(\x -1.5 )^2 + 1.5 });
+                
+                \stickfigure(0.5,0.5,1);
+                \node[above left] at (0.5,0.5) { positive slope};
+                \stickfigure(2.5,0.5,1);
+                \node[above right] at (2.5,0.5) { negative slope};
+                \stickfigure(1.5,1.5,1);
+                \node[above] at (1.5,2) { zero slope};
+
+
+                \node at (1.5,-1) {Slope changes};
+              \end{tikzpicture}
+              \qquad 
+              \begin{tikzpicture}
+                \draw[axes] (-1,0)--(3,0);
+                \draw[axes] (0,-1)--(0,3);
+                \draw[curve,domain=0:3,color=blue] plot ({\x},{ -(\x -1.5 )^2 + 1.5 });
+                
+                \filldraw[color=red] (1,{ -(1 -1.5 )^2 + 1.5 }) circle (2pt);
+                \filldraw[color=red] (2,{ -(2 -1.5 )^2 + 1.5 }) circle (2pt);
+                \draw[curve,color=red,domain=-1:3] plot ({\x},{0*\x + 1.25}) node [right]{$\frac{\Delta y}{\Delta x} = 0$};
+
+                \filldraw[color=purple] (0.5,{ -(0.5 -1.5 )^2 + 1.5 }) circle (2pt);
+                \filldraw[color=purple] (1.5,{ -(1.5 -1.5 )^2 + 1.5 }) circle (2pt);
+                \draw[curve,color=purple,domain=-1:3] plot ({\x},{1*(\x-0.5) + 0.5}) node [right]{$\frac{\Delta y}{\Delta x} = 1$};
+
+                \node at (1.5,-1) {AROC changes};
+              \end{tikzpicture}
+            </latex-image>          
+          </image>
+        <p>
+            As a consequence, quadratic functions do <em>not</em> have a constant average rate of change <m>=\dfrac{\Delta y}{\Delta x}</m>.
+        </p>
+      </li>
+    </dl>
+  </p>
+  
+  <p>
+    In fact, we have a more general result.  A function has a constant slope <em>if and only if</em> the function is a line. 
+  </p>
+
+  <subsection>
+    <title>Understand Rates by Studying Slopes</title>
+    
+    <p>
+      Our goal in this class is to develop tools that will help us understand the <em>economic concept</em> of a "rate of change" 
+      by connecting it to the <em>graphical concept</em> of a slope.
+    </p>
+
+    <p>
+      Because we only really understand slopes in the context of "lines," the first step is to define a <em>line approximating</em> the function <m>f(x)</m>.  
+      We will call this the <term>tangent line</term>.
+    </p>
+    <image width="75%" xml:id="img_introducingtangent">
+      <latex-image>
+        \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+        \begin{tikzpicture}
+          \draw[axes] (-1,0)--(4,0);
+          \draw[axes] (0,-1)--(0,4);
+          
+          \drawtikzspline(-1,1,-1,2,2,1);
+					\drawtikzspline(2,2,1,4,2.5,-1);
+
+          \draw [curve,domain=0.25:4,color=blue] plot ({\x},{(\x-2)+2}) node[right] {line approximating $f$ at $a$}; 
+          \filldraw [color=red] (2,2) circle (2pt);
+          \node [below,color=red] at (2,0) {$a$};
+          \node [left,color=red] at (0,2) {$f(a)$};
+          \draw[dashed,color=red] (2,0) -- (2,2) -- (0,2);
+
+        \end{tikzpicture}
+      </latex-image>    
+    </image>
+    <p>
+      In the image above, the blue line perfectly lines up with <m>f(x)</m> at the point <m>(a,f(a))</m>.  
+      We call the blue line the <em>line tangent to <m>f(x)</m> at <m>a</m> </em>.
+      If we can find the slope of the tangent line, then we will be able to find the slope of the function at <m>a</m>, and visa versa.
+    </p>
+
+    <proposition xml:id="prop-tangenteqn">
+      <statement>
+        <p>
+          Suppose that we know the slope <m>m</m> of the tangent line or, equivalently of <m>f</m>, at the point <m>a</m>.
+          Then the <term>line tangent to <m>f(x)</m> at <m>a</m></term> has the equation 
+          <me>
+            y = {\color{blue} m}\cdot (x - {\color{red} a}) + {\color{red} f(a)}
+          </me>
+          where <m>{\color{blue} m}</m>, <m>{\color{red} a},</m> and <m> {\color{red} f(a)}</m> are <alert>constant numbers</alert>.
+        </p>
+      </statement>
+    </proposition>
+
+    <exploration xml:id="ex_tangentlinefromgiveninfo">
+      <statement>
+        <p>
+          Suppose that you are told that at the point with <m>a=5</m>, that <m>f(5) = 17</m>, and that the line tangent to <m>f</m> at <m>5</m>  has slope <m>-3</m>.  Find an equation for the tangent line to <m>f</m> at <m>a=5</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are asked for the equation of a line, so start by writing down <xref text="custom" ref="def-point_slope">General Point Slope Form</xref>.
+          <me>y = {\color{red} m} \cdot (x - {\color{red} x_1}) + {\color{red} y_1}</me>
+        </p>
+        <p>
+          First, <m>x_1</m> will always be the point that we are looking for the tangent to be "at".  In this example, we want the tangent at <m>a=5</m>, so we have <m>x_1=5</m>
+        </p>
+        <p>
+          Second, <m>x_2</m> will always be the height of the tangent at <m>x_1</m>.  In other words, 
+          <me>
+            y_1 = f(x_1) = f(5) = 17
+          </me>
+        </p>
+        <p>
+          Finally, the slope of the tangent is always equal to the slope of the function.  In this example, we are just told that both slopes are equal to <me> m = -3 </me>
+        </p>
+        <p>
+          Putting it all together, we get 
+          <me>y = {\color{red} -3} \cdot (x - {\color{red} 5}) + {\color{red} 17}</me>
+        </p>
+      </solution>
+    </exploration>
+
+  <p>
+    Because most functions have curves in them, 
+    looking at different points <m>a</m> will give you tangent lines with very different slopes. 
+  </p>
+
+  <interactive platform="jsxgraph" width="75%" preview="jsxgraph-slope-via-tangent.png">
+    <slate xml:id="jsxgraph-slope-via-tangent"  surface="jessiecode" axis="true" grid="true" >
+      $board.setBoundingBox( [ -5, 10, 7, -6 ] , keepaspectratio=false) ;
+
+      xslider = slider(
+            // Specify slider location
+              [0.5,-3], [5.5,-3], 
+            // Specify smallest/starting/largest value for slider
+              [-5,1,7])
+          &lt;&lt;
+              name:"a",
+              snapWidth:0.01
+          &gt;&gt;  ;      
+        
+        f1 = function(x) { 
+          return 1/5*(x+3)*(x-2)*(x-5)-1;
+        } ;
+        tangentline = function(x) {
+          x0 =  xslider.Value();
+          m = (f1(x0+0.00001) - f1(x0))/0.00001;
+          return m*(x-x0) + f1(x0) ; 
+        } ;
+
+        // Graph the function and 
+        f1Graph = functiongraph( f1 )  
+          &lt;&lt; 
+              strokeColor:"blue"  
+          &gt;&gt;;
+        tangentGraph = functiongraph( tangentline )  
+          &lt;&lt; 
+              strokeColor:"black",
+              dash:3  
+          &gt;&gt;;
+        text( 0.5,6.5,function() {
+              x0 =  xslider.Value();
+              m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              return  "The tangent at a=" + trunc(x0,2) + " has slope m="+ trunc(m,2) + " and equation";
+              } 
+            ) 
+                  &lt;&lt; 
+                    color:"black",
+                    fontSize:16
+                  &gt;&gt; ;
+        text( 1.5,5.5,function() {
+              x0 =  xslider.Value();
+              m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              y0 = f1(x0);
+              return  "y  =  "+ trunc(m,2) + " ( x- " + trunc(x0,2) + " )  +  " + trunc(y0,2) ;
+              } 
+            ) 
+                  &lt;&lt; 
+                    color:"black",
+                    fontSize:16
+                  &gt;&gt; ;
+
+        // Graph the lines from the point to the x and y axis
+        //    (put these first so they go behind the function and points)
+        line( [function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                  &lt;&lt; 
+                    color:"red",
+                    straightFirst:false, 
+                    straightLast:false,
+                    dash:1
+                  &gt;&gt; ;
+        line( [function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                  &lt;&lt; 
+                    color:"red",
+                    straightFirst:false, 
+                    straightLast:false,
+                    dash:1
+                  &gt;&gt; ;
+
+
+        // Graph point that follows the function
+        point( function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}) 
+                  &lt;&lt; 
+                    name:"(a,f(a))",
+                    color:"red" 
+                  &gt;&gt; ;
+        text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                  &lt;&lt; 
+                    color:"red" 
+                  &gt;&gt; ;
+        text( function() {return xslider.Value();} , -0.25 , "a") 
+                  &lt;&lt; 
+                    color:"red" 
+                  &gt;&gt; ;
+
+    </slate>
+  </interactive>
+
+
+  <p>
+    Said another way, the <em>slope of the tangent to <m>f(x)</m> </em> is a function of the point <m>a</m> where you are centering your approximation.  
+    For simplicity, we often denote this using the notation 
+    <me>
+      f'(a) = \text{ the slope of the line tangent to the function }f(x)\text{ at }a
+    </me>
+  </p>
+
+  <assemblage xml:id="assemblage-connectingslopeandtangent">
+    <title>Connecting Slope and Tangent Lines</title>
+    <p>
+      <ol>
+        <li>
+          <p>
+            Near a point <m>(a,f(a))</m>, the function <m>f(x)</m> is <alert>approximately equal to</alert> the <em>line tangent</em> to <m>f</m> at that point. Mathematically, this means
+            <me>
+              (\text{height on function }f) \approx (\text{height on tangent line centered at } a)
+            </me>
+            for all values of <m>x</m> near to <m>a</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            It follows that the <alert>slope</alert> of the function <m>f</m> at <m>a</m> is approximately equal to the <alert>slope</alert> of the tangent at the point.  In other words, 
+            <me>
+              (\text{slope of }y=f(x) \text{ at }x=a) \approx (\text{slope of the *tangent* to } f \text{ at } a)
+            </me>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </assemblage>
+
+  <p>
+    This observation is very powerful, and it works in two directions.  For now, we will see how to use tangent lines to help us to <em>approximate</em> the slope of a curve <m>y=f(x)</m> at various values of <m>a</m>. 
+  </p>
+  <p>
+    Later, we will see how to compute the slope of <m>f(x)</m> <em>precisely</em> at some point <m>a</m>.  As a result, we will also have found the slope of the <em>line tangent</em> to the function at that value of <m>a</m>. 
+  </p>
+
+  <exploration xml:id="ex_slope_from_graph">
+    <introduction>
+      <p>
+        A function <m>y=f(x)</m> is defined using the graph below.  
+      </p>
+      <image width="60%" xml:id="img_findslopefromtangents">
+          
+        <latex-image>
+          \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+
+          \begin{tikzpicture}
+            \draw[axes] (-2,0)--(5,0);
+            \draw[axes] (0,-2)--(0,5);
+            \draw[grid] (-1.5,4.5) grid (4.5,-1.5);
+            
+            \drawtikzspline(0,1,0.5,1,3,1);
+            \drawtikzspline(1,3,1,2,3.75,0);
+            \drawtikzspline(2,3.75,0,3,0.5,-1);
+            \drawtikzspline(3,0.5,-1,4,-0.5,0);
+            \drawtikzspline(4,-0.5,0,5,-1,-1);
+
+          \end{tikzpicture}
+        </latex-image>    
+      </image>
+        
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Approximate the slope to the function <m>y=f(x)</m> at the point <m>a=1</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We will approximate the slope at a value of <m>a</m> by first drawing the tangent to the curve at that point.  
+        </p>
+        <interactive platform="jsxgraph" width="60%" >
+          <slate xml:id="jsxgraph-findingslopefromtangent-exercise1c"  surface="jessiecode" axis="true" grid="true" >
+            $board.setBoundingBox( [ -2, 5, 5, -2 ] , keepaspectratio=true) ;
+
+            xslider = slider(
+                  // Specify slider location
+                    [0.5,-1.25], [3.5,-1.25], 
+                  // Specify smallest/starting/largest value for slider
+                    [0,1,4.9])
+                &lt;&lt;
+                    name:"a",
+                    snapWidth:0.1
+                &gt;&gt;  ;      
+
+              splinefunction = function(x,x1,y1,m1,x2,y2,m2){
+                return  ( (((m1) + (m2))*(x1) - ((m1) + (m2))*(x2) - 2*(y1) + 2*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) )*((x)^3) + ( -(((m1) + 2*(m2))*((x1)^2) + ((m1) - (m2))*(x1)*(x2) - (2*(m1) + (m2))*((x2)^2) - 3*((x1) + (x2))*(y1) + 3*((x1) + (x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) *((x)^2) + ( ((m2)*((x1)^3) + (2*(m1) + (m2))*((x1)^2)*(x2) - ((m1) + 2*(m2))*(x1)*((x2)^2) - (m1)*((x2)^3) - 6*(x1)*(x2)*(y1) + 6*(x1)*(x2)*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) * (x) + ( -((m2)*((x1)^3)*(x2) + ((m1) - (m2))*((x1)^2)*(x2)^2 - (m1)*(x1)*((x2)^3) - (3*(x1)*((x2)^2) - (x2)^3)*(y1) - ((x1)^3 - 3*((x1)^2)*(x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3)) ;
+              } ;
+              
+              f1 = function(x) { 
+                // TODO: Match spline functions and cases from example statement!!!!
+                if (0 &lt;= x &amp;&amp; x &lt;1) { 
+                  return splinefunction(x,0,1,0.5,1,3,1); 
+                } else if (1 &lt;= x &amp;&amp; x &lt;2 ) { 
+                  return splinefunction(x,1,3,1,2,3.75,0)   ;
+                }  else if (2 &lt;= x &amp;&amp; x &lt;3 ) { 
+                  return splinefunction(x,2,3.75,0,3,0.5,-1)   ;
+                } else if (3 &lt;= x &amp;&amp; x &lt;4 ) { 
+                  return splinefunction(x,3,0.5,-1,4,-0.5,0)   ;
+                } else if (4 &lt;= x &amp;&amp; x &lt;= 5 ) { 
+                  return splinefunction(x,4,-0.5,0,5,-1,-1)   ;
+                } else {
+                  return 0;
+                };
+              } ;
+              tangentline = function(x) {
+                x0 =  xslider.Value();
+                m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                return m*(x-x0) + f1(x0) ; 
+              } ;
+
+              // Graph the function and 
+              f1Graph = functiongraph( f1 )  
+                &lt;&lt; 
+                    strokeColor:"blue"  
+                &gt;&gt;;
+              tangentGraph = functiongraph( tangentline )  
+                &lt;&lt; 
+                    strokeColor:"black",
+                    dash:3  
+                &gt;&gt;;
+              //text( 0.5,6.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      return  "The tangent at a=" + trunc(x0,2) + " has slope m="+ trunc(m,2) + " and equation";
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+              //text( 1.5,5.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      y0 = f1(x0);
+              //      return  "y  =  "+ trunc(m,2) + " ( x- " + trunc(x0,2) + " )  +  " + trunc(y0,2) ;
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+
+              // Graph the lines from the point to the x and y axis
+              //    (put these first so they go behind the function and points)
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+
+
+              // Graph point that follows the function
+              point( function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}) 
+                        &lt;&lt; 
+                          name:"(a,f(a))",
+                          color:"red" 
+                        &gt;&gt; ;
+              text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+              text( function() {return xslider.Value();} , -0.25 , "a") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+
+          </slate>
+        </interactive>
+        <p>
+          We can then find two points <alert>on the line</alert> and use the slope formula
+          <me>
+            m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+          </me>
+          Note that these points will not be on the original curve, since we are technically finding the slope of the <em>tangent line</em>, which we are only using to <alert>approximate</alert> the real curve.
+        </p>
+        <p>
+          To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. 
+          The interactive graphic below shows the line you would get at each point.  
+        </p>
+        <p>
+                To find the slope of <m>f</m> at <m>a=1</m>, find the tangent to <m>f</m> at <m>a=1</m>.  
+                Find two points on this tangent line.  One is <m>(1,3)</m>, and another is <m>(0,2)</m>. 
+                The slope of the line between these lines is 
+                <me>
+                  m = \dfrac{3-2}{1-0} = \dfrac{1}{1} = 1
+                </me>
+                Therefore, the slope of <m>f(x)</m> at <m>a=1</m> is equal to 1. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Approximate the slope to the function <m>y=f(x)</m> at the point <m>a=2</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We will approximate the slope at a value of <m>a</m> by first drawing the tangent to the curve at that point.  
+        </p>
+        <interactive platform="jsxgraph" width="60%" >
+          <slate xml:id="jsxgraph-findingslopefromtangent-exercise1d"  surface="jessiecode" axis="true" grid="true" >
+            $board.setBoundingBox( [ -2, 5, 5, -2 ] , keepaspectratio=true) ;
+
+            xslider = slider(
+                  // Specify slider location
+                    [0.5,-1.25], [3.5,-1.25], 
+                  // Specify smallest/starting/largest value for slider
+                    [0,2,4.9])
+                &lt;&lt;
+                    name:"a",
+                    snapWidth:0.1
+                &gt;&gt;  ;      
+
+              splinefunction = function(x,x1,y1,m1,x2,y2,m2){
+                return  ( (((m1) + (m2))*(x1) - ((m1) + (m2))*(x2) - 2*(y1) + 2*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) )*((x)^3) + ( -(((m1) + 2*(m2))*((x1)^2) + ((m1) - (m2))*(x1)*(x2) - (2*(m1) + (m2))*((x2)^2) - 3*((x1) + (x2))*(y1) + 3*((x1) + (x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) *((x)^2) + ( ((m2)*((x1)^3) + (2*(m1) + (m2))*((x1)^2)*(x2) - ((m1) + 2*(m2))*(x1)*((x2)^2) - (m1)*((x2)^3) - 6*(x1)*(x2)*(y1) + 6*(x1)*(x2)*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) * (x) + ( -((m2)*((x1)^3)*(x2) + ((m1) - (m2))*((x1)^2)*(x2)^2 - (m1)*(x1)*((x2)^3) - (3*(x1)*((x2)^2) - (x2)^3)*(y1) - ((x1)^3 - 3*((x1)^2)*(x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3)) ;
+              } ;
+              
+              f1 = function(x) { 
+                // TODO: Match spline functions and cases from example statement!!!!
+                if (0 &lt;= x &amp;&amp; x &lt;1) { 
+                  return splinefunction(x,0,1,0.5,1,3,1); 
+                } else if (1 &lt;= x &amp;&amp; x &lt;2 ) { 
+                  return splinefunction(x,1,3,1,2,3.75,0)   ;
+                }  else if (2 &lt;= x &amp;&amp; x &lt;3 ) { 
+                  return splinefunction(x,2,3.75,0,3,0.5,-1)   ;
+                } else if (3 &lt;= x &amp;&amp; x &lt;4 ) { 
+                  return splinefunction(x,3,0.5,-1,4,-0.5,0)   ;
+                } else if (4 &lt;= x &amp;&amp; x &lt;= 5 ) { 
+                  return splinefunction(x,4,-0.5,0,5,-1,-1)   ;
+                } else {
+                  return 0;
+                };
+              } ;
+              tangentline = function(x) {
+                x0 =  xslider.Value();
+                m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                return m*(x-x0) + f1(x0) ; 
+              } ;
+
+              // Graph the function and 
+              f1Graph = functiongraph( f1 )  
+                &lt;&lt; 
+                    strokeColor:"blue"  
+                &gt;&gt;;
+              tangentGraph = functiongraph( tangentline )  
+                &lt;&lt; 
+                    strokeColor:"black",
+                    dash:3  
+                &gt;&gt;;
+              //text( 0.5,6.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      return  "The tangent at a=" + trunc(x0,2) + " has slope m="+ trunc(m,2) + " and equation";
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+              //text( 1.5,5.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      y0 = f1(x0);
+              //      return  "y  =  "+ trunc(m,2) + " ( x- " + trunc(x0,2) + " )  +  " + trunc(y0,2) ;
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+
+              // Graph the lines from the point to the x and y axis
+              //    (put these first so they go behind the function and points)
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+
+
+              // Graph point that follows the function
+              point( function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}) 
+                        &lt;&lt; 
+                          name:"(a,f(a))",
+                          color:"red" 
+                        &gt;&gt; ;
+              text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+              text( function() {return xslider.Value();} , -0.25 , "a") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+
+          </slate>
+        </interactive>
+        <p>
+          We can then find two points <alert>on the line</alert> and use the slope formula
+          <me>
+            m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+          </me>
+          Note that these points will not be on the original curve, since we are technically finding the slope of the <em>tangent line</em>, which we are only using to <alert>approximate</alert> the real curve.
+        </p>
+        <p>
+          To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. 
+          The interactive graphic below shows the line you would get at each point.  
+        </p>
+        <p>
+                To find the slope of <m>f</m> at <m>a=2</m>, first, draw the line tangent to <m>f(x)</m> at <m>a=2</m>, and find two points on that line. 
+                One point is <m>(2,3.75)</m>, and another is <m>(0,3.75)</m>
+                The slope of the line between these lines is 
+                <me>
+                  m = \dfrac{3.75-3.75}{2-0} = \dfrac{0}{2} = 0
+                </me>
+                Therefore, the slope of <m>f(x)</m> at <m>a=2</m> is equal to 0. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Approximate the slope to the function <m>y=f(x)</m> at the point <m>a=3</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We will approximate the slope at a value of <m>a</m> by first drawing the tangent to the curve at that point.  
+        </p>
+        <interactive platform="jsxgraph" width="60%" >
+          <slate xml:id="jsxgraph-findingslopefromtangent-exercise1a"  surface="jessiecode" axis="true" grid="true" >
+            $board.setBoundingBox( [ -2, 5, 5, -2 ] , keepaspectratio=true) ;
+
+            xslider = slider(
+                  // Specify slider location
+                    [0.5,-1.25], [3.5,-1.25], 
+                  // Specify smallest/starting/largest value for slider
+                    [0,3,4.9])
+                &lt;&lt;
+                    name:"a",
+                    snapWidth:0.1
+                &gt;&gt;  ;      
+
+              splinefunction = function(x,x1,y1,m1,x2,y2,m2){
+                return  ( (((m1) + (m2))*(x1) - ((m1) + (m2))*(x2) - 2*(y1) + 2*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) )*((x)^3) + ( -(((m1) + 2*(m2))*((x1)^2) + ((m1) - (m2))*(x1)*(x2) - (2*(m1) + (m2))*((x2)^2) - 3*((x1) + (x2))*(y1) + 3*((x1) + (x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) *((x)^2) + ( ((m2)*((x1)^3) + (2*(m1) + (m2))*((x1)^2)*(x2) - ((m1) + 2*(m2))*(x1)*((x2)^2) - (m1)*((x2)^3) - 6*(x1)*(x2)*(y1) + 6*(x1)*(x2)*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) * (x) + ( -((m2)*((x1)^3)*(x2) + ((m1) - (m2))*((x1)^2)*(x2)^2 - (m1)*(x1)*((x2)^3) - (3*(x1)*((x2)^2) - (x2)^3)*(y1) - ((x1)^3 - 3*((x1)^2)*(x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3)) ;
+              } ;
+              
+              f1 = function(x) { 
+                // TODO: Match spline functions and cases from example statement!!!!
+                if (0 &lt;= x &amp;&amp; x &lt;1) { 
+                  return splinefunction(x,0,1,0.5,1,3,1); 
+                } else if (1 &lt;= x &amp;&amp; x &lt;2 ) { 
+                  return splinefunction(x,1,3,1,2,3.75,0)   ;
+                }  else if (2 &lt;= x &amp;&amp; x &lt;3 ) { 
+                  return splinefunction(x,2,3.75,0,3,0.5,-1)   ;
+                } else if (3 &lt;= x &amp;&amp; x &lt;4 ) { 
+                  return splinefunction(x,3,0.5,-1,4,-0.5,0)   ;
+                } else if (4 &lt;= x &amp;&amp; x &lt;= 5 ) { 
+                  return splinefunction(x,4,-0.5,0,5,-1,-1)   ;
+                } else {
+                  return 0;
+                };
+              } ;
+              tangentline = function(x) {
+                x0 =  xslider.Value();
+                m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                return m*(x-x0) + f1(x0) ; 
+              } ;
+
+              // Graph the function and 
+              f1Graph = functiongraph( f1 )  
+                &lt;&lt; 
+                    strokeColor:"blue"  
+                &gt;&gt;;
+              tangentGraph = functiongraph( tangentline )  
+                &lt;&lt; 
+                    strokeColor:"black",
+                    dash:3  
+                &gt;&gt;;
+              //text( 0.5,6.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      return  "The tangent at a=" + trunc(x0,2) + " has slope m="+ trunc(m,2) + " and equation";
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+              //text( 1.5,5.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      y0 = f1(x0);
+              //      return  "y  =  "+ trunc(m,2) + " ( x- " + trunc(x0,2) + " )  +  " + trunc(y0,2) ;
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+
+              // Graph the lines from the point to the x and y axis
+              //    (put these first so they go behind the function and points)
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+
+
+              // Graph point that follows the function
+              point( function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}) 
+                        &lt;&lt; 
+                          name:"(a,f(a))",
+                          color:"red" 
+                        &gt;&gt; ;
+              text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+              text( function() {return xslider.Value();} , -0.25 , "a") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+
+          </slate>
+        </interactive>
+        <p>
+          We can then find two points <alert>on the line</alert> and use the slope formula
+          <me>
+            m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+          </me>
+          Note that these points will not be on the original curve, since we are technically finding the slope of the <em>tangent line</em>, which we are only using to <alert>approximate</alert> the real curve.
+        </p>
+        <p>
+          To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. 
+          The interactive graphic below shows the line you would get at each point.  
+        </p>
+        <p>
+                To find the slope of <m>f</m> at <m>a=3</m>, first, draw the line tangent to <m>f(x)</m> at <m>a=3</m>, and find two points on that line. 
+                One point is <m>(3,0.5)</m>, and another is <m>(0,3.5)</m>
+                The slope of the line between these lines is 
+                <me>
+                  m = \dfrac{0.5-3.5}{3-0} = \dfrac{-3}{3} = -1
+                </me>
+                Therefore, the slope of <m>f(x)</m> at <m>a=3</m> is equal to -1. 
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Approximate the slope to the function <m>y=f(x)</m> at the point <m>a=4</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We will approximate the slope at a value of <m>a</m> by first drawing the tangent to the curve at that point.  
+        </p>
+        <interactive platform="jsxgraph" width="60%" >
+          <slate xml:id="jsxgraph-findingslopefromtangent-exercise1b"  surface="jessiecode" axis="true" grid="true" >
+            $board.setBoundingBox( [ -2, 5, 5, -2 ] , keepaspectratio=true) ;
+
+            xslider = slider(
+                  // Specify slider location
+                    [0.5,-1.25], [3.5,-1.25], 
+                  // Specify smallest/starting/largest value for slider
+                    [0,4,4.9])
+                &lt;&lt;
+                    name:"a",
+                    snapWidth:0.1
+                &gt;&gt;  ;      
+
+              splinefunction = function(x,x1,y1,m1,x2,y2,m2){
+                return  ( (((m1) + (m2))*(x1) - ((m1) + (m2))*(x2) - 2*(y1) + 2*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) )*((x)^3) + ( -(((m1) + 2*(m2))*((x1)^2) + ((m1) - (m2))*(x1)*(x2) - (2*(m1) + (m2))*((x2)^2) - 3*((x1) + (x2))*(y1) + 3*((x1) + (x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) *((x)^2) + ( ((m2)*((x1)^3) + (2*(m1) + (m2))*((x1)^2)*(x2) - ((m1) + 2*(m2))*(x1)*((x2)^2) - (m1)*((x2)^3) - 6*(x1)*(x2)*(y1) + 6*(x1)*(x2)*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) * (x) + ( -((m2)*((x1)^3)*(x2) + ((m1) - (m2))*((x1)^2)*(x2)^2 - (m1)*(x1)*((x2)^3) - (3*(x1)*((x2)^2) - (x2)^3)*(y1) - ((x1)^3 - 3*((x1)^2)*(x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3)) ;
+              } ;
+              
+              f1 = function(x) { 
+                // TODO: Match spline functions and cases from example statement!!!!
+                if (0 &lt;= x &amp;&amp; x &lt;1) { 
+                  return splinefunction(x,0,1,0.5,1,3,1); 
+                } else if (1 &lt;= x &amp;&amp; x &lt;2 ) { 
+                  return splinefunction(x,1,3,1,2,3.75,0)   ;
+                }  else if (2 &lt;= x &amp;&amp; x &lt;3 ) { 
+                  return splinefunction(x,2,3.75,0,3,0.5,-1)   ;
+                } else if (3 &lt;= x &amp;&amp; x &lt;4 ) { 
+                  return splinefunction(x,3,0.5,-1,4,-0.5,0)   ;
+                } else if (4 &lt;= x &amp;&amp; x &lt;= 5 ) { 
+                  return splinefunction(x,4,-0.5,0,5,-1,-1)   ;
+                } else {
+                  return 0;
+                };
+              } ;
+              tangentline = function(x) {
+                x0 =  xslider.Value();
+                m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                return m*(x-x0) + f1(x0) ; 
+              } ;
+
+              // Graph the function and 
+              f1Graph = functiongraph( f1 )  
+                &lt;&lt; 
+                    strokeColor:"blue"  
+                &gt;&gt;;
+              tangentGraph = functiongraph( tangentline )  
+                &lt;&lt; 
+                    strokeColor:"black",
+                    dash:3  
+                &gt;&gt;;
+              //text( 0.5,6.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      return  "The tangent at a=" + trunc(x0,2) + " has slope m="+ trunc(m,2) + " and equation";
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+              //text( 1.5,5.5,function() {
+              //      x0 =  xslider.Value();
+              //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+              //      y0 = f1(x0);
+              //      return  "y  =  "+ trunc(m,2) + " ( x- " + trunc(x0,2) + " )  +  " + trunc(y0,2) ;
+              //      } 
+              //    ) 
+              //          &lt;&lt; 
+              //            color:"black",
+              //            fontSize:16
+              //          &gt;&gt; ;
+
+              // Graph the lines from the point to the x and y axis
+              //    (put these first so they go behind the function and points)
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+              line( [function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                        &lt;&lt; 
+                          color:"red",
+                          straightFirst:false, 
+                          straightLast:false,
+                          dash:1
+                        &gt;&gt; ;
+
+
+              // Graph point that follows the function
+              point( function() {return xslider.Value();} ,
+                          function() {return f1(xslider.Value());}) 
+                        &lt;&lt; 
+                          name:"(a,f(a))",
+                          color:"red" 
+                        &gt;&gt; ;
+              text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+              text( function() {return xslider.Value();} , -0.25 , "a") 
+                        &lt;&lt; 
+                          color:"red" 
+                        &gt;&gt; ;
+
+          </slate>
+        </interactive>
+        <p>
+          We can then find two points <alert>on the line</alert> and use the slope formula
+          <me>
+            m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+          </me>
+          Note that these points will not be on the original curve, since we are technically finding the slope of the <em>tangent line</em>, which we are only using to <alert>approximate</alert> the real curve.
+        </p>
+        <p>
+          To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. 
+          The interactive graphic below shows the line you would get at each point.  
+        </p>
+        <!--p>
+          <ul>
+            <li>
+              <p>
+                To find the slope of <m>f</m> at <m>a=1</m>, find the tangent to <m>f</m> at <m>a=1</m>.  
+                Find two points on this tangent line.  One is <m>(1,3)</m>, and another is <m>(0,2)</m>. 
+                The slope of the line between these lines is 
+                <me>
+                  m = \dfrac{3-2}{1-0} = \dfrac{1}{1} = 1
+                </me>
+                Therefore, the slope of <m>f(x)</m> at <m>a=1</m> is equal to 1. 
+              </p>
+            </li>
+            <li>
+              <p>
+                To find the slope of <m>f</m> at <m>a=2</m>, first, draw the line tangent to <m>f(x)</m> at <m>a=2</m>, and find two points on that line. 
+                One point is <m>(2,3.75)</m>, and another is <m>(0,3.75)</m>
+                The slope of the line between these lines is 
+                <me>
+                  m = \dfrac{3.75-3.75}{2-0} = \dfrac{0}{2} = 0
+                </me>
+                Therefore, the slope of <m>f(x)</m> at <m>a=2</m> is equal to 0. 
+              </p>
+            </li>
+            <li>
+              <p>
+                To find the slope of <m>f</m> at <m>a=3</m>, first, draw the line tangent to <m>f(x)</m> at <m>a=3</m>, and find two points on that line. 
+                One point is <m>(3,0.5)</m>, and another is <m>(0,3.5)</m>
+                The slope of the line between these lines is 
+                <me>
+                  m = \dfrac{0.5-3.5}{3-0} = \dfrac{-3}{3} = -1
+                </me>
+                Therefore, the slope of <m>f(x)</m> at <m>a=3</m> is equal to -1. 
+              </p>
+            </li>
+            <li>
+              <p>
+                To find the slope of <m>f</m> at <m>a=4</m>, first, draw the line tangent to <m>f(x)</m> at <m>a=4</m>, and find two points on that line. 
+                One point is <m>(4,-0.5)</m>, and another is <m>(0,-0.5)</m>
+                The slope of the line between these lines is 
+                <me>
+                  m = \dfrac{0.5-(-0.5)}{4-0} = \dfrac{0}{4} = 0
+                </me>
+                Therefore, the slope of <m>f(x)</m> at <m>a=4</m> is equal to 0. 
+              </p>
+            </li>
+          </ul>
+        </p-->
+        <p>
+          To find the slope of <m>f</m> at <m>a=4</m>, first, draw the line tangent to <m>f(x)</m> at <m>a=4</m>, and find two points on that line. 
+          One point is <m>(4,-0.5)</m>, and another is <m>(0,-0.5)</m>
+          The slope of the line between these lines is 
+          <me>
+            m = \dfrac{0.5-(-0.5)}{4-0} = \dfrac{0}{4} = 0
+          </me>
+          Therefore, the slope of <m>f(x)</m> at <m>a=4</m> is equal to 0. 
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  </subsection>
+  
+</section>
+
+
+<section xml:id="sec_secantangent">
+  <title>Approximating Slope with Secant Lines</title>
+  
+  <sidebyside>
+    <p>
+      Given a function <m>f(x)</m>, and an <m>x</m> value <m>a</m>, we want to find the slope of <m>f</m> at <m>a</m>. 
+      Unfortunately, you need <em>two points</em> to define a line, but a tangent line usualy only touches the curve at <em>one point</em>.
+      To help us define slope precisely, we will need a new concept. 
+    </p>
+    <image xml:id="img_introducingtangent_1" width="50%">
+      <latex-image>
+        \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+        \begin{tikzpicture}
+          \draw[axes] (-1,0)--(4,0);
+          \draw[axes] (0,-1)--(0,4);
+          
+          \drawtikzspline(-1,1,-1,2,2,1);
+					\drawtikzspline(2,2,1,4,2.5,-1);
+
+          \draw [curve,domain=0.25:4,color=blue] plot ({\x},{(\x-2)+2}) node[right] {line approximating $f$ at $a$}; 
+          \filldraw [color=red] (2,2) circle (2pt);
+          \node [below,color=red] at (2,0) {$a$};
+          \node [left,color=red] at (0,2) {$f(a)$};
+          \draw[dashed,color=red] (2,0) -- (2,2) -- (0,2);
+
+        \end{tikzpicture}
+      </latex-image>    
+    </image>
+  </sidebyside>
+
+  <definition xml:id="def-secant">
+    <statement>
+      <sidebyside>
+        <p>
+          The <term>secant line</term> to <m>f</m> <term>at <m>a,b</m> </term> is the line that passes through the graph of <m>y=f(x)</m> at <m>x=a</m> and <m>x=b</m>.  
+        </p>
+        <image xml:id="img_introducingtangent_2" width="50%">
+          <latex-image>
+            \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+            \begin{tikzpicture}
+              \draw[axes] (-1,0)--(4,0);
+              \draw[axes] (0,-1)--(0,4);
+              
+              \drawtikzspline(-1,1,-1,2,2,1);
+              \drawtikzspline(2,2,1,4,2.5,-1);
+
+              \draw [curve,domain=0.25:4,color=blue] plot ({\x},{0.25*(\x-2)+2}) node[right] {secant to $f$ at $a,b$}; 
+              \filldraw [color=red] (2,2) circle (2pt);
+              \node [below,color=red] at (2,0) {$a$};
+              \node [left,color=red] at (0,2) {$f(a)$};
+              \filldraw [color=red] (4,2.5) circle (2pt);
+              \node [below,color=red] at (4,0) {$b$};
+              \node [left,color=red] at (0,2.5) {$f(b)$};
+              \draw[dashed,color=red] (2,0) -- (2,2) -- (0,2);
+              \draw[dashed,color=red] (4,0) -- (4,2.5) -- (0,2.5);
+
+            \end{tikzpicture}
+          </latex-image>    
+        </image>
+      </sidebyside>
+      <p>
+        Furthermore, the <em>slope</em> of the secant to <m>f</m> at <m>a,b</m> is equal to 
+        <me>
+          \dfrac{f(b)-f(a)}{b-a} = \dfrac{\Delta y}{\Delta x}
+        </me>
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    The key idea thing to notice is that when <m>b</m> is <em>very close</em> to <m>a</m>,
+    then the secant line is <em>very close</em> to the tangent line.  
+  </p>
+
+  <interactive platform="jsxgraph"  source="jsxgraph/derivative-limit-of-secant.js" preview="jsxgraph-derivative-limit-of-secant.png">
+    <slate xml:id="jsxgraph-derivative-limit-of-secant" surface="jsxboard"   /> 
+  </interactive>
+
+  <exploration xml:id="ex_approx_slope_from_secant"> 
+    <introduction>
+      <p>
+        Let <m>f(x) = x^2 + 2x</m>.  We want to study the function at <m>a=3</m>.
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Estimage the slope of <m>f</m> at <m>a=3</m> by computing the slope of the secant between <m>a=3</m> and a value <m>b</m> that is 0.1 units away, 0.01 units away, and 0.001 units away. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Compute the average rate of change <m>\dfrac{\Delta y}{\Delta x}</m> over the intervals <m>[3,3.1]</m>, <m>[3,3.01]</m>, and <m>[3,3.001]</m>. 
+          In other words, we have the <m>x</m> values, so we need to find the <m>y</m> values, the changes <m>\Delta x</m> and <m>\Delta y</m>, and then divide those changes to get the average change <m>\frac{\Delta y}{\Delta x}</m>. 
+        </p>
+        <p>
+          <tabular>
+            <col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+            <row bottom="medium">
+              <cell><m>x_1</m></cell>
+              <cell><m>x_2</m></cell>
+              <cell><m>\Delta x</m></cell>
+              <cell><m>y_1</m></cell>
+              <cell><m>y_2</m></cell>
+              <cell><m>\Delta y</m></cell>
+              <cell><m>\Delta y/\Delta x</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>3</m></cell>
+              <cell><m>\color{red} 3.1</m></cell>
+              <cell><m>0.1</m></cell>
+              <cell><m>\color{blue} f(3) = 3^2 + 2\cdot 3 = 15 </m></cell>
+              <cell><m>\color{blue} f(3.1) = 3.1^2 + 2\cdot 3.1 = 15.81</m></cell>
+              <cell><m>\color{green} y_2 - y_1 = 15.81-15 = 0.81</m></cell>
+              <cell><m>\Delta y/\Delta x = 0.81/0.1 = 8.1</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>3</m></cell>
+              <cell><m>\color{red} 3.01</m></cell>
+              <cell><m>0.01</m></cell>
+              <cell><m>\color{blue} f(3) = 3^2 + 2\cdot 3 = 15 </m></cell>
+              <cell><m>\color{blue} f(3.01) = 3.01^2 + 2\cdot 3.01 = 15.0801</m></cell>
+              <cell><m>\color{green} y_2 - y_1 = 15.81-15 = 0.0801</m></cell>
+              <cell><m>\Delta y/\Delta x = 0.0801/0.01 = 8.01</m></cell>
+            </row>
+            <row >
+              <cell><m>3</m></cell>
+              <cell><m>\color{red} 3.001</m></cell>
+              <cell><m>0.001</m></cell>
+              <cell><m>\color{blue} f(3) = 3^2 + 2\cdot 3 = 15 </m></cell>
+              <cell><m>\color{blue} f(3.001) = 3.001^2 + 2\cdot 3.001 = 15.008001</m></cell>
+              <cell><m>\color{green} y_2 - y_1 = 15.81-15 = 0.008001</m></cell>
+              <cell><m>\Delta y/\Delta x = 0.008001/0.001 = 8.001</m></cell>
+            </row>
+          </tabular>
+        </p>
+        <p>
+          To interpret this table, note that the top row is an approximation of the slope where the points are reasonably far apart (<m>\Delta x=0.1</m>).
+          In the middle row the points are closer together (<m>\Delta x = 0.01</m>),
+          and in the bottom row the points are very close together (<m>\Delta x = 0.001</m>).  
+        </p>
+        <p>
+          In other words, as you move from the top to bottom, the approximating line gets closer and closer to the function.  
+        </p>
+        <p>
+          As the approximation improves, the "estimated slope" decreases from 8.1 to 8.01 to 8.001.  It looks like the slopes are getting <em>closer and closer</em> to a slope of exactly <m>m=8</m> at <m>a=3</m>.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Use this slope to find an equation for the line tangent to <m>f</m> at <m>a=3</m>. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          To find the equation of a line, start by writing down the point-slope form 
+          <me>
+            y = {\color{red} m } ( x - {\color{red} x_1} ) + {\color{red} y_1}
+          </me>
+          We are given that the x-value is  <m>\color{red} x_1=3</m>. 
+          Plug this into the equation for the function <m>f(x) = x^2 - 2x</m> to get 
+          <m>\color{red} y_1 = f(3) = 3^2 - 2\cdot 3 = 15</m>.
+        </p>
+        <p>
+          The only remaining number to find is the slope of the function <m>\color{red} m</m>.  But we have already found above that the slope of the function at <m>a=3</m> is <m>8</m>.  And the slope of the tangent equals the slope of the function, so we have that <m>\color{red} m = 8</m>.
+        </p>
+        <p>
+          Putting this together, the slope of the line tangent to <m>f</m> at 3 is 
+          <me>
+            y = {\color{red} 8 }( x - {\color{red} 3}) + {\color{red} 15}
+          </me>
+          This is the equation for the line that approximates <m>f</m> at the point <m>a=3</m>.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <assemblage xml:id="assemblage-secantlines">
+    <title>Secant Lines, AROC, and Slope</title>
+    <p>
+    <ul>
+      <li>
+        <p>
+          Just as we will use <em>tangent lines</em> to approximate the original function, we will <em>secant lines</em> to approximate tangent lines. 
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>Average Rate of Change</em> (AROC) is defined to be <m>\frac{\Delta y}{\Delta x}</m>. To compute the average rate of change just compute the height of your function at the given <m>x</m> values, and divide by the difference between those <m>x</m> values. 
+        </p>
+      </li>
+      <li>
+        <p>
+          We often use a table to help us compute the average rate of change, and call these AROC tables.  These are simply a way of organizing the different parts of computing   <m>\frac{\Delta y}{\Delta x}</m> for various values of <m>x_1</m> and <m>x_2</m>.
+        </p>
+          <tabular>
+            <col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+            <row bottom="medium">
+              <cell><m>x_1</m></cell>
+              <cell><m>x_2</m></cell>
+              <cell><m>\Delta x</m></cell>
+              <cell><m>y_1</m></cell>
+              <cell><m>y_2</m></cell>
+              <cell><m>\Delta y</m></cell>
+              <cell><m>\Delta y/\Delta x</m></cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>a</m></cell>
+              <cell><m>b</m></cell>
+              <cell><m>\color{red} b-a</m></cell>
+              <cell><m>\color{blue} f(a) </m></cell>
+              <cell><m>\color{blue} f(b) </m></cell>
+              <cell><m>\color{green} f(b) - f(a) </m></cell>
+              <cell><m>\Big(f(b) - f(a)\Big)/\Big(b-a\Big) </m></cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>c</m></cell>
+              <cell><m>d</m></cell>
+              <cell><m>\color{red} d-c</m></cell>
+              <cell><m>\color{blue} f(c) </m></cell>
+              <cell><m>\color{blue} f(d) </m></cell>
+              <cell><m>\color{green} f(d) - f(c) </m></cell>
+              <cell><m>\Big(f(d) - f(c)\Big)/\Big(d-c\Big) </m></cell>
+            </row>
+            <row>
+              <cell><m>\dots</m></cell>
+              <cell><m>\dots</m></cell>
+              <cell><m>\dots</m></cell>
+              <cell><m>\dots</m></cell>
+              <cell><m>\dots</m></cell>
+              <cell><m>\dots</m></cell>
+              <cell><m>\dots</m></cell>
+            </row>
+          </tabular>
+      </li>
+      <li>
+        <p>
+          Suppose you are <em>given</em> a function <m>f(x)</m> and an <m>x</m>-value <m>a</m>.  
+          To <em>approximate the slope of <m>f(x)</m> at <m>a</m></em>, create an AROC table as follows:
+          <ol>
+            <li>
+              <p>
+                Set <m>x_1=a</m> in each row.  
+                Pick several values for <m>\Delta x</m> that get smaller and smaller (think <m>0.1</m>, <m>0.01</m>, <m>\dots</m>).
+                Put the largest <m>\Delta x</m> in the top row, and put smaller <m>\Delta x </m> in lower rows.
+                For each row, set <m>x_2 = x_1 + \Delta x</m> 
+              </p>
+            </li>
+            <li>
+              <p>
+                Fill in the table, computing <m>y_1,y_2,\Delta y,</m> and <m>\frac{\Delta y}{\Delta x}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Read the right hand of the table from top to bottom.  Where is the average rate <m>\frac{\Delta y}{\Delta x}</m> going as <m>\Delta x\rightarrow 0</m>?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ul>
+    </p>
+  </assemblage>
+
+  <p>
+    The above process for approximating slope is the most accurate way of doing things, but it can be a bit involved. 
+    In specific circumstances, you can often <em>approximate</em> the slope using a single computation.  Instead of repeatedly calculating <m>\Delta y/\Delta x</m> for smaller and smaller values of <m>\Delta x</m>, you can sometimes pick a single very small value for <m>\Delta x</m>.  
+    For example, picking <m>\Delta x = 0.001</m> gives us 
+    <me>
+      \text{slope of f at }a \approx \dfrac{f(a+0.001) - f(a) }{0.001}
+    </me>
+    That value is only <em>approximate</em>, so it might be too large and it might be too small.
+    By using an AROC table, we get a better sense of whether the exact slope is smaller or larger.
+  </p>
+</section>
+
+
+<section xml:id="sec_slopealgebraically">
+  <title>Defining Slope Algebraically</title>
+  
+  <p>
+    In the previous section, we developed a method that allows us to approximate slope by an iterative process of seeing where <em>average slope is going</em> as the change in input <em><m>\Delta x</m> goes to zero </em>.
+  </p>
+  <p>
+    Using the language of <xref ref="ch_limits"/>, we can translate this into a limit definition of slope. 
+  </p>
+  
+  <definition xml:id="def-slopeAsLimit">
+    <statement>
+      <p>
+        Given a function <m>f(x)</m> and a number <m>a</m>. 
+        The <term>slope of f at a</term>, abbreviated <m>f'(a)</m> is equal to 
+        <me>
+          f'(a) = \lim_{\Delta x\rightarrow 0}\dfrac{\Delta y}{\Delta x} = \lim_{\Delta x\rightarrow 0} \dfrac{ f\Big(a+\Delta x\Big) - f\Big(a\Big) }{\Delta x} 
+        </me>
+        
+        English keyboards do not have a button for <m>\Delta x</m>, so we can use the letter <m>h</m> to abbreviate the change in the input.  This gives us an alternative form: 
+        <me>f'(a) = \displaystyle \lim_{h\rightarrow 0}\dfrac{f\Big(a+h\Big) - f\Big(a\Big) }{h} </me>
+      </p>
+    </statement>
+  </definition>
+  <p>
+    To <em>use</em> the limit definition, 
+    <ol>
+      <li>
+        <p>
+          Completely simplify the fraction using the specific function <m>f</m> and number <m>a</m> that you are given.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the limit of the simplified function by letting <m>h</m> go to <m>0</m>. 
+          For the purposes of this course, this means plugging in <m>h=0</m> as long as this does not result in division by <m>0</m>.
+        </p>
+      </li>
+    </ol>
+  </p>
+  
+
+  <exploration xml:id="ex_slope_from_limit_defn">
+    <statement>
+      <p>
+        Let <m>f(x) = x^2 + 2x</m>.
+        Use the limit definition to find the slope of <m>f</m> at <m>a=3</m>. 
+      </p>
+    </statement>
+    <solution>
+      <p>
+        The limit definnition of slope at <m>3</m> gives us 
+        <me>
+          \text{slope at 3 } = \lim_{\Delta x\rightarrow 0} \dfrac{\Delta y}{\Delta x} = \lim_{h\rightarrow 0} \dfrac{ {\color{blue}f\Big(3+h\Big)} - {\color{red} f\Big(3\Big)}}{h}
+        </me>
+        This function includes several components, that we first simplify on their own. 
+        The function is defined by the rule  <m>f(x) = x^2 + 2x</m>.  That means that <m>\color{red} f(3) = 3^2 + 2\cdot 3 = \dots = 15</m>.
+        Similarly, we can simplify the expression as follows:
+        <md>
+          <mrow> \color{blue} f\Big(3+h\Big) \amp \color{blue} = \Big(3+h\Big)^2 + 2\cdot \Big(3+h\Big) </mrow>
+          <mrow> \amp \color{blue} = \Big(3+h\Big)\cdot\Big(3+h\Big)  + 2\cdot \Big(3+h\Big) </mrow>
+          <mrow> \amp \color{blue} = 9 + 3h + 3h + h^2 + 6 + 2h  </mrow>
+          <mrow> \color{blue} f\Big(3+h\Big) \amp = \color{blue} 15 + 8h + h^2   </mrow>
+        </md>
+        We can now plug these simplified expressions back into our limit definition
+        <md>
+          <mrow> \text{slope at 3 } \amp = \lim_{h\rightarrow 0} \dfrac{ {\color{blue}f\Big(3+h\Big)} - {\color{red} f\Big(3\Big)}}{h}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ {\color{blue} (15 + 8h + h^2)}  - {\color{red} (15) } }{h}</mrow>
+        </md>
+        It is tempting to try to plug in <m>h=0</m>, but if you do that on your calculator, you end up dividing by 0, which gives a value of <m>UNDEFINED</m> or <m>DNE</m>. 
+        Because of this, we need to keep simplifying as in <xref ref="sec-combining_functions"/>:
+        <md>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ 8h + h^2 }{h}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ {\color{red} h}\cdot (8 + h)  }{{\color{red} h}}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ (8 + h) }{1}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} (8 + h) </mrow>
+        </md>
+        As <m>h\rightarrow 0 </m>, the expression  <m>8+h</m> goes to <m>8+0=8</m>.  In other words, the slope of <m>f</m> at <m>a=3</m> is exactly <m>m=8</m>.
+      </p>
+    </solution>
+  </exploration>
+
+  <!--interactive platform="jsxgraph"  source="jsxgraph/derivative-graphical.js" width="50%">
+    <slate xml:id="jsxgraph-derivative-graphical" surface="jsxboard"   /> 
+  </interactive-->
+
+  <p>
+    Our goal in this course is to use mathematics as a tool to deepen our understanding of economics and business concepts.  
+    One of the most important insights from the limit definition of slope is the following result. 
+  </p>
+
+  <corollary xml:id="cor-unitsofslope">
+    <statement>
+      <p>
+        Suppose that <m>y=f(x)</m> is a function, and that there are units for both the input <m>x</m> and output <m>f</m>.  The following are <alert>always equal</alert>
+        <ul>
+          <li>
+            <p>
+              The slope of <m>f</m> at <m>a</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              The instantaneous rate of change (IROC) of <m>f</m> at <m>a</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        Furthermore, the units of slope and the units of IROC are always 
+        <me>
+          \dfrac{\text{units of y}}{\text{units of x}}
+        </me>
+      </p>
+    </statement>
+  </corollary>
+
+  <insight>
+    <title>Units and applied slope</title>
+    <p>
+      <ul>
+        <li>
+          <p>
+            If <m>y</m> gives the value of a stock in dollars as a function of the number of days <m>x</m>, then you can always find <em>how fast the stock is changing</em> by looking at the <em>slope of the value function</em>. 
+      Furthermore, that slope is measured in <em>dollars per day</em>. 
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>y</m> gives your milemarker on a highway as a function of the time <m>x</m> in hours, then you can always find <em>how fast your position is changing</em> by looking at the <em>slope of the position function</em>. 
+      Furthermore, that slope is measured in miles per hour. 
+          </p>
+        </li>
+      </ul> 
+    </p>
+  </insight>
+
+  <exploration xml:id="ex_iroc_from_limit_defn">
+    <statement>
+      <p>
+        Suppose that the profit of a certain oil investment is given by 
+        <m>P(x) = -x^2 + 4x - 1</m> in millions of $ as a function of the number of gallons of oil <m>x</m> produced over the lifetime of the investment. 
+      </p>
+      <p>
+        How fast is the profit changing when <m>x=1</m> million units?
+      </p>
+    </statement>
+    <solution>
+      <p>
+        We are asked for the instantaneous rate of change of profit at <m>a=1</m>. 
+        Because IROC is the same thing as slope, we can use the limit definion of slope.  In other words, we must compute <m>\lim_{\Delta x\rightarrow 0}\dfrac{\Delta y}{\Delta x}</m> at <m>a=1</m> using the formula 
+        <me>
+          \lim_{h\rightarrow 0} \dfrac{ {\color{blue} P\Big(1 + h\Big)}- {\color{red} P\Big(1\Big)} }{h}
+        </me>
+        As before, we will first simplify the components of this expression separately, and only put them back together later on. 
+        <me>
+          \color{red} P\Big(1\Big) = -\,1^2 + 4\cdot 1 - 1 = -1 + 4 -1 = 2
+        </me>
+        <md>
+          <mrow>\color{blue} P\Big(1 + h\Big) \amp\color{blue} = -\Big(1 + h\Big)^2 + 4\Big(1 + h\Big) - 1</mrow>
+        </md>
+        <md>
+          <mrow>\color{blue} = -\Big(1 + h\Big)\cdot \Big(1 + h\Big) + 4\Big(1 + h\Big) - 1</mrow>
+        </md>
+        <md>
+          <mrow>\color{blue} = -\Big(1 + 2h + h^2\Big) + 4\Big(1 + h\Big) - 1</mrow>
+          <mrow>\color{blue} = -1 - 2h - h^2 + 4 + 4h - 1</mrow>
+          <mrow>\color{blue} = - h^2  + 2h +2 </mrow>
+        </md>
+      </p>
+      <p>
+        Putting this back into the limit definition gives 
+        <md>
+          <mrow> \text{IROC at 1 } \amp = \lim_{h\rightarrow 0} \dfrac{  {\color{blue}P\Big(1+h\Big)} - {\color{red} P\Big(1\Big)}  }{h}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ {\color{blue} ( - h^2  + 2h +2 )} - {\color{red} (2) }  }{h}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ - h^2  + 2h }{h}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ {\color{red} h}\cdot(-h  + 2) }{\color{red} h}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} \dfrac{ (-h  + 2) }{1}</mrow>
+          <mrow> \amp = \lim_{h\rightarrow 0} (-h  + 2) </mrow>
+          <mrow> \amp =  (-0  + 2) = 2 </mrow>
+        </md>
+      </p>
+      <p>
+        The rate of change in profit is 2 (million $) per (million gallons).  Simplifying the units, this tells us that the profit is changing by 2 dollars per gallon when <m>x=1</m> million gallons.
+      </p>
+    </solution>
+  </exploration>
+
+</section>
+
+<section xml:id="sec-slopefunction">
+  <title>Defining a Slope Function</title>
+  
+  <p>
+    So far, we have seen how to understand, approximate, and define the slope of a function at a point <m>a</m>.  
+    If you want to look at the slope of the function at a different point, you can redo all of the computations, only with a different number. 
+  </p>
+  <p>
+    As you recompute the slope at different values, you will notice that there is a lot of repeated effort that seems very similar.  We can avoid that repeated effort by instead studying <term>slope functions</term>.
+  </p>
+  <definition xml:id="def-derivativefunction">
+    <statement>
+      <p>
+        Let <m>f(x)</m> be any function.
+        The <term>derivative</term> of <m>f</m>, written <m>f'(x)</m>,
+        is the function which, when given any number <m>a</m>, outputs the <em>slope</em> of the original function at <m>a</m>.
+      </p>
+    </statement>
+  </definition>
+
+
+    <exploration xml:id="explore_derivativeofx2">
+      <introduction>
+        <p>
+          The function <m>f(x) = x^2</m> is graphed below.
+          <interactive platform="jsxgraph" width="60%">
+            <slate xml:id="jsxgraph-findingslopefromtangent-exercise2"  surface="jessiecode" axis="true" grid="true" >
+              $board.setBoundingBox( [ -2, 2, 2, -2 ] , keepaspectratio=true) ;
+
+              xslider = slider(
+                    // Specify slider location
+                      [0.25,-1.25], [1.5,-1.25], 
+                    // Specify smallest/starting/largest value for slider
+                      [-2,0.5,2])
+                  &lt;&lt;
+                      name:"a",
+                      snapWidth:0.1
+                  &gt;&gt;  ;      
+
+                f1 = function(x) { 
+                  return x^2 ; 
+                } ;
+                tangentline = function(x) {
+                  x0 =  xslider.Value();
+                  m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                  return m*(x-x0) + f1(x0) ; 
+                } ;
+
+                // Graph the function and 
+                f1Graph = functiongraph( f1 )  
+                  &lt;&lt; 
+                      strokeColor:"blue"  
+                  &gt;&gt;;
+                tangentGraph = functiongraph( tangentline )  
+                  &lt;&lt; 
+                      strokeColor:"black",
+                      dash:3  
+                  &gt;&gt;;
+                text( -1.75,-0.75,function() {
+                      x0 =  xslider.Value();
+                      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                      return  "f \' (" + trunc(x0,2) + ") = "+ trunc(m,2);
+                      } 
+                    ) 
+                          &lt;&lt; 
+                            color:"black",
+                            fontSize:16
+                          &gt;&gt; ;
+
+                // Graph the lines from the point to the x and y axis
+                //    (put these first so they go behind the function and points)
+                line( [function() {return xslider.Value();} ,
+                            function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                          &lt;&lt; 
+                            color:"red",
+                            straightFirst:false, 
+                            straightLast:false,
+                            dash:1
+                          &gt;&gt; ;
+                line( [function() {return xslider.Value();} ,
+                            function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                          &lt;&lt; 
+                            color:"red",
+                            straightFirst:false, 
+                            straightLast:false,
+                            dash:1
+                          &gt;&gt; ;
+
+
+                // Graph point that follows the function
+                point( function() {return xslider.Value();} ,
+                            function() {return f1(xslider.Value());}) 
+                          &lt;&lt; 
+                            name:"(a,f(a))",
+                            color:"red" 
+                          &gt;&gt; ;
+                text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                          &lt;&lt; 
+                            color:"red" 
+                          &gt;&gt; ;
+                text( function() {return xslider.Value();} , -0.25 , "a") 
+                          &lt;&lt; 
+                            color:"red" 
+                          &gt;&gt; ;
+
+            </slate>
+          </interactive>
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Use the graph to approximate <m>f'(-1)</m>, <m>f'(0)</m>, <m>f'(1)</m>. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            To find a slope from a graph, first draw the tangent line at that point.
+            Then, find the slope of that tangent line. 
+          </p>
+          <p>
+            In this interactive graphic, adjusting the slider draws the tangent line for you. 
+          </p>
+          <p>
+            In either case, we see that <me>f'(-1) = -2</me>, <me>f'(0)=0</me>, <me>f'(1) = 2</me>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Use the interactive graphic to come up with a <em>conjecture</em> (educacted guess) for an equation for the <em>slope function</em> <m>f'(x)</m>. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            Try adjusting the value of <m>x</m>, and look at what the slope ends up equaling.  
+          </p>
+          <p>
+            No matter what value of <m>x</m> you end up selecting, it looks like the slope is exactly twice the <m>x</m> value. 
+            This leads to a conjecture that 
+            <me>
+              f'(x) = 2x
+            </me>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>Use the limit definition of the derivative to find an equation for <m>f'(x)</m></p>
+        </statement>
+        <solution>
+          <p>
+            To apply the limit definition of slope to <em>any</em> value of <m>x</m>, we just need to write down the same formula, only using a variable <m>x</m> instead of a specific number <m>a</m>.  In other words, we must compute
+            <me>
+              f'(x) =  \lim_{h\rightarrow 0} \dfrac{{\color{blue} f\Big(x+h\Big)} - {\color{red} f\Big(x\Big)} }{h}
+            </me>
+            As always, we simplify the corresponding expressions separately.  First, by definition <m>\color{red} f(x) = x^2</m>.  This expression cannot be simplified further, so can now move onto the second expression 
+            <md>
+              <mrow>\color{blue} f\Big(x+h\Big) \amp = \color{blue} (x+h)^2 </mrow>
+              <mrow> \amp = \color{blue} (x+h)\cdot (x+h) </mrow>
+              <mrow> \amp = \color{blue} x^2 + 2xh + h^2 </mrow>
+            </md>
+            This cannot be simplified further, so we can now plug our expressions back into the limit definition of slope
+            <md>
+              <mrow> f'(x) = \amp \lim_{h\rightarrow 0} \dfrac{{\color{blue} f\Big(x+h\Big)} - {\color{red} f\Big(x\Big)} }{h} </mrow>
+              <mrow> \amp =  \lim_{h\rightarrow 0}\dfrac{  {\color{blue} (x^2 + 2xh + h^2)} - {\color{red} (x^2)}  }{h}</mrow>
+              <mrow>\amp =  \lim_{h\rightarrow 0}\dfrac{  2xh + h^2  }{h} </mrow>
+              <mrow>\amp =  \lim_{h\rightarrow 0}\dfrac{  {\color{red} h}(2x + h)  }{\color{red} h} </mrow>
+              <mrow>\amp =  \lim_{h\rightarrow 0} (2x + h)  </mrow>
+              <mrow>f'(x) \amp =  2x  </mrow>
+            </md>
+            
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Find an equation for the line tangent to <m>f(x) = x^2</m> at <m>10</m>. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            To find the equation for the tangent line, first write down point slope form of the line 
+            <me>
+              y = {\color{red} m } (x - {\color{red} x_1}) + {\color{red} y_1}
+            </me>
+            We are given that <m>x_1=10</m>. To find <m>y_1</m>, find plug 10 into the equation for the <em>original</em> function <m>f(x)=x^2</m>
+            <me>
+              y_1 = f(10) = 10^2 = 100
+            </me>
+          </p>
+          <p>
+            We can't use the graph to find the slope of the functino at <m>10</m>, so we either need to approximate the slope numerically, use the limit definition, <em>or</em> use the equation for the slope function <m>f'(x)</m> that we have found above. 
+          </p>
+          <p>
+            Since we know that the <em>slope of <m>f</m> at <m>x</m></em> is <m>f'(x) = 2x</m>, we can find the slope at 10 by plugging 10 into the <em>slope</em> or <em>derivative</em> function <m>f'(x)=2x</m> 
+            <me>
+              m = f'(10) = 2\cdot 10 = 20
+            </me>
+            Putting all of this into the point slope form, we get that the equation of the tangent line is 
+            <me>
+              y = {\color{red} 20} (x - {\color{red} 10}) + {\color{red} 100} 
+                = 20x +80
+            </me>
+          </p>
+        </solution>
+      </task>
+    </exploration>
+
+    <exploration xml:id="ex_fprime_from_graph">
+      <introduction>
+        <p>
+          A function <m>y=f(x)</m> is defined using the graph below.  
+        </p>
+
+          <image xml:id="img_findingderivativegraphically" width="75%">
+            
+            <latex-image>
+              \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+
+              \begin{tikzpicture}
+                \draw[axes] (-2,0)--(5,0);
+                \draw[axes] (0,-2)--(0,5);
+                \draw[grid] (-0.5,4.5) grid (7.5,-1.5);
+                
+                \drawtikzspline(0,2,-1,1,1,0);
+                \drawtikzspline(1,1,0,2,2,1);
+                \drawtikzspline(2,2,1,3,3,0);
+                \drawtikzspline(3,3,0,4,1,-2);
+                \drawtikzspline(4,1,-2,5,-1.25,0);
+                \drawtikzspline(5,-1.25,0,6,-1,0.5);
+                \drawtikzspline(6,-1,0.5,7,-0.5,0.5);
+
+              \end{tikzpicture}
+            </latex-image>    
+          </image>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Compute <m>f'(0)</m>, <m>f'(1)</m>, <m>f'(2)</m>, <m>f'(3)</m>, <m>f'(4)</m>, <m>f'(5)</m>, <m>f'(6)</m>.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            We will approximate the slope at a value of <m>a</m> by first drawing the tangent to the curve at that point, and using the fact that 
+            <me>
+              \text{Slope of  } f \text{ at }a = \text{ Slope of line tangent to }f \text{ at }a
+            </me>
+            . To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. 
+            The interactive graphic below shows the line you would get at each point.  
+          </p>
+          <p>
+            <interactive platform="jsxgraph" width="60%">
+              <slate xml:id="jsxgraph-findingderivativegraphically"  surface="jessiecode" axis="true" grid="true" >
+                $board.setBoundingBox( [ -2, 4, 7, -2 ] , keepaspectratio=true) ;
+
+                xslider = slider(
+                      // Specify slider location
+                        [0.5,-1.25], [3.5,-1.25], 
+                      // Specify smallest/starting/largest value for slider
+                        [0,1.2,6.9])
+                    &lt;&lt;
+                        name:"a",
+                        snapWidth:0.1
+                    &gt;&gt;  ;      
+
+                  splinefunction = function(x,x1,y1,m1,x2,y2,m2){
+                    return  ( (((m1) + (m2))*(x1) - ((m1) + (m2))*(x2) - 2*(y1) + 2*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) )*((x)^3) + ( -(((m1) + 2*(m2))*((x1)^2) + ((m1) - (m2))*(x1)*(x2) - (2*(m1) + (m2))*((x2)^2) - 3*((x1) + (x2))*(y1) + 3*((x1) + (x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) *((x)^2) + ( ((m2)*((x1)^3) + (2*(m1) + (m2))*((x1)^2)*(x2) - ((m1) + 2*(m2))*(x1)*((x2)^2) - (m1)*((x2)^3) - 6*(x1)*(x2)*(y1) + 6*(x1)*(x2)*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3) ) * (x) + ( -((m2)*((x1)^3)*(x2) + ((m1) - (m2))*((x1)^2)*(x2)^2 - (m1)*(x1)*((x2)^3) - (3*(x1)*((x2)^2) - (x2)^3)*(y1) - ((x1)^3 - 3*((x1)^2)*(x2))*(y2))/((x1)^3 - 3*((x1)^2)*(x2) + 3*(x1)*((x2)^2) - (x2)^3)) ;
+                  } ;
+                  
+
+                  f1 = function(x) { 
+                    // TODO: Match spline functions and cases from example statement!!!!
+                    if (0 &lt;= x &amp;&amp; x &lt;1) { 
+                      return splinefunction(x,0,2,-1,1,1,0); 
+                    } else if (1 &lt;= x &amp;&amp; x &lt;2 ) { 
+                      return splinefunction(x,1,1,0,2,2,1)   ;
+                    }  else if (2 &lt;= x &amp;&amp; x &lt;3 ) { 
+                      return splinefunction(x,2,2,1,3,3,0)   ;
+                    } else if (3 &lt;= x &amp;&amp; x &lt;4 ) { 
+                      return splinefunction(x,3,3,0,4,1,-2)   ;
+                    } else if (4 &lt;= x &amp;&amp; x &lt;= 5 ) { 
+                      return splinefunction(x,4,1,-2,5,-1.25,0)   ;
+                    } else if (5 &lt;= x &amp;&amp; x &lt;= 6 ) { 
+                      return splinefunction(x,5,-1.25,0,6,-1,0.5)   ;
+                    } else if (6 &lt;= x &amp;&amp; x &lt;= 7 ) { 
+                      return splinefunction(x,6,-1,0.5,7,-0.5,0.5)   ;
+                    } else {
+                      return 0;
+                    };
+                  } ;
+                  tangentline = function(x) {
+                    x0 =  xslider.Value();
+                    m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                    return m*(x-x0) + f1(x0) ; 
+                  } ;
+
+                  // Graph the function and 
+                  f1Graph = functiongraph( f1 )  
+                    &lt;&lt; 
+                        strokeColor:"blue"  
+                    &gt;&gt;;
+                  tangentGraph = functiongraph( tangentline )  
+                    &lt;&lt; 
+                        strokeColor:"black",
+                        dash:3  
+                    &gt;&gt;;
+                  //text( 0.5,6.5,function() {
+                  //      x0 =  xslider.Value();
+                  //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                  //      return  "The tangent at a=" + trunc(x0,2) + " has slope m="+ trunc(m,2) + " and equation";
+                  //      } 
+                  //    ) 
+                  //          &lt;&lt; 
+                  //            color:"black",
+                  //            fontSize:16
+                  //          &gt;&gt; ;
+                  //text( 1.5,5.5,function() {
+                  //      x0 =  xslider.Value();
+                  //      m = (f1(x0+0.00001) - f1(x0))/0.00001;
+                  //      y0 = f1(x0);
+                  //      return  "y  =  "+ trunc(m,2) + " ( x- " + trunc(x0,2) + " )  +  " + trunc(y0,2) ;
+                  //      } 
+                  //    ) 
+                  //          &lt;&lt; 
+                  //            color:"black",
+                  //            fontSize:16
+                  //          &gt;&gt; ;
+
+                  // Graph the lines from the point to the x and y axis
+                  //    (put these first so they go behind the function and points)
+                  line( [function() {return xslider.Value();} ,
+                              function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                            &lt;&lt; 
+                              color:"red",
+                              straightFirst:false, 
+                              straightLast:false,
+                              dash:1
+                            &gt;&gt; ;
+                  line( [function() {return xslider.Value();} ,
+                              function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                            &lt;&lt; 
+                              color:"red",
+                              straightFirst:false, 
+                              straightLast:false,
+                              dash:1
+                            &gt;&gt; ;
+
+
+                  // Graph point that follows the function
+                  //point( function() {return xslider.Value();} ,
+                  //            function() {return f1(xslider.Value());}) 
+                  //          &lt;&lt; 
+                  //            name:"(a,f(a))",
+                  //            color:"red" 
+                  //          &gt;&gt; ;
+                  text( -0.75, function() {return f1(xslider.Value());}, "f(a)") 
+                            &lt;&lt; 
+                              color:"red" 
+                            &gt;&gt; ;
+                  text( function() {return xslider.Value();} , -0.25 , "a") 
+                            &lt;&lt; 
+                              color:"red" 
+                            &gt;&gt; ;
+
+              </slate>
+            </interactive>
+          </p>
+          <p>
+            Using these tangent lines, you can determine that 
+            <me>
+              f'(0) = -1
+            </me>
+            <me>
+              f'(1) = 0
+            </me>
+            <me>
+              f'(2) = 1
+            </me>
+            <me>
+              f'(3) = 0
+            </me>
+            <me>
+              f'(4) = -2
+            </me>
+            <me>
+              f'(5) = 0
+            </me>
+            <me>
+              f'(6) = 1/2
+            </me>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Find all points where the tangent is horizontal.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            The tangent is horizontal at <m>x</m><em>if and only if</em> the slope of the function is equal to 0 at <m>x</m>, <em>if and only if</em> <m>f'(x) = 0</m>.
+          </p>
+          <p>
+            This happens at the values <m>x=1,3,5</m>, and at no other x-values. 
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Find the intervals where <m>f(x)</m> is increasing. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            The function is increasing <em>if and only if</em> the slope of <m>f</m> at <m>x</m> is positive <em>if and only if</em> <m>f'(x)\gt 0</m>.
+          </p>
+          <p>
+            Looking at the graph, the slope is positive at to different parts of the graph:
+            <ul>
+              <li>
+                <p>
+                  between <m>x=1</m> and <m>x=3</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  to the right of <m>x=5</m>
+                </p>
+              </li>
+            </ul>
+            In interval notation,  <m>f</m> is increasing on the interval <m>(1,3)\cup (5,\infty)</m>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Find the intervals where <m>f(x)'\lt 0</m>. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            The function is decreasing <em>if and only if</em> the slope of <m>f</m> at <m>x</m> is negative <em>if and only if</em> <m>f'(x)\lt 0</m>.
+          </p>
+          <p>
+            Looking at the graph, the slope is negative at two different parts of the graph:
+            <ul>
+              <li>
+                <p>
+                  to the left of <m>x=1</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  between <m>x=3</m> and <m>x=5</m>
+                </p>
+              </li>
+            </ul>
+            In interval notation,  <m>f</m> is decreasing on the interval <m>(-\infty,1)\cup (3,5)</m>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Draw a sketch of the slope function <m>f'(x)</m>. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            We have already computed the <em>slope function</em> <m>f'</m> at x-values <m>0,1,2,3,4,6</m>.  Summarizing that in a table, we have 
+            <tabular>
+              <col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+              <row bottom="medium">
+                <cell><m>x</m></cell>
+                <cell><m>0</m></cell>
+                <cell><m>1</m></cell>
+                <cell><m>2</m></cell>
+                <cell><m>3</m></cell>
+                <cell><m>4</m></cell>
+                <cell><m>5</m></cell>
+                <cell><m>6</m></cell>
+              </row>
+              <row >
+                <cell><m>f'(x)</m></cell>
+                <cell><m>-1</m></cell>
+                <cell><m>0</m></cell>
+                <cell><m>1</m></cell>
+                <cell><m>0</m></cell>
+                <cell><m>-2</m></cell>
+                <cell><m>-1.1</m></cell>
+                <cell><m>1/2</m></cell>
+              </row>
+            </tabular>
+            To sketch the graph of the <em>slope</em> as a function of <m>x</m>, 
+            plot each of these <em>slopes</em>, and then connect them with a reasonably smooth curve.
+          </p>
+            <image xml:id="image_derivativefromgraph_graphfprime" width="75%">
+              
+              <latex-image>
+                  \def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }              \begin{tikzpicture}
+                  \draw[axes] (-1,0) -- (7,0);
+                  \draw[axes] (0,-3) -- (0,3);
+                  \draw[grid] ( -0.5,3) grid (6.5,-3);
+
+                  \filldraw (0,-1) circle (3pt);
+                  \drawtikzspline(0,-1,0,1,0,1);
+                  \filldraw (1,0) circle (3pt);
+                  \drawtikzspline(1,0,1,2,1,0);
+                  \filldraw (2,1) circle (3pt);
+                  \drawtikzspline(2,1,0,3,0,-1.5);
+                  \filldraw (3,0) circle (3pt);
+                  \drawtikzspline(3,0,-1.5,4,-2,0);
+                  \filldraw (4,-2) circle (3pt);
+                  \drawtikzspline(4,-2,0,5,0,0.5);
+                  \filldraw (5,0) circle (3pt);
+                  \drawtikzspline(5,0,0.5,6,0.5,0);
+                  \filldraw (6,0.5) circle (3pt);
+
+                \end{tikzpicture}
+              </latex-image>
+            </image>
+        </solution>
+      </task>
+    </exploration>
+
+
+    <subsection xml:id="subsec-derivativenotation">
+      <title>Interpreting the Meaning of <m>f'(x)</m></title>
+      
+      <p>
+        So far, we have focused on the graphical interpretation of the derivative function by emphasizing that for a graph <m>y=f(x)</m>
+        <me>
+          f'(a) = (\text{the slope of } f \text{ at }x_1=a)
+        </me>
+        But the true power of calculus comes from the <em>many</em> applications of derivatives to <em>other kinds of questions</em>.
+        We have already seen this breifly in <xref ref="cor-unitsofslope"/>, but it will be helpful to expand on this in greater detail.  
+      </p>
+      <p>
+        Perhaps the simplest way to understand the meaning of <m>f'</m> in different situations is to pay attention to the <em>units of measurement</em> for <m>f</m> and <m>f'</m>.
+        For example, for a <em>height function</em> <m>y=f(x)</m>, the units of <m>f</m> might be meters or feet.
+        On the other hand, for a <em>profit function</em> <m>P(x)</m>, the units of <m>P</m> might be dollars, or millions of dollars, or yuan.  
+      </p>
+      <p>
+        The units of the input <m>x</m> also play an important part in the meaning of the function. 
+        There is a world of difference between moving 6 miles between <em>hours</em> <m>x_1=0</m> and <m>x_2=1</m> (an average velocity of 6 miles per hour) 
+        and moving 6 miles between <em>second</em> <m>x_1=0</m> and <m>x_2=1</m> (an average velocity of <em>360</em> miles per hour).
+      </p>
+      <p>
+        To help us remember the units of derivatives, it is helpful to consider an alternate notation for the derivative function <m>f'</m>. 
+        The key idea here is to realize that <m>\Delta</m> is the greek letter <m>D</m>.  Since we use the blocky symbol <m>\Delta</m> to refer to approximate changes, we can instead use the smooth symbol <m>d</m> to refer to instantaneous changes.  This gives us the following notation.
+      </p>
+      <definition xml:id="def-dydx-notation">
+        <statement>
+          <p>
+            Let <m>y=f(x)</m> be any function.
+          </p>
+          <p>
+            Because <m>f'(x) = \lim_{\Delta x\rightarrow 0} \dfrac{\Delta y}{\Delta x}</m>, we often write 
+            <me>
+              f'(x) = \dfrac{df}{dx} = \dfrac{dy}{dx}
+            </me>
+            This notation helps us remember <xref ref="cor-unitsofslope"/>, which says
+            <me>
+              (\text{units of }f') = \dfrac{\text{units of f}}{\text{units of x}}
+            </me>
+          </p>
+        </statement>
+      </definition>
+
+      <p>
+        For example, if <m>C(x)</m> is the <em>total</em> (cumulative) cost in $ of <m>x</m> items, then the <em>rate of change</em> of cost (how fast the cost is changing)
+        <me>
+          C'(x) = \dfrac{dC}{dx} = \dfrac{\$}{\text{item}}
+        </me>
+        In other words, if you have a graph of total cost, the <em>item cost</em> is equal to the <em>slope of the graph</em>.
+        We will return to this example in greater detail in <xref ref="sec-marginalcost"/>        
+      </p>
+
+      <assemblage xml:id="assemblage_meaningofderivative">
+        <title>Interpreting Derivatives</title>
+        <p>
+          <dl>
+            <li>
+              <title>Height Functions</title>
+              <p>
+                Suppose that <m>y=f(x)</m> gives the <em>height</em> of a hill in feet as a function of the horizontal position <m>x</m> in feet. 
+                Then <m>f'(x)</m> gives the <em>slope</em> of the hill in <m>\frac{meters}{meters}</m> (meters-per-meter).
+              </p>
+            </li>
+            <li>
+              <title>Position Functions</title>
+              <p>
+                Suppose that <m>f(t)</m> gives the <em>position</em> of a vehicle in miles as a function of the current time <m>t</m> in hours. 
+                Then <m>f'(t)</m> gives the <em>velocity</em> of the vehicle in <m>\frac{miles}{hour}</m> (miles per hour). 
+              </p>
+            </li>
+            <li>
+              <title>Profit Functions</title>
+              <p>
+                Suppose that <m>P(x)</m> gives the <em>total profit</em> of a business in dollars as a function of the number of items <m>x</m> being sold.
+                Then <m>P'(x)</m> tells you  <em>how fast Profit changes</em> in <m>\frac{dollars}{item}</m> (dollars per item) when you increase the number of items being sold. 
+              </p>
+            </li>
+          </dl>
+        </p>
+      </assemblage>
+
+      <exploration xml:id="ex_meaningofderivative_1">
+        <task>
+          <statement>
+            <p>
+              Suppose that <m>y=f(x)</m> gives the height of a hill in feet as a function of the horizontal position <m>x</m> in feet.
+              Suppose also that <m>f(100) = 300</m>, and that <m>f'(100)=2</m>
+              Explain what this tells you about <m>f</m>.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              Because <m>f(100)=300</m>, the height of the hill is 300 feet at the location <m>x=100</m>.
+              Because <m>f'(100)=2</m>, the slope of the hill will be <m>2 \ \frac{feet}{feet}</m> at this particular location.
+              In other words, if you are standing above <m>x=100</m>, moving one foot forward will increase your height by about 2 feet.
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Suppose that <m>f(t)</m> gives the position of a car on a highway in miles as a function of the time <m>t</m> in hours.
+              Suppose also that <m>f(0.5) = 37</m>, and that <m>f'(0.5)=62</m>
+              Explain what this tells you about <m>f</m>.
+            </p>
+          </statement>
+          <solution>
+            <p>
+              Because <m>f(0.5)=37</m>, the position of the car is mile marker 37 after <m>x=0.5</m> hours of travel.
+              Because <m>f'(0.5)=62</m>, the velocity of the car will be <m>62 \ \frac{miles}{hour}</m> at this particular point in time.
+              In other words, assuming you don't change your speed, you would travel an additional 62 miles per additional hour of travel.
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Suppose that <m>P(x)</m> is a function that tells you the profit in dollars as a function of <m>x</m> in items.
+              Suppose also  that <m>P(100)=30,000</m>, and that <m>P'(100)=2,000</m>.  
+              Explain what this tells you about <m>P(x)</m>. 
+            </p>
+          </statement>
+          <solution>
+            <p>
+              Because <m>P(100)=30,000</m>, we know that the total profit that results froms selling items 0-100 will be $30,000.
+            </p>
+            <p>
+              Because <m>P'(100)=2,000</m>, we know that when you are selling 100 items, the profit is changing at <m>2000\ \frac{dollars}{item}</m>.  
+              In other words, if you are selling 100 items, and then increase your sales <m>x</m>, then the profit will go up by approximately <m>2,000</m> dollars-per-additional-item. 
+            </p>
+          </solution>
+        </task>
+      </exploration>
+
+    </subsection>
+
+
+  <p>
+    The goal of this course is to understand the application of derivatives, particularly to questions of economics, accounting, and management.
+  </p>
+
+  <p>
+    We now have two functions to think about in every problem, the <em>original</em> (height) function <m>f(x)</m> and the <em>derivative</em> (slope) function <m>f'(x)</m>.
+    In the last example, we even found the graph of the derivative function.  
+  </p>
+  <p>
+    The next example makes the relationship between these concepts very concrete, and shows its important connection to economic and business applications.
+  </p>
+
+
+	<insight xml:id="insight_continuousderivativesanddiscretechanges">
+		<title>Derivative Graphs Are (Related to) Change Graphs</title>
+    <p>
+      Previously, we have used histograms to understand the connection between graphs of total functions <m>C</m>, change functions <m>\Delta C</m>, and average rates of change <m>\frac{\Delta C}{\Delta x}</m>
+      <ul>
+        <li>
+          <p>
+                  In <xref ref="sec-algeba-linear-cost"/>, we carefully studied economic functions such as the total (cumulative) cost function  <m>C(x)</m>. 
+          </p>
+        </li>
+        <li>
+          <p>
+                  In <xref ref="sec_graphsoftotalsandchanges"/>, we studied the relationship between the graph of a total <m>C</m> and the change graph <m>\Delta C</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+                  And in <xref ref="sec_graphsofrateschangesandtotals"/> we seen that the average change graph <m>\dfrac{\Delta C}{\Delta x}</m> is just  a scaled version of the graph of the change <m>\Delta C</m>.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+		<p>
+			In this example, we will see that these  concrete applications are very closely related to 
+      the continuous total function <m>f</m> and  derivatives (slope) functions <m>f'</m> that we have studied in this section.
+		</p>
+
+		<p>
+      To make this concrete, we will look at a specific total (cumulative) cost function.  Let 
+      <me> 
+        C(x) = -0.05 x^2 + 0.8 x - 1
+      </me>.
+
+      As in previous sections, we can create the graphs of <m>C</m>, <m>\Delta C</m>, and <m>\frac{\Delta C}{\Delta x}</m>.
+    </p>
+      <image xml:id="image_totalchange_continuousanddiscrete_1">
+        
+        <latex-image>
+          %				\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+          \def \xmin {0}
+          \def \xmax {15}
+          \def \xtwo {5}
+          \def \xunits { } 
+          \def \yunits { }
+          \def \dyunits { }
+          \def \yscale {2}
+          \def \xscale {.28*0.6}
+          %% Information about the total (y) graph
+          \def \ymin {-2}								%% First height to be be drawn with dashed lines
+          \def \ysecondmajoraxis {-1}		%% Second height to be be drawn with dashed lines
+          \def \yfirstminoraxis  {-1.5}	%% First line to be drawn with dotted lines
+          \def \ysecondminoraxis {-0.5}	%% Second lin eto be drawn with dotted lines
+          \def \ymax {4}
+          %% Information about the change (\Delta y) graph
+          \def \dymin {-3}
+          \def \dysecondmajoraxis {-2}
+          \def \dyfirstminoraxis  {-2.5}
+          \def \dysecondminoraxis {-1.5}
+          \def \dymax {3}
+          \def \dydxsecondminoraxis {-2.8}
+
+          \begin{tikzpicture}[xscale=\xscale]
+            \draw[thick,-latex] (-1,0) -- (17,0); 
+            \draw[thick,axes] (0,-2.5) -- (0,5) ;
+            \foreach \i in {5,10,15} \draw (\i,0.1) -- (\i,-0.1) node [below] {\tiny\i};
+            \node at (7.5,4) {Total $C$} ;
+            \tikzhistogram(0,-1    );
+            \tikzhistogram(5,  1.75);
+            \tikzhistogram(10, 2   );
+            \tikzhistogram(15,-0.25);
+          \end{tikzpicture}
+          \quad
+          \begin{tikzpicture}[xscale=\xscale]
+            \draw[thick,-latex] (-1,0) -- (17,0); 
+            \draw[thick,axes] (0,-2.5) -- (0,5) ;
+            \foreach \i in {5,10,15} \draw (\i,0.1) -- (\i,-0.1) node [below] {\tiny\i};
+            
+            \node at (8.5,4) {Change $\Delta C$};
+          
+            \tikzhistogram(5,2.75);
+            \tikzhistogram(10,0.25);
+            \tikzhistogram(15,-2.25);
+          
+          \end{tikzpicture}
+          \quad
+          \begin{tikzpicture}[xscale=\xscale]
+            \draw[thick,-latex] (-1,0) -- (17,0); 
+            \draw[thick,axes] (0,-2.5) -- (0,5) ;
+            \foreach \i in {5,10,15} \draw (\i,0.1) -- (\i,-0.1) node [below] {\tiny\i};
+            
+            \node at (9,3) {AROC $\frac{\Delta C}{\Delta x}$};
+          
+            \tikzhistogram(5,2.75/5);
+            \tikzhistogram(10,0.25/5);
+            \tikzhistogram(15,-2.25/5);
+          \end{tikzpicture}
+        </latex-image>			
+      </image>
+    <p>
+      How do the functions <m>C(x)</m> and <m>C'(x)</m> fit into this picture? 
+      The graph of the total is a discrete version of <m>C(x)</m>. 
+    </p>
+    <p>
+      To find an equation for the derivaitve (slope) function, you can use the techniques from this section to find that 
+      <me>
+        C'(x) = -0.1 x + 0.8
+      </me>
+			Now that we have formulas for <m>y=C(x)</m> and its derivative <m>C'(x)</m>, let's see how the derivative relates to the graphs of <m>\Delta y</m> and <m>\dfrac{\Delta y}{\Delta x}</m>. The total <m>C = -0.05 x^2 + 0.8 x - 1</m> is graphed on the left, and the derivative <m>C' = -0.1 x + 0.8</m> is graphed on the same axes as <m>\Delta C</m> in the middle, and as <m>\frac{\Delta C}{\Delta x}</m> on the right. What is the relationship between the derivative <m>C'</m>, the change <m>\Delta C</m>, and the AROC <m>\frac{\Delta C}{\Delta x}</m>?
+		</p>
+
+		<image xml:id="image_totalchange_continuousanddiscrete_2">
+			
+			<latex-image>
+				%				\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+				\def \xmin {0}
+				\def \xmax {15}
+				\def \xtwo {5}
+				\def \xunits { } 
+				\def \yunits { }
+				\def \dyunits { }
+				\def \yscale {2}
+				\def \xscale {.28*0.6}
+				%% Information about the total (y) graph
+				\def \ymin {-2}								%% First height to be be drawn with dashed lines
+				\def \ysecondmajoraxis {-1}		%% Second height to be be drawn with dashed lines
+				\def \yfirstminoraxis  {-1.5}	%% First line to be drawn with dotted lines
+				\def \ysecondminoraxis {-0.5}	%% Second lin eto be drawn with dotted lines
+				\def \ymax {4}
+				%% Information about the change (\Delta y) graph
+				\def \dymin {-3}
+				\def \dysecondmajoraxis {-2}
+				\def \dyfirstminoraxis  {-2.5}
+				\def \dysecondminoraxis {-1.5}
+				\def \dymax {3}
+				\def \dydxsecondminoraxis {-2.8}
+
+				\begin{tikzpicture}[xscale=\xscale]
+					\draw[thick,-latex] (-1,0) -- (17,0); 
+					\draw[thick,axes] (0,-2.5) -- (0,5) ;
+					\foreach \i in {5,10,15} \draw (\i,0.1) -- (\i,-0.1) node [below] {\tiny\i};
+					\node at (7.5,4) {$C$} ;
+					\node [above] at (10,2.5) {$C = -0.05 x^2 + 0.8 x - 1$} ;
+
+					\tikzhistogram(0,-1    );
+					\tikzhistogram(5,  1.75);
+					\tikzhistogram(10, 2   );
+					\tikzhistogram(15,-0.25);
+
+					\draw [curve, color=blue, domain=0:15] plot (\x, {-0.05*(\x)^2 + 0.8*(\x) - 1}) ;
+
+				\end{tikzpicture}
+				\quad
+				\begin{tikzpicture}[xscale=\xscale]
+					\draw[thick,-latex] (-1,0) -- (17,0); 
+					\draw[thick,axes] (0,-2.5) -- (0,5) ;
+					\foreach \i in {5,10,15} \draw (\i,0.1) -- (\i,-0.1) node [below] {\tiny\i};
+					
+					\node at (8.5,4) {$C'$ and  $\Delta C$};
+				
+					\tikzhistogram(5,2.75);
+					\tikzhistogram(10,0.25);
+					\tikzhistogram(15,-2.25);
+				
+					\draw [curve, color=blue, domain=0:15] plot (\x, {-0.1*(\x) + 0.8}) node [below left, xshift=-1cm] {$C' =  -0.1 x + 0.8$};
+
+				\end{tikzpicture}
+				\quad
+				\begin{tikzpicture}[xscale=\xscale]
+					\draw[thick,-latex] (-1,0) -- (17,0); 
+					\draw[thick,axes] (0,-2.5) -- (0,5) ;
+					\foreach \i in {5,10,15} \draw (\i,0.1) -- (\i,-0.1) node [below] {\tiny\i};
+					
+					\node at (9,3) {$C'$ and $\frac{\Delta C}{\Delta x}$};
+				
+					\tikzhistogram(5,2.75/5);
+					\tikzhistogram(10,0.25/5);
+					\tikzhistogram(15,-2.25/5);
+
+					\draw [curve, color=blue, domain=0:15] plot (\x, {-0.1*(\x) + 0.8}) node [below left] {$C' =  -0.1 x + 0.8$};
+
+				\end{tikzpicture}
+			</latex-image>			
+		</image>
+
+
+		<p>
+			From the graphs above, it looks like the derivative <m>C'</m> is very close to the average rate of change <m>\dfrac{\Delta C}{\Delta x}</m>, and is a scaled version of the graph of the change <m>\Delta C</m>. For that reason, the derivative <m>C'</m> is often abbreviated <m>C' = \dfrac{dC}{dx}</m>. To see why, note that <m>\Delta</m> is Greek for letter <q>D,</q> so the notation <m>\frac{dC}{dx}</m> is intended to help you remember that it's very closely related to <m>\frac{\Delta C}{\Delta x}</m>.
+		</p>
+
+	</insight>
+
+</section>
+
+
+</chapter>

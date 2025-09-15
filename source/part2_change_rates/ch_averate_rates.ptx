@@ -1,0 +1,1508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<chapter xml:id="ch_totalschanges" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Average Rates of Change</title>
+
+<introduction>
+  <p>
+    The concepts contained in <xref first="ch_limits" last="ch_tangentsecant"/> are all connected in important, but sometimes tricky to follow ways.  As you go through this section, you may find it helpful to refer to the diagram below to see how the concepts we have seen so far are related. 
+  </p>
+	<image xml:id="img_limit-rate-conceptmap">
+      <shortdescription>A concept map of the relationship between concepts of limits, rates of change, and slope.</shortdescription>
+      <latex-image>
+        \begin{tikzpicture}
+			\node[inner sep=0pt] (O) at (0,0) {};
+			\node (limg) at (3,1.5) {graphical limits};
+			\node (limn) at (7,1.5) {numerical limits};
+			\node (change) at (3,0) {change $\Delta C$};
+			\node (aroc) at (7,0) {average change $\frac{\Delta C}{\Delta x}$} ;
+			%\node (slopeg) at (3,-1.5) {slopes from tangents};
+			%\node (slopesec) at (8,-1.5) {approx (secant) slope $\frac{\Delta C}{\Delta x}$};
+			\node (velocity) at (12,0) {\begin{minipage}{1.25in}\centering velocity and IROC \\ $\lim_{\Delta x\rightarrow 0}\frac{\Delta y}{\Delta x}$\end{minipage}} ;
+			%\node (slopen) at (14,-1.5) {\begin{minipage}{1.25in}\centering  slope numerically \\ $\lim_{h\rightarrow 0}\frac{f(a+h) - f(a)}{h}$\end{minipage}};
+			
+			\draw[fill] (O) circle (2pt);
+			\draw[-latex] (O) -- (limg);
+			\draw[-latex] (limg) -- (limn);
+			\draw[-latex] (limn) -- (velocity);
+			\draw (O) -- (change) ;
+			\draw[-latex] (change) -- (aroc) ;
+			\draw[-latex] (aroc) -- (velocity) ; 
+        \end{tikzpicture}
+      </latex-image>
+      
+    </image>
+</introduction>
+
+	<section xml:id="sec-AROC">
+		<title>Average Rates of Change</title>
+		
+		<p>
+			Let <m>y</m> be any function of <m>x</m>. 
+			That means that any change of input <m>\Delta x</m> produces a change in the output <m>\Delta y</m>. 
+			If we <em>average</em> the change in outputs <m>\Delta y</m> over the inputs <m>\Delta x</m>, we get the <term>average change</term> <m>\dfrac{\Delta y}{\Delta x}</m>.  
+		</p>
+		<p>
+			For reasons we will see in a future section, we will use the terms 
+			<term>average change</term> and <term>average rate of change</term> interchangeably.
+		</p>
+
+		 <definition xml:id="def-averagerate">
+			<statement>
+				<p>
+					Given a curve <m>y=f(x)</m> and two input values <m>x_1</m> and <m>x_2</m>
+					<ul>
+						<li>
+							<p>
+								The <term>change in input</term> that results from moving from <m>x_1</m> to <m>x_2</m> is <m>\Delta x = x_2-x_1</m>
+							</p>
+						</li>
+						<li>
+							<p>
+								The resulting <term>change in output</term> that results from moving from <m>x_1</m> to <m>x_2</m> is 
+								<me>\Delta y = y_2-y_1 = f(x_2) - f(x_1)</me> 
+								where <m>y_1 = f(x_1)</m> and <m>y_2=f(x_2)</m>. 
+							</p>
+						</li>
+						<li>
+							<p>
+								The <term>average rate of change of <m>y</m></term> as a result of changing the inputs from <m>x_1</m> to <m>x_2</m> is 
+								<me>\dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1} = \dfrac{f(x_2) - f(x_1)}{x_2-x_1}</me>
+							</p>
+						</li>
+					</ul>
+				</p>
+			</statement>
+		 </definition>
+
+		<exercise>
+			<statement>
+				<p>
+					Recall that the total cost function <m>C(x)</m> is a function of the total number of items <m>x</m> to be produced. 
+					Suppose that increasing your production by 100 items will increase the total cost by $2000.  
+					Find the <em>average</em> (aka <em>average rate of</em>) change in the cost. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					We are told that a change of input <m>\Delta x = 100</m> will result in an increase in total cost of <m>\Delta C = 2000</m>. 
+					To find the <em>average</em> change, divide that $2000 evenly across the 100 additional items
+					<me>
+						\dfrac{\Delta C}{\Delta x} = \dfrac{2000}{100} = 20
+					</me>
+					On average, each of the 100 additional items will increase the total cost by $20. 
+				</p>
+			</solution>
+		</exercise>
+
+		<p>
+			Average rates are common throughout economics and daily life. 
+			When the number of items is large (in the context of macroeconomics), limits show up and calculus begins. 
+			But before we get there, we will first explore a number of examples that emphasize the connection between <em>totals</em>, <em>changes</em> and <em>averages/rates</em>. 
+		</p>
+
+		<exploration>
+			<introduction>
+				<p>
+					A total (cumulative) cost function is defined by <m>C(x) = 0.1 x^2 + 50 x + 1000 </m>
+					in dollars as a function of the total number of items <m>x</m> to be produced. 
+				</p>
+			</introduction>
+			<task>
+				<statement>
+					<p>
+						Last year, you made 100 items. 
+						This year, you are considering increasing your production to 150 items. 
+						Find the <em>change</em> in cost and the <em>average rate of change</em> in the cost that would result from this change. 
+					</p>
+				</statement>
+				<solution>
+					<p>
+						From the information given in the problem, we can compute the total cost of producing 100 items is 
+						<me>
+							C_1 = C(100) = \$ 7, 000
+						</me>
+						and that the total cost of producing 150 items would be 
+						<me>
+							C_2 = C(150) = \$ 10, 750
+						</me>
+						The change in cost between these quantities is 
+						<me>
+							\Delta C = C(150) - C(100) = 10,750 - 7,000 = \$ 3,750
+						</me>
+						This change is a result of changing the quantity by 
+						<me>
+							\Delta x = 150 - 100 = 50 \text{ items}
+						</me>
+						.
+						Dividing the total cost <m>\Delta C</m> evenly among the <m>\Delta x</m> items results in an <em>average</em> cost per item of 
+						<me>
+							\dfrac{\Delta C}{\Delta x} = \dfrac{3,750}{50} = 75 \frac{\$}{\text{item}}
+						</me>
+					</p>
+					<p>
+						There were a lot of parts of this calculation.  You can either use a the definition
+						<m> \dfrac{\Delta C}{\Delta x} = \dfrac{C(x_2) - C(x_1)}{x_2 - x_1} </m>
+						which is a single formula that combines all of these steps, or you can organize the different parts separately using the table below. 
+						This is called an Average Rate of Change table, often abbreviated AROC. 
+						<tabular>
+							<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+							<row bottom="medium">
+							<cell><m>x_1</m></cell>
+							<cell><m>x_2</m></cell>
+							<cell><m>\Delta x</m></cell>
+							<cell><m>y_1</m></cell>
+							<cell><m>y_2</m></cell>
+							<cell><m>\Delta y</m></cell>
+							<cell><m>\Delta y/\Delta x</m></cell>
+							</row>
+							<row>
+							<cell><m>100</m></cell>
+							<cell><m>150</m></cell>
+							<cell><m>50</m></cell>
+							<cell><m>7000</m></cell>
+							<cell><m>10750</m></cell>
+							<cell><m>3750</m></cell>
+							<cell><m>75</m></cell>
+							</row>
+						</tabular>
+					</p>
+				</solution>
+			</task>
+			<task xml:id="task_costfunctionwithdecreasingquantity">
+				<statement>
+					<p>
+						Use the cost function above to find the average change in cost 
+						between 100 and 125 items, 
+						between 100 and 110 items, and 
+						between 100 and 101 items. 
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<tabular>
+							<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+							<row bottom="medium">
+							<cell><m>x_1</m></cell>
+							<cell><m>x_2</m></cell>
+							<cell><m>\Delta x</m></cell>
+							<cell><m>y_1</m></cell>
+							<cell><m>y_2</m></cell>
+							<cell><m>\Delta y</m></cell>
+							<cell><m>\Delta y/\Delta x</m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>100</m></cell>
+							<cell><m>125</m></cell>
+							<cell><m>\color{red} 	125 - 100 = 25</m></cell>
+							<cell><m>\color{blue} C(100) = 7000</m></cell>
+							<cell><m>\color{blue} C(125) = 8812.5</m></cell>
+							<cell><m>\color{blue} C(125) - C(100) \color{green} = 8812.5 - 7000 = 1812.5 </m></cell>
+							<cell><m>\dfrac{\color{green} 1812.5}{\color{red} 25} = 72.50  </m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>100</m></cell>
+							<cell><m>110</m></cell>
+							<cell><m>\color{red} 	110 - 100 = 10</m></cell>
+							<cell><m>\color{blue} C(100) = 7000</m></cell>
+							<cell><m>\color{blue} C(110) = 7710 </m></cell>
+							<cell><m>\color{blue} C(110) - C(100) \color{green} = 7710 - 7000 = 710 </m></cell>
+							<cell><m>\dfrac{\color{green} 710}{\color{red} 10} = 71.00  </m></cell>
+							</row>
+							<row>
+							<cell><m>100</m></cell>
+							<cell><m>101</m></cell>
+							<cell><m>\color{red} 	101 - 100 = 1</m></cell>
+							<cell><m>\color{blue} C(100) = 7000</m></cell>
+							<cell><m>\color{blue} C(101) = 7070.1</m></cell>
+							<cell><m>\color{blue} C(101) - C(100) \color{green} =  7070.1 - 7000 = 70.1</m></cell>
+							<cell><m>\dfrac{\color{green} 70.1}{\color{red} 1} =  70.10 </m></cell>
+							</row>
+						</tabular>
+					</p>
+				</solution>
+			</task>
+			<task>
+				<statement>
+					<p>
+						Suppose that last year you produced 100 items, 
+						and that you are planning to increasing production by 5 items this year. 
+						Find the average rate of change in cost that results from this change. 
+					</p>
+				</statement>
+				<solution>
+					<p>
+						We are given the starting quantity <m>x_1 = 5</m> and the change in quantity <m>\Delta x = 5</m>.  Using this, we can reason backward to get the ending quantity <m>x_2 = 105</m>. 
+						We can use the AROC equation 
+						<me>
+							\dfrac{\Delta C}{\Delta x} = \dfrac{C(105) - C(100)}{105-100} = \dfrac{7352.5 - 7000}{5} = 70.5
+						</me>
+						or create an AROC table 
+						<tabular>
+							<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+							<row bottom="medium">
+							<cell><m>x_1</m></cell>
+							<cell><m>x_2</m></cell>
+							<cell><m>\Delta x</m></cell>
+							<cell><m>y_1</m></cell>
+							<cell><m>y_2</m></cell>
+							<cell><m>\Delta y</m></cell>
+							<cell><m>\Delta y/\Delta x</m></cell>
+							</row>
+							<row>
+							<cell><m>100</m></cell>
+							<cell><m>105</m></cell>
+							<cell><m>\color{red} 	105 - 100 = 5</m></cell>
+							<cell><m>\color{blue} C(100) = 7000</m></cell>
+							<cell><m>\color{blue} C(105) = 7352.5</m></cell>
+							<cell><m>\color{blue} C(105) - C(100) \color{green} =  7352.5 - 7000 = 352.5</m></cell>
+							<cell><m>\dfrac{\color{green} 362.5}{\color{red} 5} =  70.50 </m></cell>
+							</row>
+						</tabular>
+						The 5 additional items will increase the <em>total cost</em> by an average of 70.50 <em>dollars per item</em>. 
+					</p>
+				</solution>
+			</task>
+		</exploration>
+
+	</section>
+ 
+
+	<section xml:id="sec_graphsofrateschangesandtotals">
+		<title>Graphs of Rates, Changes, and Totals</title>
+
+		<insight xml:id="insight-applyingAROC">
+			<title>Understanding and Applying "Average Rates of Change"</title>
+			
+			<p>
+				We've spent a lot of time thinking about <q>total</q> and <q>change</q> graphs. In each of those examples, we knew the value of the total for each natural number <m>1,2,3,\dots</m>
+			</p>
+
+			<p>
+				But what happens if we only have information about <em>a few</em> values of <m>x</m>. For example, in the graph on the right, we only know the total value on day 0, 5, 10, etc.
+			</p>
+
+			<p>
+				What should we do if we want to know the change between day 0 and 1? We can't know that number for certain, but we <em>can</em> try to compute the <em>average</em> change.
+			</p>
+
+			<p>
+				Since the value went up 2 units over 5 days, if we divide that change evenly over the 5 days we get the <term>Average Rate Of Change</term> <me>\text{(AROC)} = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{4-2}{5-0} = \dfrac{2}{5} = 0.4</me>
+			</p>
+
+			<image xml:id="image_totalchange_averagerate" width="40%">
+				
+				<latex-image>
+					\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+					\def \xmin {0}
+					\def \xmax {30}
+					\def \xtwo {5}
+					\def \xunits { } 
+					\def \yunits { }
+					\def \dyunits { }
+					\def \yscale {1}
+					\def \xscale {0.1}
+					%% Information about the total (y) graph
+					\def \ymin {0}								%% First height to be be drawn with dashed lines
+					\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+					\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+					\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+					\def \ymax {5}
+					%% Information about the change (\Delta y) graph
+					\def \dymin {-2}
+					\def \dysecondmajoraxis {-1}
+					\def \dyfirstminoraxis  {-1.5}
+					\def \dysecondminoraxis {-0.5}
+					\def \dymax {2.5}
+
+					\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+					\def \yscale {1}
+						%% Graph of Total %%
+						%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+						%\node at ({(\xmin+\xmax)/2},{\ymin-1.75}) {Graph of Total \ $y$};
+						%\node at ({(\xmin+\xmax)/2},{\ymin-1.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+						%
+						%% Draw horizontal lines at major and minor y-values
+						\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+							\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+						\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+							\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+						%
+						%% Draw and label x and y axes
+						\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+						\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+						\foreach \i in {\xmin,\xtwo,...,\xmax}
+							\node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+						\foreach \i in {\ymin,...,\ymax}
+							\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+						
+						\foreach \i in {\xmin,\xtwo,...,\xmax}
+							\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+						
+						%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+							
+
+						\tikzhistogram(0,2);
+						\tikzhistogram(5,4);
+						\tikzhistogram(10,3);
+						\tikzhistogram(15,2.5);
+						\tikzhistogram(20,3.5);
+						\tikzhistogram(25,3);
+						\tikzhistogram(30,2);
+						
+						% standard dimension:
+						%		\draw [dimen] (1,0) -- (1,1.75) node {$f(x)$};
+						% short dimension:
+						%   \draw [dimen] (0,-.5) -- (0.4,-.5) node[below=1mm,midway] {$\Delta x$};
+						\draw[dimen,red] (-15,2) -- (-15,4) node [left=1mm,midway] {$\Delta y$} ;
+						\draw[dimen,red] (0,-1.25) -- (5,-1.25) node [below=1mm,midway] {$\phantom{\scriptstyle[0,5]}\Delta x\ _{[0,5]}$} ;
+						\node at (-2,2) [left,red] {$y_1=$};	
+						\node at (-2,4) [left,red] {$y_2=$};	
+						\node at (0,-0.5) [below,red] {$x_1$};	
+						\node at (5,-0.5) [below,red] {$x_2$};	
+
+
+					\end{tikzpicture}
+				</latex-image>
+				
+			</image>
+
+			<p>
+				Summarizing this in a table, we get the row in an Average Rate Of Change (AROC) table:
+			</p>
+
+          <tabular>
+            <col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+            <row bottom="medium">
+              <cell><m>x_1</m></cell>
+              <cell><m>x_2</m></cell>
+              <cell><m>\Delta x</m></cell>
+              <cell><m>y_1</m></cell>
+              <cell><m>y_2</m></cell>
+              <cell><m>\Delta y</m></cell>
+              <cell><m>\Delta y/\Delta x</m></cell>
+            </row>
+            <row>
+              <cell><m>0</m></cell>
+              <cell><m>5</m></cell>
+              <cell><m>\color{red} 	5 - 0 = 5</m></cell>
+              <cell><m>\color{blue} C(0) = 2</m></cell>
+              <cell><m>\color{blue} C(5) = 4</m></cell>
+              <cell><m>\color{blue} C(0) - C(5) \color{green} = 2</m></cell>
+              <cell><m>\dfrac{\color{green} 2}{\color{red} 5} = 0.4</m></cell>
+            </row>
+          </tabular>
+			
+		</insight>
+
+		<exploration>
+			<introduction>
+				<p>
+					Suppose, as in <xref ref="insight-applyingAROC"/>, that a total cost function is given by the histogram below 
+				</p>
+				<image xml:id="image_totalchange_averagerate_2" width="40%">
+						
+						<latex-image>
+							\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+							\def \xmin {0}
+							\def \xmax {30}
+							\def \xtwo {5}
+							\def \xunits { } 
+							\def \yunits { }
+							\def \dyunits { }
+							\def \yscale {1}
+							\def \xscale {0.1}
+							%% Information about the total (y) graph
+							\def \ymin {0}								%% First height to be be drawn with dashed lines
+							\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+							\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+							\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+							\def \ymax {5}
+							%% Information about the change (\Delta y) graph
+							\def \dymin {-2}
+							\def \dysecondmajoraxis {-1}
+							\def \dyfirstminoraxis  {-1.5}
+							\def \dysecondminoraxis {-0.5}
+							\def \dymax {2.5}
+
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							\def \yscale {1}
+								%% Graph of Total %%
+								%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+								%\node at ({(\xmin+\xmax)/2},{\ymin-1.75}) {Graph of Total \ $y$};
+								%\node at ({(\xmin+\xmax)/2},{\ymin-1.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+								%
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+									\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+								\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+									\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+								%
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+								\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+								\foreach \i in {\ymin,...,\ymax}
+									\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+								
+								%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+									
+
+								\tikzhistogram(0,2);
+								\tikzhistogram(5,4);
+								\tikzhistogram(10,3);
+								\tikzhistogram(15,2.5);
+								\tikzhistogram(20,3.5);
+								\tikzhistogram(25,3);
+								\tikzhistogram(30,2);
+								
+								% standard dimension:
+								%		\draw [dimen] (1,0) -- (1,1.75) node {$f(x)$};
+								% short dimension:
+								%   \draw [dimen] (0,-.5) -- (0.4,-.5) node[below=1mm,midway] {$\Delta x$};
+							\end{tikzpicture}
+						</latex-image>
+						
+					</image>
+			</introduction>
+			<!-- New order: full table first. Individual (non table) AROC questions in the next example. -->
+			<!--task>
+				<statement>
+					<p>
+						Find the average rate of change between days 5 and 30 by creating an AROC table. Then find the average rate of change between days 10 and 25. What are the units of the average rate of change? What are the meanings of these numbers?
+					</p>
+				</statement>
+				<solution>
+					<p>
+					</p>
+				</solution>
+			</task-->
+			<!--task>
+				<statement>
+					<p>
+						Notice that the average change between day 10 and 25 is zero. Does that mean there no change ocurred during that period?
+						Which other average rates of change can we compute from this data?
+					</p>
+				</statement>
+			</task-->
+			<task>
+				<statement>
+					<p>
+						 Fill in the following AROC table
+							<tabular>
+								<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+								<row bottom="medium">
+									<cell><m>x_1</m></cell>
+									<cell><m>x_2</m></cell>
+									<cell><m>\Delta x</m></cell>
+									<cell><m>y_1</m></cell>
+									<cell><m>y_2</m></cell>
+									<cell><m>\Delta y</m></cell>
+									<cell><m>\Delta y/\Delta x</m></cell>
+								</row>
+								<row bottom="medium">
+									<cell><m>0</m></cell>
+									<cell><m>5</m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+								</row>
+								<row bottom="medium">
+									<cell><m>5</m></cell>
+									<cell><m>10</m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+								</row>
+								<row bottom="medium">
+									<cell><m>10</m></cell>
+									<cell><m>15</m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+								</row>
+								<row>
+									<cell><m>15</m></cell>
+									<cell><m>20</m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+									<cell><m></m></cell>
+								</row>
+							</tabular>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						<tabular>
+							<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+							<row bottom="medium">
+							<cell><m>x_1</m></cell>
+							<cell><m>x_2</m></cell>
+							<cell><m>\Delta x</m></cell>
+							<cell><m>y_1</m></cell>
+							<cell><m>y_2</m></cell>
+							<cell><m>\Delta y</m></cell>
+							<cell><m>\Delta y/\Delta x</m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>0</m></cell>
+							<cell><m>5</m></cell>
+							<cell><m>\color{red} 5-0 = 5</m></cell>
+							<cell><m>\color{blue} 2</m></cell>
+							<cell><m>\color{blue} 4</m></cell>
+							<cell><m>\color{blue} 4-2 \color{green} = 2</m></cell>
+							<cell><m>\dfrac{\color{green} 2}{\color{red} 5} = 0.4</m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>5</m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>\color{red} 10-5 = 5</m></cell>
+							<cell><m>\color{blue} 4</m></cell>
+							<cell><m>\color{blue} 3</m></cell>
+							<cell><m>\color{blue} 3-4 \color{green} = -1</m></cell>
+							<cell><m>\dfrac{\color{green} -1}{\color{red} 5}=-0.2</m></cell>
+							</row>
+							<row bottom="medium">
+								<cell><m>10</m></cell>
+								<cell><m>15</m></cell>
+								<cell><m>\color{red} 15-10=5</m></cell>
+								<cell><m>\color{blue} 3</m></cell>
+								<cell><m>\color{blue} 2.5</m></cell>
+								<cell><m>\color{blue} 2.5-3 \color{green} = -0.5</m></cell>
+								<cell><m>\dfrac{\color{green} -0.5}{\color{red} 5}=-0.1</m></cell>
+							</row>
+							<row>
+								<cell><m>15</m></cell>
+								<cell><m>20</m></cell>
+								<cell><m>\color{red} 20-15 = 5</m></cell>
+								<cell><m>\color{blue} 2.5</m></cell>
+								<cell><m>\color{blue} 3.5</m></cell>
+								<cell><m>\color{blue} 3.5-2.5 \color{green} = 1</m></cell>
+								<cell><m>\dfrac{\color{green} 1}{\color{red} 5}=0.2</m></cell>
+							</row>
+						</tabular>
+					</p>
+				</solution>
+			</task>
+			<task>
+				<statement>
+					<p>
+						Use your AROC table to fill in the graphs of the change <m>\Delta y</m> and of the rate <m>\dfrac{\Delta y}{\Delta x}</m> in the graph below.
+					</p>
+						<image xml:id="image_totalchange_averagerate2" width="45%">
+							
+
+							<latex-image>
+								%%%% EXAMPLE 1 %%%%
+								\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+								%\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+								\def \xmin {0}
+								\def \xmax {22}
+								\def \xtwo {5}
+								\def \xunits { } 
+								\def \yunits { }
+								\def \dyunits { }
+								\def \yscale {2}
+								\def \xscale {.2*0.75}
+								%% Information about the total (y) graph
+								\def \ymin {0}								%% First height to be be drawn with dashed lines
+								\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+								\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+								\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+								\def \ymax {4}
+								%% Information about the change (\Delta y) graph
+								\def \dymin {-2}
+								\def \dysecondmajoraxis {-1}
+								\def \dyfirstminoraxis  {-1.5}
+								\def \dysecondminoraxis {-0.5}
+								\def \dymax {2}
+
+								\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+									%% Graph of Total %%
+									%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+									\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {Graph 1: of Total \ $y$};
+									\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+									%
+									%% Draw horizontal lines at major and minor y-values
+									\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+										\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+									\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+										\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+									%
+									%% Draw and label x and y axes
+									\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+									\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+									\foreach \i in {\ymin,...,\ymax}
+										\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+									
+									%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+										
+									\tikzhistogram(0,2);
+									\tikzhistogram(5,4);
+									\tikzhistogram(10,3);
+									\tikzhistogram(15,2.5);
+									\tikzhistogram(20,3.5);
+									%\tikzhistogram(25,3);
+									%\tikzhistogram(30,2);
+									
+								\end{tikzpicture}
+								%
+								\ 
+								%
+								\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+									%% Graph of Change %%
+									%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+									\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 2: Change \ $\Delta y$};
+									\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+									%	%
+									%% Draw horizontal lines at major and minor y-values
+									\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+										\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+									\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+										\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+									%
+									%% Draw and label x and y axes
+									\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+									\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+									\foreach \i in {\dymin,...,\dymax}
+										\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+									\node[left] at (0,0.5) {\scriptsize 0.5};
+									\node[left] at (0,-0.5) {\scriptsize -0.5};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+									
+									
+									%\tikzhistogram(0,0);
+									\tikzhistogram(5,2);
+									%\tikzhistogram(10,-1);
+									%\tikzhistogram(15,-.5);
+									%\tikzhistogram(20,1);
+									%\tikzhistogram(25,-.5);
+									%\tikzhistogram(30,-1);
+									
+								\end{tikzpicture}
+								%
+								\ 
+								%
+								\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+									%% Graph of Change %%
+									%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+									\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 3: Rate \ $\dfrac{\Delta y}{\Delta x}$};
+									%
+									%% Draw horizontal lines at major and minor y-values
+									\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+										\draw[major gridlines,thick] (\xmin,\i)--({\xmax+1},\i);
+									
+									\foreach \i in {-1.8,-1.6,-1.4,-1.2,-0.8,-0.6,-0.4,-0.2,1.8,1.6,1.4,1.2,0.8,0.6,0.4,0.2}
+										\draw[very thin] (\xmin,\i)--({\xmax+1},\i);
+									%
+									%% Draw and label x and y axes
+									\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+									\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+									
+									\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+										\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+									\foreach \i in {0.2,0.4,0.6,0.8,-0.2,-0.4,-0.6,-0.8}
+										\node[left] at (0,\i) {\scriptsize \i};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+									
+									
+									%\tikzhistogram(0,0/5);
+									\tikzhistogram(5,2/5);
+									%\tikzhistogram(10,-1/5);
+									%\tikzhistogram(15,-.5/5);
+									%\tikzhistogram(20,1/5);
+									%\tikzhistogram(25,-.5/5);
+									%\tikzhistogram(30,-1/5);
+									
+								\end{tikzpicture}
+								%%%% END EXAMPLE 1 %%%% 
+							</latex-image>
+							
+						</image>
+				</statement>
+				<solution>
+					<p>
+						<image xml:id="image_totalchange_averagerate2_sln" width="60%">
+							
+
+							<latex-image>
+								%%%% EXAMPLE 1 %%%%
+								\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+								%\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+								\def \xmin {0}
+								\def \xmax {22}
+								\def \xtwo {5}
+								\def \xunits { } 
+								\def \yunits { }
+								\def \dyunits { }
+								\def \yscale {2}
+								\def \xscale {.2*0.75}
+								%% Information about the total (y) graph
+								\def \ymin {0}								%% First height to be be drawn with dashed lines
+								\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+								\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+								\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+								\def \ymax {4}
+								%% Information about the change (\Delta y) graph
+								\def \dymin {-2}
+								\def \dysecondmajoraxis {-1}
+								\def \dyfirstminoraxis  {-1.5}
+								\def \dysecondminoraxis {-0.5}
+								\def \dymax {2}
+
+								\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+									%% Graph of Total %%
+									%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+									\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {Graph 1: of Total \ $y$};
+									\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+									%
+									%% Draw horizontal lines at major and minor y-values
+									\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+										\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+									\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+										\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+									%
+									%% Draw and label x and y axes
+									\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+									\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+									\foreach \i in {\ymin,...,\ymax}
+										\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+									
+									%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+										
+									\tikzhistogram(0,2);
+									\tikzhistogram(5,4);
+									\tikzhistogram(10,3);
+									\tikzhistogram(15,2.5);
+									\tikzhistogram(20,3.5);
+									%\tikzhistogram(25,3);
+									%\tikzhistogram(30,2);
+									
+								\end{tikzpicture}
+								%
+								\ 
+								%
+								\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+									%% Graph of Change %%
+									%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+									\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 2: Change \ $\Delta y$};
+									\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+									%	%
+									%% Draw horizontal lines at major and minor y-values
+									\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+										\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+									\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+										\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+									%
+									%% Draw and label x and y axes
+									\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+									\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+									\foreach \i in {\dymin,...,\dymax}
+										\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+									\node[left] at (0,0.5) {\scriptsize 0.5};
+									\node[left] at (0,-0.5) {\scriptsize -0.5};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+									
+									
+									%\tikzhistogram(0,0);
+									\tikzhistogram(5,2);
+									\tikzhistogram(10,-1);
+									\tikzhistogram(15,-.5);
+									\tikzhistogram(20,1);
+									\tikzhistogram(25,-.5);
+									\tikzhistogram(30,-1);
+									
+								\end{tikzpicture}
+								%
+								\ 
+								%
+								\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+									%% Graph of Change %%
+									%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+									\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 3: Rate \ $\dfrac{\Delta y}{\Delta x}$};
+									%
+									%% Draw horizontal lines at major and minor y-values
+									\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+										\draw[major gridlines,thick] (\xmin,\i)--({\xmax+1},\i);
+									
+									\foreach \i in {-1.8,-1.6,-1.4,-1.2,-0.8,-0.6,-0.4,-0.2,1.8,1.6,1.4,1.2,0.8,0.6,0.4,0.2}
+										\draw[very thin] (\xmin,\i)--({\xmax+1},\i);
+									%
+									%% Draw and label x and y axes
+									\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+									\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+									
+									\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+										\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+									\foreach \i in {0.2,0.4,0.6,0.8,-0.2,-0.4,-0.6,-0.8}
+										\node[left] at (0,\i) {\scriptsize \i};
+									
+									\foreach \i in {\xmin,\xtwo,...,\xmax}
+										\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+									
+									
+									%\tikzhistogram(0,0/5);
+									\tikzhistogram(5,2/5);
+									\tikzhistogram(10,-1/5);
+									\tikzhistogram(15,-.5/5);
+									\tikzhistogram(20,1/5);
+									\tikzhistogram(25,-.5/5);
+									\tikzhistogram(30,-1/5);
+									
+								\end{tikzpicture}
+								%%%% END EXAMPLE 1 %%%% 
+							</latex-image>
+							
+						</image>
+					</p>
+				</solution>
+			</task>
+			<!-- TODO: add a solution, then uncomment -->
+			<!--task>
+				<statement>
+					<p>
+						Reflect on the relationship between the three graphs.  In particular, 
+					</p>
+					<p>
+					What's <em>different</em> between Graph 2 and Graph 3?
+					</p>
+					<p>
+					What's the <em>same</em> between Graph 2 and Graph 3?
+					</p>
+					<p>
+					Under what conditions would Graph 2 be the same as Graph 3?
+					</p>
+				</statement>
+			</task-->
+		</exploration>
+			
+
+		<exploration>
+			<introduction>
+				<p>
+					Suppose that <m>y = -0.05x^2 + 0.8x - 1</m>. Find the average rate of change between <m>x=0</m> and <m>5</m>, between <m>x=5</m> and <m>10</m>, and between <m>x=10</m> and 15.
+				</p>
+			</introduction>
+			<task>
+				<statement>
+					<p>
+						Use an AROC table to find the average rate of change between <m>x=0</m> and <m>x=5</m>, between <m>x=5</m> and <m>x=10</m>, and between <m>x=10</m> and <m>x=10</m> and <m>x=15</m>
+					</p>
+				</statement>
+			</task>
+			<task>
+				<statement>
+					<p>
+						Graph histograms representing the total function <m>y</m>, the change function <m>\Delta y</m>, and of the rate of change function <m>\dfrac{\Delta y}{\Delta x}</m>.
+					</p>
+					<image xml:id="image_totalchange_averagerate3" width="60%">
+						
+						<latex-image>
+							%%%% EXAMPLE 1 %%%%
+							\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+							%\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+							\def \xmin {0}
+							\def \xmax {15}
+							\def \xtwo {5}
+							\def \xunits { } 
+							\def \yunits { }
+							\def \dyunits { }
+							\def \yscale {2}
+							\def \xscale {.28*0.75}
+							%% Information about the total (y) graph
+							\def \ymin {-2}								%% First height to be be drawn with dashed lines
+							\def \ysecondmajoraxis {-1}		%% Second height to be be drawn with dashed lines
+							\def \yfirstminoraxis  {-1.5}	%% First line to be drawn with dotted lines
+							\def \ysecondminoraxis {-0.5}	%% Second lin eto be drawn with dotted lines
+							\def \ymax {4}
+							%% Information about the change (\Delta y) graph
+							\def \dymin {-3}
+							\def \dysecondmajoraxis {-2}
+							\def \dyfirstminoraxis  {-2.5}
+							\def \dysecondminoraxis {-1.5}
+							\def \dymax {3}
+							\def \dydxsecondminoraxis {-2.8}
+
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Total %%
+								%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+								\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {Graph 1: of Total \ $y$};
+								\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+								%
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+									\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+								\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+									\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+								%
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+								\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+								\foreach \i in {\ymin,...,\ymax}
+									\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+								
+								%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+									
+								%\tikzhistogram(0,2);
+								%\tikzhistogram(5,4);
+								%\tikzhistogram(10,3);
+								%\tikzhistogram(15,2.5);
+								%\tikzhistogram(20,3.5);
+								%\tikzhistogram(25,3);
+								%\tikzhistogram(30,2);
+								
+							\end{tikzpicture}
+							%
+							\ 
+							%
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Change %%
+								%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+								\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 2: Change \ $\Delta y$};
+								\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+								%	%
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+									\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+								\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+									\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+								%
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+								\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+								\foreach \i in {\dymin,...,\dymax}
+									\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+								\node[left] at (0,0.5) {\scriptsize 0.5};
+								\node[left] at (0,-0.5) {\scriptsize -0.5};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+								
+								
+								%\tikzhistogram(0,0);
+								%\tikzhistogram(5,2);
+								%\tikzhistogram(10,-1);
+								%\tikzhistogram(15,-.5);
+								%\tikzhistogram(20,1);
+								%\tikzhistogram(25,-.5);
+								%\tikzhistogram(30,-1);
+								
+							\end{tikzpicture}
+							%
+							\ 
+							%
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Change %%
+								%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+								\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 3: Rate \ $\dfrac{\Delta y}{\Delta x}$};
+								%
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+									\draw[major gridlines,thick] (\xmin,\i)--({\xmax+1},\i);
+								
+								%\foreach \i in {-1.8,-1.6,-1.4,-1.2,-0.8,-0.6,-0.4,-0.2,1.8,1.6,1.4,1.2,0.8,0.6,0.4,0.2}
+								\foreach \i in {\dymin,\dydxsecondminoraxis,...,\dymax}
+									\draw[very thin] (\xmin,\i)--({\xmax+1},\i);
+								%
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+								\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+								
+								\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+									\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+								\foreach \i in {0.2,0.4,0.6,0.8,-0.2,-0.4,-0.6,-0.8}
+									\node[left] at (0,\i) {\scriptsize \i};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+								
+								
+								%\tikzhistogram(0,0/5);
+								%\tikzhistogram(5,2/5);
+								%\tikzhistogram(10,-1/5);
+								%\tikzhistogram(15,-.5/5);
+								%\tikzhistogram(20,1/5);
+								%\tikzhistogram(25,-.5/5);
+								%\tikzhistogram(30,-1/5);
+								
+							\end{tikzpicture}
+							%%%% END EXAMPLE 1 %%%% 
+						</latex-image>
+					</image>
+				</statement>
+				<solution>
+					<p>
+					Here's a graph of the solution:
+					</p>
+					<image xml:id="image_totalchange_averagerate3_sln" width="60%">
+						
+						<latex-image>
+							%%%% EXAMPLE 1 %%%%
+							\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+							%\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+							\def \xmin {0}
+							\def \xmax {15}
+							\def \xtwo {5}
+							\def \xunits { } 
+							\def \yunits { }
+							\def \dyunits { }
+							\def \yscale {2}
+							\def \xscale {.28*0.75}
+							%% Information about the total (y) graph
+							\def \ymin {-2}								%% First height to be be drawn with dashed lines
+							\def \ysecondmajoraxis {-1}		%% Second height to be be drawn with dashed lines
+							\def \yfirstminoraxis  {-1.5}	%% First line to be drawn with dotted lines
+							\def \ysecondminoraxis {-0.5}	%% Second lin eto be drawn with dotted lines
+							\def \ymax {4}
+							%% Information about the change (\Delta y) graph
+							\def \dymin {-3}
+							\def \dysecondmajoraxis {-2}
+							\def \dyfirstminoraxis  {-2.5}
+							\def \dysecondminoraxis {-1.5}
+							\def \dymax {3}
+							\def \dydxsecondminoraxis {-2.8}
+
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Total %%
+								%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+								\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {Graph 1: of Total \ $y$};
+								\node at ({(\xmin+\xmax)/2},{\ymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+								%
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+									\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+								\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+									\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+								%
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+								\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+								\foreach \i in {\ymin,...,\ymax}
+									\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+								
+								%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+									
+								\draw[curve,domain=0:15] plot ( \x , {-0.05*(\x)^2 + 0.8*(\x) - 1} );
+								\tikzhistogram(0,-1);
+								\tikzhistogram(5,1.75);
+								\tikzhistogram(10,2);
+								\tikzhistogram(15,0.25);
+								
+							\end{tikzpicture}
+							%
+							\ 
+							%
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Change %%
+								%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+								\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 2: Change \ $\Delta y$};
+								\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {$\phantom{\dfrac{\Delta y}{\Delta x}}$};
+								%	%
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+									\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+								\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+									\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+								%
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+								\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+								\foreach \i in {\dymin,...,\dymax}
+									\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+								\node[left] at (0,0.5) {\scriptsize 0.5};
+								\node[left] at (0,-0.5) {\scriptsize -0.5};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+								
+								
+								\tikzhistogram(5,2.75);
+								\tikzhistogram(10,0.25);
+								\tikzhistogram(15,-2.25);
+								
+							\end{tikzpicture}
+							%
+							\ 
+							%
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Change %%
+								%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+								\node at ({(\xmin+\xmax)/2},{\dymin-0.75}) {Graph 3: Rate \ $\dfrac{\Delta y}{\Delta x}$};
+								%
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+									\draw[major gridlines,thick] (\xmin,\i)--({\xmax+1},\i);
+								
+								%\foreach \i in {-1.8,-1.6,-1.4,-1.2,-0.8,-0.6,-0.4,-0.2,1.8,1.6,1.4,1.2,0.8,0.6,0.4,0.2}
+								\foreach \i in {\dymin,\dydxsecondminoraxis,...,\dymax}
+									\draw[very thin] (\xmin,\i)--({\xmax+1},\i);
+								%
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+								\draw[axes,latex-latex] (0,{\dymin}) -- (0,{\dymax})  node[above right]{\dyunits};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+								
+								\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+									\node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+
+								\foreach \i in {0.2,0.4,0.6,0.8,-0.2,-0.4,-0.6,-0.8}
+									\node[left] at (0,\i) {\scriptsize \i};
+								
+								\foreach \i in {\xmin,\xtwo,...,\xmax}
+									\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+								
+								
+								\tikzhistogram(5,0.55);
+								\tikzhistogram(10,0.05);
+								\tikzhistogram(15,-0.45);
+								
+							\end{tikzpicture}
+							%%%% END EXAMPLE 1 %%%% 
+						</latex-image>
+					</image>
+				</solution>
+			</task>
+		</exploration>
+
+
+	</section>
+
+
+	<section xml:id="sec_velocityAndIROC">
+		<title>Velocity and Instantaneous Rates of Change</title>
+		
+
+		<p>
+			So far, we have seen many examples of finding and applying <em>average change</em>.  
+			But we have not yet seen why we would call <m>\frac{\Delta y}{\Delta x}</m> the <em>average <term>rate</term> of change</em>.
+			To understand that side of the story, we need to make a small detour into the physical world. 
+		</p>
+
+		<subsection xml:id="subsec-speedradar">
+			<title>Measuring Speed with Radar</title>
+
+			
+			<p>
+				Imagine driving down the highway, coming around a corner at 75 miles per hour. 
+				Suddenly, you see a speed trap ahead, measuring your speed with radar. 
+				How does this work?  
+				The detector actually measures your <em>distance</em> at two points in time <m>t_1</m> and <m>t_2</m>.
+			</p>
+			<image xml:id="img_speedradar">
+				
+				
+				<latex-image>
+					%% Input 1 is the \xshift, input 2 is the \yshift, input 3 is the \scaling
+					\def\stickfigure(#1,#2,#3){
+						\draw[thick] ({#1-0.0625*#3}, {#2 }	) -- ({#1},{#2 + 0.125*#3}) -- ({#1+0.0625*#3},{#2});
+						\draw[thick] ({#1},{#2 + 0.125*#3}) -- ({#1},{#2 + 0.38125*#3});
+						\draw[thick] ({#1-0.0625*#3}, {#2 + 0.2125*#3}) -- ({#1+0.0625*#3}, {#2 + 0.2625*#3});
+						\draw[fill=white,thick] ({#1},{#2 + 0.38125*#3}) circle (1.75*#3 pt);
+					}
+					\def\stickcar(#1,#2,#3){
+						\begin{scope}[shift={(#1,#2)},scale=0.2*#3]
+							\draw[thick,rounded corners=1] (0,0.5) -- (5,0.5) -- (5,1.5) -- (3.5,1.75) -- (3,2.5) -- (1.25,2.5)--(0.75,1.6) -- (0,1.5) -- cycle;
+							\draw[thick,fill=white] (1,0.5) circle (0.5);
+							\draw[thick,fill=white] (4,0.5) circle (0.5);
+						\end{scope}
+					}
+					\begin{tikzpicture}
+						\draw (0,0) -- (10,0);
+						
+						\stickcar(0,0,1.25);
+						\stickcar(3,0,1.25);
+						\stickfigure(9.5,0,1.5);
+						\draw[dimen] (1.25,1.5)--(9.5,1.5) node[midway,above] {distance $s_1$ at time $t_1$};
+						\draw[dimen] (4.25,1)--(9.5,1) node[midway,below] {distance $s_2$ at time $t_2$};
+						\draw[dimen] (1.25,-0.25)--(4.25,-0.25) node [midway,below] {$\Delta s = s_2-s_1$};
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+			<p>
+				Subtracting the distances <m>s_1,s_2</m> gives your <em>change in distance</em> <m>\Delta s</m> in miles, 
+				and subtracting the times <m>t_1,t_@</m> gives your <em>change in time</em> <m>\Delta t</m> in hours (or minutes, or seconds). 
+			</p>
+			<p>
+				Your <em>estimated</em> velocity will be the <term>average rate of change</term> of your position
+				<me>
+					\text{average velocity } = \dfrac{\text{change in position}}{\text{change in time}} = \dfrac{s_2-s_1}{t_2-t_1} = \dfrac{\Delta s}{\Delta t}
+				</me>
+			</p>
+
+			<p>
+				Better radar detectors use <em>smaller <m>\Delta t</m></em>. 
+				<ul>
+					<li>
+						<p>
+							<m>\Delta t = 1</m> hour
+							gives a bad approximation. 
+						</p>
+					</li>
+					<li>
+						
+						<p>
+							<m>\Delta t = 0.016</m> hours (1 minute)
+							gives a better approximation. 
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>\Delta t = 0.000000000001</m> hours
+							gives a <alert>very good</alert> approximation. 
+						</p>
+					</li>
+					<li>
+						<p>
+							By making <m>\Delta t</m> smaller and smaller, we get closer and closer to your <term>true speed</term>.  Mathematically, that means
+							<me>
+								\text{true speed } = \lim_{\Delta t\rightarrow 0} \dfrac{\Delta s}{\Delta t} 
+							</me>
+						</p>
+						
+					</li>
+				</ul>
+			</p>
+
+			<p>
+				To find velocity <em>numerically</em>, compute the <em>average rate</em> (AROC) over smaller and smaller intervals (<m>\Delta t\rightarrow 0</m>) to see where <m>\frac{\Delta s}{\Delta t}</m> ends up going.
+			</p>
+
+			<remark>
+				<title>Mathematical notation</title>
+				<p>
+					Average rates of change provide a rough, <em>blocky approximation</em> of change or <em>difference</em>.  
+					We highlight this by  using the greek capital letter for D, <m>\Delta</m> to denote the large changes in time and position. 
+				</p>
+				<p>
+					By letting <m>\Delta t</m> go to 0, the approximation <em>smooths out</em>, 
+					giving the exact or <term>instantaneous rate of change (IROC)</term>. 
+					We sometimes denote instantanous rates by writing <m>\dfrac{ds}{dt}</m>, 
+					using the smooth letter <m>d</m> to emphasize that this is an improved version of the rough AROC.
+				</p>
+			</remark>
+
+			<exploration>
+				<introduction>
+					<p>
+						Suppose that a position function <m>s(t)</m> corresponds to the AROC table below
+						<tabular>
+							<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+							<row bottom="medium">
+							<cell><m>t_1</m></cell>
+							<cell><m>t_2</m></cell>
+							<cell><m>\Delta t</m></cell>
+							<cell><m>s_1</m></cell>
+							<cell><m>s_2</m></cell>
+							<cell><m>\Delta s</m></cell>
+							<cell><m>\Delta s/\Delta t</m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>5</m></cell>
+							<cell><m>5.1</m></cell>
+							<cell><m></m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>16.98065</m></cell>
+							<cell><m></m></cell>
+							<cell><m></m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>5</m></cell>
+							<cell><m>5.01</m></cell>
+							<cell><m></m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>10.74421</m></cell>
+							<cell><m></m></cell>
+							<cell><m></m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>5</m></cell>
+							<cell><m>5.001</m></cell>
+							<cell><m></m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>10.07485</m></cell>
+							<cell><m></m></cell>
+							<cell><m></m></cell>
+							</row>
+							<row>
+							<cell><m>5</m></cell>
+							<cell><m>5.0001</m></cell>
+							<cell><m></m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>10.00749</m></cell>
+							<cell><m></m></cell>
+							<cell><m></m></cell>
+							</row>
+						</tabular>
+					</p>
+				</introduction>
+				<task>
+					<statement>
+						<p>
+							Complete the AROC table. 
+						</p>
+					</statement>
+					<solution>
+						<p>
+						<tabular>
+							<col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col right="medium" /><col />
+							<row bottom="medium">
+							<cell><m>t_1</m></cell>
+							<cell><m>t_2</m></cell>
+							<cell><m>\Delta t</m></cell>
+							<cell><m>s_1</m></cell>
+							<cell><m>s_2</m></cell>
+							<cell><m>\Delta s</m></cell>
+							<cell><m>\Delta s/\Delta t</m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>5</m></cell>
+							<cell><m>5.1</m></cell>
+							<cell><m>\color{red} 0.1</m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>16.98065</m></cell>
+							<cell><m>\color{red} 6.98065</m></cell>
+							<cell><m>\color{red} 69.8965</m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>5</m></cell>
+							<cell><m>5.01</m></cell>
+							<cell><m>\color{red} 0.01</m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>10.74421</m></cell>
+							<cell><m>\color{red} 0.74421</m></cell>
+							<cell><m>\color{red}  74.421</m></cell>
+							</row>
+							<row bottom="medium">
+							<cell><m>5</m></cell>
+							<cell><m>5.001</m></cell>
+							<cell><m>\color{red} 0.001</m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>10.07485</m></cell>
+							<cell><m>\color{red} 0.007485</m></cell>
+							<cell><m>\color{red} 74.85</m></cell>
+							</row>
+							<row>
+							<cell><m>5</m></cell>
+							<cell><m>5.0001</m></cell>
+							<cell><m>\color{red} 0.0001</m></cell>
+							<cell><m>10</m></cell>
+							<cell><m>10.00749</m></cell>
+							<cell><m>\color{red} 0.00749</m></cell>
+							<cell><m>\color{red} 74.9</m></cell>
+							</row>
+						</tabular>
+						<alert>Important:</alert> Note that as <m>\Delta t</m> gets smaller, the decimal accuracy of your average gets <em>smaller and smaller</em>.  To ensure that you had 4 decimal places of accuracy for <m>\Delta t=0.0001</m>, you would need to start with <em>eight</em> decimal places of accuracy.  
+						</p>
+						<p>
+							On the homework, you will need to make sure you leave as many decimal places as possible.  Otherwise, your <m>\Delta y</m> and <m>\Delta t</m> may be marked correct, but your <m>\frac{\Delta y}{\Delta t}</m> may be marked incorrect. 
+						</p>
+					</solution>
+				</task>
+				<task>
+					<statement>
+						<p>
+							Use your table to find the exact (instantaneous) velocity at <m>t=5</m>. 
+						</p>
+					</statement>
+					<solution>
+						<p>
+							To find the exact velocity (IROC) at <m>t=5</m>, read the table from top to bottom, since the smaller values of <m>\Delta t</m> are further down in the table. 
+						</p>
+						<p>
+							As you read the <m>\frac{\Delta s}{\Delta t}</m> column, note that it is getting closer and closer to <m>75</m>.  In other words, at <m>t=5</m>, 
+							<me>
+								\dfrac{ds}{dt} = \lim_{\Delta t\rightarrow 0} \dfrac{\Delta s}{\Delta t} = 75 \frac{\text{miles}}{\text{hour}}
+							</me>
+							
+						</p>
+					</solution>
+				</task>
+			</exploration>			
+
+		</subsection>
+
+		<p>
+			How do <em>instantaneous</em> rates of change connect to econonmics?  
+			Take a look at <xref ref="task_costfunctionwithdecreasingquantity">Exploration</xref>, 
+			and note that the AROC in the solution to that exercise is arranged in a very similar way to the table we used to compute the car's velocity at time <m>t=5</m> in the example above.  
+		</p>
+		<p>
+			Using a similar argument, we can use the AROC table in <xref ref="task_costfunctionwithdecreasingquantity">Exploration</xref>
+			to see that the <em>instantaneous rate of change</em> of the total cost function 
+			<m>C(x)=0.1x^2+50x+1000</m>
+			at <m>100</m> items is equal to 70 dollars per item. 
+		</p>
+		<p>
+			What does this mean?  We will return to this in much greater detail in section <xref ref="sec-marginalcost"/>. 
+		</p>
+
+
+	</section>
+
+
+</chapter>

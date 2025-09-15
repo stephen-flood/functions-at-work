@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Understanding Areas</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="og:image" content="http://webwork.bridgew.edu/oer/functions_at_work/external/logo_gpt4.png">
+<meta property="book:title" content="Functions at Work">
+<meta property="book:author" content="Stephen Flood">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link href="_static/pretext/css/pretext.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/shell_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/banner_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/toc_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/style_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
+<style>
+#to_the_student-5-2-1 { counter-set: to_the_student-5-2-1 0; }
+#to_the_student-5-2-1 > li::marker { content: ""counter(to_the_student-5-2-1,decimal)"."; }
+#to_the_student-5-2-1 > li { counter-increment: to_the_student-5-2-1; }
+#to_the_student-7-4-1 { counter-set: to_the_student-7-4-1 0; }
+#to_the_student-7-4-1 > li::marker { content: ""counter(to_the_student-7-4-1,decimal)"."; }
+#to_the_student-7-4-1 > li { counter-increment: to_the_student-7-4-1; }
+#sec-function-concepts-13-2 { counter-set: sec-function-concepts-13-2 0; }
+#sec-function-concepts-13-2 > li::marker { content: ""counter(sec-function-concepts-13-2,decimal)"."; }
+#sec-function-concepts-13-2 > li { counter-increment: sec-function-concepts-13-2; }
+#sec-changeinxy-4-1 { counter-set: sec-changeinxy-4-1 0; }
+#sec-changeinxy-4-1 > li::marker { content: ""counter(sec-changeinxy-4-1,decimal)"."; }
+#sec-changeinxy-4-1 > li { counter-increment: sec-changeinxy-4-1; }
+#sec-algebra-linear-equations-8-3 { counter-set: sec-algebra-linear-equations-8-3 0; }
+#sec-algebra-linear-equations-8-3 > li::marker { content: ""counter(sec-algebra-linear-equations-8-3,decimal)"."; }
+#sec-algebra-linear-equations-8-3 > li { counter-increment: sec-algebra-linear-equations-8-3; }
+#sec-algebra-linear-demandprice-2-1 { counter-set: sec-algebra-linear-demandprice-2-1 0; }
+#sec-algebra-linear-demandprice-2-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-2-1,decimal)"."; }
+#sec-algebra-linear-demandprice-2-1 > li { counter-increment: sec-algebra-linear-demandprice-2-1; }
+#sec-algebra-linear-demandprice-5-1 { counter-set: sec-algebra-linear-demandprice-5-1 0; }
+#sec-algebra-linear-demandprice-5-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-5-1,decimal)"."; }
+#sec-algebra-linear-demandprice-5-1 > li { counter-increment: sec-algebra-linear-demandprice-5-1; }
+#think-economically-with-units-7-1 { counter-set: think-economically-with-units-7-1 0; }
+#think-economically-with-units-7-1 > li::marker { content: ""counter(think-economically-with-units-7-1,decimal)"."; }
+#think-economically-with-units-7-1 > li { counter-increment: think-economically-with-units-7-1; }
+#sec_quadratic_functions-3-2-1 { counter-set: sec_quadratic_functions-3-2-1 0; }
+#sec_quadratic_functions-3-2-1 > li::marker { content: ""counter(sec_quadratic_functions-3-2-1,decimal)"."; }
+#sec_quadratic_functions-3-2-1 > li { counter-increment: sec_quadratic_functions-3-2-1; }
+#assemblage-continuous-inequalities-4-1 { counter-set: assemblage-continuous-inequalities-4-1 0; }
+#assemblage-continuous-inequalities-4-1 > li::marker { content: ""counter(assemblage-continuous-inequalities-4-1,decimal)"."; }
+#assemblage-continuous-inequalities-4-1 > li { counter-increment: assemblage-continuous-inequalities-4-1; }
+#sect_whatdoesrevenueteach-3-1 { counter-set: sect_whatdoesrevenueteach-3-1 0; }
+#sect_whatdoesrevenueteach-3-1 > li::marker { content: ""counter(sect_whatdoesrevenueteach-3-1,decimal)"."; }
+#sect_whatdoesrevenueteach-3-1 > li { counter-increment: sect_whatdoesrevenueteach-3-1; }
+#assemblage-rational-inequalities-4-1 { counter-set: assemblage-rational-inequalities-4-1 0; }
+#assemblage-rational-inequalities-4-1 > li::marker { content: ""counter(assemblage-rational-inequalities-4-1,decimal)"."; }
+#assemblage-rational-inequalities-4-1 > li { counter-increment: assemblage-rational-inequalities-4-1; }
+#example_interactivelimit_intuitive-3-1-1-2 { counter-set: example_interactivelimit_intuitive-3-1-1-2 0; }
+#example_interactivelimit_intuitive-3-1-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-1-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-1-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-1-1-2; }
+#example_interactivelimit_intuitive-3-2-1-2 { counter-set: example_interactivelimit_intuitive-3-2-1-2 0; }
+#example_interactivelimit_intuitive-3-2-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-2-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-2-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-2-1-2; }
+#sec-ComputingLimitsNumerically-3-3 { counter-set: sec-ComputingLimitsNumerically-3-3 0; }
+#sec-ComputingLimitsNumerically-3-3 > li::marker { content: ""counter(sec-ComputingLimitsNumerically-3-3,decimal)"."; }
+#sec-ComputingLimitsNumerically-3-3 > li { counter-increment: sec-ComputingLimitsNumerically-3-3; }
+#sec_slope-4-1-1-2-3 { counter-set: sec_slope-4-1-1-2-3 0; }
+#sec_slope-4-1-1-2-3 > li::marker { content: ""counter(sec_slope-4-1-1-2-3,decimal)"."; }
+#sec_slope-4-1-1-2-3 > li { counter-increment: sec_slope-4-1-1-2-3; }
+#assemblage-connectingslopeandtangent-2-1 { counter-set: assemblage-connectingslopeandtangent-2-1 0; }
+#assemblage-connectingslopeandtangent-2-1 > li::marker { content: ""counter(assemblage-connectingslopeandtangent-2-1,decimal)"."; }
+#assemblage-connectingslopeandtangent-2-1 > li { counter-increment: assemblage-connectingslopeandtangent-2-1; }
+#assemblage-secantlines-2-1-4-1-6 { counter-set: assemblage-secantlines-2-1-4-1-6 0; }
+#assemblage-secantlines-2-1-4-1-6 > li::marker { content: ""counter(assemblage-secantlines-2-1-4-1-6,decimal)"."; }
+#assemblage-secantlines-2-1-4-1-6 > li { counter-increment: assemblage-secantlines-2-1-4-1-6; }
+#sec_slopealgebraically-5-2 { counter-set: sec_slopealgebraically-5-2 0; }
+#sec_slopealgebraically-5-2 > li::marker { content: ""counter(sec_slopealgebraically-5-2,decimal)"."; }
+#sec_slopealgebraically-5-2 > li { counter-increment: sec_slopealgebraically-5-2; }
+#sec_basicrules1-35-2-1 { counter-set: sec_basicrules1-35-2-1 0; }
+#sec_basicrules1-35-2-1 > li::marker { content: ""counter(sec_basicrules1-35-2-1,decimal)"."; }
+#sec_basicrules1-35-2-1 > li { counter-increment: sec_basicrules1-35-2-1; }
+#sec_generalizedpowerrule-14-1 { counter-set: sec_generalizedpowerrule-14-1 0; }
+#sec_generalizedpowerrule-14-1 > li::marker { content: ""counter(sec_generalizedpowerrule-14-1,decimal)"."; }
+#sec_generalizedpowerrule-14-1 > li { counter-increment: sec_generalizedpowerrule-14-1; }
+#sec-chainrule-3-2 { counter-set: sec-chainrule-3-2 0; }
+#sec-chainrule-3-2 > li::marker { content: ""counter(sec-chainrule-3-2,decimal)"."; }
+#sec-chainrule-3-2 > li { counter-increment: sec-chainrule-3-2; }
+#sec-chainrule-13-1 { counter-set: sec-chainrule-13-1 0; }
+#sec-chainrule-13-1 > li::marker { content: ""counter(sec-chainrule-13-1,decimal)"."; }
+#sec-chainrule-13-1 > li { counter-increment: sec-chainrule-13-1; }
+#sec_understandingextrema-7-1 { counter-set: sec_understandingextrema-7-1 0; }
+#sec_understandingextrema-7-1 > li::marker { content: ""counter(sec_understandingextrema-7-1,decimal)"."; }
+#sec_understandingextrema-7-1 > li { counter-increment: sec_understandingextrema-7-1; }
+#thm-maxminonlyat-1-1-4 { counter-set: thm-maxminonlyat-1-1-4 0; }
+#thm-maxminonlyat-1-1-4 > li::marker { content: ""counter(thm-maxminonlyat-1-1-4,decimal)"."; }
+#thm-maxminonlyat-1-1-4 > li { counter-increment: thm-maxminonlyat-1-1-4; }
+#def-localmaximin-1-2 { counter-set: def-localmaximin-1-2 0; }
+#def-localmaximin-1-2 > li::marker { content: ""counter(def-localmaximin-1-2,decimal)"."; }
+#def-localmaximin-1-2 > li { counter-increment: def-localmaximin-1-2; }
+#thm-increasingfunction-1-2 { counter-set: thm-increasingfunction-1-2 0; }
+#thm-increasingfunction-1-2 > li::marker { content: ""counter(thm-increasingfunction-1-2,decimal)"."; }
+#thm-increasingfunction-1-2 > li { counter-increment: thm-increasingfunction-1-2; }
+#assemblage-maxminmethod-2-2 { counter-set: assemblage-maxminmethod-2-2 0; }
+#assemblage-maxminmethod-2-2 > li::marker { content: ""counter(assemblage-maxminmethod-2-2,decimal)"."; }
+#assemblage-maxminmethod-2-2 > li { counter-increment: assemblage-maxminmethod-2-2; }
+#thm-firstderivativetest-2-2 { counter-set: thm-firstderivativetest-2-2 0; }
+#thm-firstderivativetest-2-2 > li::marker { content: ""counter(thm-firstderivativetest-2-2,decimal)"."; }
+#thm-firstderivativetest-2-2 > li { counter-increment: thm-firstderivativetest-2-2; }
+#sec_understandingextrema-24-1 { counter-set: sec_understandingextrema-24-1 0; }
+#sec_understandingextrema-24-1 > li::marker { content: ""counter(sec_understandingextrema-24-1,decimal)"."; }
+#sec_understandingextrema-24-1 > li { counter-increment: sec_understandingextrema-24-1; }
+#assemblage-absolutemaxmin-2-4 { counter-set: assemblage-absolutemaxmin-2-4 0; }
+#assemblage-absolutemaxmin-2-4 > li::marker { content: ""counter(assemblage-absolutemaxmin-2-4,decimal)"."; }
+#assemblage-absolutemaxmin-2-4 > li { counter-increment: assemblage-absolutemaxmin-2-4; }
+#assemblage-findingconcavity-2-1 { counter-set: assemblage-findingconcavity-2-1 0; }
+#assemblage-findingconcavity-2-1 > li::marker { content: ""counter(assemblage-findingconcavity-2-1,decimal)"."; }
+#assemblage-findingconcavity-2-1 > li { counter-increment: assemblage-findingconcavity-2-1; }
+#sec_seconderivativeconcavityandchange-8-1 { counter-set: sec_seconderivativeconcavityandchange-8-1 0; }
+#sec_seconderivativeconcavityandchange-8-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-8-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-8-1 > li { counter-increment: sec_seconderivativeconcavityandchange-8-1; }
+#sec_seconderivativeconcavityandchange-12-1 { counter-set: sec_seconderivativeconcavityandchange-12-1 0; }
+#sec_seconderivativeconcavityandchange-12-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-12-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-12-1 > li { counter-increment: sec_seconderivativeconcavityandchange-12-1; }
+#sec_seconderivativeconcavityandchange-16-1 { counter-set: sec_seconderivativeconcavityandchange-16-1 0; }
+#sec_seconderivativeconcavityandchange-16-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-16-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-16-1 > li { counter-increment: sec_seconderivativeconcavityandchange-16-1; }
+#ex_antiderivative1-2-2-1-2 { counter-set: ex_antiderivative1-2-2-1-2 0; }
+#ex_antiderivative1-2-2-1-2 > li::marker { content: ""counter(ex_antiderivative1-2-2-1-2,decimal)"."; }
+#ex_antiderivative1-2-2-1-2 > li { counter-increment: ex_antiderivative1-2-2-1-2; }
+#insight_understandingintnotatino-4-1 { counter-set: insight_understandingintnotatino-4-1 0; }
+#insight_understandingintnotatino-4-1 > li::marker { content: ""counter(insight_understandingintnotatino-4-1,decimal)"."; }
+#insight_understandingintnotatino-4-1 > li { counter-increment: insight_understandingintnotatino-4-1; }
+#sec_geometricarea-5-1 { counter-set: sec_geometricarea-5-1 0; }
+#sec_geometricarea-5-1 > li::marker { content: ""counter(sec_geometricarea-5-1,decimal)"."; }
+#sec_geometricarea-5-1 > li { counter-increment: sec_geometricarea-5-1; }
+#sec_geometricarea-13-1 { counter-set: sec_geometricarea-13-1 0; }
+#sec_geometricarea-13-1 > li::marker { content: ""counter(sec_geometricarea-13-1,decimal)"."; }
+#sec_geometricarea-13-1 > li { counter-increment: sec_geometricarea-13-1; }
+#def-absolutenetarea-1-1-6 { counter-set: def-absolutenetarea-1-1-6 0; }
+#def-absolutenetarea-1-1-6 > li::marker { content: ""counter(def-absolutenetarea-1-1-6,decimal)"."; }
+#def-absolutenetarea-1-1-6 > li { counter-increment: def-absolutenetarea-1-1-6; }
+#ex_graphicalarea3-4-2-4-2 { counter-set: ex_graphicalarea3-4-2-4-2 0; }
+#ex_graphicalarea3-4-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-4-2-4-2,decimal)"."; }
+#ex_graphicalarea3-4-2-4-2 > li { counter-increment: ex_graphicalarea3-4-2-4-2; }
+#ex_graphicalarea3-5-2-4-2 { counter-set: ex_graphicalarea3-5-2-4-2 0; }
+#ex_graphicalarea3-5-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-5-2-4-2,decimal)"."; }
+#ex_graphicalarea3-5-2-4-2 > li { counter-increment: ex_graphicalarea3-5-2-4-2; }
+#sec_fundamentaltheorem-4-1 { counter-set: sec_fundamentaltheorem-4-1 0; }
+#sec_fundamentaltheorem-4-1 > li::marker { content: ""counter(sec_fundamentaltheorem-4-1,decimal)"."; }
+#sec_fundamentaltheorem-4-1 > li { counter-increment: sec_fundamentaltheorem-4-1; }
+#ex-review-distributefactor-7-2-1-1 { counter-set: ex-review-distributefactor-7-2-1-1 0; }
+#ex-review-distributefactor-7-2-1-1 > li::marker { content: ""counter(ex-review-distributefactor-7-2-1-1,decimal)"."; }
+#ex-review-distributefactor-7-2-1-1 > li { counter-increment: ex-review-distributefactor-7-2-1-1; }
+</style>
+</head>
+<body id="functions_at_work" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/logo_gpt4.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="home.html"><span class="title">Functions at Work:</span> <span class="subtitle">Business Calculus</span></a></h1>
+<p class="byline">Stephen Flood</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"></span><span class="treebuttons"><a class="previous-button button" href="ch_antiderivatives.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="part-integrals.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="meta_backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+
+\newcommand{\red}[1]{   {\color{red}   #1}   }
+\newcommand{\blue}[1]{  {\color{blue}  #1}  }
+\newcommand{\green}[1]{ {\color{green} #1} }
+
+\newcommand{\ddx}[1]{ \dfrac{d}{dx} \Big[ #1 \Big]  } 
+\newcommand{\ddt}[1]{ \dfrac{d}{dt} \Big[ #1 \Big]  } 
+\newcommand{\ddu}[1]{ \dfrac{d}{du} \Big[ #1 \Big]  } 
+\newcommand{\ddxfrac}[1]{ \dfrac{d}{dx} \left[ #1 \right]  } 
+\newcommand{\D}[1]{ \Big[ #1 \Big]'  } 
+
+\newcommand{\intdx}[1]{{\,\int#1\,\,dx}}
+\newcommand{\dint}[1]{\displaystyle\intdx{#1}}
+
+\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 parts"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-2.html" class="internal"><span class="title">Copyright Information</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-3.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="to_the_student.html" class="internal"><span class="title">How to use this book</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-algebra.html" class="internal"><span class="codenumber">I</span> <span class="title">Algebra For Business</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-functions.html" class="internal"><span class="codenumber">1</span> <span class="title">Functions of Economics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-function-concepts" class="internal"><span class="codenumber">1.1</span> <span class="title">Function Concepts</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-functions-readinggraphs" class="internal"><span class="codenumber">1.2</span> <span class="title">Graphs of Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-combiningfns.html" class="internal"><span class="codenumber">2</span> <span class="title">Working with Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-combining_functions" class="internal"><span class="codenumber">2.1</span> <span class="title">Combining Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec_graphsoftotalsandchanges" class="internal"><span class="codenumber">2.2</span> <span class="title">*Graphs of Totals and Changes</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-changeinxy" class="internal"><span class="codenumber">2.3</span> <span class="title">*Connecting <span class="process-math">\(\Delta y\)</span> and <span class="process-math">\(\Delta x\)</span></span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-algebra_linearfunctions.html" class="internal"><span class="codenumber">3</span> <span class="title">Lines and Linear Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-equations" class="internal"><span class="codenumber">3.1</span> <span class="title">Finding the Equation of a Line</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-demandprice" class="internal"><span class="codenumber">3.2</span> <span class="title">Demand Price and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algeba-linear-cost" class="internal"><span class="codenumber">3.3</span> <span class="title">Item Cost, Total Cost, and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-applied_domain" class="internal"><span class="codenumber">3.4</span> <span class="title">Models and Applied Domains</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_polynomials_and_rationals.html" class="internal"><span class="codenumber">4</span> <span class="title">Polynomial and Rational Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_quadratic_functions" class="internal"><span class="codenumber">4.1</span> <span class="title">Quadratic and Polynomial Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_revenue" class="internal"><span class="codenumber">4.2</span> <span class="title">Revenue with Fair Pricing</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec-understandingprofit" class="internal"><span class="codenumber">4.3</span> <span class="title">Understanding Profit</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_rationalfns" class="internal"><span class="codenumber">4.4</span> <span class="title">Rational Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_exponentials.html" class="internal"><span class="codenumber">5</span> <span class="title">Compound Interest and Depreciation</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_introducing_exponentials" class="internal"><span class="codenumber">5.1</span> <span class="title">Exponential Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_percent_change" class="internal"><span class="codenumber">5.2</span> <span class="title">Percents and Percent Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_compound_interest" class="internal"><span class="codenumber">5.3</span> <span class="title">Compound Interest and Depreciation</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_logarithms.html" class="internal"><span class="codenumber">6</span> <span class="title">Logarithms and Solving for Time</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-inverses" class="internal"><span class="codenumber">6.1</span> <span class="title">Inverse Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_logartims" class="internal"><span class="codenumber">6.2</span> <span class="title">Logarithms Undo Exponentials</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-lawsoflogs" class="internal"><span class="codenumber">6.3</span> <span class="title">Laws of Logarithms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_solvingfortime" class="internal"><span class="codenumber">6.4</span> <span class="title">Solving Compound Interest for Time</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-logapplications" class="internal"><span class="codenumber">6.5</span> <span class="title">Applications of Logarithms</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-rates.html" class="internal"><span class="codenumber">II</span> <span class="title">Change and Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_limits.html" class="internal"><span class="codenumber">7</span> <span class="title">Limits</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec_readingdynamically" class="internal"><span class="codenumber">7.1</span> <span class="title">Reading Graphs Dynamically</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-econlimits" class="internal"><span class="codenumber">7.2</span> <span class="title">Macroeconomics and Mostly Continuous Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-ComputingLimitsNumerically" class="internal"><span class="codenumber">7.3</span> <span class="title">Computing Limits Numerically</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_totalschanges.html" class="internal"><span class="codenumber">8</span> <span class="title">Average Rates of Change</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec-AROC" class="internal"><span class="codenumber">8.1</span> <span class="title">Average Rates of Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec_graphsofrateschangesandtotals" class="internal"><span class="codenumber">8.2</span> <span class="title">Graphs of Rates, Changes, and Totals</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_totalschanges.html#sec_velocityAndIROC" class="internal"><span class="codenumber">8.3</span> <span class="title">Velocity and Instantaneous Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_totalschanges.html#subsec-speedradar" class="internal"><span class="codenumber">8.3.1</span> <span class="title">Measuring Speed with Radar</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_tangentsecant.html" class="internal"><span class="codenumber">9</span> <span class="title">Understanding Slope</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope" class="internal"><span class="codenumber">9.1</span> <span class="title">Slopes and Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope-6" class="internal"><span class="codenumber">9.1.1</span> <span class="title">Understand Rates by Studying Slopes</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_secantangent" class="internal"><span class="codenumber">9.2</span> <span class="title">Approximating Slope with Secant Lines</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slopealgebraically" class="internal"><span class="codenumber">9.3</span> <span class="title">Defining Slope Algebraically</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec-slopefunction" class="internal"><span class="codenumber">9.4</span> <span class="title">Defining a Slope Function</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#subsec-derivativenotation" class="internal"><span class="codenumber">9.4.1</span> <span class="title">Interpreting the Meaning of <span class="process-math">\(f'(x)\)</span></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_basicderivativerules.html" class="internal"><span class="codenumber">10</span> <span class="title">Slope Shortcuts for Basic Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec_basicrules1" class="internal"><span class="codenumber">10.1</span> <span class="title">Basic Derivative Rules</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec-derivativesexplog" class="internal"><span class="codenumber">10.2</span> <span class="title">Derivatives of Exponentials and Logarithms</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_marginalcost.html" class="internal"><span class="codenumber">11</span> <span class="title">Derivatives and Business</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_marginalcost.html#sec-marginalcost" class="internal"><span class="codenumber">11.1</span> <span class="title">Marginal Cost</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_productquotientrule.html" class="internal"><span class="codenumber">12</span> <span class="title">Product and Quotient Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_productrule" class="internal"><span class="codenumber">12.1</span> <span class="title">Derivatives of Products</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_quotientrule" class="internal"><span class="codenumber">12.2</span> <span class="title">Derivatives of Fractions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_chainrule.html" class="internal"><span class="codenumber">13</span> <span class="title">The Chain Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec_generalizedpowerrule" class="internal"><span class="codenumber">13.1</span> <span class="title">The Generalized Power Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-chainrule" class="internal"><span class="codenumber">13.2</span> <span class="title">The Chain Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-derivativesummary" class="internal"><span class="codenumber">13.3</span> <span class="title">List of All Derivative Rules</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-applyingslopes.html" class="internal"><span class="codenumber">III</span> <span class="title">Applying Marginals and Slopes</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-maxmin.html" class="internal"><span class="codenumber">14</span> <span class="title">Finding Maxima and Minima</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_understandingextrema" class="internal"><span class="codenumber">14.1</span> <span class="title">Finding Local Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_absolutemaxmin" class="internal"><span class="codenumber">14.2</span> <span class="title">Finding Absolute Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_maximaminimaandchangegraphs" class="internal"><span class="codenumber">14.3</span> <span class="title">Maxima, Minima, and Change Graphs</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-secondderivatives.html" class="internal"><span class="codenumber">15</span> <span class="title">Dimishing Returns and Changing Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-secondderivative" class="internal"><span class="codenumber">15.1</span> <span class="title">The Second Derivative</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-concavity" class="internal"><span class="codenumber">15.2</span> <span class="title">Concavity and Graphs</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec_seconderivativeconcavityandchange" class="internal"><span class="codenumber">15.3</span> <span class="title">The Second Derivative and Change Graphs</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part contains-active">
+<div class="toc-title-box"><a href="part-integrals.html" class="internal"><span class="codenumber">IV</span> <span class="title">Integral Calculus</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_antiderivatives.html" class="internal"><span class="codenumber">16</span> <span class="title">Antiderivatives</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec_undoingderivatives" class="internal"><span class="codenumber">16.1</span> <span class="title">Undoing Derivatives</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-indefiniteintegrals" class="internal"><span class="codenumber">16.2</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-applyingantiderivatives" class="internal"><span class="codenumber">16.3</span> <span class="title">Applying Antiderivatives</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter active">
+<div class="toc-title-box"><a href="ch_introducingarea.html" class="internal"><span class="codenumber">17</span> <span class="title">Understanding Areas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_indefiniteintegrals" class="internal"><span class="codenumber">17.1</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_geometricarea" class="internal"><span class="codenumber">17.2</span> <span class="title">Understanding Geometrically of Area</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_fundamentaltheorem" class="internal"><span class="codenumber">17.3</span> <span class="title">Area, Antiderivatives, and Graphs of Change</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="meta_backmatter.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="algebrareview.html" class="internal"><span class="codenumber">A</span> <span class="title">Algebra Review</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebrareview.html#sec_algebralaw" class="internal"><span class="codenumber">A.1</span> <span class="title">Laws of Algebra</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="algebrareview.html#sec-IntervalsandGraphs" class="internal"><span class="codenumber">A.2</span> <span class="title">Intervals and Graphs</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#interval-notation" class="internal"><span class="codenumber">A.2.1</span> <span class="title">Interval Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#graphs-of-common-functions" class="internal"><span class="codenumber">A.2.2</span> <span class="title">Graphs of Common Functions</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="meta_backmatter-3.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch_introducingarea"><h2 class="heading">
+<span class="type">Chapter</span><span class="space"> </span><span class="codenumber">17</span><span class="space"> </span><span class="title">Understanding Areas</span>
+</h2>
+<section class="section" id="sec_indefiniteintegrals"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">17.1</span><span class="space"> </span><span class="title">Indefinite Integrals</span>
+</h3>
+<div class="para logical" id="sec_indefiniteintegrals-2">
+<div class="para">Recall from <a href="ch_antiderivatives.html#sec-indefiniteintegrals" class="internal" title="Section 16.2: Indefinite Integrals">Section 16.2</a> that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec-indefiniteintegrals.html">
+\begin{equation*}
+\intdx{f(x)} \text{ means "find the antiderivative of" } f(x) 
+\end{equation*}
+</div>
+<div class="para">We called this the <em class="emphasis">indefinite integral</em> of <span class="process-math">\(f(x)\text{.}\)</span>
+</div>
+</div>
+<div class="para" id="sec_indefiniteintegrals-3">In <a href="ch_antiderivatives.html#insight_understandingintnotatino" class="xref" data-knowl="./knowl/xref/insight_understandingintnotatino.html" data-reveal-label="Reveal" data-close-label="Close" title="Application 16.7: Understanding \int notation (Part I)">Application 16.7</a>, we saw that this notation arises from the connection between marginal cost and item cost, and the fact that <em class="emphasis">summing</em> the intem cost over a range gives you the <em class="emphasis">change</em> in total cost.</div>
+<div class="para" id="sec_indefiniteintegrals-4">In this section, we will study this and related applications. We begin with the following definition.</div>
+<article class="definition definition-like" id="def-indefiniteintegral"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">17.1</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-indefiniteintegral-1-1">
+<div class="para">Suppose that <span class="process-math">\(F(x)\)</span> is <em class="emphasis">any</em> antiderivative of <span class="process-math">\(f(x)\text{,}\)</span> and that <span class="process-math">\(a,b\)</span> are constant numbers. Then we define</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_a^b \, f(x)\, } = F(b) - F(a) 
+\end{equation*}
+</div>
+<div class="para">the expression on the right is often abbreviated <span class="process-math">\(\Big[F(x)\Big]_a^b\)</span>
+</div>
+</div></article><article class="exploration project-like" id="ex_definiteintegral1"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">17.1</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_definiteintegral1-1"><div class="para" id="ex_definiteintegral1-1-1">Suppose that <span class="process-math">\(f(x) = 36x + \dfrac{42}{x}\)</span> is a marginal cost function.</div></div>
+<article class="task exercise-like" id="ex_definiteintegral1-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_definiteintegral1-2-1-1">Evaluate <span class="process-math">\(\displaystyle\intdx{_{10}^{100} 36x + \frac{42}{x}}\)</span>
+</div>
+<div class="solutions"><details id="ex_definiteintegral1-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_definiteintegral1-2-2-1">
+<div class="para">To compute the integral</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_{10}^{100} 36x + \frac{42}{x}} 
+\end{equation*}
+</div>
+<div class="para">we must first find an antidervivative of.  It is not difficult to see that <em class="emphasis">one</em> antiderivative of <span class="process-math">\(f(x) = 36x + 42\frac{1}{x}\)</span> is <span class="process-math">\(F(x) = 36\frac{1}{2}x^2 + 42\ln(|x|)\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="ex_definiteintegral1-2-2-2">
+<div class="para">By <a href="ch_introducingarea.html#def-indefiniteintegral" class="xref" data-knowl="./knowl/xref/def-indefiniteintegral.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 17.1">Definition 17.1</a>, we can now compute</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-indefiniteintegral.html" id="ex_definiteintegral1-2-2-2-2">
+\begin{align*}
+\intdx{_{10}^{100} 36x + \frac{42}{x}}  = \amp F(100) - F(10) \\
+= \amp [18x^2 + 42\cdot \ln(|x|)]_{10}^{100}
+\end{align*}
+</div>
+<div class="para">Using a calculator, you can compute separately</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-indefiniteintegral.html" id="ex_definiteintegral1-2-2-2-3">
+\begin{align*}
+F(100) = \amp 18 (100)^2 + 42\ln(100) = 180,193.41\\
+F(10) = \amp 18 (10)^2 + 42\ln(10) = 1,896.70
+\end{align*}
+</div>
+<div class="para">We can now find the definite integral</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-indefiniteintegral.html" id="ex_definiteintegral1-2-2-2-4">
+\begin{align*}
+\intdx{_{10}^{100} 36x + \frac{42}{x}}  = \amp F(100) - F(10) \\
+= \amp [18x^2 + 42\cdot \ln(|x|)]_{10}^{100}\\
+= \amp 178,296.71 
+\end{align*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_definiteintegral1-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_definiteintegral1-3-1-1">What is the economic meaning of the expression <span class="process-math">\(\displaystyle\intdx{_{10}^{100} 36x + \frac{42}{x}}\text{?}\)</span>
+</div>
+<div class="solutions"><details id="ex_definiteintegral1-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_definiteintegral1-3-2-1">
+<div class="para">Recall that</div>
+<div class="displaymath process-math" id="ex_definiteintegral1-3-2-1-1">
+\begin{align*}
+\intdx{_{10}^{100} 36x + \frac{42}{x}}  = \amp F(100) - F(10) 
+\end{align*}
+</div>
+<div class="para">where <span class="process-math">\(F(100)\)</span> is the total cost of 100 items, and <span class="process-math">\(F(10)\)</span> is the total cost of 10 items.</div>
+</div> <div class="para" id="ex_definiteintegral1-3-2-2">That means that <span class="process-math">\(\intdx{_{10}^{100} 36x + \frac{42}{x}}\)</span> is the cost of items numbered 11 through 100.</div>
+</div></details></div></article><article class="task exercise-like" id="ex_definiteintegral1-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_definiteintegral1-4-1-1">Use an indefinite integral to find the <em class="emphasis">exact</em> exact cost of the 100th item only.</div>
+<div class="solutions"><details id="ex_definiteintegral1-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_definiteintegral1-4-2-1">This question requires concepts and computations from  <a href="ch_marginalcost.html#sec-marginalcost" class="internal" title="Section 11.1: Marginal Cost">Section 11.1</a>. Take a moment to refresh your memory of this section.</div> <div class="para" id="ex_definiteintegral1-4-2-2">In that section, to find the exact cost of the 100th item only, we need a total cost function <span class="process-math">\(F(x)\text{.}\)</span>
+</div> <div class="para" id="ex_definiteintegral1-4-2-3">Then <span class="process-math">\(F(100)\)</span> is the cumulative cost of items 0-100, and <span class="process-math">\(F(99)\)</span> is the cumulative cost of items 0-99.</div> <div class="para logical" id="ex_definiteintegral1-4-2-4">
+<div class="para">That means that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{Cost of item }100 = F(100) - F(99) = \intdx{_{99}^{100}  36x + \frac{42}{x} }
+\end{equation*}
+</div>
+</div> <div class="para logical" id="ex_definiteintegral1-4-2-5">
+<div class="para">We have already found that the cumulative cost function is <span class="process-math">\(F(x)  = 18x^2 + 42\cdot \ln(|x|)\)</span> Using this function we can compute</div>
+<div class="displaymath process-math" id="ex_definiteintegral1-4-2-5-2">
+\begin{align*}
+\intdx{_{99}^{100}  36x + \frac{42}{x} } \amp = F(100) - F(99)\\
+\amp =180,193.41 - 176,610.99\\
+\amp = 3,582.42 
+\end{align*}
+</div>
+</div>
+</div></details></div></article></article><div class="para" id="sec_indefiniteintegrals-7">The next exploration explores what happens if we leave the function we are integrating the same, but change the limits of integration.</div>
+<article class="exploration project-like" id="ex_definiteintegral2"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">17.2</span><span class="period">.</span>
+</h4>
+<article class="task exercise-like" id="ex_definiteintegral2-1"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_definiteintegral2-1-1-1">Compute <span class="process-math">\(\intdx{_1^2 12x^2 - 2} \)</span>
+</div>
+<div class="solutions"><details id="ex_definiteintegral2-1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_definiteintegral2-1-2-1">
+<div class="para">One antiderivative of <span class="process-math">\(f(x) = 12x^2 - 2 \)</span> is</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-indefiniteintegral.html" id="ex_definiteintegral2-1-2-1-2">
+\begin{align*}
+F(x) \amp = 12\cdot\frac{1}{3}x^3 - 2\cdot x\\
+F(x) \amp = 4x^3 - 2x
+\end{align*}
+</div>
+<div class="para">We can now use <a href="ch_introducingarea.html#def-indefiniteintegral" class="xref" data-knowl="./knowl/xref/def-indefiniteintegral.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 17.1">Definition 17.1</a>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-indefiniteintegral.html" id="ex_definiteintegral2-1-2-1-4">
+\begin{align*}
+\intdx{_1^2 12x^2 - 2}  \amp = F(2) - F(1) \\
+\amp = \Big[ 4x^3 - 2x \Big]_2^1\\
+\amp = 28-2 \\
+\amp = 26 
+\end{align*}
+</div>
+</div></div></details></div></article><article class="task exercise-like" id="ex_definiteintegral2-2"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_definiteintegral2-2-1-1">Compute <span class="process-math">\(\intdx{_0^5 12x^2 - 2} \)</span>
+</div>
+<div class="solutions"><details id="ex_definiteintegral2-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_definiteintegral2-2-2-1">
+<div class="para">One antiderivative of <span class="process-math">\(f(x) = 12x^2 - 2 \)</span> is <span class="process-math">\(F(x)= 4x^3 - 2x \)</span> We can now use <a href="ch_introducingarea.html#def-indefiniteintegral" class="xref" data-knowl="./knowl/xref/def-indefiniteintegral.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 17.1">Definition 17.1</a>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-indefiniteintegral.html" id="ex_definiteintegral2-2-2-1-4">
+\begin{align*}
+\intdx{_0^5 12x^2 - 2}  \amp = F(0) - F(5) \\
+\amp = \Big[ 4x^3 - 2x \Big]_5^0\\
+\amp = 490-0 \\
+\amp = 490 
+\end{align*}
+</div>
+</div></div></details></div></article></article><div class="para" id="sec_indefiniteintegrals-9">We have seen that integrals play an important role in connecting marginal and total cost functions.</div>
+<div class="para" id="sec_indefiniteintegrals-10">But that  is not the only, or even the most, important application of the derivative.  The next is often called the <em class="emphasis">most important theorem in calculus</em>.</div>
+<article class="theorem theorem-like" id="thm-earlyFTC"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">17.2</span><span class="period">.</span>
+</h4>
+<div class="para" id="thm-earlyFTC-1-1">Suppose that <span class="process-math">\(f\)</span> is a height function, and that <span class="process-math">\(F\)</span> is an antiderivative of <span class="process-math">\(f\)</span>
+</div> <div class="para logical" id="thm-earlyFTC-1-2">
+<div class="para">Then the <em class="emphasis">net area between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis over the interval <span class="process-math">\([a,b]\)</span></em> is equal to</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_a^b f(x) } = F(b) - F(a) 
+\end{equation*}
+</div>
+</div></article><div class="para" id="sec_indefiniteintegrals-12">In <a href="ch_introducingarea.html#sec_geometricarea" class="internal" title="Section 17.2: Understanding Geometrically of Area">Section 17.2</a>, we will discuss the exact meaning and intricacies of the phrase <em class="emphasis">the net area between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span> axis on the interval <span class="process-math">\([a,b]\)</span></em>. For now, the following illustration should suffice to show its general meaning.</div>
+<div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftc_illustration1.svg" role="img" class="contained"></div>
+<div class="para" id="sec_indefiniteintegrals-14">We will talk about <em class="emphasis">why</em> this theorem is true in <a href="ch_introducingarea.html#sec_fundamentaltheorem" class="internal" title="Section 17.3: Area, Antiderivatives, and Graphs of Change">Section 17.3</a>.  For now, we will focus on computations and some preliminary applications.</div>
+<article class="exploration project-like" id="ex_area1"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">17.3</span><span class="period">.</span>
+</h4>
+<article class="task exercise-like" id="ex_area1-1"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_area1-1-1-1">Let <span class="process-math">\(f(x) = 15x^2 + 2\)</span> describe the height of a mountain.</div> <div class="para" id="ex_area1-1-1-2">Find the net area between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis over the interval <span class="process-math">\([1,2]\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_area1-1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_area1-1-2-1">
+<div class="para">By <a href="ch_introducingarea.html#thm-earlyFTC" class="xref" data-knowl="./knowl/xref/thm-earlyFTC.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 17.2">Theorem 17.2</a>, this means that we must compute</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-earlyFTC.html">
+\begin{equation*}
+\intdx{_1^2  12x^2 + 2 }
+\end{equation*}
+</div>
+<div class="para">One antiderivative of <span class="process-math">\(f=12x^2 + 2\)</span> is <span class="process-math">\(F=6x^3 + 2x\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-earlyFTC.html" id="ex_area1-1-2-1-5">
+\begin{align*}
+\intdx{_1^2  12x^2 + 2 } \amp = F(2)-F(1)\\
+\amp = 52 - 8 \\
+\amp = 44     
+\end{align*}
+</div>
+<div class="para">Graphically, we have computed the area of the shaded region below:</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_introarea_ex1.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_area1-2"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_area1-2-1-1">Find the net area between <span class="process-math">\(f(x)=\sqrt{x}\)</span> and the <span class="process-math">\(x\)</span>-axis between <span class="process-math">\(x=4\)</span> and <span class="process-math">\(x=9\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_area1-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_area1-2-2-1">
+<div class="para">By <a href="ch_introducingarea.html#thm-earlyFTC" class="xref" data-knowl="./knowl/xref/thm-earlyFTC.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 17.2">Theorem 17.2</a>, this means that we must compute</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-earlyFTC.html">
+\begin{equation*}
+\intdx{_4^9  \sqrt{x} }  = \intdx{_4^9 x^{1/2} }  
+\end{equation*}
+</div>
+<div class="para">One antiderivative of <span class="process-math">\(f=x^{0.5} \)</span> is <span class="process-math">\(F=\frac{1}{0.5+1}x^{0.5+1} = \frac{x^{1.5}}{1.5}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-earlyFTC.html" id="ex_area1-2-2-1-5">
+\begin{align*}
+\intdx{_4^9  x^{0.5} } \amp = F(9)-F(4)\\
+\amp = \left(\frac{9^{1.5}}{1.5}\right) - \left(\frac{4^{1.5}}{1.5}\right)\\
+\amp = 18 - 5.33\dots \\
+\amp = 12.66\dots 
+\end{align*}
+</div>
+<div class="para">Graphically, we have computed the area of the shaded region below:</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_introarea_ex2.svg" role="img" class="contained"></div>
+</div></details></div></article></article></section><section class="section" id="sec_geometricarea"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">17.2</span><span class="space"> </span><span class="title">Understanding Geometrically of Area</span>
+</h3>
+<div class="para" id="sec_geometricarea-2">In this course, our primary applications have come from macroeconomics, accounting and finance, and management. But the tools of calculus apply to a much broader set of applications.</div>
+<div class="para logical" id="sec_geometricarea-3">
+<div class="para">For example, suppose that you are selling a plot of land enclosed between a stream and a road. From comparable recent sales, you know that the value of the land is $12,800,000 $ per square mile. You want to know how much your land is worth. You already know that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{(value)} = \text{(area)} \times \text{(price per unit area)}\text{.}
+\end{equation*}
+</div>
+<div class="para">To get a numerical value, you need to be able to compute the <em class="emphasis">area enclosed</em>.</div>
+</div>
+<div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_areameaning_illustration1.svg" role="img" class="contained"></div>
+<div class="para logical" id="sec_geometricarea-5">
+<div class="para">For triangles and squares, computing area is easy.</div>
+<ol class="decimal" id="sec_geometricarea-5-1">
+<li id="sec_geometricarea-5-1-1"><div class="para" id="sec_geometricarea-5-1-1-1">The area of a triangle is <span class="process-math">\(\frac{1}{2}\cdot b\cdot h\)</span>
+</div></li>
+<li id="sec_geometricarea-5-1-2"><div class="para" id="sec_geometricarea-5-1-2-1">The area of a rectangle is <span class="process-math">\(b\cdot h\)</span>
+</div></li>
+</ol>
+<div class="para">For other shapes, computing area is much more complex, and often requires more powerful mathematical tools. Translating our real estate question into mathematical language gives the following picture:</div>
+</div>
+<div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_areameaning_illustration2.svg" role="img" class="contained"></div>
+<div class="para logical" id="sec_geometricarea-7">
+<div class="para">In this new language,</div>
+<ul class="disc" id="sec_geometricarea-7-1">
+<li id="sec_geometricarea-7-1-1"><div class="para" id="sec_geometricarea-7-1-1-1">The <em class="emphasis">river</em> is modeled by the function <span class="process-math">\(\blue{y=f(x)}\text{.}\)</span>
+</div></li>
+<li id="sec_geometricarea-7-1-2"><div class="para" id="sec_geometricarea-7-1-2-1">The <em class="emphasis">road</em> is modeled by the <span class="process-math">\(x\)</span>-axis.</div></li>
+<li id="sec_geometricarea-7-1-3"><div class="para" id="sec_geometricarea-7-1-3-1">The <em class="emphasis">lot lines</em> are represented by the lines <span class="process-math">\(\red{x=a}\)</span> and <span class="process-math">\(\red{x=b}\)</span>
+</div></li>
+</ul>
+<div class="para">In this langage, we want the <em class="emphasis">area enclosed between <span class="process-math">\(\blue{f(x)}\)</span> and the <span class="process-math">\(x-axis\)</span> on the interval <span class="process-math">\(\red{[a,b]}\)</span></em>.</div>
+</div>
+<div class="para logical" id="sec_geometricarea-8">
+<div class="para">We have already learned in <a href="ch_introducingarea.html#thm-earlyFTC" class="xref" data-knowl="./knowl/xref/thm-earlyFTC.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 17.2">Theorem 17.2</a> that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-earlyFTC.html">
+\begin{equation*}
+\intdx{_a^b \, f(x) \, } = \text{net area enclosed between } f(x) \text{ and } x\text{-axis over }[a,b]
+\end{equation*}
+</div>
+<div class="para">But here, since we do not have an equation for the function, we must compute the area directly using geometry.</div>
+</div>
+<article class="exploration project-like" id="ex_graphicalarea1"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">17.4</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_graphicalarea1-1">
+<div class="para" id="ex_graphicalarea1-1-1">Let <span class="process-math">\(f(x)\)</span> be defined by the graph below</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_eg1.svg" role="img" class="contained"></div>
+</div>
+<article class="task exercise-like" id="ex_graphicalarea1-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_graphicalarea1-2-1-1">Compute the net area between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis on the interval <span class="process-math">\([0,1]\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea1-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea1-2-2-1">The first step is to identify and shade the region described. Moving between <span class="process-math">\(x=0\)</span> and <span class="process-math">\(x=1\text{,}\)</span> the area region enclosed on the top by <span class="process-math">\(f(x)\)</span> and the bottom by the <span class="process-math">\(x\)</span>-axis is a triangle with base <span class="process-math">\(b=1\)</span> and height <span class="process-math">\(h=3\text{.}\)</span>
+</div> <div class="para logical" id="ex_graphicalarea1-2-2-2">
+<div class="para">This region has height</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{area of triangle} = \frac{1}{2} b h = \frac{1}{2} \cdot 1 \cdot 3 = 1.5 
+\end{equation*}
+</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_eg1a.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_graphicalarea1-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_graphicalarea1-3-1-1">Compute the net area between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis on the interval <span class="process-math">\([1,3]\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea1-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea1-3-2-1">The first step is to identify and shade the region described. Moving between <span class="process-math">\(x=1\)</span> and <span class="process-math">\(x=3\text{,}\)</span> the area region enclosed on the top by <span class="process-math">\(f(x)\)</span> and the bottom by the <span class="process-math">\(x\)</span>-axis is a rectangle with base <span class="process-math">\(b=2\)</span> and height <span class="process-math">\(h=3\text{.}\)</span>
+</div> <div class="para logical" id="ex_graphicalarea1-3-2-2">
+<div class="para">This region has area</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{area of rectangle} = b h = 2 \cdot 3 = 6 
+\end{equation*}
+</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_eg1b.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_graphicalarea1-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_graphicalarea1-4-1-1">Compute the net area between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis on the interval <span class="process-math">\([3,4]\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea1-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea1-4-2-1">The first step is to identify and shade the region described. Moving between <span class="process-math">\(x=1\)</span> and <span class="process-math">\(x=3\text{,}\)</span> the area region enclosed on the top by <span class="process-math">\(f(x)\)</span> and the bottom by the <span class="process-math">\(x\)</span>-axis is a <em class="emphasis">trapeziod</em>.</div> <div class="para logical" id="ex_graphicalarea1-4-2-2">
+<div class="para">There is a formula for the area of a trapezoid, but it is easier and more flexible to just break up the shaded region into <em class="emphasis">two</em> parts: a triangle and a rectangle.</div>
+<ul class="disc" id="ex_graphicalarea1-4-2-2-2">
+<li id="ex_graphicalarea1-4-2-2-2-1"><div class="para" id="ex_graphicalarea1-4-2-2-2-1-1">The triangular piece has height <span class="process-math">\(h=\Delta y = 3-2=1\)</span> and base <span class="process-math">\(b=\Delta x = 4-3=1\text{.}\)</span> Thus, the trianglar piece has <em class="emphasis">area</em> <span class="process-math">\(\frac{1}{2} b h = \frac{1}{2} \cdot 1\cdot 1 = 0.5 \)</span>
+</div></li>
+<li id="ex_graphicalarea1-4-2-2-2-2"><div class="para" id="ex_graphicalarea1-4-2-2-2-2-1">The rectangular piece has height <span class="process-math">\(h=\Delta y = 2-0=2\)</span> and base <span class="process-math">\(b=\Delta x = 4-3=1\text{.}\)</span> Thus, the rectangular piece has <em class="emphasis">area</em> <span class="process-math">\(b\cdot h= 2 \cdot 1 = 2\)</span>
+</div></li>
+</ul>
+<div class="para">Therefore, the area of the entire enclosed region is <span class="process-math">\(0.5 + 2 = 2.5\)</span>
+</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_eg1c.svg" role="img" class="contained"></div>
+</div></details></div></article></article><div class="para" id="sec_geometricarea-10">We have now seen several examples that help explain what it means to talk about <em class="emphasis">area enclosed</em> between a function and the <span class="process-math">\(x\)</span>-axis. But what does <em class="emphasis">net</em> area mean? To explore this, we need to switch to a new metaphor.</div>
+<div class="para" id="sec_geometricarea-11">In the image below, suppose that <span class="process-math">\(\green{f(x)}\)</span> is the height of land at position <span class="process-math">\(x\text{,}\)</span> and that the <span class="process-math">\(\blue{x\text{-axis}}\)</span> is the <em class="emphasis">water level</em>.</div>
+<div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/image_areameaning_illustration3.svg" role="img" class="contained"></div>
+<div class="para logical" id="sec_geometricarea-13">
+<div class="para">There are two parts of this graph</div>
+<ol class="decimal" id="sec_geometricarea-13-1">
+<li id="sec_geometricarea-13-1-1">
+<div class="para" id="sec_geometricarea-13-1-1-1">When <span class="process-math">\(f\)</span> is <em class="emphasis">positive</em>, then the ground is above the water.  In this case, <em class="emphasis">dry land</em> is the region enclosed between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis</div>
+<div class="para" id="sec_geometricarea-13-1-1-2">In this case, we say that <span class="process-math">\(f\)</span> encloses <dfn class="terminology">positive net area</dfn>.</div>
+</li>
+<li id="sec_geometricarea-13-1-2">
+<div class="para" id="sec_geometricarea-13-1-2-1">When <span class="process-math">\(f\)</span> is <em class="emphasis">negative</em>, then the water is above the ground.  In this case <em class="emphasis">water</em> is the region enclosed between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis</div>
+<div class="para" id="sec_geometricarea-13-1-2-2">In this case, we say that <span class="process-math">\(f\)</span> encloses <dfn class="terminology">negative net area</dfn>.</div>
+</li>
+</ol>
+<div class="para">More precisely, we make the following definition</div>
+</div>
+<article class="definition definition-like" id="def-absolutenetarea"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">17.3</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-absolutenetarea-1-1">
+<div class="para">Suppose that you are given any function <span class="process-math">\(y=f(x)\text{,}\)</span> and two <span class="process-math">\(x\)</span> values <span class="process-math">\(a,b\text{.}\)</span> Let <span class="process-math">\(R\)</span> represent the <em class="emphasis">region enclosed between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis on the interval <span class="process-math">\([a,b]\)</span></em>
+</div>
+<ol class="decimal" id="def-absolutenetarea-1-1-6">
+<li id="def-absolutenetarea-1-1-6-1"><div class="para" id="def-absolutenetarea-1-1-6-1-1">The <dfn class="terminology">absolute</dfn> area of the region <span class="process-math">\(R\)</span> is the area you treat the region as a geometric figure, and ignore the calculus setting of the question.</div></li>
+<li id="def-absolutenetarea-1-1-6-2"><div class="para" id="def-absolutenetarea-1-1-6-2-1">If the region <span class="process-math">\(R\)</span> is <em class="emphasis">entirely above</em> the <span class="process-math">\(x\)</span>-axis, then the region has <dfn class="terminology">positive net area</dfn> equal to its absolute area.</div></li>
+<li id="def-absolutenetarea-1-1-6-3"><div class="para" id="def-absolutenetarea-1-1-6-3-1">If the region <span class="process-math">\(R\)</span> is <em class="emphasis">entirely below</em> the <span class="process-math">\(x\)</span>-axis, the region has <dfn class="terminology">negative net area</dfn> equal to the negation of its absoulte area.</div></li>
+<li id="def-absolutenetarea-1-1-6-4"><div class="para" id="def-absolutenetarea-1-1-6-4-1">If the region <span class="process-math">\(R\)</span> is sometimes above and sometimes below the <span class="process-math">\(x\)</span>-axis, you must divide it into separate components, find their net area, and then add them together.</div></li>
+</ol>
+</div></article><div class="para" id="sec_geometricarea-15">This definition is wordy, but fairly simple to apply in practice.</div>
+<article class="exploration project-like" id="ex_graphicalarea2"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">17.5</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_graphicalarea2-1">
+<div class="para" id="ex_graphicalarea2-1-1">Suppose that <span class="process-math">\(f(x)\)</span> is given by the graph below. In addition to the function, the absolute areas of several regions are indicated.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_ex2.svg" role="img" class="contained"></div>
+</div>
+<article class="task exercise-like" id="ex_graphicalarea2-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_graphicalarea2-2-1-1">Find <span class="process-math">\(\displaystyle\intdx{_0^3 f(x) }\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea2-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea2-2-2-1">Between <span class="process-math">\(x=0\)</span> and <span class="process-math">\(x=3\text{,}\)</span> the function <span class="process-math">\(f(x)\)</span> is entirely <em class="emphasis">above</em> the <span class="process-math">\(x\)</span>-axis. That means that the <em class="emphasis">net</em> area of the region that it encloses is <em class="emphasis">positive</em>.</div> <div class="para logical" id="ex_graphicalarea2-2-2-2">
+<div class="para">We are given that the absolute area of this first region is 1.8.  It follows that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_0^3 f(x) } = (+) 1.8 = 1.8
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_graphicalarea2-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_graphicalarea2-3-1-1">Find <span class="process-math">\(\displaystyle\intdx{_3^6 f(x) }\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea2-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea2-3-2-1">Between <span class="process-math">\(x=3\)</span> and <span class="process-math">\(x=6\text{,}\)</span> the function <span class="process-math">\(f(x)\)</span> is entirely <em class="emphasis">below</em> the <span class="process-math">\(x\)</span>-axis. That means that the <em class="emphasis">net</em> area of the region that it encloses is <em class="emphasis">negative</em>.</div> <div class="para logical" id="ex_graphicalarea2-3-2-2">
+<div class="para">We are given that the absolute area of this second region is 3.4.  It follows that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_3^6 f(x) } = (-) 3.4 = -3.4
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_graphicalarea2-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_graphicalarea2-4-1-1">Find <span class="process-math">\(\displaystyle\intdx{_0^6 f(x) }\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea2-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_graphicalarea2-4-2-1">
+<div class="para">
+<span class="process-math">\(f\)</span> crosses the <span class="process-math">\(x\)</span> axis between <span class="process-math">\(x=0\)</span> and <span class="process-math">\(x=6\text{.}\)</span> To find the net area enclosed on this interval, we must divide the function into the region between <span class="process-math">\(0\lt x \lt 3\text{,}\)</span> where <span class="process-math">\(f\)</span> is entirely positive, and the region <span class="process-math">\(3\lt x\lt 6\text{,}\)</span> where <span class="process-math">\(f\)</span> is entirely negative. We can then compute</div>
+<div class="displaymath process-math" id="ex_graphicalarea2-4-2-1-9">
+\begin{align*}
+\intdx{_0^6 f(x)} = \amp \intdx{_0^3 f(x)} + \intdx{_3^6 f(x) } \\
+= \amp (+)1.8 + (-)3.4\\
+= \amp 1.8 - 3.4 \\
+= \amp -1.6
+\end{align*}
+</div>
+</div></div></details></div></article></article><article class="exploration project-like" id="ex_graphicalarea3"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">17.6</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_graphicalarea3-1">
+<div class="para" id="ex_graphicalarea3-1-1">Let <span class="process-math">\(f(x)\)</span> be defined by the following graph</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_ex3.svg" role="img" class="contained"></div>
+</div>
+<article class="task exercise-like" id="ex_graphicalarea3-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_graphicalarea3-2-1-1">Find <span class="process-math">\(\intdx{_0^1 f(x) }\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea3-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea3-2-2-1">We want to find the area enclosed between the curve and the <span class="process-math">\(x\)</span>-axis.</div> <div class="para" id="ex_graphicalarea3-2-2-2">First, <em class="emphasis">shade</em> the area enclosed by following the curve, and drawing lines toward the <span class="process-math">\(x\)</span>-axis. Then, identify the part of the enclosed area that corresponds to <span class="process-math">\(0\lt x \lt 1\)</span> as in the following image.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_ex3a.svg" role="img" class="contained"></div> <div class="para logical" id="ex_graphicalarea3-2-2-4">
+<div class="para">The shaded area is a triangle with base <span class="process-math">\(b=1\)</span> and height <span class="process-math">\(h=1\text{.}\)</span> The region enclosed is <em class="emphasis">above</em> the <span class="process-math">\(x\)</span>-axis so it has <em class="emphasis">positive</em> net area. Putting this together,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_0^1 f(x) } = (+) \frac{1}{2}\cdot 1 \cdot 1 = 0.5
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_graphicalarea3-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_graphicalarea3-3-1-1">Find <span class="process-math">\(\intdx{_0^2 f(x) }\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea3-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea3-3-2-1">We want to find the area enclosed between the curve and the <span class="process-math">\(x\)</span>-axis.</div> <div class="para" id="ex_graphicalarea3-3-2-2">First, <em class="emphasis">shade</em> the area enclosed by following the curve, and drawing lines toward the <span class="process-math">\(x\)</span>-axis. Then, identify the part of the enclosed area that corresponds to <span class="process-math">\(0\lt x \lt 2\)</span> as in the following image.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_ex3b.svg" role="img" class="contained"></div> <div class="para logical" id="ex_graphicalarea3-3-2-4">
+<div class="para">The shaded area is triangle with base <span class="process-math">\(b=2\)</span> and height <span class="process-math">\(h=1\text{.}\)</span> The region enclosed is <em class="emphasis">above</em> the <span class="process-math">\(x\)</span>-axis so it has <em class="emphasis">positive</em> net area. Putting this together,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_0^2 f(x) } = (+) \frac{1}{2}\cdot 2 \cdot 1 = 0.5
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_graphicalarea3-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_graphicalarea3-4-1-1">Find <span class="process-math">\(\intdx{_0^4 f(x) }\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea3-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea3-4-2-1">We want to find the area enclosed between the curve and the <span class="process-math">\(x\)</span>-axis.</div> <div class="para" id="ex_graphicalarea3-4-2-2">First, <em class="emphasis">shade</em> the area enclosed by following the curve, and drawing lines toward the <span class="process-math">\(x\)</span>-axis. Then, identify the part of the enclosed area that corresponds to <span class="process-math">\(0\lt x \lt 4\)</span> as in the following image.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_ex3c.svg" role="img" class="contained"></div> <div class="para logical" id="ex_graphicalarea3-4-2-4">
+<div class="para">The shaded area can be divided into <em class="emphasis">three</em> regions:</div>
+<ol class="decimal" id="ex_graphicalarea3-4-2-4-2">
+<li id="ex_graphicalarea3-4-2-4-2-1"><div class="para" id="ex_graphicalarea3-4-2-4-2-1-1">A triangle with base <span class="process-math">\(0\lt x\lt 2\)</span> (<span class="process-math">\(b=2\)</span>) and height <span class="process-math">\(h=1\)</span> <em class="emphasis">above</em> the <span class="process-math">\(x\)</span>-axis.</div></li>
+<li id="ex_graphicalarea3-4-2-4-2-2"><div class="para" id="ex_graphicalarea3-4-2-4-2-2-1">A triangle with base <span class="process-math">\(2\lt x\lt 3\)</span> (<span class="process-math">\(b=1\)</span>) and height <span class="process-math">\(h=1\)</span> <em class="emphasis">below</em> the <span class="process-math">\(x\)</span>-axis.</div></li>
+<li id="ex_graphicalarea3-4-2-4-2-3"><div class="para" id="ex_graphicalarea3-4-2-4-2-3-1">A rectangle with base <span class="process-math">\(3\lt x \lt 4\)</span> (<span class="process-math">\(b=1\)</span>) and height <span class="process-math">\(h=1\)</span> <em class="emphasis">below</em> the <span class="process-math">\(x\)</span>-axis.</div></li>
+</ol>
+<div class="para">Putting this together,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_0^6 f(x) } = (+) \frac{1}{2}\cdot 2 \cdot 1 + (-)\frac{1}{2}\cdot 1 \cdot 1 + (-)1\cdot 1 = -0.5
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_graphicalarea3-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex_graphicalarea3-5-1-1">Find <span class="process-math">\(\intdx{_0^6 f(x) }\)</span>
+</div>
+<div class="solutions"><details id="ex_graphicalarea3-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_graphicalarea3-5-2-1">We want to find the area enclosed between the curve and the <span class="process-math">\(x\)</span>-axis.</div> <div class="para" id="ex_graphicalarea3-5-2-2">First, <em class="emphasis">shade</em> the area enclosed by following the curve, and drawing lines toward the <span class="process-math">\(x\)</span>-axis. Then, identify the part of the enclosed area that corresponds to <span class="process-math">\(0\lt x \lt 4\)</span> as in the following image.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_graphicalarea_ex3d.svg" role="img" class="contained"></div> <div class="para logical" id="ex_graphicalarea3-5-2-4">
+<div class="para">The shaded area can be divided into <em class="emphasis">five</em> regions:</div>
+<ol class="decimal" id="ex_graphicalarea3-5-2-4-2">
+<li id="ex_graphicalarea3-5-2-4-2-1"><div class="para" id="ex_graphicalarea3-5-2-4-2-1-1">A  triangle with base <span class="process-math">\(0\lt x\lt 2\)</span> (<span class="process-math">\(b=2\)</span>) and height <span class="process-math">\(h=1\)</span> <em class="emphasis">above</em> the <span class="process-math">\(x\)</span>-axis.</div></li>
+<li id="ex_graphicalarea3-5-2-4-2-2"><div class="para" id="ex_graphicalarea3-5-2-4-2-2-1">A triangle with base <span class="process-math">\(2\lt x\lt 3\)</span> (<span class="process-math">\(b=1\)</span>) and height <span class="process-math">\(h=1\)</span> <em class="emphasis">below</em> the <span class="process-math">\(x\)</span>-axis.</div></li>
+<li id="ex_graphicalarea3-5-2-4-2-3"><div class="para" id="ex_graphicalarea3-5-2-4-2-3-1">A rectangle with base <span class="process-math">\(3\lt x\lt 4\)</span> (<span class="process-math">\(b=1\)</span>) and height <span class="process-math">\(h=1\)</span> <em class="emphasis">below</em> the <span class="process-math">\(x\)</span>-axis.</div></li>
+<li id="ex_graphicalarea3-5-2-4-2-4"><div class="para" id="ex_graphicalarea3-5-2-4-2-4-1">A triangle with base <span class="process-math">\(4\lt x\lt 5\)</span> (<span class="process-math">\(b=1\)</span>) and hieght <span class="process-math">\(h=1\)</span> <em class="emphasis">below</em> the <span class="process-math">\(x\)</span>-axis</div></li>
+<li id="ex_graphicalarea3-5-2-4-2-5"><div class="para" id="ex_graphicalarea3-5-2-4-2-5-1">A triangle with base <span class="process-math">\(5\lt x\lt 6\)</span> (<span class="process-math">\(b=1\)</span>) and height <span class="process-math">\(h=1\)</span> <em class="emphasis">above</em> the <span class="process-math">\(x\)</span>-axis</div></li>
+</ol>
+<div class="para">Putting this together,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_0^6 f(x) } = (+) \frac{1}{2}\cdot 2 \cdot 1 + (-)\frac{1}{2}\cdot 1 \cdot 1 + (-)1\cdot 1 + (-)\frac{1}{2}\cdot 1\cdot 1 + (+)\frac{1}{2}\cdot 1 \cdot 1  = -0.5
+\end{equation*}
+</div>
+</div>
+</div></details></div></article></article><details id="sec_geometricarea-18" class="insight remark-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Application</span><span class="space"> </span><span class="codenumber">17.4</span><span class="period">.</span><span class="space"> </span><span class="title">Understanding <span class="process-math">\(\int\)</span> notation (Part II).</span>
+</h4></summary><article class="insight remark-like knowl__content"> <div class="para" id="sec_geometricarea-18-2">So far, we have seen the notation <span class="process-math">\(\intdx{_a^b f(x)}\)</span> in two very different contexts: antiderivatives and geometric area. But why are these concepts connected?</div> <div class="para" id="sec_geometricarea-18-3">We have already seen the foundational idea: given a complex area we have <em class="emphasis">sliced</em> it into <em class="emphasis">small regions</em>, where we can find the area of each slice more easily.</div> <div class="para" id="sec_geometricarea-18-4">Suppose you are given any curved function <span class="process-math">\(f\)</span> an enclosed area you want to compute as below.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftcinsight_v1.svg" role="img" class="contained"></div> <div class="para" id="sec_geometricarea-18-6">Slicing the shaded region into thin, vertical strips gives the image below on the left.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftcinsight_v2.svg" role="img" class="contained"></div> <div class="para logical" id="sec_geometricarea-18-8">
+<div class="para">Notice that if the function is continuous (doesn’t jump) and if the strips are thin enough, each strip will <em class="emphasis">approximately</em> be a rectangle with height <span class="process-math">\(h = f(x)\)</span> and base <span class="process-math">\(b=\Delta x\text{.}\)</span> This is illustrated in the image above on the right.</div>
+<ul class="disc" id="sec_geometricarea-18-8-4">
+<li id="sec_geometricarea-18-8-4-1"><div class="para" id="sec_geometricarea-18-8-4-1-1">The area of <em class="emphasis">one</em> strip will be approximately <span class="process-math">\(h\cdot b  = f(x) \cdot \Delta x\text{.}\)</span>
+</div></li>
+<li id="sec_geometricarea-18-8-4-2"><div class="para logical" id="sec_geometricarea-18-8-4-2-1">
+<div class="para">The area of the <em class="emphasis">whole</em> region is <em class="emphasis">approximately</em> the Sum of all slices from <span class="process-math">\(x=a\)</span> to <span class="process-math">\(x=b\text{.}\)</span> Mathematically, this is written</div>
+<div class="displaymath process-math" id="sec_geometricarea-18-8-4-2-1-5">
+\begin{align*}
+\text{area of whole} \amp \approx \text{Sum of slices from} a \text{ to } b\\
+\amp \approx \text{Sum of } f(x)\cdot \Delta x \text{ from } a \text{ to } b
+\end{align*}
+</div>
+<div class="para">To emphasize that the slices are very thin, we replace the blocky <span class="process-math">\(\Delta x\)</span> with a smooth <span class="process-math">\(dx\text{,}\)</span> and we summarize the word "Sum" with the symbol <span class="process-math">\(\int\)</span>
+</div>
+<div class="displaymath process-math" id="sec_geometricarea-18-8-4-2-1-9">
+\begin{align*}
+\amp \approx \text{Sum of } f(x)\cdot dx \text{ from } a \text{ to } b\\
+\amp \approx \intdx{_a^b f(x) }
+\end{align*}
+</div>
+</div></li>
+</ul>
+</div></article></details></section><section class="section" id="sec_fundamentaltheorem"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">17.3</span><span class="space"> </span><span class="title">Area, Antiderivatives, and Graphs of Change</span>
+</h3>
+<article class="theorem theorem-like" id="thm-FTC"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">17.5</span><span class="period">.</span><span class="space"> </span><span class="title">The Fundamental Theorem of Calculus (FTC).</span>
+</h4>
+<div class="para logical" id="thm-FTC-2-1">
+<div class="para">Suppose that <span class="process-math">\(f(x)\)</span> is any continuous function, and that <span class="process-math">\(F(x)\)</span> is any antiderivative of <span class="process-math">\(f(x)\text{.}\)</span> Then the <em class="emphasis">net area enclosed between <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis on the interval <span class="process-math">\([a,b]\)</span></em> is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\intdx{_a^b f(x)} = F(b) - F(a) 
+\end{equation*}
+</div>
+</div></article><div class="para" id="sec_fundamentaltheorem-3">In other words, <em class="emphasis">antiderivatives</em> give <em class="emphasis">net area</em>, and <em class="emphasis">net area</em> gives <em class="emphasis">antiderivatives</em>. Given the many connections between derivatives and concepts in economic and business, this becomes a powerful set of tools.</div>
+<div class="para logical" id="sec_fundamentaltheorem-4"><ol class="decimal" id="sec_fundamentaltheorem-4-1">
+<li id="sec_fundamentaltheorem-4-1-1">
+<div class="para" id="sec_fundamentaltheorem-4-1-1-1">The derivative of total cost <span class="process-math">\(C\)</span> is the marginal cost <span class="process-math">\(C'\text{.}\)</span>
+</div>
+<div class="para" id="sec_fundamentaltheorem-4-1-1-2">Therefore, the total cost <span class="process-math">\(C\)</span> is an <em class="emphasis">antiderivative</em> of marginal (item) cost <span class="process-math">\(C'\text{.}\)</span>
+</div>
+<div class="para" id="sec_fundamentaltheorem-4-1-1-3">
+<em class="emphasis">It follows that</em> the area under marginal (item) cost gives change in total cost.</div>
+</li>
+<li id="sec_fundamentaltheorem-4-1-2">
+<div class="para" id="sec_fundamentaltheorem-4-1-2-1">Let <span class="process-math">\(f(x)\)</span> give the value of a stock on day <span class="process-math">\(x\text{.}\)</span>  Then the <em class="emphasis">derivative</em> of value <span class="process-math">\(f'\)</span> tells you how fast the value is changing on each day.</div>
+<div class="para" id="sec_fundamentaltheorem-4-1-2-2">Therefore, the value function <span class="process-math">\(f\)</span> is an <em class="emphasis">antiderivative</em> of the change in value function <span class="process-math">\(f'\text{.}\)</span>
+</div>
+<div class="para" id="sec_fundamentaltheorem-4-1-2-3">
+<em class="emphasis">It follows that</em> the area under the change in value function cost gives the change in actual value.</div>
+</li>
+</ol></div>
+<div class="para" id="sec_fundamentaltheorem-5">This line of reasoning extends to <em class="emphasis">any and all</em> graphs of rates of change.</div>
+<article class="exploration project-like" id="ex_ftc_dailychange"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">17.7</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_ftc_dailychange-1">
+<div class="para" id="ex_ftc_dailychange-1-1">The graph of the <em class="emphasis">daily change <span class="process-math">\(V'(x)\)</span></em> (in $/day) in the price of a certain stock is given below.</div> <div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/image_ftc_exploration2.svg" role="img" class="contained"></div>
+</div>
+<article class="task exercise-like" id="ex_ftc_dailychange-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_ftc_dailychange-2-1-1">Find the change in stock price <span class="process-math">\(V\)</span> between days 1 and 5.</div>
+<div class="solutions"><details id="ex_ftc_dailychange-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_ftc_dailychange-2-2-1">
+<div class="para">Recall that the total value <span class="process-math">\(V\)</span> is the antiderivative of the change in value function  <span class="process-math">\(V'\text{.}\)</span> By <a href="ch_introducingarea.html#thm-FTC" class="xref" data-knowl="./knowl/xref/thm-FTC.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 17.5: The Fundamental Theorem of Calculus (FTC)">Theorem 17.5</a>, the area under <span class="process-math">\(V'\)</span> is equal to the net change in <span class="process-math">\(V\text{.}\)</span>  Looking at the graph of <span class="process-math">\(V'\text{,}\)</span> we see</div>
+<dl class="description-list">
+<dt id="ex_ftc_dailychange-2-2-1-7-1">Day 1</dt>
+<dd><div class="para" id="ex_ftc_dailychange-2-2-1-7-1-2">Between day 1 and 2, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=3\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\(3\cdot 1= 3\)</span>$ between day 1 and 2.</div></dd>
+<dt id="ex_ftc_dailychange-2-2-1-7-2">Day 2</dt>
+<dd><div class="para" id="ex_ftc_dailychange-2-2-1-7-2-2">Between day 2 and 3, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=1\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\(1\cdot 1 = 1\)</span>$ between day 2 and 3.</div></dd>
+<dt id="ex_ftc_dailychange-2-2-1-7-3">Day 3 &amp; 4</dt>
+<dd><div class="para" id="ex_ftc_dailychange-2-2-1-7-3-2">Between day 3 and 5, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=-1\)</span> and base <span class="process-math">\(b=2\text{.}\)</span> That means the value increases by <span class="process-math">\((-) 1\cdot 2 = -2 \)</span>$ between day 3 and 5.</div></dd>
+</dl>
+<div class="para">Putting it together, the change in value between day 1 and 5 equals</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-FTC.html">
+\begin{equation*}
+V(5)-V(1) = \dint{_1^5 V'(x) } = 3 + 1 - 2 = 2
+\end{equation*}
+</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftc_exploration2a.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_ftc_dailychange-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_ftc_dailychange-3-1-1">Find the change in stock price between days 1 and 7.</div>
+<div class="solutions"><details id="ex_ftc_dailychange-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_ftc_dailychange-3-2-1">
+<div class="para">Recall that the total value <span class="process-math">\(V\)</span> is the antiderivative of the change in value function  <span class="process-math">\(V'\text{.}\)</span> By <a href="ch_introducingarea.html#thm-FTC" class="xref" data-knowl="./knowl/xref/thm-FTC.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 17.5: The Fundamental Theorem of Calculus (FTC)">Theorem 17.5</a>, the area under <span class="process-math">\(V'\)</span> is equal to the net change in <span class="process-math">\(V\text{.}\)</span>  Looking at the graph of <span class="process-math">\(V'\text{,}\)</span> we see</div>
+<dl class="description-list">
+<dt id="ex_ftc_dailychange-3-2-1-7-1">Day 1</dt>
+<dd><div class="para" id="ex_ftc_dailychange-3-2-1-7-1-2">Between day 1 and 2, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=3\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\(3\cdot 1= 3\)</span>$ between day 1 and 2.</div></dd>
+<dt id="ex_ftc_dailychange-3-2-1-7-2">Day 2</dt>
+<dd><div class="para" id="ex_ftc_dailychange-3-2-1-7-2-2">Between day 2 and 3, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=1\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\(1\cdot 1 = 1\)</span>$ between day 2 and 3.</div></dd>
+<dt id="ex_ftc_dailychange-3-2-1-7-3">Day 3 &amp; 4</dt>
+<dd><div class="para" id="ex_ftc_dailychange-3-2-1-7-3-2">Between day 3 and 5, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=-1\)</span> and base <span class="process-math">\(b=2\text{.}\)</span> That means the value increases by <span class="process-math">\((-) 1\cdot 2 = -2 \)</span>$ between day 3 and 5.</div></dd>
+<dt id="ex_ftc_dailychange-3-2-1-7-4">Day 5</dt>
+<dd><div class="para" id="ex_ftc_dailychange-3-2-1-7-4-2">Between day 5 and 6, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=-4\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\((-) 4\cdot 1 = -4 \)</span>$ between day 5 and 6.</div></dd>
+<dt id="ex_ftc_dailychange-3-2-1-7-5">Day 6</dt>
+<dd><div class="para" id="ex_ftc_dailychange-3-2-1-7-5-2">Between day 6 and 7, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=-1\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\((-) 1\cdot 1 = -1 \)</span>$ between day 6 and 7.</div></dd>
+</dl>
+<div class="para">Putting it together, the change in value between day 1 and 7 equals</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-FTC.html">
+\begin{equation*}
+V(7)-V(1) = \dint{_1^7 V'(x) } = 3 + 1 - 2 -4 - 1= -3
+\end{equation*}
+</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftc_exploration2b.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_ftc_dailychange-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_ftc_dailychange-4-1-1">Find the change in stock price between days 5 and 8.</div>
+<div class="solutions"><details id="ex_ftc_dailychange-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_ftc_dailychange-4-2-1">
+<div class="para">Recall that the total value <span class="process-math">\(V\)</span> is the antiderivative of the change in value function  <span class="process-math">\(V'\text{.}\)</span> By <a href="ch_introducingarea.html#thm-FTC" class="xref" data-knowl="./knowl/xref/thm-FTC.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 17.5: The Fundamental Theorem of Calculus (FTC)">Theorem 17.5</a>, the area under <span class="process-math">\(V'\)</span> is equal to the net change in <span class="process-math">\(V\text{.}\)</span>  Looking at the graph of <span class="process-math">\(V'\text{,}\)</span> we see</div>
+<dl class="description-list">
+<dt id="ex_ftc_dailychange-4-2-1-7-1">Day 5</dt>
+<dd><div class="para" id="ex_ftc_dailychange-4-2-1-7-1-2">Between day 5 and 6, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=-4\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\((-) 4\cdot 1 = -4 \)</span>$ between day 5 and 6.</div></dd>
+<dt id="ex_ftc_dailychange-4-2-1-7-2">Day 6</dt>
+<dd><div class="para" id="ex_ftc_dailychange-4-2-1-7-2-2">Between day 6 and 7, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=-1\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\((-) 1\cdot 1 = -1 \)</span>$ between day 6 and 7.</div></dd>
+<dt id="ex_ftc_dailychange-4-2-1-7-3">Day 7</dt>
+<dd><div class="para" id="ex_ftc_dailychange-4-2-1-7-3-2">Between day 7 and 8, the area enclosed by <span class="process-math">\(V'\)</span> is a rectangle with height <span class="process-math">\(h=4\)</span> and base <span class="process-math">\(b=1\text{.}\)</span> That means the value increases by <span class="process-math">\((+) 4\cdot 1 = 4 \)</span>$ between day 7 and 8.</div></dd>
+</dl>
+<div class="para">Putting it together, the change in value between day 5 and 8 equals</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-FTC.html">
+\begin{equation*}
+V(8)-V(5) = \dint{_5^8 V'(x) } = -4 + -1 + 4  = -1
+\end{equation*}
+</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftc_exploration2c.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_ftc_dailychange-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex_ftc_dailychange-5-1-1">Suppose the stock price on day 1 was $10.  Find the stock price at day 5.</div>
+<div class="solutions"><details id="ex_ftc_dailychange-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_ftc_dailychange-5-2-1">We have already seen that the value of the stock changes by $+2 between days 1 and 5. If the value on day 1 was $10, then the value on day 5 is $10+(+2) = $12.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftc_exploration2d.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_ftc_dailychange-6"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" id="ex_ftc_dailychange-6-1-1">Suppose the stock price on day 1 was $10.  Find the stock price at day 7.</div>
+<div class="solutions"><details id="ex_ftc_dailychange-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_ftc_dailychange-6-2-1">We have already seen that the value of the stock changes by $-3 between days 1 and 7. If the value on day 1 was $10, then the value on day 5 is $10+(-3) = $7.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/image_ftc_exploration2e.svg" role="img" class="contained"></div>
+</div></details></div></article></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="ch_antiderivatives.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="meta_backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="feedback-link" href="mailto:sflood@bridgew.edu?subject=TEXTBOOK%20FEEDBACK%20-%20Business%20Calculus" target="_blank">Feedback</a><a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

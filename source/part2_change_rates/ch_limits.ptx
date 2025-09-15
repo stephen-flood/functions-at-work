@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<chapter xml:id="ch_limits" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Limits</title>
+
+<introduction>
+  <p>
+  </p>
+</introduction>
+
+
+<section xml:id="sec_readingdynamically">
+  <title>Reading Graphs Dynamically</title>
+  
+  <p>
+    Reading graphs <em>dynamically</em> will be an essential part of understanding the key concepts of calculus, and applying those concepts to your daily life. 
+  </p>
+  <p>
+    To read any graph dynamically, start at a specific <m>x</m> value, and imagine "standing" on the function above that point on the x-axis. 
+    The <m>y</m> value corresponds with your height above the x-axis.  
+  </p>
+  <p>
+    Next, imagine walking right (increasing <m>x</m>) and left (decreasing <m>x</m>) along the curve.  
+    As you walk, the curve <em>forces</em> your height to move up or down. 
+  </p>
+
+  <figure width="100%" xml:id="figure_interactivelimit">
+    <title>Exploring Limits</title>
+    <interactive platform="jsxgraph" width="75%" preview="jsxgraph-limitpicewise.png">
+      <slate xml:id="jsxgraph-limitpicewise"  surface="jessiecode" axis="true" grid="true" aspect="1:1">
+        $board.setBoundingBox( [ -2, 4, 4, -2 ] , keepaspectratio=true) ;
+
+        xslider = slider(
+              // Specify slider location
+                [0.5,-1], [3,-1], 
+              // Specify smallest/starting/largest value for slider
+                [-2,0.5,4])
+            &lt;&lt;
+                name:"x",
+                snapWidth:0.1
+            &gt;&gt;  ;      
+
+        // Define piecewise function      
+        f1 = function(x) { 
+          if (x&lt;1 ){
+          return 2*x ;  
+          }else if (x==1){
+            return 3;
+          }else if (1&lt;x &amp;&amp; x&lt;3 ){
+            return 0.5*(x-1) + 2;
+          }else if (x==3){
+            return 3;
+          }else if (3&lt;x ){
+            return (x-3)^2+1;
+          }
+        ;} ;
+
+        // Graph the lines from the point to the x and y axis
+        //    (put these first so they go behind the function and points)
+        line( [function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                  &lt;&lt; 
+                    color:"blue",
+                    straightFirst:false, 
+                    straightLast:false,
+                    dash:2
+                  &gt;&gt; ;
+        line( [function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                  &lt;&lt; 
+                    color:"blue",
+                    straightFirst:false, 
+                    straightLast:false,
+                    dash:2
+                  &gt;&gt; ;
+
+        // Graph the function and 
+        fGraph1 = functiongraph( f1 )  
+          &lt;&lt; 
+              strokeColor:"red"  
+          &gt;&gt;;
+        point(1,2)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3,
+                    fillColor:'white' 
+                  &gt;&gt; ;      
+        point(1,3)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3
+                  &gt;&gt; ;      
+        point(3,3)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3
+                  &gt;&gt; ;      
+        point(3,1)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3,
+                    fillColor:'white' 
+                  &gt;&gt; ;      
+
+        // Graph point that follows the function
+        point( function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}) 
+                  &lt;&lt; 
+                    name:"(x,f(x))",
+                    color:"blue" 
+                  &gt;&gt; ;
+        text( -0.75, function() {return f1(xslider.Value());}, "f(x)") 
+                  &lt;&lt; 
+                    color:"blue" 
+                  &gt;&gt; ;
+        text( function() {return xslider.Value();} , -0.25 , "x") 
+                  &lt;&lt; 
+                    color:"blue" 
+                  &gt;&gt; ;
+      </slate>
+      <instructions>
+        <p>
+          Use the slider to move yourself left and right along the curve. The dot represents your position on the surface, with 
+          <me>
+            \begin{cases}
+              x = \text{ your position }\\
+              y = \text{ your height } = f(x) 
+            \end{cases}
+          </me>
+        </p>
+        <ul>
+          <li>
+            <p>
+              Imagine <em>approaching</em> towards <m>x=1</m> from the left. 
+              What is happening to your height?
+            </p>
+            <p>
+              <alert>Note:</alert> only look at what is happening to the height during the <em>approach</em>, not at the value <m>x=1</m> itself.
+            </p>
+          </li>
+          <li>
+            <p>
+              Imagine <em>approaching</em> towards <m>x=1</m> from the right. 
+              What is happening to your height?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is happening to your height as you approach <m>x=3</m> from the left? 
+            </p>
+          </li>
+          <li>
+            <p>
+               What about when you approach <m>x=3</m> from the right?
+            </p>
+          </li>
+        </ul>
+      </instructions>
+    </interactive>
+  </figure>
+
+  <example xml:id="example_interactivelimit_intuitive">
+    <title>Exploring <xref ref="figure_interactivelimit"/></title>
+    
+    
+    <p>
+      Let's explore what happens in  <xref ref="figure_interactivelimit"/>.
+    </p>
+    <ul>
+      <li>
+        <p>
+          To see what happens as you <em>approach <m>x=1</m> from the left</em>, 
+          <ol>
+            <li>
+              <p>
+                Move the <m>x</m> value to some number less than <m>1</m>.
+                For simplicity, start by moving to <m>x=0</m>.  
+                At that point on the curve, your height will be <m>y=0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Drag the slider to increase <m>x</m> towards 1, making sure never to allow <m>x</m> to equal 1.
+              </p>
+              <p>
+                As you increased <m>x</m> (as you move it right), you will have seen the height increase as well.  Even more, you will have seen the height getting closer and closer to <m>y=2</m>.  
+              </p>
+            </li>
+            <li>
+              <p>
+                Because of this, we say that your height <m>y=f(x)</m> gets closer and closer to <m>y=2</m> as <m>x</m> approaches 1 from the left.
+              </p>
+            </li>
+          </ol> 
+        </p>
+        <p>
+          <alert>Important:</alert> The fact that <m>f(1)=3</m> is unrelated to our question, because that tells us what happens <em>at that point</em>, not what happens <em>during the process of approaching that point</em>.
+        </p>
+      </li>
+      <li>
+        <p>
+          To see what happens as you <em> approach <m>x=1</m> from the right</em>,
+          <ol>
+            <li>
+              <p>
+                Move the slider so that <m>x</m> is significantly bigger than <m>2</m>.
+                For simplicity, start by moving to <m>x=2</m>.  
+                At that point on the curve, your height will be <m>y=2.5</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Drag the slider to <em>decrease</em> <m>x</m> toward 1, making sure never to allow <m>x</m> to equal 1. 
+                As you do this, the height decreases, getting closer and closer to <m>2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Because of this, we say that the height <m>y=f(x)</m> gets closer and closer to <m>y=2</m> as <m>x</m> approaches 1 from the right.  
+              </p>
+            </li>
+          </ol> 
+        </p>
+      </li>
+      <li>
+        <p>
+          As you approach <m>x=3</m> from the left, your height increases to <m>y=3</m>.
+        </p>
+        <p>
+            As you approach <m>x=3</m> from the right, your height decreases to <m>y=1</m>.
+        </p>
+      </li>
+    </ul>
+  </example>
+  
+  <p>
+    To answer these questions clearly and concisely, we need new mathematical language. 
+    To understand our notation, it will be helpful to remember the number line. 
+    If you (<m>x</m>) approach a number <m>a</m> <term>from the left</term>, you are approaching <m>a</m> from the side of the number line with all the negative numbers.  
+    Because of that, we write <m>x\rightarrow a^-</m> as a shorthand for <em>approaches <m>a</m> from the left</em>.
+    <image width="33%" xml:id="img_limitdirection_left">
+      
+      
+      <latex-image>
+        \begin{tikzpicture}
+          \draw[axes] (-0.5,0) -- (3.5,0); 
+          \foreach \x in {0,0.5,...,3}
+            \draw (\x,-0.05)--(\x,0.05);
+          \node[below,circle] at (1.5,0) {$a$};
+          \node[below,circle,draw] (x) at (0.5,0) {$x$};
+          \draw[-latex] (x.east) to ++ (0.5,0);
+          \node at (-1,0) {\color{blue}\Large $\mathbf{-}$};
+          \node at (4,0) {$+$};
+        \end{tikzpicture}
+        
+      </latex-image>
+    </image>
+      If you (<m>x</m>) approach a number <m>a</m> <term>from the right</term>, you are approaching <m>a</m> from the side of the number line with all the positive numbers.    
+      Because of that, we write <m>x\rightarrow a^+</m> as a shorthand for <em>approaches <m>a</m> from the right</em>.
+    <image width="33%" xml:id="img_limitdirection_right">
+      
+      
+      <latex-image>
+        \begin{tikzpicture}
+          \draw[axes] (-0.5,0) -- (3.5,0); 
+          \foreach \x in {0,0.5,...,3}
+            \draw (\x,-0.05)--(\x,0.05);
+          \node[below,circle] at (1.5,0) {$a$};
+          \node[below,circle,draw] (x) at (2.5,0) {$x$};
+          \draw[-latex] (x.west) to ++ (-0.5,0);
+          \node at (-1,0) {$-$};
+          \node at (4,0) {\color{blue}\Large $\mathbf{+}$};
+        \end{tikzpicture}
+        
+      </latex-image>
+    </image>
+  </p>
+
+
+
+  <definition xml:id="def-limit">
+    <statement>
+      <p>
+        Suppose that <m>f(x)</m> is some function, and that <m>a</m> and <m>L</m> are two numbers.  
+      </p>
+      <dl>
+        <li>
+          <title>Left</title>
+          <p>
+            Suppose that is <m>x</m> approaching <m>a</m> from the left (that <m>x\rightarrow a^-</m>).
+            If the heights <m>f(x)</m> get closer and closer to a number <m>L</m>, then we say that the 
+            the <term>left hand limit</term> exists, and write
+            <me>
+              \lim_{x\rightarrow a^-} f(x) = L
+            </me>
+            We can read this expression by saying "(1) the limit (2) as <m>x</m> approaches <m>a</m> from the left is (3) equal to "L".  
+          </p>
+        </li>
+        <li>
+          <title>Right</title>
+          <p>
+            Suppose that is <m>x</m> approaching <m>a</m> from the right (that <m>x\rightarrow a^+</m>).
+            If the heights <m>f(x)</m> get closer and closer to a number <m>L</m>, then we say that the 
+            the <term>right hand limit</term> exists, and write
+            <me>
+              \lim_{x\rightarrow a^+} f(x) = L
+            </me>
+            We can read this expression by saying "(1) the limit (2) as <m>x</m> approaches <m>a</m> from the right is (3) equal to "L".  
+          </p>
+        </li>
+        <li>
+          <title>Undirected</title>
+          <p>
+            Sometimes, we talk about limits without any direction.
+          </p>
+          <p>
+            We say that the (undirected) <term>limit</term> of <m>f(x)</m> as <m>x</m> approaches <m>a</m> is equal to <m>L</m>, written 
+            <me>
+              \lim_{x\rightarrow a} f(x) = L
+            </me>
+            if  as the <em>input <m>x</m></em> gets <em>closer to <m>a</m> </em>, 
+            the <em>output <m>f(x)</m></em> gets <em>closer to <m>L</m> </em>.
+          </p>
+        </li>
+      </dl>
+    </statement>
+  </definition>
+
+  <exploration>
+    <introduction>
+      <p>
+        Let <m>f(x)</m> be the function defined by the graph in <xref ref="figure_interactivelimit"/>.
+        Compute the following limits.
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p><m>\displaystyle \lim_{x\rightarrow 1^-} f(x)</m></p>
+      </statement>
+      <answer>
+        <p>
+          Following the reasoning from <xref ref="example_interactivelimit_intuitive"/>, we see that 
+          <m>\displaystyle \lim_{x\rightarrow 1^-} f(x)=2</m>
+        </p>
+      </answer>
+    </task>
+    <task>
+      <statement>
+        <p><m>\displaystyle \lim_{x\rightarrow 1^+} f(x)</m></p>
+      </statement>
+      <answer>
+        <p>
+          Following the reasoning from <xref ref="example_interactivelimit_intuitive"/>, we see that 
+          <m>\lim_{x\rightarrow 1^+} f(x)=2</m>
+        </p>
+      </answer>
+    </task>
+    <task>
+      <statement>
+        <p><m>\displaystyle \lim_{x\rightarrow 1} f(x)</m></p>
+      </statement>
+      <answer>
+        <p>
+          We have seen that as <m>x</m> approaches 1, the height goes to 2 <em>regardless</em> of the direction.  That tells us that the undirected limit exists and equals 2.  In other words, 
+            <m>\lim_{x\rightarrow 1} f(x)=2</m>
+        </p>
+      </answer>
+    </task>
+    <task>
+      <statement>
+        <p><m>\displaystyle \lim_{x\rightarrow 3^-} f(x)</m></p>
+      </statement>
+      <answer>
+        <p>
+          Following the reasoning from <xref ref="example_interactivelimit_intuitive"/>, we see that 
+          <m>\lim_{x\rightarrow 3^-} f(x)=3</m>
+        </p>
+      </answer>
+    </task>
+    <task>
+      <statement>
+        <p><m>\displaystyle \lim_{x\rightarrow 3^+} f(x)</m></p>
+      </statement>
+      <answer>
+        <p>
+          Following the reasoning from <xref ref="example_interactivelimit_intuitive"/>, we see that 
+          <m>\lim_{x\rightarrow 3^+} f(x)=1</m>
+        </p>
+      </answer>
+    </task>
+    <task>
+      <statement>
+        <p><m>\displaystyle \lim_{x\rightarrow 3} f(x)</m></p>
+      </statement>
+      <answer>
+        <p>
+          We have seen that as <m>x</m> approaches 3, the height goes to <em>different values</em> depending on your direction of approach.  That tells us that the undirected limit <em>does not exist</em>.  In other words, 
+            <m>\lim_{x\rightarrow 3} f(x)= DNE</m>
+        </p>
+      </answer>
+    </task>
+  </exploration>
+  <p>
+    In the graph above, we have already seen that as we move the input (slider) <m>x</m> closer to <m>1</m>, that the height (output) gets closer to <m>2</m>.  In our new lanugage, that says 
+    <me>
+      \lim_{x\rightarrow 1} f(x) = 2
+    </me>
+  </p>
+
+  <note>
+    <title>A little extra precision</title>
+    <p>
+      In this class, we only need an informal understanding of limits, and the definitions above should be more than enough. 
+    </p>
+    <p>
+      But there is still a little bit of ambiguity in expressions like "getting closer and closer to."  It is natural to ask, how close is close enough?  
+      The answer to that question gives us the full, mathematical definition of a limit. 
+    </p>
+    <p>
+      That definition says that <m>\lim_{x\rightarrow a}f(x) = L</m> if and only if for <em>any</em> acceptable error <m>\varepsilon>0</m>, there is an acceptable distance <m>d>0</m> such that the difference between the actual height <m>f(x)</m> and the limit height of <m>L</m> is less than <m>\varepsilon</m> whenever the input <m>x</m> is no more than distance <m>d</m> from the point <m>a</m> that you are approaching.
+    </p>
+    <p>
+      Again, unless you find it helpful we don't need that more formal definition for this class.  The main point is that it is possible to eliminate any ambiguity about what "close enough" really means. 
+    </p>
+    
+  </note>
+
+
+  <p>
+    The function in Figure <xref ref="figure_interactivelimit"/> is very unusual. 
+    Most mathematical functions can be drawn smoothly, with one or two strokes of a pen.  
+    But this function includes lots of jumping around, and we need to lift the pen every time there is a "jump".  
+    We can make this precise using the following definition.
+  </p>
+
+  <definition xml:id="def-continuous">
+    <statement>
+      <p>
+        We say that a function <m>f(x)</m> is <term>continuous</term> on its domain if you can draw the graph of the function without lifting your pen. 
+      </p>
+      <p>
+        A function is <term>continuous at the number <m>a</m></term> if 
+        <me>
+          \lim_{x\rightarrow a} f(x) = f(a)
+        </me>,
+        which means that both the left and right limits exist, and equal the value that <m>f</m> achieves at <m>a</m>.
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    The two definitions are really two ways of saying the same thing. 
+    If your function can be drawn without lifting your pen, then each point flows smoothly into the next point, and the limit <m>\lim_{x\rightarrow a} f(x) </m> exists and equals <m>f(a)</m>
+  </p>
+  <p>
+    On the other hand, if the function can't be drawn without lifting your pen, then there must be some point in drawing the curve where the function does <em>not</em> smoothly flow into the next point.  In that case, the limit <m>\lim_{x\rightarrow a}f(x)</m> either does not exist, or it does not equal <m>f(a)</m>.
+  </p>
+  
+  <!--figure width="100%" xml:id="figure_interactivelimit">
+    <title>Exploring Limits</title>
+    <interactive platform="jsxgraph" width="75%">
+      <slate xml:id="jsxgraph-limitpicewise"  surface="jessiecode" axis="true" grid="true" aspect="1:1">
+        $board.setBoundingBox( [ -2, 4, 4, -2 ] , keepaspectratio=true) ;
+
+        xslider = slider(
+              // Specify slider location
+                [0.5,-1], [3,-1], 
+              // Specify smallest/starting/largest value for slider
+                [-2,0.5,4])
+            &lt;&lt;
+                name:"x",
+                snapWidth:0.1
+            &gt;&gt;  ;      
+
+        // Define piecewise function      
+        f1 = function(x) { 
+          if (x&lt;1 ){
+          return 2*x ;  
+          }else if (x==1){
+            return 3;
+          }else if (1&lt;x &amp;&amp; x&lt;3 ){
+            return 0.5*(x-1) + 2;
+          }else if (x==3){
+            return 3;
+          }else if (3&lt;x ){
+            return (x-3)^2+1;
+          }
+        ;} ;
+
+        // Graph the lines from the point to the x and y axis
+        //    (put these first so they go behind the function and points)
+        line( [function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                  &lt;&lt; 
+                    color:"blue",
+                    straightFirst:false, 
+                    straightLast:false,
+                    dash:2
+                  &gt;&gt; ;
+        line( [function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                  &lt;&lt; 
+                    color:"blue",
+                    straightFirst:false, 
+                    straightLast:false,
+                    dash:2
+                  &gt;&gt; ;
+
+        // Graph the function and 
+        fGraph1 = functiongraph( f1 )  
+          &lt;&lt; 
+              strokeColor:"red"  
+          &gt;&gt;;
+        point(1,2)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3,
+                    fillColor:'white' 
+                  &gt;&gt; ;      
+        point(1,3)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3
+                  &gt;&gt; ;      
+        point(3,3)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3
+                  &gt;&gt; ;      
+        point(3,1)  &lt;&lt; 
+                    name:"",
+                    fixed:true,
+                    size:3,
+                    fillColor:'white' 
+                  &gt;&gt; ;      
+
+        // Graph point that follows the function
+        point( function() {return xslider.Value();} ,
+                    function() {return f1(xslider.Value());}) 
+                  &lt;&lt; 
+                    name:"(x,f(x))",
+                    color:"blue" 
+                  &gt;&gt; ;
+        text( -0.75, function() {return f1(xslider.Value());}, "f(x)") 
+                  &lt;&lt; 
+                    color:"blue" 
+                  &gt;&gt; ;
+        text( function() {return xslider.Value();} , -0.25 , "x") 
+                  &lt;&lt; 
+                    color:"blue" 
+                  &gt;&gt; ;
+      </slate>
+      <instructions>
+        <p>
+          Use the slider to move yourself left and right along the curve. The dot represents your position on the surface, with 
+          <me>
+            \begin{cases}
+              x = \text{ your position }\\
+              y = \text{ your height } = f(x) 
+            \end{cases}
+          </me>
+        </p>
+        <ul>
+          <li>
+            <p>
+              Imagine <em>approaching</em> towards <m>x=1</m> from the left. 
+              What is happening to your height?
+            </p>
+            <p>
+              <alert>Note:</alert> only look at what is happening to the height during the <em>approach</em>, not at the value <m>x=1</m> itself.
+            </p>
+          </li>
+          <li>
+            <p>
+              Imagine <em>approaching</em> towards <m>x=1</m> from the right. 
+              What is happening to your height?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is happening to your height as you approach <m>x=3</m> from the left? 
+            </p>
+          </li>
+          <li>
+            <p>
+               What about when you approach <m>x=3</m> from the right?
+            </p>
+          </li>
+        </ul>
+      </instructions>
+    </interactive>
+  </figure-->
+
+  <example>
+    <title>Three reasons  a function might <em>not</em> be continuous.</title>
+    
+    <dl>
+      <li>
+        <title>Removable Discontinuity</title>
+        <p>
+          <image width="50%" xml:id="img_continuity_1">
+            
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[axes] (-1,0) -- (3,0);
+                \draw[axes] (0,-1) -- (0,3);
+                \draw [curve,domain=0.5:2.5] plot ({\x},{\x });
+                \draw[fill=white] (1.5,1.5) circle (3pt);
+                \draw[fill] (1.5,0.5) circle (3pt);
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+          Imagine running along this graph.  
+          The discontinuity is a hole in the ground, like an open manhole cover. 
+          If you were to walk over that hole, you would fall down the hole, and hit the ground at the bottom. 
+          But it seems like someone should be able to <term>remove</term> this discontinuity by covering up the manhole cover (by redefining the function at that specific point).
+        </p>
+        <p>
+          We say that <em>any</em> function has a <term>removable discontinuity</term> if the left and right limits both exist, and both equal the same number, but if that number is not equal to <m>f(a)</m>.
+        </p>
+      </li>
+      <li>
+        <title>Jump Discontinuity</title>
+        <p>
+          <image width="50%" xml:id="img_continuity_2">
+            
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[axes] (-1,0) -- (3,0);
+                \draw[axes] (0,-1) -- (0,3);
+                \draw[curve,domain=0.5:1.5] plot ({\x},{\x });
+                \draw[curve,domain=1.5:2.5] plot ({\x},{\x + 1});
+                \draw[fill=white] (1.5,1.5) circle (3pt);
+                \draw[fill] (1.5,2.5) circle (3pt);
+              \end{tikzpicture}
+              \qquad
+            </latex-image>
+          </image>
+
+          In this graph, the limit does not exist.  If you imagine running along this curve, you would need to <term>jump</term> to get from one side of the discontinuity to the other. 
+
+          
+        </p>
+        <p>
+          We say that <em>any</em> function has a <term>jump discontinuity</term> if the left and right limits equal two different finite numbers. 
+        </p>
+      </li>
+      <li>
+        <title>Infinite Discontinuity</title>
+        <p>
+          <image width="50%" xml:id="img_continuity_3">
+            
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[axes] (-1,0) -- (3,0);
+                \draw[axes] (0,-1) -- (0,3);
+                \draw [curve,domain=-0.5:1.33] plot ({\x},{0.5/abs(\x - 1.5)});
+                \draw [curve,domain=1.67:3] plot ({\x},{0.5/abs(\x - 1.5)});
+                \draw[dashed] (1.5,-1)--(1.5,3.1);
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+          In this graph, the left and right limits both go off to infinity, and the graph of the function has a vertical asymptote. 
+          If you imagine running along this curve, you would need to be able to go to infinity in the process of getting from one side to the other. 
+        </p>
+        <p>
+          We say that <em>any</em> function has an <term>infinite discontinuity</term> if either the left or right limit goes to infinity. 
+        </p>
+        
+      </li>
+    </dl>
+
+  </example>
+
+</section>
+
+<section xml:id="sec-econlimits">
+  <title>Macroeconomics and Mostly Continuous Functions</title>
+
+  <p>
+    There is an important difference between histograms and scatter plots on the one hand, and continuous functions on the other. 
+    <image xml:id="img_histogramvscontinuous">
+      
+      <latex-image>
+        \begin{tikzpicture}
+          \draw[-latex] (0,0) -- (0,4);
+          \draw[-latex] (0,0) -- (5,0);
+
+          \filldraw (1,3) circle (3pt);
+          \filldraw (2,2) circle (3pt);
+          \filldraw (3,1) circle (3pt);
+          \filldraw (4,2) circle (3pt);
+
+          \node at (2.5,-1) {A few discrete points};
+        \end{tikzpicture}
+        \qquad
+        \begin{tikzpicture}
+          \draw[-latex] (0,0) -- (0,4);
+          \draw[-latex] (0,0) -- (5,0);
+
+          \filldraw (1,3) circle (1pt);
+          \filldraw (1.25,2.75) circle (1pt);
+          \filldraw (1.5,2.5) circle (1pt);
+          \filldraw (1.75,2.25) circle (1pt);
+          \filldraw (2,2) circle (1pt);
+          \filldraw (2.25,1.7) circle (1pt);
+          \filldraw (2.5,1.4) circle (1pt);
+          \filldraw (2.75,1.125) circle (1pt);
+          \filldraw (3,1) circle (1pt);
+          \filldraw (3.25,1.125) circle (1pt);
+          \filldraw (3.5,1.4) circle (1pt);
+          \filldraw (3.75,1.675) circle (1pt);
+          \filldraw (4,2) circle (1pt);								
+
+
+          \node at (2.5,-1) {Many discrete points};
+        \end{tikzpicture}
+        \qquad
+        
+        \begin{tikzpicture}
+          \draw[-latex] (0,0) -- (0,4);
+          \draw[-latex] (0,0) -- (5,0);
+
+          \draw [curve, smooth] plot coordinates
+                {
+                    (1,3)
+                    (2,2)
+                    (3,1)
+                    (4,2)
+                };
+          \node at (2.5,-1) {A continuous curve};
+        \end{tikzpicture}
+      </latex-image>
+    </image>
+    In a discrete graph, you would need to "jump" to move between the discrete points. 
+    But as you add more and more points, the distance you would need to "jump" gets smaller and smaller. 
+    If you add enough discrete points, the graph becomes indistinguishable from a <em>continuous</em> curve, where you can walk smoothly along the curve.
+  </p>
+
+  <p>
+    In the words of <url href="https://www.investopedia.com/terms/m/macroeconomics.asp">Investopedia</url>, 
+    <q> Macroeconomics is the branch of economics that deals with the structure, performance, behavior, and decision-making of the whole, or aggregate, economy</q>.
+  </p>
+  <p>
+    There are a <em>lot</em> of data points in the overall economy, so many macroeconomic functions are essentially continuous. 
+    However, certain unique events can introduce jumps.  
+  </p>
+
+  <p>
+    As a very simplified example, any given oil rig will be able to produce different amounts of oil, based on how many people are working on it, how much electricity is used for the pump, and other factors. 
+    These factors can generally be scaled smoothly, so the cost of producing oil should be roughly continuous as a function of the number of barrels to be produced. 
+  </p>
+  <p>
+    But there are also limits to the amount of oil that a certain rig will be able to extract.  To produce more than that amount of oil, an entirely new oil rig will need to be set up, causing a massive jump in the cost. 
+    Furthermore, additional refinement will probably be needed after the new rig is produced, possibly resulting in another jump in cost. 
+  </p>
+
+
+  <exploration xml:id="explore_oillimit_graphical">
+    <introduction>
+      <p>
+        Suppose that the following graph shows the cost <m>C</m> in millions of dollars of producing <m>x</m> million barells of oil at a specific oil field.
+        Use this graph to answer the following questions.
+      </p>
+      <interactive platform="jsxgraph" width="50%" preview="jsxgraph-figure_oillimit.png">
+        <slate xml:id="jsxgraph-figure_oillimit"  surface="jessiecode" axis="true" grid="true">
+          $board.setBoundingBox( [ -2, 200, 20, -30 ] , keepaspectratio=false) ;
+
+          xslider = slider(
+                // Specify slider location
+                  [0.5,-10], [15,-10], 
+                // Specify smallest/starting/largest value for slider
+                  [0,5,20])
+              &lt;&lt;
+                  name:"x",
+                  snapWidth:0.5
+              &gt;&gt;  ;      
+
+          // Define piecewise function      
+          f1 = function(x) { 
+            if (x&lt;10 ){
+            return 50 + 5*x ;  
+            }else if (x==10){
+              return 125 ;
+            }else if (10&lt;x ){
+              return 90 + 6*x;
+            }
+          ;} ;
+
+          // Graph the lines from the point to the x and y axis
+          //    (put these first so they go behind the function and points)
+          line( [function() {return xslider.Value();} ,
+                      function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                    &lt;&lt; 
+                      color:"blue",
+                      straightFirst:false, 
+                      straightLast:false,
+                      dash:2
+                    &gt;&gt; ;
+          line( [function() {return xslider.Value();} ,
+                      function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                    &lt;&lt; 
+                      color:"blue",
+                      straightFirst:false, 
+                      straightLast:false,
+                      dash:2
+                    &gt;&gt; ;
+
+          // Graph the function and 
+          fGraph1 = functiongraph( f1 )  
+            &lt;&lt; 
+                strokeColor:"red"  
+            &gt;&gt;;
+          point(10,100)  &lt;&lt; 
+                      name:"",
+                      fixed:true,
+                      size:3,
+                      fillColor:'white' 
+                    &gt;&gt; ;      
+          point(10,125)  &lt;&lt; 
+                      name:"",
+                      fixed:true,
+                      size:3
+                    &gt;&gt; ;      
+          point(10,150)  &lt;&lt; 
+                      name:"",
+                      fixed:true,
+                      size:3,
+                      fillColor:'white' 
+                    &gt;&gt; ;      
+
+          // Graph point that follows the function
+          point( function() {return xslider.Value();} ,
+                      function() {return f1(xslider.Value());}) 
+                    &lt;&lt; 
+                      name:"(x,f(x))",
+                      color:"blue" 
+                    &gt;&gt; ;
+          text( -0.75, function() {return f1(xslider.Value());}, "f(x)") 
+                    &lt;&lt; 
+                      color:"blue" 
+                    &gt;&gt; ;
+          text( function() {return xslider.Value();} , -0.25 , "x") 
+                    &lt;&lt; 
+                      color:"blue" 
+                    &gt;&gt; ;
+        </slate>
+      </interactive>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\lim_{x\rightarrow 10^-}C(x).</m>
+          What does this tell us about oil production?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          As the number of (millions of) gallons of oil increases to 10 from the <em>left</em>, the cost increases to $100 (million) dollars. 
+          Therefore,   <m>\lim_{x\rightarrow 10^-}C(x)= 100.</m>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\lim_{x\rightarrow 10^+}C(x).</m>
+          What does this tell us about oil production?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          As the number of (millions of) gallons of oil decreases to 10 from the <em>right</em>, the cost decreases to $150 (million) dollars. 
+          Therefore,   <m>\lim_{x\rightarrow 10^+}C(x)= 150.</m>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute <m>C(10).</m>
+          What does this tell us about oil production?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          To produce exactly 10 (millon) barrels, the cost will be exactly $125 (million) dollars. 
+          Therefore,   <m>C(10)= 125.</m>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    To define functions with jumps, we often use <em>piecewise functions</em>.  
+    The graph in <xref ref="explore_oillimit_graphical"/> is made up of the following three functions:
+    <ul>
+      <li>
+        <p>
+          When <m>x\lt 10</m>, graph the line <m> 50 + 5x</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          When <m>x = 10</m>, graph the point <m> 50 + 5x</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          When <m>x\gt 10</m>, graph the line <m> 90 + 6x</m>
+        </p>
+      </li>
+    </ul>
+    Mathematically, this is often abbreviated as 
+    <me>
+      \begin{cases}
+        50 + 5x &amp; \text{ if } x\lt 10 \\ 
+        125     &amp; \text{ if } x = 10 \\ 
+        90 + 6x &amp; \text{ if } x\gt 10 \\ 
+      \end{cases}
+    </me>
+  </p>
+
+</section>
+
+<section xml:id="sec-ComputingLimitsNumerically">
+  <title>Computing Limits Numerically</title>
+  
+
+  <p>
+    You can also compute limits numerically. 
+    The process is straighforward, once you understand what the question is asking.
+    For example, suppose that 
+      <me>
+        f(x) = 
+        \begin{cases}
+          1 + x   &amp; \text{ if } x \lt 2 \\   
+          1       &amp; \text{ if } x = 2 \\   
+          -1+0.5x &amp; \text{ if } x \gt 2 \\   
+        \end{cases}
+      </me>
+    <ul>
+      <li>
+        <p>
+          You are asked to compute <m>\displaystyle \lim_{x\rightarrow 2^+} f(x)</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Remember this means you want to see <em>what happens to your height</em> when your <m>x</m> value approaches <m>a=2</m> from the right.
+        </p>
+      </li>
+      <li>
+        <p>
+          Think about some <m>x</m> values you would pass through when approaching <m>2</m> from the right.  For example, you would pass through <m>x=3,\ x=2.5,\ x=2.1,\ x=2.01</m> and so on. 
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the height at each of the <m>x</m> values we listed above.
+          <tabular>
+            <col right="medium" /><col />
+            <row bottom="medium">
+              <cell><m>x</m> </cell>
+              <cell><m>f(x)</m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>3</m> </cell>
+              <cell><m>f(3) = -1 + 0.5(3) = 0.5 </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>2.5</m> </cell>
+              <cell><m>f(2.5) = -1 + 0.5(2.5) = 0.25 </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>2.1</m> </cell>
+              <cell><m>f(2.1) = -1 + 0.5(2.1) = 0.05 </m> </cell>
+            </row>
+            <row>
+              <cell><m>2.01</m> </cell>
+              <cell><m>f(2.01) = -1 + 0.5(2.01) = 0.005 </m> </cell>
+            </row>
+          </tabular>
+        </p>
+      </li>
+      <li>
+        <p>
+          Think about what is happening to your height as your <m>x</m> value is approaching 2 from the right. 
+        </p>
+        <p>
+          Notice that the <m>y</m>-value is getting <alert>closer and closer to 0</alert>.  In other words, 
+          <me>
+            \lim_{x\rightarrow 2^+} f(x) = 0
+          </me>
+        </p>
+      </li>
+    </ul>
+  </p>
+  <p>
+    To get more comfortable with what this means, the graph of the piecewise function 
+    <m>
+      f(x) = 
+      \begin{cases}
+        1 + x   &amp; \text{ if } x \lt 2 \\   
+        1       &amp; \text{ if } x = 2 \\   
+        -1+0.5x &amp; \text{ if } x \gt 2 \\   
+      \end{cases}
+    </m>
+    is given below.  
+    As you change the value of <m>x</m>, the left side of the screen displays 
+    <ol>
+      <li>
+        <p>
+          The current value of <m>x</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Whether <m>x</m> is greater, equal, or less than <m>2</m>. 
+          This is used to decide which of the three equations to use when computing <m>f(x)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The result of plugging the current value of <m>x</m> into the equation for <m>f(x)</m>, which gives the current <m>y</m> value.
+        </p>
+      </li>
+    </ol>
+  </p>
+  <interactive platform="jsxgraph" width="100%" preview="jsxgraph-limitnumerically.png">
+    <slate xml:id="jsxgraph-limitnumerically"  surface="jessiecode" axis="true" grid="true" aspect="10:6">
+      $board.setBoundingBox( [ -5, 4, 5, -2 ] , keepaspectratio=true) ;
+
+      xslider = slider(
+            // Specify slider location
+              [-1.5,-0.75], [3.5,-0.75], 
+            // Specify smallest/starting/largest value for slider
+              [-5,1,5])
+          &lt;&lt;
+              name:"x",
+              snapWidth:0.02
+          &gt;&gt;  ;      
+
+      // Define piecewise function      
+      f1 = function(x) { 
+        if (x&lt;2 ){
+        return 1 + x ;  
+        }else if (x==2){
+          return 1 ;
+        }else if (2&lt;x ){
+          return -1 + 0.5*x;
+        }
+      ;} ;
+
+      // Graph the lines from the point to the x and y axis
+      //    (put these first so they go behind the function and points)
+
+      line( [function() {return xslider.Value();} ,
+                  function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                &lt;&lt; 
+                  color:"blue",
+                  straightFirst:false, 
+                  straightLast:false,
+                  dash:2
+                &gt;&gt; ;
+
+      // Graph the function and 
+      fGraph1 = functiongraph( f1 )  
+        &lt;&lt; 
+            strokeColor:"red"  
+        &gt;&gt;;
+      point(2,3)  &lt;&lt; 
+                  name:"",
+                  fixed:true,
+                  size:3,
+                  fillColor:'white' 
+                &gt;&gt; ;      
+      point(2,1)  &lt;&lt; 
+                  name:"",
+                  fixed:true,
+                  size:3
+                &gt;&gt; ;      
+      point(2,0)  &lt;&lt; 
+                  name:"",
+                  fixed:true,
+                  size:3,
+                  fillColor:'white' 
+                &gt;&gt; ;      
+
+      // Graph point that follows the function
+      point( function() {return xslider.Value();} ,
+                  function() {return f1(xslider.Value());}) 
+                &lt;&lt; 
+                  name: "",
+                  color:"blue" 
+                &gt;&gt; ;
+      text( -4.5, 2.75, function() {
+                      if(xslider.Value().toFixed(2) &lt;2 ) {ineq = "  &lt;  " ; }
+                      else if(xslider.Value().toFixed(2) ==2){ ineq = "  =  " ;}
+                      else  {ineq = "  &gt;  "; }
+                      return "x = " + xslider.Value().toFixed(2) + ineq + " 2"; 
+                    }) 
+                &lt;&lt; 
+                  color:"blue" 
+                &gt;&gt; ;
+      
+      text( -4.5, 1.75, function() {
+                      if(xslider.Value().toFixed(2) &lt;2 ) {
+                          eqn = "  1 + (" + xslider.Value().toFixed(2) + ") = " + (1 + xslider.Value().toFixed(2) ); 
+                      }
+                      else if(xslider.Value().toFixed(2) ==2){ 
+                          eqn = "3" ;
+                      }
+                      else  {
+                          eqn = "  -1 + 0.5*(" + xslider.Value().toFixed(2) +") = " + trunc( -1 + 0.5 * xslider.Value() , 2) ;
+                      }
+                      return "f(" + xslider.Value().toFixed(2) +") = " + eqn ; }
+                      ) 
+                &lt;&lt; 
+                  color:"blue" 
+                &gt;&gt; ;
+    </slate>
+  </interactive>  
+
+  <p>
+    We can use the equation 
+  </p>
+
+
+  <exploration>
+    <introduction>
+      <p>
+        Suppose that the cost of producing <m>x</m> barrels of oil is given by 
+        <me>
+          C(x) = 
+          \begin{cases}
+            50 + 5x &amp; \text{ if } x\lt 10 \\ 
+            125     &amp; \text{ if } x = 10 \\ 
+            90 + 6x &amp; \text{ if } x\gt 10 \\ 
+          \end{cases}
+        </me>
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p> 
+          Compute <m>\displaystyle \lim_{x\rightarrow 10^+} C(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Think about some <m>x</m> values you would pass through when approaching <m>10</m> from the right.  
+          For example, you would pass through <m>x=11,\ x=10.5,\ x=10.1,\ x=10.01</m> and so on. 
+          Compute the height at each of the <m>x</m> values we listed above.
+          <tabular>
+            <col right="medium" /><col />
+            <row bottom="medium">
+              <cell><m>x</m> </cell>
+              <cell><m>C(x)</m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>11</m> </cell>
+              <cell><m>C(11) =  90 + 6(11) = 156  </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>10.5</m> </cell>
+              <cell><m>C(10.5) = 90 + 6(10.5) = 153  </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>10.1</m> </cell>
+              <cell><m>C(10.1) =  90 + 6(10.1) =150.6  </m> </cell>
+            </row>
+            <row>
+              <cell><m>10.01</m> </cell>
+              <cell><m>C(10.01) = 90 + 6(10.01) =150.06   </m> </cell>
+            </row>
+          </tabular>
+          As you move from the top row of the table to the bottom row of the table, the <m>x</m> values get closer and closer to <m>a=10</m>, always from the right.
+        </p>
+        <p>
+          And as these <m>x</m> values approach 10, we see that the heights <m>C(x)</m> get closer and closer to 150.  That means 
+          <me>
+            \lim_{x\rightarrow 10^+} C(x) = 150
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p> 
+          Compute <m>\displaystyle \lim_{x\rightarrow 10^-} C(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Think about some <m>x</m> values you would pass through when approaching <m>10</m> from the left.  
+          For example, you would pass through <m>x=9,\ x=9.5,\ x=9.9,\ x=9.99</m> and so on. 
+          Compute the height at each of the <m>x</m> values we listed above.
+          <tabular>
+            <col right="medium" /><col />
+            <row bottom="medium">
+              <cell><m>x</m> </cell>
+              <cell><m>C(x)</m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>9</m> </cell>
+              <cell><m>C(9) =  90 + 6(11) = 95  </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>9.5</m> </cell>
+              <cell><m>C(9.5) = 90 + 6(10.5) = 97.5  </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>9.9</m> </cell>
+              <cell><m>C(9.9) =  90 + 6(10.1) =99.5  </m> </cell>
+            </row>
+            <row>
+              <cell><m>9.99</m> </cell>
+              <cell><m>C(9.99) = 90 + 6(10.01) = 99.95</m></cell>
+            </row>
+          </tabular>
+          As you move from the top row of the table to the bottom row of the table, the <m>x</m> values get closer and closer to <m>a=10</m>, always from the left.
+        </p>
+        <p>
+          And as these <m>x</m> values approach 10, we see that the heights <m>C(x)</m> get closer and closer to 100.  That means 
+          <me>
+            \lim_{x\rightarrow 10^-} C(x) = 100
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p> 
+          Is <m>C(x)</m> continuous at <m>x=10</m>?  If not, classify the type of discontinuity.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We have seen above that the left and right hand limits exist, but do not equal eachother.  In other words, we have seen that 
+          <me>
+            \lim_{x\rightarrow 10} C(x) DNE
+          </me>.
+          It follows that the function is not continuous at <m>a=10</m>.
+        </p>
+        <p>
+          Because the directed limits exist and equal finite numbers, this is a <em>jump discontinuity</em>.
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <exercise>
+    <statement>
+      <p>
+        Let <m>A(x) = \dfrac{10+4x}{x}</m>. 
+        Find <m>\displaystyle\lim_{x\rightarrow 0^+} A(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+          Think about some <m>x</m> values you would pass through when approaching <m>0</m> from the right.  
+          For example, you would pass through <m>x=1,\ x=0.5,\ x=0.1,\ x=0.01</m> and so on. 
+          Compute the height at each of the <m>x</m> values we listed above.
+          <tabular>
+            <col right="medium" /><col />
+            <row bottom="medium">
+              <cell><m>x</m> </cell>
+              <cell><m>f(x)</m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>1</m> </cell>
+              <cell><m>f(1) = \dfrac{10+4(1)}{1} = 14  </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>0.5</m> </cell>
+              <cell><m>f(0.5) = \dfrac{10+4(0.5)}{0.5} = 24  </m> </cell>
+            </row>
+            <row bottom="medium">
+              <cell><m>0.1</m> </cell>
+              <cell><m>f(0.1) = \dfrac{10+4(0.1)}{0.1} = 104 </m> </cell>
+            </row>
+            <row>
+              <cell><m>0.01</m> </cell>
+              <cell><m>f(0.01) = \dfrac{10+4(0.01)}{0.01} = 1,004  </m> </cell>
+            </row>
+            <row>
+              <cell><m>0.001</m> </cell>
+              <cell><m>f(0.001) = \dfrac{10+4(0.001)}{0.001} = 10,004  </m> </cell>
+            </row>
+          </tabular>
+          As you move from the top row of the table to the bottom row of the table, the <m>x</m> values get closer and closer to <m>a=0</m>, always from the right.
+        </p>
+        <p>
+          And as these <m>x</m> values approach 0, we see that the heights <m>f(x)</m> are getting bigger and bigger, without bound.  That means 
+          <me>
+            \lim_{x\rightarrow 10^+} f(x) = \infty
+          </me>
+        </p>
+
+        <interactive platform="jsxgraph" width="100%" preview="jsxgraph-inflimit.png">
+          <slate xml:id="jsxgraph-inflimit"  surface="jessiecode" axis="true" grid="true" aspect="10:6">
+            $board.setBoundingBox( [ -0.1, 500, 1.1, -100 ] , keepaspectratio=false) ;
+
+            xslider = slider(
+                  // Specify slider location
+                    [0.1,-50], [0.8,-50], 
+                  // Specify smallest/starting/largest value for slider
+                    [0.02,0.3,0.3])
+                &lt;&lt;
+                    name:"x",
+                    snapWidth:0.01
+                &gt;&gt;  ;      
+
+            // Define piecewise function      
+            f1 = function(x) { return (10+4*x)/x ; };
+
+            // Graph the lines from the point to the x and y axis
+            //    (put these first so they go behind the function and points)
+          line( [function() {return xslider.Value();} ,
+                      function() {return f1(xslider.Value());}],[0,function() {return f1(xslider.Value());}] )
+                    &lt;&lt; 
+                      color:"blue",
+                      straightFirst:false, 
+                      straightLast:false,
+                      dash:2
+                    &gt;&gt; ;
+          line( [function() {return xslider.Value();} ,
+                      function() {return f1(xslider.Value());}],[function() {return xslider.Value();}, 0 ] )
+                    &lt;&lt; 
+                      color:"blue",
+                      straightFirst:false, 
+                      straightLast:false,
+                      dash:2
+                    &gt;&gt; ;
+
+            // Graph the function and 
+            fGraph1 = functiongraph( f1 )  
+              &lt;&lt; 
+                  strokeColor:"red"  
+              &gt;&gt;;    
+
+            // Graph point that follows the function
+            point( function() {return xslider.Value();} ,
+                        function() {return f1(xslider.Value());}) 
+                      &lt;&lt; 
+                        name: "",
+                        color:"blue" 
+                      &gt;&gt; ;
+
+            text( 0.25, 250, function() {
+                            return "f(" + xslider.Value().toFixed(2) +") = ( 10 + 4(" + xslider.Value().toFixed(2) + ") )/"+ xslider.Value().toFixed(2) + "  =  " + trunc( f1( xslider.Value()),2)  ; }
+                            ) 
+                      &lt;&lt; 
+                        color:"blue" 
+                      &gt;&gt; ;
+          text( -0.09, function() {return f1(xslider.Value());}, "f(x)") 
+                    &lt;&lt; 
+                      color:"blue" 
+                    &gt;&gt; ;
+          </slate>
+        </interactive>  
+
+    </solution>
+  </exercise>
+
+</section>
+
+</chapter>

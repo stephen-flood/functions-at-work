@@ -1,0 +1,1696 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch-maxmin" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Finding Maxima and Minima</title>
+
+
+<section xml:id="sec_understandingextrema">
+	<title>Finding Local Extrema</title>
+	
+	<p>
+		In any economic system, and in any business, there are <em>many</em> different choices you can make.
+		Of these choices, some are better than others.  
+	</p>
+	<p>
+		Ideally, you will want to make the <em>best</em> choice. 
+		In practice, limits on resources and time often limit the amount of change that is feasible. 
+		In these cases, you want to make the <em>locally optimal</em> choice -- the choice that is better than all the alternatives that are "nearby" to your current location.
+	</p>
+
+	<p>
+		Part of the complexity of economic systems are the  large number of variables and different ways of comparing which options are "better." 
+		In this course, we will focus on functions of a single variable, and we will always compare the magnitude of the outputs. 
+	</p>
+	<p>
+		To help define our terms precisely, we will start with a more concrete, physical example.
+	</p>
+
+	
+	<exploration xml:id="explore_introducemaxmin">
+		<introduction>
+			<p>
+		The example below shows a cross section of a path through a set of hills in the forest. 
+		In other words, the <em>height</em> of the trail at mile marker <m>x</m> is give by <m>y=f(x)</m>.  
+			</p>
+			<figure width="100%" xml:id="fig_maxminintroimage">
+				<image xml:id="img_maxminintroimage" width="75%">
+					
+					<latex-image>
+					\def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[thick,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+
+					\begin{tikzpicture}
+						\draw[grid] (-2.5,4.5) grid (4.5,-1.5);
+						\draw[axes] (-2.5,0)--(4.5,0);
+						\draw[axes] (0,-1.5)--(0,4.5);
+						
+						\drawtikzspline(-2,-1,2,-1,2.5,0);
+						\drawtikzspline(-1,2.5,0,1,1,0);
+						\drawtikzspline(1,1,0,2,2,0);
+						\drawtikzspline(2,2,0,3,4,5);
+						\drawtikzspline(3,4,-5,4,1,-1);
+
+					\end{tikzpicture}
+					</latex-image>    
+				</image>
+			</figure>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					At which values does <m>f</m> have a <em>local/relative maximum</em>?
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The graph has local maxima at <m>x=-1</m> and <m>x=3</m>, because <m>f</m> has <em></em>
+				</p>
+				<p>
+					These are local maxima because if you imagine standing on the graph at those points, moving left or right will <em>decrease</em> your height. 
+				</p>
+				<p>
+					Said another way, there is a local maxima because when you read the graph from left to right, these are the <m>x</m>-values where the graph looks like <m>\nearrow\, \searrow</m>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					At which values does <m>f</m> have a <em>local/relative minimum</em>?
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The graph has a local minimum at <m>x=-2</m>, <m>x=1</m>, or <m>x=4</m>
+				</p>
+				<p>
+					These are local minima because if you imagine standing on the graph at those points, moving left or right will <em>increase</em> your height. 
+				</p>
+				<p>
+					Said another way, there is a local minima because when you read the graph from left to right, these are the <m>x</m>-values where the graph looks like <m>\searrow\, \nearrow</m>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					At which values does <m>f</m> have a <em>absolute/global maximum</em>?
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The graph has a global maximum of <m>y=4</m> at <m>x=3</m>
+				</p>
+				<p>
+					These is a global maximum because if you imagine standing on the graph at those points, there is <em>no way place you could to move to to increase your height</em>. 
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					At which values does <m>f</m> have a <em>absolute/global minimum</em>?
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The graph has a global minimum of <m>y=-1</m> at <m>x=-2</m>
+				</p>
+				<p>
+					These is a global maximum because if you imagine standing on the graph at those points, there is <em>no way place you could to move to to decrease your height</em>. 
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<p>
+		In the exercise above, there are three special kinds of points that mostly (but do not exactly) correspond to locations of maxima and minima:
+		<ol>
+			<li>
+				<p>
+					The curve <m>y=f</m> is <em>horizontal</em> at <m>x=-1,1,2</m>.
+				 
+				</p>
+				<p>
+					This is because <m>f'(x)=0</m> at these points. 
+				</p>
+			</li>
+			<li>
+				<p>
+					The curve <m>y=f</m> is has a <em>singularity</em> at <m>x=3</m>.
+				</p>
+				<p>
+					This is because <m>f'(x)=DNE</m> at this points.
+				</p>
+			</li>
+			<li>
+				<p>
+					The curve <m>y=f</m> is has an <em>endpoint</em> at <m>x=-2</m> and <m>x=4</m>. 
+				</p>
+			</li>
+		</ol>
+	</p>
+
+	<theorem xml:id="thm-maxminonlyat">
+		<statement>
+			<p>
+				A function <m>f</m> can <em>only</em> have a maxima or minima at <m>x=a</m> if one of the following are true 
+				<ol>
+					<li>
+						<p>
+							<m>f</m> is horizontal at <m>a</m>.  This happens when <m>f'=0</m>.
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>f</m> has a singularity at <m>a</m>.  This happens when <m>f'\ DNE</m>.
+						</p>
+					</li>
+					<li>
+						<p>
+							<m>a</m> is an endpoint of the height function <m>f</m>.
+						</p>
+					</li>
+				</ol>
+			</p>
+		</statement>
+	</theorem>
+
+	<p>
+		The values of <m>x</m> where <m>f'(x)=0</m> or <m>f'(x)\ DNE</m> are called the <term>critical points</term> of <m>f</m>.  
+		This is because finding these points is one of the most important steps when you are looking for the maxima and minima of the function <m>f</m>. 
+	</p>
+	
+	<p>
+		<alert>Warning:</alert> Not every critical point is a maxima or minima. 
+		In <xref ref="fig_maxminintroimage"/>, <m>2</m> is a critical point of <m>f</m> because <m>f'(2)=0</m>, and so the function is horizontal at <m>x=2</m>.  However, <m>x=2</m> is <em>not</em> a local maxima or minima, since you can increase your height by moving right and decrease it by moving left. 
+	</p>
+	<p>
+		To be able to check if a point is indeed a maxima or minima, we need a more precise definition.
+	</p>
+	<definition xml:id="def-localmaximin">
+		<statement>
+			<p>
+				Let <m>f</m> be a function which is continuous at <m>x=a</m>. 
+			</p>
+			<ol>
+				<li>
+					<p>
+						<m>f</m> has a <term>local maxima</term> at <m>x=a</m> if the graph goes from increasing to decreasing at <m>a</m> (the function looks like <m>\nearrow\,\searrow</m> at <m>a</m>).
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>f</m> has a <term>local minima</term> at <m>x=a</m> if the graph goes from decreasing to increasing at <m>a</m> (the function looks like <m>\searrow\,\nearrow</m> at <m>a</m>).
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>f</m> has an <term>extrema</term> at <m>x=a</m> if there is either a maxima or minima at <m>x=a</m>.
+					</p>
+				</li>
+			</ol>
+		</statement>
+	</definition>
+
+	<theorem xml:id="thm-increasingfunction">
+		<statement>
+			<p>
+				Suppose that <m>f</m> is a differentiable function at <m>x</m>
+			</p>
+			<ol>
+				<li>
+					<p>
+						height <m>f</m> is increasing (<m>\,\nearrow\,</m>) at <m>x</m> <em>if and only if</em> the slope <m>f'(x)</m> is positive <m>(+)</m>
+					</p>
+				</li>
+				<li>
+					<p>
+						height <m>f</m> is decreasing (<m>\,\searrow\,</m>) at <m>x</m> <em>if and only if</em> the slope <m>f'(x)</m> is positive <m>(-)</m>
+					</p>
+				</li>
+			</ol>
+		</statement>
+	</theorem>
+
+	<p>
+		In <xref ref="explore_introducemaxmin"/>, the function <m>f</m> is increasing  on the interval <m>(-2,-1) \cup (1,2)\cup (2,3)</m> <em>because</em> <m>f'</m> is positive on that interval. 
+	</p>
+	
+	<exploration xml:id="ex_maxminexample1">
+		<introduction>
+			<p>
+				Let <m>f(x) = \dfrac{-x^3}{3} + x + 1</m>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find the critical points of <m>f</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Recall that the <em>critical points</em> of <m>f</m> are the <m>x</m> values where  <m>f'(x) =0</m> or <m>f'(x) \ DNE</m>.
+				</p>
+				<p>
+					To find when <m>f'=0</m> or <m>f'\ DNE</m>, we must first find an equation for the derivative <m>f'</m>. 
+					<md>
+						<mrow> f'(x) = \amp \ddx{ \frac{-1}{3} x^3 + x + 1  } </mrow>
+						<mrow>= \amp \ddx{ \frac{-1}{3} x^3 } + \ddx{x} + \ddx{1} </mrow>
+						<mrow>= \amp \frac{-1}{3} \ddx{x^3} + 1 + 0</mrow>
+						<mrow>= \amp \frac{-1}{3}\cdot 3x^2 + + 1</mrow>
+						<mrow>= \amp -x^2 + 1</mrow>
+					</md>
+				</p>
+				<p>
+					To find when <m>f'=0</m>, simply solve the equation 
+					<me>
+						-x^2 + 1 = 0
+					</me>
+					Solve the equation by factoring.
+					It is easier to factor equations when the highest power term has a factor of 1.  To do this, multiply both sides of the equation by -1, simplifying, and factoring
+					<md>
+						<mrow>(-1) \cdot (-x^2 + 1) \amp =(-1) \cdot = 0 </mrow>
+						<mrow>x^2 - 1 \amp = 0 </mrow>
+						<mrow>(x+1) (x-1) \amp  = 0</mrow>
+					</md>
+					The only way this can happen is if either the first or second terms equal 0.  In other words, solve 
+					<md>
+						<mrow> x+1 = 0 \amp \text{ or } \amp x-1=0 </mrow>
+						<mrow>x = -1 \amp \text{ or } \amp x=1</mrow>
+					</md>
+				</p>
+				<p>
+					We have a singularity when <m>f'\ DNE</m>.  
+					Looking at the graph of <m>f</m>, it does not look like there are any singularities.  
+				</p>
+				<p>
+					Looking at the function, the derivative <m>f'(x) = -x^2+1</m> is always defined. 
+					This confirms that this function <m>f</m> does not have any singularities.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Use a calculator to find the local extrema for <m>f</m>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Graphing the function we see
+
+					<image width="50%" xml:id="img_maxminexample1graphed">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[axes] (-2,0)--(2,0) ; 
+								\draw[axes] (0,-2)--(0,2);
+								\draw [domain=-1.5:1.5] plot ({\x},{ (-1/3)*(\x)^3 + \x + 1 });
+								\draw[red,dashed] (0.8,5/3)--(1.2,5/3);
+								\draw[red,dashed] (-0.8,1/3)--(-1.2,1/3);
+								\draw[blue,dotted](1,5/3)--(1,0) node[below] {$x=1$};
+								\draw[blue,dotted](-1,1/3)--(-1,0) node[below] {$x=-1$};
+								\draw[blue] (1,{5/3}) circle (2pt);
+								\draw[blue] (-1,{1/3}) circle (2pt);
+							\end{tikzpicture}
+						</latex-image>		
+					</image>
+				</p>
+				<p>
+					Looking at the graph, we can see that there is a local maxima at <m>x=1</m> and a local minima at <m>x=-1</m>. 
+					We also know that there are no other locations where there <em>might</em> be a maxima or minima, even off the screen of the calculator.
+				</p>
+				<p>
+					In particular, this tells us that there are <em>no</em> absolute maxima or minima. 
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Use the first derivative to find the local extrema for <m>f</m>.
+					Find the intervals where <m>f</m> is increasing and when it is decreasing. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					We are asked to locate the maxima and minima without looking at the graph of the function. 
+				</p>
+				<p>
+					The <em>key idea</em> is that we can use  the derivative function <m>f'</m> to make a very rough sketch of the function by using <xref ref="thm-increasingfunction"/>.  
+				</p>
+				<p>
+					We have already used <m>f'</m> to find all values of <m>x</m> where <m>f'=0</m> or <m>f'\ DNE</m>. 
+					To make our sketch <alert>plot these points on a number line</alert>.  
+				</p>
+				<p>
+					<image width="50%" xml:id="image_maxminexample1_signchartv1">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-3,0) -- (3,0);
+								\def\xval{-1} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{ 1} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+				</p>
+				<p>
+					Next, we must compute the derivative <m>f'</m> to the left and right of each of the points above.  
+					There are three intervals: to the left of -1, between -1 and 1, and to the right of 1.  You can chose any number in those intervals.
+					<dl>
+						<li>
+							<title>left of -1</title>
+							<m>f'(-2) = -(-2)^2 + 1 = -3 = (-)</m>
+						</li>
+						<li>
+							<title>between -1 and 1</title>
+							<m>f'(0) = -(0)^2 + 1 = 1 = (+)</m>
+						</li>
+						<li>
+							<title>right of -1</title>
+							<m>f'(2) = -(2)^2 + 1 = -3 = (-)</m>
+						</li>
+					</dl>
+					Mark the magnitude of the derivative below the interval, and draw an <m>\nearrow</m> or <m>\searrow</m> above the line to indicate the behavior of the function.
+				</p>
+				<p>
+					<image width="50%" xml:id="image_maxminexample1_signchartv2">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-3,0) -- (3,0);
+								\def\xval{-1} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{ 1} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{-2} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{0} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+								\def\xval{2} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+									
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+				</p>
+				<p>
+					This sign chart is a very rough sketch of the function, but it is complete enough to show that there is a local minima at <m>x=-1</m> (due to the <m>\searrow\,\nearrow</m>) and that there is a local maxima at <m>x=1</m> (due to the <m>\nearrow\,\searrow</m>).
+				</p>
+				<p>
+					It is also clear from the sign chart that the function is increasing on the interval between -1 and 1.  In interval notation, it is increasing on the interval <m>(-1,1)</m>
+				</p>
+				<p>
+					The function is decreasing on two intervals: to the left of -1 and to the right of 1.  In interval notation, <m>f</m> is decreasing on the interval <m>(-\infty, -1)\cup (1,\infty)</m>.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<assemblage xml:id="assemblage-maxminmethod">
+		<title>A Strategy for Finding Extrema </title>
+		<p>
+			Let <m>f</m> be any function which is continuous on an open interval. To find the local extrema, 
+			<ol>
+				<li>
+					<p>
+						Use the derivative function <m>f'</m> to find where <m>f'=0</m> and when <m>f'\ DNE</m>.
+						<ul>
+							<li>
+								<p>
+									<em>Polynomials:</em> factor to find the 0's. 
+								</p>
+							</li>
+							<li>
+								<p>
+									<em>Fractions:</em> <m>\dfrac{A}{B}</m> is equal to zero if when <m>A=0</m> and <m>B\neq 0</m>.  
+														<m>\dfrac{A}{B}</m> is undefined when <m>B=0</m>. 
+								</p>
+							</li>
+						</ul>
+					</p>
+				</li>
+				<li>
+					<p>
+						Plot these points on a number line.  
+						This cuts the real numbers into several intervals.
+					</p>
+					<p>
+						Use a closed dot for <m>f'=0</m> and an open circle for <m>f'\ DNE</m>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Compute <m>f'</m> on each of the intervals you have found above. 
+						Mark whether <m>f'</m> is <m>(+)</m> or <m>(-)</m> below the interval, and draw <m>\nearrow</m> or <m>\searrow</m> above the interval.
+					</p>
+				</li>
+				<li>
+					<p> 
+						Read off the answer to the question, using your sign chart as a very rough sketch of the function. 
+					</p>
+				</li>
+			</ol>
+		</p>
+	</assemblage>
+
+	<exploration xml:id="ex_maxminexample2">
+		<introduction>
+			<p>
+				Let <m>f(x) = \dfrac{-x^4}{4} + \frac{8}{3}x^3 + 4</m>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find the intervals where <m>f</m> is increasing and decreasing..
+				</p>
+			</statement>
+			<solution>
+				<p>
+					First, we must find the critical points. 
+					In other words, find the <m>x</m> such that <m>f'(x) =0</m> or <m>f'(x) \ DNE</m>.
+				</p>
+				<p>
+					First, find an equation for the derivative <m>f'</m>, and factor it. 
+					<md>
+						<mrow> f'(x) = \amp \ddx{ \frac{-1}{4} x^4 + \frac{8}{3} x^3 + 4   } </mrow>
+						<mrow>  = \amp \frac{-1}{4}\cdot 4x^3 + \frac{8}{3} \cdot 3x^2 + 0 </mrow>
+						<mrow>  = \amp -x^3 + 8x^2</mrow>
+					</md>
+				</p>
+				<p>
+					To find when <m>f'=0</m>, simply solve the equation 
+					<me>
+						  -x^3 + 8x^2     = 0
+					</me>
+					Solve the equation by factoring.
+					It is easier to factor equations when the highest power term has a factor of 1.  
+					To do this, factor out a <m>-x^2</m> from both terms
+					<md>
+						<mrow>(-x^2) \cdot (x - 8) \amp =  0 </mrow>
+					</md>
+					The only way this can happen is if either the first or second terms equal 0.  In other words, solve 
+					<md>
+						<mrow> x = 0 \amp \text{ or } \amp x-8=0 </mrow>
+						<mrow> x = 0 \amp \text{ or } \amp x=8   </mrow>
+					</md>
+				</p>
+				<p>
+					We have a singularity when <m>f'\ DNE</m>.  
+					Looking at the graph of <m>f</m>, it does not look like there are any singularities.  
+				</p>
+				<p>
+					Looking at the function, the derivative <m>f'(x) = -x^2(x-8)</m> is always defined. 
+					This confirms that this function <m>f</m> does not have any singularities.
+				</p>
+				<p>
+					To find when the function is increasing and decreasing without looking at the graph of the function, we must use  the derivative function <m>f'</m> to make a very rough sketch of the function by using <xref ref="thm-increasingfunction"/>.  
+					We will do this by making the sign chart of <m>f'</m>.
+				</p>
+				<p>
+					<image width="40%" xml:id="image_maxminexample2_signchartv1">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-2,0) -- (12,0);
+								\def\xval{0} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{8} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+				</p>
+				<p>
+					Next, we must compute the derivative <m>f'</m> to the left and right of each of the points above.  
+					There are three intervals: to the left of 0, between 0 and 8, and to the right of 8.  
+					You can chose any number in those intervals.
+					<dl>
+						<li>
+							<title>left of 0</title>
+							<m>f'(-5) = (-5)^3 - 8(-5)^2 = \dots = (-)</m>
+						</li>
+						<li>
+							<title>between 0 and 8</title>
+							<m>f'(1) = (1)^3 - 8(-1)^2 = \dots = (-)</m>
+						</li>
+						<li>
+							<title>right of 8</title>
+							<m>f'(10) = (10)^3 - 8(10)^2 = \dots = (+)</m>
+						</li>
+					</dl>
+					Mark the magnitude of the derivative below the interval, and draw an <m>\nearrow</m> or <m>\searrow</m> above the line to indicate the behavior of the function.
+				</p>
+				<p>
+					<image width="50%" xml:id="image_maxminexample2_signchartv2">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-2,0) -- (12,0);
+								\def\xval{0 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{8 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+
+
+								\def\xval{-1} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{1} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{10} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+							\end{tikzpicture}
+						</latex-image>						
+
+					</image>
+				</p>
+
+				<p>
+					Using the sign chart, we an read off the behavior of the function. 
+					<m>f</m> is <em>increasing</em> on the interval <m>(8,\infty)</m>, and <m>f</m> is <em>decreasing</em> on the interval <m>(-\infty,0)\cup(0,8)</m>
+				</p>
+				<p>
+					We can also see that <m>f</m> has a local maxima at <m>x=8</m>, but <m>f</m> has <em>no</em> local minima (the local minima <m>DNE</m>).
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Use your answers above to sketch the graph of <m>f</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					<image width="50%" xml:id="image_maxminexample2_sketched">
+						<latex-image>
+							\def\drawtikzspline(#1,#2,#3,#4,#5,#6){ \draw[curve,domain=(#1):(#4)] plot (\x , { ( (((#3) + (#6))*(#1) - ((#3) + (#6))*(#4) - 2*(#2) + 2*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) )*((\x)^3) + ( -(((#3) + 2*(#6))*((#1)^2) + ((#3) - (#6))*(#1)*(#4) - (2*(#3) + (#6))*((#4)^2) - 3*((#1) + (#4))*(#2) + 3*((#1) + (#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) *((\x)^2) + ( ((#6)*((#1)^3) + (2*(#3) + (#6))*((#1)^2)*(#4) - ((#3) + 2*(#6))*(#1)*((#4)^2) - (#3)*((#4)^3) - 6*(#1)*(#4)*(#2) + 6*(#1)*(#4)*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3) ) * (\x) + ( -((#6)*((#1)^3)*(#4) + ((#3) - (#6))*((#1)^2)*(#4)^2 - (#3)*(#1)*((#4)^3) - (3*(#1)*((#4)^2) - (#4)^3)*(#2) - ((#1)^3 - 3*((#1)^2)*(#4))*(#5))/((#1)^3 - 3*((#1)^2)*(#4) + 3*(#1)*((#4)^2) - (#4)^3))}) }
+
+							\begin{tikzpicture}
+								\draw[axes] (-2,0) -- (12,0);
+								\def\xval{0 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{8 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+
+								\drawtikzspline(-2,2,-1,0,1,0);
+								\drawtikzspline(0,1,0,8,-2,0);
+								\drawtikzspline(8,-2,0,12,1,1);
+
+								\def\xval{-1} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{1} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{10} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+							\end{tikzpicture}
+						</latex-image>						
+
+					</image>
+				</p>
+								<p>
+					Why would you want a sketch when you could just use a graphing calculator? 
+					In this case, trying to graph the function will give you the following image, which is harder to interpret, since it doesn't tell you what happens in the middle of the function, or off of the screen. 
+					<image xml:id="image_maxminexample2_calculator">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[axes] (-2,0) -- (12,0);
+								\draw[axes] (0,-2)--(0,7); 
+								\draw[curve,domain=-1:1.37] plot ({\x},{ 1/4*(\x)^4	- 8/3 * (\x)^3 + 4 });
+								\draw[curve,domain=10.648:10.676] plot ({\x},{ 1/4*(\x)^4	- 8/3 * (\x)^3 + 4 });
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<p>
+		We now have a precise, repeatable strategy for finding maxima and minima. 
+		The following definition and theorem make this strategy precise. 
+	</p>
+	<definition xml:id="def-criticalpoints">
+		<statement>
+			<p>
+				The <term>critical numbers</term> of <m>f</m> are the numbers <m>c</m> such that <m></m>
+				<dl>
+					<li>
+						<title>Both</title>
+						<p>
+							<m>f(c)</m> is defined
+						</p>
+					</li>
+					<li>
+						<title>And</title>
+						<p>
+							<dl>
+								<li>
+									<title>either</title>
+									<m>f'(c) = 0</m>
+								</li>
+								<li>
+									<title>or</title>
+									<m>f'(c)\ DNE</m>
+								</li>
+							</dl>
+						</p>
+					</li>
+				</dl>
+			</p>
+		</statement>
+	</definition>
+
+	<theorem xml:id="thm-firstderivativetest">
+		<title>The First Derivative Test</title>
+		<statement>
+			<p>
+				Suppose that <m>c</m> is a critical number of a function <m>f</m>. 
+			</p>
+			<ol>
+				<li>
+					<p>
+						<em>If</em> <m>f'</m> goes from <m>(+)</m> to <m>(-)</m> at <m>c</m> (<m>f</m> goes from <m>\nearrow</m> to <m>\searrow</m>)
+						<em>then</em> <m>f</m> has a local <em>maximum</em> at <m>c</m>.
+					</p>
+				</li>
+				<li>
+					<p>
+						<em>If</em> <m>f'</m> goes from <m>(-)</m> to <m>(+)</m> at <m>c</m> (<m>f</m> goes from <m>\searrow</m> to <m>\nearrow</m>)
+						<em>then</em> <m>f</m> has a local <em>minimum</em> at <m>c</m>.
+					</p>
+				</li>
+				<li>
+					<p>
+						If <m>f'</m> does not change sign at <m>c</m> (if <m>f</m> goes <m>\searrow\,\searrow</m> or <m>\nearrow\,\nearrow</m>),
+						<em>then</em> <m>f</m> does <em>not</em> have a local maximum or minimum at <m>c</m>.
+					</p>
+				</li>
+			</ol>
+		</statement>
+	</theorem>
+	
+	<p>
+		In some cases, we will have more knowledge about the derivative <m>f'</m> than we have about the height function.  
+		The key thing to notice is that we have been using the <em>slope function <m>f'</m> </em> to teach us about the <em>height function <m>f</m></em>. 
+	</p>
+	
+	<exploration xml:id="ex_maxminexample3">
+		<introduction>
+			<p>
+				Suppose that <m>f(x)</m> is an uknown (or mystery) position function, with known derivative function 
+				<me>
+					f'(x) = \dfrac{(x+3)e^x}{(x-2)^2}
+				</me>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find the intervals where <m>f</m> is increasing and decreasing. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					In this example, we are <em>given</em> a factored version of the derivative <m>f'</m>, so we do not need to use any of our rules.
+				</p>
+				<p>
+					Next, we must find the points where <m>f'=0</m> or <m>f'\ DNE</m>.  Recall that a fraction <m>\dfrac{A}{B}=0</m> if and only if <m>A=0</m>, and <m>\dfrac{A}{B}\ DNE</m> if and only if <m>B=0</m>.  We must therefore solve two equations.
+				</p>
+				<p>
+					For the first,
+					<md>
+						<mrow>f' = \amp 0</mrow>
+						<mrow>(x+3)e^x \amp =0</mrow>
+					</md>
+					Because <m>e^x \neq 0</m> for all <m>x</m>, this can only happen if <m>x+3=0</m>, which means when <m>x=-3</m>.
+				</p>
+				<p>
+					For the second, 
+					<md>
+						<mrow>f' \amp DNE </mrow>
+						<mrow>(x-2^2) \amp =0 </mrow>
+						<mrow>x-2 \amp =0</mrow>
+						<mrow>x \amp = 2</mrow>
+					</md>
+					Plotting these on a number line, we get 
+					<image xml:id="image_maxminexample3_signchartv1">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-5,0) -- (5,0);
+								\def\xval{2 } \draw[fill=white] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{-3 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+				</p>
+				<p>
+					Recall that we were <em>given</em> the derivative function, which we now use to check the sign of each interal.  
+					We can either use a calculator as before
+					<md>
+						<mrow>f'(-4) \amp  = \dfrac{(-4+3)e^{-4}}{(-4-2)^2} = \dots = (-)</mrow>
+						<mrow>f'(0) \amp = \dfrac{(0+3)e^0}{(0-2)^2} = \dots = (+)</mrow>
+						<mrow>f'(3) \amp = \dfrac{(3+3)e^3}{(3-2)^2} = \dots = (+)</mrow>
+					</md>
+					or we can do basic "sign arithmetic" in our head
+					<md>
+						<mrow>f'(-4) \amp  = \dfrac{(-)(+))}{(-)^2} = \frac{(-)}{(+)} =  (-)</mrow>
+						<mrow>f'(0) \amp = \dfrac{(+)(+)}{(-)^2} = \frac{(+)}{(+)} = (+)</mrow>
+						<mrow>f'(3) \amp = \dfrac{(+)(+))}{(+)^2} = (+)</mrow>
+					</md>
+				</p>
+				<p>
+					Either way, we obtain 
+					<image xml:id="image_maxminexample3_signchartv2">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-5,0) -- (5,0);
+								\def\xval{2 } \draw[fill=white] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{-3 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+
+
+								\def\xval{-4} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+														\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{0} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+								\def\xval{3} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+														\node[red] at (\xval,0.4) {\large $\nearrow$};
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+				</p>
+				<p>
+					Reading off of the sign chart for <m>f'</m>, we see that the <em>original</em> (mystery) function <m>f</m> is increasing on the intervals <m>(-3,2)\cup(2,\infty)</m>, and the <em>original</em> (mystery) function <m>f</m> is decreasing on the interval <m>(-\infty,-3)</m>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Find the <m>x</m> values of all relative extrema. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Using the sign chart for <m>f'</m>, we see that there is a local minima at <m>x=-3</m>, and there is no local maxima.
+				</p>
+				<p>
+					<alert>Aside:</alert> Note that the something very strange happens at <m>x=-2</m>.  With a little more information about the original function, we would learn that <m>f</m> is undefined at <m>x=-2</m> and therefore could not be an extrema regardless of the sign chart.  However, these details are beyond the scope of this course, and won't come up in any of our examples.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+		
+	<exercise xml:id="ex_maxminexample4">
+		<statement>
+			<p>
+				Find all maxima and minima for the function 
+				<me>
+					f(x) = \dfrac{x^2 + 1}{x}
+				</me>
+			</p>
+		</statement>
+		<solution>
+			<p>
+				First, we must find an equation for <m>f'</m>.
+				<me>
+					f'(x) = \ddxfrac{\dfrac{ \red{x^2 + 1} }{\blue{x}}} 
+				</me>
+				We are taking the derivative of a fraction, so we must use the quotient rule <m>\D{\frac{t}{b}} = \frac{b\cdot t' - t\cdot b'}{b^2}</m>
+				<md>
+					<mrow>f'(x)  \amp = \dfrac{\blue{x}\D{\red{x^2+1}} - \red{(x^2+1)}\D{\blue{x}} }{(\blue{x})^2}</mrow>
+					<mrow>		 \amp = \dfrac{\blue{x} (\red{2x+0}) - \red{(x^2+1)}\blue{1} }{(\blue{x})^2}</mrow>
+					<mrow>		 \amp = \dfrac{ 2x^2 - x^2 - 1 }{x^2}</mrow>
+					<mrow>		 \amp = \dfrac{ x^2 - 1 }{x^2}</mrow>
+					<mrow> 		 \amp = \dfrac{(x+1)(x-1)}{x^2}</mrow>
+				</md>
+				
+				Next, we must find all values of <m>x</m> such that <m>f'=0</m> and <m>f'\ DNE</m>.
+				<md>
+					<mrow>f' \amp =0 </mrow>
+					<mrow>(x+1)(x-1) \amp =0</mrow>
+					<mrow>x=1,-1 </mrow>
+				</md>
+				similarly 
+				<md>
+					<mrow>f' \amp DNE</mrow>
+					<mrow>x \amp =0</mrow>
+				</md>
+				Plotting these on the number line gives
+			</p>
+			<p>
+				<image width="75%" xml:id="image_maxminexample4_signchartv1">
+					<latex-image>
+						\begin{tikzpicture}
+							\draw[latex-latex, very thick] (-3,0) -- (3,0);
+							\def\xval{-1 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+							\def\xval{0 } \draw[fill=white] (\xval,0) circle (2pt) node [below] {$\xval$};
+							\def\xval{1 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+						\end{tikzpicture}
+					</latex-image>						
+				</image>
+			</p>
+			<p>
+				Evaluating <m>f' = \frac{x^2-1}{x^2}</m> on each of these intervals gives 
+				<image width="75%" xml:id="image_maxminexample4_signchartv2">
+					<latex-image>
+						\begin{tikzpicture}
+							\draw[latex-latex, very thick] (-3,0) -- (3,0);
+							\def\xval{-1 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+							\def\xval{0 } \draw[fill=white] (\xval,0) circle (2pt) node [below] {$\xval$};
+							\def\xval{1 } \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+
+							\def\xval{-2} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'=(+)$}; \node[red] at (\xval,0.4){\large $\nearrow$};
+							\def\xval{-0.66} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'=(-)$}; \node[red] at (\xval,0.4) {\large $\searrow$};
+							\def\xval{0.66} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'=(-)$}; \node[red] at (\xval,0.4) {\large $\nearrow$};
+							\def\xval{2} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'=(-)$}; \node[red] at (\xval,0.4) {\large $\nearrow$};
+						\end{tikzpicture}
+					</latex-image>						
+				</image>
+			</p>
+			<p>
+				The function has a local <em>maxima</em> at <m>x=-1</m> and a local <em>minima</em> at <m>x=1</m>
+			</p>
+			<p>
+				Note again that the orignal function is undefined (<m>DNE</m>) at <m>x=0</m>, so <m>x=0</m> cannot be a max or a min regardless of the sign chart. 
+			</p>
+		</solution>
+	</exercise>
+
+	<p>
+		As we have seen, the steps in every max/min problem are the same 
+		<ol>
+			<li>
+				<p>
+					Find an equation for <m>f'</m> (if you are not already given it)
+				</p>
+			</li>
+			<li>
+				<p>
+					Solve <m>f'=0</m>
+				</p>
+			</li>
+			<li>
+				<p>
+					Solve <m>f'\ DNE</m>
+				</p>
+			</li>
+			<li>
+				<p>
+					Make the sign chart for <m>f'</m>
+				</p>
+			</li>
+			<li>
+				<p>
+					Read off the answer.
+				</p>
+			</li>
+		</ol>
+	</p>
+
+</section>
+
+<section xml:id="sec_absolutemaxmin">
+	<title>Finding Absolute Extrema</title>
+
+	<p>
+		In this class, we focus on local maxima and minima because of their close connections to calculus and their applications to marginal profit. 
+		But in many cases, global (also called absolute) maxima and minima are often of much greater interest. 
+		To see why, we begin with one more example. 
+	</p>
+	
+	<exploration xml:id="ex_maxminexample5">
+		<introduction>
+			<p>
+				Suppose that <m>P(x) = x^3 - 6x^2 + 9x +10 </m> is a total profit function. 
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find the quantities where all local maximum and minimum profits occur. 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					First, find the marginal profit function 
+					<md>
+						<mrow>P'(x) \amp  = \ddx{x^3 - 6x^2 + 9x +10 } </mrow>
+						<mrow> \amp = \ddx{x^3} - \ddx{ 6x^2 } + \ddx{ 9x } + \ddx{10}</mrow>
+						<mrow> \amp = 3x^2 - 6\cdot 2x^1 + 9 + 0</mrow>
+						<mrow> \amp = 3x^2 - 12x + 9</mrow>
+					</md>
+				</p>
+				<p>
+					Next, find when <m>P'=0</m> or <m>P'\ DNE</m>
+					<md>
+						<mrow>P' \amp = 0</mrow>
+						<mrow>3x^2 - 12x + 9 \amp =0</mrow>
+						<mrow>3(x^2 - 4x + 3) \amp =0</mrow>
+						<mrow>3(x-3)(x-1) \amp =0</mrow>
+					</md>
+					This happens if and only if <m>x=3</m> or <m>x=1</m>, so these are the locations of the horizontal tangents.  
+				</p>
+				<p>
+					On the other hand, because <m>P'</m> is a polynomial, it is always defined.  Therfore, <m>P'</m> does not have any sigular points. 
+				</p>
+				<p>
+					Making a sign chart as usual gives 
+					<image width="50%" xml:id="image_maxminexample5_signchartv2">
+						<latex-image>
+							\begin{tikzpicture}
+								\draw[latex-latex, very thick] (-1,0) -- (5,0);
+								\def\xval{ 3} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{ 1} \draw[fill] (\xval,0) circle (2pt) node [below] {$\xval$};
+								\def\xval{0} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+									\node[red] at (\xval,0.4) {\large $\nearrow$};
+								\def\xval{2} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(-)$};
+									\node[red] at (\xval,0.4) {\large $\searrow$};
+								\def\xval{4} \draw[stealth-,double,red] (\xval,-0.25) -- (\xval,-0.75) node[below] {\scriptsize $f'(\xval)=(+)$};
+									\node[red] at (\xval,0.4) {\large $\nearrow$};
+									
+							\end{tikzpicture}
+						</latex-image>						
+					</image>
+				</p>
+				<p>
+					According to this analysis, a local maximum of profit occurs at <m>x=1</m>, and a local minimum occurs at <m>x=3</m>.  
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					If you were able to decide how many items to sell, should you sell 1 item, 3 items, 10 items, or 100 items?				
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The easiest way to answer this question is to compute the total profit from each of the number of items given:
+					<md>
+						<mrow>P(1) \amp = (1)^3 - 6(1)^2 + 9(1) + 10 = 14</mrow>
+						<mrow>P(3) \amp = (3)^3 - 6(3)^2 + 9(3) + 10 = 10</mrow>
+						<mrow>P(10) \amp = (10)^3 - 6(10)^2 + 9(10) + 10 = 500</mrow>
+						<mrow>P(100) \amp = (100)^3 - 6(100)^2 + 9(100) + 10 = 940,910</mrow>
+					</md>
+					Clearly, if you are given these options you should sell 100 items and make a total profit of $940,910
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Use your work above to sketch the total profit function.  Use this graph to explain how to decide how many items you should sell. 
+				</p>
+			</statement>
+			<solution>
+				<p> 
+					Graphing total profit shows that although the function decreases between <m>x=1</m> and <m>x=3</m>, the function rapidly increases after <m>x=3</m> and then proceeds to grow without bound. 
+					In other words, you should always sell as many items as possible.
+				</p>
+				<p>
+					<image width="50%" xml:id="image_maxminexample5_sketch">
+						<latex-image>
+							\begin{tikzpicture}[yscale=0.15]
+								\draw[axes] (-1.5,0)--(5.5,0);
+								\draw[axes] (0,-10)--(0,30);
+								
+								\draw[curve,domain=-1:5] plot ({\x},{(\x)^3 - 6*(\x)^2 + 9*(\x) + 10});
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+			</solution>
+		</task>
+	</exploration>
+	
+	<p>
+		The example above helps illustrate the way that some mathematical models oversimplify reality.
+		Mathematically, the function <m>P(x) = x^3 - 6x^2 + 9x + 10</m> can grow without bound. 
+	</p>
+	<p>
+		In real life, however, there are always limits on the quanitites involved. In fact, there are only a finite number of atoms in the universe!
+	</p>
+
+	<definition xml:id="def-restrictfunction">
+		<title>Real Life Restricts Quanitites</title>
+		<statement>
+			<p>
+				Let <m>f</m> be anu function and let <m>l,r</m> be any numbers. 
+			</p>
+			<p>
+				The <term>restriction of <m>f(x)</m> to the interval <m>[l,r]</m></term> is the function that you get if you cut off the parts of the graph of the function that are less than <m>l</m> and greater than <m>r</m>.
+			</p>
+		</statement>
+		<p>
+			The image below shows the result of restricting <m>P(x) = x^3 - 6x^2 + 9x + 10</m> to the interval <m>[0,5]</m>.  The restricted function is shown as solid, and the parts of the function that were removed are shown as dotted. 
+		</p>
+			<image width="50%" xml:id="image_maxminexample5_restrictedsketch">
+				<latex-image>
+					\begin{tikzpicture}[yscale=0.1]
+						\draw[axes] (-1.5,0)--(5.5,0);
+						\draw[axes] (0,-10)--(0,50);
+						
+						\draw[curve,dotted,domain=-1:0] plot ({\x},{(\x)^3 - 6*(\x)^2 + 9*(\x) + 10});
+						\draw[curve,domain=0:5] plot ({\x},{(\x)^3 - 6*(\x)^2 + 9*(\x) + 10});
+						\draw[curve,dotted,domain=5:5.5] plot ({\x},{(\x)^3 - 6*(\x)^2 + 9*(\x) + 10});
+						
+						\node[circle,fill,inner sep=2pt] at ({0},{(0)^3 - 6*(0)^2 + 9*(0) + 10}) {}; 
+						\node[circle,fill,inner sep=2pt] at ({5},{(5)^3 - 6*(5)^2 + 9*(5) + 10}) {}; 
+					\end{tikzpicture}
+				</latex-image>
+			</image>
+	</definition>
+	
+	<theorem xml:id="thm-absoluteextrema">
+		<statement>
+			<p>
+				Suppose that <m>f</m> is a function restricted to the closed interval <m>[l,r]</m>. 
+				This restriction of <m>f</m> can have an absolute maxima or minima only at 
+				<ul>
+					<li>
+						<p>
+							one of the endpoints (<m>l</m> or <m>r</m>)
+						</p>
+					</li>
+					<li>
+						<p>
+							a horiziontal tangent (a point <m>c</m> where <m>f'(c)=0</m>)
+						</p>
+					</li>
+					<li>
+						<p>
+							a singularity (a point <m>c</m> where <m>f'(c)\ DNE</m>).
+						</p>
+					</li>
+				</ul>
+			</p>
+		</statement>
+	</theorem>
+
+	<p>
+		That means that to find <em>all</em> of the absolute extrema for <m>f</m> on a closed interval, it sufficies to find the three kinds of <em>possible</em> locations listed above, and then to compare the <em>height</em> of <m>f</m> at each of these points. 
+	</p>
+	<assemblage xml:id="assemblage-absolutemaxmin">
+		<title>Finding Absolute Extrema</title>
+		<p>
+			Suppose you are given a height function <m>f</m>.  
+			To find the absolute maximum height and minimum height of <m>f</m> on the interval <m>[l,r]</m>,
+			<ol>
+				<li>
+					<p>
+						Find the derivative (slope) function <m>f'(x)</m>
+					</p>
+				</li>
+				<li>
+					<p>
+						Find all critical points <m>c</m> where <m>f'(c) = 0</m> (horizontal tangents) or <m>f'(c)\ DNE</m> (singluar points).
+					</p>
+				</li>
+				<li>
+					<p>
+						Find the height of the function at each of the critical points <m>c</m>
+					</p>
+				</li>
+				<li>
+					<p>
+						Find the height of the function at the two endpoints (find <m>f(l)</m> and <m>f(r)</m>).
+					</p>
+				</li>
+			</ol>
+		</p>
+		<p>
+			The above computation will give you things like <m>P(c_1) = y_1</m>, <m>P(c_2) = y_2</m>, <m>\dots</m>. 
+			If <m>y_2</m> were the largest of all the <m>y</m> values, it would be the <term>absolute maximum</term> profit, and it would occur at quanitity <m>x_2</m>
+			If <m>y_3</m> were the least of all the <m>y</m> values, it would be the <term>absolute minimum</term> profit, and it would occur at quanitity <m>x_3</m>.
+		</p>
+	</assemblage>
+	
+
+	<exploration xml:id="ex_maxminexample6">
+		<introduction>
+			<p>
+				Let <m>P(x)  = x^3 - 6x^2  + 9x + 10</m>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find the absolute maximum and minimum profit for  <m>P(x)</m> restricted to the interval <m>[0,5]</m>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					In <xref ref="ex_maxminexample5"/>, we already found that the critical numbers for <m>P(x)  = x^3 - 6x^2  + 9x + 10</m> are <m>x=1</m> and <m>x=3</m>
+				</p>
+				<p>
+					If we were to graph the function on the restricted domain, and to label the critical points, we would have 
+					<image width="50%" xml:id="image_maxminexample6_sketchdom1">
+						<latex-image>
+							\begin{tikzpicture}[yscale=0.1]
+								\draw[axes] (-1.5,0)--(5.5,0);
+								\draw[axes] (0,-5)--(0,30);
+								
+								\draw[curve,domain=0:5] plot ({\x},{(\x)^3 - 6*(\x)^2 + 9*(\x) + 10});
+								
+								\node[color=blue,circle,fill,inner sep=2pt] at ({0},{(0)^3 - 6*(0)^2 + 9*(0) + 10}) {}; 
+								\node[color=blue,circle,fill,inner sep=2pt] at ({5},{(5)^3 - 6*(5)^2 + 9*(5) + 10}) {}; 
+								\node[color=red,circle,fill,inner sep=2pt] at ({1},{(1)^3 - 6*(1)^2 + 9*(1) + 10}) {}; 
+								\node[color=red,circle,fill,inner sep=2pt] at ({3},{(3)^3 - 6*(3)^2 + 9*(3) + 10}) {}; 
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+				<p>
+					From our picture, it looks like the point at <m>x=5</m> will give us the largest profit, and the points at <m>x=0</m> and <m>x=3</m> will give us the same smallest profit
+				</p>
+				<p>
+					To confirm this, we evaluate the <em>original</em>, total profit function <m>P(x)</m> at these four points:
+				</p>
+				<md>
+						<mrow> \color{red}  P(1) \amp = (1)^3 - 6(1)^2 + 9(1) + 10 = 14</mrow>
+						<mrow> \color{red}  P(3) \amp = (3)^3 - 6(3)^2 + 9(3) + 10 = 10</mrow>
+						<mrow> \color{blue} P(0) \amp = (0)^3 - 6(0)^2 + 9(0) + 10 = 10</mrow>
+						<mrow> \color{blue} P(5) \amp = (5)^3 - 6(5)^2 + 9(5) + 10 = 30</mrow>
+				</md>
+				<p>
+					This confirms that on this interval, an absolute maximum proift of $30 occurs when <m>x=5</m>, and that an absolute mininmum profit of $10 occurs when either <m>x=0</m> or <m>x=3</m>.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Find the absolute maximum and minimum profit for  <m>P(x)</m> restricted to the interval <m>[0,2]</m>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					In <xref ref="ex_maxminexample5"/>, we already found that the critical numbers for <m>P(x)  = x^3 - 6x^2  + 9x + 10</m> are <m>x=1</m> and <m>x=3</m>
+				</p>
+				<p>
+					If we were to graph the function on the restricted domain, and to label the critical points, we would discover that the critical number <m>x=3</m> is <em>not</em> in our restricted domain, so we must leave it out.
+					<image width="50%" xml:id="image_maxminexample6_sketchdom2">
+						<latex-image>
+							\begin{tikzpicture}[yscale=0.1]
+								\draw[axes] (-1.5,0)--(5.5,0);
+								\draw[axes] (0,-5)--(0,15);
+								
+								\draw[curve,domain=0:2] plot ({\x},{(\x)^3 - 6*(\x)^2 + 9*(\x) + 10});
+								
+								\node[color=blue,circle,fill,inner sep=2pt] at ({0},{(0)^3 - 6*(0)^2 + 9*(0) + 10}) {}; 
+								\node[color=blue,circle,fill,inner sep=2pt] at ({2},{(2)^3 - 6*(2)^2 + 9*(2) + 10}) {}; 
+								\node[color=red,circle,fill,inner sep=2pt] at ({1},{(1)^3 - 6*(1)^2 + 9*(1) + 10}) {}; 
+							\end{tikzpicture}
+						</latex-image>
+					</image>
+				</p>
+				<p>
+					From our picture, it looks like the point at <m>x=1</m> will give us the largest profit. 
+					It is not entirely clear which points will give us the same smallest profit
+				</p>
+				<p>
+					Therefore this, we evaluate the <em>original</em>, total profit function <m>P(x)</m> at these three points:
+				</p>
+				<md>
+						<mrow> \color{red}  P(1) \amp = (1)^3 - 6(1)^2 + 9(1) + 10 = 14</mrow>
+						<mrow> \color{blue} P(0) \amp = (0)^3 - 6(0)^2 + 9(0) + 10 = 10</mrow>
+						<mrow> \color{blue} P(2) \amp = (2)^3 - 6(2)^2 + 9(2) + 10 = 12</mrow>
+				</md>
+				<p>
+					We now see that on this interval, an absolute maximum proift of $14 occurs when <m>x=1</m>, and that an absolute mininmum profit of $10 occurs when <m>x=0</m>.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+</section>
+
+<section xml:id="sec_maximaminimaandchangegraphs">
+	<title>Maxima, Minima, and Change Graphs</title>
+	<p>
+		Why are the techniques in this chapter important for the study of economics and business?  
+	</p>
+	<paragraphs>
+		<title>Beautiful Fact</title>
+		<p>
+			The total profit function has a local maximum or minimum at the quantity <m>c</m> 
+			<em>if and only if</em>
+			the marginal profit function <m>P'</m> goes between <m>(+)</m> and <m>(-)</m> at <m>c</m>.  
+		</p>
+		<p>
+			Recall that the derivative <m>P'</m> and change function <m>\Delta P</m> are closely related:
+			<ul>
+				<li>
+					<p>
+						<term>Total profit is increasing</term> when the <term>change in profit is positive</term>
+					</p>
+				</li>
+				<li>
+					<p>
+						<term>Total profit is decreasing</term> when the <term>change in profit is negative</term>
+					</p>
+				</li>
+			</ul>
+		This means we can illustrate our method for finding maxima and minima using total and change graphs.  
+		</p>
+	</paragraphs>
+
+	<p>
+		Recall that the graph on the left gives the total profit from selling a certain number of units, while the graph on the right shows the change in profit due to each unit.
+	</p>
+
+	<image xml:id="image_totalchange_maxmin1" >
+		
+		<latex-image>
+			%%%% EXAMPLE 1 %%%%
+			%\begin{figure}[h]
+			%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+			\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+			\def \xmin {0}
+			\def \xmax {10}
+			\def \xunits {day}
+			\def \yunits {profit}
+			\def \dyunits{change in profit}
+			\def \xscale {0.62*0.8}
+			\def \yscale {0.2}
+			%% Information about the total (y) graph
+			\def \ymin {0}								%% First height to be be drawn with dashed lines
+			\def \ysecondmajoraxis {5}		%% Second height to be be drawn with dashed lines
+			\def \yfirstminoraxis  {1}	%% First line to be drawn with dotted lines
+			\def \ysecondminoraxis {2}	%% Second lin eto be drawn with dotted lines
+			\def \ymax {20}
+			%% Information about the change (\Delta y) graph
+			\def \dymin {-5}
+			\def \dysecondmajoraxis {-4}
+			\def \dyfirstminoraxis  {-3.5}
+			\def \dysecondminoraxis {-2.5}
+			\def \dymax {5}
+
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Total %%
+				%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\ymin-5}) {Graph of Total profit \ $P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+					\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [fill=white,below right] {\yunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-2pt] at (\i, \ymin) {\small $\i$};
+				\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+				
+				%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+					
+				\tikzhistogram(0, 5);  % Delta 0
+				\tikzhistogram(1, 9);	% Delta 4
+				\tikzhistogram(2,12);	% Delta 3
+				\tikzhistogram(3,14);	% Delta 2
+				\tikzhistogram(4,15);	% Delta 1
+				\tikzhistogram(5,16);	% Delta 1 
+				\tikzhistogram(6,16);	% Delta -1
+				\tikzhistogram(7,15);	% Delta -1
+				\tikzhistogram(8,14);	% Delta -2
+				\tikzhistogram(9,12);	% Delta -3
+				\tikzhistogram(10,9);	% Delta -4
+				
+				
+			\end{tikzpicture}
+			%
+			\quad
+			%
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Change %%
+				%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Graph of Change \ $\Delta P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+				\foreach \i in {\dymin,...,\dymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+				
+				
+				%\tikzhistogram(0,0);  % Delta 0
+				\tikzhistogram(1,4);	% Delta 4
+				\tikzhistogram(2,3);	% Delta 3
+				\tikzhistogram(3,2);	% Delta 2 
+				\tikzhistogram(4,1);	% Delta 1
+				\tikzhistogram(5,1);	% Delta 1
+				\tikzhistogram(6,0);	% Delta 1
+				\tikzhistogram(7,-1);	% Delta 1
+				\tikzhistogram(8,-1);	% Delta 2
+				\tikzhistogram(9,-2);	% Delta 2
+				\tikzhistogram(10,-3);	% Delta 4
+			\end{tikzpicture}
+			{\footnotesize	In the graph above right, the \textbf{change in profit} goes \textbf{from positive to negative} at $x=6$.  That means that the \textbf{total} profit has a \textbf{maximum} at $x=6$ units.  This matches our graph of total profit in the graph above left exactly.  
+			}
+			%\end{figure}
+			%%%% END EXAMPLE 1 %%%% 
+		</latex-image>
+	</image>
+
+	<p>
+		In the graph above right, the <term>change in profit</term> goes <term>from positive to negative</term> at <m>x=6</m>. That means that the <term>total</term> profit has a <term>maximum</term> at <m>x=6</m> units. This matches our graph of total profit in the graph above left exactly. 
+	</p>
+
+	
+	<image xml:id="image_totalchange_maxmin2" >
+		
+		<latex-image>
+
+			%%%% EXAMPLE 2 %%%%
+			%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+			\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+			\def \xmin {0}
+			\def \xmax {10}
+			\def \xunits {day}
+			\def \yunits {profit}
+			\def \dyunits{change in profit}
+			\def \xscale {0.62*0.8}
+			\def \yscale {0.2}
+			%% Information about the total (y) graph
+			\def \ymin {0}								%% First height to be be drawn with dashed lines
+			\def \ysecondmajoraxis {5}		%% Second height to be be drawn with dashed lines
+			\def \yfirstminoraxis  {1}	%% First line to be drawn with dotted lines
+			\def \ysecondminoraxis {2}	%% Second lin eto be drawn with dotted lines
+			\def \ymax {20}
+			%% Information about the change (\Delta y) graph
+			\def \dymin {-5}
+			\def \dysecondmajoraxis {-4}
+			\def \dyfirstminoraxis  {-3.5}
+			\def \dysecondminoraxis {-2.5}
+			\def \dymax {5}
+
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Total %%
+				%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\ymin-5}) {Graph of Total profit \ $P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+					\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-2pt] at (\i, \ymin) {\small $\i$};
+				\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+				
+				%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+					
+				\tikzhistogram(0,20);  	% Delta 
+				\tikzhistogram(1,14);		% Delta 
+				\tikzhistogram(2,9);		% Delta 
+				\tikzhistogram(3,5);		% Delta 
+				\tikzhistogram(4,3);		% Delta 
+				\tikzhistogram(5,3);		% Delta 
+				\tikzhistogram(6,4);		% Delta 
+				\tikzhistogram(7,6);		% Delta 
+				\tikzhistogram(8,9);		% Delta 
+				\tikzhistogram(9,13);		% Delta 
+				\tikzhistogram(10,18);	% Delta 
+				%
+			\end{tikzpicture}
+			%
+			\quad
+			%
+			\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+				%% Graph of Change %%
+				%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+				\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Graph of Change \ $\Delta P$};
+				%
+				%% Draw horizontal lines at major and minor y-values
+				\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+					\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+					%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+				%
+				%% Draw and label x and y axes
+				\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+				\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+				\foreach \i in {1,...,\xmax}
+					\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+				\foreach \i in {\dymin,...,\dymax}
+					\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+				
+				\foreach \i in {1,...,\xmax}
+					\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+				
+				
+				%\tikzhistogram(0,0);  
+				\tikzhistogram(1,-6);	
+				\tikzhistogram(2,-5);	
+				\tikzhistogram(3,-4);	
+				\tikzhistogram(4,-2);	
+				\tikzhistogram(5,0);	
+				\tikzhistogram(6,1);	
+				\tikzhistogram(7,2);	
+				\tikzhistogram(8,3);	
+				\tikzhistogram(9,4);	
+				\tikzhistogram(10,5);	
+			\end{tikzpicture}
+			{\footnotesize In the graph above right, the \textbf{change in profit} goes \textbf{from negative to positive} at $x=5$.  That means that the \textbf{total} profit has a \textbf{minimum} at $x=5$ units.  This also matches exactly our graph of total profit, above left. }
+			%%%% END EXAMPLE 2 %%%% 
+		</latex-image>
+	</image>
+
+	<p>
+		In the graph above right, the <term>change in profit</term> goes <term>from negative to positive</term> at <m>x=5</m>. That means that the <term>total</term> profit has a <term>minimum</term> at <m>x=5</m> units. This also matches exactly our graph of total profit, above left. 
+	</p>
+
+
+	<exploration xml:id="ex_maxminchangegraphs">
+		<introduction>
+			<p>
+				<image width="50%" xml:id="image_totalchange_maxmin3" >
+					
+					<latex-image>
+						%%%% EXAMPLE 3 %%%%
+						%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+						\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+						\def \xmin {0}
+						\def \xmax {10}
+						\def \xunits {day}
+						\def \yunits {profit}
+						\def \dyunits{change in profit}
+						\def \xscale {0.62*0.8}
+						\def \yscale {0.3}
+						%% Information about the total (y) graph
+						\def \ymin {-5}								%% First height to be be drawn with dashed lines
+						\def \ysecondmajoraxis {-4}		%% Second height to be be drawn with dashed lines
+						\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+						\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+						\def \ymax {10}
+						%% Information about the change (\Delta y) graph
+						\def \dymin {-5}
+						\def \dysecondmajoraxis {-4}
+						\def \dyfirstminoraxis  {-3.5}
+						\def \dysecondminoraxis {-2.5}
+						\def \dymax {5}
+
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Total %%
+							%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+							\node at ({(\xmin+\xmax)/2},{\ymin-3}) {Graph of Total profit \ $P$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+								%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-2pt] at (\i, \ymin) {\small $\i$};
+							\foreach \i in {\ymin,...,\ymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+							
+							%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+								
+							\tikzhistogram(0,-4); 
+							\tikzhistogram(1,-2);	
+							\tikzhistogram(2,3);	
+							\tikzhistogram(3,7);	
+							\tikzhistogram(4,9);	
+							\tikzhistogram(5,9);	
+							\tikzhistogram(6,6);	
+							\tikzhistogram(7,3);	
+							\tikzhistogram(8,3);	
+							\tikzhistogram(9,5);	
+							\tikzhistogram(10,9);	
+							
+						\end{tikzpicture}
+						%
+						\quad
+						%
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+							\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Graph of Change \ $\Delta P$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+								%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+							
+							
+							%\tikzhistogram(0,0);  
+							\tikzhistogram(1,2);	
+							\tikzhistogram(2,5);	
+							\tikzhistogram(3,4);	
+							\tikzhistogram(4,2);	
+							\tikzhistogram(5,0);	
+							\tikzhistogram(6,-3);	
+							\tikzhistogram(7,-3);	
+							\tikzhistogram(8,0);	
+							\tikzhistogram(9,2);	
+							\tikzhistogram(10,4);	
+							
+						\end{tikzpicture}
+						%%%% END EXAMPLE 3 %%%% 
+					</latex-image>
+				</image>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Use your knowledge of calculus to make a rough sketch of the derivative of profit.
+				</p>
+			</statement>
+			<solution>
+				<p>
+				<image width="50%" xml:id="image_totalchange_maxmin4">
+					
+					<latex-image>
+						\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+						\def \xmin {0}
+						\def \xmax {10}
+						\def \xunits {day}
+						\def \yunits {profit}
+						\def \dyunits{change in profit}
+						\def \xscale {0.62*0.8}
+						\def \yscale {0.3}
+						%% Information about the total (y) graph
+						\def \ymin {-5}								%% First height to be be drawn with dashed lines
+						\def \ysecondmajoraxis {-4}		%% Second height to be be drawn with dashed lines
+						\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+						\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+						\def \ymax {10}
+						%% Information about the change (\Delta y) graph
+						\def \dymin {-5}
+						\def \dysecondmajoraxis {-4}
+						\def \dyfirstminoraxis  {-3.5}
+						\def \dysecondminoraxis {-2.5}
+						\def \dymax {5}
+
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							\node at ({(\xmin+\xmax)/2},{\dymin-3}) {Graph of Slope \ $P'$};
+							%% Draw horizontal lines at major and minor y-values
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5}) ;%  node[above right]{rate of change in profit};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Use the graph you are given to fill in the table defining <m>P</m> and <m>\Delta P</m>
+				</p>
+			</statement>
+			<!--solution>
+				<p>
+					<tabular>
+						<row >
+							<cell halign="center">day (<m>x</m>)</cell>
+							<cell halign="center">1</cell>
+							<cell halign="center">2</cell>
+							<cell halign="center">3</cell>
+							<cell halign="center">4</cell>
+							<cell halign="center">5</cell>
+							<cell halign="center">6</cell>
+							<cell halign="center">7</cell>
+						</row>
+						<row >
+							<cell halign="center">total profit (<m>y</m>)</cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+						</row>
+						<row >
+							<cell halign="center">change in profit (<m>\Delta y</m>)</cell>
+							<cell halign="center">N/A</cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+							<cell halign="center"></cell>
+						</row>
+					</tabular>
+				</p>
+			</solution-->
+		</task>
+		<task>
+			<statement>
+				<p>
+					Describe the maxima and minima for the profit function <m>P</m>
+				</p>
+			</statement>
+		</task>
+	</exploration>
+
+</section>
+
+</chapter>

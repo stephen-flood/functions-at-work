@@ -1,0 +1,1226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch-functions" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Functions of Economics</title>
+  
+  <!-- Test of section motivation, authored with ChatGPT 5 -->
+  <!--introduction xml:id="introduction-functions-motivation">
+    <title>Questions with Consequences</title>
+    <p>
+      <ul> 
+          <li><p>A retailer cuts price by $1 today; 
+                      demand rises by 20 units until inventory hits 300.
+                Here the *applied domain* stops at 300 units: the *rule* only makes sense up to capacity.
+          </p></li>
+
+          <li><p>A call center adds 4 agents for 8 hours; 
+                    average wait falls 2 minutes per call, bottoming at 0.5 minutes.
+                  Wait time has a *lower bound* at 0.5 minutes: the *range* can't go below this floor.
+          </p></li>
+
+          <li><p>A courier extends route by 10 miles past 50; 
+                      the price rises an additional $10 from a flat fee of $30.
+                The *domain* splits at 50 into cases: "within zone" vs. "beyond zone."
+          </p></li>
+
+          <li><p>A factory raises output from 0 to 10 units this shift; 
+                      average cost becomes defined, falling toward $50
+                A *forbidden computation* appears when dividing at q = 0; the *domain* starts just beyond zero.
+          </p></li>
+      </ul>
+        </p>
+  </introduction-->
+
+  <section xml:id="sec-function-concepts">
+    <title>Function Concepts</title>
+      
+
+    <p>
+      In this section, we will briefly review some key function concepts.  However, our main focus will be on beginning to connect these mathematical ideas to the central 
+      economic and business concepts, applications, and examples that we will study over the course of this semester.
+    </p>
+
+
+    <exploration xml:id="ex-totalcost1">
+      <introduction>
+        <p>
+        If you are manufacturing t-shirts, then the <em>total cost</em> will be a function  of the number of items you make.
+        This is because there will be a rule which, 
+          given  of the number of items to be made (the input)
+          tells you a unique total cost in $ (the output).
+        </p>
+
+        <p>
+          If <m>x</m> represents the number of items, we often write <m>C(x)</m> to denote the total cost of these <m>x</m> items. 
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Write the mathematical expression that says "the cumulative cost of making 97 items costs $350.42"
+          </p>
+        </statement>
+        <answer>
+          <p>
+            <m>C(97) = 350.42</m>
+          </p>
+        </answer>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Translate the statment <m>C(52) = 253.19</m> into natural language.
+          </p>
+        </statement>
+        <solution>
+          <p>
+            This statement says that the cumulative cost of making 52 items is $253.19.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Write a mathematical expression that describes the cost of items 53-97 <em>only</em>.  Use the information from the previous parts to find the cost of these items. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            We have seen already that <m>C(97)</m> tells us the cost of items 0-97, and that <m>C(52)</m> tells us the cost of items 0-52. 
+          </p>
+          <p>
+            To find the cost of <em>only</em> items 53-97, we must subtract the cost of items 0-52 from the cost of items 0-97.
+            Mathematically, this is written
+            <md>
+              <mrow>\text{Cost of items 53-97} \amp = C(97) - C(52) </mrow>
+              <mrow> \amp = 350.42 - 253.19</mrow>
+              <mrow> \amp = 97.23</mrow>
+            </md>
+            The total cost of items 53-97 is $97.23.
+          </p>
+        </solution>
+      </task>
+    </exploration>
+
+    <p>
+      Functions are important because they give us a single language that can describe an enormous number of different situations.  
+    </p>
+    <p>
+      The next example uses the same language of functions to describe the very different situation of a very simple investment.
+    </p>
+
+    <example xml:id="example_function_notation_and_investment">
+      <title>Function notation and a simple investment.</title>
+      <p>
+        You begin with $1000 in a safe, and add $365 each year, spread out evenly over the year.
+        Furthermore, you commit to keeping this up for ten years.   
+        You want to study the value in the safe as a function of time.  
+      </p>
+      <p>
+        To allow the amount of time to vary, we introduce an independent variable.  
+        Often, we use <m>x</m> for the independent variable, which in this case is time. 
+        We also often use <m>y</m> for the dependent variable, which in this case is the amount saved. 
+        Although <m>x,y</m> are common variables, we could also have chosen other letters, such as <m>v</m> for value and <m>t</m> for time. 
+      </p>
+      <p>
+      Putting this together, we get
+      <me>
+        y = f(x) = 1000 + 365 x \text{ for }x\text{ in } [0,10]
+      </me>
+        Reading from left to right, this says that the output balance <m>y</m> in $ is equal to a function of the input time <m>x</m>, and that we will use the letter <m>f</m> to refer this function. 
+      </p>
+      <p>
+        It also says that this function is defined by a <em>rule</em>, which says to take the number of years <m>x</m>, to multiply that by 365, and then to add $1000.  
+      </p>
+      <p>
+        Finally, that sentence says that this rule applies only when the input <m>x</m> is in the closed interval <m>[0,10]</m>, which means that <m>x</m> can be any number in the interval <m>0\leq x\leq 10</m>.
+        In other words, this rule specifies its <alert>domain</alert>.
+      </p>
+      <p>
+        Because our savings are spread out <em>evenly over the year</em>, we can find the value of our savings after <q>four and a half years</q>, as well as finding the value after three years exactly.
+        In other words, the domain of our savings function contains decimals like <m>4.5</m> years, as well as whole numbers like <m>3</m> years. 
+        This even will us to find the amount in the safe after <m>40</m> <alert>days</alert>.  Assuming that there are 365 days in a year, day <m>40</m> happens at <alert>year</alert> <m>x=\frac{40}{365}=0.1096</m>.
+      </p>
+    </example>
+    
+    <exploration xml:id="ex-savedaily">
+      <introduction>
+        <p>
+          Suppose that you  begin with $1000 in a safe, and add $365 each year for ten years, spread out evenly over the year.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Write the equation for the value in the safe as a function of time. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            This problem does not specify the variables that we should use for our function.  If <m>y</m> represents value and <m>x</m> represents time in years, then we have the same equation tjat that we found in <xref ref="example_function_notation_and_investment"/>. 
+            <me>
+              y = f(x) = 1000 + 365 x \text{ for }x\text{ in } [0,10]
+            </me>
+            If we instead used <m>v</m> for value and <m>t</m> for time, the equation would become
+            <me>
+              v = f(t) = 1000 + 365 t \text{ for }t\text{ in } [0,10]
+            </me>
+            We could also use any other variables we decided were most appropriate. 
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Graph the value of your savings as a function of time.   
+          </p>
+        </statement>
+        <solution>
+          <p>
+            We are told that this rule only applies between year <m>x=0</m> and year <m>x=10</m>.  
+            That means that we should start our graph at <m>(0,f(0))</m>, and end it at <m>(10,f(10))</m>.  
+            In this case, the value is a linear function, so we can complete the graph by connecting these points. 
+          </p>
+            <figure xml:id="fig_algebra_domainrange" xmlns:xi="http://www.w3.org/2001/XInclude">
+                <caption></caption>
+                <image xml:id="algebra_domainrange" width="100%">
+                <latex-image>
+                \begin{tikzpicture}
+                            [scale=1,
+                            declare function = {
+                              f(\x) =  1 + 0.365*\x ;
+                              xmin=0;
+                              xmax=10;
+                              ymin=0;
+                              ymax=5;
+                              pad=0.1;
+                              domainstart=0;
+                              domainstop=10;
+                            }]
+                  \draw[axes] (0,ymin-pad)--(0,ymax+pad);
+                  \draw[axes] (xmin-pad,0)--(xmax+pad,0);
+                  \draw[grid] (xmin-pad,ymin-pad) grid (xmax+pad,ymax+pad);
+                  % Label x-axis
+                  \foreach \i in {1,...,10}
+                    \node[below] at (\i,0) {$\i$};
+                  % Label y-axis
+                  \foreach \i in {1,...,5}
+                    \node[left] at (0,\i) {$\i000$};
+
+
+                  \draw[color=red] (0,4.650)--(10.5,4.650) node[right] {$y= 4,650$};
+                  \draw[color=red] (0,1)--(10.5,1) node[right] {$y=1,000$};
+
+                  % Graph the function defined in the TikZ environment
+                  \draw [curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+
+                  %For functions with defined entpoints
+                  \draw[fill=black] ({xmin},{f(xmin)}) circle (2pt);
+                  \draw[fill=black] ({xmax},{f(xmax)}) circle (2pt);
+
+                \end{tikzpicture}
+                </latex-image>
+                </image>
+            </figure>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Find the value of savings after four and a half years. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            We know the value after <m>x</m> years is equal to 
+            <m>
+              f(x) = 1000 + 365 x 
+            </m>.
+            To find the value after <m>x=4.5</m> years, we simply compute
+            <me>
+              f(4.5) = 1000 + 365\cdot 4.5 = 2642.5
+            </me>.
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Find the value of savings after 40 <alert>days</alert>. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            We know the value after <m>x</m> years is equal to 
+            <m>
+              f(x) = 1000 + 365 x 
+            </m>.
+          </p>
+          <p>
+            To apply this rule, we must first convert 40 <alert>days</alert> to <em>years</em>.  In a standard calendar year, there are 365 days, so 1 day = 1/365 year.  So day 40 is just a little bit over 10% of a year.  More precisely, we can do a unit conversion as follows
+            <md>
+              <mrow> 40\text{ days } \amp = 40 \text{ days }\cdot \frac{1 \text{ year}}{365\text{ days}} </mrow>
+              <mrow> \amp = \frac{40}{365} \frac{days\cdot year}{days}</mrow>
+              <mrow> \amp = \frac{40}{365} year</mrow>
+              <mrow> \amp = 0.10958\dots year</mrow>
+            </md>
+            We can now plug this year into our value function
+            <md>
+              <mrow>\text{value on day 40} \amp = \text{value in year }0.10958 </mrow>
+              <mrow> \amp = f(0.10958) </mrow>
+              <mrow> \amp = 1000 + 365\cdot 0.10958</mrow>
+              <mrow> \amp = 1039.9967 </mrow>
+            </md>
+            After 40 days, the value will be approximately $1040.
+          </p>
+        </solution>
+      </task>
+    </exploration>
+
+    <definition xml:id="def-domainrange">
+      <statement>
+        <p>
+          The <term>domain</term> of a function is the set of inputs where the rule is defined.
+        </p>
+        <p> 
+          The <term>range</term> of a function is the set of all outputs that occur. 
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      In many applications, a rule only <q>makes sense</q> for specific inputs.  
+      In this case, we talk about the <term>applied domain</term> of the function.
+      For example, you cannot buy a negative number of items, and the price of an item cannot be negative.<fn>You can pay people to take an item, but in this case it is not correct to call that payment a <q>price</q>.</fn>   
+    </p>
+
+    <exploration xml:id="ex-savedaily2">
+      <introduction>
+        <p>
+          This example continues <xref ref="ex-savedaily"/>.
+          In that example, we started with $1000 in savings and added $365 per year for 10 years, spread evenly across the whole year. 
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+            Find the domain of the savings function.
+          </p>
+        </statement>
+        <solution>
+          <p>
+              In <xref ref="ex-savedaily"/>, we are explicitly told that our savings function is not defined before year 0, and not defined after year 10.  
+              In other words, we are explicitly told that the domain of that function is the interval <m>[0,10]</m>, or equivalently, the set <m>0\leq x \leq 10</m>          
+            </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Find the range of the savings function. 
+          </p>
+        </statement>
+        <answer>
+          <p>
+            The range of the savings function is the set of all values that will occur in the account.  
+            The smallest value that will occur is $1000, and the largest value that will occur is $4,650.  That means that the <em>range</em> is the set of all numbers between those values.  In interval notation, this is <m>[1000,4650]</m>.
+          </p>
+        </answer>
+        <solution>
+          <p>
+            The question of the range in that example is more complex.  
+            In words, a number will be in the range of our savings function if there is that amount in the safe at some year <m>x</m> between 0 and 10.  
+          </p>
+          
+          <p>
+            If you think about it, you'll never have a value of $900 in your account since it starts at $1000 and increases. 
+            You'll also never have  $1,000,000 in your account, since you are only adding about a dollar a day for 10 years.  
+            In other words, the numbers 900 and $1,000,000 are not in the range of our savings function. 
+          </p>
+          <p>
+            On the other hand, the value $1000 will definitely be in the range because you start on the first day of the first year with <m>1000=f(0)</m> dollars in your account.
+            And  $4,650 will be in the range because you end the 10th year with <m>4650=f(10)=1000+365\cdot 10</m> in your account.
+            Finally, every value between 1000 and 4650 will also be in the range, because you are continuously adding money to the account.  
+            But does that mean only the values for whole number years?  What about fractional years?   To answer that question, it helps to look at the graph of the savings function. 
+          </p>
+          <image xml:id="algebra_domainrange2" width="100%">
+            <latex-image>
+            \begin{tikzpicture}
+                        [scale=1,
+                        declare function = {
+                          f(\x) =  1 + 0.365*\x ;
+                          xmin=0;
+                          xmax=10;
+                          ymin=0;
+                          ymax=5;
+                          pad=0.1;
+                          domainstart=0;
+                          domainstop=10;
+                        }]
+              \draw[axes] (0,ymin-pad)--(0,ymax+pad);
+              \draw[axes] (xmin-pad,0)--(xmax+pad,0);
+              \draw[grid] (xmin-pad,ymin-pad) grid (xmax+pad,ymax+pad);
+              % Label x-axis
+              \foreach \i in {1,...,10}
+                \node[below] at (\i,0) {$\i$};
+              % Label y-axis
+              \foreach \i in {1,...,5}
+                \node[left] at (0,\i) {$\i000$};
+
+
+              \draw[color=red] (0,4.650)--(10.5,4.650) node[right] {$y= 4,650$};
+              \draw[color=red] (0,1)--(10.5,1) node[right] {$y=1,000$};
+
+              % Graph the function defined in the TikZ environment
+              \draw [curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+
+              %For functions with defined entpoints
+              \draw[fill=black] ({xmin},{f(xmin)}) circle (2pt);
+              \draw[fill=black] ({xmax},{f(xmax)}) circle (2pt);
+
+            \end{tikzpicture}
+            </latex-image>
+          </image>
+          <p>
+            In the graph of our function, we see that the value is added continuously (uniformly), so all <m>y</m> values between 1000 and 4650 can be achieved.  
+            Thus, the domain is 
+            <me>
+              1000 \leq y \leq 4650
+            </me>
+            In interval notation, this is
+            <me>
+              [1000,4650]
+            </me>
+            
+          </p>
+        </solution>
+      </task>
+
+    </exploration>
+
+    <p>
+      The concept of domain is very important in mathematics.  For example, there is an important difference between a function defined using a table, and a function defined using a formula.  
+      When you have a function defined using a table, the domain is restricted to the inputs given for all practical purposes.  
+      But when you have a function defined using a formula, the domain includes every input where the function is defined.
+    </p>
+   
+
+    <exploration xml:id="ex_domaintablevsfmla">
+      <title>Functions defined by tables and formulas</title>
+      <introduction>
+        <p>
+          In this example, we will look at the difference in working with the <q>same</q> function <m>y = -2x + 13</m> numerically (when it is given by a few values in a table) and algebraically (using a formula).
+        </p>
+      </introduction>      
+      <task>
+        <introduction>
+          <p>
+            Let <m>f(x)</m> be defined by the following table
+            <!--me>
+              \begin{tabular}{c|c|c|c|c|c|c|c|c|c|c}
+              x    & 1 &	2	&	3	&	4	&	5	&	6	&	7	&	8	&	9	&	10 \\ 
+              f(x) & 11	&	9	&	7	&	5	&	3	&	1	&	-1	&	-3	&	-5	&	-7\\
+              \end{tabular}
+            </me-->
+            <tabular>
+              <row>
+                <cell><m>x</m></cell>
+                <cell>1</cell>
+                <cell>2</cell>
+                <cell>3</cell>
+                <cell>4</cell>
+                <cell>5</cell>
+                <cell>6</cell>
+                <cell>7</cell>
+                <cell>8</cell>
+                <cell>9</cell>
+                <cell>10</cell>
+              </row>
+              <row>
+                <cell><m>f(x)</m></cell>
+                <cell>11</cell>
+                <cell>9</cell>
+                <cell>7</cell>
+                <cell>5</cell>
+                <cell>3</cell>
+                <cell>1</cell>
+                <cell>-1</cell>
+                <cell>-3</cell>
+                <cell>-5</cell>
+                <cell>-7</cell>
+              </row>
+            </tabular>
+          </p>
+        </introduction>
+        <task>
+          <statement>
+            <p>
+              Graph this function, and give its domain.  
+            </p>
+          </statement>
+          <solution>
+              <p>
+                The only thing the problem gives us is 10 different points on the curve, one for each pair of input <m>x</m> and output <m>y</m>.  The best we can do with this information is to plot these points separately.
+              </p>
+              <image xml:id="ex_domaintablevsfmla1" width="50%">
+                <latex-image>
+                  \begin{tikzpicture}[scale=0.5]
+                    \draw[grid,step=1] (-.6,-8) grid (10.4,11.4);
+                    \draw[axes] (-1,0) -- (11,0);
+                    \draw[axes] (0,-8) -- (0,12) ;
+                          \foreach \x in {1,...,10}
+                            \draw (\x,.2) -- (\x,-.2)
+                          node[below, font=\small] {\x};
+                          \foreach \y in {-8,...,10}
+                            \draw (.2,\y) -- (-.2,\y)
+                          node[left, font=\small] {\y};	
+                    \draw [very thick, fill=black] (1 ,11) circle (2pt);
+                    \draw [very thick, fill=black] (2 ,9) circle (2pt);
+                    \draw [very thick, fill=black] (3 ,7) circle (2pt);
+                    \draw [very thick, fill=black] (4 ,5) circle (2pt);
+                    \draw [very thick, fill=black] (5 ,3) circle (2pt);
+                    \draw [very thick, fill=black] (6 ,1) circle (2pt);
+                    \draw [very thick, fill=black] (7 ,-1) circle (2pt);
+                    \draw [very thick, fill=black] (8 ,-3) circle (2pt);
+                    \draw [very thick, fill=black] (9 ,-5) circle (2pt);
+                    \draw [very thick, fill=black] (10,-7) circle (2pt);
+                  \end{tikzpicture}
+                </latex-image>
+              </image> 
+              <p>
+              The function is only defined for <m>x=1,2,3,4,5,6,7,8,9,10</m>, so that is the domain of the function. 
+            </p>
+          </solution>
+        </task>
+        <task>
+            <statement>
+            <p>
+              Solve the equation <m>f(x)>0</m>.  
+            </p>
+          </statement>
+          <solution>
+            <p>
+              Look at the table for all <m>x</m> values where the corresponding output <m>y=f(x)</m> is greater than <m>y=0</m>.  This is true for <m>x=1,2,3,4,5,6</m>
+            </p>
+            <p>  
+              Alternatively, draw the line <m>y=0</m> and pick the <m>x</m> values where the dot is above the line. 
+            </p>
+            <image xml:id="ex_domaintablevsfmla2" width="50%">
+              <latex-image>
+                \begin{tikzpicture}[scale=0.5]
+                  \draw[grid,step=1] (-.6,-8) grid (10.4,11.4);
+                  \draw[axes] (-1,0) -- (11,0);
+                  \draw[axes] (0,-8) -- (0,12) ;
+                      \foreach \x in {1,...,10}
+                        \draw (\x,.2) -- (\x,-.2)
+                      node[below, font=\small] {\x};
+                      \foreach \y in {-8,...,10}
+                        \draw (.2,\y) -- (-.2,\y)
+                      node[left, font=\small] {\y};	
+                  \draw [very thick, fill=black] (1,11) circle (2pt);
+                  \draw [very thick, fill=black] (2,9) circle (2pt);
+                  \draw [very thick, fill=black] (3,7) circle (2pt);
+                  \draw [very thick, fill=black] (4,5) circle (2pt);
+                  \draw [very thick, fill=black] (5,3) circle (2pt);
+                  \draw [very thick, fill=black] (6,1) circle (2pt);
+                  \draw [very thick, fill=black] (7,-1) circle (2pt);
+                  \draw [very thick, fill=black] (8,-3) circle (2pt);
+                  \draw [very thick, fill=black] (9,-5) circle (2pt);
+                  \draw [very thick, fill=black] (10,-7) circle (2pt);
+                  \draw [latex-latex,ultra thick, red] (-1,0) -- (11,0);
+                \end{tikzpicture}
+              </latex-image>
+            </image> 
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Evaluate <m>f(z)</m> where <m>z=3</m>
+            </p>
+          </statement>
+          <solution>
+            <p>
+              <m>f(3)=7</m>
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Solve <m>f(z)=3</m>
+            </p>
+          </statement>
+          <solution>
+            <p>
+              <m>f(5) = 3</m>, so the solution is <m>z=5</m>
+            </p>
+          </solution>
+        </task>
+      </task>
+      <task>
+        <introduction>
+          <p>
+            Let <m>f(x) = -2x +13</m>
+          </p>
+        </introduction>
+        <task>
+          <statement>
+            <p>
+              Graph this function, and give its domain.  
+            </p>
+          </statement>
+          <solution>
+            <p>
+              
+            </p>
+            <image xml:id="ex_domaintablevsfmla3" width="50%">
+              <latex-image>
+                \begin{tikzpicture}[scale=0.5]
+                  \draw[grid,step=1] (-.6,-8) grid (10.4,11.4);
+                  \draw[axes] (-1,0) -- (11,0);
+                  \draw[axes] (0,-8) -- (0,12) ;
+                        \foreach \x in {1,...,10}
+                          \draw (\x,.2) -- (\x,-.2)
+                        node[below, font=\small] {\x};
+                        \foreach \y in {-8,...,10}
+                          \draw (.2,\y) -- (-.2,\y)
+                        node[left, font=\small] {\y};	
+                  \draw [curve,smooth,samples=100,domain=0:11] plot (\x,-2*\x+13);
+                \end{tikzpicture}
+              </latex-image>
+            </image> 
+            <p>
+              The function is defined <em>at every point</em> below the curve.  That means that the function is <em>also</em> defined at <m>x=1.2</m>, and at <m>x=-5</m>, and so on. 
+              To express this, we can say in words <em>the domain is the set of all real numbers between <m>-\infty</m> and <m>\infty</m></em>, <alert>including all decimal numbers in between</alert>.  
+              We can also write this in interval notation by writing that the domain is <me>\Big(-\infty, \infty\Big)</me>
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Solve the equation <m>f(x)>0</m>.  
+            </p>
+          </statement>
+          <solution>
+            <p>
+              We can solve the inequality as follows 
+              <md>
+                <mrow> f(x) \amp > 0 </mrow>
+                <mrow> -2x + 13 \amp > 0</mrow>
+                <mrow>  13 \amp > 2x \amp \text{add } 2x\text{ to both sides} </mrow>
+                <mrow> 6.5 \amp > x \amp \text{divide by positive 2}</mrow>
+              </md>
+              We can also look at the graph of our function, draw the line <m>y=0</m>, and take all <m>x</m> values where the function is above the line.  
+              From the graph below, this is the set of <m>x</m> to the left of 6.5.  In interval notation, this is 
+              <me>\Big(-\infty, 6.5\Big)</me>
+            </p>
+            <image xml:id="ex_domaintablevsfmla4" width="50%">
+              <latex-image>
+                \begin{tikzpicture}[scale=0.5]
+                  \draw[grid,step=1] (-.6,-8) grid (10.4,11.4);
+                  \draw[axes] (-1,0) -- (11,0);
+                  \draw[axes] (0,-8) -- (0,12) ;
+                        \foreach \x in {1,...,10}
+                          \draw (\x,.2) -- (\x,-.2)
+                        node[below, font=\small] {\x};
+                        \foreach \y in {-8,...,10}
+                          \draw (.2,\y) -- (-.2,\y)
+                        node[left, font=\small] {\y};	
+                  \draw [curve,smooth,samples=100,domain=0:11] plot (\x,-2*\x+13);
+                  \draw [latex-latex,ultra thick, red] (-1,0) -- (11,0);
+                \end{tikzpicture}
+              </latex-image>
+            </image> 
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Evaluate <m>f(z)</m> where <m>z=3</m>
+            </p>
+          </statement>
+          <solution>
+            <p>
+              <m>f(3) = -2(3) + 13 = -6 + 13 = 7</m>
+            </p>
+          </solution>
+        </task>
+        <task>
+          <statement>
+            <p>
+              Solve <m>f(z)=3</m>
+            </p>
+          </statement>
+          <solution>
+            <p>
+              Solving the equation we get 
+              <md>
+                <mrow>f(x) \amp = 3</mrow>
+                <mrow>-2x+13\amp = 3</mrow>
+                <mrow>-2x    \amp = -10</mrow>
+                <mrow>x \amp = 5</mrow>
+              </md>
+              We can double check this by plugging our answer back into our function and check that the output is indeed <m>3</m>.
+            </p>
+          </solution>
+        </task>
+      </task>
+    </exploration>
+
+    <p>
+      There are also certain <em>forbidden computations</em>. 
+      <ol>
+        <li>
+          <p>
+            <alert>Dividing by Zero:</alert>
+            For any numerator <m>a</m>, the fraction <m>\dfrac{a}{0}</m> is <alert>undefined</alert>.  We often express this by writing
+            <m>
+              \ \dfrac{\#}{0} \quad DNE
+            </m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <alert>Square Roots of Negative Numbers:</alert>
+            The square root of any negative number is undefined.
+            For example, <m>\ \sqrt{-1}\quad DNE</m>.
+          </p>
+        </li>
+      </ol>
+      For the purposes of this course, a function is defined on an input as long as neither of the above computations occur. 
+    </p>
+
+    <exploration xml:id="ex-finddomainfromrule">
+      <task>
+        <statement>
+          <p>
+            Write the domain of <m>f(x) = \dfrac{2}{3-x}</m> in interval notation. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            A fraction <m>\dfrac{A}{B}</m> is defined as long as the denominator <m>B\neq 0</m>. 
+          </p>
+          <p>
+            That means that the fraction <m>\dfrac{2}{3-x}</m> is defined if and only if the denominator <m>3-x \neq 0</m>.
+          </p>
+          <p>
+            Rewriting this, we see that the the fraction is defined if and only if <m>3 \neq x</m>.  
+          </p>
+          <p>
+            To write this in interval notation, draw the points where the function <em>is</em> defined on a number line.
+            Use an open circle at <m>x=3</m> to <em>exclude</em> that value, 
+            and draw a thick line to include all other numbers
+          </p>
+          <image width="50%" xml:id="img_finddomain_1">
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[line width=3pt,latex-latex] (1,0) -- (5,0);
+                \node[left] at (1,0) {$-\infty$};
+                \node[right] at (5,0) {$\infty$};
+                \draw[fill=white] (3,0) circle (2pt) node [below] {3};
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+          <p>
+            We can now read the domain off of our number line. 
+            The function is defined on the interval <m>(-\infty,3)\cup(3,\infty)</m>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Write the domain of <m>g(x) = \sqrt{x}\ </m> in interval notation. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            A fraction <m>\sqrt{\ A\ }</m> is defined as long as the denominator <m>A\geq 0</m>. 
+          </p>
+          <p>
+            That means that the fraction <m>\sqrt{x}</m> is defined if and only if the inside <m>x \geq 0</m>.
+          </p>
+          <p>
+            To write this in interval notation, draw the points where the function <em>is</em> defined on a number line.
+            Use a closed circle at <m>x=0</m> to <em>include</em> that value, 
+            and draw a thick line to the right to include all positive numbers.
+          </p>
+          <image width="50%" xml:id="img_finddomain_2">
+            <latex-image>
+              \begin{tikzpicture}
+                \node[left] at (-2,0) {$-\infty$};
+                \node[right] at (2,0) {$\infty$};
+                \draw[latex-] (-2,0) -- (0,0);
+                \draw[line width=2pt,-latex] (0,0) -- (2,0);
+                \draw[fill=black] (0,0) circle (2pt) node [below] {0};
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+          <p>
+            We can now read the domain off of our number line. 
+            The function is defined on the interval <m>[0,\infty)</m>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            Write the domain of <m>h(x) = 3x^2 - 2x + 5\ </m> in interval notation. 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            At first, this problem can be confusing, because it doesn't have any fractions or roots. 
+            But actually, that makes this example very easy. 
+          </p>
+          <p>
+            We are able to multiply, add, and subtract any real number.  
+            In other words, the function is defined for <em>all</em> inputs. 
+            To write this in interval notation, fill in the <em>entire</em> real line. 
+          </p>
+
+          <image width="50%" xml:id="img_finddomain_3">
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[line width=3pt,latex-latex] (1,0) -- (5,0);
+                \node[left] at (1,0) {$-\infty$};
+                \node[right] at (5,0) {$\infty$};
+              \end{tikzpicture}
+            </latex-image>
+          </image>
+          <p>
+            We can now read the domain off of our number line. 
+            The function is defined on the interval <m>(-\infty,\infty)</m>
+          </p>
+        </solution>
+      </task>
+    </exploration>
+
+    <!-- TODO: Average Cost.  
+          Dividing by 0 is UNDEFINED, so AVG_COST(0) DNE, so 0 isn't in the domain. 
+          Negative numbers of items doesn't make sense, so negative numbers are not in the IMPLIED domain. 
+          Should decimal inputs be in the implied domain?  We say that they are so we can find average SPEED
+    -->
+
+
+
+    <!--exploration>
+      <title>TODO: easy/motivating discussion of rates </title>
+      
+      <introduction>
+        <p>
+          In calculus, our goal will be to describe how <em>fast</em> the function <m>f</m> is changing, relative to a changine in the input <m>x</m>.
+        </p>
+      </introduction>
+      <task>
+        <statement>
+          <p>
+          In the example above, how fast does your <em>savings</em> go up every day? 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            Because we are adding $365 dollars every day, in a year with 365 days, that corresponds to a rate of <m>\frac{365\$/\text year}{365\text{ days per year}} = 1\frac{\$}{\text{day}}</m>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            How fast does it go up every minute?
+          </p>
+        </statement>
+        <solution>
+          <p>
+            Because there are 24 hours in a day, and 60 minutes in an hour, there are <m>365\cdot 24\cdot 60=525,600</m> minutes in a year.  That means that a rate of one dollars per day  corresponds to a rate of <m>\frac{365\$\text{ per year}}{525,600\text{ minutes per year}}\approx 0.00069444444 \frac{\$}{\text{minute}}</m>
+          </p>
+        </solution>
+      </task>
+      <task>
+        <statement>
+          <p>
+            How fast does it go up every month? 
+          </p>
+        </statement>
+        <solution>
+          <p>
+            This question is quite difficult, perhaps impossible, to answer.  This is because there are different numbers of days per month. 
+            One way to try to answer it is to divide the <m>365</m> dollars that is added in a year by <m>12</m> months per year to get <m>\frac{365}{12}=30.416\dots</m> $/month.  
+            However, this is acually very misleading, since more money will be added in a longer month like July, and less money will be added in a shorter month like February.
+            For the purposes of this course, we will always focus on more clearly defined questions, where the rate of change in the input (time) is uniform. 
+          </p>
+        </solution>
+      </task>
+    </exploration-->
+
+
+  </section>
+  
+  <section xml:id="sec-functions-readinggraphs">
+    <title>Graphs of Functions</title>
+    
+    <p>
+    Nothing is truly constant in economics, business, and life.
+    Time and quantities change, and things like cost, revenue and profit change along with them. 
+    </p>
+    
+    <p>
+    In terms of functions, we can say that changing the <em>input</em>  changes the <em>output</em>. 
+    On a graph, that means that moving the input <m>x</m> left and right causes the output <m>y</m> to go up and down.
+    </p>
+      
+    
+    <interactive platform="jsxgraph"  source="jsxgraph/algebra-function-notation.js" preview="jsxgraph-algebra-function-notation.png">
+      <slate xml:id="jsxgraph-algebra-function-notation" surface="jsxboard"  aspect="4:3" /> 
+      <instructions>
+        <p>
+          <alert>Graphs show how Functions Change</alert>
+          Use the interactive graphic below to get comfortable reading graphs dynamically.  
+          <ul>
+            <li>
+              <p>
+                The slider changes the input <m>x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The graphic shows the corresponding point on the graph and output <m>y</m> (height). 
+              </p>
+            </li>
+            <li>
+              <p>
+                Move the slider back and forth. 
+                See how changing the input <m>x</m>-value left and right forces the height (<m>y</m>-value) to go up and down. 
+              </p>
+            </li>
+          </ul>
+        </p>
+      </instructions>
+    </interactive>
+
+    <example>
+      <p>
+        Here is a static version of the interactive graphic above.
+      </p>
+      <image xml:id="algebra_functionsandchange" width="100%">
+        <latex-image>
+        \begin{tikzpicture}
+                    [scale=0.5,
+                    declare function = {
+                      f(\x) =  0.0001*(\x-1)*(\x-4)*(\x-10)*(\x-20)*(\x-21)+3 ;
+                      xmin=0;
+                      xmax=22;
+                      ymin=0;
+                      ymax=10;
+                      pad=0.1;
+                      domainstart=-0.1;
+                      domainstop=22.1;
+                    }]
+          \draw[axes] (0,ymin-pad)--(0,ymax+pad);
+          \draw[axes] (xmin-pad,0)--(xmax+pad,0);
+          \draw[grid] (xmin-pad,ymin-pad) grid (xmax+pad,ymax+pad);
+          % Label x-axis
+          %\foreach \i in {1,...,22}
+          %  \node[below] at (\i,0) {$\i$};
+          % Label y-axis
+          %\foreach \i in {1,...,10}
+          %  \node[left] at (0,\i) {$\i000$};
+
+          % Graph the function defined in the TikZ environment
+          \draw [curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+
+          \draw[color=red,dashed] (12.5,0) -- (12.5,{f(12.5)}) -- (0,{f(12.5)});
+          \node[below,color=red] at (12.5,0) {$x$};
+          \node[color=red] at (12.5-1,-0.5) {$\leftarrow$};
+          \node[color=red] at (12.5+1,-0.5) {$\rightarrow$};
+          \node[left,color=red] at (0,{f(12.5)}) {$f(x)$};
+          \node[color=red] at (-1,{f(12.5)+1}) {$\Uparrow$};
+          \node[color=red] at (-1,{f(12.5)-1}) {$\Downarrow$};
+          \draw[fill=red,color=red] ({12.5},{f(12.5)}) circle (3pt);
+          
+
+        \end{tikzpicture}
+        </latex-image>
+      </image>
+    </example>
+
+    <p>
+      Reading graphs dynamically will play an essential role in the course, beginning in <xref ref="ch_limits"/>.
+      But this skill also plays an important role in answering much more basic questions about graphs. 
+    </p>
+    
+    <exploration xml:id="ex-reading_graphs"> 
+      <introduction>
+        <p>
+        The graph of a function <m>f</m> is given below.  
+        </p>
+        <image xml:id="algebra_readinggraphs" width="50%">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[grid,step=1] (-.6,-.4) grid (5.4,5.4);
+              \draw[axes] (-1,0) -- (6,0);
+              \draw[axes] (0,-1) -- (0,6) ;
+                    \foreach \x in {1,...,5}
+                      \draw (\x,.2) -- (\x,-.2)
+                    node[below right, font=\small] {\x};
+                    \foreach \y in {1,...,5}
+                      \draw (.2,\y) -- (-.2,\y)
+                    node[above left, font=\small] {\y};	
+              \draw [curve,smooth,samples=100,domain=0:1] plot (\x,\x^2+1);
+              \draw [curve,smooth,samples=100,domain=1:2] plot (\x,{2*(\x-1)+2});
+              \draw [curve,smooth,samples=100,domain=2:4] plot (\x,{-2*(\x-2)+4});
+              \draw [curve,smooth,samples=100,domain=4:5] plot (\x,{-2*(\x-5)^2+2});
+              \draw [very thick, fill=black] (0,1) circle (2pt);
+              \draw [very thick, fill=black] (5,2) circle (2pt);
+              \node at (5.5,5.5) {$f(x)$};
+            \end{tikzpicture}
+          </latex-image>
+        </image> 
+      </introduction>
+
+      <task>
+        <statement>
+            <p>
+              Compute <m>f(0)</m>, <m>f(2)</m>, <m>f(4)</m>, and <m>f(5)</m>.
+            </p>
+        </statement>
+        <answer>
+          <p>
+            <m>f(0)=1</m>, <m>f(2)=4</m>, <m>f(4)=0</m>, and <m>f(5)=2</m>
+          </p>
+        </answer>
+      </task>    
+
+      <task>
+        <statement>
+            <p>
+              For what <m>x</m> is <m>f(x)=2</m>?  For what  <m>x</m> is <m>f(x)=3</m>? For what  <m>x</m> is <m>f(x)=0</m>?
+            </p>
+        </statement>
+        <answer>
+          <p>
+            <m>f(x)=2</m> when <m>x=1</m> or when <m>x=3</m> or when <m>x=5</m>.
+          </p>
+          <p>
+            <m>f(x)=3</m> when <m>x=1.5</m> or when <m>x=2.5</m>.
+          </p>
+          <p>
+            <m>f(x)=0</m> when <m>x=4</m>.
+          </p>
+        </answer>
+        <solution>
+          <image xml:id="algebra_readinggraphs_sln1" width="50%">
+            
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[grid] (-.6,-.4) grid (5.4,5.4);
+                \draw[axes] (-1,0) -- (6,0);
+                \draw[axes] (0,-1) -- (0,6) ;
+                      \foreach \x in {1,...,5}
+                        \draw (\x,.2) -- (\x,-.2)
+                      node[below right, font=\small] {\x};
+                      \foreach \y in {1,...,5}
+                        \draw (.2,\y) -- (-.2,\y)
+                      node[above left, font=\small] {\y};	
+                \draw [curve,smooth,samples=100,domain=0:1] plot (\x,\x^2+1);
+                \draw [curve,smooth,samples=100,domain=1:2] plot (\x,{2*(\x-1)+2});
+                \draw [curve,smooth,samples=100,domain=2:4] plot (\x,{-2*(\x-2)+4});
+                \draw [curve,smooth,samples=100,domain=4:5] plot (\x,{-2*(\x-5)^2+2});
+                \draw [very thick, fill=black] (0,1) circle (2pt);
+                \draw [very thick, fill=black] (5,2) circle (2pt);
+                  \draw [color=red, very thick] (5.4,3) -- (-0.6,3) node [left] {$f(x)=3$};
+                    \draw[color=red,fill] (1.5,3) circle (2pt);
+                    \draw[color=red,dashed,very thick] (1.5,3) -- (1.5,0);
+                    \draw[color=red,fill] (2.5,3) circle (2pt);
+                    \draw[color=red,dashed,very thick] (2.5,3) -- (2.5,0);
+                  \draw [color=blue, very thick] (5.4,2) -- (-0.6,2) node [left] {$f(x)=2$};
+                    \draw[color=blue,fill] (1,2) circle (2pt);
+                    \draw[color=blue,dashed,very thick] (1,2) -- (1,0);
+                    \draw[color=blue,fill] (3,2) circle (2pt);
+                    \draw[color=blue,dashed,very thick] (3,2) -- (3,0);
+                    \draw[color=blue,fill] (5,2) circle (2pt);
+                    \draw[color=blue,dashed,very thick] (5,2) -- (5,0);
+                    \draw[color=green,fill] (4,0) circle (2pt);
+                \node at (5.5,5.5) {$f(x)$};
+              \end{tikzpicture}
+            </latex-image>
+          </image> 
+          <p>
+            Remember that the equation <m>f(x)=2</m> means that you are looking for the <em>inputs</em> <m>x</m> which correspond to an <em>output</em> of <m>2</m>.
+            Looking at the graph, we see that <m>f(1)=2</m> and that <m>f(3)=2</m> and that <m>f(5)=2</m>.  That means that the solution set is <m>x=1\ or\ x=3\ or\ x=5</m>.
+          </p>
+          <aside>
+            <p>
+              <alert>Note:</alert>
+              Endpoints require special care. 
+              In this case, there was a <em>filled in dot</em> at the point <m>(5,2)</m>, which means that <m>f(5)</m> is defined and equal to 2.  
+              If there was an <em>open circle</em> at the point, then the function would be defined <em>near</em> <m>x=5</m>, but not <em>at</em> <m>x=5</m>. 
+            </p>
+          </aside>
+          <p>
+            Similarly, solving the equation <m>f(x) = 3</m> means finding the inputs <m>x</m> that correspond to an output (height) <m>y</m> of 3.  
+            Looking at the graph, we see that <m>f(1.5)=3</m> and <m>f(2.5)=3</m>.  That means that the solutions set is <m>x=1.5\ or\ x=2.5</m> 
+          </p>
+          <p>
+            Finally, solving <m>f(x) = 0</m> means finding the inputs <m>x</m> that have a height <m>y</m> of zero.  Looking at the graph, this happens only for <m>x=4</m>.
+          </p>
+        </solution>
+      </task>    
+
+      <task>
+        <statement>
+            <p>
+              For what  <m>x</m> is <m>f(x)\lt 2</m>?
+            </p>
+        </statement>
+        <answer>
+          <p>
+            The output of the function is <em>strictly less than</em> 2 on the set <m>[0,1)\bigcup(3,5)</m>, or equivalently when <m>0\leq x\leq 1\ or\ 3\leq x\leq 5</m>.
+          </p>
+        </answer>
+        <solution>
+            <image xml:id="algebra_readinggraphs_sln2" width="50%">
+            
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[grid] (-.6,-.4) grid (5.4,5.4);
+                \draw[axes] (-1,0) -- (6,0);
+                \draw[axes] (0,-1) -- (0,6) ;
+                      \foreach \x in {1,...,5}
+                        \draw (\x,.2) -- (\x,-.2)
+                      node[below right, font=\small] {\x};
+                      \foreach \y in {1,...,5}
+                        \draw (.2,\y) -- (-.2,\y)
+                      node[above left, font=\small] {\y};	
+                  
+                \draw [color=blue, very thick] (3,2) -- (5,2);
+                \draw [color=blue, very thick, dotted] (3,2)--(1,2);
+                \draw [color=blue, very thick] (1,2) -- (0,2);
+                %                    \draw[color=blue,dashed,very thick] (5,2) -- (5,0);
+                %                    \draw[color=blue,dashed,very thick] (3,2) -- (3,0);
+                %                    \draw[color=blue,dashed,very thick] (1,2) -- (1,0);
+                \draw[color=blue,very thick,fill] (0,2) circle (3pt);
+                \draw[color=blue,very thick,fill=white] (1,2) circle (3pt);
+                \draw[color=blue,very thick,fill=white] (3,2) circle (3pt);
+                \draw[color=blue,very thick,fill=white] (5,2) circle (3pt);
+
+                \draw [curve,smooth,samples=100,domain=0:1] plot (\x,\x^2+1);
+                \draw [curve,smooth,samples=100,domain=1:2] plot (\x,{2*(\x-1)+2});
+                \draw [curve,smooth,samples=100,domain=2:4] plot (\x,{-2*(\x-2)+4});
+                \draw [curve,smooth,samples=100,domain=4:5] plot (\x,{-2*(\x-5)^2+2});
+                \draw [curve, fill=black] (0,1) circle (2pt);
+                %                    \draw [color=black, very thick, fill=black] (5,2) circle (2pt);
+                \node at (5.5,5.5) {$f(x)$};
+              \end{tikzpicture}
+            </latex-image>
+          </image> 
+
+          <p>
+            Remember that the equation <m>f(x)\lt 2</m> means that you are looking for the <em>inputs</em> <m>x</m> which correspond to an output of <em>strictly less than</em> <m>2</m>.
+            To understand this inequality, follow the graph of the function, moving through  <m>x</m>-values from left to right.
+          </p>
+          <p>
+            Above <m>x=0</m>, the height is <m>1</m> which is less than <m>2</m>. 
+            Moving right, the height of the function increases, but stays below <m>2</m> until we reach <m>x=1</m>.  
+            That means that the function is <em>less than</em> or <em>equal to</em> 2 on the interval <m>[0,1]</m>.
+            But because we want the height to be <em>strictly less than</em> 2, we must exclude 1, giving us the interval <m>[0,1)</m>.
+          </p>              
+          <p>
+            Similarly, the height is also less than 2 between <m>x=3</m> and <m>x=5</m>, and equal to 2 at those endpoints, so the function is <em>strictly less than</em> 2 on the interval <m>(3,5)</m>
+          </p>
+          
+          <p>
+            Putting it all together, we have that <m>f(x)\lt 2</m> on the set <m>[0,1)\bigcup (3,5)</m>, or equivalently when <m>0\leq x\lt 1\ or\ 3\lt x\lt 5</m>.
+          </p>
+        </solution>
+      </task>    
+
+      <task>
+        <statement>
+            <p>
+              For what  <m>x</m> is <m>f(x)\leq 3</m>?
+            </p>
+        </statement>
+        <answer>
+          <p>
+            Remember that the equation <m>f(x)\leq 2</m> means that you are looking for the <em>inputs</em> <m>x</m> which correspond to an output of <em>less than</em> or <em>equal to</em> <m>3</m>.
+            This happens for values of <m>x</m> satisfying <m>0\leq x\leq 1.5\ or\ 2.5 \leq x</m>.
+            In interval notation, this corresponds to the set <m>[0,1.5]\bigcup [2.5,5]</m>.
+          </p>
+        </answer>
+        <solution>
+            <image xml:id="algebra_readinggraphs_sln3" width="50%">
+            <latex-image>
+              \begin{tikzpicture}
+                \draw[grid] (-.6,-.4) grid (5.4,5.4);
+                \draw[axes] (-1,0) -- (6,0);
+                \draw[axes] (0,-1) -- (0,6) ;
+                      \foreach \x in {1,...,5}
+                        \draw (\x,.2) -- (\x,-.2)
+                      node[below right, font=\small] {\x};
+                      \foreach \y in {1,...,5}
+                        \draw (.2,\y) -- (-.2,\y)
+                      node[above left, font=\small] {\y};	
+                  
+                \draw [color=red, very thick] (2.5,3) -- (5,3);
+                \draw [color=red, very thick, dotted] (1.5,3)-- (2.5,3);
+                \draw [color=red, very thick] (1.5,3) -- (0,3);
+                %                    \draw[color=red,dashed,very thick] (5,2) -- (5,0);
+                %                    \draw[color=red,dashed,very thick] (3,2) -- (3,0);
+                %                    \draw[color=red,dashed,very thick] (1,2) -- (1,0);
+                \draw[color=red,very thick,fill] (0,3) circle (3pt);
+                \draw[color=red,very thick,fill] (1.5,3) circle (3pt);
+                \draw[color=red,very thick,fill] (2.5,3) circle (3pt);
+
+                \draw [curve,smooth,samples=100,domain=0:1] plot (\x,\x^2+1);
+                \draw [curve,smooth,samples=100,domain=1:2] plot (\x,{2*(\x-1)+2});
+                \draw [curve,smooth,samples=100,domain=2:4] plot (\x,{-2*(\x-2)+4});
+                \draw [curve,smooth,samples=100,domain=4:5] plot (\x,{-2*(\x-5)^2+2});
+                \draw [color=black, very thick, fill=black] (0,1) circle (2pt);
+                \draw [color=black, very thick, fill=black] (5,2) circle (2pt);
+                \node at (5.5,5.5) {$f(x)$};
+              \end{tikzpicture}
+            </latex-image>
+          </image> 
+        </solution>
+      </task>    
+
+      <task>
+        <statement>
+            <p>
+              For what  <m>x</m> is <m>f(x)>0</m>?
+            </p>
+          </statement>
+          <answer>
+            <p>
+              The inequality <m>f(x)\gt 0</m> is true for all inputs that correspond to an output that is strictly greater than 0.  
+              This is true for all values of <m>x</m> <em>except</em> <m>x=4</m>. 
+              So this is true for values of <m>x</m> in the interval <m>[0,4)\bigcup(4,5]</m>.
+            </p>
+          </answer>
+      </task>    
+      
+      <task>
+          <statement>
+            <p>
+              What is the domain and range of <m>f</m>?
+            </p>
+          </statement>
+          <answer>
+            <p>
+              The domain of <m>f(x)</m> is the set of <m>x</m>-values where the function is defined.  In this example, the function is defined starting at <m>x=0</m> and stopping at <m>x=5</m>. Therefore the domain is <m>[0,5]</m>.
+            </p>
+            <p>
+              The range of <m>f(x)</m> is the set of <m>y</m>-values that are output by the function.  Looking at the function, note that you can achieve outputs as small as <m>f(x)=0</m> (at <m>x=4</m>) and as large as <m>f(x)=4</m> (at <m>x=2</m>), as well as every output between those <m>y</m>-values.  
+              Furthermore, no larger or smaller <m>y</m> can be achieved.  As a result, the range of the function is the interval <m>[0,4]</m>.
+            </p>
+          </answer>
+      </task>    
+    </exploration>
+
+  </section>
+
+</chapter>

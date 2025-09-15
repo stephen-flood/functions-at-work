@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Understanding Slope</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="og:image" content="http://webwork.bridgew.edu/oer/functions_at_work/external/logo_gpt4.png">
+<meta property="book:title" content="Functions at Work">
+<meta property="book:author" content="Stephen Flood">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link href="_static/pretext/css/pretext.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/shell_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/banner_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/toc_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/style_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
+<style>
+#to_the_student-5-2-1 { counter-set: to_the_student-5-2-1 0; }
+#to_the_student-5-2-1 > li::marker { content: ""counter(to_the_student-5-2-1,decimal)"."; }
+#to_the_student-5-2-1 > li { counter-increment: to_the_student-5-2-1; }
+#to_the_student-7-4-1 { counter-set: to_the_student-7-4-1 0; }
+#to_the_student-7-4-1 > li::marker { content: ""counter(to_the_student-7-4-1,decimal)"."; }
+#to_the_student-7-4-1 > li { counter-increment: to_the_student-7-4-1; }
+#sec-function-concepts-13-2 { counter-set: sec-function-concepts-13-2 0; }
+#sec-function-concepts-13-2 > li::marker { content: ""counter(sec-function-concepts-13-2,decimal)"."; }
+#sec-function-concepts-13-2 > li { counter-increment: sec-function-concepts-13-2; }
+#sec-changeinxy-4-1 { counter-set: sec-changeinxy-4-1 0; }
+#sec-changeinxy-4-1 > li::marker { content: ""counter(sec-changeinxy-4-1,decimal)"."; }
+#sec-changeinxy-4-1 > li { counter-increment: sec-changeinxy-4-1; }
+#sec-algebra-linear-equations-8-3 { counter-set: sec-algebra-linear-equations-8-3 0; }
+#sec-algebra-linear-equations-8-3 > li::marker { content: ""counter(sec-algebra-linear-equations-8-3,decimal)"."; }
+#sec-algebra-linear-equations-8-3 > li { counter-increment: sec-algebra-linear-equations-8-3; }
+#sec-algebra-linear-demandprice-2-1 { counter-set: sec-algebra-linear-demandprice-2-1 0; }
+#sec-algebra-linear-demandprice-2-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-2-1,decimal)"."; }
+#sec-algebra-linear-demandprice-2-1 > li { counter-increment: sec-algebra-linear-demandprice-2-1; }
+#sec-algebra-linear-demandprice-5-1 { counter-set: sec-algebra-linear-demandprice-5-1 0; }
+#sec-algebra-linear-demandprice-5-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-5-1,decimal)"."; }
+#sec-algebra-linear-demandprice-5-1 > li { counter-increment: sec-algebra-linear-demandprice-5-1; }
+#think-economically-with-units-7-1 { counter-set: think-economically-with-units-7-1 0; }
+#think-economically-with-units-7-1 > li::marker { content: ""counter(think-economically-with-units-7-1,decimal)"."; }
+#think-economically-with-units-7-1 > li { counter-increment: think-economically-with-units-7-1; }
+#sec_quadratic_functions-3-2-1 { counter-set: sec_quadratic_functions-3-2-1 0; }
+#sec_quadratic_functions-3-2-1 > li::marker { content: ""counter(sec_quadratic_functions-3-2-1,decimal)"."; }
+#sec_quadratic_functions-3-2-1 > li { counter-increment: sec_quadratic_functions-3-2-1; }
+#assemblage-continuous-inequalities-4-1 { counter-set: assemblage-continuous-inequalities-4-1 0; }
+#assemblage-continuous-inequalities-4-1 > li::marker { content: ""counter(assemblage-continuous-inequalities-4-1,decimal)"."; }
+#assemblage-continuous-inequalities-4-1 > li { counter-increment: assemblage-continuous-inequalities-4-1; }
+#sect_whatdoesrevenueteach-3-1 { counter-set: sect_whatdoesrevenueteach-3-1 0; }
+#sect_whatdoesrevenueteach-3-1 > li::marker { content: ""counter(sect_whatdoesrevenueteach-3-1,decimal)"."; }
+#sect_whatdoesrevenueteach-3-1 > li { counter-increment: sect_whatdoesrevenueteach-3-1; }
+#assemblage-rational-inequalities-4-1 { counter-set: assemblage-rational-inequalities-4-1 0; }
+#assemblage-rational-inequalities-4-1 > li::marker { content: ""counter(assemblage-rational-inequalities-4-1,decimal)"."; }
+#assemblage-rational-inequalities-4-1 > li { counter-increment: assemblage-rational-inequalities-4-1; }
+#example_interactivelimit_intuitive-3-1-1-2 { counter-set: example_interactivelimit_intuitive-3-1-1-2 0; }
+#example_interactivelimit_intuitive-3-1-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-1-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-1-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-1-1-2; }
+#example_interactivelimit_intuitive-3-2-1-2 { counter-set: example_interactivelimit_intuitive-3-2-1-2 0; }
+#example_interactivelimit_intuitive-3-2-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-2-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-2-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-2-1-2; }
+#sec-ComputingLimitsNumerically-3-3 { counter-set: sec-ComputingLimitsNumerically-3-3 0; }
+#sec-ComputingLimitsNumerically-3-3 > li::marker { content: ""counter(sec-ComputingLimitsNumerically-3-3,decimal)"."; }
+#sec-ComputingLimitsNumerically-3-3 > li { counter-increment: sec-ComputingLimitsNumerically-3-3; }
+#sec_slope-4-1-1-2-3 { counter-set: sec_slope-4-1-1-2-3 0; }
+#sec_slope-4-1-1-2-3 > li::marker { content: ""counter(sec_slope-4-1-1-2-3,decimal)"."; }
+#sec_slope-4-1-1-2-3 > li { counter-increment: sec_slope-4-1-1-2-3; }
+#assemblage-connectingslopeandtangent-2-1 { counter-set: assemblage-connectingslopeandtangent-2-1 0; }
+#assemblage-connectingslopeandtangent-2-1 > li::marker { content: ""counter(assemblage-connectingslopeandtangent-2-1,decimal)"."; }
+#assemblage-connectingslopeandtangent-2-1 > li { counter-increment: assemblage-connectingslopeandtangent-2-1; }
+#assemblage-secantlines-2-1-4-1-6 { counter-set: assemblage-secantlines-2-1-4-1-6 0; }
+#assemblage-secantlines-2-1-4-1-6 > li::marker { content: ""counter(assemblage-secantlines-2-1-4-1-6,decimal)"."; }
+#assemblage-secantlines-2-1-4-1-6 > li { counter-increment: assemblage-secantlines-2-1-4-1-6; }
+#sec_slopealgebraically-5-2 { counter-set: sec_slopealgebraically-5-2 0; }
+#sec_slopealgebraically-5-2 > li::marker { content: ""counter(sec_slopealgebraically-5-2,decimal)"."; }
+#sec_slopealgebraically-5-2 > li { counter-increment: sec_slopealgebraically-5-2; }
+#sec_basicrules1-35-2-1 { counter-set: sec_basicrules1-35-2-1 0; }
+#sec_basicrules1-35-2-1 > li::marker { content: ""counter(sec_basicrules1-35-2-1,decimal)"."; }
+#sec_basicrules1-35-2-1 > li { counter-increment: sec_basicrules1-35-2-1; }
+#sec_generalizedpowerrule-14-1 { counter-set: sec_generalizedpowerrule-14-1 0; }
+#sec_generalizedpowerrule-14-1 > li::marker { content: ""counter(sec_generalizedpowerrule-14-1,decimal)"."; }
+#sec_generalizedpowerrule-14-1 > li { counter-increment: sec_generalizedpowerrule-14-1; }
+#sec-chainrule-3-2 { counter-set: sec-chainrule-3-2 0; }
+#sec-chainrule-3-2 > li::marker { content: ""counter(sec-chainrule-3-2,decimal)"."; }
+#sec-chainrule-3-2 > li { counter-increment: sec-chainrule-3-2; }
+#sec-chainrule-13-1 { counter-set: sec-chainrule-13-1 0; }
+#sec-chainrule-13-1 > li::marker { content: ""counter(sec-chainrule-13-1,decimal)"."; }
+#sec-chainrule-13-1 > li { counter-increment: sec-chainrule-13-1; }
+#sec_understandingextrema-7-1 { counter-set: sec_understandingextrema-7-1 0; }
+#sec_understandingextrema-7-1 > li::marker { content: ""counter(sec_understandingextrema-7-1,decimal)"."; }
+#sec_understandingextrema-7-1 > li { counter-increment: sec_understandingextrema-7-1; }
+#thm-maxminonlyat-1-1-4 { counter-set: thm-maxminonlyat-1-1-4 0; }
+#thm-maxminonlyat-1-1-4 > li::marker { content: ""counter(thm-maxminonlyat-1-1-4,decimal)"."; }
+#thm-maxminonlyat-1-1-4 > li { counter-increment: thm-maxminonlyat-1-1-4; }
+#def-localmaximin-1-2 { counter-set: def-localmaximin-1-2 0; }
+#def-localmaximin-1-2 > li::marker { content: ""counter(def-localmaximin-1-2,decimal)"."; }
+#def-localmaximin-1-2 > li { counter-increment: def-localmaximin-1-2; }
+#thm-increasingfunction-1-2 { counter-set: thm-increasingfunction-1-2 0; }
+#thm-increasingfunction-1-2 > li::marker { content: ""counter(thm-increasingfunction-1-2,decimal)"."; }
+#thm-increasingfunction-1-2 > li { counter-increment: thm-increasingfunction-1-2; }
+#assemblage-maxminmethod-2-2 { counter-set: assemblage-maxminmethod-2-2 0; }
+#assemblage-maxminmethod-2-2 > li::marker { content: ""counter(assemblage-maxminmethod-2-2,decimal)"."; }
+#assemblage-maxminmethod-2-2 > li { counter-increment: assemblage-maxminmethod-2-2; }
+#thm-firstderivativetest-2-2 { counter-set: thm-firstderivativetest-2-2 0; }
+#thm-firstderivativetest-2-2 > li::marker { content: ""counter(thm-firstderivativetest-2-2,decimal)"."; }
+#thm-firstderivativetest-2-2 > li { counter-increment: thm-firstderivativetest-2-2; }
+#sec_understandingextrema-24-1 { counter-set: sec_understandingextrema-24-1 0; }
+#sec_understandingextrema-24-1 > li::marker { content: ""counter(sec_understandingextrema-24-1,decimal)"."; }
+#sec_understandingextrema-24-1 > li { counter-increment: sec_understandingextrema-24-1; }
+#assemblage-absolutemaxmin-2-4 { counter-set: assemblage-absolutemaxmin-2-4 0; }
+#assemblage-absolutemaxmin-2-4 > li::marker { content: ""counter(assemblage-absolutemaxmin-2-4,decimal)"."; }
+#assemblage-absolutemaxmin-2-4 > li { counter-increment: assemblage-absolutemaxmin-2-4; }
+#assemblage-findingconcavity-2-1 { counter-set: assemblage-findingconcavity-2-1 0; }
+#assemblage-findingconcavity-2-1 > li::marker { content: ""counter(assemblage-findingconcavity-2-1,decimal)"."; }
+#assemblage-findingconcavity-2-1 > li { counter-increment: assemblage-findingconcavity-2-1; }
+#sec_seconderivativeconcavityandchange-8-1 { counter-set: sec_seconderivativeconcavityandchange-8-1 0; }
+#sec_seconderivativeconcavityandchange-8-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-8-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-8-1 > li { counter-increment: sec_seconderivativeconcavityandchange-8-1; }
+#sec_seconderivativeconcavityandchange-12-1 { counter-set: sec_seconderivativeconcavityandchange-12-1 0; }
+#sec_seconderivativeconcavityandchange-12-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-12-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-12-1 > li { counter-increment: sec_seconderivativeconcavityandchange-12-1; }
+#sec_seconderivativeconcavityandchange-16-1 { counter-set: sec_seconderivativeconcavityandchange-16-1 0; }
+#sec_seconderivativeconcavityandchange-16-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-16-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-16-1 > li { counter-increment: sec_seconderivativeconcavityandchange-16-1; }
+#ex_antiderivative1-2-2-1-2 { counter-set: ex_antiderivative1-2-2-1-2 0; }
+#ex_antiderivative1-2-2-1-2 > li::marker { content: ""counter(ex_antiderivative1-2-2-1-2,decimal)"."; }
+#ex_antiderivative1-2-2-1-2 > li { counter-increment: ex_antiderivative1-2-2-1-2; }
+#insight_understandingintnotatino-4-1 { counter-set: insight_understandingintnotatino-4-1 0; }
+#insight_understandingintnotatino-4-1 > li::marker { content: ""counter(insight_understandingintnotatino-4-1,decimal)"."; }
+#insight_understandingintnotatino-4-1 > li { counter-increment: insight_understandingintnotatino-4-1; }
+#sec_geometricarea-5-1 { counter-set: sec_geometricarea-5-1 0; }
+#sec_geometricarea-5-1 > li::marker { content: ""counter(sec_geometricarea-5-1,decimal)"."; }
+#sec_geometricarea-5-1 > li { counter-increment: sec_geometricarea-5-1; }
+#sec_geometricarea-13-1 { counter-set: sec_geometricarea-13-1 0; }
+#sec_geometricarea-13-1 > li::marker { content: ""counter(sec_geometricarea-13-1,decimal)"."; }
+#sec_geometricarea-13-1 > li { counter-increment: sec_geometricarea-13-1; }
+#def-absolutenetarea-1-1-6 { counter-set: def-absolutenetarea-1-1-6 0; }
+#def-absolutenetarea-1-1-6 > li::marker { content: ""counter(def-absolutenetarea-1-1-6,decimal)"."; }
+#def-absolutenetarea-1-1-6 > li { counter-increment: def-absolutenetarea-1-1-6; }
+#ex_graphicalarea3-4-2-4-2 { counter-set: ex_graphicalarea3-4-2-4-2 0; }
+#ex_graphicalarea3-4-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-4-2-4-2,decimal)"."; }
+#ex_graphicalarea3-4-2-4-2 > li { counter-increment: ex_graphicalarea3-4-2-4-2; }
+#ex_graphicalarea3-5-2-4-2 { counter-set: ex_graphicalarea3-5-2-4-2 0; }
+#ex_graphicalarea3-5-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-5-2-4-2,decimal)"."; }
+#ex_graphicalarea3-5-2-4-2 > li { counter-increment: ex_graphicalarea3-5-2-4-2; }
+#sec_fundamentaltheorem-4-1 { counter-set: sec_fundamentaltheorem-4-1 0; }
+#sec_fundamentaltheorem-4-1 > li::marker { content: ""counter(sec_fundamentaltheorem-4-1,decimal)"."; }
+#sec_fundamentaltheorem-4-1 > li { counter-increment: sec_fundamentaltheorem-4-1; }
+#ex-review-distributefactor-7-2-1-1 { counter-set: ex-review-distributefactor-7-2-1-1 0; }
+#ex-review-distributefactor-7-2-1-1 > li::marker { content: ""counter(ex-review-distributefactor-7-2-1-1,decimal)"."; }
+#ex-review-distributefactor-7-2-1-1 > li { counter-increment: ex-review-distributefactor-7-2-1-1; }
+</style>
+</head>
+<body id="functions_at_work" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/logo_gpt4.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="home.html"><span class="title">Functions at Work:</span> <span class="subtitle">Business Calculus</span></a></h1>
+<p class="byline">Stephen Flood</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"></span><span class="treebuttons"><a class="previous-button button" href="ch_totalschanges.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="part-rates.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="ch_basicderivativerules.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+
+\newcommand{\red}[1]{   {\color{red}   #1}   }
+\newcommand{\blue}[1]{  {\color{blue}  #1}  }
+\newcommand{\green}[1]{ {\color{green} #1} }
+
+\newcommand{\ddx}[1]{ \dfrac{d}{dx} \Big[ #1 \Big]  } 
+\newcommand{\ddt}[1]{ \dfrac{d}{dt} \Big[ #1 \Big]  } 
+\newcommand{\ddu}[1]{ \dfrac{d}{du} \Big[ #1 \Big]  } 
+\newcommand{\ddxfrac}[1]{ \dfrac{d}{dx} \left[ #1 \right]  } 
+\newcommand{\D}[1]{ \Big[ #1 \Big]'  } 
+
+\newcommand{\intdx}[1]{{\,\int#1\,\,dx}}
+\newcommand{\dint}[1]{\displaystyle\intdx{#1}}
+
+\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 parts"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-2.html" class="internal"><span class="title">Copyright Information</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-3.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="to_the_student.html" class="internal"><span class="title">How to use this book</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-algebra.html" class="internal"><span class="codenumber">I</span> <span class="title">Algebra For Business</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-functions.html" class="internal"><span class="codenumber">1</span> <span class="title">Functions of Economics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-function-concepts" class="internal"><span class="codenumber">1.1</span> <span class="title">Function Concepts</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-functions-readinggraphs" class="internal"><span class="codenumber">1.2</span> <span class="title">Graphs of Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-combiningfns.html" class="internal"><span class="codenumber">2</span> <span class="title">Working with Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-combining_functions" class="internal"><span class="codenumber">2.1</span> <span class="title">Combining Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec_graphsoftotalsandchanges" class="internal"><span class="codenumber">2.2</span> <span class="title">*Graphs of Totals and Changes</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-changeinxy" class="internal"><span class="codenumber">2.3</span> <span class="title">*Connecting <span class="process-math">\(\Delta y\)</span> and <span class="process-math">\(\Delta x\)</span></span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-algebra_linearfunctions.html" class="internal"><span class="codenumber">3</span> <span class="title">Lines and Linear Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-equations" class="internal"><span class="codenumber">3.1</span> <span class="title">Finding the Equation of a Line</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-demandprice" class="internal"><span class="codenumber">3.2</span> <span class="title">Demand Price and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algeba-linear-cost" class="internal"><span class="codenumber">3.3</span> <span class="title">Item Cost, Total Cost, and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-applied_domain" class="internal"><span class="codenumber">3.4</span> <span class="title">Models and Applied Domains</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_polynomials_and_rationals.html" class="internal"><span class="codenumber">4</span> <span class="title">Polynomial and Rational Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_quadratic_functions" class="internal"><span class="codenumber">4.1</span> <span class="title">Quadratic and Polynomial Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_revenue" class="internal"><span class="codenumber">4.2</span> <span class="title">Revenue with Fair Pricing</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec-understandingprofit" class="internal"><span class="codenumber">4.3</span> <span class="title">Understanding Profit</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_rationalfns" class="internal"><span class="codenumber">4.4</span> <span class="title">Rational Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_exponentials.html" class="internal"><span class="codenumber">5</span> <span class="title">Compound Interest and Depreciation</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_introducing_exponentials" class="internal"><span class="codenumber">5.1</span> <span class="title">Exponential Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_percent_change" class="internal"><span class="codenumber">5.2</span> <span class="title">Percents and Percent Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_compound_interest" class="internal"><span class="codenumber">5.3</span> <span class="title">Compound Interest and Depreciation</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_logarithms.html" class="internal"><span class="codenumber">6</span> <span class="title">Logarithms and Solving for Time</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-inverses" class="internal"><span class="codenumber">6.1</span> <span class="title">Inverse Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_logartims" class="internal"><span class="codenumber">6.2</span> <span class="title">Logarithms Undo Exponentials</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-lawsoflogs" class="internal"><span class="codenumber">6.3</span> <span class="title">Laws of Logarithms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_solvingfortime" class="internal"><span class="codenumber">6.4</span> <span class="title">Solving Compound Interest for Time</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-logapplications" class="internal"><span class="codenumber">6.5</span> <span class="title">Applications of Logarithms</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part contains-active">
+<div class="toc-title-box"><a href="part-rates.html" class="internal"><span class="codenumber">II</span> <span class="title">Change and Rates</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_limits.html" class="internal"><span class="codenumber">7</span> <span class="title">Limits</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec_readingdynamically" class="internal"><span class="codenumber">7.1</span> <span class="title">Reading Graphs Dynamically</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-econlimits" class="internal"><span class="codenumber">7.2</span> <span class="title">Macroeconomics and Mostly Continuous Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-ComputingLimitsNumerically" class="internal"><span class="codenumber">7.3</span> <span class="title">Computing Limits Numerically</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_totalschanges.html" class="internal"><span class="codenumber">8</span> <span class="title">Average Rates of Change</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec-AROC" class="internal"><span class="codenumber">8.1</span> <span class="title">Average Rates of Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec_graphsofrateschangesandtotals" class="internal"><span class="codenumber">8.2</span> <span class="title">Graphs of Rates, Changes, and Totals</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_totalschanges.html#sec_velocityAndIROC" class="internal"><span class="codenumber">8.3</span> <span class="title">Velocity and Instantaneous Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_totalschanges.html#subsec-speedradar" class="internal"><span class="codenumber">8.3.1</span> <span class="title">Measuring Speed with Radar</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter active">
+<div class="toc-title-box"><a href="ch_tangentsecant.html" class="internal"><span class="codenumber">9</span> <span class="title">Understanding Slope</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope" class="internal"><span class="codenumber">9.1</span> <span class="title">Slopes and Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope-6" class="internal"><span class="codenumber">9.1.1</span> <span class="title">Understand Rates by Studying Slopes</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_secantangent" class="internal"><span class="codenumber">9.2</span> <span class="title">Approximating Slope with Secant Lines</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slopealgebraically" class="internal"><span class="codenumber">9.3</span> <span class="title">Defining Slope Algebraically</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec-slopefunction" class="internal"><span class="codenumber">9.4</span> <span class="title">Defining a Slope Function</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#subsec-derivativenotation" class="internal"><span class="codenumber">9.4.1</span> <span class="title">Interpreting the Meaning of <span class="process-math">\(f'(x)\)</span></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_basicderivativerules.html" class="internal"><span class="codenumber">10</span> <span class="title">Slope Shortcuts for Basic Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec_basicrules1" class="internal"><span class="codenumber">10.1</span> <span class="title">Basic Derivative Rules</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec-derivativesexplog" class="internal"><span class="codenumber">10.2</span> <span class="title">Derivatives of Exponentials and Logarithms</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_marginalcost.html" class="internal"><span class="codenumber">11</span> <span class="title">Derivatives and Business</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_marginalcost.html#sec-marginalcost" class="internal"><span class="codenumber">11.1</span> <span class="title">Marginal Cost</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_productquotientrule.html" class="internal"><span class="codenumber">12</span> <span class="title">Product and Quotient Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_productrule" class="internal"><span class="codenumber">12.1</span> <span class="title">Derivatives of Products</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_quotientrule" class="internal"><span class="codenumber">12.2</span> <span class="title">Derivatives of Fractions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_chainrule.html" class="internal"><span class="codenumber">13</span> <span class="title">The Chain Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec_generalizedpowerrule" class="internal"><span class="codenumber">13.1</span> <span class="title">The Generalized Power Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-chainrule" class="internal"><span class="codenumber">13.2</span> <span class="title">The Chain Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-derivativesummary" class="internal"><span class="codenumber">13.3</span> <span class="title">List of All Derivative Rules</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-applyingslopes.html" class="internal"><span class="codenumber">III</span> <span class="title">Applying Marginals and Slopes</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-maxmin.html" class="internal"><span class="codenumber">14</span> <span class="title">Finding Maxima and Minima</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_understandingextrema" class="internal"><span class="codenumber">14.1</span> <span class="title">Finding Local Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_absolutemaxmin" class="internal"><span class="codenumber">14.2</span> <span class="title">Finding Absolute Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_maximaminimaandchangegraphs" class="internal"><span class="codenumber">14.3</span> <span class="title">Maxima, Minima, and Change Graphs</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-secondderivatives.html" class="internal"><span class="codenumber">15</span> <span class="title">Dimishing Returns and Changing Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-secondderivative" class="internal"><span class="codenumber">15.1</span> <span class="title">The Second Derivative</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-concavity" class="internal"><span class="codenumber">15.2</span> <span class="title">Concavity and Graphs</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec_seconderivativeconcavityandchange" class="internal"><span class="codenumber">15.3</span> <span class="title">The Second Derivative and Change Graphs</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-integrals.html" class="internal"><span class="codenumber">IV</span> <span class="title">Integral Calculus</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_antiderivatives.html" class="internal"><span class="codenumber">16</span> <span class="title">Antiderivatives</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec_undoingderivatives" class="internal"><span class="codenumber">16.1</span> <span class="title">Undoing Derivatives</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-indefiniteintegrals" class="internal"><span class="codenumber">16.2</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-applyingantiderivatives" class="internal"><span class="codenumber">16.3</span> <span class="title">Applying Antiderivatives</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_introducingarea.html" class="internal"><span class="codenumber">17</span> <span class="title">Understanding Areas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_indefiniteintegrals" class="internal"><span class="codenumber">17.1</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_geometricarea" class="internal"><span class="codenumber">17.2</span> <span class="title">Understanding Geometrically of Area</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_fundamentaltheorem" class="internal"><span class="codenumber">17.3</span> <span class="title">Area, Antiderivatives, and Graphs of Change</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="meta_backmatter.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="algebrareview.html" class="internal"><span class="codenumber">A</span> <span class="title">Algebra Review</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebrareview.html#sec_algebralaw" class="internal"><span class="codenumber">A.1</span> <span class="title">Laws of Algebra</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="algebrareview.html#sec-IntervalsandGraphs" class="internal"><span class="codenumber">A.2</span> <span class="title">Intervals and Graphs</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#interval-notation" class="internal"><span class="codenumber">A.2.1</span> <span class="title">Interval Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#graphs-of-common-functions" class="internal"><span class="codenumber">A.2.2</span> <span class="title">Graphs of Common Functions</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="meta_backmatter-3.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch_tangentsecant"><h2 class="heading">
+<span class="type">Chapter</span><span class="space"> </span><span class="codenumber">9</span><span class="space"> </span><span class="title">Understanding Slope</span>
+</h2>
+<section class="introduction" id="ch_tangentsecant-2"><div class="para" id="ch_tangentsecant-2-1">The concepts contained in <a href="ch_limits.html" class="internal" title="Chapter 7: Limits">Chapter 7–9</a> are all connected in important, but sometimes tricky to follow ways.  As you go through this section, you can refer to the diagram below to see how what we are covering here is related to, and also distinct from, what we have already covered.</div> <div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/img_limit-rate-slope-conceptmap.svg" role="img" class="contained" alt="A concept map of the relationship between concepts of limits, rates of change, and slope."></div></section><section class="section" id="sec_slope"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">9.1</span><span class="space"> </span><span class="title">Slopes and Rates of Change</span>
+</h3>
+<div class="para logical" id="sec_slope-2">
+<div class="para">In general, the <dfn class="terminology">average rate of change</dfn> (AROC) of any function <span class="process-math">\(f(x)\)</span> over the interval <span class="process-math">\([a,b]\)</span> is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\left(\dfrac{\text{change in output}}{\text{change in input}}\right) = \dfrac{\Delta y}{\Delta x} = \dfrac{f(b)-f(a)}{b-a}
+\end{equation*}
+</div>
+</div>
+<div class="para" id="sec_slope-3">
+<em class="alert">Note:</em> the AROC formula is the <em class="emphasis">same formula</em> as the one for the slope of a line. In other words, the concepts of AROC and slope are closely related.</div>
+<div class="para logical" id="sec_slope-4">
+<div class="para">The concept of "slope" is easier to understand for some functions than for others.</div>
+<dl class="description-list">
+<dt id="sec_slope-4-1-1">Linear Functions</dt>
+<dd>
+<div class="para logical" id="sec_slope-4-1-1-2">
+<div class="para">If <span class="process-math">\(f(x)\)</span> is a line, the following are always the same, regardless of the points <span class="process-math">\(a,b\)</span> chosen</div>
+<ol class="decimal" id="sec_slope-4-1-1-2-3">
+<li id="sec_slope-4-1-1-2-3-1"><div class="para" id="sec_slope-4-1-1-2-3-1-1">the slope of <span class="process-math">\(f\)</span>
+</div></li>
+<li id="sec_slope-4-1-1-2-3-2"><div class="para" id="sec_slope-4-1-1-2-3-2-1">the average rate of change of <span class="process-math">\(f\)</span> on <span class="process-math">\([a,b]\)</span>
+</div></li>
+<li id="sec_slope-4-1-1-2-3-3"><div class="para" id="sec_slope-4-1-1-2-3-3-1">the instantaneous rate of change of <span class="process-math">\(f\)</span> at <span class="process-math">\(a\)</span>
+</div></li>
+</ol>
+</div>
+<div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/img_slopeAROC.svg" role="img" class="contained"></div>
+</dd>
+<dt id="sec_slope-4-1-2">Quadratic Functions</dt>
+<dd>
+<div class="para" id="sec_slope-4-1-2-2">Quadratic functions do not have a <em class="emphasis">constant slope</em>. In other words, if you imagine standing on the curve, the slope of the hill you are standing on will be steeper in some places, and flatter in other places.</div>
+<div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/img_quadratic_changing_slope.svg" role="img" class="contained"></div>
+<div class="para" id="sec_slope-4-1-2-4">As a consequence, quadratic functions do <em class="emphasis">not</em> have a constant average rate of change <span class="process-math">\(=\dfrac{\Delta y}{\Delta x}\text{.}\)</span>
+</div>
+</dd>
+</dl>
+</div>
+<div class="para" id="sec_slope-5">In fact, we have a more general result.  A function has a constant slope <em class="emphasis">if and only if</em> the function is a line.</div>
+<section class="subsection" id="sec_slope-6"><h4 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">9.1.1</span><span class="space"> </span><span class="title">Understand Rates by Studying Slopes</span>
+</h4>
+<div class="para" id="sec_slope-6-2">Our goal in this class is to develop tools that will help us understand the <em class="emphasis">economic concept</em> of a "rate of change" by connecting it to the <em class="emphasis">graphical concept</em> of a slope.</div>
+<div class="para" id="sec_slope-6-3">Because we only really understand slopes in the context of "lines," the first step is to define a <em class="emphasis">line approximating</em> the function <span class="process-math">\(f(x)\text{.}\)</span> We will call this the <dfn class="terminology">tangent line</dfn>.</div>
+<div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/img_introducingtangent.svg" role="img" class="contained"></div>
+<div class="para" id="sec_slope-6-5">In the image above, the blue line perfectly lines up with <span class="process-math">\(f(x)\)</span> at the point <span class="process-math">\((a,f(a))\text{.}\)</span> We call the blue line the <em class="emphasis">line tangent to <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a\)</span></em>. If we can find the slope of the tangent line, then we will be able to find the slope of the function at <span class="process-math">\(a\text{,}\)</span> and visa versa.</div>
+<article class="proposition theorem-like" id="prop-tangenteqn"><h5 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">9.1</span><span class="period">.</span>
+</h5>
+<div class="para logical" id="prop-tangenteqn-1-1">
+<div class="para">Suppose that we know the slope <span class="process-math">\(m\)</span> of the tangent line or, equivalently of <span class="process-math">\(f\text{,}\)</span> at the point <span class="process-math">\(a\text{.}\)</span> Then the <dfn class="terminology">line tangent to <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a\)</span></dfn> has the equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = {\color{blue} m}\cdot (x - {\color{red} a}) + {\color{red} f(a)}
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\({\color{blue} m}\text{,}\)</span> <span class="process-math">\({\color{red} a},\)</span> and <span class="process-math">\({\color{red} f(a)}\)</span> are <em class="alert">constant numbers</em>.</div>
+</div></article><article class="exploration project-like" id="ex_tangentlinefromgiveninfo"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.1</span><span class="period">.</span>
+</h5>
+<div class="para" id="ex_tangentlinefromgiveninfo-1-1">Suppose that you are told that at the point with <span class="process-math">\(a=5\text{,}\)</span> that <span class="process-math">\(f(5) = 17\text{,}\)</span> and that the line tangent to <span class="process-math">\(f\)</span> at <span class="process-math">\(5\)</span>  has slope <span class="process-math">\(-3\text{.}\)</span>  Find an equation for the tangent line to <span class="process-math">\(f\)</span> at <span class="process-math">\(a=5\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_tangentlinefromgiveninfo-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_tangentlinefromgiveninfo-2-1">
+<div class="para">We are asked for the equation of a line, so start by writing down <a href="ch-algebra_linearfunctions.html#def-point_slope" class="xref" data-knowl="./knowl/xref/def-point_slope.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 3.1">General Point Slope Form</a>.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-point_slope.html">
+\begin{equation*}
+y = {\color{red} m} \cdot (x - {\color{red} x_1}) + {\color{red} y_1}
+\end{equation*}
+</div>
+</div> <div class="para" id="ex_tangentlinefromgiveninfo-2-2">First, <span class="process-math">\(x_1\)</span> will always be the point that we are looking for the tangent to be "at".  In this example, we want the tangent at <span class="process-math">\(a=5\text{,}\)</span> so we have <span class="process-math">\(x_1=5\)</span>
+</div> <div class="para logical" id="ex_tangentlinefromgiveninfo-2-3">
+<div class="para">Second, <span class="process-math">\(x_2\)</span> will always be the height of the tangent at <span class="process-math">\(x_1\text{.}\)</span>  In other words,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y_1 = f(x_1) = f(5) = 17
+\end{equation*}
+</div>
+</div> <div class="para logical" id="ex_tangentlinefromgiveninfo-2-4">
+<div class="para">Finally, the slope of the tangent is always equal to the slope of the function.  In this example, we are just told that both slopes are equal to</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = -3 
+\end{equation*}
+</div>
+</div> <div class="para logical" id="ex_tangentlinefromgiveninfo-2-5">
+<div class="para">Putting it all together, we get</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = {\color{red} -3} \cdot (x - {\color{red} 5}) + {\color{red} 17}
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><div class="para" id="sec_slope-6-8">Because most functions have curves in them, looking at different points <span class="process-math">\(a\)</span> will give you tangent lines with very different slopes.</div>
+<iframe id="sec_slope-6-9" width="450" height="450" src="sec_slope-6-9-if.html"></iframe><div class="para logical" id="sec_slope-6-10">
+<div class="para">Said another way, the <em class="emphasis">slope of the tangent to <span class="process-math">\(f(x)\)</span></em> is a function of the point <span class="process-math">\(a\)</span> where you are centering your approximation. For simplicity, we often denote this using the notation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(a) = \text{ the slope of the line tangent to the function }f(x)\text{ at }a
+\end{equation*}
+</div>
+</div>
+<article class="assemblage assemblage-like" id="assemblage-connectingslopeandtangent"><h5 class="heading"><span class="title">Connecting Slope and Tangent Lines.</span></h5>
+<div class="para logical" id="assemblage-connectingslopeandtangent-2"><ol class="decimal" id="assemblage-connectingslopeandtangent-2-1">
+<li id="assemblage-connectingslopeandtangent-2-1-1"><div class="para logical" id="assemblage-connectingslopeandtangent-2-1-1-1">
+<div class="para">Near a point <span class="process-math">\((a,f(a))\text{,}\)</span> the function <span class="process-math">\(f(x)\)</span> is <em class="alert">approximately equal to</em> the <em class="emphasis">line tangent</em> to <span class="process-math">\(f\)</span> at that point. Mathematically, this means</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(\text{height on function }f) \approx (\text{height on tangent line centered at } a)
+\end{equation*}
+</div>
+<div class="para">for all values of <span class="process-math">\(x\)</span> near to <span class="process-math">\(a\)</span>
+</div>
+</div></li>
+<li id="assemblage-connectingslopeandtangent-2-1-2"><div class="para logical" id="assemblage-connectingslopeandtangent-2-1-2-1">
+<div class="para">It follows that the <em class="alert">slope</em> of the function <span class="process-math">\(f\)</span> at <span class="process-math">\(a\)</span> is approximately equal to the <em class="alert">slope</em> of the tangent at the point.  In other words,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(\text{slope of }y=f(x) \text{ at }x=a) \approx (\text{slope of the *tangent* to } f \text{ at } a)
+\end{equation*}
+</div>
+</div></li>
+</ol></div></article><div class="para" id="sec_slope-6-12">This observation is very powerful, and it works in two directions.  For now, we will see how to use tangent lines to help us to <em class="emphasis">approximate</em> the slope of a curve <span class="process-math">\(y=f(x)\)</span> at various values of <span class="process-math">\(a\text{.}\)</span>
+</div>
+<div class="para" id="sec_slope-6-13">Later, we will see how to compute the slope of <span class="process-math">\(f(x)\)</span> <em class="emphasis">precisely</em> at some point <span class="process-math">\(a\text{.}\)</span>  As a result, we will also have found the slope of the <em class="emphasis">line tangent</em> to the function at that value of <span class="process-math">\(a\text{.}\)</span>
+</div>
+<article class="exploration project-like" id="ex_slope_from_graph"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.2</span><span class="period">.</span>
+</h5>
+<div class="introduction" id="ex_slope_from_graph-1">
+<div class="para" id="ex_slope_from_graph-1-1">A function <span class="process-math">\(y=f(x)\)</span> is defined using the graph below.</div> <div class="image-box" style="width: 60%; margin-left: 20%; margin-right: 20%;"><img src="generated/latex-image/img_findslopefromtangents.svg" role="img" class="contained"></div>
+</div>
+<article class="task exercise-like" id="ex_slope_from_graph-2"><h6 class="heading"><span class="codenumber">(a)</span></h6>
+<div class="para" id="ex_slope_from_graph-2-1-1">Approximate the slope to the function <span class="process-math">\(y=f(x)\)</span> at the point <span class="process-math">\(a=1\)</span>
+</div>
+<div class="solutions"><details id="ex_slope_from_graph-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_slope_from_graph-2-2-1">We will approximate the slope at a value of <span class="process-math">\(a\)</span> by first drawing the tangent to the curve at that point.</div> <iframe id="ex_slope_from_graph-2-2-2" width="360" height="360" src="ex_slope_from_graph-2-2-2-if.html"></iframe> <div class="para logical" id="ex_slope_from_graph-2-2-3">
+<div class="para">We can then find two points <em class="alert">on the line</em> and use the slope formula</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+\end{equation*}
+</div>
+<div class="para">Note that these points will not be on the original curve, since we are technically finding the slope of the <em class="emphasis">tangent line</em>, which we are only using to <em class="alert">approximate</em> the real curve.</div>
+</div> <div class="para" id="ex_slope_from_graph-2-2-4">To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. The interactive graphic below shows the line you would get at each point.</div> <div class="para logical" id="ex_slope_from_graph-2-2-5">
+<div class="para">To find the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a=1\text{,}\)</span> find the tangent to <span class="process-math">\(f\)</span> at <span class="process-math">\(a=1\text{.}\)</span> Find two points on this tangent line.  One is <span class="process-math">\((1,3)\text{,}\)</span> and another is <span class="process-math">\((0,2)\text{.}\)</span> The slope of the line between these lines is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{3-2}{1-0} = \dfrac{1}{1} = 1
+\end{equation*}
+</div>
+<div class="para">Therefore, the slope of <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a=1\)</span> is equal to 1.</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_slope_from_graph-3"><h6 class="heading"><span class="codenumber">(b)</span></h6>
+<div class="para" id="ex_slope_from_graph-3-1-1">Approximate the slope to the function <span class="process-math">\(y=f(x)\)</span> at the point <span class="process-math">\(a=2\)</span>
+</div>
+<div class="solutions"><details id="ex_slope_from_graph-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_slope_from_graph-3-2-1">We will approximate the slope at a value of <span class="process-math">\(a\)</span> by first drawing the tangent to the curve at that point.</div> <iframe id="ex_slope_from_graph-3-2-2" width="360" height="360" src="ex_slope_from_graph-3-2-2-if.html"></iframe> <div class="para logical" id="ex_slope_from_graph-3-2-3">
+<div class="para">We can then find two points <em class="alert">on the line</em> and use the slope formula</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+\end{equation*}
+</div>
+<div class="para">Note that these points will not be on the original curve, since we are technically finding the slope of the <em class="emphasis">tangent line</em>, which we are only using to <em class="alert">approximate</em> the real curve.</div>
+</div> <div class="para" id="ex_slope_from_graph-3-2-4">To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. The interactive graphic below shows the line you would get at each point.</div> <div class="para logical" id="ex_slope_from_graph-3-2-5">
+<div class="para">To find the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a=2\text{,}\)</span> first, draw the line tangent to <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a=2\text{,}\)</span> and find two points on that line. One point is <span class="process-math">\((2,3.75)\text{,}\)</span> and another is <span class="process-math">\((0,3.75)\)</span> The slope of the line between these lines is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{3.75-3.75}{2-0} = \dfrac{0}{2} = 0
+\end{equation*}
+</div>
+<div class="para">Therefore, the slope of <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a=2\)</span> is equal to 0.</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_slope_from_graph-4"><h6 class="heading"><span class="codenumber">(c)</span></h6>
+<div class="para" id="ex_slope_from_graph-4-1-1">Approximate the slope to the function <span class="process-math">\(y=f(x)\)</span> at the point <span class="process-math">\(a=3\)</span>
+</div>
+<div class="solutions"><details id="ex_slope_from_graph-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_slope_from_graph-4-2-1">We will approximate the slope at a value of <span class="process-math">\(a\)</span> by first drawing the tangent to the curve at that point.</div> <iframe id="ex_slope_from_graph-4-2-2" width="360" height="360" src="ex_slope_from_graph-4-2-2-if.html"></iframe> <div class="para logical" id="ex_slope_from_graph-4-2-3">
+<div class="para">We can then find two points <em class="alert">on the line</em> and use the slope formula</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+\end{equation*}
+</div>
+<div class="para">Note that these points will not be on the original curve, since we are technically finding the slope of the <em class="emphasis">tangent line</em>, which we are only using to <em class="alert">approximate</em> the real curve.</div>
+</div> <div class="para" id="ex_slope_from_graph-4-2-4">To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. The interactive graphic below shows the line you would get at each point.</div> <div class="para logical" id="ex_slope_from_graph-4-2-5">
+<div class="para">To find the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a=3\text{,}\)</span> first, draw the line tangent to <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a=3\text{,}\)</span> and find two points on that line. One point is <span class="process-math">\((3,0.5)\text{,}\)</span> and another is <span class="process-math">\((0,3.5)\)</span> The slope of the line between these lines is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{0.5-3.5}{3-0} = \dfrac{-3}{3} = -1
+\end{equation*}
+</div>
+<div class="para">Therefore, the slope of <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a=3\)</span> is equal to -1.</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_slope_from_graph-5"><h6 class="heading"><span class="codenumber">(d)</span></h6>
+<div class="para" id="ex_slope_from_graph-5-1-1">Approximate the slope to the function <span class="process-math">\(y=f(x)\)</span> at the point <span class="process-math">\(a=4\)</span>
+</div>
+<div class="solutions"><details id="ex_slope_from_graph-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_slope_from_graph-5-2-1">We will approximate the slope at a value of <span class="process-math">\(a\)</span> by first drawing the tangent to the curve at that point.</div> <iframe id="ex_slope_from_graph-5-2-2" width="360" height="360" src="ex_slope_from_graph-5-2-2-if.html"></iframe> <div class="para logical" id="ex_slope_from_graph-5-2-3">
+<div class="para">We can then find two points <em class="alert">on the line</em> and use the slope formula</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}
+\end{equation*}
+</div>
+<div class="para">Note that these points will not be on the original curve, since we are technically finding the slope of the <em class="emphasis">tangent line</em>, which we are only using to <em class="alert">approximate</em> the real curve.</div>
+</div> <div class="para" id="ex_slope_from_graph-5-2-4">To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. The interactive graphic below shows the line you would get at each point.</div>  <div class="para logical" id="ex_slope_from_graph-5-2-5">
+<div class="para">To find the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a=4\text{,}\)</span> first, draw the line tangent to <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a=4\text{,}\)</span> and find two points on that line. One point is <span class="process-math">\((4,-0.5)\text{,}\)</span> and another is <span class="process-math">\((0,-0.5)\)</span> The slope of the line between these lines is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{0.5-(-0.5)}{4-0} = \dfrac{0}{4} = 0
+\end{equation*}
+</div>
+<div class="para">Therefore, the slope of <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a=4\)</span> is equal to 0.</div>
+</div>
+</div></details></div></article></article></section></section><section class="section" id="sec_secantangent"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">9.2</span><span class="space"> </span><span class="title">Approximating Slope with Secant Lines</span>
+</h3>
+<div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para" id="sec_secantangent-2-1">Given a function <span class="process-math">\(f(x)\text{,}\)</span> and an <span class="process-math">\(x\)</span> value <span class="process-math">\(a\text{,}\)</span> we want to find the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a\text{.}\)</span> Unfortunately, you need <em class="emphasis">two points</em> to define a line, but a tangent line usualy only touches the curve at <em class="emphasis">one point</em>. To help us define slope precisely, we will need a new concept.</div></div>
+<div class="sbspanel top" style="width:50%;"><img src="generated/latex-image/img_introducingtangent_1.svg" role="img" class="contained"></div>
+</div></div>
+<article class="definition definition-like" id="def-secant"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">9.2</span><span class="period">.</span>
+</h4>
+<div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;">
+<div class="sbspanel top" style="width:50%;"><div class="para" id="def-secant-1-1-1">The <dfn class="terminology">secant line</dfn> to <span class="process-math">\(f\)</span> <dfn class="terminology">at <span class="process-math">\(a,b\)</span></dfn> is the line that passes through the graph of <span class="process-math">\(y=f(x)\)</span> at <span class="process-math">\(x=a\)</span> and <span class="process-math">\(x=b\text{.}\)</span>
+</div></div>
+<div class="sbspanel top" style="width:50%;"><img src="generated/latex-image/img_introducingtangent_2.svg" role="img" class="contained"></div>
+</div></div> <div class="para logical" id="def-secant-1-2">
+<div class="para">Furthermore, the <em class="emphasis">slope</em> of the secant to <span class="process-math">\(f\)</span> at <span class="process-math">\(a,b\)</span> is equal to</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dfrac{f(b)-f(a)}{b-a} = \dfrac{\Delta y}{\Delta x}
+\end{equation*}
+</div>
+</div></article><div class="para" id="sec_secantangent-4">The key idea thing to notice is that when <span class="process-math">\(b\)</span> is <em class="emphasis">very close</em> to <span class="process-math">\(a\text{,}\)</span> then the secant line is <em class="emphasis">very close</em> to the tangent line.</div>
+<iframe id="sec_secantangent-5" width="600" height="600" src="sec_secantangent-5-if.html"></iframe><article class="exploration project-like" id="ex_approx_slope_from_secant"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.3</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_approx_slope_from_secant-1"><div class="para" id="ex_approx_slope_from_secant-1-1">Let <span class="process-math">\(f(x) = x^2 + 2x\text{.}\)</span>  We want to study the function at <span class="process-math">\(a=3\text{.}\)</span>
+</div></div>
+<article class="task exercise-like" id="ex_approx_slope_from_secant-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_approx_slope_from_secant-2-1-1">Estimage the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a=3\)</span> by computing the slope of the secant between <span class="process-math">\(a=3\)</span> and a value <span class="process-math">\(b\)</span> that is 0.1 units away, 0.01 units away, and 0.001 units away.</div>
+<div class="solutions"><details id="ex_approx_slope_from_secant-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_approx_slope_from_secant-2-2-1">Compute the average rate of change <span class="process-math">\(\dfrac{\Delta y}{\Delta x}\)</span> over the intervals <span class="process-math">\([3,3.1]\text{,}\)</span> <span class="process-math">\([3,3.01]\text{,}\)</span> and <span class="process-math">\([3,3.001]\text{.}\)</span> In other words, we have the <span class="process-math">\(x\)</span> values, so we need to find the <span class="process-math">\(y\)</span> values, the changes <span class="process-math">\(\Delta x\)</span> and <span class="process-math">\(\Delta y\text{,}\)</span> and then divide those changes to get the average change <span class="process-math">\(\frac{\Delta y}{\Delta x}\text{.}\)</span>
+</div> <div class="para" id="ex_approx_slope_from_secant-2-2-2"><div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(x_1\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(x_2\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\Delta x\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(y_1\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(y_2\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\Delta y\)</span></td>
+<td class="l m b2 r0 l0 t0 lines"><span class="process-math">\(\Delta y/\Delta x\)</span></td>
+</tr>
+<tr>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(3\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{red} 3.1\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(0.1\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(3) = 3^2 + 2\cdot 3 = 15 \)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(3.1) = 3.1^2 + 2\cdot 3.1 = 15.81\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{green} y_2 - y_1 = 15.81-15 = 0.81\)</span></td>
+<td class="l m b2 r0 l0 t0 lines"><span class="process-math">\(\Delta y/\Delta x = 0.81/0.1 = 8.1\)</span></td>
+</tr>
+<tr>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(3\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{red} 3.01\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(0.01\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(3) = 3^2 + 2\cdot 3 = 15 \)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(3.01) = 3.01^2 + 2\cdot 3.01 = 15.0801\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{green} y_2 - y_1 = 15.81-15 = 0.0801\)</span></td>
+<td class="l m b2 r0 l0 t0 lines"><span class="process-math">\(\Delta y/\Delta x = 0.0801/0.01 = 8.01\)</span></td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(3\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\color{red} 3.001\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(0.001\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(3) = 3^2 + 2\cdot 3 = 15 \)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(3.001) = 3.001^2 + 2\cdot 3.001 = 15.008001\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\color{green} y_2 - y_1 = 15.81-15 = 0.008001\)</span></td>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(\Delta y/\Delta x = 0.008001/0.001 = 8.001\)</span></td>
+</tr>
+</table></div></div> <div class="para" id="ex_approx_slope_from_secant-2-2-3">To interpret this table, note that the top row is an approximation of the slope where the points are reasonably far apart (<span class="process-math">\(\Delta x=0.1\)</span>). In the middle row the points are closer together (<span class="process-math">\(\Delta x = 0.01\)</span>), and in the bottom row the points are very close together (<span class="process-math">\(\Delta x = 0.001\)</span>).</div> <div class="para" id="ex_approx_slope_from_secant-2-2-4">In other words, as you move from the top to bottom, the approximating line gets closer and closer to the function.</div> <div class="para" id="ex_approx_slope_from_secant-2-2-5">As the approximation improves, the "estimated slope" decreases from 8.1 to 8.01 to 8.001.  It looks like the slopes are getting <em class="emphasis">closer and closer</em> to a slope of exactly <span class="process-math">\(m=8\)</span> at <span class="process-math">\(a=3\text{.}\)</span>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_approx_slope_from_secant-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_approx_slope_from_secant-3-1-1">Use this slope to find an equation for the line tangent to <span class="process-math">\(f\)</span> at <span class="process-math">\(a=3\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_approx_slope_from_secant-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_approx_slope_from_secant-3-2-1">
+<div class="para">To find the equation of a line, start by writing down the point-slope form</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = {\color{red} m } ( x - {\color{red} x_1} ) + {\color{red} y_1}
+\end{equation*}
+</div>
+<div class="para">We are given that the x-value is  <span class="process-math">\(\color{red} x_1=3\text{.}\)</span> Plug this into the equation for the function <span class="process-math">\(f(x) = x^2 - 2x\)</span> to get <span class="process-math">\(\color{red} y_1 = f(3) = 3^2 - 2\cdot 3 = 15\text{.}\)</span>
+</div>
+</div> <div class="para" id="ex_approx_slope_from_secant-3-2-2">The only remaining number to find is the slope of the function <span class="process-math">\(\color{red} m\text{.}\)</span>  But we have already found above that the slope of the function at <span class="process-math">\(a=3\)</span> is <span class="process-math">\(8\text{.}\)</span>  And the slope of the tangent equals the slope of the function, so we have that <span class="process-math">\(\color{red} m = 8\text{.}\)</span>
+</div> <div class="para logical" id="ex_approx_slope_from_secant-3-2-3">
+<div class="para">Putting this together, the slope of the line tangent to <span class="process-math">\(f\)</span> at 3 is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = {\color{red} 8 }( x - {\color{red} 3}) + {\color{red} 15}
+\end{equation*}
+</div>
+<div class="para">This is the equation for the line that approximates <span class="process-math">\(f\)</span> at the point <span class="process-math">\(a=3\text{.}\)</span>
+</div>
+</div>
+</div></details></div></article></article><article class="assemblage assemblage-like" id="assemblage-secantlines"><h4 class="heading"><span class="title">Secant Lines, AROC, and Slope.</span></h4>
+<div class="para logical" id="assemblage-secantlines-2"><ul class="disc" id="assemblage-secantlines-2-1">
+<li id="assemblage-secantlines-2-1-1"><div class="para" id="assemblage-secantlines-2-1-1-1">Just as we will use <em class="emphasis">tangent lines</em> to approximate the original function, we will <em class="emphasis">secant lines</em> to approximate tangent lines.</div></li>
+<li id="assemblage-secantlines-2-1-2"><div class="para" id="assemblage-secantlines-2-1-2-1">The <em class="emphasis">Average Rate of Change</em> (AROC) is defined to be <span class="process-math">\(\frac{\Delta y}{\Delta x}\text{.}\)</span> To compute the average rate of change just compute the height of your function at the given <span class="process-math">\(x\)</span> values, and divide by the difference between those <span class="process-math">\(x\)</span> values.</div></li>
+<li id="assemblage-secantlines-2-1-3">
+<div class="para" id="assemblage-secantlines-2-1-3-1">We often use a table to help us compute the average rate of change, and call these AROC tables.  These are simply a way of organizing the different parts of computing   <span class="process-math">\(\frac{\Delta y}{\Delta x}\)</span> for various values of <span class="process-math">\(x_1\)</span> and <span class="process-math">\(x_2\text{.}\)</span>
+</div>
+<div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(x_1\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(x_2\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\Delta x\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(y_1\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(y_2\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\Delta y\)</span></td>
+<td class="l m b2 r0 l0 t0 lines"><span class="process-math">\(\Delta y/\Delta x\)</span></td>
+</tr>
+<tr>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(a\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(b\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{red} b-a\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(a) \)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(b) \)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{green} f(b) - f(a) \)</span></td>
+<td class="l m b2 r0 l0 t0 lines"><span class="process-math">\(\Big(f(b) - f(a)\Big)/\Big(b-a\Big) \)</span></td>
+</tr>
+<tr>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(c\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(d\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{red} d-c\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(c) \)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{blue} f(d) \)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(\color{green} f(d) - f(c) \)</span></td>
+<td class="l m b2 r0 l0 t0 lines"><span class="process-math">\(\Big(f(d) - f(c)\Big)/\Big(d-c\Big) \)</span></td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\dots\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\dots\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\dots\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\dots\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\dots\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(\dots\)</span></td>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(\dots\)</span></td>
+</tr>
+</table></div>
+</li>
+<li id="assemblage-secantlines-2-1-4"><div class="para logical" id="assemblage-secantlines-2-1-4-1">
+<div class="para">Suppose you are <em class="emphasis">given</em> a function <span class="process-math">\(f(x)\)</span> and an <span class="process-math">\(x\)</span>-value <span class="process-math">\(a\text{.}\)</span> To <em class="emphasis">approximate the slope of <span class="process-math">\(f(x)\)</span> at <span class="process-math">\(a\)</span></em>, create an AROC table as follows:</div>
+<ol class="decimal" id="assemblage-secantlines-2-1-4-1-6">
+<li id="assemblage-secantlines-2-1-4-1-6-1"><div class="para" id="assemblage-secantlines-2-1-4-1-6-1-1">Set <span class="process-math">\(x_1=a\)</span> in each row. Pick several values for <span class="process-math">\(\Delta x\)</span> that get smaller and smaller (think <span class="process-math">\(0.1\text{,}\)</span> <span class="process-math">\(0.01\text{,}\)</span> <span class="process-math">\(\dots\)</span>). Put the largest <span class="process-math">\(\Delta x\)</span> in the top row, and put smaller <span class="process-math">\(\Delta x \)</span> in lower rows. For each row, set <span class="process-math">\(x_2 = x_1 + \Delta x\)</span>
+</div></li>
+<li id="assemblage-secantlines-2-1-4-1-6-2"><div class="para" id="assemblage-secantlines-2-1-4-1-6-2-1">Fill in the table, computing <span class="process-math">\(y_1,y_2,\Delta y,\)</span> and <span class="process-math">\(\frac{\Delta y}{\Delta x}\text{.}\)</span>
+</div></li>
+<li id="assemblage-secantlines-2-1-4-1-6-3"><div class="para" id="assemblage-secantlines-2-1-4-1-6-3-1">Read the right hand of the table from top to bottom.  Where is the average rate <span class="process-math">\(\frac{\Delta y}{\Delta x}\)</span> going as <span class="process-math">\(\Delta x\rightarrow 0\text{?}\)</span>
+</div></li>
+</ol>
+</div></li>
+</ul></div></article><div class="para logical" id="sec_secantangent-8">
+<div class="para">The above process for approximating slope is the most accurate way of doing things, but it can be a bit involved. In specific circumstances, you can often <em class="emphasis">approximate</em> the slope using a single computation.  Instead of repeatedly calculating <span class="process-math">\(\Delta y/\Delta x\)</span> for smaller and smaller values of <span class="process-math">\(\Delta x\text{,}\)</span> you can sometimes pick a single very small value for <span class="process-math">\(\Delta x\text{.}\)</span> For example, picking <span class="process-math">\(\Delta x = 0.001\)</span> gives us</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{slope of f at }a \approx \dfrac{f(a+0.001) - f(a) }{0.001}
+\end{equation*}
+</div>
+<div class="para">That value is only <em class="emphasis">approximate</em>, so it might be too large and it might be too small. By using an AROC table, we get a better sense of whether the exact slope is smaller or larger.</div>
+</div></section><section class="section" id="sec_slopealgebraically"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">9.3</span><span class="space"> </span><span class="title">Defining Slope Algebraically</span>
+</h3>
+<div class="para" id="sec_slopealgebraically-2">In the previous section, we developed a method that allows us to approximate slope by an iterative process of seeing where <em class="emphasis">average slope is going</em> as the change in input <em class="emphasis"><span class="process-math">\(\Delta x\)</span> goes to zero</em>.</div>
+<div class="para" id="sec_slopealgebraically-3">Using the language of <a href="ch_limits.html" class="internal" title="Chapter 7: Limits">Chapter 7</a>, we can translate this into a limit definition of slope.</div>
+<article class="definition definition-like" id="def-slopeAsLimit"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">9.3</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-slopeAsLimit-1-1">
+<div class="para">Given a function <span class="process-math">\(f(x)\)</span> and a number <span class="process-math">\(a\text{.}\)</span> The <dfn class="terminology">slope of f at a</dfn>, abbreviated <span class="process-math">\(f'(a)\)</span> is equal to</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(a) = \lim_{\Delta x\rightarrow 0}\dfrac{\Delta y}{\Delta x} = \lim_{\Delta x\rightarrow 0} \dfrac{ f\Big(a+\Delta x\Big) - f\Big(a\Big) }{\Delta x} 
+\end{equation*}
+</div>
+<div class="para">English keyboards do not have a button for <span class="process-math">\(\Delta x\text{,}\)</span> so we can use the letter <span class="process-math">\(h\)</span> to abbreviate the change in the input.  This gives us an alternative form:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(a) = \displaystyle \lim_{h\rightarrow 0}\dfrac{f\Big(a+h\Big) - f\Big(a\Big) }{h} 
+\end{equation*}
+</div>
+</div></article><div class="para logical" id="sec_slopealgebraically-5">
+<div class="para">To <em class="emphasis">use</em> the limit definition,</div>
+<ol class="decimal" id="sec_slopealgebraically-5-2">
+<li id="sec_slopealgebraically-5-2-1"><div class="para" id="sec_slopealgebraically-5-2-1-1">Completely simplify the fraction using the specific function <span class="process-math">\(f\)</span> and number <span class="process-math">\(a\)</span> that you are given.</div></li>
+<li id="sec_slopealgebraically-5-2-2"><div class="para" id="sec_slopealgebraically-5-2-2-1">Compute the limit of the simplified function by letting <span class="process-math">\(h\)</span> go to <span class="process-math">\(0\text{.}\)</span> For the purposes of this course, this means plugging in <span class="process-math">\(h=0\)</span> as long as this does not result in division by <span class="process-math">\(0\text{.}\)</span>
+</div></li>
+</ol>
+</div>
+<article class="exploration project-like" id="ex_slope_from_limit_defn"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.4</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_slope_from_limit_defn-1-1">Let <span class="process-math">\(f(x) = x^2 + 2x\text{.}\)</span> Use the limit definition to find the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a=3\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_slope_from_limit_defn-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_slope_from_limit_defn-2-1">
+<div class="para">The limit definnition of slope at <span class="process-math">\(3\)</span> gives us</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec-combining_functions.html">
+\begin{equation*}
+\text{slope at 3 } = \lim_{\Delta x\rightarrow 0} \dfrac{\Delta y}{\Delta x} = \lim_{h\rightarrow 0} \dfrac{ {\color{blue}f\Big(3+h\Big)} - {\color{red} f\Big(3\Big)}}{h}
+\end{equation*}
+</div>
+<div class="para">This function includes several components, that we first simplify on their own. The function is defined by the rule  <span class="process-math">\(f(x) = x^2 + 2x\text{.}\)</span>  That means that <span class="process-math">\(\color{red} f(3) = 3^2 + 2\cdot 3 = \dots = 15\text{.}\)</span> Similarly, we can simplify the expression as follows:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec-combining_functions.html" id="ex_slope_from_limit_defn-2-1-5">
+\begin{align*}
+\color{blue} f\Big(3+h\Big) \amp \color{blue} = \Big(3+h\Big)^2 + 2\cdot \Big(3+h\Big) \\
+\amp \color{blue} = \Big(3+h\Big)\cdot\Big(3+h\Big)  + 2\cdot \Big(3+h\Big) \\
+\amp \color{blue} = 9 + 3h + 3h + h^2 + 6 + 2h  \\
+\color{blue} f\Big(3+h\Big) \amp = \color{blue} 15 + 8h + h^2   
+\end{align*}
+</div>
+<div class="para">We can now plug these simplified expressions back into our limit definition</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec-combining_functions.html" id="ex_slope_from_limit_defn-2-1-6">
+\begin{align*}
+\text{slope at 3 } \amp = \lim_{h\rightarrow 0} \dfrac{ {\color{blue}f\Big(3+h\Big)} - {\color{red} f\Big(3\Big)}}{h}\\
+\amp = \lim_{h\rightarrow 0} \dfrac{ {\color{blue} (15 + 8h + h^2)}  - {\color{red} (15) } }{h}
+\end{align*}
+</div>
+<div class="para">It is tempting to try to plug in <span class="process-math">\(h=0\text{,}\)</span> but if you do that on your calculator, you end up dividing by 0, which gives a value of <span class="process-math">\(UNDEFINED\)</span> or <span class="process-math">\(DNE\text{.}\)</span> Because of this, we need to keep simplifying as in <a href="ch-combiningfns.html#sec-combining_functions" class="internal" title="Section 2.1: Combining Functions">Section 2.1</a>:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec-combining_functions.html" id="ex_slope_from_limit_defn-2-1-11">
+\begin{align*}
+\amp = \lim_{h\rightarrow 0} \dfrac{ 8h + h^2 }{h}\\
+\amp = \lim_{h\rightarrow 0} \dfrac{ {\color{red} h}\cdot (8 + h)  }{{\color{red} h}}\\
+\amp = \lim_{h\rightarrow 0} \dfrac{ (8 + h) }{1}\\
+\amp = \lim_{h\rightarrow 0} (8 + h) 
+\end{align*}
+</div>
+<div class="para">As <span class="process-math">\(h\rightarrow 0 \text{,}\)</span> the expression  <span class="process-math">\(8+h\)</span> goes to <span class="process-math">\(8+0=8\text{.}\)</span>  In other words, the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a=3\)</span> is exactly <span class="process-math">\(m=8\text{.}\)</span>
+</div>
+</div></div></details></div></article><div class="para" id="sec_slopealgebraically-7">Our goal in this course is to use mathematics as a tool to deepen our understanding of economics and business concepts. One of the most important insights from the limit definition of slope is the following result.</div>
+<article class="corollary theorem-like" id="cor-unitsofslope"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">9.4</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="cor-unitsofslope-1-1">
+<div class="para">Suppose that <span class="process-math">\(y=f(x)\)</span> is a function, and that there are units for both the input <span class="process-math">\(x\)</span> and output <span class="process-math">\(f\text{.}\)</span>  The following are <em class="alert">always equal</em>
+</div>
+<ul class="disc" id="cor-unitsofslope-1-1-5">
+<li id="cor-unitsofslope-1-1-5-1"><div class="para" id="cor-unitsofslope-1-1-5-1-1">The slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(a\)</span>
+</div></li>
+<li id="cor-unitsofslope-1-1-5-2"><div class="para" id="cor-unitsofslope-1-1-5-2-1">The instantaneous rate of change (IROC) of <span class="process-math">\(f\)</span> at <span class="process-math">\(a\)</span>
+</div></li>
+</ul>
+</div> <div class="para logical" id="cor-unitsofslope-1-2">
+<div class="para">Furthermore, the units of slope and the units of IROC are always</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dfrac{\text{units of y}}{\text{units of x}}
+\end{equation*}
+</div>
+</div></article><details id="sec_slopealgebraically-9" class="insight remark-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Application</span><span class="space"> </span><span class="codenumber">9.5</span><span class="period">.</span><span class="space"> </span><span class="title">Units and applied slope.</span>
+</h4></summary><article class="insight remark-like knowl__content"> <div class="para logical" id="sec_slopealgebraically-9-2"><ul class="disc" id="sec_slopealgebraically-9-2-1">
+<li id="sec_slopealgebraically-9-2-1-1"><div class="para" id="sec_slopealgebraically-9-2-1-1-1">If <span class="process-math">\(y\)</span> gives the value of a stock in dollars as a function of the number of days <span class="process-math">\(x\text{,}\)</span> then you can always find <em class="emphasis">how fast the stock is changing</em> by looking at the <em class="emphasis">slope of the value function</em>. Furthermore, that slope is measured in <em class="emphasis">dollars per day</em>.</div></li>
+<li id="sec_slopealgebraically-9-2-1-2"><div class="para" id="sec_slopealgebraically-9-2-1-2-1">If <span class="process-math">\(y\)</span> gives your milemarker on a highway as a function of the time <span class="process-math">\(x\)</span> in hours, then you can always find <em class="emphasis">how fast your position is changing</em> by looking at the <em class="emphasis">slope of the position function</em>. Furthermore, that slope is measured in miles per hour.</div></li>
+</ul></div></article></details><article class="exploration project-like" id="ex_iroc_from_limit_defn"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.5</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_iroc_from_limit_defn-1-1">Suppose that the profit of a certain oil investment is given by <span class="process-math">\(P(x) = -x^2 + 4x - 1\)</span> in millions of $ as a function of the number of gallons of oil <span class="process-math">\(x\)</span> produced over the lifetime of the investment.</div> <div class="para" id="ex_iroc_from_limit_defn-1-2">How fast is the profit changing when <span class="process-math">\(x=1\)</span> million units?</div>
+<div class="solutions"><details id="ex_iroc_from_limit_defn-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_iroc_from_limit_defn-2-1">
+<div class="para">We are asked for the instantaneous rate of change of profit at <span class="process-math">\(a=1\text{.}\)</span> Because IROC is the same thing as slope, we can use the limit definion of slope.  In other words, we must compute <span class="process-math">\(\lim_{\Delta x\rightarrow 0}\dfrac{\Delta y}{\Delta x}\)</span> at <span class="process-math">\(a=1\)</span> using the formula</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\lim_{h\rightarrow 0} \dfrac{ {\color{blue} P\Big(1 + h\Big)}- {\color{red} P\Big(1\Big)} }{h}
+\end{equation*}
+</div>
+<div class="para">As before, we will first simplify the components of this expression separately, and only put them back together later on.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\color{red} P\Big(1\Big) = -\,1^2 + 4\cdot 1 - 1 = -1 + 4 -1 = 2
+\end{equation*}
+</div>
+<div class="displaymath process-math" id="ex_iroc_from_limit_defn-2-1-6">
+\begin{align*}
+\color{blue} P\Big(1 + h\Big) \amp\color{blue} = -\Big(1 + h\Big)^2 + 4\Big(1 + h\Big) - 1
+\end{align*}
+</div>
+<div class="displaymath process-math" id="ex_iroc_from_limit_defn-2-1-7">
+\begin{gather*}
+\color{blue} = -\Big(1 + h\Big)\cdot \Big(1 + h\Big) + 4\Big(1 + h\Big) - 1
+\end{gather*}
+</div>
+<div class="displaymath process-math" id="ex_iroc_from_limit_defn-2-1-8">
+\begin{gather*}
+\color{blue} = -\Big(1 + 2h + h^2\Big) + 4\Big(1 + h\Big) - 1\\
+\color{blue} = -1 - 2h - h^2 + 4 + 4h - 1\\
+\color{blue} = - h^2  + 2h +2 
+\end{gather*}
+</div>
+</div> <div class="para logical" id="ex_iroc_from_limit_defn-2-2">
+<div class="para">Putting this back into the limit definition gives</div>
+<div class="displaymath process-math" id="ex_iroc_from_limit_defn-2-2-1">
+\begin{align*}
+\text{IROC at 1 } \amp = \lim_{h\rightarrow 0} \dfrac{  {\color{blue}P\Big(1+h\Big)} - {\color{red} P\Big(1\Big)}  }{h}\\
+\amp = \lim_{h\rightarrow 0} \dfrac{ {\color{blue} ( - h^2  + 2h +2 )} - {\color{red} (2) }  }{h}\\
+\amp = \lim_{h\rightarrow 0} \dfrac{ - h^2  + 2h }{h}\\
+\amp = \lim_{h\rightarrow 0} \dfrac{ {\color{red} h}\cdot(-h  + 2) }{\color{red} h}\\
+\amp = \lim_{h\rightarrow 0} \dfrac{ (-h  + 2) }{1}\\
+\amp = \lim_{h\rightarrow 0} (-h  + 2) \\
+\amp =  (-0  + 2) = 2 
+\end{align*}
+</div>
+</div> <div class="para" id="ex_iroc_from_limit_defn-2-3">The rate of change in profit is 2 (million $) per (million gallons).  Simplifying the units, this tells us that the profit is changing by 2 dollars per gallon when <span class="process-math">\(x=1\)</span> million gallons.</div>
+</div></details></div></article></section><section class="section" id="sec-slopefunction"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">9.4</span><span class="space"> </span><span class="title">Defining a Slope Function</span>
+</h3>
+<div class="para" id="sec-slopefunction-2">So far, we have seen how to understand, approximate, and define the slope of a function at a point <span class="process-math">\(a\text{.}\)</span> If you want to look at the slope of the function at a different point, you can redo all of the computations, only with a different number.</div>
+<div class="para" id="sec-slopefunction-3">As you recompute the slope at different values, you will notice that there is a lot of repeated effort that seems very similar.  We can avoid that repeated effort by instead studying <dfn class="terminology">slope functions</dfn>.</div>
+<article class="definition definition-like" id="def-derivativefunction"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">9.6</span><span class="period">.</span>
+</h4>
+<div class="para" id="def-derivativefunction-1-1">Let <span class="process-math">\(f(x)\)</span> be any function. The <dfn class="terminology">derivative</dfn> of <span class="process-math">\(f\text{,}\)</span> written <span class="process-math">\(f'(x)\text{,}\)</span> is the function which, when given any number <span class="process-math">\(a\text{,}\)</span> outputs the <em class="emphasis">slope</em> of the original function at <span class="process-math">\(a\text{.}\)</span>
+</div></article><article class="exploration project-like" id="explore_derivativeofx2"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.6</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="explore_derivativeofx2-1"><div class="para" id="explore_derivativeofx2-1-1">The function <span class="process-math">\(f(x) = x^2\)</span> is graphed below. <iframe id="explore_derivativeofx2-1-1-2" width="360" height="360" src="explore_derivativeofx2-1-1-2-if.html"></iframe>
+</div></div>
+<article class="task exercise-like" id="explore_derivativeofx2-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="explore_derivativeofx2-2-1-1">Use the graph to approximate <span class="process-math">\(f'(-1)\text{,}\)</span> <span class="process-math">\(f'(0)\text{,}\)</span> <span class="process-math">\(f'(1)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="explore_derivativeofx2-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="explore_derivativeofx2-2-2-1">To find a slope from a graph, first draw the tangent line at that point. Then, find the slope of that tangent line.</div> <div class="para" id="explore_derivativeofx2-2-2-2">In this interactive graphic, adjusting the slider draws the tangent line for you.</div> <div class="para logical" id="explore_derivativeofx2-2-2-3">
+<div class="para">In either case, we see that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(-1) = -2\text{,}
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(0)=0\text{,}
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(1) = 2
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="explore_derivativeofx2-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="explore_derivativeofx2-3-1-1">Use the interactive graphic to come up with a <em class="emphasis">conjecture</em> (educacted guess) for an equation for the <em class="emphasis">slope function</em> <span class="process-math">\(f'(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="explore_derivativeofx2-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="explore_derivativeofx2-3-2-1">Try adjusting the value of <span class="process-math">\(x\text{,}\)</span> and look at what the slope ends up equaling.</div> <div class="para logical" id="explore_derivativeofx2-3-2-2">
+<div class="para">No matter what value of <span class="process-math">\(x\)</span> you end up selecting, it looks like the slope is exactly twice the <span class="process-math">\(x\)</span> value. This leads to a conjecture that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(x) = 2x
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="explore_derivativeofx2-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="explore_derivativeofx2-4-1-1">Use the limit definition of the derivative to find an equation for <span class="process-math">\(f'(x)\)</span>
+</div>
+<div class="solutions"><details id="explore_derivativeofx2-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="explore_derivativeofx2-4-2-1">
+<div class="para">To apply the limit definition of slope to <em class="emphasis">any</em> value of <span class="process-math">\(x\text{,}\)</span> we just need to write down the same formula, only using a variable <span class="process-math">\(x\)</span> instead of a specific number <span class="process-math">\(a\text{.}\)</span>  In other words, we must compute</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(x) =  \lim_{h\rightarrow 0} \dfrac{{\color{blue} f\Big(x+h\Big)} - {\color{red} f\Big(x\Big)} }{h}
+\end{equation*}
+</div>
+<div class="para">As always, we simplify the corresponding expressions separately.  First, by definition <span class="process-math">\(\color{red} f(x) = x^2\text{.}\)</span>  This expression cannot be simplified further, so can now move onto the second expression</div>
+<div class="displaymath process-math" id="explore_derivativeofx2-4-2-1-7">
+\begin{align*}
+\color{blue} f\Big(x+h\Big) \amp = \color{blue} (x+h)^2 \\
+\amp = \color{blue} (x+h)\cdot (x+h) \\
+\amp = \color{blue} x^2 + 2xh + h^2 
+\end{align*}
+</div>
+<div class="para">This cannot be simplified further, so we can now plug our expressions back into the limit definition of slope</div>
+<div class="displaymath process-math" id="explore_derivativeofx2-4-2-1-8">
+\begin{align*}
+f'(x) = \amp \lim_{h\rightarrow 0} \dfrac{{\color{blue} f\Big(x+h\Big)} - {\color{red} f\Big(x\Big)} }{h} \\
+\amp =  \lim_{h\rightarrow 0}\dfrac{  {\color{blue} (x^2 + 2xh + h^2)} - {\color{red} (x^2)}  }{h}\\
+\amp =  \lim_{h\rightarrow 0}\dfrac{  2xh + h^2  }{h} \\
+\amp =  \lim_{h\rightarrow 0}\dfrac{  {\color{red} h}(2x + h)  }{\color{red} h} \\
+\amp =  \lim_{h\rightarrow 0} (2x + h)  \\
+f'(x) \amp =  2x  
+\end{align*}
+</div>
+</div></div></details></div></article><article class="task exercise-like" id="explore_derivativeofx2-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="explore_derivativeofx2-5-1-1">Find an equation for the line tangent to <span class="process-math">\(f(x) = x^2\)</span> at <span class="process-math">\(10\text{.}\)</span>
+</div>
+<div class="solutions"><details id="explore_derivativeofx2-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="explore_derivativeofx2-5-2-1">
+<div class="para">To find the equation for the tangent line, first write down point slope form of the line</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = {\color{red} m } (x - {\color{red} x_1}) + {\color{red} y_1}
+\end{equation*}
+</div>
+<div class="para">We are given that <span class="process-math">\(x_1=10\text{.}\)</span> To find <span class="process-math">\(y_1\text{,}\)</span> find plug 10 into the equation for the <em class="emphasis">original</em> function <span class="process-math">\(f(x)=x^2\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y_1 = f(10) = 10^2 = 100
+\end{equation*}
+</div>
+</div> <div class="para" id="explore_derivativeofx2-5-2-2">We can’t use the graph to find the slope of the functino at <span class="process-math">\(10\text{,}\)</span> so we either need to approximate the slope numerically, use the limit definition, <em class="emphasis">or</em> use the equation for the slope function <span class="process-math">\(f'(x)\)</span> that we have found above.</div> <div class="para logical" id="explore_derivativeofx2-5-2-3">
+<div class="para">Since we know that the <em class="emphasis">slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(x\)</span></em> is <span class="process-math">\(f'(x) = 2x\text{,}\)</span> we can find the slope at 10 by plugging 10 into the <em class="emphasis">slope</em> or <em class="emphasis">derivative</em> function <span class="process-math">\(f'(x)=2x\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = f'(10) = 2\cdot 10 = 20
+\end{equation*}
+</div>
+<div class="para">Putting all of this into the point slope form, we get that the equation of the tangent line is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = {\color{red} 20} (x - {\color{red} 10}) + {\color{red} 100} 
+= 20x +80
+\end{equation*}
+</div>
+</div>
+</div></details></div></article></article><article class="exploration project-like" id="ex_fprime_from_graph"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.7</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_fprime_from_graph-1">
+<div class="para" id="ex_fprime_from_graph-1-1">A function <span class="process-math">\(y=f(x)\)</span> is defined using the graph below.</div> <div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/img_findingderivativegraphically.svg" role="img" class="contained"></div>
+</div>
+<article class="task exercise-like" id="ex_fprime_from_graph-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_fprime_from_graph-2-1-1">Compute <span class="process-math">\(f'(0)\text{,}\)</span> <span class="process-math">\(f'(1)\text{,}\)</span> <span class="process-math">\(f'(2)\text{,}\)</span> <span class="process-math">\(f'(3)\text{,}\)</span> <span class="process-math">\(f'(4)\text{,}\)</span> <span class="process-math">\(f'(5)\text{,}\)</span> <span class="process-math">\(f'(6)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_fprime_from_graph-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_fprime_from_graph-2-2-1">
+<div class="para">We will approximate the slope at a value of <span class="process-math">\(a\)</span> by first drawing the tangent to the curve at that point, and using the fact that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{Slope of  } f \text{ at }a = \text{ Slope of line tangent to }f \text{ at }a
+\end{equation*}
+</div>
+<div class="para">. To find the tangent to a curve at a point, take a ruler and "line it up" with the curve at that point. The interactive graphic below shows the line you would get at each point.</div>
+</div> <div class="para" id="ex_fprime_from_graph-2-2-2"><iframe id="ex_fprime_from_graph-2-2-2-1" width="360" height="360" src="ex_fprime_from_graph-2-2-2-1-if.html"></iframe></div> <div class="para logical" id="ex_fprime_from_graph-2-2-3">
+<div class="para">Using these tangent lines, you can determine that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(0) = -1
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(1) = 0
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(2) = 1
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(3) = 0
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(4) = -2
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(5) = 0
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(6) = 1/2
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_fprime_from_graph-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_fprime_from_graph-3-1-1">Find all points where the tangent is horizontal.</div>
+<div class="solutions"><details id="ex_fprime_from_graph-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_fprime_from_graph-3-2-1">The tangent is horizontal at <span class="process-math">\(x\)</span><em class="emphasis">if and only if</em> the slope of the function is equal to 0 at <span class="process-math">\(x\text{,}\)</span> <em class="emphasis">if and only if</em> <span class="process-math">\(f'(x) = 0\text{.}\)</span>
+</div> <div class="para" id="ex_fprime_from_graph-3-2-2">This happens at the values <span class="process-math">\(x=1,3,5\text{,}\)</span> and at no other x-values.</div>
+</div></details></div></article><article class="task exercise-like" id="ex_fprime_from_graph-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_fprime_from_graph-4-1-1">Find the intervals where <span class="process-math">\(f(x)\)</span> is increasing.</div>
+<div class="solutions"><details id="ex_fprime_from_graph-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_fprime_from_graph-4-2-1">The function is increasing <em class="emphasis">if and only if</em> the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(x\)</span> is positive <em class="emphasis">if and only if</em> <span class="process-math">\(f'(x)\gt 0\text{.}\)</span>
+</div> <div class="para logical" id="ex_fprime_from_graph-4-2-2">
+<div class="para">Looking at the graph, the slope is positive at to different parts of the graph:</div>
+<ul class="disc" id="ex_fprime_from_graph-4-2-2-1">
+<li id="ex_fprime_from_graph-4-2-2-1-1"><div class="para" id="ex_fprime_from_graph-4-2-2-1-1-1">between <span class="process-math">\(x=1\)</span> and <span class="process-math">\(x=3\)</span>
+</div></li>
+<li id="ex_fprime_from_graph-4-2-2-1-2"><div class="para" id="ex_fprime_from_graph-4-2-2-1-2-1">to the right of <span class="process-math">\(x=5\)</span>
+</div></li>
+</ul>
+<div class="para">In interval notation,  <span class="process-math">\(f\)</span> is increasing on the interval <span class="process-math">\((1,3)\cup (5,\infty)\)</span>
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_fprime_from_graph-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex_fprime_from_graph-5-1-1">Find the intervals where <span class="process-math">\(f(x)'\lt 0\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_fprime_from_graph-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_fprime_from_graph-5-2-1">The function is decreasing <em class="emphasis">if and only if</em> the slope of <span class="process-math">\(f\)</span> at <span class="process-math">\(x\)</span> is negative <em class="emphasis">if and only if</em> <span class="process-math">\(f'(x)\lt 0\text{.}\)</span>
+</div> <div class="para logical" id="ex_fprime_from_graph-5-2-2">
+<div class="para">Looking at the graph, the slope is negative at two different parts of the graph:</div>
+<ul class="disc" id="ex_fprime_from_graph-5-2-2-1">
+<li id="ex_fprime_from_graph-5-2-2-1-1"><div class="para" id="ex_fprime_from_graph-5-2-2-1-1-1">to the left of <span class="process-math">\(x=1\)</span>
+</div></li>
+<li id="ex_fprime_from_graph-5-2-2-1-2"><div class="para" id="ex_fprime_from_graph-5-2-2-1-2-1">between <span class="process-math">\(x=3\)</span> and <span class="process-math">\(x=5\)</span>
+</div></li>
+</ul>
+<div class="para">In interval notation,  <span class="process-math">\(f\)</span> is decreasing on the interval <span class="process-math">\((-\infty,1)\cup (3,5)\)</span>
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_fprime_from_graph-6"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" id="ex_fprime_from_graph-6-1-1">Draw a sketch of the slope function <span class="process-math">\(f'(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_fprime_from_graph-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_fprime_from_graph-6-2-1">We have already computed the <em class="emphasis">slope function</em> <span class="process-math">\(f'\)</span> at x-values <span class="process-math">\(0,1,2,3,4,6\text{.}\)</span>  Summarizing that in a table, we have <div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(x\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(1\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(2\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(3\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(4\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(5\)</span></td>
+<td class="l m b2 r0 l0 t0 lines"><span class="process-math">\(6\)</span></td>
+</tr>
+<tr>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(f'(x)\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(-1\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(1\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(-2\)</span></td>
+<td class="l m b0 r2 l0 t0 lines"><span class="process-math">\(-1.1\)</span></td>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(1/2\)</span></td>
+</tr>
+</table></div> To sketch the graph of the <em class="emphasis">slope</em> as a function of <span class="process-math">\(x\text{,}\)</span> plot each of these <em class="emphasis">slopes</em>, and then connect them with a reasonably smooth curve.</div> <div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/image_derivativefromgraph_graphfprime.svg" role="img" class="contained"></div>
+</div></details></div></article></article><section class="subsection" id="subsec-derivativenotation"><h4 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">9.4.1</span><span class="space"> </span><span class="title">Interpreting the Meaning of <span class="process-math">\(f'(x)\)</span></span>
+</h4>
+<div class="para logical" id="subsec-derivativenotation-2">
+<div class="para">So far, we have focused on the graphical interpretation of the derivative function by emphasizing that for a graph <span class="process-math">\(y=f(x)\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/cor-unitsofslope.html">
+\begin{equation*}
+f'(a) = (\text{the slope of } f \text{ at }x_1=a)
+\end{equation*}
+</div>
+<div class="para">But the true power of calculus comes from the <em class="emphasis">many</em> applications of derivatives to <em class="emphasis">other kinds of questions</em>. We have already seen this breifly in <a href="ch_tangentsecant.html#cor-unitsofslope" class="xref" data-knowl="./knowl/xref/cor-unitsofslope.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 9.4">Corollary 9.4</a>, but it will be helpful to expand on this in greater detail.</div>
+</div>
+<div class="para" id="subsec-derivativenotation-3">Perhaps the simplest way to understand the meaning of <span class="process-math">\(f'\)</span> in different situations is to pay attention to the <em class="emphasis">units of measurement</em> for <span class="process-math">\(f\)</span> and <span class="process-math">\(f'\text{.}\)</span> For example, for a <em class="emphasis">height function</em> <span class="process-math">\(y=f(x)\text{,}\)</span> the units of <span class="process-math">\(f\)</span> might be meters or feet. On the other hand, for a <em class="emphasis">profit function</em> <span class="process-math">\(P(x)\text{,}\)</span> the units of <span class="process-math">\(P\)</span> might be dollars, or millions of dollars, or yuan.</div>
+<div class="para" id="subsec-derivativenotation-4">The units of the input <span class="process-math">\(x\)</span> also play an important part in the meaning of the function. There is a world of difference between moving 6 miles between <em class="emphasis">hours</em> <span class="process-math">\(x_1=0\)</span> and <span class="process-math">\(x_2=1\)</span> (an average velocity of 6 miles per hour) and moving 6 miles between <em class="emphasis">second</em> <span class="process-math">\(x_1=0\)</span> and <span class="process-math">\(x_2=1\)</span> (an average velocity of <em class="emphasis">360</em> miles per hour).</div>
+<div class="para" id="subsec-derivativenotation-5">To help us remember the units of derivatives, it is helpful to consider an alternate notation for the derivative function <span class="process-math">\(f'\text{.}\)</span> The key idea here is to realize that <span class="process-math">\(\Delta\)</span> is the greek letter <span class="process-math">\(D\text{.}\)</span>  Since we use the blocky symbol <span class="process-math">\(\Delta\)</span> to refer to approximate changes, we can instead use the smooth symbol <span class="process-math">\(d\)</span> to refer to instantaneous changes.  This gives us the following notation.</div>
+<article class="definition definition-like" id="def-dydx-notation"><h5 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">9.7</span><span class="period">.</span>
+</h5>
+<div class="para" id="def-dydx-notation-1-1">Let <span class="process-math">\(y=f(x)\)</span> be any function.</div> <div class="para logical" id="def-dydx-notation-1-2">
+<div class="para">Because <span class="process-math">\(f'(x) = \lim_{\Delta x\rightarrow 0} \dfrac{\Delta y}{\Delta x}\text{,}\)</span> we often write</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/cor-unitsofslope.html">
+\begin{equation*}
+f'(x) = \dfrac{df}{dx} = \dfrac{dy}{dx}
+\end{equation*}
+</div>
+<div class="para">This notation helps us remember <a href="ch_tangentsecant.html#cor-unitsofslope" class="xref" data-knowl="./knowl/xref/cor-unitsofslope.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 9.4">Corollary 9.4</a>, which says</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/cor-unitsofslope.html">
+\begin{equation*}
+(\text{units of }f') = \dfrac{\text{units of f}}{\text{units of x}}
+\end{equation*}
+</div>
+</div></article><div class="para logical" id="subsec-derivativenotation-7">
+<div class="para">For example, if <span class="process-math">\(C(x)\)</span> is the <em class="emphasis">total</em> (cumulative) cost in $ of <span class="process-math">\(x\)</span> items, then the <em class="emphasis">rate of change</em> of cost (how fast the cost is changing)</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec-marginalcost.html">
+\begin{equation*}
+C'(x) = \dfrac{dC}{dx} = \dfrac{\$}{\text{item}}
+\end{equation*}
+</div>
+<div class="para">In other words, if you have a graph of total cost, the <em class="emphasis">item cost</em> is equal to the <em class="emphasis">slope of the graph</em>. We will return to this example in greater detail in <a href="ch_marginalcost.html#sec-marginalcost" class="internal" title="Section 11.1: Marginal Cost">Section 11.1</a>
+</div>
+</div>
+<article class="assemblage assemblage-like" id="assemblage_meaningofderivative"><h5 class="heading"><span class="title">Interpreting Derivatives.</span></h5>
+<div class="para logical" id="assemblage_meaningofderivative-2"><dl class="description-list">
+<dt id="assemblage_meaningofderivative-2-1-1">Height Functions</dt>
+<dd><div class="para" id="assemblage_meaningofderivative-2-1-1-2">Suppose that <span class="process-math">\(y=f(x)\)</span> gives the <em class="emphasis">height</em> of a hill in feet as a function of the horizontal position <span class="process-math">\(x\)</span> in feet. Then <span class="process-math">\(f'(x)\)</span> gives the <em class="emphasis">slope</em> of the hill in <span class="process-math">\(\frac{meters}{meters}\)</span> (meters-per-meter).</div></dd>
+<dt id="assemblage_meaningofderivative-2-1-2">Position Functions</dt>
+<dd><div class="para" id="assemblage_meaningofderivative-2-1-2-2">Suppose that <span class="process-math">\(f(t)\)</span> gives the <em class="emphasis">position</em> of a vehicle in miles as a function of the current time <span class="process-math">\(t\)</span> in hours. Then <span class="process-math">\(f'(t)\)</span> gives the <em class="emphasis">velocity</em> of the vehicle in <span class="process-math">\(\frac{miles}{hour}\)</span> (miles per hour).</div></dd>
+<dt id="assemblage_meaningofderivative-2-1-3">Profit Functions</dt>
+<dd><div class="para" id="assemblage_meaningofderivative-2-1-3-2">Suppose that <span class="process-math">\(P(x)\)</span> gives the <em class="emphasis">total profit</em> of a business in dollars as a function of the number of items <span class="process-math">\(x\)</span> being sold. Then <span class="process-math">\(P'(x)\)</span> tells you  <em class="emphasis">how fast Profit changes</em> in <span class="process-math">\(\frac{dollars}{item}\)</span> (dollars per item) when you increase the number of items being sold.</div></dd>
+</dl></div></article><article class="exploration project-like" id="ex_meaningofderivative_1"><h5 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">9.8</span><span class="period">.</span>
+</h5>
+<article class="task exercise-like" id="ex_meaningofderivative_1-1"><h6 class="heading"><span class="codenumber">(a)</span></h6>
+<div class="para" id="ex_meaningofderivative_1-1-1-1">Suppose that <span class="process-math">\(y=f(x)\)</span> gives the height of a hill in feet as a function of the horizontal position <span class="process-math">\(x\)</span> in feet. Suppose also that <span class="process-math">\(f(100) = 300\text{,}\)</span> and that <span class="process-math">\(f'(100)=2\)</span> Explain what this tells you about <span class="process-math">\(f\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_meaningofderivative_1-1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="ex_meaningofderivative_1-1-2-1">Because <span class="process-math">\(f(100)=300\text{,}\)</span> the height of the hill is 300 feet at the location <span class="process-math">\(x=100\text{.}\)</span> Because <span class="process-math">\(f'(100)=2\text{,}\)</span> the slope of the hill will be <span class="process-math">\(2 \ \frac{feet}{feet}\)</span> at this particular location. In other words, if you are standing above <span class="process-math">\(x=100\text{,}\)</span> moving one foot forward will increase your height by about 2 feet.</div></div></details></div></article><article class="task exercise-like" id="ex_meaningofderivative_1-2"><h6 class="heading"><span class="codenumber">(b)</span></h6>
+<div class="para" id="ex_meaningofderivative_1-2-1-1">Suppose that <span class="process-math">\(f(t)\)</span> gives the position of a car on a highway in miles as a function of the time <span class="process-math">\(t\)</span> in hours. Suppose also that <span class="process-math">\(f(0.5) = 37\text{,}\)</span> and that <span class="process-math">\(f'(0.5)=62\)</span> Explain what this tells you about <span class="process-math">\(f\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_meaningofderivative_1-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="ex_meaningofderivative_1-2-2-1">Because <span class="process-math">\(f(0.5)=37\text{,}\)</span> the position of the car is mile marker 37 after <span class="process-math">\(x=0.5\)</span> hours of travel. Because <span class="process-math">\(f'(0.5)=62\text{,}\)</span> the velocity of the car will be <span class="process-math">\(62 \ \frac{miles}{hour}\)</span> at this particular point in time. In other words, assuming you don’t change your speed, you would travel an additional 62 miles per additional hour of travel.</div></div></details></div></article><article class="task exercise-like" id="ex_meaningofderivative_1-3"><h6 class="heading"><span class="codenumber">(c)</span></h6>
+<div class="para" id="ex_meaningofderivative_1-3-1-1">Suppose that <span class="process-math">\(P(x)\)</span> is a function that tells you the profit in dollars as a function of <span class="process-math">\(x\)</span> in items. Suppose also  that <span class="process-math">\(P(100)=30,000\text{,}\)</span> and that <span class="process-math">\(P'(100)=2,000\text{.}\)</span> Explain what this tells you about <span class="process-math">\(P(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_meaningofderivative_1-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_meaningofderivative_1-3-2-1">Because <span class="process-math">\(P(100)=30,000\text{,}\)</span> we know that the total profit that results froms selling items 0-100 will be $30,000.</div> <div class="para" id="ex_meaningofderivative_1-3-2-2">Because <span class="process-math">\(P'(100)=2,000\text{,}\)</span> we know that when you are selling 100 items, the profit is changing at <span class="process-math">\(2000\ \frac{dollars}{item}\text{.}\)</span> In other words, if you are selling 100 items, and then increase your sales <span class="process-math">\(x\text{,}\)</span> then the profit will go up by approximately <span class="process-math">\(2,000\)</span> dollars-per-additional-item.</div>
+</div></details></div></article></article></section><div class="para" id="sec-slopefunction-8">The goal of this course is to understand the application of derivatives, particularly to questions of economics, accounting, and management.</div>
+<div class="para" id="sec-slopefunction-9">We now have two functions to think about in every problem, the <em class="emphasis">original</em> (height) function <span class="process-math">\(f(x)\)</span> and the <em class="emphasis">derivative</em> (slope) function <span class="process-math">\(f'(x)\text{.}\)</span> In the last example, we even found the graph of the derivative function.</div>
+<div class="para" id="sec-slopefunction-10">The next example makes the relationship between these concepts very concrete, and shows its important connection to economic and business applications.</div>
+<details id="insight_continuousderivativesanddiscretechanges" class="insight remark-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Application</span><span class="space"> </span><span class="codenumber">9.8</span><span class="period">.</span><span class="space"> </span><span class="title">Derivative Graphs Are (Related to) Change Graphs.</span>
+</h4></summary><article class="insight remark-like knowl__content"> <div class="para logical" id="insight_continuousderivativesanddiscretechanges-2">
+<div class="para">Previously, we have used histograms to understand the connection between graphs of total functions <span class="process-math">\(C\text{,}\)</span> change functions <span class="process-math">\(\Delta C\text{,}\)</span> and average rates of change <span class="process-math">\(\frac{\Delta C}{\Delta x}\)</span>
+</div>
+<ul class="disc" id="insight_continuousderivativesanddiscretechanges-2-4">
+<li id="insight_continuousderivativesanddiscretechanges-2-4-1"><div class="para" id="insight_continuousderivativesanddiscretechanges-2-4-1-1">In <a href="ch-algebra_linearfunctions.html#sec-algeba-linear-cost" class="internal" title="Section 3.3: Item Cost, Total Cost, and Linear Functions">Section 3.3</a>, we carefully studied economic functions such as the total (cumulative) cost function  <span class="process-math">\(C(x)\text{.}\)</span>
+</div></li>
+<li id="insight_continuousderivativesanddiscretechanges-2-4-2"><div class="para" id="insight_continuousderivativesanddiscretechanges-2-4-2-1">In <a href="ch-combiningfns.html#sec_graphsoftotalsandchanges" class="internal" title="Section 2.2: *Graphs of Totals and Changes">Section 2.2</a>, we studied the relationship between the graph of a total <span class="process-math">\(C\)</span> and the change graph <span class="process-math">\(\Delta C\text{.}\)</span>
+</div></li>
+<li id="insight_continuousderivativesanddiscretechanges-2-4-3"><div class="para" id="insight_continuousderivativesanddiscretechanges-2-4-3-1">And in <a href="ch_totalschanges.html#sec_graphsofrateschangesandtotals" class="internal" title="Section 8.2: Graphs of Rates, Changes, and Totals">Section 8.2</a> we seen that the average change graph <span class="process-math">\(\dfrac{\Delta C}{\Delta x}\)</span> is just  a scaled version of the graph of the change <span class="process-math">\(\Delta C\text{.}\)</span>
+</div></li>
+</ul>
+</div> <div class="para" id="insight_continuousderivativesanddiscretechanges-3">In this example, we will see that these  concrete applications are very closely related to the continuous total function <span class="process-math">\(f\)</span> and  derivatives (slope) functions <span class="process-math">\(f'\)</span> that we have studied in this section.</div> <div class="para logical" id="insight_continuousderivativesanddiscretechanges-4">
+<div class="para">To make this concrete, we will look at a specific total (cumulative) cost function.  Let</div>
+<div class="displaymath process-math">
+\begin{equation*}
+C(x) = -0.05 x^2 + 0.8 x - 1\text{.}
+\end{equation*}
+</div>
+<div class="para">As in previous sections, we can create the graphs of <span class="process-math">\(C\text{,}\)</span> <span class="process-math">\(\Delta C\text{,}\)</span> and <span class="process-math">\(\frac{\Delta C}{\Delta x}\text{.}\)</span>
+</div>
+</div> <div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/image_totalchange_continuousanddiscrete_1.svg" role="img" class="contained"></div> <div class="para" id="insight_continuousderivativesanddiscretechanges-6">How do the functions <span class="process-math">\(C(x)\)</span> and <span class="process-math">\(C'(x)\)</span> fit into this picture? The graph of the total is a discrete version of <span class="process-math">\(C(x)\text{.}\)</span>
+</div> <div class="para logical" id="insight_continuousderivativesanddiscretechanges-7">
+<div class="para">To find an equation for the derivaitve (slope) function, you can use the techniques from this section to find that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+C'(x) = -0.1 x + 0.8
+\end{equation*}
+</div>
+<div class="para">Now that we have formulas for <span class="process-math">\(y=C(x)\)</span> and its derivative <span class="process-math">\(C'(x)\text{,}\)</span> let’s see how the derivative relates to the graphs of <span class="process-math">\(\Delta y\)</span> and <span class="process-math">\(\dfrac{\Delta y}{\Delta x}\text{.}\)</span> The total <span class="process-math">\(C = -0.05 x^2 + 0.8 x - 1\)</span> is graphed on the left, and the derivative <span class="process-math">\(C' = -0.1 x + 0.8\)</span> is graphed on the same axes as <span class="process-math">\(\Delta C\)</span> in the middle, and as <span class="process-math">\(\frac{\Delta C}{\Delta x}\)</span> on the right. What is the relationship between the derivative <span class="process-math">\(C'\text{,}\)</span> the change <span class="process-math">\(\Delta C\text{,}\)</span> and the AROC <span class="process-math">\(\frac{\Delta C}{\Delta x}\text{?}\)</span>
+</div>
+</div> <div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/image_totalchange_continuousanddiscrete_2.svg" role="img" class="contained"></div> <div class="para" id="insight_continuousderivativesanddiscretechanges-9">From the graphs above, it looks like the derivative <span class="process-math">\(C'\)</span> is very close to the average rate of change <span class="process-math">\(\dfrac{\Delta C}{\Delta x}\text{,}\)</span> and is a scaled version of the graph of the change <span class="process-math">\(\Delta C\text{.}\)</span> For that reason, the derivative <span class="process-math">\(C'\)</span> is often abbreviated <span class="process-math">\(C' = \dfrac{dC}{dx}\text{.}\)</span> To see why, note that <span class="process-math">\(\Delta\)</span> is Greek for letter “D,” so the notation <span class="process-math">\(\frac{dC}{dx}\)</span> is intended to help you remember that it’s very closely related to <span class="process-math">\(\frac{\Delta C}{\Delta x}\text{.}\)</span>
+</div></article></details></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="ch_totalschanges.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch_basicderivativerules.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="feedback-link" href="mailto:sflood@bridgew.edu?subject=TEXTBOOK%20FEEDBACK%20-%20Business%20Calculus" target="_blank">Feedback</a><a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

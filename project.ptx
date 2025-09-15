@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    This file provides the overall configuration for your PreTeXt
+    project. To edit the content of your document, open `source/main.ptx`
+    (default location).
+-->
+<project>
+  <targets>
+    <!-- To build this target, run `pretext build web` -->
+    <target name="web">
+      <format>html</format>
+      <source>source/main.ptx</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/web</output-dir>
+      <stringparam key="author.tools" value="yes"/>
+    </target>
+    <target name="runestone">
+      <format>html</format>
+      <source>source/main.ptx</source>
+      <publication>publication/publication-runestone.ptx</publication>
+      <output-dir>published/buscalcchange</output-dir>
+    </target>
+    <target name="print" pdf-method="xelatex">
+      <format>pdf</format>
+      <source>source/main.ptx</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/print</output-dir>
+    </target>
+    <target name="print-latex">
+      <format>latex</format>
+      <source>source/main.ptx</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/print-latex</output-dir>
+    </target>
+    <target name="print-latex-handout">
+      <format>latex</format>
+      <source>source/main.ptx</source>
+      <publication>publication/publication-no-solutions.ptx</publication>
+      <output-dir>output/print-latex-handout</output-dir>
+    </target>
+    <target name="subset">
+      <format>html</format>
+      <source>source/main.ptx</source>
+      <publication>publication/publication.ptx</publication>
+      <output-dir>output/subset</output-dir>
+      <stringparam key="debug.skip-knowls" value="yes"/>
+      <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+      <!-- VERY USEFUL: Change xmlid-root for SUBSET to change the section/chapter/etc. to include in your subset build -->
+      <!--  Use for IMAGE GENERATION in particular-->
+      <xmlid-root>sec_algebralaw</xmlid-root>
+      <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    </target>
+  </targets>
+  <executables>
+      <latex>latex</latex>
+      <pdflatex>pdflatex</pdflatex>
+      <xelatex>xelatex</xelatex>
+      <pdfsvg>C:\Users\sflood\Dropbox\pdf2svg\dist-32bits\pdf2svg.exe</pdfsvg>
+      <asy>asy</asy>
+      <sage>sage</sage>
+      <pdfpng>convert</pdfpng>
+      <pdfeps>pdftops</pdfeps>
+      <node>node</node>
+      <liblouis>file2brl</liblouis>
+    </executables>
+</project>

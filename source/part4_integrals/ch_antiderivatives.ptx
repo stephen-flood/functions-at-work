@@ -1,0 +1,1111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_antiderivatives" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Antiderivatives</title>
+
+<section xml:id="sec_undoingderivatives">
+  <title>Undoing Derivatives</title>
+  
+  <p>
+    In <xref first="ch_basicderivativerules" last="ch_chainrule"/>, we developed tools which let us turn a position funciton <m>f</m> into a slope function <m>f'</m> by taking the derivative.
+  </p>
+  <p>
+    But sometimes, we are  <em>given</em> the slope function, such as the "mystery function" examples in as in <xref ref="ch-maxmin"/>. 
+  </p>
+  <p>
+    In other words, sometimes <m>f</m> gives the slope of some <em>other</em> function. 
+    In this case, we want to know what the function was before taking the derivative. 
+  </p>
+
+  <definition xml:id="def-antiderivative">
+    <statement>
+      <p>
+        We say that <m>F(x)</m> is <term>an antiderivative</term> of <m>f(x)</m> if 
+        <me>
+          F'(x) = \ddx{F(x)} = f(x)
+        </me>
+      </p>
+      <p>
+        The prefix "ante" means "before." 
+        So if <m>F</m> is what you have <em>after</em> the derivative, <m>f</m> is what you have before (ante) the derivative. 
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    We will see several methods for finding antiderivaitves.  
+    The first and most foundational is we will call <em>guess, check, correct</em> (GCC). 
+  </p>  
+
+  <exploration xml:id="ex_antiderivative_gcc">
+    <title>Finding antiderivatives using GCC</title>
+    
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x)=x^5</m>.
+          Find an antiderivative for <m>f(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to find a function whose derivative is <m>x^5</m>.  
+          <dl>
+            <li>
+              <title>Guess 1</title>
+              <p>
+                <em>Guess:</em>
+                The derivative of any power function is a power function.  So our first guess might as well be something like  
+                <me>
+                  F=x^5
+                </me>. 
+              </p>
+              <p>
+                <em>Check:</em>
+                <me>
+                  F'(x) = \ddx{x^5} = 5x^4 \red{\ \neq\  x^5}
+                </me>
+                Taking the derivative reduces the power by one, so if we want to end up with <m>x^5</m>, we must start out with a <m>x^6</m> term.
+              </p>
+            </li>
+            <li>
+              <title>Guess 2:</title>
+              <p>
+                <em>Guess:</em>
+                Now let's try guessing <m>F(x)=x^6</m>
+              </p>
+              <p>
+                <em>Check:</em>
+                <me>
+                  F'(x) = \ddx{x^6} = 6x^5 \red{\ \neq\  x^5}
+                </me>
+                We now have the correct power, but the wrong coefficient.  
+                To fix our guess, we should start out with a coefficient that will <em>cancel out</em> the coefficient of <m>6</m>.
+              </p>
+            </li>
+            <li>
+              <title>Guess 3:</title>
+              <p>
+                <em>Guess:</em>
+                <m>F(x) = \frac{1}{6}x^6</m>
+              </p>
+              <p>
+                <em>Check:</em>
+                <md>
+                  <mrow>F'(x) \amp =\ddx{ \frac{1}{6}x^6 } </mrow>
+                  <mrow> \amp =\frac{1}{6} \ddx{x^6}</mrow>
+                  <mrow> \amp = \frac{1}{6} 6 x^5</mrow>
+                  <mrow> \amp = x^5 </mrow>
+                </md>
+                That is the function we wanted <em>after</em> the derivative.  Therefore <m>F(x) = \frac{1}{6}x^6</m> is the <em>ante</em> derivative. 
+              </p>
+            </li>
+          </dl>
+        </p>
+        <p>
+          Therefore <m>\frac{1}{6}x^{6}</m> is an antiderivative of <m>x^{5}</m>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = x^{11}</m>.  Find an antiderivative for <m>f(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          This is similar the last example, so your first guess might be the right one, but it is also OK to take a few guesses. 
+        </p>
+        <p>
+          A general strategy is first to get the power of the antiderivative, and then get the coefficient. 
+          <dl>
+            <li>
+              <title>Guess 1</title>
+              <p>
+                <em>Guess:</em>
+                <m>F(x) = x^{12}</m>
+              </p>
+              <p>
+                <em>Check:</em>
+                <me>
+                  F'(x) = \ddx{x^{12}} = 12x^{11} \red{\ \neq\ x^11}
+                </me>
+              </p>
+            </li>
+            <li>
+              <title>Guess 2</title>
+              <p>
+                <em>Guess:</em>
+                <m>F(x) = \frac{1}{12}x^{12}</m>
+              </p>
+              <p>
+                <em>Check:</em>
+                <me>
+                  F'(x) = \ddx{\frac{1}{12}x^{12}} = \frac{1}{12}12x^{11} = x^11
+                </me>
+              </p>
+            </li>
+          </dl>
+          Therefore <m>\frac{1}{12}x^{12}</m> is an antiderivative of <m>x^{11}</m>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x)=x^n</m> for some constant power <m>n\neq -1</m>.  
+          Find an antiderivative of <m>f(x)</m>. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We could do a multi-step guess-check-correct (GCC) strategy, or we could notice the patterin in the above examples:
+          <ul>
+            <li>
+              <p>
+                Increase the power by one
+              </p>
+            </li>
+            <li>
+              <p>
+                Divide by the new power
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          <em>Guess:</em> 
+          <m>
+            F(x) = \dfrac{ x^{n+1} }{ n+1 }
+          </m>
+          <em>Check:</em>
+          <md>
+            <mrow>F'(x) \amp = \ddxfrac{ \dfrac{ x^{n+1} }{ n+1 } }</mrow>
+            <mrow> \amp = \dfrac{1}{n+1} (n+1) \cdot x^n</mrow>
+            <mrow> \amp = x^n</mrow>
+          </md>
+        </p>
+        <p>
+          Therefore, <m>\displaystyle \frac{1}{n+1}x^{n+1}</m> is an antiderivative of <m>x^n</m>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = \dfrac{1}{x}</m>.  Find an antiderivative of <m>f(x)</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to have <m>\frac{1}{x}</m><em>after</em> taking a derivative.  
+        </p>
+        <p>
+          Look at the <xref text="title" ref="assemblage-derivativesummary"/>. 
+          Make a guess, check it, and correct as needed.
+        </p>
+        <p>
+          <em>Guess:</em>
+          <m>F(x) = \ln(x)</m>
+        </p>
+        <p>
+          <em>Check:</em>
+          <m>\ddx{\ln(x)} = \frac{1}{x}</m>
+        </p>
+        <p>
+          <alert>Important:</alert>
+           For technical reasons beyond the scope of this course, we actually need to place absolute values around the input to <m>\ln(x)</m>
+        </p>
+        <p>
+          Therefore <m>F= \ln(|x|)</m> is an antiderivative of <m>f=\frac{1}{x}</m>.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = e^x</m>.  Find an antiderivative of <m>f(x)</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to have <m>e^x</m><em>after</em> taking a derivative.  
+        </p>
+        <p>
+          Look at the <xref text="title" ref="assemblage-derivativesummary"/>. 
+          Make a guess, check it, and correct as needed.
+        </p>
+        <p>
+          <em>Guess:</em>
+          <m>F(x) = e^x</m>
+        </p>
+        <p>
+          <em>Check:</em>
+          <m>\ddx{ e^x } = e^x </m>
+        </p>
+        <p>
+          Therefore <m>F= e^x </m> is an antiderivative of <m>f=e^x </m>.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the antiderivative of <m>-2</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We proceed by Guess, Check, Correct.  
+          There is no "correct" order of guesses, but once you get enough practice you will usually be able to get the right answer on your first guess. 
+          <dl>
+            <li>
+              <title>Guess 1:</title>
+              <p>
+                <em>Guess:</em> <m>F(x) = -2</m>
+              </p>
+              <p>
+                <em>Check:</em> <m>F'(x) = \ddx{-2} = 0</m>
+              </p>
+              <p>
+                The derivative was zero because there was no <m>x</m> term at all. 
+              </p>
+            </li>
+            <li>
+              <title>Guess 2:</title>
+              <p>
+                <em>Guess:</em> <m>F(x) = -2x</m>
+              </p>
+              <p>
+                <em>Check:</em> <m>F'(x) = \ddx{-2x} = -2</m>
+              </p>
+              <p>
+                An antiderivative of <m>f(x)=-2</m> is <m>F(x)=-2x</m>
+              </p>
+            </li>
+          </dl>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    Why do we keep asking for <em>an</em> antiderivative, instead of asking for <em>the</em> antiderivative? 
+  </p>
+
+  <paragraphs>
+    <title>Every <m>f</m> has multiple antiderivatives</title>
+    <p>
+      Consider the function <m>f(x)=x^2</m>. 
+      There are <em>many</em> functions whose derivatives are <m>x^2</m>:
+      <md>
+        <mrow>\ddxfrac{\frac{x^3}{3} } \amp = \frac{1}{3}3\cdot x^2 \amp =  x^2 </mrow>
+        <mrow>\ddxfrac{\frac{x^3}{3} + 5 } \amp = \frac{1}{3}3\cdot x^2 + 0 \amp =  x^2 </mrow>
+        <mrow>\ddxfrac{\frac{x^3}{3} - 2 } \amp = \frac{1}{3}3\cdot x^2 + 0 \amp =  x^2 </mrow>
+      </md>
+    </p>
+    <p>
+      Following this pattern, notice that if <m>F(x)</m> is <em>one</em> antiderivative of <em>f(x)</em>, 
+      then <m> F(x)+C </m> is <em>also</em> an antiderivative. 
+    </p>
+  </paragraphs>
+
+  <p>
+    We have seen that for any <m>C</m>, <m>\frac{1}{3}x^3+C</m> is an antiderivative of <m>x^2</m>.
+    Are there any <em>other</em> antiderivatives of <m>x^2</m>?  Fortunately, there are not. 
+  </p>
+
+  <theorem xml:id="thm-generalantiderivative">
+    <statement>
+      <p>
+        If you find <em>one</em> antiderivative <m>F(x)</m> to <m>f(x)</m>, 
+        then all <em>other</em> antiderivatives have the form 
+        <me>
+          F(x) + C
+        </me>
+        for some constant number <m>C</m>.
+      </p>
+      <p>
+        We call <m>F(x)+C</m> the <term>general antiderivative</term> of <m>f</m>, abbreviated <term>the</term> antiderivative of <m>f</m>.
+      </p>
+    </statement>
+  </theorem>
+  
+  <p>
+    This gives us two kinds of antiderivative questions, based on <xref ref="thm-generalantiderivative"/>.
+    <dl>
+      <li>
+        <title>Find <em>an</em> antiderivative </title>
+        <p>
+          Pick a specific number for the <m>+C</m>
+        </p>
+      </li>
+      <li>
+        <title>Find <em>the</em> antiderivative </title>
+        <p>
+          Use a <em>letter</em> for the <m>+C</m> to emphasize that <em>any</em> number works.  
+        </p>
+      </li>
+    </dl>
+  </p>
+
+  <definition xml:id="def-generalantiderivative_x2">
+    <statement>
+      <p>
+        <ul>
+          <li>
+            <p>
+              If <m>n\neq -1</m>, the general antiderivative of 
+              <m>f(x)=x^n</m> is <m> F(x) = \dfrac{1}{n+1}x^{n+1} + C </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              The general antiderivative of 
+              <m>f(x)=\frac{1}{x}</m> is <m> F(x) = \ln(|x|) + C </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              The general antiderivative of 
+              <m>f(x)=e^x</m> is <m> F(x) = e^x + C </m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that <m>a</m> is a constant number. 
+              The general antiderivative of <m>f(x)=a</m> is <m>F(x) = ax + C</m>.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    You can find many antiderivatives using <em>Guess, Check, Correct</em>, and working very carefully.  
+  </p>
+
+  <exploration xml:id="ex_antiderivative1">
+    <task>
+      <statement>
+        <p>
+          Find the antiderivative of <m>f(x) = 14x^{-3}</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We know that the antiderivative of <m>x^{-3}</m> is <m>\frac{1}{-3+1}x^{-3+1} = \frac{1}{-2}x^{-2}</m>.
+          This gives us the following guess for the antiderivative of <m>14x^{-3}</m>:
+        </p>
+        <p>
+          <em>Guess:</em> 
+          <m>F = 14\frac{1}{-2}x^{-2} = -7x^{-2}</m>.
+        </p>
+        <p>
+          <em>Check:</em> <m>\ddx{ -7x^{-2} }= -7 \ddx{x^{-2}} = -7(-2)x^{-2-1} = 15x^{-3}</m>
+        </p>
+        <p>
+          We have seen that <m>-7x^{-2}</m> is <em>an</em> antiderivative of <m>14x^{-3}</m>.  <em>The</em> antiderivative is 
+          <me>
+            F(x) = -7x^{-2} + C
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the antiderivative of <m>f(x) = 7\frac{1}{x}</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          To find the antiderivative of <m>7\cdot\frac{1}{x}</m>, there are three steps
+          <ol>
+            <li>
+              <p>
+                Find an antiderivative of <m>\frac{1}{x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                Multiply the antiderivative of <m>\frac{1}{x}</m> by 7
+              </p>
+            </li>
+            <li>
+              <p>
+                Add <m>+C</m> to get <em>the</em> antiderivative.
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          This means that if <m>f(x) = 7\frac{1}{x} </m>, the antiderivative is 
+          <me>
+            F(x) = 7\cdot \Big( \ln(|x|) \Big) + C
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the antiderivative of 
+          <me>
+            f(x) = 6x^2 + 7e^x - 2
+          </me>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          This function is the sum of three terms. 
+          Fortunately, the derivative of the sum is the sum of the derivatives.
+          That means that we can separately find the antiderivative of each term. 
+        </p>
+        <p>
+          From before, 
+          <ul>
+            <li>
+              <p>
+                An antiderivative of <m>6x^2</m> is 
+                <me>
+                  6\frac{1}{2+1}x^{2+1} = 6\cdot \frac{1}{3} x^3
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                An antiderivative of <m>7e^x</m> is 
+                <me>
+                  7e^x
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                An antiderivative of <m>-2</m> is 
+                <me>
+                  -2x
+                </me>
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Putting these together, the antiderivative of 
+          <me>
+            f(x) = 6x^2 + 7e^x - 2 
+          </me>
+          is equal to 
+          <md>
+            <mrow>F(x) \amp = 6\cdot\frac{1}{3} x^3 + 7 e^x -2x + C</mrow>
+            <mrow> \amp = 2x^3 + 7x -2x + C</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    Once you get some practice, you should get a good intuition for how to take antiderivatives "term by term" when dealing with sums and constant coefficients. 
+    We can also make this precise, as in the following theorem. 
+  </p>
+  
+  <theorem xml:id="thm-antiderivativeofcombos">
+    <statement>
+      <p>
+        <ul>
+          <li>
+            <p>
+              Suppose that one antiderivative of <m>f(x)</m> is <m>F(x)</m> and that <m>c</m> is a constant number. 
+              Then one antiderivative of <m>c\cdot f(x)</m> is given by  <m>c\cdot F(x)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Suppose that one antiderivative of <m>f(x)</m> is <m>F(x)</m> and that one antiderivaitve of <m>g(x)</m> is <m>G(x)</m>. 
+              Then one antiderivative of <m>f(x)+g(x)</m> is given by <m>F(x) + G(x)</m>.
+            </p>
+          </li>
+        </ul>
+        
+      </p>
+    </statement>
+  </theorem>
+  
+</section>
+
+
+<section xml:id="sec-indefiniteintegrals">
+  <title>Indefinite Integrals</title>
+  
+  <p>
+    In the previous section, we developed a very intuitive approach to finding antiderivatives. 
+    In many situations, this will be the most efficient techinque to use.   
+  </p>
+  <p>
+    In this section, we will introduce a new notation for antiderivatives.  
+    This notation will make it easier to precisely state our anti-derivative formulas. 
+    Eventually, this notation will also connect to one of the most important applications of antiderivatives.
+  </p>
+
+  <definition xml:id="def-indefiniteintegralnotation">
+    <title>Indefinite Integral Notation</title>
+    <statement>
+      <p>
+        If the general antiderivative of <m>f(x)</m> is <m>F(x) + C</m>, then we write 
+        <me>
+          \intdx{ f(x) } = F(x) + C
+        </me>
+        and say that the <term>indefinite integral</term> of <m>f(x)</m> is <m>F(x)+C</m>
+      </p>
+      <p>
+        For now, treat the expression <m>\quad \red{\int}\, \blue{f(x)}\,\,\green{dx}\quad</m> as an abbreviation for the sentence
+        <q>take the antiderivative (<m>\red{\int}</m>) of <m>\blue{f(x)}</m>  with respect to the variable <m>x</m> (<m>\green{dx}</m>)</q>.
+      </p>
+    </statement>
+  </definition>
+
+  <assemblage xml:id="assemblage-indefiniteintegralfmlas">
+    <title>Indefinite Integral Formula List</title>
+    <p>
+      <ul>
+        <li> 
+          <p>
+            If <m>m\neq -1</m>, <m> \intdx{ x^m } = \frac{1}{m+1}x^{m+1} + C </m>
+          </p>
+        </li>
+        <li><m> \intdx{ \frac{1}{x} } = \ln(|x|) + C </m></li>
+        <li><m> \intdx{ e^x } = e^x + C </m></li>
+        <li>
+          <p>
+            If <m>a</m> is a constant, <m>\intdx{a} = ax + C</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>a</m> is a constant, then <m>\intdx{a\cdot f(x)} = a \cdot \intdx{f(x)}</m>
+          </p>
+        </li>
+        <li><m>\intdx{f(x) + g(x)} = \intdx{f(x)} + \intdx{g(x)}</m></li>
+      </ul>
+    </p>
+  </assemblage>
+
+  <exploration xml:id="ex_indefiniteintegral1">
+    <task>
+      <statement>
+        <p>
+          Compute <m>\intdx{x^{55}} </m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are asked to take the antiderivative of <m>x^{55}</m>.  We could do that using our methods from before (including guess/check/correct) to say that the antiderivative is <m>F(x) = \frac{1}{56}x^{56}</m>
+        </p>
+        <p>
+          Because <m>55\neq -1</m>, we can also use the indefinite integral formula <m>\intdx{x^m} = \frac{1}{m+1}x^{m+1} + C</m>
+          <md>
+            <mrow>\intdx{ x^{55} } \amp = \dfrac{1}{55+1} x^{55+1} </mrow>
+            <mrow> \amp = \dfrac{1}{56} x^{56}</mrow>
+          </md>
+          In this example, the notation is the only difference between guess/check/correct and <m>\intdx{\dots}</m> notation.  
+          In more complex examples, <m>\intdx{\dots}</m> notation will be much more helpful.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\intdx{\frac{1}{\sqrt[3]{x}}} </m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          It is <em>extremely</em> hard to guess anything close to the antideriative of the function <m>f(x) = \frac{1}{\sqrt[3]{x}}</m>.  
+          We also don't have any antiderivaitve formulas that relate to this situation.  
+          Fortunately, we can rewrite the function as <m>f(x) = x^{-1/3} </m>. 
+          It is now possible, but still difficult, to guess the right antiderivative.  
+        </p>
+        <p>
+          Using indefinite integral notation, we can proceed more directly
+          <md>
+            <mrow> \intdx{\frac{1}{\sqrt[3]{x}}} = \amp \intdx{ x^{-1/3}} </mrow>
+          </md>
+          Because <m>\frac{-1}{3}\neq -1</m>, we can use the indefinite integral formula <m>\intdx{x^m} = \frac{1}{m+1}x^{m+1} + C</m>
+          <md>
+            <mrow> \phantom{\intdx{ \frac{1}{ \sqrt[3]{x} }  }} = \amp \dfrac{1}{-1/3+1} x^{-1/3+1} </mrow>
+            <mrow>= \amp \dfrac{1}{2/3} x^{2/3} + C </mrow>
+            <mrow>= \amp \dfrac{1}{0.66\dots} x^{0.66\dots}</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\intdx{\frac{5}{x}} </m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Again, we can either find the antiderivative of <m>f(x) = \frac{5}{x} = 5\frac{1}{x}</m> as before using our guess/check/correct approach, or we can use our indefinite integral formulas. 
+          <md>
+            <mrow> \intdx{5\frac{1}{x} } = \amp 5\intdx{\frac{1}{x}}</mrow>
+            <mrow> = \amp 5\cdot \ln(|x|) + C</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    We now have two different ways of describing the same concepts and techniques: antiderivatives and indefinite integrals.
+    You can answer these questions using either approach.
+  </p>
+
+  <exploration xml:id="ex_indefiniteintegral2">
+    <introduction>
+      <p>
+        Let  <m>f(x) = 2x^{-1} - 6\sqrt{x} + 10</m>
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\intdx{ 2x^{-1} - 6\sqrt{x} + 10 }</m> using indefinite integral rules. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <md>
+            <mrow>\intdx{ 2x^{-1} - 6\sqrt{x} + 10 } = \amp \intdx{ 2x^{-1} } - \intdx{6\sqrt{x}} + \intdx{10} \amp </mrow>
+            <mrow>= \amp 2\intdx{x^{-1}} - 6\intdx{\sqrt{x}} + \intdx{10}  </mrow>
+          </md>
+          For the first integral, because the exponent is <m>-1</m>, we <em>cannot</em> use the power rule.  Instead, we must rewrite it as a fraction <m>x^{-1}=\frac{1}{x}</m>. 
+          For the second integral, we do not have a rule for square roots, so we <em>must</em> rewrite it as a power <m>\sqrt{x} = x^{1/2}</m>
+          <md>
+            <mrow>= \amp 2\intdx{\dfrac{1}{x}} - 6\intdx{x^{1/2}} + \intdx{10} </mrow>
+            <mrow>= \amp 2\ln(|x|) - 6\cdot \frac{1}{1/2+1} x^{1/2+1} + 10x + C</mrow>
+            <mrow>= \amp 2\ln(|x|) - 6\cdot \frac{1}{3/2}x^{3/2} + 10x + C</mrow>
+            <mrow>= \amp 2\ln(|x|) - 4 x^{3/2} + 10x + C</mrow>
+          </md>
+          
+          
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the antiderivative of <m>f(x) = 2x^{-1} - 6\sqrt{x} + 10</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We can also find the antiderivative of <m>f(x) = 2x^{-1} - 6\sqrt{x} + 10 = 2\frac{1}{x} - 6x^{1/2} + 10</m> term-by-term. 
+          Then the antiderivative is 
+          <md>
+            <mrow>F(x) \amp = 2\cdot\ln(|x|) - 6\frac{1}{1/2+1}x^{1/2+1} + 10x + C </mrow>
+            <mrow>     \amp = 2\cdot\ln(|x|) - 6\frac{1}{3/2}x^{3/2} + 10x + C </mrow>
+            <mrow>     \amp = 2\cdot\ln(|x|) - 4x^{3/2} + 10x + C </mrow>
+          </md>
+          Notice that this is <em>exactly the same</em> answer, and even the exact same computations as in computing <m>\intdx{ 2x^{-1} - 6\sqrt{x} + 10 }</m>.  
+          The only difference between antiderivatives and indefinite integrals is the notation. 
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <exploration xml:id="ex_indefiniteintegral3">
+    <statement>
+      <p>
+        Compute <m>\intdx{ 6x^2 + 3e^x + 1} </m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <md>
+          <mrow>\intdx{ 6x^2 + 3e^x + 1} = \amp \intdx{6x^2} + \intdx{3e^x} + \intdx{1}  </mrow>
+          <mrow> \amp = 6\intdx{x^2} + 3\intdx{e^x} + \intdx{1}</mrow>
+          <mrow> \amp = 6\frac{1}{2+1}x^{2+1} + 3e^x + x + C</mrow>
+          <mrow> \amp = 6\frac{1}{3} x^3 + 3e^x + x + C</mrow>
+          <mrow> \amp = 2 x^3 + 3e^x + x + C</mrow>
+        </md>
+      </p>
+    </solution>
+  </exploration>
+</section>
+
+
+<section xml:id="sec-applyingantiderivatives">
+  <title>Applying Antiderivatives</title>
+  
+  <p>
+    Recall from <xref ref="sec-secondderivative"/>, 
+    <ul>
+			<li><p>If <m>s(t) = </m> position </p>
+			</li>
+			<li><p>then <m>s'(t) = </m> velocity </p>
+			</li>
+			<li><p>and <m>s''(t) = </m> acceleration.</p>
+			</li>
+		</ul>
+  </p>
+
+  <insight>
+    <title>Measuring position is hard, measuring acceleration is easier</title>
+    <p>    
+      It is actually very hard to measure position directly.  Although GPS is widely used, the system itself is incredibly complex.  From <url href="https://en.wikipedia.org/wiki/Global_Positioning_System">Wikipedia</url>, 
+    </p>
+      <blockquote>
+        <p>
+          GPS ... is a satellite-based radionavigation system owned by the United States government and operated by the United States Space Force. It ... provides geolocation ... anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites.
+        </p>
+      </blockquote>
+      <blockquote>
+        <p>
+          Special and general relativity predicted that the clocks on GPS satellites, as observed by those on Earth, run 38 microseconds faster per day than those on the Earth. The design of GPS corrects for this difference; because without doing so, GPS calculated positions would accumulate errors of up to 10 kilometers per day (6 mi/d).      
+        </p>
+      </blockquote>
+    <p>
+      On the other hand, it is much simpler to measure acceleration directly, 
+      and most modern electronics such as cell phones have built in self-contained accelerometers.  
+      By working backwards from acceleration <m>s''</m> to velocity <m>s'</m> and then to position <m>s</m>, it is possible to use a sensor that measures <m>s''</m> to model your position <m>s</m>. 
+    </p> 
+    <p>
+      For example, <url href="https://en.wikipedia.org/wiki/Accelerometer#Consumer_electronics">Wikipedia</url> observes that 
+      <q>
+      Some pedometers use an accelerometer to more accurately measure the number of steps taken and distance traveled than a mechanical sensor can provide.
+      </q>
+    </p>
+    
+  </insight>
+
+  <exploration xml:id="ex_antideriv_specific1">
+    <introduction>
+      <p>
+        Suppose that <m>f'(x) = x^2 + x + 1</m> gives your velocity in miles per hour, as a function of the time <m>x</m> in hours. 
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find the antiderivative <m>f</m> of <m>f'</m>.  What does this tell you about your position as a function of time?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <em>The</em> antiderivative of <m>f'(x) = x^2 + x + 1</m> is
+          <me>
+            f(x) = \frac{1}{3}x^3 + \frac{1}{2} x^2 + x + C
+          </me>
+          Your position function is <em>one</em> of the antiderivatives of your velocity. 
+          Notice that from your velocity only, we do <em>not</em> know what the constant <m>C</m> is.  This prevents navigation based on velocity only, since knowing your position "plus or minus several thousand miles" is not very useful.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Suppose you also know that <m>f(1)=5</m>.  
+          Find your exact position as a function of <m>x</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Your position function is <em>one</em> of the antiderivatives of your velocity. 
+          We have already found that <em>the</em> (general) antiderivative <m>f</m> of <m>f'</m> is 
+          <me>
+            f(x) = \frac{x^3}{3} + \frac{x^2}{2} + x + C
+          </me>
+          We are now given an additional piece of information: that <m>f(1) = 5</m>, which says that your position at time <m>x=1</m> hours was 5 miles.
+          Plugging <m>1</m> into our equation for <m>f(x)</m> and setting this equal to <m>5</m> gives
+          <md>
+            <mrow>f(1) = 5 = \amp \frac{1^3}{3} + \frac{1^2}{2} + 1 + C </mrow>
+            <mrow>5 = \amp 1.833\dots + C</mrow>
+            <mrow>3.166\dots = \amp C </mrow>
+          </md>
+          Putting the above information together, we can conclude that 
+          <me>
+            f(x) = \frac{x^3}{3} + \frac{x^2}{2} + x + 3.166\dots
+          </me>
+          This gives your <em>exact</em> position at every time. 
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    To work from acceleration to position, we need to take the antiderivative twice. 
+    If you have <em>two</em> additional pieces of information, you can use acceleration <m>s''</m> to find an exact equation for position <m>s</m>.
+  </p>
+
+  <exploration xml:id="ex_antideriv_specific2">
+    <introduction>
+      <p>
+        Suppose that <m>f''(x) = 6x + \frac{1}{x^2}</m> gives your acceleration in miles per hour per hour, as a function of the time <m>x</m> in hours. 
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find an equation for <m>f</m> using only the equation for <m>f''</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          You are given that  <m>f''(x) = 6x + \frac{1}{x^2}</m>. 
+          <md>
+            <mrow>f''(x) \amp = 6x + \frac{1}{x^2}</mrow>
+            <mrow>       \amp = 6x^1 + x^{-2} </mrow>
+          </md>
+          The finding the  antiderivative of <m>f''</m> gives
+          <md>
+            <mrow>f'(x) \amp = 6\cdot(\frac{1}{1+1}x^{1+1}) + (\frac{1}{-2+1}x^{-2+1}) + C</mrow>
+            <mrow> \amp = 6\cdot(\frac{1}{2} x^2) + \frac{1}{-1}x^{-1} + C</mrow>
+            <mrow> \amp = 3 x^2  - x^{-1} + C </mrow>
+            <mrow> \amp = 3 x^2  - \frac{1}{x} + C </mrow>
+          </md>
+          We must find the antiderivative again.  
+        </p>
+        <p>
+          First, note that the second term has exponent <m>-1</m>, so we cannot use the power rule, and must use <m>\intdx{\frac{1}{x}}=\ln(|x|)+C</m>. 
+          Second, note that although it is unknown, <m>C</m> is a constant. 
+          Third, we must use a new variable for the unknown constant, since we have already used <m>C</m>. 
+        </p>
+        <p>
+          Finding the antiderivaitve again <m>f'</m> gives
+          <md>
+            <mrow>f(x) \amp = 3(\frac{1}{2+1}x^{2+1}) - \ln(|x|) + Cx + D</mrow>
+            <mrow>     \amp = x^3 - \ln(|x|) + Cx + D</mrow>
+          </md>
+          Without knowing more, all we can say about the position function is that it has the form 
+          <me>
+            f(x) = x^3 - \ln(|x|) + Cx + D
+          </me>
+          for some unknown constants <m>C,D</m>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Suppose that you also know that your velocity at time 1 is 4 miles per hour (that <m>f'(1)=4</m>) and that your position at time 1 is 6 miles (that <m>f(1)=6</m>).
+          Find an exact equation for your position function <m>f</m>. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are given that  <m>f''(x) = 6x + \frac{1}{x^2}</m>. 
+        </p>
+        <p>
+          The finding the  antiderivative of <m>f''</m> gives
+          <md>
+            <mrow> \amp = 6\cdot(\frac{1}{2} x^2) + \frac{1}{-1}x^{-1} + C</mrow>
+            <mrow> \amp = 3 x^2  - \frac{1}{x} + C </mrow>
+          </md>
+          We are also given that <m>f'(1)=4</m>.  Plugging <m>1</m> into the above equation gives
+          <md>
+            <mrow>f'(1)= 4 = \amp 3(1)^2 - \frac{1}{1} + C</mrow>
+            <mrow>4 = \amp 3 - 1 + C</mrow>
+            <mrow>2 = \amp C</mrow>
+          </md>
+          Plugging this into our equation for <m>f'</m> gives 
+          <md>
+            <mrow> f'(x) \amp = 3 x^2  - \frac{1}{x} + 2 </mrow>
+          </md>
+        </p>
+        <p>
+          Finding the antiderivative again gives 
+          <md>
+            <mrow>f(x) \amp = 3(\frac{1}{2+1}x^{2+1}) - \ln(|x|) + 2x + D</mrow>
+            <mrow>     \amp = x^3 - \ln(|x|) + 2x + D</mrow>
+          </md>
+          We are also given that <m>f(1) = 6</m>.  Plugging <m>1</m> into the above equation gives 
+          <md>
+            <mrow>f(1)=6= \amp  (1)^3 - \ln(1) + 2(1) + D </mrow>
+            <mrow>6 = \amp 1-0+2+D </mrow>
+            <mrow>3 = \amp D</mrow>
+          </md>
+          Plugging this into our equation for <m>f</m> gives
+          <md>
+            <mrow>  f(x)  \amp = x^3 - \ln(|x|) + 2x + 3</mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <paragraphs>
+    <title>Total Cost is an antiderivative of Marginal Cost</title>
+    
+    <p>
+      Recall that if <m>C(x)</m> is a total (cumulative) cost function, then the marginal cost function <m>C'(x)</m> is a good approximation of the individual cost of the <em>next item only</em>.
+    </p>
+    <p>
+      In <xref ref="sec-marginalcost"/>, we saw how to use the total function <m>C</m> to find the change function <m>C'</m>.
+    </p>
+    <p>
+      If we are instead given the change function <m>C'</m>, we can use antiderivatives to recover the original total cost <m>C</m>.
+    </p>
+  </paragraphs>
+
+  <exploration xml:id="ex_antideriv_cost">
+    <introduction>
+      <p>
+        Suppose that a product has <em>marginal cost</em> function 
+        <me>
+          C'(x) = 36x + \frac{42}{x}
+        </me>
+        and the <em>total cost</em> of making 1 item is $200.
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find the total cost function <m>C(x)</m>. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We are given that <m>C'(x) = 36x + \frac{42}{x} </m>
+        </p>
+        <p>
+          Finding the (general) antiderivative gives total cost function 
+          <md>
+            <mrow>C(x) = \amp 36\cdot \frac{1}{2}x^2 + 42\cdot \ln(x) + C</mrow>
+            <mrow>= \amp 18 x^2 + 42\ln(|x|) + C</mrow>
+          </md>
+          We are also told that 1 item costs $200, which says <m>C(1) = 200</m>.  Plugging 1 into the equation above gives 
+          <md>
+            <mrow>C(1) = 200 = \amp 18(1)^2 + 42\ln(|1|) + C </mrow>
+            <mrow>200 = \amp 18 + 0 + C </mrow>
+            <mrow>182 = \amp C </mrow>
+          </md>
+          Plugging this into the total cost function gives us that the total cost of <m>x</m> items is
+          <me>
+            C(x) = 18x^2 + 42\cdot \ln(|x|) + 182
+          </me>
+          
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the total cost of manufacturing 100 items.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We have already found that the total cost function is <m>= 18x^2 + 42\cdot \ln(|x|) + 182</m>.
+        </p>
+        <p>
+          The cost of manufacturing items 1 to 100 is given by 
+          <me>
+            C(100) = 18 (100)^2 + 42\cdot \ln(|100|) + 182 = 180,375.41
+          </me>
+          The total cost is $18,0375.41
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <insight xml:id="insight_understandingintnotatino">
+    <title>Understanding <m>\int</m> notation (Part I)</title>
+
+    <p>
+      To understand the meaning of <m>\int</m> notation, let's think of the <em>meaning</em> of cumulative and marginal cost. 
+    </p>
+
+    <p>
+      We have already seen that if 
+      <ul>
+        <li>
+          <p>
+            marginal cost = <m>C'(x) \approx</m> item cost and 
+          </p>
+        </li>
+        <li>
+          <p>
+            total cost = <m>C(x)</m>, then 
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\intdx{C'(x)} = C(x) + a</m> for some constant <m>a</m>.
+          </p>
+          <p>
+            <alert>Note:</alert> we have switched notation here to avoid confusion. In this case, since <m>C(x)</m> refers to a function, we use a lower case <m>a</m> to denote our unknown constant. 
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Suppose you want to find the cost of items 10 through 100 only.  There are two ways to find this 
+      <ol>
+        <li>
+          <p>
+            By <em>adding up</em> up the <em>item costs</em> of items 10 to 100.
+          </p>
+          <p>
+            Because <m>C'</m> approximates the cost of the <em>next</em> item, this is approximated by computing  
+            <me>C'(9)+C'(10)+C'(11) + \dots + C'(99) </me>
+          </p>
+        </li>
+        <li>
+          <p>
+            By <em>subtracting</em> finding the <em>total cost</em> of items 1-9 from the <em>total cost</em> of items 1-100.
+            <me>
+              C(100) - C(9)
+            </me>
+          </p>
+        </li>
+      </ol>
+      Condensing this notation, we get
+
+      <me>
+      \stackrel{ \scriptstyle \text{to 99} }{ \stackrel{\textstyle\text{Sum}}{ \scriptstyle \text{from 9} }  } C'(x)
+      \approx
+      C(100) - C(9)
+      </me>
+      
+      The art of approximating well with calculus is the subject of several courses (including <em>analysis</em> and <em>numerical analysis</em>). 
+    </p>
+    <p>
+      For our purposes here, it is enough to say that 99 and 100 are "approximately equal," as are 9 and 10, so we can really say 
+      <me>
+      \stackrel{ \scriptstyle\text{to 100} }{  \stackrel{\textstyle\text{Sum}}{ \scriptstyle\text{from 10} }  } C'(x)
+      \approx
+      C(100) - C(10)
+      </me>
+    </p>
+    <p>
+      If you further simplify the word "Sum" to just the first letter <m>S</m>, you get 
+      <me>
+        \stackrel{ \scriptstyle\text{to 100} }{  \stackrel{\textstyle\text{S}}{ \scriptstyle\text{from 10} }  } C'(x)
+        \approx
+        C(100) - C(10)
+      </me>
+      which looks remarkably similar to 
+      <me>
+        \intdx{_{10}^{100} \, C'(x)} = C(100) - C(10)
+      </me>
+    </p>
+    <p>
+      This similarity is <em>not</em> accidental.  
+      In fact, this is the entire reason we use the symbol <m>\int</m> for indefinite integrals and antiderivatives.  
+    </p>
+
+  </insight>
+
+</section>
+
+
+
+
+</chapter>

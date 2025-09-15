@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Chain Rule</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="og:image" content="http://webwork.bridgew.edu/oer/functions_at_work/external/logo_gpt4.png">
+<meta property="book:title" content="Functions at Work">
+<meta property="book:author" content="Stephen Flood">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link href="_static/pretext/css/pretext.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/shell_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/banner_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/toc_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/style_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
+<style>
+#to_the_student-5-2-1 { counter-set: to_the_student-5-2-1 0; }
+#to_the_student-5-2-1 > li::marker { content: ""counter(to_the_student-5-2-1,decimal)"."; }
+#to_the_student-5-2-1 > li { counter-increment: to_the_student-5-2-1; }
+#to_the_student-7-4-1 { counter-set: to_the_student-7-4-1 0; }
+#to_the_student-7-4-1 > li::marker { content: ""counter(to_the_student-7-4-1,decimal)"."; }
+#to_the_student-7-4-1 > li { counter-increment: to_the_student-7-4-1; }
+#sec-function-concepts-13-2 { counter-set: sec-function-concepts-13-2 0; }
+#sec-function-concepts-13-2 > li::marker { content: ""counter(sec-function-concepts-13-2,decimal)"."; }
+#sec-function-concepts-13-2 > li { counter-increment: sec-function-concepts-13-2; }
+#sec-changeinxy-4-1 { counter-set: sec-changeinxy-4-1 0; }
+#sec-changeinxy-4-1 > li::marker { content: ""counter(sec-changeinxy-4-1,decimal)"."; }
+#sec-changeinxy-4-1 > li { counter-increment: sec-changeinxy-4-1; }
+#sec-algebra-linear-equations-8-3 { counter-set: sec-algebra-linear-equations-8-3 0; }
+#sec-algebra-linear-equations-8-3 > li::marker { content: ""counter(sec-algebra-linear-equations-8-3,decimal)"."; }
+#sec-algebra-linear-equations-8-3 > li { counter-increment: sec-algebra-linear-equations-8-3; }
+#sec-algebra-linear-demandprice-2-1 { counter-set: sec-algebra-linear-demandprice-2-1 0; }
+#sec-algebra-linear-demandprice-2-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-2-1,decimal)"."; }
+#sec-algebra-linear-demandprice-2-1 > li { counter-increment: sec-algebra-linear-demandprice-2-1; }
+#sec-algebra-linear-demandprice-5-1 { counter-set: sec-algebra-linear-demandprice-5-1 0; }
+#sec-algebra-linear-demandprice-5-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-5-1,decimal)"."; }
+#sec-algebra-linear-demandprice-5-1 > li { counter-increment: sec-algebra-linear-demandprice-5-1; }
+#think-economically-with-units-7-1 { counter-set: think-economically-with-units-7-1 0; }
+#think-economically-with-units-7-1 > li::marker { content: ""counter(think-economically-with-units-7-1,decimal)"."; }
+#think-economically-with-units-7-1 > li { counter-increment: think-economically-with-units-7-1; }
+#sec_quadratic_functions-3-2-1 { counter-set: sec_quadratic_functions-3-2-1 0; }
+#sec_quadratic_functions-3-2-1 > li::marker { content: ""counter(sec_quadratic_functions-3-2-1,decimal)"."; }
+#sec_quadratic_functions-3-2-1 > li { counter-increment: sec_quadratic_functions-3-2-1; }
+#assemblage-continuous-inequalities-4-1 { counter-set: assemblage-continuous-inequalities-4-1 0; }
+#assemblage-continuous-inequalities-4-1 > li::marker { content: ""counter(assemblage-continuous-inequalities-4-1,decimal)"."; }
+#assemblage-continuous-inequalities-4-1 > li { counter-increment: assemblage-continuous-inequalities-4-1; }
+#sect_whatdoesrevenueteach-3-1 { counter-set: sect_whatdoesrevenueteach-3-1 0; }
+#sect_whatdoesrevenueteach-3-1 > li::marker { content: ""counter(sect_whatdoesrevenueteach-3-1,decimal)"."; }
+#sect_whatdoesrevenueteach-3-1 > li { counter-increment: sect_whatdoesrevenueteach-3-1; }
+#assemblage-rational-inequalities-4-1 { counter-set: assemblage-rational-inequalities-4-1 0; }
+#assemblage-rational-inequalities-4-1 > li::marker { content: ""counter(assemblage-rational-inequalities-4-1,decimal)"."; }
+#assemblage-rational-inequalities-4-1 > li { counter-increment: assemblage-rational-inequalities-4-1; }
+#example_interactivelimit_intuitive-3-1-1-2 { counter-set: example_interactivelimit_intuitive-3-1-1-2 0; }
+#example_interactivelimit_intuitive-3-1-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-1-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-1-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-1-1-2; }
+#example_interactivelimit_intuitive-3-2-1-2 { counter-set: example_interactivelimit_intuitive-3-2-1-2 0; }
+#example_interactivelimit_intuitive-3-2-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-2-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-2-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-2-1-2; }
+#sec-ComputingLimitsNumerically-3-3 { counter-set: sec-ComputingLimitsNumerically-3-3 0; }
+#sec-ComputingLimitsNumerically-3-3 > li::marker { content: ""counter(sec-ComputingLimitsNumerically-3-3,decimal)"."; }
+#sec-ComputingLimitsNumerically-3-3 > li { counter-increment: sec-ComputingLimitsNumerically-3-3; }
+#sec_slope-4-1-1-2-3 { counter-set: sec_slope-4-1-1-2-3 0; }
+#sec_slope-4-1-1-2-3 > li::marker { content: ""counter(sec_slope-4-1-1-2-3,decimal)"."; }
+#sec_slope-4-1-1-2-3 > li { counter-increment: sec_slope-4-1-1-2-3; }
+#assemblage-connectingslopeandtangent-2-1 { counter-set: assemblage-connectingslopeandtangent-2-1 0; }
+#assemblage-connectingslopeandtangent-2-1 > li::marker { content: ""counter(assemblage-connectingslopeandtangent-2-1,decimal)"."; }
+#assemblage-connectingslopeandtangent-2-1 > li { counter-increment: assemblage-connectingslopeandtangent-2-1; }
+#assemblage-secantlines-2-1-4-1-6 { counter-set: assemblage-secantlines-2-1-4-1-6 0; }
+#assemblage-secantlines-2-1-4-1-6 > li::marker { content: ""counter(assemblage-secantlines-2-1-4-1-6,decimal)"."; }
+#assemblage-secantlines-2-1-4-1-6 > li { counter-increment: assemblage-secantlines-2-1-4-1-6; }
+#sec_slopealgebraically-5-2 { counter-set: sec_slopealgebraically-5-2 0; }
+#sec_slopealgebraically-5-2 > li::marker { content: ""counter(sec_slopealgebraically-5-2,decimal)"."; }
+#sec_slopealgebraically-5-2 > li { counter-increment: sec_slopealgebraically-5-2; }
+#sec_basicrules1-35-2-1 { counter-set: sec_basicrules1-35-2-1 0; }
+#sec_basicrules1-35-2-1 > li::marker { content: ""counter(sec_basicrules1-35-2-1,decimal)"."; }
+#sec_basicrules1-35-2-1 > li { counter-increment: sec_basicrules1-35-2-1; }
+#sec_generalizedpowerrule-14-1 { counter-set: sec_generalizedpowerrule-14-1 0; }
+#sec_generalizedpowerrule-14-1 > li::marker { content: ""counter(sec_generalizedpowerrule-14-1,decimal)"."; }
+#sec_generalizedpowerrule-14-1 > li { counter-increment: sec_generalizedpowerrule-14-1; }
+#sec-chainrule-3-2 { counter-set: sec-chainrule-3-2 0; }
+#sec-chainrule-3-2 > li::marker { content: ""counter(sec-chainrule-3-2,decimal)"."; }
+#sec-chainrule-3-2 > li { counter-increment: sec-chainrule-3-2; }
+#sec-chainrule-13-1 { counter-set: sec-chainrule-13-1 0; }
+#sec-chainrule-13-1 > li::marker { content: ""counter(sec-chainrule-13-1,decimal)"."; }
+#sec-chainrule-13-1 > li { counter-increment: sec-chainrule-13-1; }
+#sec_understandingextrema-7-1 { counter-set: sec_understandingextrema-7-1 0; }
+#sec_understandingextrema-7-1 > li::marker { content: ""counter(sec_understandingextrema-7-1,decimal)"."; }
+#sec_understandingextrema-7-1 > li { counter-increment: sec_understandingextrema-7-1; }
+#thm-maxminonlyat-1-1-4 { counter-set: thm-maxminonlyat-1-1-4 0; }
+#thm-maxminonlyat-1-1-4 > li::marker { content: ""counter(thm-maxminonlyat-1-1-4,decimal)"."; }
+#thm-maxminonlyat-1-1-4 > li { counter-increment: thm-maxminonlyat-1-1-4; }
+#def-localmaximin-1-2 { counter-set: def-localmaximin-1-2 0; }
+#def-localmaximin-1-2 > li::marker { content: ""counter(def-localmaximin-1-2,decimal)"."; }
+#def-localmaximin-1-2 > li { counter-increment: def-localmaximin-1-2; }
+#thm-increasingfunction-1-2 { counter-set: thm-increasingfunction-1-2 0; }
+#thm-increasingfunction-1-2 > li::marker { content: ""counter(thm-increasingfunction-1-2,decimal)"."; }
+#thm-increasingfunction-1-2 > li { counter-increment: thm-increasingfunction-1-2; }
+#assemblage-maxminmethod-2-2 { counter-set: assemblage-maxminmethod-2-2 0; }
+#assemblage-maxminmethod-2-2 > li::marker { content: ""counter(assemblage-maxminmethod-2-2,decimal)"."; }
+#assemblage-maxminmethod-2-2 > li { counter-increment: assemblage-maxminmethod-2-2; }
+#thm-firstderivativetest-2-2 { counter-set: thm-firstderivativetest-2-2 0; }
+#thm-firstderivativetest-2-2 > li::marker { content: ""counter(thm-firstderivativetest-2-2,decimal)"."; }
+#thm-firstderivativetest-2-2 > li { counter-increment: thm-firstderivativetest-2-2; }
+#sec_understandingextrema-24-1 { counter-set: sec_understandingextrema-24-1 0; }
+#sec_understandingextrema-24-1 > li::marker { content: ""counter(sec_understandingextrema-24-1,decimal)"."; }
+#sec_understandingextrema-24-1 > li { counter-increment: sec_understandingextrema-24-1; }
+#assemblage-absolutemaxmin-2-4 { counter-set: assemblage-absolutemaxmin-2-4 0; }
+#assemblage-absolutemaxmin-2-4 > li::marker { content: ""counter(assemblage-absolutemaxmin-2-4,decimal)"."; }
+#assemblage-absolutemaxmin-2-4 > li { counter-increment: assemblage-absolutemaxmin-2-4; }
+#assemblage-findingconcavity-2-1 { counter-set: assemblage-findingconcavity-2-1 0; }
+#assemblage-findingconcavity-2-1 > li::marker { content: ""counter(assemblage-findingconcavity-2-1,decimal)"."; }
+#assemblage-findingconcavity-2-1 > li { counter-increment: assemblage-findingconcavity-2-1; }
+#sec_seconderivativeconcavityandchange-8-1 { counter-set: sec_seconderivativeconcavityandchange-8-1 0; }
+#sec_seconderivativeconcavityandchange-8-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-8-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-8-1 > li { counter-increment: sec_seconderivativeconcavityandchange-8-1; }
+#sec_seconderivativeconcavityandchange-12-1 { counter-set: sec_seconderivativeconcavityandchange-12-1 0; }
+#sec_seconderivativeconcavityandchange-12-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-12-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-12-1 > li { counter-increment: sec_seconderivativeconcavityandchange-12-1; }
+#sec_seconderivativeconcavityandchange-16-1 { counter-set: sec_seconderivativeconcavityandchange-16-1 0; }
+#sec_seconderivativeconcavityandchange-16-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-16-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-16-1 > li { counter-increment: sec_seconderivativeconcavityandchange-16-1; }
+#ex_antiderivative1-2-2-1-2 { counter-set: ex_antiderivative1-2-2-1-2 0; }
+#ex_antiderivative1-2-2-1-2 > li::marker { content: ""counter(ex_antiderivative1-2-2-1-2,decimal)"."; }
+#ex_antiderivative1-2-2-1-2 > li { counter-increment: ex_antiderivative1-2-2-1-2; }
+#insight_understandingintnotatino-4-1 { counter-set: insight_understandingintnotatino-4-1 0; }
+#insight_understandingintnotatino-4-1 > li::marker { content: ""counter(insight_understandingintnotatino-4-1,decimal)"."; }
+#insight_understandingintnotatino-4-1 > li { counter-increment: insight_understandingintnotatino-4-1; }
+#sec_geometricarea-5-1 { counter-set: sec_geometricarea-5-1 0; }
+#sec_geometricarea-5-1 > li::marker { content: ""counter(sec_geometricarea-5-1,decimal)"."; }
+#sec_geometricarea-5-1 > li { counter-increment: sec_geometricarea-5-1; }
+#sec_geometricarea-13-1 { counter-set: sec_geometricarea-13-1 0; }
+#sec_geometricarea-13-1 > li::marker { content: ""counter(sec_geometricarea-13-1,decimal)"."; }
+#sec_geometricarea-13-1 > li { counter-increment: sec_geometricarea-13-1; }
+#def-absolutenetarea-1-1-6 { counter-set: def-absolutenetarea-1-1-6 0; }
+#def-absolutenetarea-1-1-6 > li::marker { content: ""counter(def-absolutenetarea-1-1-6,decimal)"."; }
+#def-absolutenetarea-1-1-6 > li { counter-increment: def-absolutenetarea-1-1-6; }
+#ex_graphicalarea3-4-2-4-2 { counter-set: ex_graphicalarea3-4-2-4-2 0; }
+#ex_graphicalarea3-4-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-4-2-4-2,decimal)"."; }
+#ex_graphicalarea3-4-2-4-2 > li { counter-increment: ex_graphicalarea3-4-2-4-2; }
+#ex_graphicalarea3-5-2-4-2 { counter-set: ex_graphicalarea3-5-2-4-2 0; }
+#ex_graphicalarea3-5-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-5-2-4-2,decimal)"."; }
+#ex_graphicalarea3-5-2-4-2 > li { counter-increment: ex_graphicalarea3-5-2-4-2; }
+#sec_fundamentaltheorem-4-1 { counter-set: sec_fundamentaltheorem-4-1 0; }
+#sec_fundamentaltheorem-4-1 > li::marker { content: ""counter(sec_fundamentaltheorem-4-1,decimal)"."; }
+#sec_fundamentaltheorem-4-1 > li { counter-increment: sec_fundamentaltheorem-4-1; }
+#ex-review-distributefactor-7-2-1-1 { counter-set: ex-review-distributefactor-7-2-1-1 0; }
+#ex-review-distributefactor-7-2-1-1 > li::marker { content: ""counter(ex-review-distributefactor-7-2-1-1,decimal)"."; }
+#ex-review-distributefactor-7-2-1-1 > li { counter-increment: ex-review-distributefactor-7-2-1-1; }
+</style>
+</head>
+<body id="functions_at_work" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/logo_gpt4.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="home.html"><span class="title">Functions at Work:</span> <span class="subtitle">Business Calculus</span></a></h1>
+<p class="byline">Stephen Flood</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"></span><span class="treebuttons"><a class="previous-button button" href="ch_productquotientrule.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="part-rates.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="part-applyingslopes.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+
+\newcommand{\red}[1]{   {\color{red}   #1}   }
+\newcommand{\blue}[1]{  {\color{blue}  #1}  }
+\newcommand{\green}[1]{ {\color{green} #1} }
+
+\newcommand{\ddx}[1]{ \dfrac{d}{dx} \Big[ #1 \Big]  } 
+\newcommand{\ddt}[1]{ \dfrac{d}{dt} \Big[ #1 \Big]  } 
+\newcommand{\ddu}[1]{ \dfrac{d}{du} \Big[ #1 \Big]  } 
+\newcommand{\ddxfrac}[1]{ \dfrac{d}{dx} \left[ #1 \right]  } 
+\newcommand{\D}[1]{ \Big[ #1 \Big]'  } 
+
+\newcommand{\intdx}[1]{{\,\int#1\,\,dx}}
+\newcommand{\dint}[1]{\displaystyle\intdx{#1}}
+
+\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 parts"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-2.html" class="internal"><span class="title">Copyright Information</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-3.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="to_the_student.html" class="internal"><span class="title">How to use this book</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-algebra.html" class="internal"><span class="codenumber">I</span> <span class="title">Algebra For Business</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-functions.html" class="internal"><span class="codenumber">1</span> <span class="title">Functions of Economics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-function-concepts" class="internal"><span class="codenumber">1.1</span> <span class="title">Function Concepts</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-functions-readinggraphs" class="internal"><span class="codenumber">1.2</span> <span class="title">Graphs of Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-combiningfns.html" class="internal"><span class="codenumber">2</span> <span class="title">Working with Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-combining_functions" class="internal"><span class="codenumber">2.1</span> <span class="title">Combining Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec_graphsoftotalsandchanges" class="internal"><span class="codenumber">2.2</span> <span class="title">*Graphs of Totals and Changes</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-changeinxy" class="internal"><span class="codenumber">2.3</span> <span class="title">*Connecting <span class="process-math">\(\Delta y\)</span> and <span class="process-math">\(\Delta x\)</span></span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-algebra_linearfunctions.html" class="internal"><span class="codenumber">3</span> <span class="title">Lines and Linear Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-equations" class="internal"><span class="codenumber">3.1</span> <span class="title">Finding the Equation of a Line</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-demandprice" class="internal"><span class="codenumber">3.2</span> <span class="title">Demand Price and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algeba-linear-cost" class="internal"><span class="codenumber">3.3</span> <span class="title">Item Cost, Total Cost, and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-applied_domain" class="internal"><span class="codenumber">3.4</span> <span class="title">Models and Applied Domains</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_polynomials_and_rationals.html" class="internal"><span class="codenumber">4</span> <span class="title">Polynomial and Rational Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_quadratic_functions" class="internal"><span class="codenumber">4.1</span> <span class="title">Quadratic and Polynomial Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_revenue" class="internal"><span class="codenumber">4.2</span> <span class="title">Revenue with Fair Pricing</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec-understandingprofit" class="internal"><span class="codenumber">4.3</span> <span class="title">Understanding Profit</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_rationalfns" class="internal"><span class="codenumber">4.4</span> <span class="title">Rational Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_exponentials.html" class="internal"><span class="codenumber">5</span> <span class="title">Compound Interest and Depreciation</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_introducing_exponentials" class="internal"><span class="codenumber">5.1</span> <span class="title">Exponential Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_percent_change" class="internal"><span class="codenumber">5.2</span> <span class="title">Percents and Percent Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_compound_interest" class="internal"><span class="codenumber">5.3</span> <span class="title">Compound Interest and Depreciation</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_logarithms.html" class="internal"><span class="codenumber">6</span> <span class="title">Logarithms and Solving for Time</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-inverses" class="internal"><span class="codenumber">6.1</span> <span class="title">Inverse Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_logartims" class="internal"><span class="codenumber">6.2</span> <span class="title">Logarithms Undo Exponentials</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-lawsoflogs" class="internal"><span class="codenumber">6.3</span> <span class="title">Laws of Logarithms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_solvingfortime" class="internal"><span class="codenumber">6.4</span> <span class="title">Solving Compound Interest for Time</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-logapplications" class="internal"><span class="codenumber">6.5</span> <span class="title">Applications of Logarithms</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part contains-active">
+<div class="toc-title-box"><a href="part-rates.html" class="internal"><span class="codenumber">II</span> <span class="title">Change and Rates</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_limits.html" class="internal"><span class="codenumber">7</span> <span class="title">Limits</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec_readingdynamically" class="internal"><span class="codenumber">7.1</span> <span class="title">Reading Graphs Dynamically</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-econlimits" class="internal"><span class="codenumber">7.2</span> <span class="title">Macroeconomics and Mostly Continuous Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-ComputingLimitsNumerically" class="internal"><span class="codenumber">7.3</span> <span class="title">Computing Limits Numerically</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_totalschanges.html" class="internal"><span class="codenumber">8</span> <span class="title">Average Rates of Change</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec-AROC" class="internal"><span class="codenumber">8.1</span> <span class="title">Average Rates of Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec_graphsofrateschangesandtotals" class="internal"><span class="codenumber">8.2</span> <span class="title">Graphs of Rates, Changes, and Totals</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_totalschanges.html#sec_velocityAndIROC" class="internal"><span class="codenumber">8.3</span> <span class="title">Velocity and Instantaneous Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_totalschanges.html#subsec-speedradar" class="internal"><span class="codenumber">8.3.1</span> <span class="title">Measuring Speed with Radar</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_tangentsecant.html" class="internal"><span class="codenumber">9</span> <span class="title">Understanding Slope</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope" class="internal"><span class="codenumber">9.1</span> <span class="title">Slopes and Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope-6" class="internal"><span class="codenumber">9.1.1</span> <span class="title">Understand Rates by Studying Slopes</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_secantangent" class="internal"><span class="codenumber">9.2</span> <span class="title">Approximating Slope with Secant Lines</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slopealgebraically" class="internal"><span class="codenumber">9.3</span> <span class="title">Defining Slope Algebraically</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec-slopefunction" class="internal"><span class="codenumber">9.4</span> <span class="title">Defining a Slope Function</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#subsec-derivativenotation" class="internal"><span class="codenumber">9.4.1</span> <span class="title">Interpreting the Meaning of <span class="process-math">\(f'(x)\)</span></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_basicderivativerules.html" class="internal"><span class="codenumber">10</span> <span class="title">Slope Shortcuts for Basic Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec_basicrules1" class="internal"><span class="codenumber">10.1</span> <span class="title">Basic Derivative Rules</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec-derivativesexplog" class="internal"><span class="codenumber">10.2</span> <span class="title">Derivatives of Exponentials and Logarithms</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_marginalcost.html" class="internal"><span class="codenumber">11</span> <span class="title">Derivatives and Business</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_marginalcost.html#sec-marginalcost" class="internal"><span class="codenumber">11.1</span> <span class="title">Marginal Cost</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_productquotientrule.html" class="internal"><span class="codenumber">12</span> <span class="title">Product and Quotient Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_productrule" class="internal"><span class="codenumber">12.1</span> <span class="title">Derivatives of Products</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_quotientrule" class="internal"><span class="codenumber">12.2</span> <span class="title">Derivatives of Fractions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter active">
+<div class="toc-title-box"><a href="ch_chainrule.html" class="internal"><span class="codenumber">13</span> <span class="title">The Chain Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec_generalizedpowerrule" class="internal"><span class="codenumber">13.1</span> <span class="title">The Generalized Power Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-chainrule" class="internal"><span class="codenumber">13.2</span> <span class="title">The Chain Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-derivativesummary" class="internal"><span class="codenumber">13.3</span> <span class="title">List of All Derivative Rules</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-applyingslopes.html" class="internal"><span class="codenumber">III</span> <span class="title">Applying Marginals and Slopes</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-maxmin.html" class="internal"><span class="codenumber">14</span> <span class="title">Finding Maxima and Minima</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_understandingextrema" class="internal"><span class="codenumber">14.1</span> <span class="title">Finding Local Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_absolutemaxmin" class="internal"><span class="codenumber">14.2</span> <span class="title">Finding Absolute Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_maximaminimaandchangegraphs" class="internal"><span class="codenumber">14.3</span> <span class="title">Maxima, Minima, and Change Graphs</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-secondderivatives.html" class="internal"><span class="codenumber">15</span> <span class="title">Dimishing Returns and Changing Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-secondderivative" class="internal"><span class="codenumber">15.1</span> <span class="title">The Second Derivative</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-concavity" class="internal"><span class="codenumber">15.2</span> <span class="title">Concavity and Graphs</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec_seconderivativeconcavityandchange" class="internal"><span class="codenumber">15.3</span> <span class="title">The Second Derivative and Change Graphs</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-integrals.html" class="internal"><span class="codenumber">IV</span> <span class="title">Integral Calculus</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_antiderivatives.html" class="internal"><span class="codenumber">16</span> <span class="title">Antiderivatives</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec_undoingderivatives" class="internal"><span class="codenumber">16.1</span> <span class="title">Undoing Derivatives</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-indefiniteintegrals" class="internal"><span class="codenumber">16.2</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-applyingantiderivatives" class="internal"><span class="codenumber">16.3</span> <span class="title">Applying Antiderivatives</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_introducingarea.html" class="internal"><span class="codenumber">17</span> <span class="title">Understanding Areas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_indefiniteintegrals" class="internal"><span class="codenumber">17.1</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_geometricarea" class="internal"><span class="codenumber">17.2</span> <span class="title">Understanding Geometrically of Area</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_fundamentaltheorem" class="internal"><span class="codenumber">17.3</span> <span class="title">Area, Antiderivatives, and Graphs of Change</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="meta_backmatter.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="algebrareview.html" class="internal"><span class="codenumber">A</span> <span class="title">Algebra Review</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebrareview.html#sec_algebralaw" class="internal"><span class="codenumber">A.1</span> <span class="title">Laws of Algebra</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="algebrareview.html#sec-IntervalsandGraphs" class="internal"><span class="codenumber">A.2</span> <span class="title">Intervals and Graphs</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#interval-notation" class="internal"><span class="codenumber">A.2.1</span> <span class="title">Interval Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#graphs-of-common-functions" class="internal"><span class="codenumber">A.2.2</span> <span class="title">Graphs of Common Functions</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="meta_backmatter-3.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch_chainrule"><h2 class="heading">
+<span class="type">Chapter</span><span class="space"> </span><span class="codenumber">13</span><span class="space"> </span><span class="title">The Chain Rule</span>
+</h2>
+<section class="introduction" id="ch_chainrule-2"><div class="para" id="ch_chainrule-2-1">So far, we have seen rules for sums, products, and quotients <article class="assemblage assemblage-like" id="assemblage-basicderivatives3"><h3 class="heading"><span class="title">Basic Derivative Rules (So Far).</span></h3>
+<div class="para logical" id="assemblage-basicderivatives3-2">
+<div class="para">Suppose that <span class="process-math">\(f,g\)</span> are differentiable functions of <span class="process-math">\(x\text{,}\)</span> that <span class="process-math">\(m,c\)</span> are constant numbers.  Then</div>
+<ul class="disc" id="assemblage-basicderivatives3-2-4">
+<li id="assemblage-basicderivatives3-2-4-1"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-1"><span class="process-math">\(\displaystyle \D{c}=0\)</span></div></li>
+<li id="assemblage-basicderivatives3-2-4-2"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-2">
+<span class="process-math">\(\D{m\cdot x+b}=m\)</span> and <span class="process-math">\(\D{x} = 1\)</span>
+</div></li>
+<li id="assemblage-basicderivatives3-2-4-3"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-3"><span class="process-math">\(\displaystyle \D{x^m}=m\cdot x^{m-1}\)</span></div></li>
+<li id="assemblage-basicderivatives3-2-4-4"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-4"><span class="process-math">\(\displaystyle \D{ c\cdot f(x)}=c\cdot \D{f(x)}\)</span></div></li>
+<li id="assemblage-basicderivatives3-2-4-5"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-5"><span class="process-math">\(\displaystyle \D{f(x) \pm g(x)} = \D{f(x)} \pm \D{g(x)}\)</span></div></li>
+<li id="assemblage-basicderivatives3-2-4-6"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-6"><span class="process-math">\(\displaystyle \D{ e^x } = e^x \)</span></div></li>
+<li id="assemblage-basicderivatives3-2-4-7"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-7"><span class="process-math">\(\displaystyle \D{ \ln(x) } = \frac{1}{x}\)</span></div></li>
+<li id="assemblage-basicderivatives3-2-4-8"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-8"><span class="process-math">\(\displaystyle \Big[f\cdot g\Big]' = f\cdot \Big[g\Big]' + g\cdot \Big[f\Big]' = f\cdot g' + g\cdot f' \)</span></div></li>
+<li id="assemblage-basicderivatives3-2-4-9"><div class="para" id="p-derived-assemblage-basicderivatives3-2-4-9"><span class="process-math">\(\displaystyle \left[\dfrac{t}{b}\right]' = \dfrac{b\cdot t' - t\cdot b'}{(b)^2} \)</span></div></li>
+</ul>
+</div></article>
+</div> <div class="para" id="ch_chainrule-2-2">But what happens if you have a function <em class="emphasis">inside</em> of another function?</div> <div class="para logical" id="ch_chainrule-2-3">
+<div class="para">For example, in Excel you will often see an expression like</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ln\Big( x^2 \Big)
+\end{equation*}
+</div>
+<div class="para">Here, the function <span class="process-math">\(\red{x^2}\)</span> is <em class="emphasis">inside</em> the function <span class="process-math">\(\ln\Big(\red{u}\Big)\text{.}\)</span> In this case, we call</div>
+<ul class="disc" id="ch_chainrule-2-3-5">
+<li id="ch_chainrule-2-3-5-1"><div class="para" id="ch_chainrule-2-3-5-1-1">the inside function <span class="process-math">\(\red{g(x)} = \red{x^2}\)</span> the <dfn class="terminology">argument</dfn> or <dfn class="terminology">inner function</dfn>
+</div></li>
+<li id="ch_chainrule-2-3-5-2"><div class="para" id="ch_chainrule-2-3-5-2-1">the outside function <span class="process-math">\(f(\red{u}) = \ln\Big(\red{u}\Big)\)</span> is the <dfn class="terminology">outer function</dfn>
+</div></li>
+<li id="ch_chainrule-2-3-5-3"><div class="para" id="ch_chainrule-2-3-5-3-1">the original function <span class="process-math">\(f(\red{g(x)}) = \ln\Big( \red{x^2} \Big)\)</span> is the <dfn class="terminology">composition</dfn> of the outside function and the argument.</div></li>
+</ul>
+</div> <div class="para" id="ch_chainrule-2-4">In this chapter, we will introduce one final rule (or set of rules) that will let us compute derivatives of compositions of functions.</div></section><section class="section" id="sec_generalizedpowerrule"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">13.1</span><span class="space"> </span><span class="title">The Generalized Power Rule</span>
+</h3>
+<div class="para" id="sec_generalizedpowerrule-2">Compositions where the outside function is a power is the simplest case to work with.</div>
+<article class="exercise exercise-like" id="ex_generalizedpower_decomposing"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.1</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_generalizedpower_decomposing-1-1">Let <span class="process-math">\(h(x) = (3x+2)^2\text{.}\)</span> Write this function in the form <span class="process-math">\(f\Big(g(x)\Big)\)</span>
+</div>
+<div class="solutions"><details id="ex_generalizedpower_decomposing-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_generalizedpower_decomposing-2-1">
+<div class="para">The easiest way to interpret compositions is to try to <em class="emphasis">circle the inside function</em>.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+h(x) = \Big( \red{\framebox{3x+2}} \Big)^2
+\end{equation*}
+</div>
+<ul class="disc" id="ex_generalizedpower_decomposing-2-1-3">
+<li id="ex_generalizedpower_decomposing-2-1-3-1"><div class="para" id="ex_generalizedpower_decomposing-2-1-3-1-1">The <dfn class="terminology">argument</dfn> is the circled inside term <span class="process-math">\(\red{g(x)} = \color{red} \framebox{3x+2}\text{.}\)</span>
+</div></li>
+<li id="ex_generalizedpower_decomposing-2-1-3-2"><div class="para logical" id="ex_generalizedpower_decomposing-2-1-3-2-1">
+<div class="para">To find the <dfn class="terminology">outside function</dfn>, replace the circled box with the letter <span class="process-math">\(u\text{.}\)</span>
+</div>
+<div class="displaymath process-math" id="ex_generalizedpower_decomposing-2-1-3-2-1-3">
+\begin{align*}
+h(u) = \amp \Big( \red{\framebox{3x+2}} \Big)^2  \\
+= \amp \Big( \red{\framebox{u}} \Big)^2  \\
+h(u) = \amp \red{u}^2
+\end{align*}
+</div>
+</div></li>
+</ul>
+<div class="para">If <span class="process-math">\(f(u) = u^2\)</span> and <span class="process-math">\(g(x) = 3x+2\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f\Big(g(x)\Big) = f\Big(3x+2\Big) = (3x+2)^2
+\end{equation*}
+</div>
+<div class="para">as desired.</div>
+</div></div></details></div></article><div class="para" id="sec_generalizedpowerrule-4">In very simple cases, we can compute the derivative of a composition with the rules we already have.</div>
+<article class="exercise exercise-like" id="ex_powerrule-nopower"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.2</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule-nopower-1-1">Let <span class="process-math">\(f(x) = (3x+2)^2\text{.}\)</span>  Find <span class="process-math">\(f'(x)\)</span> using only the rules from the previous sections.</div>
+<div class="solutions"><details id="ex_powerrule-nopower-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_powerrule-nopower-2-1">
+<div class="displaymath process-math">
+\begin{equation*}
+f'(x) = \ddx{ \Big(3x+2\Big)^2 } 
+\end{equation*}
+</div>
+<div class="para">No rule applies, but we can rewrite the function using algebra first.</div>
+<div class="displaymath process-math" id="ex_powerrule-nopower-2-1-2">
+\begin{align*}
+f'(x) = \amp  \ddx{ \Big(3x+2\Big)^2 } \\
+= \amp \ddx{  \Big(3x+2\Big)\cdot  \Big(3x+2\Big) }\\
+= \amp \ddx{  9x^2 + 12x + 4 }\\
+= \amp \ddx{9x^2} + \ddx{12x} + \ddx{4} \\
+= \amp 9\ddx{x^2} + 12 + 0 \\
+= \amp 9\cdot 2x + 12  \\
+= \amp 18x + 12  
+\end{align*}
+</div>
+<div class="para">On the face of it, there is no clear connection between the equations for <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(f'(x)\text{.}\)</span> We need a new shortcut.</div>
+</div></div></details></div></article><article class="theorem theorem-like" id="thm-generalizedpowerrule"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">13.3</span><span class="period">.</span><span class="space"> </span><span class="title">The Generalized Power Rule.</span>
+</h4>
+<div class="para logical" id="thm-generalizedpowerrule-2-1">
+<div class="para">Suppose that <span class="process-math">\(g(x)\)</span> is a differentiable function, and that <span class="process-math">\(m\)</span> is a constant number.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{ \Big( g(x) \Big)^m} = m\cdot \Big( g(x) \Big)^{m-1} \cdot \ddx{g(x)} 
+\end{equation*}
+</div>
+<div class="para">In other words, if you have a composition <span class="process-math">\(h(x) = \Big(g(x)\Big)^m\text{,}\)</span> the derivative is the same thing as following the power rule and multiplying by the derivative of the argument.</div>
+</div> <div class="para logical" id="thm-generalizedpowerrule-2-2">
+<div class="para">In bracket notation, this rule is written</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\D{ \Big(g(x)\Big)^m } = m\cdot \Big(g(x)\Big)^{m-1}\cdot g'(x)
+\end{equation*}
+</div>
+</div></article><article class="exercise exercise-like" id="ex_powerrule1"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.4</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule1-1-1">Let <span class="process-math">\(h(x) = (3x+2)^2\)</span> as before.  Find <span class="process-math">\(h'(x)\)</span> using the generalized power rule.</div>
+<div class="solutions"><details id="ex_powerrule1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_powerrule1-2-1">
+<div class="para">As always, start by writing</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex_generalizedpower_decomposing.html">
+\begin{equation*}
+h'(x) = \ddx{ \blue{(\red{3x+2})^2} } 
+\end{equation*}
+</div>
+<div class="para">As in <a href="ch_chainrule.html#ex_generalizedpower_decomposing" class="xref" data-knowl="./knowl/xref/ex_generalizedpower_decomposing.html" data-reveal-label="Reveal" data-close-label="Close" title="Checkpoint 13.1">Checkpoint 13.1</a>, this is a composition with argument <span class="process-math">\(g(x) = 3x+2\)</span> and outside function <span class="process-math">\(f(u) = u^2\text{.}\)</span> We must use the generalized power rule <span class="process-math">\(\ddx{ \blue{ \Big( \red{g(x)} \Big)^m}} = \blue{ m\cdot \Big( \red{g(x)} \Big)^{m-1} } \cdot \ddx{\red{g(x)}} \)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/ex_generalizedpower_decomposing.html" id="ex_powerrule1-2-1-6">
+\begin{align*}
+h'(x) = \amp \ddx{ \blue{ ( \red{3x+2} )^2 } }\\
+= \amp \ddx{\blue{ ( \red{g(x)} )^2 } } \\
+= \amp \blue{ 2\cdot ( \red{g(x)} )^1 }\cdot \ddx{ \red{g(x)} }\\
+= \amp \blue{2\cdot ( \red{3x+2} ) }\cdot \ddx{ \red{3x+2} }\\
+= \amp 2\cdot (3x+2) \cdot (3+0)\\
+= \amp 18x+12
+\end{align*}
+</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="ex_powerrule2"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.5</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule2-1-1">Let <span class="process-math">\(h = \Big(3-\ln(x)\Big)^{10}\text{.}\)</span> Find <span class="process-math">\(\frac{dh}{dx}\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_powerrule2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_powerrule2-2-1">
+<div class="displaymath process-math">
+\begin{equation*}
+\frac{dh}{dx} = \ddx{ \blue{ \Big( \red{3-\ln(x)}\Big)^{10} } } 
+\end{equation*}
+</div>
+<div class="para">This is a composition of two functions, with the inside function (argument) <span class="process-math">\(\red{g(x) = 3-\ln(x)} \)</span> and outside function <span class="process-math">\(\blue{f(u)} = \blue {u^{10}}\)</span>
+</div>
+<div class="displaymath process-math" id="ex_powerrule2-2-1-4">
+\begin{align*}
+\frac{dh}{dx} =  \amp \ddx{ \blue{ \Big( \red{3-\ln(x)}\Big)^{10} } } \\
+= \amp \ddx{\blue{ ( \red{g(x)} )^{10} } } \\
+= \amp \blue{ 10\cdot ( \red{g(x)} )^9 }\cdot \ddx{ \red{g(x)} }\\
+= \amp \blue{10\cdot ( \red{3-\ln(x)} )^9 }\cdot \ddx{ \red{3-\ln(x)} }\\
+= \amp 10\cdot \Big(3-\ln(x)\Big)^9\cdot \Big( 0 - \frac{1}{x}\Big)\\
+= \amp -10 \Big(3-\ln(x)\Big)^9\cdot \frac{1}{x}
+\end{align*}
+</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="ex_powerrule3"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.6</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule3-1-1">Let <span class="process-math">\(y = \dfrac{1}{x^2-3x}\text{.}\)</span>  Find <span class="process-math">\(\frac{dy}{dx}\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_powerrule3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_powerrule3-2-1">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec_quotientrule.html">
+\begin{equation*}
+\ddxfrac{\frac{dy}{dx}} = \ddxfrac{  \dfrac{1}{x^2-3x} }
+\end{equation*}
+</div>
+<div class="para">You can compute this derivative using the quotient rule, as in <a href="ch_productquotientrule.html#sec_quotientrule" class="internal" title="Section 12.2: Derivatives of Fractions">Section 12.2</a>. You can also rewrite this as a power, and use the generalized power rule.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec_quotientrule.html">
+\begin{equation*}
+\ddxfrac{\frac{dy}{dx}} = \ddxfrac{  \Big(x^2-3x\Big)^{-1} }
+\end{equation*}
+</div>
+<div class="para">You are now taking the derivative of a composition with argument <span class="process-math">\(\red{g(x)} = \red{x^2-3x}\)</span> and outside function <span class="process-math">\(\blue{f(u)} = \blue{u^{-1}} \text{.}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/sec_quotientrule.html" id="ex_powerrule3-2-1-6">
+\begin{align*}
+\frac{dy}{dx} = \amp \ddxfrac{ \blue{ \Big(\red{x^2-3x}\Big)^{-1} } } \\
+= \amp \ddx{\blue{ ( \red{g(x)} )^{-1} } } \\
+= \amp \blue{ -1\cdot ( \red{g(x)} )^{-1-1} }\cdot \ddx{ \red{g(x)} }\\
+= \amp \blue{ -1\cdot ( \red{x^2-3x} )^{-2} }\cdot \ddx{ \red{x^2-3x} }\\
+= \amp  -1\cdot ( x^2-3x )^{-2} \cdot \Big(2x-3\Big) \\
+= \amp  -1\cdot \dfrac{1}{( x^2-3x )^{2}} \cdot \Big(2x-3\Big) 
+\end{align*}
+</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="ex_powerrule4"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.7</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule4-1-1">Use the product and chain rules to derive equation for the quotient rule.</div>
+<div class="solutions"><details id="ex_powerrule4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_powerrule4-2-1">
+<div class="para">Suppose that  <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(g(x)\)</span> are differentiable functions.  We wish to compute</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-quotientrule.html">
+\begin{equation*}
+\ddx{ \dfrac{f(x)}{g(x)} } 
+\end{equation*}
+</div>
+<div class="para">To use the product and generalized power rule, we can get rid of the fraction by using an exponent of <span class="process-math">\(-1\text{.}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-quotientrule.html">
+\begin{equation*}
+\ddx{ \dfrac{f(x)}{g(x)} }  = \ddx{ \red{f(x)}\cdot \blue{ \Big(g(x)\Big)^{-1}} } 
+\end{equation*}
+</div>
+<div class="para">Using the product rule, we get</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-quotientrule.html">
+\begin{equation*}
+\ddx{ \dfrac{f(x)}{g(x)} }  = \red{f(x)}\cdot \ddx{ \blue{ \Big(g(x)\Big)^{-1}} } +  \blue{ \Big(g(x)\Big)^{-1}}\cdot \ddx{ \red{f(x)}  } 
+\end{equation*}
+</div>
+<div class="para">There are two <span class="process-math">\(\ddx{\dots}\)</span> that remain.  The second one is simply notation: <span class="process-math">\(\ddx{f(x)} = f'(x)\text{.}\)</span> The first requires the chain rule</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-quotientrule.html" id="ex_powerrule4-2-1-9">
+\begin{align*}
+\ddx{ \blue{ \Big( \red{g(x)} \Big)^{-1} }  } = \amp \blue{-1 \Big(\red{g(x)} \Big)^{-1-1}} \cdot \ddx{\red{g(x)}} \\
+= \amp -1 \Big(g(x)\Big)^{-2}\cdot g'(x)
+\end{align*}
+</div>
+<div class="para">Putting this back into the broader derivative</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-quotientrule.html" id="ex_powerrule4-2-1-10">
+\begin{align*}
+\ddx{ \dfrac{f(x)}{g(x)} }  = \amp f(x) \cdot -1 \Big(g(x))^{-2}\cdot g'(x) +   \Big(g(x)\Big)^{-1}\cdot  f'(x)   \\
+=  \amp \frac{-f(x)\cdot g'(x)}{\Big(g(x)\Big)^2} + \frac{f'(x)}{g(x)} 
+\end{align*}
+</div>
+<div class="para">To combine these fractions, we need a common denominator</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-quotientrule.html" id="ex_powerrule4-2-1-11">
+\begin{align*}
+=  \amp \frac{-f(x)\cdot g'(x)}{\Big(g(x)\Big)^2} + \frac{f'(x)\cdot g(x)}{\Big(g(x)\Big)^2} \\
+=  \amp \frac{-f(x)\cdot g'(x) + f'(x)\cdot g(x)}{\Big(g(x)\Big)^2} 
+\end{align*}
+</div>
+<div class="para">Rearranging the top gives</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/thm-quotientrule.html" id="ex_powerrule4-2-1-12">
+\begin{align*}
+=  \amp \frac{ g(x)\cdot f'(x) - f(x)\cdot g'(x) }{\Big(g(x)\Big)^2} 
+\end{align*}
+</div>
+<div class="para">This is exactly the quotient rule from <a href="ch_productquotientrule.html#thm-quotientrule" class="xref" data-knowl="./knowl/xref/thm-quotientrule.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 12.2">Theorem 12.2</a>.</div>
+</div></div></details></div></article><article class="exercise exercise-like" id="ex_powerrule5"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.8</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule5-1-1">Let <span class="process-math">\(f(x) = \sqrt{5-3x+x^5} + 10 \text{.}\)</span>  Find <span class="process-math">\(f'(x)\)</span>
+</div>
+<div class="solutions"><details id="ex_powerrule5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_powerrule5-2-1">
+<div class="para">Recall that <span class="process-math">\(\sqrt{g(x)} = \Big(g(x)\Big)^{1/2} =\Big(g(x)\Big)^{0.5}  \text{.}\)</span>  That means we can rephrase the question given as follows.</div>
+<div class="displaymath process-math" id="ex_powerrule5-2-1-2">
+\begin{align*}
+f'(x) \amp = \D{ (5-3x+x^5)^{0.5} + 10 } \\
+\amp =  \D{ (5-3x+x^5)^{0.5} }  + \D{ 10 } \amp \text{sum rule}\\
+\amp =  \D{ \blue{(\red{5-3x+x^5})^{0.5}} }  + 0 \amp \text{constant  rule} \\
+\amp = \blue{0.5 \Big(\red{5-3x+x^5}\Big)^{0.5-1}}\cdot\D{\red{5-3x+x^5}} \amp \text{chain rule} \\
+\amp = 0.5 \Big( 5-3x+x^5 \Big)^{-0.5}\cdot\Big( 0-3+5x^4\Big) 
+\end{align*}
+</div>
+<div class="para">Note that both sets of parentheses in the last term are required for a correct answer.</div>
+</div></div></details></div></article><div class="para" id="sec_generalizedpowerrule-12">Recall that for root functions, we have an optional derivative shortcut <span class="process-math">\(\ddx{\sqrt{x}}=\frac{1}{2}x^{-1/2}\text{.}\)</span>  Combined with the generalized power rule, this gives an optional shortcut.</div>
+<article class="corollary theorem-like" id="cor_generalizedroot"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">13.9</span><span class="period">.</span>
+</h4>
+<div class="para" id="cor_generalizedroot-1-1">Let <span class="process-math">\(f(x) = \sqrt{g(x)}\text{.}\)</span> Then <span class="process-math">\(f'(x) = \frac{1}{2} \Big(g(x)\Big)^{-1/2}\cdot g'(x)\)</span>
+</div></article><details id="cor_generalizedroot-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="cor_generalizedroot-2-1">
+<div class="para">Recall that roots correspond to fractional powers.  In particular, <span class="process-math">\(\sqrt{u} = u^{1/2}\text{.}\)</span>  This allows us to rewrite the function before taking the derivative.</div>
+<div class="displaymath process-math" id="cor_generalizedroot-2-1-2">
+\begin{align*}
+f'(x) \amp = \ddx{\sqrt{g(x)}}\\
+\amp = \ddx{\Big(g(x)\Big)^{1/2}} \\
+\amp = \frac{1}{2} \Big(g(x)\Big)^{-1/2}\cdot \ddx{g(x)}\\
+\amp = \frac{1}{2} \Big(g(x)\Big)^{-1/2}\cdot g'(x)
+\end{align*}
+</div>
+</div></article></details><div class="para logical" id="sec_generalizedpowerrule-14">
+<div class="para">There is a consistent strategy when using the generalized power rule in all of the examples above.</div>
+<ol class="decimal" id="sec_generalizedpowerrule-14-1">
+<li id="sec_generalizedpowerrule-14-1-1"><div class="para" id="sec_generalizedpowerrule-14-1-1-1">See a composition <span class="process-math">\(h(x) = \blue{ f\Big(\red{g(x)}\Big) } \text{.}\)</span>
+</div></li>
+<li id="sec_generalizedpowerrule-14-1-2"><div class="para" id="sec_generalizedpowerrule-14-1-2-1">Identify the argument <span class="process-math">\(\red{g(x)}\)</span> and the outside function <span class="process-math">\(\blue{f(u)} = \blue{u^m}\text{.}\)</span>
+</div></li>
+<li id="sec_generalizedpowerrule-14-1-3"><div class="para logical" id="sec_generalizedpowerrule-14-1-3-1">
+<div class="para">Find the derivative of the outside</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\blue{f'(u)} = \blue{m\cdot u^{m-1}}
+\end{equation*}
+</div>
+</div></li>
+<li id="sec_generalizedpowerrule-14-1-4"><div class="para logical" id="sec_generalizedpowerrule-14-1-4-1">
+<div class="para">Apply the rule</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{\blue{ ( \red{g(x)} )^{m} } } 
+= \blue{ m\cdot ( \red{g(x)} )^{m-1} }\cdot \ddx{ \red{g(x)} }
+\end{equation*}
+</div>
+</div></li>
+</ol>
+<div class="para">An easy way to summarize this is to write</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{ \blue{ f\Big(\red{g(x)}\Big) } } = \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{equation*}
+</div>
+<div class="para">But is this more general formula true for <em class="emphasis">any</em> outside function <span class="process-math">\(g(x)\text{?}\)</span>
+</div>
+</div></section><section class="section" id="sec-chainrule"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">13.2</span><span class="space"> </span><span class="title">The Chain Rule</span>
+</h3>
+<article class="theorem theorem-like" id="thm-chainrule"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">13.10</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="thm-chainrule-1-1">
+<div class="para">Suppose that <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(g(x)\)</span> are differentiable functions.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{ \blue{ f\Big(\red{g(x)}\Big) } } = \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="thm-chainrule-1-2">
+<div class="para">To memorize this formula, use one of the abbreviations</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\D{ \blue{f(\red{g})} } = \blue{f'(\red{g})} \cdot \red{g'}
+\end{equation*}
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\dfrac{dy}{dx} = \dfrac{dy}{du}\cdot \dfrac{du}{dx}
+\end{equation*}
+</div>
+</div></article><div class="para logical" id="sec-chainrule-3">
+<div class="para">Because there are so many moving pieces in the chain rule, we will generally compute <span class="process-math">\(\ddx{ \blue{ f\Big(\red{g(x)}\Big) } }\)</span> using the following steps</div>
+<ol class="decimal" id="sec-chainrule-3-2">
+<li id="sec-chainrule-3-2-1"><div class="para" id="sec-chainrule-3-2-1-1">Identify the argument <span class="process-math">\(\red{g(x)}\)</span> and the outer function <span class="process-math">\(\blue{f(u)}\)</span>
+</div></li>
+<li id="sec-chainrule-3-2-2"><div class="para" id="sec-chainrule-3-2-2-1">Using scrap work, separately compute <span class="process-math">\(\blue{f'(u)}\)</span> and <span class="process-math">\(\red{g'(x)}\text{.}\)</span>
+</div></li>
+<li id="sec-chainrule-3-2-3"><div class="para logical" id="sec-chainrule-3-2-3-1">
+<div class="para">Use your scrap work above to answer the original question using the Chain Rule formula</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{ \blue{ f\Big(\red{g(x)}\Big) } } = \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{equation*}
+</div>
+</div></li>
+</ol>
+</div>
+<article class="exercise exercise-like" id="ex_powerrule_exp1"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.11</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule_exp1-1-1">Let <span class="process-math">\(y= e^{3x^2+x}\text{.}\)</span>  Find <span class="process-math">\(\frac{dy}{dx}\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_powerrule_exp1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_powerrule_exp1-2-1">
+<div class="para">We wish to compute</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\frac{dy}{dx} = \ddx{\blue{ e^{\big(\red{3x^2+x}\big)} } } 
+\end{equation*}
+</div>
+<div class="para">This is a composition with argument <span class="process-math">\(\red{g(x)} = \red{3x^2+x}\)</span> and outside function <span class="process-math">\(\blue{f(u)} = \blue{ e^u }\text{.}\)</span>
+</div>
+</div> <div class="para" id="ex_powerrule_exp1-2-2">Using our regular derivative rules, we know that <span class="process-math">\(\red{g'(x)} = \red{ \ddx{3x^2 +x} } = \red{6x+1} \)</span> and that <span class="process-math">\(\blue{f'(u)} = \blue{\ddu{ e^u }} = \blue{e^u} \)</span>
+</div> <div class="para logical" id="ex_powerrule_exp1-2-3">
+<div class="para">Now that we have done our scrap work, we can return to our original question</div>
+<div class="displaymath process-math" id="ex_powerrule_exp1-2-3-1">
+\begin{align*}
+\frac{dy}{dx} = \amp \ddx{\blue{ e^{\big(\red{3x^2+x}\big)} } }  \\
+= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }\\
+= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{align*}
+</div>
+<div class="para">Substituting the values first for <span class="process-math">\(\blue{f'}\text{,}\)</span> and then for  <span class="process-math">\(\red{g}\)</span> and <span class="process-math">\(\red{g'}\text{,}\)</span> into the above equation gives</div>
+<div class="displaymath process-math" id="ex_powerrule_exp1-2-3-5">
+\begin{align*}
+\frac{dy}{dx} = \amp \blue{ e^{(\red{g(x)})} }\cdot \red{g'(x)}\\
+= \amp \blue{ e^{(\red{3x^2+x})} }\cdot \Big(\red{6x+1}\Big)
+\end{align*}
+</div>
+</div>
+</div></details></div></article><article class="exercise exercise-like" id="ex_powerrule_exp2"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.12</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule_exp2-1-1">Let <span class="process-math">\(h(x) = e^{5-x^2}\text{.}\)</span>  Find <span class="process-math">\(h'(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_powerrule_exp2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_powerrule_exp2-2-1">
+<div class="displaymath process-math">
+\begin{equation*}
+h'(x) = \ddx{ \blue{ e^{\big( \red{5-x^2} \big)} } }
+\end{equation*}
+</div>
+<div class="para">This is a composition with argument <span class="process-math">\(\red{g(x)} = \red{5-x^2}\)</span> and outside function <span class="process-math">\(\blue{f(u)} = \blue{ e^u }\text{.}\)</span>
+</div>
+</div> <div class="para" id="ex_powerrule_exp2-2-2">Using our regular derivative rules, we know that <span class="process-math">\(\red{g'(x)} 
+= \red{ \ddx{5-x^2} } = \red{-2x} \)</span> and that <span class="process-math">\(\blue{f'(u)} 
+= \blue{\ddu{ e^u }} = \blue{e^u} \)</span>
+</div> <div class="para logical" id="ex_powerrule_exp2-2-3">
+<div class="para">Now that we have done our scrap work, we can return to our original question</div>
+<div class="displaymath process-math" id="ex_powerrule_exp2-2-3-1">
+\begin{align*}
+h'(x) = \amp 
+\ddx{\blue{ e^{\big(\red{5-x^2}\big)} } }  \\
+= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }\\
+= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{align*}
+</div>
+<div class="para">Substituting the values first for <span class="process-math">\(\blue{f'}\text{,}\)</span> and then for  <span class="process-math">\(\red{g}\)</span> and <span class="process-math">\(\red{g'}\text{,}\)</span> into the above equation gives</div>
+<div class="displaymath process-math" id="ex_powerrule_exp2-2-3-5">
+\begin{align*}
+h'(x) = \amp 
+\blue{ e^{(\red{g(x)})} }\cdot \red{g'(x)}\\
+= \amp 
+\blue{ e^{(\red{5-x^2})} }\cdot \Big(\red{-2x}\Big)
+\end{align*}
+</div>
+</div>
+</div></details></div></article><div class="para logical" id="sec-chainrule-6">
+<div class="para">In the previous two examples, there was a pattern that arose because outside function was <span class="process-math">\(\blue{f(u)} = \blue{e^{u}}\)</span> in both cases.  This gives a new "optional shortcut" derivative rule.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{ e^{g(x)}} = e^{g(x)} \cdot g'(x) 
+\end{equation*}
+</div>
+</div>
+<div class="para" id="sec-chainrule-7">The one last function we have studied in this course is the natural logarithm.</div>
+<article class="exercise exercise-like" id="ex_powerrule_log1"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.13</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule_log1-1-1">Let <span class="process-math">\(F(x) = \ln( 1- 2x^3)\text{.}\)</span>  Find <span class="process-math">\(F'(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_powerrule_log1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_powerrule_log1-2-1">
+<div class="displaymath process-math">
+\begin{equation*}
+F'(x) = \ddx{ \blue{ \ln\big( \red{1-2x^3} \big) } }
+\end{equation*}
+</div>
+<div class="para">This is a composition with argument <span class="process-math">\(\red{g(x)} = \red{1-2x^3}\)</span> and outside function <span class="process-math">\(\blue{f(u)} = \blue{ \ln(u) }\text{.}\)</span>
+</div>
+</div> <div class="para" id="ex_powerrule_log1-2-2">Using our regular derivative rules, we know that <span class="process-math">\(\red{g'(x)} 
+= \red{ \ddx{1-2x^3} } = \red{-6x^2} \)</span> and that <span class="process-math">\(\blue{f'(u)} 
+= \blue{\ddu{ \ln(u) }} = \blue{\dfrac{1}{u}} \)</span>
+</div> <div class="para logical" id="ex_powerrule_log1-2-3">
+<div class="para">Now that we have done our scrap work, we can return to our original question</div>
+<div class="displaymath process-math" id="ex_powerrule_log1-2-3-1">
+\begin{align*}
+F'(x) = \amp 
+\ddx{\blue{ \ln\big(\red{1-2x^3}\big) } }  \\
+= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }\\
+= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{align*}
+</div>
+<div class="para">Substituting the values first for <span class="process-math">\(\blue{f'}= \frac{1}{u}\text{,}\)</span> and then for  <span class="process-math">\(\red{g}\)</span> and <span class="process-math">\(\red{g'}\text{,}\)</span> into the above equation gives</div>
+<div class="displaymath process-math" id="ex_powerrule_log1-2-3-5">
+\begin{align*}
+F'(x) = \amp 
+\blue{ \frac{1}{\ \red{g(x)}\ } }\cdot \red{g'(x)}\\
+= \amp 
+\blue{ \frac{1}{\ \red{1-2x^3}}\ }\cdot \Big(\red{-6x^2}\Big)
+\end{align*}
+</div>
+</div>
+</div></details></div></article><article class="exercise exercise-like" id="ex_powerrule_log2"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.14</span><span class="period">.</span>
+</h4>
+<div class="para" id="ex_powerrule_log2-1-1">Let <span class="process-math">\(y = \ln( x^2- 2x)\text{.}\)</span>  Find <span class="process-math">\(y'\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_powerrule_log2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_powerrule_log2-2-1">
+<div class="displaymath process-math">
+\begin{equation*}
+y'(x) = \ddx{ \blue{ \ln\big( \red{x^2- 2x} \big) } }
+\end{equation*}
+</div>
+<div class="para">This is a composition with argument <span class="process-math">\(\red{g(x)} = \red{x^2- 2x}\)</span> and outside function <span class="process-math">\(\blue{f(u)} = \blue{ \ln(u) }\text{.}\)</span>
+</div>
+</div> <div class="para" id="ex_powerrule_log2-2-2">Using our regular derivative rules, we know that <span class="process-math">\(\red{g'(x)} 
+= \red{ \ddx{x^2- 2x} } = \red{2x-2} \)</span> and that <span class="process-math">\(\blue{f'(u)} 
+= \blue{\ddu{ \ln(u) }} = \blue{\dfrac{1}{u}} \)</span>
+</div> <div class="para logical" id="ex_powerrule_log2-2-3">
+<div class="para">Now that we have done our scrap work, we can return to our original question</div>
+<div class="displaymath process-math" id="ex_powerrule_log2-2-3-1">
+\begin{align*}
+y'(x) = \amp 
+\ddx{\blue{ \ln\big(\red{x^2- 2x}\big) } }  \\
+= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }\\
+= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{align*}
+</div>
+<div class="para">Substituting the values first for <span class="process-math">\(\blue{f'}= \frac{1}{u}\text{,}\)</span> and then for  <span class="process-math">\(\red{g}\)</span> and <span class="process-math">\(\red{g'}\text{,}\)</span> into the above equation gives</div>
+<div class="displaymath process-math" id="ex_powerrule_log2-2-3-5">
+\begin{align*}
+y'(x) = \amp 
+\blue{ \frac{1}{\ \red{g(x)}\ } }\cdot \red{g'(x)}\\
+= \amp 
+\blue{ \frac{1}{\ \red{x^2- 2x}}\ }\cdot \Big(\red{2x-2}\Big)
+\end{align*}
+</div>
+</div>
+</div></details></div></article><div class="para logical" id="sec-chainrule-10">
+<div class="para">There is a pattern in the previous two examples, which results from the fact that in both cases, the outside function is <span class="process-math">\(\blue{f(u)} = \blue{\ln(u)}\text{.}\)</span>  This gives another "optional shortcut" derivative rule</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{\ln\Big( g(x) \Big)} = \dfrac{1}{\ g(x)\ }\cdot g'(x)
+\end{equation*}
+</div>
+</div>
+<article class="exercise exercise-like" id="sec-chainrule-11"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">13.15</span><span class="period">.</span>
+</h4>
+<div class="para" id="sec-chainrule-11-1-1">Suppose that <span class="process-math">\(b\)</span> is a constant base (not necessarily <span class="process-math">\(e=2.714\dots\)</span>). Find a formula for <span class="process-math">\(\displaystyle\ddx{ b^x } \)</span>
+</div>
+<div class="solutions"><details id="sec-chainrule-11-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="sec-chainrule-11-2-1">In this derivative, the variable <span class="process-math">\(x\)</span> is in the exponent. The only related rule we have is the formula <span class="process-math">\(\ddx{e^x}=e^x\text{,}\)</span> but this only applies when the base is <span class="process-math">\(e=2.714\dots\text{.}\)</span>
+</div> <div class="para" id="sec-chainrule-11-2-2">The trick is to use properties of exponentials and logarithms to rewrite the number <span class="process-math">\(b\)</span> as <span class="process-math">\(e^{\ln(b)}\text{.}\)</span> With that, we can find the derivative as follows</div> <div class="para logical" id="sec-chainrule-11-2-3">
+<div class="displaymath process-math" id="sec-chainrule-11-2-3-1">
+\begin{align*}
+\ddx{ b^{x} } = \amp \ddx{ \Big(e^{\ln(b)}\Big)^x } \\
+= \amp \ddx{ \blue {e^{\big(\red{\ln(b)\cdot x}\big)} } } 
+\end{align*}
+</div>
+<div class="para">This is a chain rule problem, with outside function <span class="process-math">\(\blue{f(u)}=\blue{e^u}\)</span> and inside function <span class="process-math">\(\red{g(x)} = \red{\ln(b)\cdot x}\text{.}\)</span> Clearly, <span class="process-math">\(\blue{f'} = \blue{e^u}\text{.}\)</span> And because  <span class="process-math">\(b\)</span> and <span class="process-math">\(\ln(b)\)</span> are constants, <span class="process-math">\(\red{g'} = \red{\ddx{\ln(b)\cdot x}} = \red{\ln(b)}\)</span>
+</div>
+</div> <div class="para logical" id="sec-chainrule-11-2-4">
+<div class="para">Now that we have done our scrap work, we can return to our original question</div>
+<div class="displaymath process-math" id="sec-chainrule-11-2-4-1">
+\begin{align*}
+h'(x) = \amp 
+\ddx{\blue{ e^{\big(\red{\ln(b)\cdot x}\big)} } }  \\
+= \amp \ddx{ \blue{f\Big( \red{g(x)} \Big) } }\\
+= \amp \blue{f'\Big( \red{g(x)}\Big)}\cdot \red{g'(x)}
+\end{align*}
+</div>
+<div class="para">Substituting the values first for <span class="process-math">\(\blue{f'}\text{,}\)</span> and then for  <span class="process-math">\(\red{g}\)</span> and <span class="process-math">\(\red{g'}\text{,}\)</span> into the above equation gives</div>
+<div class="displaymath process-math" id="sec-chainrule-11-2-4-5">
+\begin{align*}
+h'(x) = \amp 
+\blue{ e^{(\red{g(x)})} }\cdot \red{g'(x)}\\
+= \amp 
+\blue{ e^{(\red{\ln(b)\cdot x})} }\cdot \Big(\red{\ln(b)}\Big)\\
+= \amp b^x \cdot \ln(b)
+\end{align*}
+</div>
+</div>
+</div></details></div></article><div class="para logical" id="sec-chainrule-12">
+<div class="para">The previous exercise gives us one last derivative rule.  If <span class="process-math">\(b\)</span> is any constant number,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{b^x} = b^x \cdot \ln(b)
+\end{equation*}
+</div>
+<div class="para">For example,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ddx{5^x} = 5^x \cdot \ln(5)
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-chainrule-13">
+<div class="para">In this chapter, we have learned many different derivative rules.  Make sure that you are</div>
+<ol class="decimal" id="sec-chainrule-13-1">
+<li id="sec-chainrule-13-1-1"><div class="para" id="sec-chainrule-13-1-1-1">comfortable using the rules correctly and efficiently, and</div></li>
+<li id="sec-chainrule-13-1-2"><div class="para" id="sec-chainrule-13-1-2-1">able to accurately identify which rule to use in any given situation.</div></li>
+</ol>
+</div>
+<article class="exploration project-like" id="ex_complexchainrule"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">13.1</span><span class="period">.</span><span class="space"> </span><span class="title">Be Careful When Deciding Which Rule To Use.</span>
+</h4>
+<article class="task exercise-like" id="ex_complexchainrule-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_complexchainrule-2-1-1">Let <span class="process-math">\(f(x) = 15 \Big( \ln(x)\Big)^2\)</span>
+</div>
+<div class="solutions"><details id="ex_complexchainrule-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_complexchainrule-2-2-1">
+<div class="para">Always start by setting up the derivative</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(x) = \ddx{ 15 \Big( \ln(x)\Big)^2}
+\end{equation*}
+</div>
+<div class="para">Use order of operations to identify the outermost operation. In case, after you pull the constant coefficient of 15 through the derivaitve, the outermost operation is the fact that <span class="process-math">\(\red{g(x) = \ln(x)}\)</span> is inside the <em class="emphasis">power of 2 function</em> <span class="process-math">\(\blue{f(u) = u^2}\)</span>
+</div>
+<div class="displaymath process-math" id="ex_complexchainrule-2-2-1-5">
+\begin{align*}
+f'(x)  \amp =  \ddx{ 15 \Big( \ln(x)\Big)^2} \\
+\amp = 15  \ddx{ \blue{\Big( \red{\ln(x)}\Big)^2}} \amp \text{constant coefficient}\\
+\amp = 15\cdot  2\cdot \Big( \ln(x)\Big)^{2-1}\ddx{\ln(x)} \amp \text{chain rule}\\
+\amp = 30\cdot \Big( \ln(x)\Big)\dfrac{1}{x} \\
+\amp = \dfrac{30\ln(x)}{x}
+\end{align*}
+</div>
+</div></div></details></div></article><article class="task exercise-like" id="ex_complexchainrule-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_complexchainrule-3-1-1">Let <span class="process-math">\(f(x) = \ln(x) 15x^2\text{.}\)</span> Find <span class="process-math">\(f'(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_complexchainrule-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_complexchainrule-3-2-1">
+<div class="para">Always start by setting up the derivative</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(x) = \ddx{\ln(x) 15x^2}
+\end{equation*}
+</div>
+<div class="para">Use order of operations to identify the outermost operation.  In this case, the function is the <em class="alert">prodcut</em> of <span class="process-math">\(\ln(x)\)</span> and <span class="process-math">\(15x^2\text{,}\)</span> so we must use the product rule <span class="process-math">\(\D{f\cdot g} = f\cdot g' + g\cdot f' \text{.}\)</span>
+</div>
+<div class="displaymath process-math" id="ex_complexchainrule-3-2-1-6">
+\begin{align*}
+f'(x) = \amp \ddx{ \red{\ln(x)} \blue{15x^2} }\\
+= \amp \red{\ln(x)}\ddx{ \blue{15x^2} } + \blue{15x^2} \ddx{ \red{\ln(x)} }\\
+= \amp \ln(x)\cdot 15\cdot 2x + 15x^2\cdot \frac{1}{x}\\
+= \amp 30 x \ln(x) + 15x
+\end{align*}
+</div>
+</div></div></details></div></article><article class="task exercise-like" id="ex_complexchainrule-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_complexchainrule-4-1-1">Let <span class="process-math">\(f(x) = \ln\big(15x^2\big)\text{.}\)</span> Find <span class="process-math">\(f'(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_complexchainrule-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_complexchainrule-4-2-1">
+<div class="para">Always start by setting up the derivative</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(x) = \ddx{\ln\big(15x^2\big)}
+\end{equation*}
+</div>
+<div class="para">Use order of operations to identify the outermost operation. In this case the outermost operation is the <em class="alert">logarithmic function</em> <span class="process-math">\(\blue{f(u)} = \blue{\ln(u)}\text{,}\)</span> and the argument is <span class="process-math">\(\red{g(x)} = \red{15x^2}\text{.}\)</span>  That means we can either use the full chain rule <span class="process-math">\(\D{ f(g) } = f'(g)\cdot g'\text{,}\)</span> or we can use the shortcut <span class="process-math">\(\D{\ln\big(g(x)\big)} = \frac{1}{g(x)}\cdot g'(x)\text{.}\)</span>  In either case, we get</div>
+<div class="displaymath process-math" id="ex_complexchainrule-4-2-1-7">
+\begin{align*}
+f'(x) = \amp \ddx{ \blue{\ln\big(\red{15x^2}\big)} }  \\
+= \amp \blue{f'(\red{g(x)})}\cdot \ddx{\red{g(x)}}\\
+= \amp \blue{\dfrac{1}{\ \red{15x^2} \ }}\cdot (\red{30x})  \\
+= \amp \dfrac{30x}{15x^2}\\
+= \amp \dfrac{2}{x}
+\end{align*}
+</div>
+</div></div></details></div></article><article class="task exercise-like" id="ex_complexchainrule-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex_complexchainrule-5-1-1">Let <span class="process-math">\(f(x) = e^{(\ln(x))^2}\text{.}\)</span>  Find <span class="process-math">\(f'(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_complexchainrule-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_complexchainrule-5-2-1">
+<div class="para">Always start by setting up the derivative</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f'(x) = \ddx{e^{(\ln(x))^2}}
+\end{equation*}
+</div>
+<div class="para">Use order of operations to identify the outermost operation. In this case the outermost operation is the <em class="alert">exponential function</em> <span class="process-math">\(\blue{f(u)} = \blue{e^u}\text{,}\)</span> and the argument is <span class="process-math">\(\red{g(x)} = \red{(\ln(x))^2}\text{.}\)</span>  That means we can either use the full chain rule <span class="process-math">\(\D{ f(g) } = f'(g)\cdot g'\text{,}\)</span> or we can use the shortcut <span class="process-math">\(\D{e^{g(x)}} = e^{g(x)}\cdot g'(x)\text{.}\)</span>  In either case, we get</div>
+<div class="displaymath process-math" id="ex_complexchainrule-5-2-1-7">
+\begin{align*}
+f'(x) \amp = \ddx{ \blue{e^{\red{(\ln(x))^2}}} }\\
+\amp =  \blue{e^{\red{(\ln(x))^2}}} \ddx{ \red{(\ln(x))^2} }
+\end{align*}
+</div>
+<div class="para">Now we must take the derivative of the inside function <span class="process-math">\({(\ln(x))^2}\text{.}\)</span>  This is also a composition with outside function <span class="process-math">\(\blue{f(u)= u^2}\)</span> and inside function <span class="process-math">\(\red{g(x) = \ln(x)}\text{.}\)</span>
+</div>
+<div class="displaymath process-math" id="ex_complexchainrule-5-2-1-11">
+\begin{align*}
+\phantom{f'(x) } \amp = {e^{{(\ln(x))^2}}} 2\cdot  {(\ln(x))^{2-1}}\cdot \ddx{\ln(x)}\\
+\amp = {e^{{(\ln(x))^2}}} 2\cdot  {(\ln(x))}\cdot \frac{1}{x}
+\end{align*}
+</div>
+</div></div></details></div></article></article></section><section class="section" id="sec-derivativesummary"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">13.3</span><span class="space"> </span><span class="title">List of All Derivative Rules</span>
+</h3>
+<article class="assemblage assemblage-like" id="assemblage-derivativesummary"><h4 class="heading"><span class="title">Complete List of Derivative Rules.</span></h4>
+<div class="para logical" id="assemblage-derivativesummary-2">
+<div class="para">Suppose that <span class="process-math">\(f,g\)</span> are differentiable functions of <span class="process-math">\(x\text{,}\)</span> that <span class="process-math">\(m,c\)</span> are constant numbers.  Then</div>
+<ul class="disc" id="assemblage-derivativesummary-2-4">
+<li id="assemblage-derivativesummary-2-4-1"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-1"><span class="process-math">\(\displaystyle \D{c}=0\)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-2"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-2">
+<span class="process-math">\(\D{m\cdot x+b}=m\)</span> and <span class="process-math">\(\D{x} = 1\)</span>
+</div></li>
+<li id="assemblage-derivativesummary-2-4-3"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-3"><span class="process-math">\(\displaystyle \D{x^m}=m\cdot x^{m-1}\)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-4"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-4"><span class="process-math">\(\displaystyle \D{ c\cdot f(x)}=c\cdot \D{f(x)}\)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-5"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-5"><span class="process-math">\(\displaystyle \D{f(x) \pm g(x)} = \D{f(x)} \pm \D{g(x)}\)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-6"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-6"><span class="process-math">\(\displaystyle \D{ e^x } = e^x \)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-7"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-7"><span class="process-math">\(\displaystyle \D{ \ln(x) } = \frac{1}{x}\)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-8"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-8"><span class="process-math">\(\displaystyle \Big[f\cdot g\Big]' = f\cdot \Big[g\Big]' + g\cdot \Big[f\Big]' = f\cdot g' + g\cdot f' \)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-9"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-9"><span class="process-math">\(\displaystyle \left[\dfrac{t}{b}\right]' = \dfrac{b\cdot t' - t\cdot b'}{(b)^2} \)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-10"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-10">
+<span class="process-math">\(\D{ f(g) } = f'(g)\cdot g'\)</span><ul class="circle" id="assemblage-derivativesummary-2-4-10-2">
+<li id="assemblage-derivativesummary-2-4-10-2-1"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-10-2-1"><span class="process-math">\(\displaystyle \D{ \big(g(x)\big)^m } = m \big(g(x)\big)^{m-1}\cdot g'\)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-10-2-2"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-10-2-2"><span class="process-math">\(\displaystyle \left[ \sqrt{g(x)} \right]' = \frac{1}{2}\Big( g(x) \Big)^{-1/2}\cdot g' \)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-10-2-3"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-10-2-3"><span class="process-math">\(\displaystyle \D{ e^{g(x)} } = e^{g(x)}\cdot g'\)</span></div></li>
+<li id="assemblage-derivativesummary-2-4-10-2-4"><div class="para" id="p-derived-assemblage-derivativesummary-2-4-10-2-4"><span class="process-math">\(\displaystyle \D{ \ln\big(g(x)\big) } = \dfrac{1}{g(x)}\cdot g'\)</span></div></li>
+</ul>
+</div></li>
+<li id="assemblage-derivativesummary-2-4-11"><div class="para" id="assemblage-derivativesummary-2-4-11-1">If <span class="process-math">\(b\)</span> is any constant number, <span class="process-math">\(\D{ b^x } = b^x\cdot \ln(b)\)</span>
+</div></li>
+</ul>
+</div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="ch_productquotientrule.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="part-applyingslopes.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="feedback-link" href="mailto:sflood@bridgew.edu?subject=TEXTBOOK%20FEEDBACK%20-%20Business%20Calculus" target="_blank">Feedback</a><a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

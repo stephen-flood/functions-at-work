@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_introducingarea" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Understanding Areas</title>
+
+
+<section xml:id="sec_indefiniteintegrals">
+  <title>Indefinite Integrals</title>
+
+  <p>
+    Recall from <xref ref="sec-indefiniteintegrals"/> that 
+    <me>
+      \intdx{f(x)} \text{ means "find the antiderivative of" } f(x) 
+    </me>
+    We called this the <em>indefinite integral</em> of <m>f(x)</m>.
+  </p>
+  <p>
+    In <xref ref="insight_understandingintnotatino"/>, we saw that this notation arises from the connection between marginal cost and item cost, and the fact that <em>summing</em> the intem cost over a range gives you the <em>change</em> in total cost. 
+  </p>
+  <p>
+    In this section, we will study this and related applications. 
+    We begin with the following definition.
+  </p>
+  <definition xml:id="def-indefiniteintegral">
+    <statement>
+      <p>
+        Suppose that <m>F(x)</m> is <em>any</em> antiderivative of <m>f(x)</m>, and that <m>a,b</m> are constant numbers. 
+        Then we define 
+        <me>
+          \intdx{_a^b \, f(x)\, } = F(b) - F(a) 
+        </me>
+        the expression on the right is often abbreviated <m>\Big[F(x)\Big]_a^b</m>
+      </p>
+    </statement>
+  </definition>
+
+  <exploration xml:id="ex_definiteintegral1">
+    <introduction>
+      <p>
+        Suppose that <m>f(x) = 36x + \dfrac{42}{x}</m> is a marginal cost function.  
+      </p>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Evaluate <m>\displaystyle\intdx{_{10}^{100} 36x + \frac{42}{x}}</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          To compute the integral
+          <me>
+            \intdx{_{10}^{100} 36x + \frac{42}{x}} 
+          </me>
+          we must first find an antidervivative of.  It is not difficult to see that <em>one</em> antiderivative of <m>f(x) = 36x + 42\frac{1}{x}</m> is <m>F(x) = 36\frac{1}{2}x^2 + 42\ln(|x|)</m>.
+        </p>
+        <p>
+          By <xref ref="def-indefiniteintegral"/>, we can now compute 
+          <md>
+            <mrow>\intdx{_{10}^{100} 36x + \frac{42}{x}}  = \amp F(100) - F(10) </mrow>
+            <mrow>= \amp [18x^2 + 42\cdot \ln(|x|)]_{10}^{100}</mrow>
+          </md>
+          Using a calculator, you can compute separately 
+          <md>
+            <mrow> F(100) = \amp 18 (100)^2 + 42\ln(100) = 180,193.41</mrow>
+            <mrow> F(10) = \amp 18 (10)^2 + 42\ln(10) = 1,896.70</mrow>
+          </md>
+          We can now find the definite integral 
+          <md>
+            <mrow>\intdx{_{10}^{100} 36x + \frac{42}{x}}  = \amp F(100) - F(10) </mrow>
+            <mrow>= \amp [18x^2 + 42\cdot \ln(|x|)]_{10}^{100}</mrow>
+            <mrow>= \amp 178,296.71 </mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          What is the economic meaning of the expression <m>\displaystyle\intdx{_{10}^{100} 36x + \frac{42}{x}}</m>?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that 
+          <md>
+            <mrow>\intdx{_{10}^{100} 36x + \frac{42}{x}}  = \amp F(100) - F(10) </mrow>
+          </md>
+          where <m>F(100)</m> is the total cost of 100 items, and <m>F(10)</m> is the total cost of 10 items. 
+        </p>
+        <p>
+          That means that <m>\intdx{_{10}^{100} 36x + \frac{42}{x}}</m> is the cost of items numbered 11 through 100.
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Use an indefinite integral to find the <em>exact</em> exact cost of the 100th item only. 
+        </p>
+      </statement>
+      <solution>
+        <p>
+          This question requires concepts and computations from  <xref ref="sec-marginalcost"/>. 
+          Take a moment to refresh your memory of this section. 
+        </p>
+        <p>
+          In that section, to find the exact cost of the 100th item only, we need a total cost function <m>F(x)</m>.  
+        </p>
+        <p>
+          Then <m>F(100)</m> is the cumulative cost of items 0-100, and <m>F(99)</m> is the cumulative cost of items 0-99.  
+        </p>
+        <p>
+          That means that 
+          <me>
+            \text{Cost of item }100 = F(100) - F(99) = \intdx{_{99}^{100}  36x + \frac{42}{x} }
+          </me>
+        </p>
+        <p>
+          We have already found that the cumulative cost function is <m>F(x)  = 18x^2 + 42\cdot \ln(|x|)</m>
+          Using this function we can compute
+          <md>
+            <mrow> \intdx{_{99}^{100}  36x + \frac{42}{x} } \amp = F(100) - F(99)</mrow>
+            <mrow> \amp =180,193.41 - 176,610.99</mrow>
+            <mrow> \amp = 3,582.42 </mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+  
+  <p>
+    The next exploration explores what happens if we leave the function we are integrating the same, but change the limits of integration. 
+  </p>
+
+  <exploration xml:id="ex_definiteintegral2">
+    <task>  
+      <statement>
+        <p>
+          Compute <m>\intdx{_1^2 12x^2 - 2} </m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          One antiderivative of <m>f(x) = 12x^2 - 2 </m> is 
+          <md>
+            <mrow>F(x) \amp = 12\cdot\frac{1}{3}x^3 - 2\cdot x</mrow>
+            <mrow>F(x) \amp = 4x^3 - 2x</mrow>
+          </md>
+          We can now use <xref ref="def-indefiniteintegral"/>
+          <md>
+            <mrow>\intdx{_1^2 12x^2 - 2}  \amp = F(2) - F(1) </mrow>
+            <mrow> \amp = \Big[ 4x^3 - 2x \Big]_2^1</mrow>
+            <mrow> \amp = 28-2 </mrow>
+            <mrow> \amp = 26 </mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute <m>\intdx{_0^5 12x^2 - 2} </m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          One antiderivative of <m>f(x) = 12x^2 - 2 </m> is 
+          <m> F(x)= 4x^3 - 2x </m>
+          We can now use <xref ref="def-indefiniteintegral"/>
+          <md>
+            <mrow>\intdx{_0^5 12x^2 - 2}  \amp = F(0) - F(5) </mrow>
+            <mrow> \amp = \Big[ 4x^3 - 2x \Big]_5^0</mrow>
+            <mrow> \amp = 490-0 </mrow>
+            <mrow> \amp = 490 </mrow>
+          </md>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    We have seen that integrals play an important role in connecting marginal and total cost functions. 
+  </p>
+  <p>
+    But that  is not the only, or even the most, important application of the derivative.  The next is often called the <em>most important theorem in calculus</em>.
+  </p>
+
+  <theorem xml:id="thm-earlyFTC">
+    <statement>
+      <p>
+        Suppose that <m>f</m> is a height function, and that <m>F</m> is an antiderivative of <m>f</m>
+      </p>
+      <p>
+        Then the <em>net area between <m>f</m> and the <m>x</m>-axis over the interval <m>[a,b]</m></em> is equal to 
+        <me>
+          \intdx{_a^b f(x) } = F(b) - F(a) 
+        </me>
+      </p>
+    </statement>
+  </theorem>
+
+  <p>
+    In <xref ref="sec_geometricarea"/>, we will discuss the exact meaning and intricacies of the phrase <em>the net area between <m>f</m> and the <m>x</m> axis on the interval <m>[a,b]</m> </em>.  
+    For now, the following illustration should suffice to show its general meaning. 
+  </p>
+  <image width="50%" xml:id="image_ftc_illustration1">
+    <latex-image>
+      \begin{tikzpicture}
+        \draw[color=white,fill=green,opacity=0.33] 
+          (1,0) 
+          -- (1,{cos(1 r)+2}) 
+          -- plot[domain= 1:3] ({\x},{cos(\x r)+2}) 
+          -- (3,{cos(3 r)+2})
+          -- (3,0)
+          -- (1,0);
+        \node[above right] at (4.5,{cos(4.5 r) + 2}){$f$};
+        \draw[red] (1,3) -- (1,-0.25) node [below] {$a$};
+        \draw[red] (3,3) -- (3,-0.25) node [below] {$b$};
+        \draw (-1,0) -- (5,0);
+        \draw (0,-1) -- (0,4);
+        \draw [curve,domain=-1:4.5] plot ({\x},{cos(\x r)+2});
+        \draw[green!50!black,ultra thick,&lt;-] (2,0.5) -- (2.2,-1) node[below] {area between $f$ and $x$-axis over $[a,b]$};
+      \end{tikzpicture}
+    </latex-image>
+  </image>
+
+  <p>
+    We will talk about <em>why</em> this theorem is true in <xref ref="sec_fundamentaltheorem"/>.  For now, we will focus on computations and some preliminary applications. 
+  </p>
+
+  <exploration xml:id="ex_area1">
+    <task>
+      <statement>
+        <p>
+          Let <m>f(x) = 15x^2 + 2</m> describe the height of a mountain.
+        </p>
+        <p>
+          Find the net area between <m>f</m> and the <m>x</m>-axis over the interval <m>[1,2]</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          By <xref ref="thm-earlyFTC"/>, this means that we must compute 
+          <me>
+            \intdx{_1^2  12x^2 + 2 }
+          </me>
+          One antiderivative of <m>f=12x^2 + 2</m> is <m>F=6x^3 + 2x</m>
+          <md>
+            <mrow>\intdx{_1^2  12x^2 + 2 } \amp = F(2)-F(1)</mrow>
+            <mrow>\amp = 52 - 8 </mrow>
+            <mrow>\amp = 44     </mrow>
+          </md>
+          Graphically, we have computed the area of the shaded region below:
+        </p>
+        <image width="50%" xml:id="image_introarea_ex1">
+          <latex-image>
+            \begin{tikzpicture}[yscale=0.03]
+              \draw[color=white,fill=green,opacity=0.33] 
+                (1,0) 
+                -- (1,{15*(1^2)+2}) 
+                -- plot[domain= 1:2] ({\x},{15*(\x^2)+2}) 
+                -- (2,{15*(2^2)+2})
+                -- (2,0)
+                -- (1,0);
+              \draw[red] (1,70) -- (1,-5) node [below] {$1$};
+              \draw[red] (2,70) -- (2,-5) node [below] {$2$};
+              \draw (-1,0) -- (5,0);
+              \draw (0,-10) -- (0,75	);
+              \draw[curve,domain=-1:2.25] plot ({\x},{15*(\x^2)+2});
+              \draw[green!50!black,ultra thick,&lt;-] (1.5,15) -- (1.6,-15) node[below] {area between $f$ and $x$-axis over $[1,2]$};
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the net area between <m>f(x)=\sqrt{x}</m> and the <m>x</m>-axis between <m>x=4</m> and <m>x=9</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          By <xref ref="thm-earlyFTC"/>, this means that we must compute 
+          <me>
+            \intdx{_4^9  \sqrt{x} }  = \intdx{_4^9 x^{1/2} }  
+          </me>
+          One antiderivative of <m>f=x^{0.5} </m> is <m>F=\frac{1}{0.5+1}x^{0.5+1} = \frac{x^{1.5}}{1.5}</m>
+          <md>
+            <mrow>\intdx{_4^9  x^{0.5} } \amp = F(9)-F(4)</mrow>
+            <mrow> \amp = \left(\frac{9^{1.5}}{1.5}\right) - \left(\frac{4^{1.5}}{1.5}\right)</mrow>
+            <mrow>\amp = 18 - 5.33\dots </mrow>
+            <mrow>\amp = 12.66\dots </mrow>
+          </md>
+          Graphically, we have computed the area of the shaded region below:
+        </p>
+        <image width="50%" xml:id="image_introarea_ex2">
+          <latex-image>
+            \begin{tikzpicture}
+                \draw[color=white,fill=green,opacity=0.33] 
+                (4,0) 
+                -- (4,{(1)^0.5}) 
+                -- plot[domain= 4:9] ({\x},{(\x)^0.5}) 
+                -- (9,{(9)^0.5})
+                -- (9,0)
+                -- (4,0);
+              \draw[red] (4,3.5) -- (4,-0.25) node [below] {$4$};
+              \draw[red] (9,3.5) -- (9,-0.25) node [below] {$9$};
+              \draw (-1,0) -- (10,0);
+              \draw (0,-1) -- (0,4);
+              \draw [domain=0:10,samples=100,curve] plot ({\x},{(\x)^0.5});
+              \draw[green!50!black,ultra thick,&lt;-] (6.5,0.5) -- (6.3,-1) node[below] {area between $f$ and $x$-axis over $[4,9]$};
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+  </exploration>
+
+</section>
+
+<section xml:id="sec_geometricarea">
+  <title>Understanding Geometrically of Area</title>
+  
+  <p> 
+    In this course, our primary applications have come from macroeconomics, accounting and finance, and management. 
+    But the tools of calculus apply to a much broader set of applications. 
+  </p>
+  <p>
+    For example, suppose that you are selling a plot of land enclosed between a stream and a road. 
+    From comparable recent sales, you know that the value of the land is $12,800,000 $ per square mile. 
+    You want to know how much your land is worth. 
+    You already know that 
+    <me>
+      \text{(value)} = \text{(area)} \times \text{(price per unit area)}
+    </me>.
+    To get a numerical value, you need to be able to compute the <em>area enclosed</em>. 
+  </p>
+  <image width="50%" xml:id="image_areameaning_illustration1">
+    <latex-image>
+      \begin{tikzpicture}
+				[declare function={ 
+					f(\x) =	-cos(\x r) + 2 ; 
+					x1enclosed= 1;
+					x2enclosed= 3;
+					domstart=  -1;
+					domstop=  4.5;
+				}]	
+        \draw[fill=green,opacity=0.33] 
+          (x1enclosed,0) 
+          -- plot[domain= x1enclosed:x2enclosed] ({\x},{f(\x)}) 
+          -- (x2enclosed,0)
+          -- (x1enclosed,0);
+        \draw (x1enclosed,{f(x1enclosed)}) -- (1,0) ;
+        \draw (x2enclosed,{f(x2enclosed)}) -- (3,0) ;
+        %\draw (0,-1) -- (0,4) node [below left] {$y$};
+				\draw[color=white,fill=black,opacity=0.1] (-1,0) -- (5,0) -- (5,-1) -- (-1,-1) -- cycle;
+        \draw (-1,0) -- (5,0);
+        \draw[dashed] (-1,-0.5) -- (5,-0.5);
+        \draw (-1,-1) -- (5,-1);
+				\draw[color=white,fill=blue,opacity=0.33]
+          (domstart,0) 
+          -- plot[domain= domstart:domstop] ({\x},{f(\x)}) 
+          -- plot[domain= domstop:domstart] ({\x},{f(\x)+1}) 
+          -- (domstart,0);
+        \draw [curve, domain=domstart:domstop] plot ({\x},{f(\x)+1});
+        \draw [curve, domain=domstart:domstop] plot ({\x},{f(\x)});
+      \end{tikzpicture}
+    </latex-image>
+  </image>
+  <p>
+    For triangles and squares, computing area is easy.  
+    <ol>
+      <li>
+        <p>
+          The area of a triangle is <m>\frac{1}{2}\cdot b\cdot h</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          The area of a rectangle is <m>b\cdot h</m>
+        </p>
+      </li>
+    </ol>
+    For other shapes, computing area is much more complex, and often requires more powerful mathematical tools.  
+    Translating our real estate question into mathematical language gives the following picture: 
+  </p>
+  <image width="50%" xml:id="image_areameaning_illustration2">
+    <latex-image>
+      \begin{tikzpicture}
+        [declare function={ 
+          f(\x) =	-cos(\x r) + 2 ; 
+          x1enclosed= 1;
+          x2enclosed= 3;
+          domstart=  -1;
+          domstop=  4.5;
+        }]	
+        \draw[color=white,fill=green,opacity=0.33] 
+          (x1enclosed,0) 
+          -- plot[domain= x1enclosed:x2enclosed] ({\x},{f(\x)}) 
+          -- (x2enclosed,0)
+          -- (x1enclosed,0);
+        \draw[red] (x1enclosed,{f(x1enclosed)}) -- (1,-0.08) node [below] {$a$};
+        \draw[red] (x2enclosed,{f(x2enclosed)}) -- (3,-0.08) node [below] {$b$};
+        \draw[very thick,latex-latex](0,-1) -- (0,4) node [below left] {$y$};
+        \draw[very thick,latex-latex] (-1,0) -- (5,0) node [above left] {$x$};
+        \draw [color=blue,curve,domain=domstart:domstop] plot ({\x},{f(\x)}) node [below right] {$f(x)$};
+      \end{tikzpicture}
+    </latex-image>
+  </image>
+  <p>
+    In this new language, 
+    <ul>
+      <li>
+        <p>
+          The <em>river</em> is modeled by the function <m>\blue{y=f(x)}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>road</em> is modeled by the <m>x</m>-axis.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>lot lines</em> are represented by the lines <m>\red{x=a}</m> and <m>\red{x=b}</m>
+        </p>
+      </li>
+    </ul>
+    In this langage, we want the <em>area enclosed between <m>\blue{f(x)}</m> and the <m>x-axis</m> on the interval <m>\red{[a,b]}</m></em>.
+  </p>
+
+  <p>
+    We have already learned in <xref ref="thm-earlyFTC"/> that 
+    <me>
+      \intdx{_a^b \, f(x) \, } = \text{net area enclosed between } f(x) \text{ and } x\text{-axis over }[a,b]
+    </me>
+    But here, since we do not have an equation for the function, we must compute the area directly using geometry. 
+  </p>
+
+  <exploration xml:id="ex_graphicalarea1">
+    <introduction>
+      <p>
+        Let <m>f(x)</m> be defined by the graph below 
+      </p>
+      <image width="50%" xml:id="image_graphicalarea_eg1">
+        <latex-image>
+          \begin{tikzpicture}
+            \draw[very thin,color=gray,step=1,dashed] (0,0) grid (5.6,3.6);
+            \draw[latex-latex,thick] (-0.6,0) -- (5.6,0);
+            \draw[latex-latex,thick] (0,-0.6) -- (0,3.6) ;
+                  \foreach \x in {1,...,5}
+                    \draw (\x,0.05) -- (\x,-0.05)
+                  node[below, font=\small] {\x};
+                  \foreach \y in {1,...,3}
+                    \draw (0.05,\y) -- (-0.05,\y)
+                  node[left, font=\small] {\y};	
+            \draw [very thick,smooth,samples=100,domain=0:4]  (0,0) -- (1,3) -- (3,3)--(4,2) --(5,1)--(5.4,1) ;
+            %\filldraw [fill=lightgray,smooth,samples=100,domain=0:4] (0,0) -- (1,3) -- (3,3) -- (4,2) -- (4,0) -- cycle;
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Compute the net area between <m>f</m> and the <m>x</m>-axis on the interval <m>[0,1]</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The first step is to identify and shade the region described. 
+          Moving between <m>x=0</m> and <m>x=1</m>, the area region enclosed on the top by <m>f(x)</m> and the bottom by the <m>x</m>-axis is a triangle with base <m>b=1</m> and height <m>h=3</m>.
+        </p>
+        <p>
+          This region has height 
+          <me>
+            \text{area of triangle} = \frac{1}{2} b h = \frac{1}{2} \cdot 1 \cdot 3 = 1.5 
+          </me>
+        </p>
+        <image width="50%" xml:id="image_graphicalarea_eg1a">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (0,0) grid (5.6,3.6);
+              \draw[latex-latex,thick] (-0.6,0) -- (5.6,0);
+              \draw[latex-latex,thick] (0,-0.6) -- (0,3.6) ;
+                    \foreach \x in {1,...,5}
+                      \draw (\x,0.05) -- (\x,-0.05)
+                    node[below, font=\small] {\x};
+                    \foreach \y in {1,...,3}
+                      \draw (0.05,\y) -- (-0.05,\y)
+                    node[left, font=\small] {\y};	
+              \draw [very thick,smooth,samples=100,domain=0:4]  (0,0) -- (1,3) -- (3,3)--(4,2) --(5,1)--(5.4,1) ;
+              \draw [fill=green,opacity=0.5] (0,0) -- (1,3) -- (1,0) node[red,midway,right,opacity=1] {$\scriptstyle h=3$} -- cycle node[red,midway,below,opacity=1] {$\scriptstyle  b=1$};
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute the net area between <m>f</m> and the <m>x</m>-axis on the interval <m>[1,3]</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The first step is to identify and shade the region described. 
+          Moving between <m>x=1</m> and <m>x=3</m>, the area region enclosed on the top by <m>f(x)</m> and the bottom by the <m>x</m>-axis is a rectangle with base <m>b=2</m> and height <m>h=3</m>.
+        </p>
+        <p>
+          This region has area 
+          <me>
+            \text{area of rectangle} = b h = 2 \cdot 3 = 6 
+          </me>
+        </p>
+        <image width="50%" xml:id="image_graphicalarea_eg1b">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (0,0) grid (5.6,3.6);
+                    \foreach \x in {1,...,5}
+                      \draw (\x,0.05) -- (\x,-0.05)
+                    node[below, font=\small] {\x};
+                    \foreach \y in {1,...,3}
+                      \draw (0.05,\y) -- (-0.05,\y)
+                    node[left, font=\small] {\y};	
+              \draw [very thick,smooth,samples=100,domain=0:4]  (0,0) -- (1,3) -- (3,3)--(4,2) --(5,1)--(5.4,1) ;
+              %\filldraw [fill=lightgray,smooth,samples=100,domain=0:4] (0,0) -- (1,3) -- (3,3) -- (4,2) -- (4,0) -- cycle;
+                \draw [fill=green,opacity=0.5] (1,0) -- (1,3) -- (3,3) -- (3,0) node[red,midway,right,opacity=1] {$\scriptstyle h=3$} -- cycle node[red,fill=white,midway,below,opacity=1] {$\scriptstyle  b=2$};
+
+              \draw[latex-latex,thick] (-0.6,0) -- (5.6,0);
+              \draw[latex-latex,thick] (0,-0.6) -- (0,3.6) ;
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Compute the net area between <m>f</m> and the <m>x</m>-axis on the interval <m>[3,4]</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The first step is to identify and shade the region described. 
+          Moving between <m>x=1</m> and <m>x=3</m>, the area region enclosed on the top by <m>f(x)</m> and the bottom by the <m>x</m>-axis is a <em>trapeziod</em>.
+        </p>
+        <p>
+          There is a formula for the area of a trapezoid, but it is easier and more flexible to just break up the shaded region into <em>two</em> parts: a triangle and a rectangle.
+          <ul>
+            <li>
+              <p>
+                The triangular piece has height <m>h=\Delta y = 3-2=1</m> and base <m>b=\Delta x = 4-3=1</m>. 
+                Thus, the trianglar piece has <em>area</em> <m>\frac{1}{2} b h = \frac{1}{2} \cdot 1\cdot 1 = 0.5 </m>
+              </p>
+            </li>
+            <li>
+              <p>
+                The rectangular piece has height <m>h=\Delta y = 2-0=2</m> and base <m>b=\Delta x = 4-3=1</m>.
+                Thus, the rectangular piece has <em>area</em>
+                <m>b\cdot h= 2 \cdot 1 = 2</m>
+              </p>
+            </li>
+          </ul>
+          Therefore, the area of the entire enclosed region is 
+          <m>0.5 + 2 = 2.5</m>
+        </p>
+        <image width="50%" xml:id="image_graphicalarea_eg1c">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (0,0) grid (5.6,3.6);
+                    \foreach \x in {1,...,5}
+                      \draw (\x,0.05) -- (\x,-0.05)
+                    node[below, font=\small] {\x};
+                    \foreach \y in {1,...,3}
+                      \draw (0.05,\y) -- (-0.05,\y)
+                    node[left, font=\small] {\y};	
+              \draw [very thick,smooth,samples=100,domain=0:4]  (0,0) -- (1,3) -- (3,3)--(4,2) --(5,1)--(5.4,1) ;
+              %\filldraw [fill=lightgray,smooth,samples=100,domain=0:4] (0,0) -- (1,3) -- (3,3) -- (4,2) -- (4,0) -- cycle;
+                \draw [fill=green,opacity=0.5] (3,0) -- (3,2) -- (4,2) -- (4,0) node[green!66!black,midway,right,opacity=1] {$\scriptstyle h=2$} -- cycle node[green!66!black,fill=white,midway,below,opacity=1] {$\scriptstyle  b=1$};
+                \draw [fill=blue,opacity=0.5] (3,3) -- (4,2) -- (3,2) node[blue,midway,below,opacity=1] {$\scriptstyle b=1$} -- cycle node[blue,midway,left,opacity=1] {$\scriptstyle  h=1$};
+
+              \draw[latex-latex,thick] (-0.6,0) -- (5.6,0);
+              \draw[latex-latex,thick] (0,-0.6) -- (0,3.6) ;
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+  </exploration>
+
+  <p>
+    We have now seen several examples that help explain what it means to talk about <em>area enclosed</em> between a function and the <m>x</m>-axis. 
+    But what does <em>net</em> area mean? 
+    To explore this, we need to switch to a new metaphor.
+  </p>
+  <p>
+    In the image below, suppose that <m>\green{f(x)}</m> is the height of land at position <m>x</m>, and that the <m>\blue{x\text{-axis}}</m> is the <em>water level</em>.
+  </p>
+    <image width="75%" xml:id="image_areameaning_illustration3">
+      <latex-image>
+        \begin{tikzpicture}
+          [declare function={ 
+            f(\x) =	sin(\x r) * ln(\x+1) ; 
+            x1enclosed= 1;
+            x2enclosed= 3;
+            domstart=  0;
+            domstop=  7;
+          }]	
+          \draw[very thick,latex-latex](0,-2) -- (0,2) node [below left] {$y$};
+          \draw[color=blue,very thick,latex-latex] (-1,0) -- (8,0) node [above left] {$x$};
+          \draw [smooth,color=green!66!black,curve,domain=domstart:domstop] plot ({\x},{f(\x)}) node [below right] {$f(x)$};
+					\foreach \x in {0,0.25,...,3} 
+					{
+						\draw[fill,color=green!66!black] (\x,{f(\x)}) circle (1.25pt);
+						\draw[-stealth,color=green!66!black] (\x,{f(\x)})--(\x,0);
+					}
+					\foreach \x in {3.25,3.5,...,6} 
+					{
+						\draw[fill,color=red] (\x,{f(\x)}) circle (1.25pt);
+						\draw[-stealth,color=red] (\x,{f(\x)})--(\x,0);
+					}
+        \end{tikzpicture}
+      </latex-image>
+    </image>
+  <p>
+    There are two parts of this graph
+    <ol>
+      <li>
+        <p>
+          When <m>f</m> is <em>positive</em>, then the ground is above the water.  In this case, <em>dry land</em> is the region enclosed between <m>f</m> and the <m>x</m>-axis
+        </p>
+        <p>
+          In this case, we say that <m>f</m> encloses <term>positive net area</term>.
+        </p>
+      </li>
+      <li>
+        <p>
+          When <m>f</m> is <em>negative</em>, then the water is above the ground.  In this case <em>water</em> is the region enclosed between <m>f</m> and the <m>x</m>-axis
+        </p>
+        <p>
+          In this case, we say that <m>f</m> encloses <term>negative net area</term>.
+        </p>
+      </li>
+    </ol>
+    More precisely, we make the following definition
+  </p>
+  <definition xml:id="def-absolutenetarea">
+    <statement>
+      <p>
+        Suppose that you are given any function <m>y=f(x)</m>, and two <m>x</m> values <m>a,b</m>.
+        Let <m>R</m> represent the <em>region enclosed between <m>f</m> and the <m>x</m>-axis on the interval <m>[a,b]</m> </em>
+        <ol>
+          <li>
+            <p>
+              The <term>absolute</term> area of the region <m>R</m> is the area you treat the region as a geometric figure, and ignore the calculus setting of the question. 
+            </p>
+          </li>
+          <li>
+            <p>
+              If the region <m>R</m> is <em>entirely above</em> the <m>x</m>-axis, then the region has <term>positive net area</term> equal to its absolute area. 
+            </p>
+          </li>
+          <li>
+            <p>
+              If the region <m>R</m> is <em>entirely below</em> the <m>x</m>-axis, the region has <term>negative net area</term> equal to the negation of its absoulte area.
+            </p>
+          </li>
+          <li>
+            <p>
+              If the region <m>R</m> is sometimes above and sometimes below the <m>x</m>-axis, you must divide it into separate components, find their net area, and then add them together. 
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </definition>
+  <p>
+    This definition is wordy, but fairly simple to apply in practice. 
+  </p>
+  <exploration  xml:id="ex_graphicalarea2">
+    <introduction>
+      <p>
+        Suppose that <m>f(x)</m> is given by the graph below.
+        In addition to the function, the absolute areas of several regions are indicated. 
+      </p>
+      <image width="50%" xml:id="image_graphicalarea_ex2">
+        <latex-image>
+          \begin{tikzpicture}
+            [declare function={ 
+              f(\x) =	sin(\x r) * ln(\x+1) ; 
+            }]	
+            \draw[very thick,latex-latex](0,-2) -- (0,2) node [below left] {$y$};
+            \draw[very thick,latex-latex] (-1,0) -- (8,0) node [above left] {$x$};
+            \foreach \i in {1,...,7}
+              \draw ({\i*pi/3},0.1)--({\i*pi/3},-0.1) node[below]{\i};
+            
+            \draw [fill=black,opacity=0.2]	
+              plot [smooth,domain=0:{pi}] ({\x},{f(\x)}) 
+              -- cycle;
+            \draw [fill=black,opacity=0.2]	
+              plot [smooth,domain={pi}:{2*pi}] ({\x},{f(\x)}) 
+              -- cycle;
+            \draw [smooth,curve,domain=0:7] plot ({\x},{f(\x)}) node [below right] {$f(x)$};
+
+            \draw[double,&lt;-] ({1.75*pi/3},0.25) -- ({1.5*pi/3},-0.5) node [below] {1.8};
+            \draw[double,&lt;-] ({4.5*pi/3},-0.5) -- ({4.75*pi/3},0.5) node [above] {3.4};
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find <m>\displaystyle\intdx{_0^3 f(x) }</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Between <m>x=0</m> and <m>x=3</m>, the function <m>f(x)</m> is entirely <em>above</em> the <m>x</m>-axis.
+          That means that the <em>net</em> area of the region that it encloses is <em>positive</em>.  
+        </p>
+        <p>
+          We are given that the absolute area of this first region is 1.8.  It follows that 
+          <me>
+            \intdx{_0^3 f(x) } = (+) 1.8 = 1.8
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find <m>\displaystyle\intdx{_3^6 f(x) }</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Between <m>x=3</m> and <m>x=6</m>, the function <m>f(x)</m> is entirely <em>below</em> the <m>x</m>-axis.
+          That means that the <em>net</em> area of the region that it encloses is <em>negative</em>.  
+        </p>
+        <p>
+          We are given that the absolute area of this second region is 3.4.  It follows that 
+          <me>
+            \intdx{_3^6 f(x) } = (-) 3.4 = -3.4
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find <m>\displaystyle\intdx{_0^6 f(x) }</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <m>f</m> crosses the <m>x</m> axis between <m>x=0</m> and <m>x=6</m>. 
+          To find the net area enclosed on this interval, we must divide the function into the region between <m>0\lt x \lt 3</m>, where <m>f</m> is entirely positive, and the region <m>3\lt x\lt 6</m>, where <m>f</m> is entirely negative. We can then compute 
+          <md>
+            <mrow>\intdx{_0^6 f(x)} = \amp \intdx{_0^3 f(x)} + \intdx{_3^6 f(x) } </mrow>
+            <mrow>= \amp (+)1.8 + (-)3.4</mrow>
+            <mrow>= \amp 1.8 - 3.4 </mrow>
+            <mrow>= \amp -1.6</mrow>
+          </md>
+                    
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <exploration xml:id="ex_graphicalarea3">
+    <introduction>
+      <p>
+        Let <m>f(x)</m> be defined by the following graph
+      </p>
+      <image width="50%" xml:id="image_graphicalarea_ex3">
+        <latex-image>
+          \begin{tikzpicture}
+            \draw[very thin,color=gray,step=1,dashed] (-0.1,-2.4) grid (6.4,2.4);
+            \draw[latex-latex, thick] (-1,0) -- (7,0);
+            \draw[latex-latex, thick] (0,-2.5) -- (0,2.5) ;
+            \foreach \x in {1,...,6}
+              \path (\x,.2) -- (\x,-.2)
+              node[below, font=\small] {\x};
+            \foreach \y in {-2,-1,1,2}
+              \path (.2,\y) -- (-.2,\y)
+              node[left, font=\small] {\y};	
+            \draw[very thick] (0,0)--(1,1)--(2,0)--(3,-1)--(4,-1)--(6,1);	
+          \end{tikzpicture}
+        </latex-image>
+      </image>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find <m>\intdx{_0^1 f(x) }</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to find the area enclosed between the curve and the <m>x</m>-axis.
+        </p>
+        <p>
+          First, <em>shade</em> the area enclosed by following the curve, and drawing lines toward the <m>x</m>-axis.
+          Then, identify the part of the enclosed area that corresponds to <m>0\lt x \lt 1</m> as in the following image. 
+        </p>
+        <image width="50%" xml:id="image_graphicalarea_ex3a">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-0.1,-2.4) grid (6.4,2.4);
+              \draw[latex-latex, thick] (-1,0) -- (7,0);
+              \draw[latex-latex, thick] (0,-2.5) -- (0,2.5) ;
+              \foreach \x in {1,...,6}
+                \path (\x,.2) -- (\x,-.2)
+                node[below, font=\small] {\x};
+              \foreach \y in {-2,-1,1,2}
+                \path (.2,\y) -- (-.2,\y)
+                node[left, font=\small] {\y};	
+
+              \foreach \x in {0,0.25,...,1} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-0) + 0 })--(\x,0);
+              \foreach \x in {1,1.25,1.5,1.75,2.25,2.5,...,3} 
+                \draw[-stealth,color=gray] (\x,{ -1*(\x-2) + 0 })--(\x,0);
+              \foreach \x in {3,3.25,...,4} 
+                \draw[-stealth,color=gray] (\x,{  0*(\x-3) +-1 })--(\x,0);
+              \foreach \x in {4,4.25,4.5,4.75,5.25,5.5,5.75,6} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-5) + 0 })--(\x,0);
+              %
+              \draw[fill=red,opacity=0.2] (0,0) -- (1,1) -- (1,0) -- cycle;
+              %
+              \draw[very thick] (0,0)--(1,1)--(2,0)--(3,-1)--(4,-1)--(6,1);	
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+        <p>
+          The shaded area is a triangle with base <m>b=1</m> and height <m>h=1</m>.  
+          The region enclosed is <em>above</em> the <m>x</m>-axis so it has <em>positive</em> net area. 
+          Putting this together, 
+          <me>
+            \intdx{_0^1 f(x) } = (+) \frac{1}{2}\cdot 1 \cdot 1 = 0.5
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find <m>\intdx{_0^2 f(x) }</m>
+        </p>
+      </statement>      
+      <solution>
+        <p>
+          We want to find the area enclosed between the curve and the <m>x</m>-axis.
+        </p>
+        <p>
+          First, <em>shade</em> the area enclosed by following the curve, and drawing lines toward the <m>x</m>-axis.
+          Then, identify the part of the enclosed area that corresponds to <m>0\lt x \lt 2</m> as in the following image. 
+        </p>
+        <image width="50%" xml:id="image_graphicalarea_ex3b">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-0.1,-2.4) grid (6.4,2.4);
+              \draw[latex-latex, thick] (-1,0) -- (7,0);
+              \draw[latex-latex, thick] (0,-2.5) -- (0,2.5) ;
+              \foreach \x in {1,...,6}
+                \path (\x,.2) -- (\x,-.2)
+                node[below, font=\small] {\x};
+              \foreach \y in {-2,-1,1,2}
+                \path (.2,\y) -- (-.2,\y)
+                node[left, font=\small] {\y};	
+
+              \foreach \x in {0,0.25,...,1} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-0) + 0 })--(\x,0);
+              \foreach \x in {1,1.25,1.5,1.75,2.25,2.5,...,3} 
+                \draw[-stealth,color=gray] (\x,{ -1*(\x-2) + 0 })--(\x,0);
+              \foreach \x in {3,3.25,...,4} 
+                \draw[-stealth,color=gray] (\x,{  0*(\x-3) +-1 })--(\x,0);
+              \foreach \x in {4,4.25,4.5,4.75,5.25,5.5,5.75,6} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-5) + 0 })--(\x,0);
+              %
+    					\draw[fill=red,opacity=0.2] (0,0) -- (1,1) -- (2,0) -- cycle;
+              %
+              \draw[very thick] (0,0)--(1,1)--(2,0)--(3,-1)--(4,-1)--(6,1);	
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+        <p>
+          The shaded area is triangle with base <m>b=2</m> and height <m>h=1</m>.  
+          The region enclosed is <em>above</em> the <m>x</m>-axis so it has <em>positive</em> net area. 
+          Putting this together, 
+          <me>
+            \intdx{_0^2 f(x) } = (+) \frac{1}{2}\cdot 2 \cdot 1 = 0.5
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find <m>\intdx{_0^4 f(x) }</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to find the area enclosed between the curve and the <m>x</m>-axis.
+        </p>
+        <p>
+          First, <em>shade</em> the area enclosed by following the curve, and drawing lines toward the <m>x</m>-axis.
+          Then, identify the part of the enclosed area that corresponds to <m>0\lt x \lt 4</m> as in the following image. 
+        </p>
+        <image width="50%" xml:id="image_graphicalarea_ex3c">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-0.1,-2.4) grid (6.4,2.4);
+              \draw[latex-latex, thick] (-1,0) -- (7,0);
+              \draw[latex-latex, thick] (0,-2.5) -- (0,2.5) ;
+              \foreach \x in {1,...,6}
+                \path (\x,.2) -- (\x,-.2)
+                node[below, font=\small] {\x};
+              \foreach \y in {-2,-1,1,2}
+                \path (.2,\y) -- (-.2,\y)
+                node[left, font=\small] {\y};	
+
+              \foreach \x in {0,0.25,...,1} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-0) + 0 })--(\x,0);
+              \foreach \x in {1,1.25,1.5,1.75,2.25,2.5,...,3} 
+                \draw[-stealth,color=gray] (\x,{ -1*(\x-2) + 0 })--(\x,0);
+              \foreach \x in {3,3.25,...,4} 
+                \draw[-stealth,color=gray] (\x,{  0*(\x-3) +-1 })--(\x,0);
+              \foreach \x in {4,4.25,4.5,4.75,5.25,5.5,5.75,6} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-5) + 0 })--(\x,0);
+              %
+    					\draw[fill=red,opacity=0.2] (0,0) -- (1,1) -- (2,0) -- cycle;
+    					\draw[fill=red,opacity=0.2] (2,0) -- (3,-1) -- (4,-1) -- (4,0) -- cycle;
+              %
+              \draw[very thick] (0,0)--(1,1)--(2,0)--(3,-1)--(4,-1)--(6,1);	
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+        <p>
+          The shaded area can be divided into <em>three</em> regions: 
+          <ol>
+            <li>
+              <p>
+                A triangle with base <m>0\lt x\lt 2</m> (<m>b=2</m>) and height <m>h=1</m> <em>above</em> the <m>x</m>-axis.  
+              </p>
+            </li>
+            <li>
+              <p>
+                A triangle with base <m>2\lt x\lt 3</m> (<m>b=1</m>) and height <m>h=1</m> <em>below</em> the <m>x</m>-axis.
+              </p>
+            </li>
+            <li>
+              <p>
+                A rectangle with base <m>3\lt x \lt 4</m> (<m>b=1</m>) and height <m>h=1</m> <em>below</em> the <m>x</m>-axis.
+              </p>
+            </li>
+          </ol>
+          Putting this together, 
+          <me>
+            \intdx{_0^6 f(x) } = (+) \frac{1}{2}\cdot 2 \cdot 1 + (-)\frac{1}{2}\cdot 1 \cdot 1 + (-)1\cdot 1 = -0.5
+          </me>
+        </p>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find <m>\intdx{_0^6 f(x) }</m>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We want to find the area enclosed between the curve and the <m>x</m>-axis.
+        </p>
+        <p>
+          First, <em>shade</em> the area enclosed by following the curve, and drawing lines toward the <m>x</m>-axis.
+          Then, identify the part of the enclosed area that corresponds to <m>0\lt x \lt 4</m> as in the following image. 
+        </p>
+        <image width="50%" xml:id="image_graphicalarea_ex3d">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-0.1,-2.4) grid (6.4,2.4);
+              \draw[latex-latex, thick] (-1,0) -- (7,0);
+              \draw[latex-latex, thick] (0,-2.5) -- (0,2.5) ;
+              \foreach \x in {1,...,6}
+                \path (\x,.2) -- (\x,-.2)
+                node[below, font=\small] {\x};
+              \foreach \y in {-2,-1,1,2}
+                \path (.2,\y) -- (-.2,\y)
+                node[left, font=\small] {\y};	
+
+              \foreach \x in {0,0.25,...,1} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-0) + 0 })--(\x,0);
+              \foreach \x in {1,1.25,1.5,1.75,2.25,2.5,...,3} 
+                \draw[-stealth,color=gray] (\x,{ -1*(\x-2) + 0 })--(\x,0);
+              \foreach \x in {3,3.25,...,4} 
+                \draw[-stealth,color=gray] (\x,{  0*(\x-3) +-1 })--(\x,0);
+              \foreach \x in {4,4.25,4.5,4.75,5.25,5.5,5.75,6} 
+                \draw[-stealth,color=gray] (\x,{  1*(\x-5) + 0 })--(\x,0);
+              %
+    					\draw[fill=red,opacity=0.2] (0,0) -- (1,1) -- (2,0) -- cycle;
+    					\draw[fill=red,opacity=0.2] (2,0) -- (3,-1) -- (4,-1) -- (4,0) -- cycle;
+              \draw[fill=red,opacity=0.2] (2,0) -- (3,-1) -- (4,-1) -- (5,0) -- cycle;
+              \draw[fill=red,opacity=0.2] (5,0) -- (6,1) -- (6,0) -- cycle;
+              %
+              \draw[very thick] (0,0)--(1,1)--(2,0)--(3,-1)--(4,-1)--(6,1);	
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+        <p>
+          The shaded area can be divided into <em>five</em> regions: 
+          <ol>
+            <li>
+              <p>
+                A  triangle with base <m>0\lt x\lt 2</m> (<m>b=2</m>) and height <m>h=1</m> <em>above</em> the <m>x</m>-axis.  
+              </p>
+            </li>
+            <li>
+              <p>
+                A triangle with base <m>2\lt x\lt 3</m> (<m>b=1</m>) and height <m>h=1</m> <em>below</em> the <m>x</m>-axis.
+              </p>
+            </li>
+            <li>
+              <p>
+                A rectangle with base <m>3\lt x\lt 4</m> (<m>b=1</m>) and height <m>h=1</m> <em>below</em> the <m>x</m>-axis.
+              </p>
+            </li>
+            <li>
+              <p>
+                A triangle with base <m>4\lt x\lt 5</m> (<m>b=1</m>) and hieght <m>h=1</m> <em>below</em> the <m>x</m>-axis
+              </p>
+            </li>
+            <li>
+              <p>
+                A triangle with base <m>5\lt x\lt 6</m> (<m>b=1</m>) and height <m>h=1</m> <em>above</em> the <m>x</m>-axis
+              </p>
+            </li>
+          </ol>
+          Putting this together, 
+          <me>
+            \intdx{_0^6 f(x) } = (+) \frac{1}{2}\cdot 2 \cdot 1 + (-)\frac{1}{2}\cdot 1 \cdot 1 + (-)1\cdot 1 + (-)\frac{1}{2}\cdot 1\cdot 1 + (+)\frac{1}{2}\cdot 1 \cdot 1  = -0.5
+          </me>
+        </p>
+      </solution>
+    </task>
+  </exploration>
+
+  <insight>
+    <title>Understanding <m>\int</m> notation (Part II)</title>
+    
+    <p>
+      So far, we have seen the notation <m>\intdx{_a^b f(x)}</m> in two very different contexts: antiderivatives and geometric area. 
+      But why are these concepts connected? 
+    </p>
+
+    <p>
+      We have already seen the foundational idea:
+      given a complex area we have <em>sliced</em> it into <em>small regions</em>, where we can find the area of each slice more easily. 
+    </p>
+    <p>
+      Suppose you are given any curved function <m>f</m> an enclosed area you want to compute as below.
+    </p>
+    <image width="50%" xml:id="image_ftcinsight_v1">
+      <latex-image>
+        \begin{tikzpicture}
+          [declare function={ 
+            f(\x) =	cos(\x r) + 2 ; 
+            x1enclosed= 1;
+            x2enclosed= 3;
+            domstart=  -1;
+            domstop=  4.5;
+          }]	
+          \draw[color=white,fill=green,opacity=0.33] 
+            (x1enclosed,0) 
+            -- plot[domain= x1enclosed:x2enclosed] ({\x},{f(\x)}) 
+            -- (x2enclosed,0)
+            -- (x1enclosed,0);
+          \draw[red,very thick] (x1enclosed,{3.5}) -- (1,-0.08) node [below] {$a$};
+          \draw[red,very thick] (x2enclosed,{3.5}) -- (3,-0.08) node [below] {$b$};
+          \draw[axes] (0,-1) -- (0,4) node [below left] {$y$};
+          \draw[axes] (-1,0) -- (5,0) node [above left] {$x$};
+          \draw [color=blue,curve,domain=domstart:domstop] plot ({\x},{f(\x)}) node [above] {$f(x)$};
+        \end{tikzpicture}
+      </latex-image>
+    </image>
+    <p>
+      Slicing the shaded region into thin, vertical strips gives the image below on the left. 
+    </p>
+    <image width="50%" xml:id="image_ftcinsight_v2">
+      <latex-image>
+        \begin{tikzpicture}
+          [declare function={ 
+            f(\x) =	cos(\x r) + 2 ; 
+            x1enclosed= 1;
+            x2enclosed= 3;
+            domstart=  -1;
+            domstop=  4.5;
+          }]	
+          \draw[color=white,fill=green,opacity=0.1] 
+            (x1enclosed,0) 
+            -- plot[domain= x1enclosed:x2enclosed] ({\x},{f(\x)}) 
+            -- (x2enclosed,0)
+            -- (x1enclosed,0);
+          \draw[color=black,fill=green] 
+            (1,0) 
+            -- plot[domain= 1:1.25] ({\x},{f(\x)}) 
+            -- (1.25,0)
+            -- cycle;
+          \draw[red,very thick] (x1enclosed,{3.5}) -- (1,-0.08) node [below] {$a$};
+          \draw[red,very thick] (x2enclosed,{3.5}) -- (3,-0.08) node [below] {$b$};
+          \foreach \x in {1,1.25,...,3}
+            \draw[red] ({\x},0) -- ({\x},{f(\x)});
+          \draw[axes](0,-1) -- (0,4) node [below left] {$y$};
+          \draw[axes] (-1,0) -- (5,0) node [above left] {$x$};
+          \draw [color=blue,very thick,domain=domstart:domstop] plot ({\x},{f(\x)}) node [above] {$f(x)$};
+          \begin{scope}[shift={(5,0)}]
+            \draw[color=black,fill=green] 
+              (1,0) 
+              -- plot[domain= 1:1.25] ({\x},{f(\x)}) 
+              -- (1.25,0)
+              -- cycle;
+            \node at (1.75,{f(1.25)/2}) {$\approx$};	
+            \draw[color=black,fill=green] (2.25,0) rectangle (2.5, {f(1.25)} );
+            \draw[|-|] (2.25,-0.25) -- (2.5,-0.25) node[midway,below] {$\Delta x$} ; 
+            \draw[|-|] (2.75,0) -- (2.75,{f(1.25)}) node[midway,right] {$f(x)$} ; 
+          \end{scope}
+        \end{tikzpicture}
+      </latex-image>
+      
+    </image>
+    <p>
+      Notice that if the function is continuous (doesn't jump) and if the strips are thin enough, each strip will <em>approximately</em> be a rectangle with height <m>h = f(x)</m> and base <m>b=\Delta x</m>.  
+      This is illustrated in the image above on the right. 
+      <ul>
+        <li>
+          <p>
+            The area of <em>one</em> strip will be approximately <m>h\cdot b  = f(x) \cdot \Delta x</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The area of the <em>whole</em> region is <em>approximately</em> the Sum of all slices from <m>x=a</m> to <m>x=b</m>.  
+            Mathematically, this is written 
+            <md>
+              <mrow>\text{area of whole} \amp \approx \text{Sum of slices from} a \text{ to } b</mrow>
+              <mrow> \amp \approx \text{Sum of } f(x)\cdot \Delta x \text{ from } a \text{ to } b</mrow>
+            </md>
+            To emphasize that the slices are very thin, we replace the blocky <m>\Delta x</m> with a smooth <m>dx</m>,
+            and we summarize the word "Sum" with the symbol <m>\int</m>
+            <md>
+              <mrow> \amp \approx \text{Sum of } f(x)\cdot dx \text{ from } a \text{ to } b</mrow>
+              <mrow> \amp \approx \intdx{_a^b f(x) }</mrow>
+            </md>
+          </p>
+        </li>
+      </ul>
+    </p>
+  </insight>
+
+</section>
+
+
+<section xml:id="sec_fundamentaltheorem">
+  <title>Area, Antiderivatives, and Graphs of Change</title>
+  
+
+  <theorem xml:id="thm-FTC">
+    <title>The Fundamental Theorem of Calculus (FTC)</title>
+    <statement>
+      <p>
+        Suppose that <m>f(x)</m> is any continuous function, and that <m>F(x)</m> is any antiderivative of <m>f(x)</m>. 
+        Then the <em>net area enclosed between <m>f</m> and the <m>x</m>-axis on the interval <m>[a,b]</m></em> is given by 
+        <me>
+          \intdx{_a^b f(x)} = F(b) - F(a) 
+        </me>
+      </p>
+    </statement>
+  </theorem>
+  <!-- TODO : Add Intuitive Proof of FTC Here -->
+
+  <p>
+    In other words,
+          <em>antiderivatives</em> give <em>net area</em>, and 
+          <em>net area</em> gives <em>antiderivatives</em>. 
+    Given the many connections between derivatives and concepts in economic and business, this becomes a powerful set of tools.  
+  </p>
+  <p>
+  <ol>
+    <li>
+      <p>
+        The derivative of total cost <m>C</m> is the marginal cost <m>C'</m>. 
+      </p>
+      <p>
+        Therefore, the total cost <m>C</m> is an <em>antiderivative</em> of marginal (item) cost <m>C'</m>.  
+      </p>
+      <p>
+        <em>It follows that</em> the area under marginal (item) cost gives change in total cost. 
+      </p>
+    </li>
+    <li>
+      <p>
+        Let <m>f(x)</m> give the value of a stock on day <m>x</m>.  Then the <em>derivative</em> of value <m>f'</m> tells you how fast the value is changing on each day. 
+      </p>
+      <p>
+        Therefore, the value function <m>f</m> is an <em>antiderivative</em> of the change in value function <m>f'</m>.  
+      </p>
+      <p>
+        <em>It follows that</em> the area under the change in value function cost gives the change in actual value. 
+      </p>
+    </li>
+  </ol>
+  </p>
+  <p>
+    This line of reasoning extends to <em>any and all</em> graphs of rates of change. 
+  </p>
+
+  <exploration xml:id="ex_ftc_dailychange">
+    <introduction>
+      <p>
+        The graph of the <em>daily change <m>V'(x)</m></em> (in $/day) in the price of a certain stock is given below. 
+      </p>
+      <image width="75%" xml:id="image_ftc_exploration2">
+        <latex-image>
+          \begin{tikzpicture}
+            \draw[very thin,color=gray,step=1,dashed] (-.4,-4.4) grid (10.4,4.4);
+            \draw[latex-latex] (-1,0) -- (11,0) node[above] {$x$ = day};
+            \draw[latex-latex] (0,-4.5) -- (0,4.5) node[right] {$y$ = day's change in value};
+            \foreach \i in {-4,-3,-2,-1,1,2,3,4} 
+                \draw (.05,\i) -- (-.05,\i) node[left] {\i};
+            \foreach \i in {1,...,9} 
+                \draw (\i,.05) -- (\i,-.05) node[below right] {\i};
+            \draw[very thick] (0,0) -- (1,0) -- (1,3) -- (2,3) -- (2,1) -- (3,1) -- (3,-1) -- (4,-1) -- (5,-1) -- (5,-4) -- (6,-4) -- (6,-1) -- (7,-1) -- (7,4) -- (8,4) -- (8,2) -- (9.5,2) ; 
+          \end{tikzpicture}
+        </latex-image>
+        
+      </image>
+    </introduction>
+    <task>
+      <statement>
+        <p>
+          Find the change in stock price <m>V</m> between days 1 and 5.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that the total value <m>V</m> is the antiderivative of the change in value function  <m>V'</m>. 
+          By <xref ref="thm-FTC"/>, the area under <m>V'</m> is equal to the net change in <m>V</m>.  Looking at the graph of <m>V'</m>, we see
+          <dl>
+            <li>
+              <title>Day 1</title>
+              <p>
+                Between day 1 and 2, the area enclosed by <m>V'</m> is a rectangle with height <m>h=3</m> and base <m>b=1</m>.
+                That means the value increases by <m>3\cdot 1= 3</m>$ between day 1 and 2. 
+              </p>
+            </li>
+            <li>
+              <title>Day 2</title>
+              <p>
+                Between day 2 and 3, the area enclosed by <m>V'</m> is a rectangle with height <m>h=1</m> and base <m>b=1</m>.
+                That means the value increases by <m>1\cdot 1 = 1</m>$ between day 2 and 3. 
+              </p>
+            </li>
+            <li>
+              <title>Day 3 &amp; 4</title>
+              <p>
+                Between day 3 and 5, the area enclosed by <m>V'</m> is a rectangle with height <m>h=-1</m> and base <m>b=2</m>.
+                That means the value increases by <m>(-) 1\cdot 2 = -2 </m>$ between day 3 and 5. 
+              </p>
+            </li>
+          </dl>
+          Putting it together, the change in value between day 1 and 5 equals 
+          <me>
+            V(5)-V(1) = \dint{_1^5 V'(x) } = 3 + 1 - 2 = 2
+          </me>
+        </p>
+        <image width="50%" xml:id="image_ftc_exploration2a">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-.4,-4.4) grid (10.4,4.4);
+              \draw[latex-latex] (-1,0) -- (11,0) node[above] {$x$ = day};
+              \draw[latex-latex] (0,-4.5) -- (0,4.5) node[right] {$y$ = day's change in value};
+              \foreach \i in {-4,-3,-2,-1,1,2,3,4} 
+                  \draw (.05,\i) -- (-.05,\i) node[left] {\i};
+              \foreach \i in {1,...,9} 
+                  \draw (\i,.05) -- (\i,-.05) node[below right] {\i};
+
+              \draw[color=white,fill=green,opacity=0.33] (1,0) rectangle (2,3);
+              \draw[color=white,fill=green,opacity=0.33] (2,0) rectangle (3,1);
+              \draw[color=white,fill=red,opacity=0.33] (3,0) rectangle (5,-1);
+
+              \draw[very thick] (0,0) -- (1,0) -- (1,3) -- (2,3) -- (2,1) -- (3,1) -- (3,-1) -- (4,-1) -- (5,-1) -- (5,-4) -- (6,-4) -- (6,-1) -- (7,-1) -- (7,4) -- (8,4) -- (8,2) -- (9.5,2) ; 
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the change in stock price between days 1 and 7.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that the total value <m>V</m> is the antiderivative of the change in value function  <m>V'</m>. 
+          By <xref ref="thm-FTC"/>, the area under <m>V'</m> is equal to the net change in <m>V</m>.  Looking at the graph of <m>V'</m>, we see
+          <dl>
+            <li>
+              <title>Day 1</title>
+              <p>
+                Between day 1 and 2, the area enclosed by <m>V'</m> is a rectangle with height <m>h=3</m> and base <m>b=1</m>.
+                That means the value increases by <m>3\cdot 1= 3</m>$ between day 1 and 2. 
+              </p>
+            </li>
+            <li>
+              <title>Day 2</title>
+              <p>
+                Between day 2 and 3, the area enclosed by <m>V'</m> is a rectangle with height <m>h=1</m> and base <m>b=1</m>.
+                That means the value increases by <m>1\cdot 1 = 1</m>$ between day 2 and 3. 
+              </p>
+            </li>
+            <li>
+              <title>Day 3 &amp; 4</title>
+              <p>
+                Between day 3 and 5, the area enclosed by <m>V'</m> is a rectangle with height <m>h=-1</m> and base <m>b=2</m>.
+                That means the value increases by <m>(-) 1\cdot 2 = -2 </m>$ between day 3 and 5. 
+              </p>
+            </li>
+            <li>
+              <title>Day 5</title>
+              <p>
+                Between day 5 and 6, the area enclosed by <m>V'</m> is a rectangle with height <m>h=-4</m> and base <m>b=1</m>.
+                That means the value increases by <m>(-) 4\cdot 1 = -4 </m>$ between day 5 and 6. 
+              </p>
+            </li>
+            <li>
+              <title>Day 6</title>
+              <p>
+                Between day 6 and 7, the area enclosed by <m>V'</m> is a rectangle with height <m>h=-1</m> and base <m>b=1</m>.
+                That means the value increases by <m>(-) 1\cdot 1 = -1 </m>$ between day 6 and 7. 
+              </p>
+            </li>
+          </dl>
+          Putting it together, the change in value between day 1 and 7 equals 
+          <me>
+            V(7)-V(1) = \dint{_1^7 V'(x) } = 3 + 1 - 2 -4 - 1= -3
+          </me>
+        </p>
+        <image width="50%" xml:id="image_ftc_exploration2b">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-.4,-4.4) grid (10.4,4.4);
+              \draw[latex-latex] (-1,0) -- (11,0) node[above] {$x$ = day};
+              \draw[latex-latex] (0,-4.5) -- (0,4.5) node[right] {$y$ = day's change in value};
+              \foreach \i in {-4,-3,-2,-1,1,2,3,4} 
+                  \draw (.05,\i) -- (-.05,\i) node[left] {\i};
+              \foreach \i in {1,...,9} 
+                  \draw (\i,.05) -- (\i,-.05) node[below right] {\i};
+
+              \draw[color=white,fill=green,opacity=0.33] (1,0) rectangle (2,3);
+              \draw[color=white,fill=green,opacity=0.33] (2,0) rectangle (3,1);
+              \draw[color=white,fill=red,opacity=0.33] (3,0) rectangle (5,-1);
+              \draw[color=white,fill=red,opacity=0.33] (5,0) rectangle (6,-4);
+              \draw[color=white,fill=red,opacity=0.33] (6,0) rectangle (7,-1);
+
+              \draw[very thick] (0,0) -- (1,0) -- (1,3) -- (2,3) -- (2,1) -- (3,1) -- (3,-1) -- (4,-1) -- (5,-1) -- (5,-4) -- (6,-4) -- (6,-1) -- (7,-1) -- (7,4) -- (8,4) -- (8,2) -- (9.5,2) ; 
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Find the change in stock price between days 5 and 8.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Recall that the total value <m>V</m> is the antiderivative of the change in value function  <m>V'</m>. 
+          By <xref ref="thm-FTC"/>, the area under <m>V'</m> is equal to the net change in <m>V</m>.  Looking at the graph of <m>V'</m>, we see
+          <dl>
+              <li>
+                <title>Day 5</title>
+                <p>
+                  Between day 5 and 6, the area enclosed by <m>V'</m> is a rectangle with height <m>h=-4</m> and base <m>b=1</m>.
+                  That means the value increases by <m>(-) 4\cdot 1 = -4 </m>$ between day 5 and 6. 
+                </p>
+              </li>
+              <li>
+                <title>Day 6</title>
+                <p>
+                  Between day 6 and 7, the area enclosed by <m>V'</m> is a rectangle with height <m>h=-1</m> and base <m>b=1</m>.
+                  That means the value increases by <m>(-) 1\cdot 1 = -1 </m>$ between day 6 and 7. 
+                </p>
+              </li>
+              <li>
+                <title>Day 7</title>
+                <p>
+                  Between day 7 and 8, the area enclosed by <m>V'</m> is a rectangle with height <m>h=4</m> and base <m>b=1</m>.
+                  That means the value increases by <m>(+) 4\cdot 1 = 4 </m>$ between day 7 and 8. 
+                </p>
+              </li>
+          </dl>
+          Putting it together, the change in value between day 5 and 8 equals 
+          <me>
+            V(8)-V(5) = \dint{_5^8 V'(x) } = -4 + -1 + 4  = -1
+          </me>
+        </p>
+        <image width="50%" xml:id="image_ftc_exploration2c">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-.4,-4.4) grid (10.4,4.4);
+              \draw[latex-latex] (-1,0) -- (11,0) node[above] {$x$ = day};
+              \draw[latex-latex] (0,-4.5) -- (0,4.5) node[right] {$y$ = day's change in value};
+              \foreach \i in {-4,-3,-2,-1,1,2,3,4} 
+                  \draw (.05,\i) -- (-.05,\i) node[left] {\i};
+              \foreach \i in {1,...,9} 
+                  \draw (\i,.05) -- (\i,-.05) node[below right] {\i};
+
+              \draw[color=white,fill=red,opacity=0.33] (5,0) rectangle (6,-4);
+              \draw[color=white,fill=red,opacity=0.33] (6,0) rectangle (7,-1);
+              \draw[color=white,fill=green,opacity=0.33] (7,0) rectangle (8,4);
+
+              \draw[very thick] (0,0) -- (1,0) -- (1,3) -- (2,3) -- (2,1) -- (3,1) -- (3,-1) -- (4,-1) -- (5,-1) -- (5,-4) -- (6,-4) -- (6,-1) -- (7,-1) -- (7,4) -- (8,4) -- (8,2) -- (9.5,2) ; 
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Suppose the stock price on day 1 was $10.  Find the stock price at day 5.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We have already seen that the value of the stock changes by $+2 between days 1 and 5.  
+          If the value on day 1 was $10, then the value on day 5 is $10+(+2) = $12.
+        </p>
+        <image width="50%" xml:id="image_ftc_exploration2d">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-.4,-4.4) grid (10.4,4.4);
+              \draw[latex-latex] (-1,0) -- (11,0) node[above] {$x$ = day};
+              \draw[latex-latex] (0,-4.5) -- (0,4.5) node[right] {$y$ = day's change in value};
+              \foreach \i in {-4,-3,-2,-1,1,2,3,4} 
+                  \draw (.05,\i) -- (-.05,\i) node[left] {\i};
+              \foreach \i in {1,...,9} 
+                  \draw (\i,.05) -- (\i,-.05) node[below right] {\i};
+
+              \draw[color=white,fill=green,opacity=0.33] (1,0) rectangle (2,3);
+              \draw[color=white,fill=green,opacity=0.33] (2,0) rectangle (3,1);
+              \draw[color=white,fill=red,opacity=0.33] (3,0) rectangle (5,-1);
+
+              \draw[very thick] (0,0) -- (1,0) -- (1,3) -- (2,3) -- (2,1) -- (3,1) -- (3,-1) -- (4,-1) -- (5,-1) -- (5,-4) -- (6,-4) -- (6,-1) -- (7,-1) -- (7,4) -- (8,4) -- (8,2) -- (9.5,2) ; 
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+    <task>
+      <statement>
+        <p>
+          Suppose the stock price on day 1 was $10.  Find the stock price at day 7.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We have already seen that the value of the stock changes by $-3 between days 1 and 7.  
+          If the value on day 1 was $10, then the value on day 5 is $10+(-3) = $7.
+        </p>
+        <image width="50%" xml:id="image_ftc_exploration2e">
+          <latex-image>
+            \begin{tikzpicture}
+              \draw[very thin,color=gray,step=1,dashed] (-.4,-4.4) grid (10.4,4.4);
+              \draw[latex-latex] (-1,0) -- (11,0) node[above] {$x$ = day};
+              \draw[latex-latex] (0,-4.5) -- (0,4.5) node[right] {$y$ = day's change in value};
+              \foreach \i in {-4,-3,-2,-1,1,2,3,4} 
+                  \draw (.05,\i) -- (-.05,\i) node[left] {\i};
+              \foreach \i in {1,...,9} 
+                  \draw (\i,.05) -- (\i,-.05) node[below right] {\i};
+
+              \draw[color=white,fill=green,opacity=0.33] (1,0) rectangle (2,3);
+              \draw[color=white,fill=green,opacity=0.33] (2,0) rectangle (3,1);
+              \draw[color=white,fill=red,opacity=0.33] (3,0) rectangle (5,-1);
+              \draw[color=white,fill=red,opacity=0.33] (5,0) rectangle (6,-4);
+              \draw[color=white,fill=red,opacity=0.33] (6,0) rectangle (7,-1);
+
+              \draw[very thick] (0,0) -- (1,0) -- (1,3) -- (2,3) -- (2,1) -- (3,1) -- (3,-1) -- (4,-1) -- (5,-1) -- (5,-4) -- (6,-4) -- (6,-1) -- (7,-1) -- (7,4) -- (8,4) -- (8,2) -- (9.5,2) ; 
+            \end{tikzpicture}
+          </latex-image>
+        </image>
+      </solution>
+    </task>
+  </exploration>
+
+
+</section>
+
+
+
+
+</chapter>

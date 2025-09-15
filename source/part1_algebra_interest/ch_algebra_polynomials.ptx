@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_polynomials_and_rationals" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Polynomial and Rational Functions</title>
+
+<introduction>
+	<p>
+		In the previous sections, we have discussed the mathematics of lines, and applications to item price and total cost functions.  
+		But linear functions are not powerful enough to model other important concepts, such as <em>revenue</em> and <em>profit</em>.
+		Before we introduce these concepts, we first breifly review quadratic and polynoimal functions.
+	</p>
+	<p>
+		The concepts in this and the previous chapter are inter-related in complex ways.  The following diagram summarizes the relationships between the main concepts in this section and the preceeding section.  Refer back to this diagram from time to time to help organize your thoughts. 
+	</p>
+		<image xml:id="image_conceptmap_pricerevenuecostprofit">
+				<latex-image>
+				\begin{tikzpicture}
+					\newcommand{\quickpage}[1]{\begin{minipage}{1.25in}\centering #1\end{minipage}};
+					\node[inner sep=0pt] (O) at (-2,0) {};
+					\node (s) at (1,5) {slope $\frac{\Delta y}{\Delta x}$}; 
+					\node (ps) at (5,5) {\quickpage{point slope \\ $y = m (x-x_1) + y_1$}};
+					\node (px) at (9,4) {\quickpage{demand price \\ $p = m(x-x_1)+y_1 $ \\ $p = mx+b$ }};
+					\node (R) at (13,2) {\quickpage{Revenue \\ $R(x) = mx^2 + bx$}};
+					\node (sc) at (2,3)  {price varies by scenario $x$};
+					\node (Rx) at (8,1) {Revenue = (item price)$\cdot$(\# items)};
+					\node (Cn) at (1,-1) {\quickpage{Fixed cost $b$ and \\ variable cost $m$}};
+					\node (Cx) at (5,-1) {\quickpage{Cost function \\ $C(x) = mx+b$}};
+					\node (P) at (14,0) {\quickpage{Profit = $R(x) - C(x)$}};
+					\node (q) at (1,-3) {\quickpage{quadratic concepts}};
+					\node (aP) at (15,-2) {\quickpage{analyize profit}};
+					
+					\draw[-latex] (O) -- (s) ;
+					\draw[-latex] (s) -- (ps) ;
+					\draw[-latex] (ps) -- (px);
+					\draw[-latex] (px) -- (R);
+					\draw[-latex] (R) -- (P);
+					\draw[-latex] (sc) -- (Rx);
+					\draw[-latex] (Rx) -- (R);
+					%\draw[-latex] 
+					\draw[-latex] (O) -- (sc) ;
+					\draw[-latex] (sc) -- (px);
+					\draw[-latex] (O) -- (Cn) -- (Cx) -- (P) -- (aP); 
+					\draw[-latex] (Cn) -- (Cx) ;
+					\draw[-latex] (Cx) -- (P) ;
+					\draw[-latex] (P) -- (aP);
+					\draw[-latex] (O) -- (q);
+					\draw[-latex] (q)-- (aP);
+				\end{tikzpicture}
+			</latex-image>
+			
+		</image>
+
+</introduction>
+
+
+<section xml:id="sec_quadratic_functions">
+  <title>Quadratic and Polynomial Functions</title>
+
+	<definition xml:id="def-monomial">
+		<statement>
+			<p>
+				<ul>
+					<li>
+						<p>
+							A <term>monomial</term> with variable <m>x</m> is some number times a power of <m>x</m>.  
+						</p>
+					</li>
+					<li>
+						<p>
+							A <term>polynomial</term> is a sum of monomials with positive integer powers.  The <term>degree</term> of a polynomial is the largest power that occurs.
+						</p>
+					</li>
+					<li>
+						<p>
+							A <term>quadratic</term> function is a polynomial with maximum degree 2. 
+						</p>
+					</li>
+				</ul>
+			</p>
+		</statement>
+	</definition>
+
+	<example>
+		<title>Basic polynomial terms</title>
+		<p>
+			<ol>
+				<li>
+					<p>
+						<m>3x^2</m> is a monomial of degree 2.  
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>0.1 x^4</m> is a monomial of degree 4.
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>3x^7 - 2.5 x^1 + 3</m> is a polynomial of degree 7. 
+					</p>
+				</li>
+				<li>
+					<p>
+						<m>-0.4x^2 + 10.2 x + 15</m> is a quadratic function.
+					</p>
+				</li>
+			</ol>		</p>
+
+
+	</example>
+
+	<definition xml:id="def-roots">
+		<statement>
+			<p>
+				Let <m>f(x)</m> be any function. 
+				The <term>roots</term> of <m>f(x)</m> are those inputs <m>x</m> such <m>f(x) = 0</m>.  Graphically, the roots of a function are the <m>x</m>-values where the function intersects the <m>x</m>-axis, and are also called the function's <term><m>x</m>-intercepts</term>.
+			</p>
+		</statement>
+	</definition>
+
+
+	<proposition xml:id="prop-quadraticroot">
+		<title>The Quadratic Formula</title>
+		<statement>
+			<p>
+				If <m>a,b,c</m> are real numbers, then 
+				<me>
+					 a x^2 + b x + c = 0 \text{ if and only if } x = \dfrac{-b\pm \sqrt{b^2-4ac}}{2a} 
+				</me>
+				
+			</p>
+			<p>
+				In particular, if  <m>f(x) = a x^2 + b x + c</m> is any quadratic function, the roots of <m>f</m> can be found using the quadratic formula.
+			</p>
+		</statement>
+	</proposition>
+
+
+	<p>
+		The shape of the quadratic is determined by the leading coefficient <m>a</m>.  
+		The curve opens up if <m>a\gt 0</m>, and the curve opens down if <m>a\lt 0</m>.
+	</p>
+	<example xml:id="eg_polynomialoptions">
+		<title>Quadratics can open up or down</title>
+		<image width="75%" xml:id="img_quadraticshape">
+			
+			<latex-image>
+				\begin{tikzpicture}
+					\draw [curve,domain=-1:1] plot ({\x},{ (\x)^2});
+					\node at (0,-0.5) {$ax^2 + bx + c$ with $a\gt 0$};
+				\end{tikzpicture}
+				\qquad
+				\begin{tikzpicture}
+					\draw [curve,domain=-1:1] plot ({\x},{ -(\x)^2 + 1});
+					\node at (0,-0.5) {$ax^2 + bx + c$ with $a\lt 0$};
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+	</example>
+	
+	<definition xml:id="def-vertex">
+		<statement>
+			<p>
+				The <term>vertex</term> of a quadratic is the point in the middle of the curve about which the curve is symmetric.  
+				If <m>a\gt 0</m>, it is the point on the curve with the <em>smallest</em> <m>y</m>-value
+				If <m>a\lt 0</m>, it is the point on the curve with the <em>largest</em> <m>y</m>-value.					
+			</p>		
+		</statement>
+	</definition>
+
+	<p>
+		If the quadratic function has vertex <m>(h,k)</m>, the biggest or smallest <em>output</em> will be <m>y=k</m>.  This extreme output will occur when the <em>input</em> is <m>x=h</m>.
+	</p>
+
+	<figure xml:id="fig_quadraticfeatures">
+		<caption>Features of a Quadratic Function</caption>
+		<image xml:id="img_quadraticfeatures" width="40%">
+			
+			<latex-image>	
+				\begin{tikzpicture}
+					\draw[latex-latex] (-1.5,0) -- (2.2,0);
+					\draw[latex-latex] (0,-2) -- (0,2);		
+					%%
+					\draw [curve,smooth,samples=100,domain=-1.15:1.9] plot (\x, { -1*(\x -.5)^2 + 1.5} );
+					\draw[dashed]  (.5, -.5) -- (.5, 1.9) ; 
+					\node  at (.5,1.5) {};
+					\filldraw ( 0.5 , 1.5 )  circle (2pt);
+					\node[above right] at (.5,1.5) {$(h,k)$};
+					\node (int1) at ( {sqrt(1.5)+.5} ,0 )  {};
+					\node (int2) at ( {-sqrt(1.5)+.5} ,0 ) {};
+					\filldraw ( {sqrt(1.5)+.5} ,0 )  circle (2pt);
+					\filldraw ( {-sqrt(1.5)+.5} ,0 )  circle (2pt);
+					
+					\node[below right] at (.5,0) {$h$} ;
+					\node (intlabel) at (1.1,-1.5) {$x$-intercepts}; 
+					\draw[-latex] (intlabel) -- (int1)  ;
+					\draw[-latex] (intlabel) -- (int2)  ;
+
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+	</figure>
+
+	<example>
+		<title>Vertices can be maxima or minima</title>
+		<image width="75%" xml:id="img_quadraticvertex">
+			
+			<latex-image>
+				\begin{tikzpicture}
+					\draw [curve, domain=-1:1] plot ({\x},{(\x)^2});
+					\draw [fill] (0,0) circle (2pt);
+					\node [below] at (0,0) {\scriptsize vertex is a minima};
+				\end{tikzpicture} 
+				\qquad
+				\begin{tikzpicture}
+					\draw [curve, domain=-1:1] plot ({\x},{-(\x)^2+1});
+					\draw [fill] (0,1) circle (2pt);
+					\node [above] at (0,1) {\scriptsize vertex is a maxima};
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+		
+	</example>
+		
+
+	<p>
+		Most quadratics that we see in this course will pass through the <m>x-axis</m>.  In this case, there are two ways to find the vertex of a quadratic.  One is easier to remember, and one is easier to use. 
+	</p>
+
+	<p>
+		Notice that <em>quadratic</em> functions have a perfect reflection symmetry through the vertex <m>(h,k)</m>. 
+		That means that the vertex is <em>half way between</em> the two roots, or equivalently the vertice's <m>x</m>-value <m>h</m> is the <em>average of the roots</em> of the function (if they exist).
+	</p>
+	<p>
+		That means you can find the <m>x</m>-value of a vertex, denoted <m>h</m>, by first finding the roots (using the quadratic equation), and then by averaging them. 
+		To find the <m>y</m>-value of the vertex, plug <m>h</m> into the equation for the quadratic.  In other words, <m>k=f(h)</m>.
+	</p>
+
+
+	<p>
+		There is also a shortcut for finding the <m>x</m>-value of a vertex.  
+	</p>
+	
+	<proposition xml:id="prop-quadraticvertex">
+		<statement>
+			<p>	
+				Suppose that <m>f(x)=ax^2+ bx + c</m> is a quadratic function.  Then the vertex is located at the point <m>(h,k)</m> with <m>x</m>-value <m>h=\dfrac{-b}{2a}</m> is the average of the <m>x</m>-intercepts, and <m>y</m>-value <m>k = f(h)</m>, which is equal to <m>k=c-\dfrac{b^2}{4a}</m>.
+			</p>
+		</statement>
+		<proof>
+			<p>	
+				We have already noticed that <m>h</m> is the average of the roots by the symmetry of the quadratic function.
+			</p>
+			<p>
+				Recall also that the <em>roots</em> of the function <m>f(x)=ax^2+ bx + c</m> are <me>x_1 = \dfrac{-b + \sqrt{b^2 - 4ac}}{2a}= \dfrac{-b}{2a} + \dfrac{\sqrt{b^2 - 4ac}}{2a} </me> and <me>x_2 = \dfrac{-b - \sqrt{b^2 - 4ac}}{2a}= \dfrac{-b}{2a} - \dfrac{\sqrt{b^2 - 4ac}}{2a} </me>.
+			</p>
+			<p>
+				To find the average of those roots, simply compute
+				<md>
+					<mrow> h  \amp =  \frac{1}{2} (x_1 + x_2) </mrow>
+					<mrow> \amp = \frac{1}{2} \left( \dfrac{-b}{2a} + \dfrac{\sqrt{b^2 - 4ac}}{2a} + \dfrac{-b}{2a} - \dfrac{\sqrt{b^2 - 4ac}}{2a} \right)  </mrow>
+					<mrow>  \amp = \frac{1}{2} \left( \dfrac{-b}{2a}  + \dfrac{-b}{2a} + \dfrac{\sqrt{b^2 - 4ac}}{2a} - \dfrac{\sqrt{b^2 - 4ac}}{2a} \right)  </mrow>
+					<mrow>  \amp = \frac{1}{2} \left( \dfrac{-b}{2a}  + \dfrac{-b}{2a} + 0 \right)</mrow>
+					<mrow> \amp = \frac{1}{2} \left( \dfrac{-2b}{2a}\right)</mrow>
+					<mrow> h \amp = \frac{-b}{2a}</mrow>
+				</md>
+			</p>
+			<p>
+				To find the <m>y</m>-value of the vertex, simply plug <m>h=\frac{-b}{2a}</m> into the original function <m>f(x)=ax^2 + bx + c</m>.  That gives 
+				<md>
+					<mrow> k \amp = f(h) = f\left(\dfrac{-b}{2a}\right)</mrow>
+					<mrow> \amp = a \left(\dfrac{-b}{2a}\right)^2 + b\left(\dfrac{-b}{2a}\right) + c </mrow>
+					<mrow> \amp =  a \left(\dfrac{b^2}{4a^2}\right) + b\left(\dfrac{-b}{2a}\right) + c</mrow>
+					<mrow> \amp = \dfrac{a b^2}{4a^2}  + \dfrac{-b^2}{2a} + c</mrow>
+					<mrow> \amp = \dfrac{b^2}{4a}  + \dfrac{-b^2}{2a} + c</mrow>
+					<mrow> \amp = \dfrac{b^2}{4a}  + \dfrac{-2b^2}{4a} + c</mrow>
+					<mrow> k \amp = \dfrac{-b^2}{4a} + c = c - \dfrac{-b^2}{4a}</mrow>
+				</md>
+			</p>
+		</proof>
+	</proposition>
+	
+
+	<assemblage xml:id="assemblage-quadratics">
+		<title>Quadratic Functions</title>
+		<p>
+<ul>
+				<li>
+							<p>
+				Have the form <m>f(x) = ax^2 + bx + c</m>
+			</p>
+				</li>
+
+				<li>
+							<p>
+				The curve opens up if <m>a&gt;0</m>, and the curve opens down if <m>a&lt;0</m>.
+			</p>
+				</li>
+
+				<li>
+							<p>
+				You can find the <m>x</m>-intercepts using the quadratic formula: <me>f(x) = 0\text{ if and only if }x = \dfrac{-b\pm \sqrt{b^2-4ac}}{2a}</me>
+			</p>
+				</li>
+
+				<li>
+							<p>
+				The vertex is located at <m>(h,k)</m> <m>\phantom{.}</m> where <m>h=\frac{-b}{2a}</m> is the average of the <m>x</m>-intercepts, and <m>k = f(h)</m>.
+			</p>
+				</li>
+
+				<li>
+							<p>
+				The max/min <em>output</em> is <m>k</m>, and occurs when the <em>input</em> is <m>h</m>.
+			</p>
+				</li>
+
+				<li>
+					<p>
+						You can visualize <em>any</em> quadratic as a cup that opens up (if <m>a \gt 0</m>) or opens down (if <m>a \lt 0</m>).
+					</p>
+				</li>
+
+				<li>
+					<p>
+						You can find the <m>y</m>-intercept by evaluating <m>f</m> at <m>0</m>.  In other words, the <m>y</m>-intercept is <m>y=f(0)</m>
+					</p>
+				</li>
+			</ul>			
+		</p>
+	</assemblage>
+		
+	<p>
+		To solve polynomial inequalities, start with a sketch of the function. The key idea is that <em>any</em> quadratic looks like one of the two examples from <xref ref="eg_polynomialoptions"/>.  Then, use the formulas above to fill in <m>x</m>-intercepts and the coordinate of the vertex.  Finally, use your sketch to answer the question.
+	</p>
+
+	<exploration xml:id="ex_analyze_polynomial">
+		<introduction>
+			<p>
+				Let <m>f(x)=-x^2 + 3x -2 </m>.
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+				Solve <m> f(x) =0</m>
+				</p>
+			</statement>
+			<solution>
+				<p>
+					We must solve the equation <m>-x^2 + 3x -2 = 0</m>.  
+					We can do this by factoring, or by using the quadratic equation.
+				</p>
+				<p>
+					Using the quadratic equation <m>x = \dfrac{-3 \pm \sqrt{3^2 - 4\cdot (-1) \cdot (-2)}}{2\cdot(-1)}</m>, we get that <m>x=1</m> or <m>x=2</m>.
+				</p>
+				<p>
+					We will evenutally need to solve equations by factoring, so this is a good time to start practicing.  We will rewrite the equation
+					<me>
+						-x^2 + 3x -2 = 0 
+					</me>.
+					It is easiest to factor when the leading term is just  <m>x^2</m>.  Here, the leading coefficient is <m>-1</m>, so we should divide each term on the left by <m>-1</m>.  
+					<me>
+						(-1)\cdot \Big(\frac{-1}{-1}x^2 + \frac{3}{-1}x -\frac{2}{-1}\Big) = 0 
+					</me>
+					Essentially, we are "un-distributing" the leading term of <m>-1</m>.  Simplifying the equation down, we now get 
+					<me>
+						(-1)\cdot \Big(x^2 -3 x +2 \Big) = 0 
+					</me>
+					Now we can factor the quadratic inside.  We want to find some numbers <m>d_1,d_2</m> such that <me>x^2 - 3x + 2 = (x+d_1)(x+d_2) = x^2 + (d_1+d_2)x + d_1\cdot d_2</me>.  In other words, we want numbers that add to <m>-3</m> and multiply to positive <m>2</m>.  Trying <m>d_1=-1</m> and <m>d_2=-2</m>, we get <m>-1+-2=-3</m> and <m>(-1)(-2)=2</m> as desired.  That means we can rewrite our original equation as 
+					<me>
+						(-1)\cdot \Big(x-1\Big)\Big(x-2\Big) = 0 
+					</me>
+					But the product of two numbers can only equal zero if the individual numbers are zero.  That means that the equation is equivalent to <em>either</em> having <m>x-1=0</m> <em>or</em> having <m>x-2=0</m>.  
+				</p>
+				<p>
+					In other words, this is equivalent to having <m>x=1</m> or <m>x=2</m>, which are the two <m>x</m>-intercepts of our quadratic.
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+				Find the vertex of <m>f(x)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Remember that there  are two ways to find the <m>x</m>-value of the vertex.  
+				</p>
+				<p>
+					Because the vertex is the average of the roots, and because we have already found that the roots are <m>x=1</m> and <m>x=2</m>, the vertex has <m>x</m>-value
+					<me>
+						h=\dfrac{1+2}{2} = 1.5
+					</me>.
+				</p>
+				<p>
+					On the other hand, for <em>quadratics only</em>, we have a nice formula, that <m>h=\dfrac{-b}{2a} = \dfrac{-3}{2\cdot (-1)}= 1.5</m>
+				</p>
+				<p>
+					To find the <m>y</m>-value of the vertex <m>k</m>, just compute <m>k = f(h) </m>
+					<me>
+						k = -(1.5)^2 + 3(1.5) - 2 = 0.25
+					</me>
+					
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+				Sketch a graph of <m>f(x)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Recall that the shape of a quadratic depends only on the coefficient <m>a</m>	of <m>x^2</m>.  Because <m>a=-1\lt 0</m>, the graph of the function is a parabola that opens down.  
+				</p>
+				<p>
+					We have also already found the <m>x</m>-intercepts <m>x=1</m> and <m>x=2</m> and the vertex <m>(1.5,0.25)</m>.  Putting this all together we get the following picture:
+				</p>
+						
+				<image xml:id="img-quadexplore-1" width="75%">						
+						<latex-image>	
+							\begin{tikzpicture}
+
+								%% Graph axes
+								\draw[axes] (-1.5,0) -- (3.5,0);
+								\draw[axes] (0,-1.5) -- (0,1.5);		
+								\draw[grid] (-1.5,-1.5) grid (2.5,1.5);
+								%%
+
+								\draw [curve,smooth,samples=100,domain=0.5:2.5] plot (\x, { -1*(\x)^2 + 3*(\x) -2 } );
+								%\draw[dashed]  (1.5, -1) -- (1.5, 0.5) ; 
+								\node (vertex) at (1.5,0.25) {};
+								\node[above] at (vertex) {\scriptsize $(1.5,0.25)$};
+								\filldraw (vertex)  circle (2pt);
+								\node[below]  at ( {1} ,0 )  {\footnotesize $1$};
+								\node[below]  at ( {2} ,0 )  {\footnotesize $2$};
+
+							\end{tikzpicture}
+						</latex-image>
+				</image>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+				Solve the inequality <m>f(x)>0</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					To solve this inequality, we first need the graph from the previous step.  Notice that solving the equation <m>f(x)\gt 0</m> is the same thing as looking for the <em>values of <m>x</m> which result in a height of greater than <m>0</m></em>.
+					Let's look at what this means on the picture:
+				</p>
+				<image xml:id="img-quadexplore-2" width="75%">
+					<latex-image>	
+						\begin{tikzpicture}
+
+							%% Graph inequalities BEFORE graphing the function
+							\draw [color=red, ultra thick] (1,0)--(2,0);
+							\draw [color=red, ultra thick, dotted] (-1.5,0)--(1,0);
+							\draw [color=red, ultra thick, dotted] (2,0)--(3.5,0);
+							\draw[color=red,very thick,fill=white] (1,0) circle (3pt);
+							\draw[color=red,very thick,fill=white] (2,0) circle (3pt);
+
+							%% Graph axes
+							\draw[axes] (-1.5,0) -- (3.5,0);
+							\draw[axes] (0,-1.5) -- (0,1.5);		
+							\draw[grid] (-1.5,-1.5) grid (2.5,1.5);
+							%%
+
+							\draw [curve,smooth,samples=100,domain=0.5:2.5] plot (\x, { -1*(\x)^2 + 3*(\x) -2 } );
+							%\draw[dashed]  (1.5, -1) -- (1.5, 0.5) ; 
+							\node (vertex) at (1.5,0.25) {};
+							\node[above] at (vertex) {\scriptsize $(1.5,0.25)$};
+							\filldraw (vertex)  circle (2pt);
+							\node[below]  at ( {1} ,0 )  {\footnotesize $1$};
+							\node[below]  at ( {2} ,0 )  {\footnotesize $2$};
+
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+				<p>
+					We can see that the function outputs values <em>strictly</em> greater than <m>0</m> if and only if <m>1\lt x\lt 2</m>, which corresponds to the interval <m>(1,2)</m>
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+				Find the maximum <m>y</m>-value that the function achieves.  At what <m>x-</m>value does the function achieve this output?
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Again, the key is to look at the sketch of the function.  Because the coefficient <m>a</m> of <m>x^2</m> is negative, the curve opens down, and the largest <m>y</m> output occurs at the vertex.  We have already shown that the vertex is <m>(1.5,0.25)</m>.
+				</p>
+				<p>
+					That means a maximum output of <m>y=0.25</m> occurs at the <m>x</m>-value <m>x=1.5</m>.
+				</p>
+			</solution>
+		</task>
+	</exploration>
+
+	<p>
+		In the previous example, we have seen a technique that we will use in a variety of contexts during this course. 
+	</p>
+
+	<assemblage xml:id="assemblage-continuous-inequalities">
+		<title>Solving Inequalities of Continuous Functions</title>
+		<p>
+			Suppose that <m>f(x)</m> is <em>any</em> function.
+		</p>
+		<p>
+			To solve an inequality such as  <m>f(x) \gt 0</m>, or <m>f(x) \lt 0</m>, follow the following steps:
+		</p>
+		<p>
+			<ol>
+				<li>
+					<p>
+						Solve the inequality <m>f(x) = 0</m>.  
+					</p>
+				</li>
+				<li>
+					<p>
+						Draw a number line, and label the <m>x</m>-values where the solutions occur.
+					</p>
+				</li>
+				<li>
+					<p>
+						Notice that you have divided the <m>x</m>-axis into several different intervals. Now, look at <em>each interval</em> separately.  
+					</p>
+					<p>
+						For each interval, use a graph, a calculator, or some other technique to decide whether the inequality is true or false on that interval. 
+					</p>
+				</li>
+				<li>
+					<p>
+						Write your final answer down in interval notation, <em>excluding</em> the endpoints (using parentheses).  
+					</p>
+				</li>
+			</ol>
+		</p>
+		<p>
+			To solve an inequality like <m>f(x)\geq 0</m> or <m>f(x)\leq 0</m>, repeat the same steps but <em>include</em> the endpoints (using square brackets). 
+		</p>
+	</assemblage>
+
+</section>
+
+
+<section xml:id="sec_revenue">
+  <title>Revenue with Fair Pricing</title>
+
+		<definition xml:id="def-revenue">
+			<statement>
+				<p>
+					<term>Revenue</term> is the total amount of money you take in from selling a number of items. In this class, we'll focus on fair pricing - where <em>everything</em> is sold at the same unit price. In this case, we have a simple equation: 
+					<me>\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)</me>
+				</p>
+			</statement>
+		</definition>
+
+		<exploration xml:id="explore_revenuefromprofit">
+			<introduction>
+				<p>
+					In a certain market, you will sell 15 items when the item price is 4 $/item, and you will sell 20 items when the item price is 2 $/item.  
+				</p>
+			</introduction>
+			<task>
+				<statement>
+					<p>
+						Find the Revenue in the scenerio (possible universe) where you sell 15 items. 
+					</p>
+				</statement>
+				<solution>
+					<p>
+						To find revenue, we need to apply <xref ref="def-revenue"/>.  That means we need to multiply quantity and price. 
+					</p>
+					<p>
+						In the scenario (possible universe) where we sell 15 items at 4$/item, our total revenue will be <m>R(15) = 15\cdot 4 = 60\$</m>.
+					</p>
+				</solution>
+			</task>
+			<task>
+				<statement>
+					<p>
+						Find the Revenue in the scenerio (possible universe) where you sell 20 items. 
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Again, we must use <xref ref="def-revenue"/>.  
+					</p>
+					<p>
+						In the scenario where we sell 20 items at 2$/item, our total revenue will be <m>R(20) = 20\cdot 2 = 40\$</m>.
+					</p>
+				</solution>
+			</task>
+
+			<task>
+				<statement>
+					<p>
+						But there are infinitely many possible universes <m>x</m> that we need to compare! When the universe depends on the number of items <m>x</m> sold, we often call <m>x</m> the <em>quantity</em>.
+					</p>
+					<p>
+						Find a formula that you the revenue <m>R(x)</m> as a function of the number of items <m>x</m> to be sold.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						To find revenue, we need to apply <xref ref="def-revenue"/>.  That means we need to multiply quantity and price. 
+						<me>\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)</me>
+					</p>
+					<p>
+						In this question, we are told to use <m>x</m> to represent the <em>quantity</em>, or number of items. 
+					</p>
+					<p>
+						We must also find the <em>price</em> as a function of <m>x</m>. In fact, we have already done that for <alert>exactly these numbers</alert> in the solution to <xref ref="explore_pricefn1"/>. 
+					</p>
+					<p>
+						In that example, we used the point-slope form of the line to show that the <em>item price</em> function is  <m>p = -0.4 x + 10</m>. 
+					</p>
+					<p>
+						But we need to find the <em>Revenue</em>, plugging in the above values into the equation <me>\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)</me>.
+					</p>
+					<p>
+						That means that in any universe <m>x</m>, the total revenue will be given by <me>\begin{aligned}
+						R(x)  &amp;=  \Big(\text{price}\Big) \cdot \Big(\text{quantity}\Big) \\
+							&amp;=  \Big(p(x) \Big) \cdot \Big(x\Big) \\
+							&amp;=  \Big(-0.4 x + 10\Big)\cdot \Big(x\Big) \\ 
+							&amp;=  -0.4x^2 + 10x\end{aligned}</me>							
+					</p>
+				</solution>
+			</task>
+
+		</exploration>
+
+		<p>
+			Once you have found a revenue function, you can answer a range of questions by translating the question into a more familiar algebraic question.
+		</p>
+		
+		<exploration xml:id="explore_analyzerevenue1">
+			<introduction> 
+				<p>
+					Suppose that the revenue of in the scenario where <m>x</m> items are sold is given by the function <m>R(x) = -0.4x^2 + 10x</m>
+				</p>
+			</introduction>
+				<task>
+					<statement>
+						<p>
+							Find the scenarios (quantities <m>x</m>) where you make no revenue.
+						</p>
+					</statement>
+					<solution>
+						<p>
+							Solve 
+							<me>
+								0 = R(x) = -0.4x^2 +10x 
+							</me>
+						</p>
+						<p>
+							There are several ways to solve this equation. 
+							<dl>
+								<li>
+									<title>Quadratic Equation</title>
+									<p>
+										Use the quadratic equation 
+										<me>
+											x = \dfrac{-b \pm \sqrt{b^2 - 4 a c}}{2a}
+										</me>
+										with <m>a=-0.4</m>, <m>b=10</m>, and <m>c=0</m>
+									</p>
+								</li>
+								<li>
+									<title>Solving by Factoring</title>
+									<p>
+										We know that a product <m>a\cdot b= 0</m> if and only if <m>a=0</m> or <m>b=0</m>. So to solve the equation
+										<me>
+											-0.4x^2 + 10x = 0
+										</me>
+										since we have 0 on the right, we should try factoring the left side. Because both terms have an <m>x</m>, we can factor <m>x</m> out of both terms. 
+										<me>
+											x\cdot (-0.4x + 10 ) = 0
+										</me>
+									</p>
+									<p>
+										This product can equal zero if and only if <em>either</em> <me>x=0</me> <em>or</em> <me>-0.4x + 10 = 0</me>. 
+									</p>
+									<p>
+										There are two quantities where revenue equals zero.  The first point is <m>x=0</m>
+									</p>
+									<p>
+										To find the second point, solve the second equation for <m>x</m> 
+										<md>
+											<mrow>-0.4x \amp + 10 \amp = \amp 0  </mrow>
+											<mrow> \amp - 10 \amp \amp - 10 </mrow>
+											<mrow> \amp </mrow>
+											<mrow>-0.4x \amp \amp  = \amp -10  </mrow>
+											<mrow>\div -0.4 \amp \amp \div -0.4 </mrow>
+											<mrow> \amp </mrow>
+											<mrow>x \amp \amp = \amp 25</mrow>
+										</md>
+									</p>
+									<p>
+										The revenue equals zero when <m>x=0</m> or <m>x=25</m>.
+									</p>
+								</li>
+							</dl>
+						</p>
+					</solution>
+				</task>
+
+				<task>
+					<statement>
+						<p>
+							For what scenarios (values of <m>x</m>) is your revenue positive? Give your answer in interval notation. 
+						</p>
+					</statement>
+					<solution>
+						<p>
+							The revenue function is a quadratic with negative leading coefficient, so it is a parabola that opens down, which goes through the <m>x</m>-axis at the break-even points.  This allows us to create a quick sketch of the function.
+						</p>
+						<p>
+							Using this sketch, we can solve the inequality <m>R(x)\gt 0</m>, and see that it is true for <m>0\lt x \lt 25</m>.  In interval notation, this is written <m>(0,25)</m>.
+						</p>
+						<image xml:id="img_rev_eg1a" width="50%">
+							<latex-image>	
+								\begin{tikzpicture}
+										[scale=0.1,
+										declare function = {
+										f(\x) = -0.4*(\x)^2 + 10*(\x) ;
+										xmin=-5;
+										xmax=30;
+										ymin=-5;
+										ymax=65;
+										pad=0.1;
+										domainstart=-1;
+										domainstop=26;
+										}]
+									\draw[ultra thin,gray] (xmin-pad-0.5,ymin-pad-0.5) grid (xmax+pad+0.5,ymax+pad+0.5);
+									\draw[axes] (0,ymin-pad)--(0,ymax+pad);
+									\draw[axes] (xmin-pad,0)--(xmax+pad,0);
+
+									%% Show work for solving inequality
+									\draw[red, very thick, dashed] (-5,0) -- (0,0);
+									\draw[red, very thick] (0,0)--(25,0);
+									\draw[red, very thick, dashed] (25,0) --(30,0) ;
+									\draw[color=red, very thick, fill=white] (0,0) circle (30pt);
+									\draw[color=red, very thick, fill=white] (25,0) circle (30pt);
+
+									% Graph the function defined in the TikZ environment
+									\draw [curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+								\end{tikzpicture}
+							</latex-image>				
+						</image>			
+					</solution>
+				</task>
+
+				<task>
+					<statement>
+						<p>
+							For what scenario (value of <m>x</m>) is your revenue maximized?
+						</p>
+					</statement>
+					<solution>
+						<p>
+							Because revenue is a quadratic polynomial with negative leading coefficient, the maximum revenue occurs at the vertex <m>(h,k)</m>.
+						</p>
+						<p>
+							Recall also that the x-value of the vertex is located at the average of the two x-interceps.  In other words, revenue is maximized at <m>x=\dfrac{0+25}{2} = 12.5</m> items. 
+						</p>
+					</solution>
+				</task>
+		</exploration>
+
+		<p>
+			We can now put together everything we have done so far in this class into a single example (exploration). 
+			Make sure that you are able to do problems like this on your own, since they are common quiz and exam questions. 
+		</p>
+		
+		<exploration xml:id="explore_revenuefrompricedata">
+			<introduction>
+				<p>
+					Suppose you sell 100 items at 12 $/item and 500 items at 4 $/item.  Suppose also that price is linear.
+				</p>
+			</introduction>
+
+				<task>
+					<statement>
+						<p>
+							Find an equation <m>p(x)</m> for price as a function of <m>x</m>. Give the units of each number in your equation for your price function <m>p</m>.
+						</p>
+					</statement>
+					<solution>
+						<p>
+							To find the equation of a linear price function, use the point-slope form of the line 
+							<me>
+								p(x) = m (x-x_1) + p_1
+							</me>
+							Note that we are told that <m>x_1=100</m> items are sold when the item price is <m>p_1=12</m>, and that <m>x_2=500</m> items are sold when the price is <m>p_2=4</m>.
+						</p>
+						<p>
+							That gives us a slope 
+							<me>
+								m = \dfrac{\Delta p}{\Delta x} = \dfrac{p_2-p_1}{x_2-x_1} = \dfrac{4-12}{500-100} = \dfrac{-8}{400} = -0.02
+							</me>
+							Putting it all together we get
+							<me>
+								p(x) = -0.02 (x-100) + 12 = \dots = -0.02x + 14
+							</me>
+						</p>
+					</solution>
+				</task>
+
+				<task>
+					<statement>
+						<p>
+							Find an equation <m>R(x)</m> for total revenue as a function of <m>x</m>. What are the units of your total revenue function <m>R</m>?
+						</p>
+					</statement>
+					<solution>
+						<p>
+							To find revenue, we need to apply <xref ref="def-revenue"/>.  That means we need to multiply quantity and price. 
+							<me>\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)</me>
+						</p>
+						<p>
+							In this question, we are told to use <m>x</m> to represent the <em>quantity</em>, or number of items. 
+						</p>
+						<p>
+							In the first part of this question, we have already found that the price that will result in <m>x</m> items being sold is <m>p(x) = -0.02x + 14</m>
+						</p>
+						<p>
+							To find the <em>total Revenue</em> of scenario <m>x</m>, plug the above values into the equation <me>\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)</me>.
+						</p>
+						<p>
+							In any universe <m>x</m>, the total revenue will be given by <me>\begin{aligned}
+							R(x)  &amp;=  \Big(\text{price}\Big) \cdot \Big(\text{quantity}\Big) \\
+								&amp;=  \Big(p(x) \Big) \cdot \Big(x\Big) \\
+								&amp;=  \Big( -0.02x + 14\Big)\cdot \Big(x\Big) \\ 
+								&amp;=   -0.02x^2 + 14x\end{aligned}</me>							
+						</p>
+					</solution>
+				</task>
+
+				<task>
+					<statement>
+						<p>
+							Evaluate <m>p(600)</m> and <m>R(600)</m>. What are the units of each of these quantities? What do they mean?
+						</p>
+					</statement>
+					<solution>
+						<p>
+							Recall that <m>p(600)</m> is the item price at which <m>x=600</m> items will be sold, and <m>R(600)</m> will be the <em>total</em> revenue from that scenario.  
+						</p>
+						<p>
+							In the scenario where <m>x=600</m> items are sold, <m>p(600) = -0.02x + 14 = 2</m>.  In other words, each item will be sold for $<m>2</m>
+						</p>
+						<p>
+							In this scenario, the total revenue will be <m>600</m> items times <m>2</m> dollars, which equals $<m>1200</m> of total revenue.
+						</p>
+						<p>
+							Equivalently, <m>R(600) = -0.02\cdot (600)^2 + 14 \cdot (600) = \dots = 1200</m> dollars.
+						</p>
+					</solution>
+				</task>
+
+				<task>
+					<statement>
+						<p>
+							Compare the total revenue you can earn from the scenario (possible universe) where you sell 100 units, with the scenario where you sell 500 units, and with the scenario where you sell 600 units. Which of these three scenarios yields the highest total revenue?
+						</p>
+					</statement>
+					<solution>
+						<p>
+							We have already seen that <m>R(600) = 1200</m>. 
+							<me>
+								R(100) = -0.02\cdot (100)^2 + 14 \cdot (100) = 1200
+							</me>
+							and
+							<me>
+								R(500) = -0.02\cdot (500)^2 + 14 \cdot (500) = 2000
+							</me>
+						</p>
+						<p>
+							Note that you will earn the same amount of revenue from selling <m>x=100</m> items as you will from selling <m>x=600</m> items.  However, you will earn even more revenue from selling <m>x=500</m> items.
+						</p>
+					</solution>
+				</task>
+
+				<task>
+					<statement>
+						<p>
+							Find the number (quantity) of items <m>x</m> that yields highest total revenue. What item price <m>p</m> will result in the highest total revenue?
+s						</p>
+					</statement>
+					<solution>
+						<p>
+							Note that the total revenue function is a quadratic function with negative leading coefficient.  That means that the largest revenue will occur at the vertex.  To find the vertex, either find and average the roots, or use the formula <m>h = \dfrac{-b}{2a}</m>.  In this case, 
+							<me>
+								h = \dfrac{-14}{2\cdot(-.02)} = 350
+							</me>
+							The maximum revenue will occur when 350 items are sold.
+						</p>
+						<p>
+							To find the price at which 350 items are sold, use the item price function. 
+							<me>
+								p(350) = -0.02\cdot (350) + 14 = 7 
+							</me>
+							The maximum revenue will occur when the item price is 7 $/item.  
+							<me>
+								R(350) = \dots = 350 \cdot 7 = 2450
+							</me>
+							The maximum revenue achieved will be 2,450 dollars.
+						</p>
+					</solution>
+				</task>
+
+		</exploration>
+
+
+		<insight xml:id="sect_whatdoesrevenueteach">
+			<title>What does the Revenue Function Teach Us?</title>
+
+			<p>
+				As soon as you decide on how much you want to sell each item for, and print the price tag, you are locked into that price until you decide to print a new price tag. Because the quantity you sell will change depending on the price you choose, it is important to think through the implications of your choice <term>before</term> you make that decision. In practice, this usually means a multi-step process:
+			</p>
+
+			<p><ol>
+				<li>
+							<p>
+				Do market research to decide how many units you are likely to sell at different item prices.
+			</p>
+				</li>
+
+				<li>
+							<p>
+				Use this information to get a function for price as a function of the scenario <m>x</m>. This gives a model of how the price changes depending on which possible scenario you are in.
+			</p>
+				</li>
+
+				<li>
+							<p>
+				The revenue for each scenario <m>x</m> is the product of that <m>x</m> by the scenario's item price.
+			</p>
+				</li>
+
+			</ol></p>
+
+			<p>
+				You then compare the different values of Revenue <m>R</m>, and select the scenario (possible universe) that works best for you. In this case, the meaning of the change in revenue <m>\Delta R</m> between different values of <m>x</m> is a bit complex. Here, <m>\Delta R</m> represents how much revenue would have changed if you had chosen a different possible universe <m>x</m>, by deciding to sell additional units by lowering the fixed unit cost that everyone pays.
+			</p>
+
+			<p>
+				In other words, the maximum revenue occurs when increasing the quantity <m>x</m> stops increasing the total revenue and starts decreasing the total revenue, because <m>\Delta R</m> stops being positive and starts being negative. This is an important feature, and we'll come back to this later in the semester.
+			</p>
+
+			<image xml:id="image_totalchange_revenue1">
+				
+				
+				<latex-image>
+					%%%% EXAMPLE R %%%%
+					\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+					\def \xmin {0}
+					\def \xmax {10}
+					\def \xunits {day}
+					\def \yunits {Total Revenue $R$}
+					\def \dyunits{Change in Revenue $\Delta R$}
+					\def \xscale {0.62*0.8}
+					\def \yscale {0.2}
+					%% Information about the total (y) graph
+					\def \ymin {-10}								%% First height to be be drawn with dashed lines
+					\def \ysecondmajoraxis {-5}		%% Second height to be be drawn with dashed lines
+					\def \yfirstminoraxis  {-9}	%% First line to be drawn with dotted lines
+					\def \ysecondminoraxis {-8}	%% Second lin eto be drawn with dotted lines
+					\def \ymax {10}
+					%% Information about the change (\Delta y) graph
+					\def \dymin {-5}
+					\def \dysecondmajoraxis {-4}
+					\def \dyfirstminoraxis  {-3.5}
+					\def \dysecondminoraxis {-2.5}
+					\def \dymax {5}
+
+					\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+						%% Graph of Total %%
+						%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+						\node at ({(\xmin+\xmax)/2},{\ymin-5}) {Graph of Total Revenue \ $R$};
+						%
+						%% Draw horizontal lines at major and minor y-values
+						\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+							\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+						\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+							\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+						%
+						%% Draw and label x and y axes
+						\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+						\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [fill=white,above] {\yunits};
+						\foreach \i in {1,...,\xmax}
+							\node[below,yshift=-2pt] at (\i, \ymin) {\small $\i$};
+						\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+							\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+						
+						\foreach \i in {1,...,\xmax}
+							\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+						
+						%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+							
+						\tikzhistogram(0,-6);  % Delta 0
+						\tikzhistogram(1,-1);	% Delta 5
+						\tikzhistogram(2, 3);	% Delta 4
+						\tikzhistogram(3, 6);	% Delta 3
+						\tikzhistogram(4, 8);	% Delta 2
+						\tikzhistogram(5, 9);	% Delta 1 
+						\tikzhistogram(6, 8);	% Delta -1
+						\tikzhistogram(7, 6);	% Delta -2
+						\tikzhistogram(8, 3);	% Delta -3
+						\tikzhistogram(9, -1);	% Delta -4
+						\tikzhistogram(10,-6);	% Delta -5
+						
+						
+					\end{tikzpicture}
+					%
+					\quad
+					%
+					\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+						%% Graph of Change %%
+						%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+						\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Graph of Change \ $\Delta R$};
+						%
+						%% Draw horizontal lines at major and minor y-values
+						\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+							\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+						%\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+							%\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+						%
+						%% Draw and label x and y axes
+						\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+						\draw[axes] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+						\foreach \i in {1,...,\xmax}
+							\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+						\foreach \i in {\dymin,...,\dymax}
+							\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+						
+						\foreach \i in {1,...,\xmax}
+							\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+						
+						
+						%\tikzhistogram(0,0);  % Delta 0
+						\tikzhistogram(1,5);	% Delta 4
+						\tikzhistogram(2,4);	% Delta 3
+						\tikzhistogram(3,3);	% Delta 2 
+						\tikzhistogram(4,2);	% Delta 1
+						\tikzhistogram(5,1);	% Delta 1
+						\tikzhistogram(6,-1);	% Delta 1
+						\tikzhistogram(7,-2);	% Delta 1
+						\tikzhistogram(8,-3);	% Delta 2
+						\tikzhistogram(9,-4);	% Delta 2
+						\tikzhistogram(10,-5);	% Delta 4
+					\end{tikzpicture}
+					%\end{figure}
+					%%%% END EXAMPLE R %%%% 
+				</latex-image>
+			</image>
+
+		</insight>
+
+		<insight xml:id="graphsintimevsitems">
+			<title>Graphs of Changes in Time vs Items</title>
+
+			<p>
+				You may have noticed a little bit of a change in how we are thinking about price and revenue versus how we thought about gas prices earlier in the semester. The gas prices <m>G</m> is a function of time, so the change in gas price <m>\Delta G</m> simply measures how much the price has changed between two days. But for price and revenue, the different values of <m>x</m> correspond to different and <em>incompatible</em> scenarios where you imagine selling a different number of units.
+			</p>
+
+			<p>
+				To see how these fit together, imagine you are running a sequence of experiments where on day 1, you set the price so you sell 1 unit. Then, on day 2, you set the price so you sell 2 units, and so on. In this experiment <m>\Delta R</m> measures the change in revenue as you move between different days, which each correspond to a different scenario (possible universe).
+			</p>
+
+			<p>
+				Just remember - with revenue your goal isn't the experiment itself. You want to <em>use</em> this thought experiment to find the single scenerio <m>x</m> where you have the best revenue.
+			</p>
+
+		</insight>
+
+</section>
+
+<section xml:id="sec-understandingprofit">
+	<title>Understanding Profit</title>
+
+	<p>
+		The most important concept for the applications we will is the idea of different <em>possible universes</em>, which we often call <em>scenarios</em>. 
+	</p>
+	<p>
+		The goal of planning is to figure out what the <em>best</em> possible world would look like, and how to achieve that possible world. 
+	</p>
+	<p>
+		In a market economy, businesses must make a <term>profit</term>, by ensuring that all of the money they take (their total revenue) in is greater than all of the money they spend (their total cost).  In this case, finding the best possible world means finding the scenario where the profit is the greatest. 
+	</p>
+
+	<definition xml:id="def-profit">
+		<statement>
+			<p>
+				The <term>profit</term> of a particiular possible world is the total revenue of that scenerio minus the total cost of that scenerio.  In other words, 
+				<me>
+					\text{Profit} = \text{Revenue} - \text{Cost}
+				</me>
+			</p>
+			<p>
+				Recall that we write <m>R(x)</m> to denote the total revenue in the scenerio where <m>x</m> items are sold, and <m>C(x)</m> to denote the total cost of the scenerio where <m>x</m> items are sold.  Following that notation, we write <m>P(x)</m> for the total profit of this scenerio, and have the equation
+				<me>
+					P(x) = R(x) - C(x)
+				</me>
+			</p>
+			<p>
+				You <term>break even</term> when your Revenue equals your Cost.  In other words, you break even at those quanitites <m>x</m> which make the profit <m>P(x)=0</m>.
+			</p>
+		</statement>
+	</definition>
+	
+	<insight>
+		<title>Approaching Word Problems</title>
+			
+		<p>
+			When you read an economics problem, always try to translate it into mathematical language.  For example, suppose that you have been asked to <em>find all quantities where you make a profit</em>. You might think through the question as follows: 
+			<ul>
+				<li>
+					<p>
+						Remember that we use the variable <m>x</m> to represent the <em>quanitity</em> of items sold in any scenerio. 
+					</p>
+				</li>
+				<li>
+					<p>
+						Remember that we write <m>P(x)</m> for the total <em>profit</em> of the scenario. 
+					</p>
+				</li>
+				<li>
+					<p>
+						<em>Think carefully</em> and realize that you make a profit if and only if <em>the total profit is greater than 0</em>. 
+					</p>
+				</li>
+				<li>
+					<p>
+						That means the question is asking you to find an equation for the profit function <m>P(x)</m>, and to solve the equation <m>P(x)\gt 0</m>, using the techinques from <xref ref="assemblage-continuous-inequalities"  text="title" />.
+					</p>
+				</li>
+			</ul>
+		</p>
+	</insight>
+
+	
+	<exploration xml:id="ex_profit_fromRC">
+		<introduction>
+			<p>
+				You are developing a new product line. 
+				You have already found equations for the total revenue and total cost in a variety of scenarios, based on the total number of items to be sold.  Suppose that 
+				<me>
+					R(x) = -x^2 + 5x
+				</me>
+				and
+				<me>
+					C(x) = x+2
+				</me>
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find an equation for the profit function.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Recall <xref ref="def-profit"/>.  Write down the definition of profit 
+					<me>
+						P(x) = R(x) - C(x)
+					</me>					
+				</p>
+				<p>
+					Next, replace <m>R(x)</m> with <m>(-x^2 + 5x)</m> and <m>C(x)</m> with <m>(x+2)</m>.
+					<me>
+						P(x) = (-x^2 + 5x) - (x+2)
+					</me>
+					Note that the parentheses are very important -- you must subtract both the <m>x</m> and the fixed cost <m>2</m>.
+				</p>
+				<p>
+					Finally, simplify the expression 
+					<md>
+						<mrow>P(x) \amp =  (-x^2 + 5x) - (x+2)</mrow>
+						<mrow> \amp = -x^2 + 5x -x -2</mrow>
+						<mrow> \amp = -x^2 + 4x -2</mrow>
+					</md>
+				</p>
+
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					 Find the break even points.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Recall that breaking even is the same thing as having <m>P(x) = 0</m>.  Using the equation above, we want to solve 
+					<me>
+						-x^2 + 4x -2 = 0
+					</me>
+				</p>
+				<p>
+					Recall that we can often solve quadratic equations by factoring or using the quadratic equation.  But this case, the function does not factor nicely, so we must use the quadratic equation.
+				</p>
+				<p>
+					You break even when the quantities are 
+					<me>x = \dfrac{-4 \pm \sqrt{4^2 - 4\cdot (-1)\cdot (-2)} }{2(-1)}</me>
+					Using a calculator, we see that you break even when <m>x=0.5857\dots</m> or <m>x=3.4142\dots</m>
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Sketch a graph of the profit function 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					You can graph the function using a graphing calculator, or you can use your knowledge of quadratic functions and the <m>x</m>-intercepts you have found above.  
+				</p>
+				<p>
+					Because the profit function is a quadratic with negative  leading coefficient <m>a=-1</m>, it is a parabola that opens down.  
+					Furthermore, the parabola goes through the <m>x</m>-axis at <m>x=0.5857\dots</m> and <m>x=3.4142\dots</m>, and the parabola is symmetric around the vertex which is half way between those points. Taken together, we get the following image. 
+				</p>
+				<image width="50%">
+					<latex-image>
+					\begin{tikzpicture}
+							[scale=0.5,
+							declare function = {
+							f(\x) = -1*(\x)^2 + 4*(\x) -2 ;
+							xmin=-1;
+							xmax=5;
+							ymin=-1;
+							ymax=4;
+							pad=0.1;
+							domainstart=0;
+							domainstop=4;
+							}]
+						\draw[grid] (xmin-pad,ymin-pad) grid (xmax+pad,ymax+pad);
+						\draw[axes] (0,ymin-pad)--(0,ymax+pad);
+						\draw[axes] (xmin-pad,0)--(xmax+pad,0);
+
+						% Graph the function defined in the TikZ environment
+						\draw [curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+					\end{tikzpicture}
+					</latex-image>
+				</image>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					 Find all quantities where you make a profit.  Write your answer in interval notation.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Solve the inequality <m>P(x)\gt 0</m> by looking at the break even points, and the graph of the profit function. 
+				</p>
+				<p>
+					From this graph, we see that the profit is positive when <m>x</m> is between <m>x=0.5857\dots</m> and <m>x=3.4142\dots</m>, which is equivalent to having <m>x</m> in the interval <m>(0.5857\dots,3.4142\dots)</m>
+				</p>
+				<image width="50%">
+					<latex-image>
+					\begin{tikzpicture}
+							[scale=0.5,
+							declare function = {
+							f(\x) = -1*(\x)^2 + 4*(\x) -2 ;
+							xmin=-1;
+							xmax=5;
+							ymin=-1;
+							ymax=4;
+							pad=0.1;
+							domainstart=0;
+							domainstop=4;
+							}]
+						\draw[grid] (xmin-pad,ymin-pad) grid (xmax+pad,ymax+pad);
+						\draw[axes] (0,ymin-pad)--(0,ymax+pad);
+						\draw[axes] (xmin-pad,0)--(xmax+pad,0);
+
+						%% Show work for solving inequality
+						\draw[red, very thick, dashed] (-1,0) -- (0.5857,0);
+						\draw[red, very thick] (0.5857,0)--(3.4142,0);
+						\draw[red, very thick, dashed] (0.5857,0) --(5,0) ;
+						\draw[color=red, very thick, fill=white] (0.5857,0) circle (3pt);
+						\draw[color=red, very thick, fill=white] (3.4142,0) circle (3pt);
+
+						% Graph the function defined in the TikZ environment
+						\draw [curve,domain=domainstart:domainstop,smooth] plot ({\x},{f(\x)});
+					\end{tikzpicture}
+					</latex-image>
+				</image>
+			</solution>
+		</task>
+	</exploration>
+	
+	<insight xml:id="insight_rounding">
+		<title>To Round or Not to Round?</title>
+		
+		<p>
+			In the previous example, we found that the break even quantities were  <m>x=0.5857\dots</m> or <m>x=3.4142\dots</m>.  But you cannot sell <m>0.587</m> units, so what does this answer mean practically?
+		</p>	
+		<p>
+			Unfortunately, this depends a lot on the specific context of your specific application.
+		</p>
+		<p>
+			In the simple case of $ profit as a result of <m>x</m> items given above, you will only be able to make a profit by selling <m>x=1</m> items, <m>x=2</m> items, or <m>x=3</m> items, since any integer larger or smaller than these will result in a negative profit. 
+		</p>
+		<p>
+			But the power of mathematics is that the same tools can be used to answer questions in very different contexts.  For example, suppose instead that <m>x</m> was the number of <em>thousands</em> of items sold.  In other words, suppose that <m>P(5)</m> is the profit from selling <em>five thousand</em> items.  In that case, you will break even when you sell <m>x=0.5857\dots</m> <em>thousand</em> items or <m>x=3.4142\dots</m> <em>thousand</em> items.  In that case, you would need to sell between <m>586</m> items and <m>340</m> items to make a proift.  
+		</p>
+		<p>
+			Other applications require even greater precision.  For example, currency exchange rates are often given to at least four decimal places.  But what if you are investing millions of dollars in a foreign currency?  Then the fifth, sixth, etc decimal places will suddenly be more important. 
+		</p>
+		<p>
+			In a <em>mathematics</em> class, we will generally try to keep as much precision as possible.  In any specific <em>application</em>, you should think carefully and consult generally accepted practices related to rounding. 
+		</p>
+	</insight>
+
+	<exploration xml:id="ex_profit_from_pricecost">
+		<introduction>
+			<p>
+				You are planning to open a business selling ornamental pins. 
+				After a few weeks of experimenting with the price, you decide that during the average week, you can sell 100 pins at $11 per pin, and 200 pins at $1 per pin.  
+				Suppose also that uppose that it costs $500 to rent the production line, and $3 to make each pin.	
+			</p>
+			<p>
+				Finally, after looking at a graph of some additional data, you decide that demand price is a linear function. 
+			</p>
+		</introduction>
+		<task>
+			<statement>
+				<p>
+					Find the item price <m>p(x)</m> as a function of the quantity <m>x</m> to be sold.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					To find the equation of a linear function, use the point-slope form of the line 
+					<me>
+						p(x) = m (x-x_1) + p_1
+					</me>
+					Note that we are told that <m>x_1=100</m> items are sold when the item price is <m>p_1=11</m>, and that <m>x_2=200</m> items are sold when the price is <m>p_2=1</m>.
+				</p>
+				<p>
+					That gives us a slope 
+					<me>
+						m = \dfrac{\Delta p}{\Delta x} = \dfrac{p_2-p_1}{x_2-x_1} = \dfrac{1-11}{200-100} = \dfrac{-10}{100} = -0.1
+					</me>
+					Putting it all together we get
+					<me>
+						p(x) = -0.1 (x-100) + 11 = \dots = -0.1x + 21
+					</me>
+					
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Find the total profit function <m>P(x)</m> as a function of the total number of items to be sold.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Recall from <xref ref="def-profit"/> that 
+					<me>
+						\text{Profit} = \text{Revenue} - \text{Cost}
+					</me>
+					That means to find <m>P(x)</m>, we must first find equations for <m>R(x)</m> and <m>C(x)</m>.
+				</p>
+				<p>
+					To find the equation for Revenue, recall from <xref ref="def-revenue"/> that 
+					<me>
+						\text{Revenue} = \Big(\text{\# Items}\Big) \cdot \Big(\text{Item Cost}\Big)
+					</me>
+					We write <m>x</m> for the number of items, and we have already found that the item price is <m>p(x) = -0.1x + 21 </m> in the scenerio where <m>x</m> items are sold.  That means we just multiply <m>x</m> by <m>p(x)</m> to get revenue.
+					<me>
+						R(x) = \Big(x\Big) \cdot \Big(-0.1x + 21\Big) = -0.1x^2 + 21x
+					</me>
+				</p>
+				<p>
+					To find the total cost, recall our approach from <xref ref="explore_totalcost1"/>.  If you are going to sell <m>x</m> items, you must pay a fixed cost of <m>500</m> dollars, as well as <m>3</m>$ for each item <m>x</m>.  That gives us a total cost function 
+					<me>
+						C(x) = 500 + 3x
+					</me>
+				</p>
+				<p>
+					We can now combine the total revenue and total cost functions to get the profit function. 
+					<md>
+						<mrow>\text{Profit} \amp = \text{Revenue} - \text{Cost} </mrow>
+						<mrow> P(x) \amp = R(x) - C(x) </mrow>
+						<mrow> \amp = ( -0.1x^2 + 21x) - (500 + 3x)  </mrow>
+						<mrow> \amp = -0.1x^2 + 21x - 500 - 3x</mrow>
+						<mrow> P(x) \amp = -0.1x^2 + 18x - 500</mrow>
+					</md>
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					What is the total profit if you sell 100 units?  What if you sell no units?
+				</p>
+			</statement>
+			<solution>
+				<p>
+					In the scenario (possible universe) where <m>x=100</m> items are sold, the <em>total profit</em> (which includes all revenue minus all cost) will be 
+					<me>
+						P(100) =  -0.1 (100)^2 + 18 (100) - 500 = 300
+					</me>
+				</p>
+				<p>
+					In the scenario (possible universe) where <m>x=0</m> items are sold, the <em>total profit</em> (which includes all revenue minus all cost) will be 
+					<me>
+						P(0) =  -0.1 (0)^2 + 18 (0) - 500 = -500
+					</me>
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					Find the number of units <m>x</m> where you will break even.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					To break even is to have exactly zero profit <m>P(x)=0</m>.  That means solving the equation 
+					<me>
+						-0.1x^2 + 18x - 500 = 0
+					</me>
+					You can solve this equation using the quadratic equation or by factoring.  This function does not have a nice factorization, so we use the quadratic equation
+					<me>
+						x = \dfrac{ -18 \pm \sqrt{18^2 - 4\cdot (-0.1)\cdot (-500)} }{2\cdot (-1)}
+					</me>
+					This gives us <m>x=34.32\dots</m> or <m>x=145.68</m>
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					What is the number of units <m>x</m> needed to maximize profit?  What is the maximum profit?
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Because profit is a quadratic that opens down, the maximum profit occurs at the vertex <m>(h,k)</m>, which is located half way between the two roots.  
+				</p>
+				<p>
+					That means we can find <m>h</m> by averaging  <m>x=34.32\dots</m> and <m>x=145.68</m>
+					<me>
+						h = \dfrac{34.32 + 145.68}{2} = \dfrac{180}{2} = 90
+					</me>
+					The maximum profit occurs when <m>h=90</m> items are sold.
+				</p>
+				<p>
+					To find the maximum profit, plug this into the function <m>P(x)</m>
+					<me>
+						P(90) = -0.1 \cdot  (90)^2 + 18\cdot (90) - 500 = 310
+					</me>
+					The maximum profit you can achieve in any possible world (number of quanitites sold) is $<m>310</m>.  That total profit is achieved in the scenario where you set the price so that <m>x=90</m> items are sold. 
+				</p>
+			</solution>
+		</task>
+		<task>
+			<statement>
+				<p>
+					What is the number of units <m>x</m> needed to maximize profit?  What is the maximum profit?
+				</p>
+			</statement>
+			<!-- TODO: add solution -->
+		</task>
+	</exploration>
+
+
+
+</section>
+
+
+<section xml:id="sec_rationalfns">
+  <title>Rational Functions</title>
+  
+	<definition xml:id="def-rationalfunction">
+		<statement>
+			<p>
+				A function <m>f(x)</m> is a <term>rational function</term> if <m>f(x)</m> can be written as a fraction of polynomials.  
+				In other words, a rational function <m>f(x)</m> can be written as a fraction <me>f(x) = \dfrac{p(x)}{q(x)}</me> where the numerator and denominator <m>p(x)</m> and  <m>q(x)</m> are both polynomials.
+			</p>
+			<p>
+				Because <em>division by 0</em> is undefined, there are often values of <m>x</m> which make a function <term>undefined</term>.  For such an input <m>x</m>, we say that <m>f(x)\ DNE</m>.
+			</p>
+		</statement>
+	</definition>
+
+	<p>
+		Every polynomial is a rational function (with denominator <m>q(x)=1</m>), but not every rational function is a polynomial.  
+	</p>
+
+
+	<assemblage xml:id="assemblage-rational-inequalities">
+		<title>Solving Inequalities of Rational Functions</title>
+		<p>
+			Suppose that <m>f(x)</m> is a rational function.  In other words, suppose that <m>f(x) = \dfrac{p(x)}{q(x)}</m> where the numerator and denominator <m>p(x)</m> and  <m>q(x)</m> are both polynomials.  
+		</p>
+		<p>
+			To solve an inequality such as  <m>f(x) \gt 0</m>, <m>f(x) \lt 0</m>, <m>f(x)\geq 0</m>, or <m>f(x)\leq 0</m> follow the following steps:
+		</p>
+		<p>
+			<ol>
+				<li>
+					<p>
+						Solve the inequality <m>f(x) = 0</m>, by finding all inputs that make the <em>numerator</em> <m>p(x)</m> equal to <m>0</m>.
+					</p>
+					<p>
+						Draw a number line, and label the <m>x</m>-values where the solutions occur. Use an open circle if the inequality is <m>\gt</m> or <m>\lt</m>, or a closed circle if the inequality is <m>\geq</m> or <m>\leq</m>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Find any inputs <m>x</m> where the function is undefined (such that <m>f(x)\ DNE</m>). 
+						In other words, find all values of <m>x</m> which make the <em>denominator</em> <m>q(x)</m> equal <m>0</m>.
+					</p>
+					<p>
+						Label the <m>x</m>-values where the function <m>DNE</m> on your number line using open circles.
+					</p>
+				</li>
+				<li>
+					<p>
+						For each interval, use a graph, a calculator, or some other technique to decide whether the inequality is true or false on that interval. 
+					</p>
+				</li>
+				<li>
+					<p>
+						Write your final answer down in interval notation.  <em>include</em> all endpoints with closed circles (use square brackets), and <em>exclude</em> all endpoints with open circles (use parentheses). 
+					</p>
+				</li>
+			</ol>
+		</p>
+	</assemblage>
+
+	
+
+</section>
+
+</chapter>

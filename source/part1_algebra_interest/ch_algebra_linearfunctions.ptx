@@ -1,0 +1,1980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch-algebra_linearfunctions" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<title>Lines and Linear Functions</title>
+
+	<introduction>
+		<p>
+		Linear functions show up everywhere, and have very nice mathematical properties.  In this section we will begin by briefly reviewing the basic properties of lines. But our main focus will be on introducing and understanding a number of important applications of linear functions to topics in economic and business contexts. 
+		</p>
+		<image xml:id="image_conceptmap_pricecost">
+			<latex-image>
+				\begin{tikzpicture}
+					\newcommand{\quickpage}[1]{\begin{minipage}{1.25in}\centering #1\end{minipage}};
+					\node[inner sep=0pt] (O) at (-2,3) {};
+					\node (s) at (1,5) {slope $\frac{\Delta y}{\Delta x}$}; 
+					\node (ps) at (5,5) {\quickpage{point slope \\ $y = m (x-x_1) + y_1$}};
+					\node (px) at (9,4) {\quickpage{demand price \\ $p = m(x-x_1)+y_1 $ \\ $p = mx+b$ }};
+					\node (sc) at (2,3)  {price varies by scenario $x$};
+					\node (Cn) at (1,1) {\quickpage{Fixed cost $b$ and \\ variable cost $m$}};
+					\node (Cx) at (5,1) {\quickpage{Cost function \\ $C(x) = mx+b$}};
+					\draw[-latex] (O) -- (s) ;
+					\draw[-latex] (s) -- (ps) ;
+					\draw[-latex] (ps) -- (px);
+					\draw[-latex] (O) -- (sc) ;
+					\draw[-latex] (sc) -- (px);
+					\draw[-latex] (O) -- (Cn); 
+					\draw[-latex] (Cn) -- (Cx) ;
+				\end{tikzpicture}
+			</latex-image>
+		</image>
+	</introduction>
+
+	<section xml:id="sec-algebra-linear-equations">
+		<title>Finding the Equation of a Line</title>
+
+		<objectives>
+			<ul>
+			<li>
+				<p>
+				Review the equation for the point-slope form of a line
+				</p>
+			</li>
+			<li>
+				<p>
+				Find the equation of a line under a variety of circumstances.
+				</p>
+			</li>
+			</ul>
+		</objectives>
+
+
+		<definition xml:id="def-point_slope">
+			<statement>
+				<p>
+					Any two points <m>(x_1,y_1)</m> and <m>(x_2,y_2)</m> define a line with slope <me>m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1}</me>. 
+				</p>
+				<p>
+					Graphically, we get the following picture. 
+				</p>
+				<image xml:id="img_line_two_points" width="40%">
+					<shortdescription>A line between two points.</shortdescription>
+					<latex-image>
+						\begin{tikzpicture}
+						\node[above left] at (0,0) {$(x_1,y_1)$}; 
+						\node[above left] at (2,1) {$(x_2,y_2)$};
+						\draw[fill] (0,0) circle (2pt);
+						\draw[fill] (2,1) circle (2pt);
+						\draw (-1,-0.5) -- (3,1.5);
+						\draw[dashed] (0,0) -- (2,0) node[midway,below] {$\Delta x$};
+						\draw[dashed] (2,0) -- (2,1) node[midway,right] {$\Delta y$};
+						\end{tikzpicture}
+					</latex-image>
+				</image>
+
+				<p>
+					The <term>point slope form</term> of a line through the point <m>(x_1,y_1)</m> with slope <m>m</m> is the equation 
+					<me>
+					y = m (x - x_1) + y_1
+					</me>
+				</p>
+				<p>
+					The <term>slope intercept form</term> of a line has the form 
+					<m>y = m x + b</m>, and is what you get if you use algebra to simplify the point slope form of the line. 
+				</p>
+			</statement>
+		</definition>
+
+		<exploration>
+			<statement>	
+				<p>
+					Suppose <m>y = f(x)</m> is a line with slope <m>m=4</m> through the point <m>(1,2)</m>.  Find the equation of this line, and draw the graph of the function.
+				</p>
+			</statement>
+			<solution>
+				<p> The point slope form for the line is <m> y = {\color{green} m} (x - { \color{green} x_1}) + {\color{green} y_1}</m>.  
+				</p>
+				<p> We are also given values for the three constants <m>\color{green} m</m>, <m>\color{green} x_1</m>, and <m>\color{green} y_1</m>.
+				Putting this together, we get
+					<me>
+					y = {\color{green} 4 } (x - {\color{green} 1} ) + {\color{green} 2}
+					</me>.
+				</p>
+				<image xml:id="img_line_simple" width="50%">
+					<latex-image>
+					\def \xmin {0}
+					\def \xmax {5}
+					\def \ymin {0}
+					\def \ymax {6}
+					\def \pad {0.1}
+					\def \domainstart {0-\pad}
+					\def \domainstop {2 + \pad}
+					\begin{tikzpicture}            
+									[scale=1,
+									declare function = {
+									f(\x) = 4*(\x-1)+2 ;
+									}]
+						\draw[axes] (0,\ymin-\pad)--(0,\ymax+\pad);
+						\draw[axes] (\xmin-\pad,0)--(\xmax+\pad,0);
+						\draw[grid] (\xmin-\pad,\ymin-\pad) grid (\xmax+\pad,\ymax+\pad);
+						% Label x-axis
+						\foreach \i in {\xmin,...,\xmax}
+							\node[below] at (\i,0) {$\i$};
+						% Label y-axis
+						\foreach \i in {\ymin,...,\ymax}
+							\node[left] at (0,\i) {$\i$};
+
+						% Graph the function defined in the TikZ environment
+						\draw [curve,domain=\domainstart:\domainstop,smooth] plot ({\x},{f(\x)});
+						\draw[fill] (1,2) circle (2pt); 
+					\end{tikzpicture}
+					</latex-image>
+				</image>
+			</solution>
+		</exploration>
+
+		<p>
+			<alert>Important:</alert> there are is only <em>one</em> independent variable, <m>x</m> in the right hand side of the point slope form.  
+			The letters <m>\color{green} m</m>, <m>\color{green} x_1</m>, and <m>\color{green} y_1</m> all refer to <em>specific numbers</em>.  
+			<me>
+			y = {\color{green} m} (x - { \color{green} x_1}) + {\color{green} y_1}
+			</me>
+		</p>
+
+		<p>
+			Whenever you are asked for the <em>equation for a line</em>, you just need to find <em>numerical values</em> for the slope <m>m</m> and a single point on the line <m>(x_1,y_1)</m>.
+		</p>
+
+		<exploration>
+			<statement>
+				<p>
+					Find the equation for a line through the points <m>(1,3)</m> and <m>(3,2)</m>, and draw a graph of this line.
+				</p>
+			</statement>
+			<solution>
+			<p>
+				You are asked to find the <em>equation</em> of the line described.
+				That means to find a rule defining the function as <m>y = f(x)</m>
+			</p>
+			<p>
+				First, write down the point-slope definition of the line.  
+				<me>
+				y = {\color{green} m} (x - { \color{green} x_1}) + {\color{green} y_1}
+				</me>
+				You must find numbers for <m>m</m>, for <m>x_1</m>, and for <m>y_1</m>.
+				In the problem, the first point <m>(1,3)</m> corresponds to <m>x_1=1</m> and <m>y_1=3</m>.  You could also use the second point <m>(3,2)</m>, which would correspond to the point <m>x_2=3</m> and <m>y_2 = 2</m>.
+			</p>
+			<p>
+				To find the slope, use the formula 
+				<md>
+				<mrow> m = \dfrac{\Delta y}{\Delta x} = \amp \dfrac{y_2-y_1}{x_2-x_1}</mrow>
+				<mrow>  = \amp \dfrac{2-3}{3-1}</mrow>
+				<mrow>  = \amp \dfrac {-1}{2} = - \dfrac{1}{2} = -0.5 </mrow>
+				</md>
+			</p>
+			<p>
+				Plugging this into the point slope form, <m>y = {\color{green} m} (x - { \color{green} x_1}) + {\color{green} y_1}</m>, you get the <em>point slope form</em>
+				<me>
+				y = {\color{green} -0.5} (x - { \color{green} 1}) + {\color{green} 3}
+				</me>
+			</p>
+			<p>
+				If you are instead asked for the <em>slope-intercept form</em> <m>y=mx+b</m>, you just need to simplify the equation you found above 
+				<md>
+				<mrow> y = \amp {-0.5} (x - {1}) + {3} </mrow>
+				<mrow>= \amp -0.5 x + 0.5 + 3 </mrow>
+				<mrow>= \amp -0.5 x + 3.5 </mrow>
+				</md>
+			</p>
+			<image xml:id="img_line_giventwopts" width="50%">
+				<latex-image>
+				\def \xmin {0}
+				\def \xmax {5}
+				\def \ymin {0}
+				\def \ymax {5}
+				\def \pad {0.1}
+				\def \domainstart {\xmin-\pad}
+				\def \domainstop {\xmax + \pad}
+				\begin{tikzpicture}            
+								[scale=1,
+								declare function = {
+								f(\x) = -1/2*(\x-1)+3 ;
+								}]
+					\draw[axes] (0,\ymin-\pad)--(0,\ymax+\pad);
+					\draw[axes] (\xmin-\pad,0)--(\xmax+\pad,0);
+					\draw[grid] (\xmin-\pad,\ymin-\pad) grid (\xmax+\pad,\ymax+\pad);
+					% Label x-axis
+					\foreach \i in {\xmin,...,\xmax}
+						\node[below] at (\i,0) {$\i$};
+					% Label y-axis
+					\foreach \i in {\ymin,...,\ymax}
+						\node[left] at (0,\i) {$\i$};
+
+					% Graph the function defined in the TikZ environment
+					\draw [curve,domain=\domainstart:\domainstop,smooth] plot ({\x},{f(\x)});
+					\draw[fill] (1,3) circle (2pt); 
+					\draw[fill] (3,2) circle (2pt); 
+				\end{tikzpicture}
+				</latex-image>
+			</image>
+			</solution>
+		</exploration>
+
+		<p>
+			Linear functions arise whenever you have a <em>constant rate of change</em>.  
+			We will examine rates in detail beginning in <xref ref="ch_totalschanges"/>. 
+			For now, a few examples will suffice.
+			<ol>
+				<li>
+					<p>
+						Velocity is a rate measured in <em>miles <alert>per hour</alert> </em>.
+					</p>
+				</li>
+				<li>
+					<p>
+						Item Price is a rate measured in <em>dollars <alert>per item</alert></em>. 
+					</p>
+				</li>
+			</ol>
+		</p>
+
+		<exploration>
+			<statement>
+				<p>
+					Suppose that you are driving down a state highway at a constant speed with a broken spedometer.  
+					At 3:00am, you drive by mile marker 5.  
+					Later, at 5:30 am, you drive by mile marker 152.5. 
+				</p> 
+				<p>
+					Find an equation for your position (mile marker) as a function of the number of <em>hours</em> since midnight.  
+				</p>
+			</statement>
+			<solution>
+			<p>
+				Because we are asked to find the <em>equation</em> for a line, we first write down the point-slope form <me>  y = {\color{green} m} (x - { \color{green} x_1}) + {\color{green} y_1} </me>.  To fill in the missing information (the red variables), we must find the slope <m>m</m>, and a point <m>x_1</m> and <m>y_1</m>.  
+			</p>
+			<p>
+				First, we must convert the information we are given into two points <m>(x,y)</m> where <m>x</m> is a number of hours since midnight, and <m>y</m> is a mile marker. 
+			</p>
+			<p>
+				Because 3:00 am is three hours after midnight, the first piece of information corresponds to the point <m>x_1 = 3</m> hours and <m>y_1=5</m> miles.
+			</p>
+			<p>
+				The second point is more tricky.  5:30 am is five <em>and a half</em> hours after midnight, so this corresponds to the point <m>x_2=5.5</m> and <m>y_2 = 152.5</m>
+			</p>
+			<p>
+				To find the slope of the line, we can now use the formula 
+				<md>
+				<mrow> m = \dfrac{\Delta y}{\Delta x} = \amp \dfrac{y_2-y_1}{x_2-x_1}</mrow>
+				<mrow> = \amp \dfrac{152.5-5}{5.5-3}</mrow>
+				<mrow>=  \amp \dfrac {147.5}{2.5} = 59 </mrow>
+				</md>
+				In other words, our average velocity is 59 miles per hour.
+			</p>
+			<p>
+				To find the <em>linear equation</em> for our location, we now plug
+				<m>m=59</m>,
+				<m>x_1 = 3</m>, and 
+				<m>y_1 = 5</m> into our equation for point-slope form to get 
+				<me>
+				y = {\color{green} 59} (x - { \color{green} 3}) + {\color{green} 5}
+				</me>
+			</p>
+			
+			</solution>
+
+		</exploration>
+
+
+		<!-- TODO: Add multiple select/matching webwork problem on definition of a line -->
+
+		<assemblage xml:id="assemblage-linearfunctions">
+			<title></title>
+			<p>
+				<ul>
+				<li>
+					<p>
+						Use whenever there is a constant rate of change. 
+					</p>
+				</li>
+
+				<li>
+						<p>
+				Slope = <m>\dfrac{\text{rise}}{\text{run}} = \dfrac{\text{change in y}}{\text{change in x}} = \dfrac{y_2-y_1}{x_2-x_1}</m>
+			</p>
+				</li>
+
+				<li>
+						<p>
+				Slope Intercept Form: <m>f(x) = mx + b</m> <m>\phantom{.}</m> where <m>m</m> is the slope and <m>b</m> is the <m>y</m>-intercept.
+			</p>
+				</li>
+
+				<li>
+						<p>
+				Point Slope form: <m>f(x) = m(x-x_1) + y_1</m> <m>\phantom{.}</m> where <m>m</m> is the slope and <m>(x_1,y_1)</m> is any point on the line.
+			</p>
+				</li>
+
+			</ul>
+			</p>
+		</assemblage>
+	</section>
+
+	<section xml:id="sec-algebra-linear-demandprice">
+		<title>Demand Price and Linear Functions</title>
+
+		<objectives>
+			<ol>
+			<li>
+				<p>
+				Introduce the concept of <alert>demand price</alert> and <alert>supply price</alert>.
+				</p>
+			</li>
+			<li>
+				<p>
+				Be able to <alert>find an equation for</alert> the function describing the demand price and supply price based on a verbal description of the marketplace.
+				</p>
+			</li>
+			<li>
+				<p>
+				Find the <alert>point of equilibrium</alert> between a supply and demand function.
+				</p>
+			</li>
+			</ol>
+		</objectives>
+
+		<p>
+			We want to use mathematics to study questions in economics and business.  
+			To do this, we first need to introduce the key ideas between each of these economics concepts, and then apply mathematical tools to study them. 
+		</p>
+		<p>
+			In the sections that follow, each <c>Application</c> will introduce the concept from a more intuitive and economic perspective, and will connect these applications to the mathematical tools we have in this course.
+			We will then <em>summarize</em> this connection, often with a mathematical <c>Definition</c>.
+		</p>
+		<p>
+			In the ebook, this gives you two different ways to study this material
+			<ol>
+				<li>
+					<p>
+						Expand and read the <c>Application</c> before moving on to the mathematical <c>Definition</c> and <c>Explorations</c>. 
+					</p>
+				</li>
+				<li>
+					<p>
+						Jump to the mathematical <c>Definition</c> and <c>Explorations</c> first to get a preview of the mathematics first.  
+						You'll notice that it hard to understand the question or follow many steps without an understanding of the economic background. 
+						Make sure to <em>go back</em> and study the <c>Application</c> to master the context of the question.
+					</p>
+				</li>
+			</ol>
+		</p>
+
+		<insight>
+			<title>Item Price, Scenarios, and Possible Universes</title>
+			<p>
+			In life, and particularly in business, you need to make specific, concrete decisions.  
+			You either hire a new employee or you don't.  
+			You take out a loan of one amount, rather than another. 
+			
+			</p>
+
+			<p>
+			Sometimes, you ask yourself <em>what would happen if I make this decision?</em>   
+			Or, once it's too late, you might ask yourself <em>what would have happened if I made that decision?</em>
+			</p>
+			<p>
+			When comparing mutually exclusive choices, people often use words like <term>scenario</term> or <term>possible universe</term> to identify the different possible options. 
+			</p>
+			<p>
+			There are many ways of trying to decide the price at which you will sell an item.  
+			In an auction, buyers each decide the maximum price at which they will buy the item, and the individual who has largest maximum price wins the auction. 
+			In a going-out-of-business sale, the company starts with high prices, and progressively lowers the price until everything in the store is sold. 
+			Each individual has a different maximum price at which they will purchase the item.  The lower the price goes, the more items are sold. 
+			</p>
+
+			<p>
+			<alert>In this class</alert> we always assume a company picks a <em>single item price</em>, and everyone pays that single price.  
+			</p>
+			<p>
+			We also assume that you can change the price from day to day, holding all other things equal.  That means that fewer items will be sold on a day when the price is high, and more items will be sold on a day when the price is low.
+		</p>
+		</insight>
+
+		<p>
+			We will  focus on how changing the the number of items to be sold impacts the revenue, cost, and profitibility of a business.  
+			Because of that, we will generally think of the <em>item price <m>p</m></em>  as a function of the <em>number of items <m>x</m></em>.
+		</p>
+
+		<definition xml:id="def-demand">
+			<statement>
+			<p>
+				The <term>demand price</term> function is an equation <m>p = f(x)</m>. 
+				Given a number of items <m>x</m> that you wish to sell, this function tells you the price <m>p</m> that will result in exactly <m>x</m> items being sold.
+			</p>
+			</statement>
+		</definition>
+
+		<p>
+			If demand price is linear, we can use the techniques of <xref ref="sec-algebra-linear-equations"/> find an <em>equation</em> for the demand price function. 
+		</p>
+
+		<exploration xml:id="eg_demandprice_1">
+			<title>A Demand Price Function</title>
+			<statement>
+				<p>
+					Suppose that 5 units are sold when the price is 10$/item, and 15 units are sold when the price is 5 $/item.  
+				</p>
+
+				<image xml:id="img-demandprice-1">
+				<latex-image>
+					\begin{tikzpicture}[scale=0.2]
+					\draw[axes] (-1,0) -- (20,0) node[right] {\begin{minipage}{1.5in}\flushleft scenario where $x$ items sold \end{minipage}};
+					\draw[axes] (0,-1) -- (0,12) node[below left,xshift=-15] {\begin{minipage}{1in}  \begin{center}$p =$ item price in scenario where $x$ items  sold\end{center}\end{minipage}}; 
+					\draw[grid,step=5] (0,0) grid (17,12);
+					\draw[fill] (5,10) circle (10pt);
+					\draw[fill] (15,5) circle (10pt);
+					\foreach \y in {5,10}
+						\node[left] at (0,\y) {\y};
+					\foreach \x in {5,10,15}
+						\node[below] at (\x,0) {\x};
+					
+					\draw (0,12.5) -- (20,2.5) node[midway, above right] {$y = p(x) =$ price to sell $x$ units} ;
+
+					%%\draw[axes] (8,0) -- (10,0) node[right] {\begin{minipage}{1.5in}\flushleft possible universe where $x$ units sold \end{minipage}};
+					%%\draw[axes] (9,-1) -- (9,1) node[above] {\begin{minipage}{3in}\begin{center}$\Delta R$ = change in revenue that would have occurred if you had chosen a different possible universe (if you had had decided to sell an additional unit by lowering the unit costs for everyone)\end{center}\end{minipage}}; 
+					\node at (52,5) {\begin{minipage}{2in}\begin{center}$\Delta p$ is the change in item price required to increase the number of items sold \end{center}\end{minipage}};
+					\end{tikzpicture}
+				</latex-image>  
+				</image>
+
+				<p>
+				Suppose that demand is linear.
+				Find the equation of the line <m>y = p(x)</m>  through these points.  
+				</p>
+			</statement>
+
+			<solution>
+				<p>
+					From this problem, we are told that at the first quantity <m>x_1=5</m>, the item price is <m>p_1 = 10</m>.  Furthermore, at the second quantity <m>x_2=15</m>, the item price is <m>p_2=5</m>.  We need to find the equation of the line between these points. 
+				</p>
+				<p>
+					The point slope form of a line is given by the equation
+					<m>
+					y = m (x-x_1) + y_1
+					</m>.
+					Because the dependent variable here is named <m>p</m> instead of <m>y</m>, we can write this as 
+					<me>
+					p = m (x- x_1) + p_1
+					</me>.
+				</p>
+				<p>
+					For the slope of the line, we use 
+					<md>
+					<mrow> m \amp = \dfrac{\Delta p}{\Delta x} = \dfrac{p_2-p_1}{x_2-x_1}</mrow>
+					<mrow> \amp = \dfrac{5-10}{15-5}</mrow>
+					<mrow> \amp = \dfrac{-5}{10}=-0.5</mrow>
+					</md>
+				</p>
+				<p>
+					Putting it all together, we get 
+					<md>
+						<mrow> p = \amp -0.5 (x-5) + 10</mrow>
+						<mrow>= \amp -0.5x + 2.5 + 10</mrow>
+						<mrow>= \amp -0.5x + 12.5</mrow>
+					</md>
+				</p>
+			</solution>
+			<postlude>
+				<p>
+					That function lets us know the price-per-item <m>p(x)</m> sold in <em>every</em> possible universe <m>x</m>.  
+					In other words, the slope of <m>p(x)</m> lets us know how much we need to lower the price to move to a possible universe where we sell one additional unit. 				
+				</p>
+			</postlude>
+
+		</exploration>
+
+		<exploration xml:id="explore_pricefn1">			
+			<introduction>
+				<p>
+					Suppose you sell 15 items at 4 $ per item, and 20 items at 2 $ per item.
+					Suppose also that demand price is linear.
+				</p>
+			</introduction>
+			
+				<task>
+					<statement>
+						<p>
+						Find an equation for price function <m>p=f(x)</m>, and simplify completely.  Assume that the price function is linear. 
+						</p>
+					</statement>
+					<hint>
+					<p>
+						You will need to use point-slope form to find the equation of the function.
+					</p>
+					</hint>
+					<solution>
+						<p>
+							We are given two points on the line.  When the quantity is <m>x_1=15</m>, the price is <m>p_1=4</m>.  When the quantity is <m>x_2=20</m>, the price is <m>p_2=2</m>.
+						</p>
+						<p>
+							To find the <em>equation for the line</em>, use the point-slope form <me>  y = {\color{green} m} (x - { \color{green} x_1}) + {\color{green} y_1} </me>.
+						</p>
+						<p>
+							For the slope of the line, we use 
+							<md>
+							<mrow> m \amp = \dfrac{\Delta p}{\Delta x} = \dfrac{p_2-p_1}{x_2-x_1}</mrow>
+							<mrow> \amp = \dfrac{2-4}{20-15}</mrow>
+							<mrow> \amp = \dfrac{-2}{5}=-0.4</mrow>
+							</md>
+						</p>
+						<p>
+							Putting it all together, we get 
+							<me>
+								p(x) = -0.4 (x - 15) + 4
+							</me>
+							Simplifying this, we get
+							<me>
+								p(x) = -0.4x + 10
+							</me>
+							
+						</p>
+					</solution>
+				</task>
+				<task>
+					<statement>
+						<p>
+							What item price is required to sell 18 items? 
+						</p>
+					</statement>
+					<solution>
+						<p>
+							We want to find the price <m>p(x)=-0.4x+10</m> when <m>x=18</m>.  In other words, substitute <m>18</m> for every occurance of <m>x</m>. 
+							<me>
+								p(18) = -0.4\cdot 18 + 10 = -7.2 + 10 = 2.8
+							</me>
+							A price of <m>p=2.8</m> $/item will result in 18 items being sold.
+						</p>
+					</solution>
+				</task>
+				<task>
+					<statement>
+						<p>
+							How many items will be sold when the price is 8.4 $/item?  What will the revenue be at this price?
+						</p>
+					</statement>
+					<solution>
+						<p>
+							We want to find the quantity <m>x</m> for which the price <m>p(x)=-0.4x+10</m> is equal to <m>8.4</m>.
+						</p>
+						<p>
+							In other words, set the price function equal to <m>8.4</m>.
+							<me>
+								8.4 = p(x) = -0.4x + 10
+							</me>
+							Solve for <m>x</m>.
+							<md>
+								<mrow>8.4 	\amp = \amp-0.4x \amp + 10</mrow>
+								<mrow>- 10 	\amp = \amp 	 \amp  -10</mrow>
+								<mrow>\amp \amp \amp </mrow>
+								<mrow>-1.6    \amp = \amp -0.4x \amp </mrow>
+								<mrow>\div -0.4 \amp \amp \div -0.4</mrow>
+								<mrow>\amp \amp \amp </mrow>
+								<mrow>4 \amp= \amp x \amp </mrow>
+							</md>
+						</p>
+						<p>
+							Four items will be sold when each item costs <m>8.4</m> dollars.
+						</p>
+						<p>
+							Because Revenue equals price times quantity (<m>R(x) = x \cdot p(x)</m>), 
+							<me>
+								R(x) = 4 \cdot 8.4 = 33.6
+							</me>
+							The total revenue will be $33.60.
+						</p>
+					</solution>
+				</task>
+				<!-- TODO: reflect on relationship of units $/item to units of slope of demand function -->
+		</exploration>
+
+
+		<insight>
+			<title>Supply Price</title>
+			<p>
+			In any economic transaction, the person selling a product and the person  buying a product have very different perspectives. 
+			</p>    
+			<p>
+			We already talked about the <em>buyer's</em> perspective when we talked about the <em>demand</em> price.  We now want to think about the <em>seller's</em> perspective by studying the <em>supply</em> price.
+			</p>
+			<p>
+			Any seller has a huge number of options available to them.   On any given day, and in any given market, they might decide to create a new product, to cancel an existing product, to go out of business completely, etc. 
+			</p>
+			<p>
+			Furthermore, making one product takes up time and energy that could otherwise be used to create another product.  In other words, there are many tradeoffs.
+			</p>
+			<p>
+			The <term>supply price</term> of a particular number of items refers to the item price that the seller must be able to earn in order to make it worth their time to create that number of items. 
+			</p>
+			<p>
+			For example, you might only be willing to increase production to <m>x=100</m> items if you are sure that you would be able to sell each item for <m>p=15</m>$ each.  In this case, the supply price for 100 items is 15$.
+			</p>
+			<p>
+			Note that a higher item price will encourage sellers to produce more.  That means that supply functions are always increasing. 
+			</p>
+		</insight>
+
+		<definition xml:id="def-supply">
+			<statement>
+			<p>
+				The <term>supply price</term> function is an equation <m>p = g(x)</m>. 
+			Given a number of items <m>x</m>, this function tells you the minimum item price <m>p</m> that will result in a manufacturer being willing to produce <m>x</m> items.
+			</p>
+			</statement>
+		</definition>
+
+		<exploration xml:id="exploration_supplyprice_1">
+			<title>Finding a supply price function</title>
+			<statement>
+				<p>
+				Suppose that a manufacturer is willing to supply 2 items when the item price is 5 $ per item, and that they are willing to supply 10 items when the item price is 7 $ per item.  Suppose also that supply price is linear. 
+				Find an equation for the supply function.  
+				</p>
+			</statement>
+			<solution>
+			<p>
+				Even though the application is new, the mathematics is identical to the demand price example.
+			</p>      
+			<p>
+				From this problem, we are told the seller will supply the quantity <m>x_1=2</m> at an item price of <m>p_1 = 5</m>.  Furthermore, the seller will supply the quantity <m>x_2=10</m> at an item price of <m>p_2=7</m>.  We need to find the equation of the line between these points. 
+			</p>
+			<p>
+				The point slope form of a line is given by the equation
+				<me>
+				p = m (x- x_1) + p_1
+				</me>.
+			</p>
+			<p>
+				For the slope of the line, we use 
+				<md>
+				<mrow> m \amp = \dfrac{\Delta p}{\Delta x} = \dfrac{p_2-p_1}{x_2-x_1}</mrow>
+				<mrow> \amp = \dfrac{6-5}{10-2}</mrow>
+				<mrow> \amp = \dfrac{2}{8}= 0.25</mrow>
+				</md>
+			</p>
+			<p>
+				Putting it all together, we get 
+				<md>
+					<mrow> p = \amp 0.25 (x-2) + 5</mrow>
+					<mrow>= \amp 0.25x - 0.5 + 5</mrow>
+					<mrow>= \amp 0.25x + 4.5</mrow>
+				</md>
+			</p>
+			</solution>
+
+		</exploration>
+
+		<insight>
+			<title>Equilibrium quantity and price</title>
+			
+			<p>
+				Supply price and demand price capture the two sides of the market, the seller (supply) side and the buyer (demand) side.  
+			</p>
+			<p>
+				Because supply price is an increasing function, and demand price is a decreasing function, there will often be a single point where the two curves intersect.  
+			</p>
+			<p>
+				If the curves do not intersect, then the demand price is always lower than the supply price. 
+				In other words, there is no quanitity at which the market  willing to pay the item price required by  the seller.  In other words, no items are sold in this case. 
+			</p>
+			<p>
+				The price where this happens is called the <term>equilibrium point</term>, because at this quaintity, the supply price and demand price are equal (in equilibrium).
+			</p>
+		</insight>
+
+		<definition xml:id="def-equlibrium">
+			<statement>
+			<p>
+				Suppose you are given a demand price function <m>p = f(x)</m> and a supply price function <m>p=g(x)</m>
+				The <term>equilibrium  point</term> is the point <m>(x,p)</m> where the two curves intersect. 
+			</p>
+			<p>
+				The value of <m>x</m> is called the equilibrium quantity, and is the quantity of items sold when supply and demand prices are equal.  
+				The value of <m>p</m> is the price that results in this equilibrium between supply and demand.
+			</p>
+			</statement>
+		</definition>
+
+		<exploration xml:id="ex_supply-demand-equilibrium">
+			<title>Equilibrium Price and Quantity</title>
+			<statement>
+				<p>
+				In a certain market, 5 units will be sold when the price is 10 $ per item, and 15 units will be sold when the price is 5 $ per item. 
+				</p>
+				<p>
+				Furthermore, the manufacturer is willing to supply 2 items when the item price is 5 $ per item, and that they are willing to supply 10 items when the item price is 7 $ per item.
+				</p>    
+				<p>
+				Find the equilibrium quanitity and price.
+				</p>
+			</statement>	
+			<answer>
+			<p>The equilibrium price is <m>p=7.166\dots</m> $ per item , and the equilibrium quantity is <m>x=10.666\dots</m> items.  That means that the equilibrium <em>point</em> is approximately <m>(10.666,7.166)</m>.
+			</p>
+			</answer>
+			<solution>
+			<p>
+				We have already found in <xref ref="eg_demandprice_1"/> above that the demand price function correspoinding to <m>(5,10)</m> and <m>(15,5)</m> is given by the equation 
+				<me>
+				p=-0.5x + 12.5
+				</me>
+				and found in <xref ref="exploration_supplyprice_1"/> that supply price function corresponding to <m>(2,5)</m> and <m>(10,7)</m> is given by 
+				<me>
+				p =  0.25x + 4.5
+				</me>.
+			</p>
+			<p>
+				Furthermore, we know that the equilibrium occurs at the intersection of these lines, which is the point at which the price from both of these equations is equal.  
+			</p>
+			<p>
+				But if the price <m>p</m> in both equations is equal, that means that we can set the right hand sides to be equal, giving 
+				<me>
+				0.25x + 4.5 = -0.5x + 12.5
+				</me>
+				Now we just need to solve this equation for <m>x</m>
+				<md>
+				<mrow> 0.25x \amp+ 4.5\amp = \amp-0.5x \amp+ 12.5 </mrow>
+				<mrow> +0.5x \amp     \amp   \amp+0.5x \amp       </mrow>
+				<mrow> \amp \amp \amp \amp</mrow>
+				<mrow> 0.75x \amp+ 4.5\amp = \amp      \amp+ 12.5 </mrow>
+				<mrow>       \amp- 4.5\amp   \amp      \amp- 4.5  </mrow>
+				<mrow> \amp \amp \amp \amp</mrow>
+				<mrow> 0.75x \amp     \amp = \amp      \amp 8   </mrow>
+				<mrow>\div0.75\amp    \amp   \amp      \amp \div 0.75   </mrow>
+				<mrow> \amp \amp \amp \amp</mrow>
+				<mrow> x \amp         \amp = \amp     \amp 10.666\dots  </mrow>
+				</md>
+			</p>
+			<p>
+				In other words, the equilibrium quantity is <m>x=10.666\dots</m>.
+				To find the equilibrium price, plug this quanitity into either the supply or demand price functions. 
+			</p>
+			<p>
+				Using the supply price function, this gives
+				<me>
+				p = 0.25\cdot 10.666 + 4.5 = 7.166
+				</me>
+				or equivalently using the demand price function gives
+				<me>
+				p =  -0.5\cdot 11.333 + 12.5 = 7.166
+				</me>
+				In either case, we get that the equilibrium price of <m>p=7.166\dots</m> $ per item corresponds to an equilibrium quantity of about <m>x=10.666\dots</m> items.  Putting it all together, we get that the equilibrium <em>point</em> is approximately <m>(10.666,7.166)</m>
+			</p>
+			
+			</solution>
+		</exploration>
+
+		<assemblage xml:id="principle-demand-price">
+			<title>Demand Price</title>
+			<p>
+				<ul>
+					<li>
+						<p>
+							Economics studies different, incompatable <term>scenarios</term> or <term>possible universes</term>.
+						</p>
+						<p>
+							In this course, we often compare universes where different numbers of items <m>x</m> are sold. 
+						</p>
+					</li>
+					<li>
+						<p>
+							A price function <m>p = f(x)</m> is a rule which when given a number <m>x</m>, tells you the <em>item price</em> in the universe where exactly <m>x</m> items are sold. 
+						</p>
+					</li>
+					<li>
+						<p>
+							In most of this course, we will take the perspective of a manufacturing company, and the price function represents their market research. 
+						</p>
+						<p>
+							In a few problems, we will study the market from the outside.  In these probelms, we will have different price functions for supply and demand. 
+						</p>
+					</li>
+				</ul>
+			</p>
+		</assemblage>
+
+
+		<p>
+			Each of the concepts we look at in this class will build on the previous ones.  That means it is very important to understand <em>both</em> the mathematics <em>and</em> the economic meaning of each concept we study. 
+		</p>  
+		<p>
+			In this case, one of the best ways to remember what item price means is to think about it in connection to revenue.
+			The <term>revenue</term> of a scenario is the total amount of money that you take in. 
+		</p>
+		<p>
+			When the item price is fixed, there is a simple equation for this:
+			<me>
+			\text{Revenue} = (\text{Item Price})\cdot(\text{Number of Items})
+			</me>
+		</p>
+		
+		<p>
+			When the item price function is linear, the Revenue function is quadratic. 
+			In other words, to understand even basic questions about profitability, we will need more powerful mathematical tools.
+			Because of this, we will discuss revenue in more detail in <xref ref="sec_revenue"/>.  
+		</p>
+
+	</section>
+
+	<section xml:id="sec-algeba-linear-cost">
+		<title>Item Cost, Total Cost, and Linear Functions</title>
+		<objectives>
+			<ul>
+			<li>
+				<p>
+				Introduce the concepts of <term>item cost</term>, <term>fixed cost</term>, <term>variable cost</term>, and <term>total cost</term>
+				</p>
+			</li>
+			<li>
+				<p>
+				Use the fixed cost and item cost to find a formula for the total cost. 
+				</p>
+			</li>
+			<li>
+				<p>
+				Use the total cost function to find the item cost and fixed cost.
+				</p>
+			</li>
+			</ul>
+		</objectives>
+
+		
+		<p>
+			For the purposes of this course, we will generally focus on the perspective of a business that is selling a single product in a specific market.  
+			As discussed above, this business will need to understand the demand price function for their market. 
+			Multiplying the price times quantity will give the total income, or revenue, of any given scenario.
+		</p>
+		<p>
+			But in order to create an item for sale to others, the business will also have to purchase materials and labor of its own.  We will describe the expense side of the business using the <term>total cost function</term>, usually abbreviated the <term>cost function</term>.
+		</p>
+		<definition xml:id="def-totalcost">
+			<statement>
+				<p>
+					<ul>
+						<li>
+							<p>
+								The <term>fixed cost</term> is the amount of money that must be spent <em>before</em> any items can be produced.  In other words, the fixed cost is the total cost of 0 items. 
+							</p>
+						</li>
+						<li>
+							<p>
+								The <term>variable cost</term> of an item is the cost of that item alone.  
+							</p>
+						</li>
+						<li>
+							<p>
+								The <term>total cost</term> of <m>x</m> items, written <m>C(x)</m>, is the <em>cumulative cost</em> of making items numbered <m>0</m> through <m>x</m>
+							</p>
+						</li>
+					</ul>
+				</p>
+			</statement>
+		</definition>
+
+		<exploration xml:id="explore_totalcost1">
+			<title>Finding the total cost function</title>
+			<statement>
+				<p>
+					You are planning to manufacture a new plastic toy. 
+					It costs $100 to create a mold, and $5 in plastic, labor, and electricity per unit created. 
+				</p>
+				<p>
+					Find the <em>total cost function</em>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					Once you have purchased the mold, but before you have created the first toy, you have manufactured <m>x=0</m> items, but you have already spent <m>C(0)=100</m> dollars.  In other words, the cumulative cost of 0 items is 100$
+				</p>
+				<p>
+					After you have manufactured <m>x=1</m> item, you have spent <m>C(1) = 100 + 5 = 101 </m> $.
+				</p>
+				<p>
+					After you have manufactured <m>x=2</m> items, you have spent <m>C(2) = 100 + 5 + 5 =  100 + 5\cdot 2 =  110 </m> $.
+				</p>
+				<p>
+					After you have manufactured <m>x=30</m> items, you have spent <m>C(30) = 100 + 5\cdot 30 = 250 </m> $.
+				</p>
+				<p>
+					Looking at the pattern in these equations, you can "see" the equation for the total cost  function.  For any number of items <m>x</m>, the total cost will be 
+					<me>
+						C(x) = 100 + 5\cdot x
+					</me>.
+				</p>
+				<p>
+					<alert>Note:</alert>
+					There are several different ways to find a cost function.  
+					In this example, we followed an intuitive approach. 
+					In <xref ref="ex-totalcost2"/> and <xref ref="ex-totalcost3"/> (<xref first="ex-totalcost2" last="ex-totalcost3"/>), we will use the point slope form of the line. 
+				</p>
+			</solution>
+		</exploration>
+
+		<exploration>
+			<title>Using the total cost function</title>
+			<statement>
+				<p>
+					Above, we found that if it costs $100 to create a mold, and $5 in plastic/labor/electricity per unit created, then the total cost to <m>x</m> items is  <m>C(x) = 100 + 5\cdot x</m>
+				</p>
+				<p>
+					If you (the toy making business) have $300, how many toys can you make? 
+				</p>
+			</statement>
+			<solution>
+				<p>
+					We want to find the number of items <m>x</m> such that the total cost <m>C(x)</m> is equal to 300.  In other words, we want to solve for <m>x</m> such that 
+					<me>
+						300 = C(x)
+					</me>.
+					But we also know that <m>C(x)=100+5x</m>, so we can subsitute that equation for <m>C(x)</m>.
+					<me>
+						300 = 100 + 5x
+					</me>
+					We can now solve this as normal 
+					<md>
+						<mrow>300 \amp =\amp 100 \amp + \amp 5x</mrow>
+						<mrow>-100\amp  \amp -100 \amp   \amp </mrow>
+						<mrow> \amp </mrow>
+						<mrow>200 \amp =\amp \amp   \amp 5x</mrow>
+						<mrow>\div 5 \amp\amp \amp \amp \div 5 </mrow>
+						<mrow> \amp </mrow>
+						<mrow>40 \amp =\amp \amp \amp x</mrow>
+					</md>
+					You are able to manufacture <m>x=40</m> items.
+				</p>
+
+			</solution>
+			
+		</exploration>
+
+		<p>
+			It is important to see and remember the difference between the concepts of <em>total cost</em>, <em>item cost</em>, and <em>fixed cost</em>.  In the next section, we will use graphs of totals and changes to help make these distinctions more vivid.
+		</p>
+
+		<p>
+			To get a broader and more intuitive picture of the relationship between <term>item cost</term> and <term>total cost</term>, it is helpful to think about total and change graphs, as in <xref ref="sec_graphsoftotalsandchanges"/>.
+			For example, suppose that <m>C(x)</m> is a total cost function, and that its total and change graphs are given below.
+		</p>
+
+			<image width="75%" xml:id="image_totalchange_cost1">
+				<latex-image>
+					%%%% EXAMPLE 1 %%%%
+					%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+					\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+					\def \xmin {0}
+					\def \xmax {5}
+					\def \xunits { }
+					\def \yunits {Total Cost $C$}
+					\def \dyunits{Item Cost $\Delta C$}
+					\def \xscale {1*0.8}
+					\def \yscale {0.5}
+					%% Information about the total (y) graph
+					\def \ymin {0}								%% First height to be be drawn with dashed lines
+					\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+					\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+					\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+					\def \ymax {12}
+					%% Information about the change (\Delta y) graph
+					\def \dymin {-4}
+					\def \dysecondmajoraxis {-3}
+					\def \dyfirstminoraxis  {-3.5}
+					\def \dysecondminoraxis {-2.5}
+					\def \dymax {4}
+					%%
+					\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+						%% Graph of Total %%
+						%\node at ({(\xmin+\xmax)/2},{\ymin-2}) {Graph of Total Cost \ $C$};
+						%% Draw horizontal lines at major and minor y-values
+						\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+							\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+						\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+							\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+						%% Draw and label x and y axes
+						\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+						\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+						\foreach \i in {\xmin,...,\xmax}
+							\node[below,yshift=-2pt] at (\i, 0) {\small $\i$};
+						\foreach \i in {\ymin,...,\ymax}
+							\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+						\foreach \i in {1,...,\xmax}
+							\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+						%%
+						\tikzhistogram(0,1);  % Delta 0
+						\tikzhistogram(1,3);	% Delta 4
+						\tikzhistogram(2,5);	% Delta 3
+						\tikzhistogram(3,7);	% Delta 2
+						\tikzhistogram(4,9);	% Delta 1
+						\tikzhistogram(5,11);	% Delta 1 
+
+						% \draw[dimen,red] (-1.5,2) -- (-1.5,4) node [left=1mm,midway] {$\Delta y$} ;
+						% \draw[dimen,red] (0,-1.5) -- (1,-1.5) node [below=1mm,midway] {$\Delta x$} ;
+						%\node at (-0.5,2) [left,red] {$y_1=$};	
+						%\node at (-0.5,4) [left,red] {$y_2=$};	
+						%\node at (0,-0.75) [below,red] {$x_1$};	
+						%\node at (1,-0.75) [below,red] {$x_2$};	
+
+
+						%\tikzhistogram(6,17);	% Delta 1
+						%\tikzhistogram(7,19);	% Delta 1
+						%\tikzhistogram(8,21);	% Delta 2
+						%\tikzhistogram(9,23);	% Delta 2
+						%\tikzhistogram(10,25);	% Delta 4
+						%%
+					\end{tikzpicture}
+					\quad
+					\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+						%% Graph of Change %%
+						%\node at ({(\xmin+\xmax)/2},{\dymin-3}) {Graph of Change \ $\Delta C$};
+						%% Draw horizontal lines at major and minor y-values
+						\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+							\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+						\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+							\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+						%% Draw and label x and y axes
+						\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+						\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+						\foreach \i in {1,...,\xmax}
+							\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+						\foreach \i in {\dymin,...,\dymax}
+							\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+						\foreach \i in {1,...,\xmax}
+							\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+						%%
+						%\tikzhistogram(0,0);  % Delta 0
+						\tikzhistogram(1,2);	% Delta 4
+						\tikzhistogram(2,2);	% Delta 3
+						\tikzhistogram(3,2);	% Delta 2 
+						\tikzhistogram(4,2);	% Delta 1
+						\tikzhistogram(5,2);	% Delta 1
+						%\tikzhistogram(6,2);	% Delta 1
+						%\tikzhistogram(7,2);	% Delta 1
+						%\tikzhistogram(8,2);	% Delta 2
+						%\tikzhistogram(9,2);	% Delta 2
+						%\tikzhistogram(10,2);	% Delta 4
+						%%
+					\end{tikzpicture}
+					%%%% END EXAMPLE 1 %%%% 
+				</latex-image>
+			</image>
+		<p>
+			In the total graph on the left, we are told the <term>total cost</term> of purchasing a given number of items. For example, purchasing 0 items cost $1. This means that there is a <term>fixed cost</term> of $1 (to set up the assembly line) that must be paid in addition to the cost for actually producing an item.
+		</p>
+
+		<p>
+			In the change graph on the right, we are told the <term>change</term> in cost due to each individual item. For simplicity, this is often called the <term>variable cost</term>. For example, items 1 through 5 each have a variable cost of $2.
+		</p>
+
+		<exploration>
+			<introduction>
+				<p>
+				Suppose that the total cost function is as described using the total and change graph below.  
+				</p>
+				<image width="50%" xml:id="image_totalchange_cost1_copy2">
+					<latex-image>
+						%%%% EXAMPLE 1 %%%%
+						%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+						\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+						\def \xmin {0}
+						\def \xmax {5}
+						\def \xunits { }
+						\def \yunits {Total Cost $C$}
+						\def \dyunits{Item Cost $\Delta C$}
+						\def \xscale {1*0.8}
+						\def \yscale {0.5}
+						%% Information about the total (y) graph
+						\def \ymin {0}								%% First height to be be drawn with dashed lines
+						\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+						\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+						\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+						\def \ymax {12}
+						%% Information about the change (\Delta y) graph
+						\def \dymin {-4}
+						\def \dysecondmajoraxis {-3}
+						\def \dyfirstminoraxis  {-3.5}
+						\def \dysecondminoraxis {-2.5}
+						\def \dymax {4}
+						%%
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Total %%
+							%\node at ({(\xmin+\xmax)/2},{\ymin-2}) {Graph of Total Cost \ $C$};
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+							\foreach \i in {\xmin,...,\xmax}
+								\node[below,yshift=-2pt] at (\i, 0) {\small $\i$};
+							\foreach \i in {\ymin,...,\ymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+							%%
+							\tikzhistogram(0,1);  % Delta 0
+							\tikzhistogram(1,3);	% Delta 4
+							\tikzhistogram(2,5);	% Delta 3
+							\tikzhistogram(3,7);	% Delta 2
+							\tikzhistogram(4,9);	% Delta 1
+							\tikzhistogram(5,11);	% Delta 1 
+
+							% \draw[dimen,red] (-1.5,2) -- (-1.5,4) node [left=1mm,midway] {$\Delta y$} ;
+							% \draw[dimen,red] (0,-1.5) -- (1,-1.5) node [below=1mm,midway] {$\Delta x$} ;
+							%\node at (-0.5,2) [left,red] {$y_1=$};	
+							%\node at (-0.5,4) [left,red] {$y_2=$};	
+							%\node at (0,-0.75) [below,red] {$x_1$};	
+							%\node at (1,-0.75) [below,red] {$x_2$};	
+
+
+							%\tikzhistogram(6,17);	% Delta 1
+							%\tikzhistogram(7,19);	% Delta 1
+							%\tikzhistogram(8,21);	% Delta 2
+							%\tikzhistogram(9,23);	% Delta 2
+							%\tikzhistogram(10,25);	% Delta 4
+							%%
+						\end{tikzpicture}
+						\quad
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							%\node at ({(\xmin+\xmax)/2},{\dymin-3}) {Graph of Change \ $\Delta C$};
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+							%%
+							%\tikzhistogram(0,0);  % Delta 0
+							\tikzhistogram(1,2);	% Delta 4
+							\tikzhistogram(2,2);	% Delta 3
+							\tikzhistogram(3,2);	% Delta 2 
+							\tikzhistogram(4,2);	% Delta 1
+							\tikzhistogram(5,2);	% Delta 1
+							%\tikzhistogram(6,2);	% Delta 1
+							%\tikzhistogram(7,2);	% Delta 1
+							%\tikzhistogram(8,2);	% Delta 2
+							%\tikzhistogram(9,2);	% Delta 2
+							%\tikzhistogram(10,2);	% Delta 4
+							%%
+						\end{tikzpicture}
+						%%%% END EXAMPLE 1 %%%% 
+					</latex-image>
+				</image>
+			</introduction>
+			<task>
+				<statement>
+					<p>
+					What is the fixed cost? What is the variable cost?
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Remember that in the graph above, we are given the <em>cumulative</em> (or total) cost <m>C</m> on the left, and the <em>item</em> cost <m>\Delta C</m> on the right.  
+					</p>
+					<p>
+						Using the graph of <m>C(x)</m> on the left, we can see that the cumulative (total) cost of 0 items is $1, the total cost of 1 item is $3, the total cost of 2 items is 5, and so on. 
+					</p>
+					<p>
+						First, this means that we have a <em>fixed cost</em> of $1.  Second, this suggests that each additional item increases the cost by $2.  
+					</p>
+					<p>
+						The graph on the right tells us the variable cost for each item.  As expected, the cost increases by 2$ for each item, so the <em>variable cost</em> is equal to 2.
+					</p>
+
+				</solution>
+			</task>
+			<task>
+				<statement>
+					<p>
+						Write down a formula for total cost <m>C</m> as a function of <m>x</m>.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Our strategy is to think through the meaning of the total cost as in <xref ref="explore_totalcost1"/>.
+					</p>
+					<p>
+						We have already found above that the fixed cost is <m>1</m>, and the variable cost is <m>2</m>.  Therefore, the total cost is equal to 
+						<me>
+							C(x) = 1 + 2x
+						</me>
+						And indeed this matches exactly the line you would get by connecting every dot in the graph on the left.  
+					</p>
+				</solution>
+			</task>
+			<task>
+				<statement>
+					<p>
+					Write down a formula for change in cost <m>\Delta C</m> as a function of <m>x</m>.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Recall that <m>\Delta C</m> is the graph on the right, which tells us the item cost.  
+					</p>
+					<p>
+						Looking at the graph, we see that each item contributes the same amount to the total cost.  In other words, no matter which item <m>x</m> you are asking about, the <m>\Delta C</m> that item contributes will always be <m>2</m>.  
+						In other words, <m>\Delta C</m> is the constant function 
+						<me>
+							\Delta C(x) = 2
+						</me>
+						And indeed connecting the dots in the graph on the right would indeed result in the line <m>y=2</m>.
+					</p>
+				</solution>
+			</task>
+			<task>
+				<statement>
+					<p>
+					Explain how <m>\Delta C</m> relates to the formula for <m>C(x)</m>.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						In this example, <m>\Delta C</m> is the <em>slope</em> of the line <m>y=C(x)</m>.  
+					</p>
+					<p>
+						This will always be the case when the total cost function is <em>linear</em>, and the increment <m>\Delta x</m> is equal to 1. 
+					</p>
+					<p>
+						The goal of calculus is to give a more complete connection between graphs of totals and changes for non-linear functions, and for situations where you are looking at changes with a different value of <m>\Delta x</m>.
+					</p>
+				</solution>
+			</task>
+		</exploration>
+
+		<p>
+			Most total cost functions in this class will be given as word problems.  But remembering the meaning of total and change graphs will often make it easier to interpret the different parts of the question correctly.
+		</p>
+
+		<exploration xml:id="ex-totalcost2">
+			<introduction>
+				<p>
+					A certain assembly line costs $5 to set up, and that it costs a total of $9 to make 4 items. Suppose that the cost to produce each item is the same.
+				</p>
+			</introduction>
+			<task>
+				<statement>
+					<p>
+					Write down a formula for total cost <m>C(x)</m> as a function of the number of items <m>x</m>.
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Because the <em>cost per item</em> is constant, the <em>total cost</em> function is linear.   
+					</p>
+					<p>
+						We must therefore use the point slope form of the line 
+						<me>
+							C(x) = m (x-x_1) + y_1	
+						</me>
+						The knowledge that no (<m>0</m>) items corresponds to a cost of <m>5</m> dollars tells us that the point <m>x_1=0</m> and <m>y_1=5</m> is on our line.
+					</p>
+					<p>
+						We are also told that <m>x_2=4</m> items corresponds to a price of <m>y_2=9</m> dollars, giving us the second point on our line. 
+					</p>
+					<p>
+						To find <m>m</m>, use the slope formula <m>m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1} = \dfrac{9-5}{4-0}=\dfrac{4}{4}=1</m>
+					</p>
+					<p>
+						In other words, the slope is <m>m=\dfrac{1 \text{ \$}}{1\text{ item}}</m>, or 1 $ per item.
+					</p>
+					<p>
+						Putting it all together, we get the equation 
+						<me>
+							C(x) = 1 (x - 0) + 5
+						</me>
+						or equivalently
+						<m> C(x) = 1 (x - 4) + 9</m>.
+					</p>
+				</solution>			
+			</task>
+			<task>
+				<statement>
+					<p>
+					Graph the total cost <m>C</m> and the change in cost <m>\Delta C</m>
+					</p>
+				</statement>
+				<solution>
+					<image xml:id="image_totalchange_cost2">
+						<latex-image>
+							%%%% EXAMPLE 2 %%%%
+							\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+							\def \xmin {0}
+							\def \xmax {5}
+							\def \xunits {\begin{minipage}{1.75cm}total \# of items $x$\end{minipage}}
+							\def \yunits {Total Cost $C$}
+							\def \dyunits{Change in Cost $\Delta C$}
+							\def \xscale {1*0.8}
+							\def \yscale {0.4}
+							%% Information about the total (y) graph
+							\def \ymin {0}								%% First height to be be drawn with dashed lines
+							\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+							\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+							\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+							\def \ymax {11}
+							%% Information about the change (\Delta y) graph
+							\def \dymin {-4}
+							\def \dysecondmajoraxis {-3}
+							\def \dyfirstminoraxis  {-3.5}
+							\def \dysecondminoraxis {-2.5}
+							\def \dymax {4}
+							%%
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Total %%
+							%\node at ({(\xmin+\xmax)/2},{\ymin-2}) {Graph of Total Cost \ $C$};
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [right] {\xunits};
+							\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+							\foreach \i in {\xmin,...,\xmax}
+								\node[below,yshift=-2pt] at (\i, 0) {\small $\i$};
+							\foreach \i in {\ymin,...,\ymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+							%%
+							\tikzhistogram(0,5);  
+							\tikzhistogram(1,6);	
+							\tikzhistogram(2,7);	
+							\tikzhistogram(3,8);	
+							\tikzhistogram(4,9);	
+							\tikzhistogram(5,10);	
+							%%
+							\end{tikzpicture}
+							\quad
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							%\node at ({(\xmin+\xmax)/2},{\dymin-3}) {Graph of Change \ $\Delta C$};
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [right] {$x$};
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+							%%
+							%%\tikzhistogram(0,0);  
+							\tikzhistogram(1,1);	
+							\tikzhistogram(2,1);	
+							\tikzhistogram(3,1);	
+							\tikzhistogram(4,1);	
+							\tikzhistogram(5,1);	
+							%%
+							\end{tikzpicture}
+							%%%% END EXAMPLE 2 %%%% 
+						</latex-image>
+					</image>							
+				</solution>
+			</task>
+		</exploration>
+
+		<exploration xml:id="ex-totalcost3">
+			<introduction>
+				<p>
+					You are manufacturing custom dinner plates. The total cost of manufacturing two items is $6, and the total cost of manufacturing four items is $11. The cost per item is constant.
+				</p>
+			</introduction>
+
+			<task>
+				<statement>
+					<p>
+						Write down a formula for the total cost <m>C(x)</m> as a function of the number of items <m>x</m>
+					</p>
+				</statement>
+				<solution>
+					<p>
+						Because the <em>cost per item</em> is constant, the <em>total cost</em> function is linear.   
+					</p>
+					<p>
+						We must therefore use the point slope form of the line 
+						<me>
+							C(x) = m (x-x_1) + y_1	
+						</me>
+						The knowledge that <m>2</m> items corresponds to a cost of <m>6</m> dollars tells us that the point <m>x_1=2</m> and <m>y_1=6</m> is on our line.
+					</p>
+					<p>
+						We are also told that <m>x_2=4</m> items corresponds to a price of <m>y_2=11</m> dollars, giving us the second point on our line. 
+					</p>
+					<p>
+						To find <m>m</m>, use the slope formula <m>m = \dfrac{\Delta y}{\Delta x} = \dfrac{y_2-y_1}{x_2-x_1} = \dfrac{11-6}{4-2}=\dfrac{5}{2}=2.5</m>
+					</p>
+					<p>
+						In other words, the slope is <m>m=\dfrac{2.5 \text{ \$}}{1\text{ item}}</m>, or 2.5 $ per item.
+					</p>
+					<p>
+						Putting it all together, we get the equation 
+						<me>
+							C(x) = 2.5 (x - 2) + 6
+						</me>
+						or equivalently
+						<m> C(x) = 2.5 (x - 4) + 11</m>.
+					</p>
+				</solution>
+			</task>
+			<task>
+				<statement>
+					<p>
+						Graph the total cost <m>C</m> and the change in cost <m>\Delta C</m>.
+					</p>
+				</statement>
+				
+				<solution>
+					<image xml:id="image_totalchange_cost3">
+						<latex-image>
+							%%%% EXAMPLE 3 %%%%
+							%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+							\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+							\def \xmin {0}
+							\def \xmax {4}
+							\def \xunits {\begin{minipage}{1.75cm}total \# of items $x$\end{minipage}}
+							\def \yunits {Total Cost $C$}
+							\def \dyunits{Change in Cost $\Delta C$}
+							\def \xscale {1*0.8}
+							\def \yscale {0.4}
+							%% Information about the total (y) graph
+							\def \ymin {0}								%% First height to be be drawn with dashed lines
+							\def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+							\def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+							\def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+							\def \ymax {11}
+							%% Information about the change (\Delta y) graph
+							\def \dymin {-4}
+							\def \dysecondmajoraxis {-3}
+							\def \dyfirstminoraxis  {-3.5}
+							\def \dysecondminoraxis {-2.5}
+							\def \dymax {4}
+							%%
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Total %%
+								%\node at ({(\xmin+\xmax)/2},{\ymin-2}) {Graph of Total Cost \ $C$};
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+									\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+								\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+									\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [right] {\xunits};
+								\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+								\foreach \i in {\xmin,...,\xmax}
+									\node[below,yshift=-2pt] at (\i, 0) {\small $\i$};
+								\foreach \i in {\ymin,...,\ymax}
+									\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+								\foreach \i in {1,...,\xmax}
+									\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+								%%
+								\tikzhistogram(0,1);    % Delta 0
+								\tikzhistogram(1,3.5);	% Delta 4
+								\tikzhistogram(2,6);	% Delta 3
+								\tikzhistogram(3,8.5);	% Delta 2
+								\tikzhistogram(4,11);	% Delta 1
+								%%
+							\end{tikzpicture}
+							\quad
+							\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+								%% Graph of Change %%
+								%\node at ({(\xmin+\xmax)/2},{\dymin-3}) {Graph of Change \ $\Delta C$};
+								%% Draw horizontal lines at major and minor y-values
+								\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+									\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+								\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+									\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+								%% Draw and label x and y axes
+								\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [right] {$x$};
+								\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+								\foreach \i in {1,...,\xmax}
+									\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+								\foreach \i in {\dymin,...,\dymax}
+									\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+								\foreach \i in {1,...,\xmax}
+									\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+								%%
+								%%\tikzhistogram(0,0);  % Delta 0
+								\tikzhistogram(1,2.5);	% Delta 4
+								\tikzhistogram(2,2.5);	% Delta 3
+								\tikzhistogram(3,2.5);	% Delta 2 
+								\tikzhistogram(4,2.5);	% Delta 1
+								%%
+							\end{tikzpicture}
+							%%%% END EXAMPLE 3 %%%% 
+						</latex-image>
+					</image>
+				</solution>
+			</task>
+
+		</exploration>
+
+		<aside>
+			<title>For Reflection</title> 
+			<p>
+				Suppose that you are looking at a function of linear cost.  Can you come up with a formula if you are given only a <m>C(x)</m> graph? Why or why not? What if you are given only a <m>\Delta C</m> graph? Why or why not?
+			</p>
+		</aside>
+
+
+		<paragraphs xml:id="more-realistic-cost-functions">
+			<title>More Realistic Cost Functions are Not Linear</title>
+
+			<p>
+				In the examples above, the change in cost, <m>\Delta C</m>, of producing each additional item has been constant. In other words, in the examples above, creating an additional unit always costs the same amount. When this is the case, the total cost function <m>C(x)</m> will be a linear function.
+			</p>
+
+			<p>
+				But life is often more complicated. Sometimes, you can get a bulk discount - if you manufacture enough items, the cost per item can come down. Other times, when there is only a limited amount of your raw materials, the item cost can increase as you produce more and more items. Often, you'll run into a more complex combination of these features. 
+			</p>	
+			<p>
+				In the remainder of the course, we will use the study of rates of change for nonlinear functions that capture these kinds of economic dynamics. But to give a more complete picture, we will close this section with two examples of non-linear cost functions.
+			</p>
+
+			<example>
+				<title>A Non-Linear Cost Function</title>
+				<p>
+					A non-linear total cost function is given below.
+				</p>
+				<image width="75%" xml:id="image_totalchange_complexcost1">
+					<latex-image>
+						%%%% EXAMPLE 5 %%%%
+						%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+						\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2pt] at (#1,#2) {};}
+						\def \xmin {0}
+						\def \xmax {10}
+						\def \xunits {item}
+						\def \yunits {Total Cost $C$}
+						\def \dyunits{Change in Cost $\Delta C$}
+						\def \xscale {0.62*0.8}
+						\def \yscale {0.15}
+						%% Information about the total (y) graph
+						\def \ymin {0}								%% First height to be be drawn with dashed lines
+						\def \ysecondmajoraxis {5}		%% Second height to be be drawn with dashed lines
+						\def \yfirstminoraxis  {1}	%% First line to be drawn with dotted lines
+						\def \ysecondminoraxis {2}	%% Second lin eto be drawn with dotted lines
+						\def \ymax {30}
+						%% Information about the change (\Delta y) graph
+						\def \dymin {-5}
+						\def \dysecondmajoraxis {0}
+						\def \dyfirstminoraxis  {-4}
+						\def \dysecondminoraxis {-3}
+						\def \dymax {5}
+
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Total %%
+							%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+							%\node at ({(\xmin+\xmax)/2},{\ymin-4}) {Graph of Total Cost \ $C$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-2pt] at (\i, 0) {\small $\i$};
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+							
+							%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+								
+							\tikzhistogram(0,5);  % Delta 0
+							\tikzhistogram(1,9);	% Delta 4
+							\tikzhistogram(2,12);	% Delta 3
+							\tikzhistogram(3,14);	% Delta 2
+							\tikzhistogram(4,15);	% Delta 1
+							\tikzhistogram(5,16);	% Delta 1 
+							\tikzhistogram(6,17);	% Delta 1
+							\tikzhistogram(7,18);	% Delta 1
+							\tikzhistogram(8,20);	% Delta 2
+							\tikzhistogram(9,22);	% Delta 2
+							\tikzhistogram(10,26);	% Delta 4
+							
+							
+						\end{tikzpicture}
+						%
+						\quad
+						%
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+							%\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Graph of Change \ $\Delta C$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) ;
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+							
+							
+							%\tikzhistogram(0,0);  % Delta 0
+							\tikzhistogram(1,4);	% Delta 4
+							\tikzhistogram(2,3);	% Delta 3
+							\tikzhistogram(3,2);	% Delta 2 
+							\tikzhistogram(4,1);	% Delta 1
+							\tikzhistogram(5,1);	% Delta 1
+							\tikzhistogram(6,1);	% Delta 1
+							\tikzhistogram(7,1);	% Delta 1
+							\tikzhistogram(8,2);	% Delta 2
+							\tikzhistogram(9,2);	% Delta 2
+							\tikzhistogram(10,4);	% Delta 4
+							
+						\end{tikzpicture}
+						%%%% END EXAMPLE 5 %%%% 
+					</latex-image>
+				</image>
+				<p>	
+					Note that because the total graph <m>C</m> on the left is not a line, the change graph <m>\Delta C</m> on the right is not constant. 
+					In fact, the 1st and 10th items cost the <term>most</term> to manufacture, and the 4th-7th items cost the <term>least</term> to manufacture.
+				</p>
+			</example>
+							
+			<example>
+				<title>Another Non-Linear Cost Function</title>
+				<p>
+					A second non-linear cost function is given below. 
+				</p>
+				<image width="75%" xml:id="image_totalchange_complexcost2">
+					<latex-image>
+						%%%% EXAMPLE 6 %%%%
+						%\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+						\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.25},#2) rectangle ({#1-0.25},0); \draw[draw,thick] ({#1+0.25},#2) rectangle ({#1-0.25},0); \node[draw,fill=blue, circle,inner sep=2pt] at (#1,#2) {};}
+						\def \xmin {0}
+						\def \xmax {10}
+						\def \xunits {item}
+						\def \yunits {Total Cost $C$}
+						\def \dyunits{Change in Cost $\Delta C$}
+						\def \xscale {0.62*0.8}
+						\def \yscale {0.15}
+						%% Information about the total (y) graph
+						\def \ymin {0}								%% First height to be be drawn with dashed lines
+						\def \ysecondmajoraxis {5}		%% Second height to be be drawn with dashed lines
+						\def \yfirstminoraxis  {1}	%% First line to be drawn with dotted lines
+						\def \ysecondminoraxis {2}	%% Second lin eto be drawn with dotted lines
+						\def \ymax {30}
+						%% Information about the change (\Delta y) graph
+						\def \dymin {-5}
+						\def \dysecondmajoraxis {0}
+						\def \dyfirstminoraxis  {-4}
+						\def \dysecondminoraxis {-3}
+						\def \dymax {5}
+
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Total %%
+							%\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+							%\node at ({(\xmin+\xmax)/2},{\ymin-3}) {Graph of Total Cost \ $C$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+							\draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-2pt] at (\i, 0) {\small $\i$};
+							\foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+							
+							%\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+								
+							\tikzhistogram(0,4);  	% Delta 
+							\tikzhistogram(1,5);		% Delta 
+							\tikzhistogram(2,6);		% Delta 
+							\tikzhistogram(3,8);		% Delta 
+							\tikzhistogram(4,11);	% Delta 
+							\tikzhistogram(5,16);		% Delta  
+							\tikzhistogram(6,24);	% Delta 
+							\tikzhistogram(7,26);	% Delta 
+							\tikzhistogram(8,28);		% Delta 
+							\tikzhistogram(9,29);		% Delta 
+							\tikzhistogram(10,30);	% Delta 
+							%
+						\end{tikzpicture}
+						%
+						\quad
+						%
+						\begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+							%% Graph of Change %%
+							%\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+							%\node at ({(\xmin+\xmax)/2},{\dymin-5}) {Graph of Change \ $\Delta C$};
+							%
+							%% Draw horizontal lines at major and minor y-values
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+							\foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+								\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+							%
+							%% Draw and label x and y axes
+							\draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) ;
+							\draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+							\foreach \i in {1,...,\xmax}
+								\node[below,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+							\foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+								\node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+							
+							\foreach \i in {1,...,\xmax}
+								\draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+							
+							
+							%\tikzhistogram(0,0);  
+							\tikzhistogram(1,1);	
+							\tikzhistogram(2,1);	
+							\tikzhistogram(3,2);	
+							\tikzhistogram(4,3);	
+							\tikzhistogram(5,5);	
+							\tikzhistogram(6,5);	
+							\tikzhistogram(7,3);	
+							\tikzhistogram(8,2);	
+							\tikzhistogram(9,2);	
+							\tikzhistogram(10,1);	
+							
+							
+						\end{tikzpicture}
+						%%%% END EXAMPLE 6 %%%% 
+					</latex-image>
+				</image>
+				<p>
+					Note again that because the change <m>\Delta C</m> is not constant, the total graph <m>C</m> is not linear. 
+					In this example, the 1st and 10th items cost the <term>least</term> to manufacture, and the 5th-6th items cost the <term>most</term> to manufacture.
+				</p>
+			</example>
+	
+
+		</paragraphs>
+
+		<insight xml:id="think-economically-with-units">
+			<title>Think Economically with Units</title>
+
+			<p>
+				Suppose that you are planning to publish a new book, and you know from experience that it will cost $20,000 to edit and market the book, and $5 to print each individual copy of the book.
+			</p>
+
+			<p>
+				These two costs are very different. The $20,000 is a single cost that applies regardless of the number of books. To highlight this, we call this the <term>fixed cost</term>, and measure this in <term>dollars</term> ($). On the other hand, the $5 cost applies to each item, so we call this the <term>variable cost</term>, and measure this in <term>dollars per item</term> or <m>\frac{\$}{\text{item}}</m>.
+			</p>
+
+			<p>
+				Suppose that we wish to purchase 1,000 books. Then the total cost is <m>20,000 + 5\cdot 1,000 = 25,000</m>. But there is actually something quite important going on here behind the scene. Here, each book is a separate item, so the units of the 1000 is going to be in <term>items</term>.
+			</p>
+
+			<p>
+				By using the letter <m>x</m> for the number of items, we get an equation that helps us think about the <term>total cost</term> of creating any number of books.
+			</p>
+
+			<p>
+				Units of measure gives an easy trick for identifying the parts of the total cost function:
+			</p>
+
+			<p><ol>
+				<li>
+							<p>
+				The fixed cost will be in $.
+			</p>
+				</li>
+
+				<li>
+							<p>
+				The variable cost will be in <m>\dfrac{\$}{\text{item}}</m>.
+			</p>
+				</li>
+
+				<li>
+							<p>
+				Use the variable <m>x</m> for the number of items.
+			</p>
+				</li>
+
+			</ol></p>
+
+			<p>
+				Units also help us make sense of equations once we've set them up. You can generally think of <q>units of measure</q> like variables, which means you can use algebra to interpret any equation. <me>\begin{aligned}
+					\text{Total Cost} \quad = \quad \$ 
+					&amp;\quad =\quad 
+					\big(\$\big)\quad +\quad \left( \text{item}\cdot\dfrac{\$}{\text{item}}\right)
+					\\
+					&amp;\quad =\quad 
+					\big(\$\big)\quad +\quad \left(  {\color{red}\text{item}}\cdot\dfrac{\$}{{\color{red}\text{item}}}\right) 
+					\\
+					&amp;\quad =\quad 
+					\$\quad + \quad \$
+					\\ 
+					&amp;\quad =\quad
+					\$\end{aligned}</me>
+			</p>
+
+			<p>
+				Notice that you can <em>only</em> <term>combine like terms</term>. If you ever find yourself trying to add <term>number items</term> to <term>dollars</term>, then you know that there is a problem!
+			</p>
+
+			<p>
+				We can also use this idea to come up with a <term>function</term> for the cost of different numbers of books
+			</p>
+
+			<table>
+				<title></title>
+				<tabular>
+				<row >
+					<cell halign="center">items</cell>
+					<cell halign="center">total cost <m>C</m></cell>
+				</row>
+				<row >
+					<cell halign="center">5</cell>
+					<cell halign="center"><m>20000 + 1000\cdot 5</m></cell>
+				</row>
+				<row >
+					<cell halign="center">10</cell>
+					<cell halign="center"><m>20000 + 1000\cdot 10</m></cell>
+				</row>
+				<row >
+					<cell halign="center"></cell>
+					<cell halign="center"></cell>
+				</row>
+				<row >
+					<cell halign="center"><m>x</m></cell>
+					<cell halign="center"><m>20000 + 1000\cdot x</m></cell>
+				</row>
+				</tabular>
+			</table>
+
+			<p>
+				For this reason, we often write the total cost function <me>C(x) = 20000 + 1000\cdot x</me>
+			</p>
+
+		</insight>
+	</section>
+
+	<section xml:id="sec-applied_domain">
+		<title>Models and Applied Domains</title>
+		
+		<p>
+			In mathematics, functions are often defined by rules, and the  <em>domain</em> of a function is usually set of all the inputs where the rule can be applied.  For example, if <m>f(x) = \frac{1}{x}</m>, then I can apply the rule to any number <em>except</em> zero, because <m>\frac{1}{0}</m> is <em>undefined</em> (or <m>DNE</m>). 
+			This was discussed in greater detail in <xref ref="sec-function-concepts"/> in general, and <xref ref="ex-finddomainfromrule"/> in particular.
+ 		</p>
+		<p>
+			But some functions are intended to <m>model</m> realistic phenomena, such as price, quanitity, and so on.  These realistic models impose additional constraints on when a model should be defined.
+		</p>
+
+		<definition xml:id="def-applied_domain">
+			<statement>
+				<p>
+					Suppose that <m>f(x)</m> is some function intended to <em>model</em> some application, phenomena, etc. 
+				</p>
+				<p>
+					The <term>applied domain</term> of the function is the set of inputs where the function is both defined <em>and</em> where all of the quanitites involved make real, practical sense. 
+				</p>
+			</statement>
+		</definition>
+		
+		<p>
+			In this class, we will focus on price functions, and on two specific restrictions.  
+			<ul>
+				<li>
+					<p>
+						The quantity cannot be negative.  That is, in the implied domain of a price function, we must have <m>x\geq 0</m>
+					</p>
+				</li>
+				<li>
+					<p>
+						The price cannot be negative.  That is, for <m>x</m> to be in the implied domain of a price function, we must have <m>p(x) \geq 0</m>
+					</p>
+				</li>
+			</ul>  
+		</p>
+		
+		<exercise>
+			<statement>
+				<p>
+					Suppose that 
+					<m>
+						p(x) = -0.1x + 21
+					</m> 
+					defines an item price function.
+					Find the applied (or implied) domain of <m>p(x)</m>.
+				</p>
+			</statement>
+			<solution>
+				<p>
+					The <em>implied domain</em> of a function is the set of imputs where its <em>applied meaning</em> makes sense.
+				</p>
+				<p>
+					In the case of item price, it doesn't make sense to look at the price of a negative number of items, and it doesn't make sense to talk about items with a negative prices.  That means that the implied domain of price is the set of <m>x</m> where <m>x\geq 0</m> and <m>p\geq 0</m>
+				</p>
+				<p>
+					But we can rewrite the equation <m>p\geq 0</m> as follows:
+					<md>
+						<mrow>p(x) \geq 0 </mrow>
+						<mrow>-0.1x + 21 \geq 0</mrow>
+						<mrow>21 \geq 0.1x</mrow>
+						<mrow>210 \geq x</mrow>
+					</md>
+					So the item price function makes sense when <m>0\leq x</m> and <m>x\leq 210</m>.  In other words, the applied domain is the interval <m>[0,210]</m>
+				</p>
+			</solution>			
+		</exercise>
+
+	</section>
+
+
+	<!--image xml:id="img_lines_2">
+		<latex-image>
+			\begin{tikzpicture}
+				\draw [curve,smooth,samples=100,domain=-1.5:1.5] plot (\x, .75*\x + .5);
+				\draw (1,1.25) circle (2pt);
+				\node[below right] at (1,1.25) {$(x_2,y_2)$};
+				\draw (-.5,0.125) circle (2pt); 
+				\node[above left] at (-.5,0.125) {$(x_1,y_1)$};
+			\end{tikzpicture}
+		</latex-image>
+	</image-->
+
+
+
+</chapter>

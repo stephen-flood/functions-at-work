@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch_productquotientrule" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Product and Quotient Rule</title>
+
+<introduction>
+  <p>
+    Previously, we have seen rules for taking derivatives of basic functions. 
+  </p>  
+  <assemblage xml:id="assemblage-basicderivatives2">
+    <title>Basic Derivative Rules (So Far)</title>
+    <p>
+      Suppose that <m>f,g</m> are differentiable functions of <m>x</m>, that <m>m,c</m> are constant numbers.  Then 
+      <ul>
+        <li>
+              <m>\ddx{c}=0</m>
+        </li>
+        <li>
+              <m>\ddx{m\cdot x+b}=m</m> and <m>\ddx{x} = 1</m>
+        </li>
+        <li>
+            <m>\ddx{x^m}=m\cdot x^{m-1}</m>
+        </li>
+        <li>
+            <m>\ddx{ c\cdot f(x)}=c\cdot \ddx{f(x)}</m>
+        </li>
+        <li>
+            <m>\ddx{f(x) \pm g(x)} = \ddx{f(x)} \pm \ddx{g(x)}</m>
+        </li>
+        <li>
+          <m>\ddx{ e^x } = e^x </m>
+        </li>
+        <li>
+          <m>\ddx{ \ln(x) } = \frac{1}{x}</m>
+        </li>
+      </ul>
+    </p>  
+  </assemblage>
+
+    <p> Previously, we noted that the derivative rules for <m>\times</m> and <m>\div</m> are <em>much</em> more complicated.  We will address these rules in <xref ref="sec_productrule"/> and <xref ref="sec_quotientrule"/>.
+    </p>
+</introduction>
+
+
+<section xml:id="sec_productrule">
+  <title>Derivatives of Products</title>
+
+  <p>
+    Remember from elementary school that the product <m> h\cdot b</m> is equal to the <em>area</em> of the rectangle with base <m>b</m> and height <m>h</m>.
+  </p>
+  <p>
+    Suppose now that we want the base or height to <em>change</em> over time.  How does that change the area <m>A = h\cdot b</m> as a function of time?
+    In other words, we want to know <m>\dfrac{dA}{dt}</m>.
+  </p>
+  <image xml:id="img_rectanglechange" width="25%">
+    <latex-image>
+      \begin{tikzpicture}
+        \draw (3,0) rectangle (3.5,2);
+        \draw[fill=blue,opacity=0.5] (3,0) rectangle (3.5,2);
+        \draw (0,2) rectangle (3,2.5);
+        \draw[fill=green,opacity=0.5] (0,2) rectangle (3,2.5);
+
+        \draw (0,0) rectangle (3,2);
+        \draw[dotted] (0,0) rectangle (3.5,2.5);
+
+        \node[left] at (0,2.25) {$\Delta h$}; 
+        \node[left] at (0,1) {$h$}; 
+        \node[below] at (1.5,0) {$b$};
+        \node[below] at (3.25,0) {$\Delta b$};
+
+      \end{tikzpicture}
+    </latex-image>
+  </image>
+  <p>
+    Looking at the picture, there are two main parts of how the area is changing, as a result of the changing base (blue) and as a result of the changing height (green).  There is also a little area in the upper corner, but it seems negiligible compared to the other changes.  
+  </p>
+  <p>
+    More precisely you can <em>prove</em> that there are two parts to the rate of change in area 
+    <ul>
+      <li>
+        <p>
+          <m>\frac{dA}{dt}</m> due to changing base is equal to <m>h\cdot \frac{d}{dt}[b]</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          <m>\frac{dA}{dt}</m> due to changing height is equal to <m>b\cdot \frac{d}{dt}[h]</m>
+        </p>
+      </li>
+    </ul>
+    Putting these together, we get the product rule:
+    <me>
+      \frac{d}{dt}\Big[h\cdot b\Big] = h\cdot \frac{d}{dt}\Big[b\Big] + b\cdot \frac{d}{dt}\Big[h\Big]
+    </me>
+    
+  </p>
+  <theorem xml:id="thm-productrule">
+    <title>The Product Rule</title>
+    
+    
+    <statement>
+      <p>
+        Suppose that <m>f(x)</m> and <m>g(x)</m> are differentiable functions.  Then 
+        <me>
+          \ddx{f(x)\cdot g(x)} = f\cdot \ddx{g(x)} + g(x) \cdot \ddx{f(x)}
+        </me>
+        This is eaiser to remember in bracket notation:
+        <me>
+          \Big[f\cdot g\Big]' = f\cdot \Big[g\Big]' + g\cdot \Big[f\Big]' 
+          = f\cdot g' + g\cdot f'
+        </me>
+      </p>
+    </statement>
+  </theorem>
+  
+  <exploration xml:id="ex_productrule1">
+    <statement>
+      <p>
+        Let <m>f(x) = \sqrt{x} \cdot (9 + 7x) </m>.
+        Find <m>f'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        As always, start by setting up the derivative
+        <me>
+          f'(x) = \ddx{ \sqrt{x} \cdot (9 + 7x) } 
+        </me>
+        We don't have any derivative rule for square roots, but we can always rewrite <m>\sqrt[m]{x^n} = x^{n/m}</m>.  In particular, using <m>\sqrt{x} = x^{1/2}</m> gives us 
+        <me>
+          f'(x) = \ddx{ x^{1/2} \cdot (9 + 7x) } 
+        </me>
+        To apply our derivative rules, you need to use order of operations (PEMDAS) to identify the "outermost" operation.  
+        In this case, our function is the <alert>product</alert> of <m>x^{1/2}</m> with <m>(9+7x)</m>.  That means we will use the <em>product rule</em> <m>\D{\red{f}\cdot \blue{g}} = \red{f}\cdot \D{\blue{g}} + \blue{g}\cdot \D{\red{f}}</m>
+        <md>
+          <mrow>f'(x)  = \amp \ddx{ \red{x^{1/2}} \cdot \blue{(9 + 7x)} } </mrow>
+          <mrow>f'(x)  = \amp \red{x^{1/2}} \cdot \ddx{ \blue{(9 + 7x)} } + \blue{(9 + 7x)} \cdot \ddx{ \red{x^{1/2}} } </mrow>
+          <mrow>f'(x)  = \amp x^{1/2} \cdot \ddx{ (9 + 7x) } + (9 + 7x) \cdot \ddx{ x^{1/2} } </mrow>
+          <mrow>f'(x)  = \amp x^{1/2} \cdot \ddx{ (\red{9} + \blue{7x}) } + (9 + 7x) \cdot \ddx{ \blue{x}^{\red{1/2}} } </mrow>
+          <mrow>f'(x)  = \amp x^{1/2} \cdot (\ddx{\red{9}} + \ddx{\blue{7x}})  + (9 + 7x) \cdot \red{\frac{1}{2}}\cdot \blue{x}^{\red{1/2}-1}  </mrow>
+          <mrow>f'(x)  = \amp x^{1/2} \cdot (0 + 7)  + (9 + 7x) \cdot \frac{1}{2} \cdot x^{-1/2}  </mrow>
+          <mrow>f'(x)  = \amp 7\sqrt{x}  + (9 + 7x) \cdot \frac{1}{2} \cdot x^{-1/2}  </mrow>
+          <mrow>f'(x)  = \amp 7\sqrt{x}  + (9 + 7x) \cdot \frac{1}{2} \cdot \frac{1}{\sqrt{x}} </mrow>
+        </md>
+        You could keep "simpifying" this derivative, but we might as well stop here. 
+      </p>
+    </solution>
+  </exploration>
+
+  <exploration xml:id="ex_productrule2">
+    <statement>
+      <p>
+        Let <m>f(x) = 3x\ln(x) - 4x</m>.
+        Find <m>f'(x)</m>. 
+      </p>
+    </statement>
+    <solution>
+      <p>
+        As always, start by setting up the derivative
+        <me>
+          f'(x) = \ddx{3x\ln(x) - 4x} 
+        </me>
+        To apply our derivative rules, you need to use order of operations (PEMDAS) to identify the "outermost" operation.  
+        In this case, our function is the <alert>sum</alert> of <m>3x\ln(x)</m> and  <m>-4x</m>.  That means we will use the <em>sum rule</em> <m>\D{\red{f} + \blue{g}} = \D{\red{f}} + \D{\blue{g}}</m>
+        <md>
+          <mrow>f'(x) = \amp \ddx{ \red{3x\ln(x)} - \blue{4x}  } </mrow>
+          <mrow>= \amp \ddx{ \red{3x\ln(x)} } - \ddx{\blue{4x}  } </mrow>
+          <mrow>= \amp \ddx{ 3x\ln(x) } - \ddx{ 4x  } </mrow>
+        </md>
+        Now we have <em>two separate</em> derivatives to compute: <m>\ddx{ 3x\ln(x) } </m> and <m>\ddx{4x}</m>. 
+        The second derivative is easy: <m>\ddx{4x}=4</m>. 
+        <md>
+          <mrow>f'(x) = \amp \ddx{ 3x\ln(x) } - 4 </mrow>
+          <mrow>= \amp \ddx{ \red{3x}\cdot \blue{\ln(x)} } - 4 </mrow>
+        </md>
+        For the remaining derivative, we need to use PEMDAS to identify the "outermost" operation, which is a product, so we will use the product rule <m>\D{\red{f}\cdot \blue{g}} = \red{f}\cdot \D{\blue{g}} + \blue{g}\cdot \D{\red{f}}</m>
+        <md>
+          <mrow>f'(x) = \amp \ddx{ \red{3x}\cdot \blue{\ln(x)} } - 4 </mrow>
+          <mrow>= \amp \red{3x}\cdot \ddx{\blue{\ln(x)} } + \blue{\ln(x)}\cdot \ddx{\red{3x}} - 4 </mrow>
+          <mrow>= \amp 3x\cdot \ddx{ \ln(x) } + \ln(x) \cdot \ddx{ 3x } - 4 </mrow>
+        </md>
+        The remaining derivatives are basic rules: <m>\ddx{\ln(x)} = 1/x</m> and <m>\ddx{cx} = c</m>. 
+        <md>
+          <mrow>f'(x) = \amp 3x\cdot \frac{1}{x} + \ln(x) \cdot 3 - 4 </mrow>
+          <mrow>= \amp \frac{3x}{x} + 3\ln(x) - 4 </mrow>
+          <mrow>= \amp 3 + 3\ln(x) - 4 </mrow>
+          <mrow>= \amp 3\ln(x) - 1 </mrow>
+        </md>
+      </p>
+    </solution>
+  </exploration>
+
+  <exploration xml:id="ex_productrule3">
+    <statement>
+      <p>
+        Let <m>f(x) = 5x^3\, e^x\,\ln(x)</m>.  Find <m>f'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        This problem requires several steps.  First, begin by setting up the question 
+        <md>
+          <mrow>f'(x) = \amp \D{5x^3\cdot e^x\cdot\ln(x)}  </mrow>
+        </md>
+        We want to take the derivative of a product, so we must use the product rule <m>\D{\red{f}\cdot\blue{g}} = \red{f}\cdot\D{\blue{g}} + \blue{g}\cdot\D{\red{f}}</m>.  The problem is that  here are only <em>two</em> functions in our formula, but there are multiplied terms in our definition of <m>f</m>.  Fortunately, because of the <q>associativity</q> of multiplication <m>a\cdot b\cdot c = (a\cdot b)\cdot c = a\cdot (b\cdot c)</m>, so we can group the terms any way we like. 
+        <md>
+          <mrow>f'(x) = \amp \D{\red{(5x^3\, e^x)}\cdot \blue{\ln(x)}}  </mrow>
+          <mrow> = \amp \red{(5x^3\, e^x)}\cdot \D{\blue{\ln(x)}}  +  \blue{\ln(x)}\D{\red{(5x^3\, e^x)} } </mrow>
+        </md>
+        Now we have two derivatives remaining: a simple derivative <m>\D{{\ln(x)}} = \frac{1}{x}</m> and a product rule <m>\D{{(5x^3\cdot e^x)} } = 5x^3 \cdot \D{e^x} + e^x\cdot \D{5x^3} = 5x^3 e^x + e^x\, 15x^2</m>.  Putting it all together we get 
+        <md>
+          <mrow>\phantom{f'(x)} = \amp {(5x^3\, e^x)}\cdot \frac{1}{x}  +  {\ln(x)}\cdot \Big( 5x^3 e^x + e^x\, 15x^2 \Big) </mrow>
+          <mrow>\phantom{f'(x)} = \amp 5x^3\, e^x \,\frac{1}{x}  +   5x^3\, e^x\, \ln(x) + 15x^2\,e^x\,  \ln(x) </mrow>
+        </md>
+      </p>
+    </solution>
+  </exploration>
+
+  <p>
+    Any time a product is changing, the product rule comes into play. 
+    In business, products play an important role in the study of revenue and profit, since 
+    <me>
+      \text{Revenue } = \text{ price }\cdot \text{ quantity } = p\cdot q
+    </me>
+    Previously, we have only looked at the impact of changing quanitity.  
+    But in <em>real economies</em>, things like marketing can increase the quanitity sold over time <em>without</em> decreasing the price. 
+  </p>
+  
+  <exploration xml:id="ex_productrule4">
+    <statement>
+      <p>
+        Thanks to a word of mouth marketing campaign, business is booming.  Suppose that 
+        <md>
+          <mrow> \text{quantity on day }t =\amp q(t) = 0.4e^t </mrow>
+          <mrow> \text{price on day }t =\amp p(t) = t^2   </mrow>
+        </md>
+        How fast is Revenue changing on day 3?
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Before we can find any rates of change with respect to time, we first need to know what the revenue function is as a function of <m>t</m>.  Using the formula 
+        <me>
+          \text{Revenue } = \text{ price }\cdot \text{ quantity }
+        </me>
+        we have 
+        <me>
+          R(t) = p(t) \cdot q(t) = t^2\cdot 0.4e^t
+        </me>
+        Now, we can find the derivative with respect to t
+        <md>
+          <mrow> R'(t) = \amp \ddt{ t^2\cdot 0.4e^t } </mrow>
+          <mrow> = \amp \ddt{ \red{t^2}\cdot \blue{0.4e^t} } </mrow>
+          <mrow>= \amp \red{t^2}\cdot\ddt{  \blue{0.4e^t} } + \blue{0.4e^t}\cdot \ddt{ \red{t^2} }  </mrow>
+          <mrow>= \amp t^2\cdot\ddt{  \red{0.4}\blue{e^t} } + 0.4e^t \cdot \ddt{ \blue{t}^{\red{2}} }  </mrow>
+        </md>
+        For the first derivative, we have a constant coefficent times a function, so we can use the rule <m>\ddx{\red{c}\blue{f(x)}} = \red{c} \ddx{\blue{f(x)} }</m>.  
+        For the second derivative, we can use the power rule 
+        <m>\ddx{\blue{x}^{\red{m}}} = \red{m} \blue{x}^{\red{m}-1}</m>
+        <md>
+          <mrow>R'(t) = \amp t^2\cdot \red{0.4}\ddt{ \blue{e^t} } + 0.4e^t \cdot \red{2} \blue{t}^{\red{2}-1}   </mrow>
+          <mrow>R'(t) = \amp t^2\cdot 0.4 \ddt{ e^t } + 0.4e^t \cdot 2 t^{1}   </mrow>
+          <mrow>R'(t) = \amp t^2\cdot 0.4 e^t  + 0.4e^t \cdot 2 t   </mrow>
+          <mrow>R'(t) = \amp 0.4 t^2 e^t  + 0.8 t e^t   </mrow>
+        </md>
+        On day <m>3</m>, the rate of change of revenue is 
+        <me>
+          R'(3) = 0.4 \cdot 3^2 e^3  + 0.8\cdot  3 \cdot e^3 = 192.82
+        </me>
+        On the third day, the price is going up approximately 192.82 $/day.
+      </p>
+    </solution>
+  </exploration>
+
+  <p>
+    In general, if price <m>p(t)</m> and quanity <m>q(t)</m> are both functions of <m>t</m>, then because the revenue function is 
+    <me>
+      R = q\cdot p
+    </me>
+    then the rate of change of revenue is 
+    <me>
+      \frac{dR}{dt} = q\cdot \frac{dp}{dt} + p \cdot \frac{dq}{dt}
+    </me>
+    In other words, the rate of revenue change has two parts: the change in <m>R</m> due to changing price (the first term), and the change in <m>R</m> due to changing quanity (the second term).
+  </p>
+</section>
+
+
+<section xml:id="sec_quotientrule">
+  <title>Derivatives of Fractions</title>
+  
+  <p>
+    There is also a special rule for derivatives of fractions.  
+    Another name for a fraction is a <em>quotient</em>, so this is often called the <term>quotient rule</term>.
+  </p>
+
+  <theorem xml:id="thm-quotientrule">
+    <statement>
+      <p>
+        Suppose that <m>f(x)</m> and <m>g(x)</m> are differentiable functions.  Then 
+        <me>
+          \ddxfrac{\dfrac{f(x)}{g(x)}} = \dfrac{g(x) \cdot \ddx{f(x)} - f(x) \cdot \ddx{g(x)} }{\Big(g(x)\Big)^2}
+        </me>
+        It is often easier to memorize this formula in an abbreviated form:
+        <ul>
+          <li>
+            <m>\left[\dfrac{t}{b}\right]' = \dfrac{b\cdot t' - t\cdot b'}{(b)^2} </m>
+          </li>
+          <li>
+            <m>\left[\dfrac{\text{hi}}{\text{lo}} \right] = \dfrac{\text{lo }D\text{ hi} - \text{hi }D\text{ lo} }{(\text{lo})^2}</m>
+          </li>
+        </ul>
+      </p>
+    </statement>
+  </theorem>
+  
+  <exploration xml:id="ex_quotientrule1">
+    <statement>
+      <p>
+        Let <m>f(x) = \dfrac{e^x}{x}</m>. 
+        Find <m>f'(10)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          f'(x) = \ddxfrac{  \dfrac{e^x}{x}  }
+        </me>
+        To apply our derivative rules, you need to use order of operations (PEMDAS) to identify the "outermost" operation.  
+        In this case, our function is the <alert>fraction</alert> of <m>e^x</m> and  <m>xx</m>.  That means we will use the <em>quotient rule</em> <m>\left[\dfrac{\red{t}}{\blue{b}}\right]' = \dfrac{\blue{b}\cdot \red{t}' - \red{t}\cdot \blue{b}'}{(\blue{b})^2}</m>
+        <md>
+          <mrow>f'(x) = \amp \ddxfrac{  \dfrac{\red{e^x}}{\blue{x}}  }</mrow>
+          <mrow> = \amp \dfrac{\blue{x}\cdot \ddx{\red{e^x}} - \red{e^x} \ddx{\blue{x}}}{(\blue{x})^2}</mrow>
+          <mrow> = \amp \dfrac{ x\cdot \ddx{ e^x } - e^x \ddx{ x }}{(x)^2}</mrow>
+          <mrow> = \amp \dfrac{ x\cdot e^x - e^x \cdot 1}{(x)^2}</mrow>
+          <mrow> = \amp \dfrac{ x\cdot e^x - e^x }{(x)^2}</mrow>
+        </md>
+        At <m>x=10</m>, 
+        <me>
+          f'(10) = \dfrac{ 10\cdot e^{10} - e^{10} }{(10)^2} = 1982.38
+        </me>
+      </p>
+    </solution>
+  </exploration>
+
+  <p>
+    You can "show your work" in several ways. 
+    We have already seen the <m>\ddx{\dots}</m> strategy. 
+    This strategy is good because it is very robust, and almost always works. 
+    Unfortunately, this strategy also uses a <em>lot</em> of symbols. 
+  </p>
+
+  <p>
+    An alternative technique makes a much greater use of scrap work.  We will illustrate this strategy using the following exercise.   
+  </p>
+
+  <exploration xml:id="ex_quotientrule2">
+    <statement>
+      <p>
+        Let <m>f(x) = \dfrac{x^2 + x + 1}{x^2 -1 }</m>. 
+        Find <m>\frac{df}{dx}</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        As always,  start by setting up the derivative. 
+        <me>
+          f'(x) = \ddx{ \dfrac{ \red{x^2 + x + 1} }{ \blue{x^2 -1} } }
+        </me>
+        The outermost operation is a fraction, so we must use the quotient rule 
+        <m>\left[\dfrac{\red{t}}{\blue{b}}\right]' = \dfrac{\blue{b}\cdot \red{t'} - \red{t}\cdot \blue{b'}}{(\blue{b})^2}</m>
+        with 
+        <me>
+          t = x^2 + x + 1
+        </me>
+        and 
+        <me>
+          b = x^2 - 1
+        </me>.
+        
+        For the quotient rule, we need to subsitute expressions for <m>t</m>, <m>b</m>, <m>t'</m>, and <m>b'</m>. 
+        We already have expressions for <m>t</m> and <m>b</m>.  We next do some "scrap work" to find <m>t'</m> and <m>b'</m>
+        <md>
+          <mrow>t' = \amp \ddx{x^2 + x + 1} </mrow>
+          <mrow>= \amp \ddx{x^2} + \ddx{x} + \ddx{1}</mrow>
+          <mrow>t'= \amp 2x+1+ 0</mrow>
+          <mrow>t'= \amp 2x+1</mrow>
+        </md>
+        Similarly, we can compute        
+        <md>
+          <mrow>b' = \amp \ddx{x^2 - 1} </mrow>
+          <mrow>= \amp \ddx{x^2} - \ddx{1}</mrow>
+          <mrow>b'= \amp 2x - 0</mrow>
+          <mrow>b'= \amp 2x</mrow>
+        </md>
+        We now can go back to our original question, and apply the quotient rule 
+        <md>
+          <mrow>f'(x) = \amp \ddx{ \dfrac{ \red{x^2 + x + 1} }{ \blue{x^2 -1} } }</mrow>
+          <mrow>=  \amp \dfrac{\blue{b}\cdot \red{t'} - \red{t}\cdot \blue{b'}}{(\blue{b})^2}</mrow>
+          <mrow>= \amp \dfrac{\blue{(x^2 - 1)}\cdot \red{(2x+1)} - \red{(x^2 + x + 1)}\cdot \blue{2x}}{(\blue{x^2 - 1})^2} </mrow>
+        </md>
+      </p>
+    </solution>
+  </exploration>
+
+  <exploration xml:id="ex_quotientrule3">
+    <statement>
+      <p>
+        Let <m>f(x) = \dfrac{x^2}{\ln(x)}</m>. 
+        Find <m>f'(x)</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          f'(x) = \ddx{ \dfrac{ \red{x^2} }{ \blue{\ln(x)}  } }
+        </me>
+        We must use the quotient rule 
+        <m>\left[\dfrac{\red{t}}{\blue{b}}\right]' = \dfrac{\blue{b}\cdot \red{t'} - \red{t}\cdot \blue{b'}}{(\blue{b})^2}</m>
+        <md>
+          <mrow>f'(x) =  \amp \ddx{ \dfrac{ \red{x^2} }{ \blue{\ln(x)}  } } </mrow>
+          <mrow>= \amp  \dfrac{ \blue{\ln(x)}\cdot \ddx{\red{x^2}} - \red{x^2}\cdot \ddx{\blue{\ln(x)}} }{ \blue{\Big(\ln(x)\Big)^2}  } </mrow>
+          <mrow>= \amp \dfrac{ \ln(x) \cdot 2x - x^2\cdot \frac{1}{x} }{ \Big(\ln(x)\Big)^2 }</mrow>
+          <mrow>= \amp \dfrac{ 2x\ln(x)- x }{ \Big(\ln(x)\Big)^2 }</mrow>
+        </md>
+      </p>
+    </solution>
+  </exploration>
+
+  <exploration xml:id="ex_quotientrule4">
+    <statement>
+      <p>
+        Let <m>y= \dfrac{x\ln(x)}{e^x}</m>.
+        Find <m>\dfrac{dy}{dx}</m>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <me>
+          f'(x) = \ddxfrac{ \dfrac{ \red{ x\ln(x)} }{ \blue{e^x} } }
+        </me>
+        The most important part of any derivative is to find the "outermost" operation.  
+        Here, we have a <em>fraction</em> where the numerator is <m>x\ln(x)</m> and the denominator is <m>e^x</m>. We must use the quotient rule. 
+        <m>\left[\dfrac{\red{t}}{\blue{b}}\right]' = \dfrac{\blue{b}\cdot \red{t'} - \red{t}\cdot \blue{b'}}{(\blue{b})^2}</m>
+        <md>
+          <mrow>f'(x) = \amp \dfrac{\blue{e^x} \ddx{\red{x\ln(x)}} - \red{x\ln(x)}\ddx{\blue{e^x}}}{(\blue{e^x})^2}</mrow>
+        </md>
+        There are two derivatives in the expression above.  The second expression is straightforward: <m>\ddx{e^x}=e^x</m>.  The first derivative is more complicated is a product, so will require the product rule
+        <m>\ddx{\red{x} \blue{\ln(x)}} = \red{x}\ddx{\blue{\ln(x)}} + \blue{\ln(x)}\ddx{\red{x}} = x\frac{1}{x} + \ln(x)\cdot 1 = \green{1 + \ln(x)}</m>
+        <md>
+          <mrow>f'(x) = \amp \dfrac{ e^x  \ddx{ \red{x}\cdot \blue{\ln(x)} }  -  x\ln(x) e^x }{( e^x )^2}</mrow>
+          <mrow>= \amp \dfrac{ e^x  \green{\Big(1 + \ln(x)\Big)}  -  x\ln(x) e^x }{( e^x )^2}</mrow>
+        </md>
+
+        
+      </p>
+    </solution>
+  </exploration>
+</section>
+
+
+</chapter>

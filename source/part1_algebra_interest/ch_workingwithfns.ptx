@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch-combiningfns" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Working with Functions</title>
+      
+        <section xml:id="sec-combining_functions" >
+          <title>Combining Functions</title>
+          
+          <p>
+            The <q>big idea</q> behind all of algebra is the use of a symbols to represent a different object.  
+            The simplest thing you can do in algebra is to replace the symbol with the value it represents, 
+            often called <q>plugging in</q>  the value.
+          </p>
+      
+          <exploration xml:id="ex-combiningfunctions1">
+            <introduction>
+              <p>
+                Let <m>f(x) = x^2 - 3x</m>.  
+              </p>
+            </introduction>  
+              <task> 
+                <statement>
+                  <p>
+                    Evaluate <m>f(5)</m>, and simplify completely.
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    The expression <m>f(5)</m> is really an instruction to take the definition of <m>f(x) = x^2 - 3x</m>, and to replace every occurance of <m>x</m> with the value <m>5</m>.  Performing this subsitution, and the simplifying, gives
+                    <md>
+                    <mrow> f(5) \amp= 5^2 - 3\cdot 5</mrow>
+                    <mrow>  \amp= 25 - 15</mrow>
+                    <mrow>  \amp= 10</mrow>
+                    </md>
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    Evaluate <m>f(5+h)</m>, and simplify completely.
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    Again, the expression <m>f(5+h)</m> is really an instruction to take the definition of <m>f(x) = x^2 - 3x</m>, and to replace every occurance of <m>x</m> with the value <m>(5+h)</m>.  Performing this subsitution, gives the expression
+                    <me>
+                    f(5+h) = (5+h)^2 - 3\cdot (5+h)
+                    </me>
+                    It is <alert>very important</alert> to include parentheses when you are subtituting <m>x</m> with the term <m>(5+h)</m>.  
+                  </p>
+                  <p>
+                    To simplify this expression, you should separately simplify the first term and the second term.  Expanding out (FOIL-ing) the first term gives
+                    <me>(5+h)^2 = (5+h)\cdot(5+h) = 5\cdot 5 + 5\cdot h + h\cdot 5 + h\cdot h = 25 + 10h +h^2</me>.
+                    Distributing out the second term gives
+                    <me>
+                      3\cdot (5+h) = 3\cdot 5 + 3\cdot h = 15 + 3h
+                    </me>
+      
+                    Putting it all together we get
+                    <md>
+                      <mrow> f(5+h)   \amp=  (5+h)^2 - 3\cdot (5+h) </mrow>
+                      <mrow> \amp= (25+10h+h^2) - (15+3h) </mrow>
+                      <mrow> \amp= 25 + 10h + h^2 - 15 - 3h </mrow>
+                      <mrow> \amp= 10 + 7h + h^2 </mrow>
+                    </md>
+                    <alert>Note:</alert> Whenever substituing an expression into another expression, such as when we substitued the simplifications for <m>(5+h)^2</m> and <m>3\cdot (5+h)</m> above, you must always include parentheses around each term.  Above, that helped us remember that we needed to distribute the subtraction to <em>both</em> terms of <m>15+3h</m>.
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    Evaluate <m>f(x^5)</m>, and simplify completely.
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                      Again, the expression <m>f(x^5)</m> is really an instruction to take the definition of <m>f(x) = x^2 - 3x</m>, and to replace every occurance of <m>x</m> with the value <m>x^5</m>.  Performing this subsitution, gives the expression
+                    <me>
+                    f(x^5) = (x^5)^2 - 3\cdot (x^5)
+                    </me> 
+                    We could separately simplify the first and second term as before, or we can do it all together in a single sequence of steps.  You can take whichever approach you are most comfortable with. 
+                    <md>
+                    <mrow> f(x^5) \amp= (x^5)^2 - 3\cdot (x^5) </mrow>
+                    <mrow>      \amp= x^5 \cdot x^5 - 3 x^5 </mrow>
+                    <mrow> \amp= x^{5+5} - 3x^5 </mrow>
+                    <mrow> \amp= x^{10} - 3x^5 </mrow>
+                    </md>
+                  </p>
+                </solution>
+              </task>
+          </exploration>
+      
+          <p>
+            Note that in our last example, we plugged a expression for x into another expression for x.
+            In the language of <xref ref="ch-functions"/>, that means we plugged one function into another.  In mathematics, we call this process of plugging one function into another "composing" the functions.
+          </p>
+      
+          <exploration xml:id="ex-combiningfunctions2">
+            <statement>
+              <p>
+                Let <m>f(x) = \dfrac{1}{x}</m> and <m>g(x) = x+5</m>.  Compute <m>f\Big(g(x)\Big)</m>. 
+              </p>
+            </statement>
+            <solution>
+              <p>
+                The problem asks us to evaluate the result of plugging the  function <m>g(x)=x+5</m> into the every occurance of <m>x</m> in the equation <m>f(x) = \dfrac{1}{x}</m>
+              </p>
+              <p>
+                First, we can look at <m>f\Big(g(x)\Big)</m>, and notice that we have already been told  that the expression <m>g(x)</m> refers to <m>(x+5)</m>.  As a result, we can replace the argument to <m>f</m> as follows
+                <me> 
+                  f\Big(g(x)\Big)  = f\Big( x+5 \Big) 
+                </me>
+              </p>
+              <p>
+                Next, we just replace every ocurance of <m>x</m> in the definition <m>f(x) = \dfrac{1}{x}</m> with the expression <m>(x+5)</m>.  This gives
+                <me> 
+                  f\Big(x+5\Big)  = \dfrac{1}{( x+5)} 
+                </me>
+              </p>
+              <p>Putting it all together, we get
+                <md>
+                  <mrow> f\Big(g(x)\Big)  \amp= f\Big( x+5 \Big)  </mrow>
+                  <mrow> \amp= \dfrac{1}{( x+5)}  </mrow>
+                </md>
+              </p>
+      
+            </solution>
+          </exploration>
+      
+          <p>
+            We'll need to do a lot of composition later in the semester. 
+            For now, we will use these concepts to practice our algebra skills. 
+          </p>
+      
+          <exploration xml:id="ex-simplifyingfunctions1">
+            <introduction>
+              <p>
+                Let <m>f(x) = 3x^2 - x + 1</m>.
+                Simplify the following expressions completely
+              </p>
+            </introduction>
+      
+              <task>
+                <statement>
+                  <p>
+                    <m>f(2)</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    <m>f(2) = 3\cdot (2)^2 - (2) + 1 = 12 - 2 + 1 = 11</m>
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    <m>f(2+h)</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    <md>
+                      <mrow> f(2+h) \amp = 3\cdot (2+h)^2 - (2+h) + 1</mrow>
+                      <mrow> \amp = 3\cdot (2+h)\cdot (2 + h) - 2 - h + 1</mrow>
+                      <mrow> \amp = 3\cdot (4 + 4h + h^2) - 2 - h + 1</mrow>
+                      <mrow> \amp = 12 + 12h + 3h^2 - 2 - h + 1</mrow>
+                      <mrow> \amp = 3h^2 + 11h + 11</mrow>
+                    </md>
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    <m>\dfrac{f(2+h)-f(2)}{h}</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    This expression is slightly more complex.  The key idea is to realize that the numerator contains two <em>separate</em> expressions <m>f(2+h)</m> and <m>f(2)</m>, and that we have already found that they equal <m>(3h^2+11h+11)</m> and <m>(11)</m> respectively.  Making the appropriate replacements gives 
+                    <me>\dfrac{f(2+h)-f(2)}{h} = \dfrac{(3h^2+11h+11)-(11)}{h}</me> 
+                    Now we can use basic algebra to simplify the expression as before.
+                    <md>
+                      <mrow> \amp = \dfrac{3h^2+11h}{h}</mrow>
+                      <mrow> \amp = \dfrac{h(3h+11)}{h}</mrow>
+                      <mrow> \amp = \dfrac{h}{h}\cdot \dfrac{3h+11}{1}</mrow>
+                      <mrow> \amp = 3h+11</mrow>
+                    </md>
+                  </p>
+                </solution>
+              </task>
+          </exploration>
+      
+          <p>
+            The previous example is complicated because it combines a number of different kinds of steps.  
+            To see what's going on, it can help to think of these different steps separately. 
+          </p>
+          <exploration xml:id="ex-combiningfunctions3">
+            <introduction>
+              <p>
+                Let <m>f(x) = 2x^2-4x</m> and <m>g(x)=2x-4</m>.  Simplify the following expressions completely.
+              </p>
+            </introduction>
+              <task>
+                <statement>
+                  <p>
+                    <m>f(x)+g(x)</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    To evaluate the expression <m>f(x)+g(x)</m>, first replace <m>f(x)</m> with the expression <m>(2x^2-4x)</m>, and replace <m>g(x)</m> with the expression <m>(2x-4)</m>.  Then, simplify the remaining expression completely using algebra. 
+                    <md>
+                      <mrow> f(x)+g(x)\amp =(2x^2-4x) + (2x-4)</mrow>
+                      <mrow> \amp = 2x^2-4x + 2x - 4</mrow>
+                      <mrow> \amp = 2x^2 -2x -4 </mrow>
+                    </md>
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    <m>f(x)-g(x)</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    To evaluate the expression <m>f(x)-g(x)</m>, first replace <m>f(x)</m> with the expression <m>(2x^2-4x)</m>, and replace <m>g(x)</m> with the expression <m>(2x-4)</m>.  Then, simplify the remaining expression completely using algebra. 
+                    <md>
+                      <mrow> f(x)+g(x)\amp =(2x^2-4x) - (2x-4)</mrow>
+                      <mrow> \amp = 2x^2-4x - 2x + 4</mrow>
+                      <mrow> \amp = 2x^2 -6x + 4</mrow>
+                    </md>
+                    Note that subtracting both terms of <m>2x-4</m> was the same thing as adding <m>-2x</m> and adding a positive <m>4x</m>
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    <m>f(x)\cdot g(x)</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    To evaluate the expression <m>f(x)\cdot g(x)</m>, first replace <m>f(x)</m> with the expression <m>(2x^2-4x)</m>, and replace <m>g(x)</m> with the expression <m>(2x-4)</m>.  Then, simplify the remaining expression completely using algebra. 
+                    <md>
+                      <mrow> f(x)\cdot g(x)\amp =(2x^2-4x) \cdot (2x-4)</mrow>
+                      <mrow> \amp = 2x^2\cdot 2x + 2x^2 \cdot (-4) + (-4x)\cdot 2x + (-4x)\cdot (-4) </mrow>
+                      <mrow> \amp = 4x^3 - 8x^2 - 8x^2 + 16x</mrow>
+                      <mrow> \amp = 4x^3 - 16x^2 + 16x</mrow>
+                    </md>
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    <m>\dfrac{f(x)}{g(x)}</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    To evaluate the expression <m>\dfrac{f(x)}{g(x)}</m>, first replace <m>f(x)</m> with the expression <m>(2x^2-4x)</m>, and replace <m>g(x)</m> with the expression <m>(2x-4)</m>.  Then, simplify the remaining expression completely using algebra. 
+                  </p>
+                  <p>
+                    <md>
+                      <mrow>\dfrac{f(x)}{g(x)} \amp = \dfrac{(2x^2-4x)}{(2x-4)} </mrow>
+                    </md>
+                    The only way to simplify a fraction is to factor the top and bottom separately, and see if any of the terms cancel.  The top factors as <m>2x^2-4x = 2\cdot(x^2-2x) = 2\cdot x\cdot (x-2)</m>.  The bottom factors as <m>2x-4= 2 \cdot (x-2)</m>.  Using this, we get
+                    <md>
+                      <mrow>\dfrac{f(x)}{g(x)} \amp = \dfrac{(2x^2-4x)}{(2x-4)} </mrow>
+                      <mrow> \amp = \dfrac{2\cdot x\cdot (x-2)}{2\cdot (x-2)}</mrow>
+                      <mrow> \amp = \dfrac{x}{1}</mrow>
+                      <mrow> \amp = x</mrow>                
+                    </md>
+                    Surprisingly, the expression <m>\dfrac{f(x)}{g(x)}</m> simplifies down to the identifty function <m>\dfrac{f(x)}{g(x)} = x</m>
+                  </p>
+                </solution>
+              </task>
+              <task>
+                <statement>
+                  <p>
+                    <m>f\Big(g(x)\Big)</m>
+                  </p>
+                </statement>
+                <solution>
+                  <p>
+                    To evaluate the expression <m>f\Big(g(x)\Big)</m>, first replace <m>g(x)</m> with teh expression <m>(2x-4)</m>.  This gives
+                    <me>
+                      f\Big(g(x)\Big) = f\Big(2x-4\Big)
+                    </me>
+                    
+                    But the expression <m>f(2x-4)</m> is just the instruction to take the equation <m>f(x) = 2x^2-4x</m>, and to replace each copy of <m>x</m> with the expression <m>(2x-4)</m>. 
+      
+                    This gives
+                    <me>f(2x-4) = 2(2x-4)^2 - 4(2x-4)</me>.  Simplifying this gives
+                    <md>
+                      <mrow>f\Big(g(x)\Big) \amp = f\Big(2x-4\Big) </mrow>
+                      <mrow> \amp = 2(2x-4)^2 - 4(2x-4)</mrow>
+                      <mrow> \amp = 2(2x-4)(2x-4) - 4(2x-4)</mrow>
+                      <mrow> \amp = 2(4x^2-16x+16) - 8x + 16</mrow>
+                      <mrow> \amp = 8x^2 -32x + 32 - 8x + 16</mrow>
+                      <mrow> \amp = 8x^2 - 40x + 48 </mrow>
+                    </md>
+                    
+                  </p>
+                </solution>
+              </task>
+            
+          </exploration>
+      
+      
+          <p>
+            In the examples above, we have seen how to simplify various combinations of functions algebraically.  
+          </p>
+          <p>
+            For a few ways of combining of functions, it is also possible to explain very precisely how the combination changes the graph of the function.  
+            Let <m>y = f(x)</m> be the graph of some function, and let <m>a,b,c,d</m> be constant numbers.  
+            <ul>
+              <li>
+                <p>
+                  The graph of <m>y = a\cdot f(x)</m> is obtained by scaling the graph of <m>y=f(x)</m> by <m>a</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The graph of <m>y = f(x + b)</m> is obtained by scaling the graph of <m>y=f(x)</m> left <m>b</m> units when <m>b</m> is positive (and right when <m>b</m> is negative).
+                </p>
+              </li>
+              <li>
+                <p>
+                  The graph of <m>y = f(x) + c</m> is obtained by shifting the graph of <m>y=f(x)</m> up by <m>c</m> units when <m>c</m> is positive (and down when <m>c</m> is negative).
+                </p>
+              </li>
+            </ul>
+          </p>
+
+          <!-- Depreciated: graph transformations -->
+          <!--example>
+            <title>Transforming a Polynomial</title>
+              <interactive platform="jsxgraph"  source="jsxgraph/algebra-function-transformation-polynomial.js" >
+                <slate xml:id="jsxgraph-algebra-function-transformation-polynomial" surface="jsxboard"   /> 
+              </interactive>
+          </example>
+      
+          <example>
+            <title>Transforming a Root Function</title>
+              <interactive platform="jsxgraph"  source="jsxgraph/algebra-function-transformation-root.js" >
+                <slate xml:id="jsxgraph-algebra-function-transformation-root" surface="jsxboard"   /> 
+              </interactive>
+          </example>
+          
+          <example>
+            <title>Transforming a Rational Function</title>
+              <interactive platform="jsxgraph"  source="jsxgraph/algebra-function-transformation-rational.js" >
+                <slate xml:id="jsxgraph-algebra-function-transformation-rational" surface="jsxboard"   /> 
+              </interactive>
+          </example> 
+      
+          <example>
+            <title>Transforming a Periodic Function</title>
+              <interactive platform="jsxgraph"  source="jsxgraph/algebra-function-transformation-trig.js" >
+                <slate xml:id="jsxgraph-algebra-function-transformation-trig" surface="jsxboard"   /> 
+              </interactive>
+          </example-->  
+      
+      
+      
+        </section>
+      
+          <section xml:id="sec_graphsoftotalsandchanges" >
+              <title>*Graphs of Totals and Changes</title>
+      
+      
+                  <p>
+                      Many things change over time, such as the cost of gasoline. There are different ways of thinking about describing this change. For example, suppose the price of gas over the course of a single week is given by the following table:
+      
+              <me>
+                \begin{array}{c|c|c|c|c|c|c|c}
+                  \text{day }(x)         
+                      &amp;  1 
+                      &amp;  2   
+                      &amp;  3  
+                      &amp;  4  
+                      &amp;  5 
+                      &amp;  6 
+                      &amp;  7  
+                  \\ \hline
+                  \text{cost of gas }(y) 
+                      &amp; 4  
+                      &amp; 3.75
+                      &amp; 3.25
+                      &amp; 3.75
+                      &amp; 2  
+                      &amp; 2.5
+                      &amp; 3
+                \end{array}
+              </me>
+                  </p>
+            
+                  <p>
+                      This gives us the <term>total</term> cost of gas per day. There are also another way to think about this: how much does the price change each day? Over the course of the week the price decreases 25 cents, then decreases another 50 cents, then increases 50 cents, then increases <m>\$1.25</m>, then decreases <m>\$2.50</m>, and finally increases another 50 cents.
+                  </p>
+      
+                  <p>
+                      We will write <m>\Delta y</m> to emphasize that this is the <term>change</term> in price each day in a table.
+      
+              <me>
+                \begin{array}{c|c|c|c|c|c|c|c}
+                  \text{day }(x)
+                      &amp;  1 
+                      &amp;  2   
+                      &amp;  3  
+                      &amp;  4  
+                      &amp;  5 
+                      &amp;  6 
+                      &amp;  7  
+                  \\ \hline
+                  \text{change in gas }(\Delta y) 
+                      &amp; N/A  
+                      &amp; -0.25 
+                      &amp; -0.50 
+                      &amp;  0.50 
+                      &amp; -1.75 
+                      &amp;  0.50 
+                      &amp;  0.50
+                \end{array}
+              </me>
+                  </p>
+            
+                  <example>
+                      <title>A Strategy for Computing <m>\Delta y</m></title>
+                      <p>
+                          In the example above, we described the change in words, and summarized this in a table.  
+                But we can also find the change <m>\Delta y</m> using mathematical language.
+                      </p>
+              <p>
+                Day 1 is a special case. Because it is our first data point, there's nothing to compare it to.
+              </p>
+                      <p>
+                          On day 2 our cost <m>y</m> was 3.75, and on day 1 our cost <m>y</m> was 4. Then the <term>change in y on day 2</term> is <m>\Delta y = (3.75) - (4) = -0.25</m>. We can also translate this into function language.
+                <ul>
+                  <li>
+                    <p>
+                      The cost on day 1 is $4, so we write <m>f(1) = 4</m>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      The cost on day 2 is $3.75, so we write <m>f(2) = 3.75</m>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      To compute <m>\Delta y</m> on day 2, we compute <m>\Delta y = f(2)-f(1) = 3.75-4.00=-0.25</m>
+                    </p>
+                  </li>
+                </ul>
+                Repeating this process, we can find <m>\Delta y</m> for days 3, 4, 5, 6, and 7.
+              </p>
+              <p>
+                We can also summarize this technique using even more general mathemaitcal language by defining the <alert>change in <m>y</m></alert> due to <alert>changing from <m>x_1</m> to <m>x_2</m></alert> to be the expression 
+                <me>
+                  \Delta y = f(x_2) - f(x_1)
+                </me>
+                
+              </p>
+      
+                  </example>
+      
+                  <p>
+                      Now we have two tables, which <em>both give functions</em> that describe a different perspective on how the cost of gas changes over time: the total value (<m>y</m>) of gas graphed with respect to time, and the change in value (<m>\Delta y</m>) graphed with respect to time.
+                  </p>
+      
+                  <p>
+                      To see how they're related, we can graph both functions side by side:
+                  </p>
+      
+                  <image xml:id="image_totalchange_1">
+                      
+                      
+                      <latex-image>
+                          %%%% EXAMPLE 1 %%%%
+                          %\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+                          \def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.45},#2) rectangle ({#1-0.45},0); \draw[draw,thick] ({#1+0.45},#2) rectangle ({#1-0.45},0); \node[draw,fill=blue, circle,inner sep=2pt] at (#1,#2) {};}
+                          \def \xmin {0}
+                          \def \xmax {7}
+                          \def \xunits {day}
+                          \def \yunits {cost}
+                          \def \dyunits{change in cost}
+                          %% Information about the total (y) graph
+                          \def \ymin {0}								%% First height to be be drawn with dashed lines
+                          \def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+                          \def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+                          \def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+                          \def \ymax {6}
+                          %% Information about the change (\Delta y) graph
+                          \def \dymin {-3}
+                          \def \dysecondmajoraxis {-2}
+                          \def \dyfirstminoraxis  {-2.5}
+                          \def \dysecondminoraxis {-1.5}
+                          \def \dymax {3}
+                          \def \xscale {0.8*0.8}
+                          \def \dyscale {0.6}
+                          \begin{tikzpicture}[xscale=\xscale,yscale=\dyscale]
+                              %% Graph of Total %%
+                              %\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+                              \node at ({(\xmin+\xmax)/2},{\ymin-1.75}) {Graph of Total \ $y$};
+                              %
+                              %% Draw horizontal lines at major and minor y-values
+                              \foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+                                  \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              \foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+                                  \draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              %
+                              %% Draw and label x and y axes
+                              \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+                              \draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+                              \foreach \i in {1,...,\xmax}
+                                  \node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+                              \foreach \i in {\ymin,...,\ymax}
+                                  \node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+                              
+                              \foreach \i in {1,...,\xmax}
+                                  \draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+                              
+                              %\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+                                  
+                              \tikzhistogram(1,4);
+                              \tikzhistogram(2,3.75);
+                              \tikzhistogram(3,3.25);
+                              \tikzhistogram(4,3.75);
+                              \tikzhistogram(5,2);
+                              \tikzhistogram(6,2.5);
+                              \tikzhistogram(7,3);
+                              
+                          \end{tikzpicture}
+      
+                          %%%% END EXAMPLE 1 %%%% 
+                          %\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+                          \def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.45},#2) rectangle ({#1-0.45},0); \draw[draw,thick] ({#1+0.45},#2) rectangle ({#1-0.45},0); \node[draw,fill=blue, circle,inner sep=2pt] at (#1,#2) {};}
+                          \def \xmin {0}
+                          \def \xmax {7}
+                          \def \xunits {day}
+                          \def \yunits {cost}
+                          \def \dyunits{change in cost}
+                          %% Information about the total (y) graph
+                          \def \ymin {0}								%% First height to be be drawn with dashed lines
+                          \def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+                          \def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+                          \def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+                          \def \ymax {6}
+                          %% Information about the change (\Delta y) graph
+                          \def \dymin {-3}
+                          \def \dysecondmajoraxis {-2}
+                          \def \dyfirstminoraxis  {-2.5}
+                          \def \dysecondminoraxis {-1.5}
+                          \def \dymax {3}
+                          \def \xscale {0.8*0.8}
+                          \def \dyscale {0.6}
+                          \begin{tikzpicture}[xscale=\xscale,yscale=\dyscale]
+                              %% Graph of Change %%
+                              %\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+                              \node at ({(\xmin+\xmax)/2},{\dymin-1.75}) {Graph of Change \ $\Delta y$};
+                              %
+                              %% Draw horizontal lines at major and minor y-values
+                              \foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+                                  \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              \foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+                                  \draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              %
+                              %% Draw and label x and y axes
+                              \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+                              \draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+                              \foreach \i in {1,...,\xmax}
+                                  \node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+                              \foreach \i in {\dymin,...,\dymax}
+                                  \node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+                              
+                              \foreach \i in {1,...,\xmax}
+                                  \draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+                              
+                              
+                              %\tikzhistogram(1,0);
+                              \tikzhistogram(2,-.25);
+                              \tikzhistogram(3,-.5);
+                              \tikzhistogram(4,.5);
+                              \tikzhistogram(5,-1.75);
+                              \tikzhistogram(6,.5);
+                              \tikzhistogram(7,.5);
+                              
+                          \end{tikzpicture}
+                          %%%% END EXAMPLE 1 %%%% 
+                      </latex-image>
+                  </image>
+      
+            <p>
+              In the example above, the biggest drop in the total <m>y</m> (left) occurs on day 5.  This matches the graph on the right, where day 5 has the largest negative movement (change) <m>\Delta y</m>.
+              On the other hand, there is almost no change on day 2 in the total graph on the left (only a small drop in <m>y</m>), which matches the small value of <m>\Delta y</m> in the change graph on the right. 
+            </p>
+      
+      
+              <!--exploration>
+                  <introduction>
+                      <p>
+                          Use the graph of the total and change functions above to answer the following questions
+                      </p>
+                  </introduction>
+                  <task>
+                      <statement>
+                  <p>
+                    How much does the price of gas change between days 3 and 4?
+                  </p>
+                      </statement>
+                  </task>
+                  <task>
+                      <statement>
+                  <p>
+                    How much does the price of gas change between days 3 and 6?
+                  </p>
+                      </statement>
+                  </task>
+                  <task>
+                      <statement>
+                  <p>
+                    How much does the price of gas change between days 1 and 7?
+                  </p>
+                      </statement>
+                  </task>
+                  <task>
+                      <statement>
+                  <p>
+                    On which days does the price of gas change the most? When does it change the least?
+                  </p>
+                      </statement>
+                  </task>
+              </exploration-->
+      
+          <p>
+            Graphs of totals and changes occur in a wide variety of economic, business, and other contexts.  
+            But one of the most common and important applications is in the important distinction between <em>debts</em> and <em>deficits</em>.
+          </p>
+      
+              <paragraphs xml:id="economics-debts-and-deficits" >
+                  <title>Debts and Deficits</title>
+      
+                  <p>
+                      The <term>US national debt</term> in a given year is the total amount of money that the government owed in that year. The <term>net revenue</term> from a given year is the difference between money taken in (through taxes) and money spent by the government. The government is running an <term>annual deficit</term> if it spends more than it takes in. In other words, having negative net revenue in a given year is the same thing as a positive deficit in that year.
+                  </p>
+      
+                  <p>
+                      The page <url href="https://datalab.usaspending.gov/americas-finance-guide/deficit/trends/">https://datalab.usaspending.gov/americas-finance-guide/deficit/trends/</url> lists US budget deficits in <em>trillions of dollars</em> since the year 2000, rounded to two decimal places. The same page indicates that the US debt in 2000 was 5.65 trillions.
+                  </p>
+      
+                  <p>
+                      As before, we can compute the debt <m>y</m> for each year since 2000 by starting with 5.65 and repeatedly adding the <m>\Delta y</m> for each year.
+              <fn>
+                        <term>Note:</term> Actually, the debt is always more than the sum of the deficits, since the government must also pay <term>interest</term> on the money it borrows to cover a deficit. The true debt for each year is shown using a red dot.
+                The actual value of the debt (not adjusted for inflation) can be found at <url href="https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny" />.  
+                    </fn> 
+              This gives us our familiar graphs of the total <m>y</m> and change <m>\Delta y</m>.
+                  </p>
+      
+                  
+                  <image xml:id="image_debtanddeficit">
+                      
+                      
+                      <latex-image>
+                          %%%% EXAMPLE DEBT/DEFICIT %%%%
+                          %\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+                          \def \tikzhistogram (#1,#2){	\draw[fill=blue,opacity=0.6] ({#1+0.4},#2) rectangle ({#1-0.4},0) ; \draw[draw=black] ({#1+0.4},#2) rectangle ({#1-0.4},0) ; \node[draw,fill=blue, circle,inner sep=1	pt] at (#1,#2) {}; }
+                          \def \reddot (#1,#2){ \node [draw,circle,fill=red,inner sep=2pt] at (#1,#2) {}; }
+                          \def \debtyscale {0.45} % Full page graph with yscale of 0.7 
+                          \def \xmin {0}
+                          \def \xmax {23}
+                          \def \xunits {year}
+                          \def \yunits {debt}
+                          \def \dyunits{deficit}
+                          %% Information about the total (y) graph
+                          \def \ymin {0}								%% First height to be be drawn with dashed lines
+                          \def \ysecondmajoraxis {5}		%% Second height to be be drawn with dashed lines
+                          \def \yfirstminoraxis  {1}	%% First line to be drawn with dotted lines
+                          \def \ysecondminoraxis {2}	%% Second lin eto be drawn with dotted lines
+                          \def \ymax {32}
+                          %% Information about the change (\Delta y) graph
+                          \def \dymin {-1}
+                          \def \dysecondmajoraxis {-0}
+                          \def \dyfirstminoraxis  {-0.5}
+                          \def \dysecondminoraxis {0.5}
+                          \def \dymax {3.5}
+      
+                          \def \xscale{0.35*0.8}
+      
+                          \hspace{-1.25cm}
+                          \begin{tikzpicture}[xscale=\xscale,yscale=\debtyscale]
+                              %% Graph of Total %%
+                              %\draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+                              \node at ({(\xmin+\xmax)/2},{\ymin-1.25}) {Graph of total \ $y$ (debt)};
+                              %
+                              %% Draw horizontal lines at major and minor y-values
+                              \foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+                                  \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              %\foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+                                  %\draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              %
+                              %% Draw and label x and y axes
+                              \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [right] {\xunits};
+                              \draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above,fill=white] {\yunits};
+                              %\foreach \i in {1,...,\xmax}
+                                  %\node[below,yshift=-2pt] at (\i, 0) {\small $\i$};
+                              \node[below,yshift=-2pt] at (1, 0) {\tiny $2000$};
+                              \node[below,yshift=-2pt] at (21, 0) {\tiny $2020$};
+                              \foreach \i in {\ymin,\yfirstminoraxis,...,\ymax}
+                                  \node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+                              
+                              \foreach \i in {1,...,\xmax}
+                                  \draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+                              
+                              %\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+                                  
+                              \tikzhistogram(1+0,5.66);
+                              \tikzhistogram(1+1,5.53);
+                              \tikzhistogram(1+2,5.69);
+                              \tikzhistogram(1+3,6.06);
+                              \tikzhistogram(1+4,6.47);
+                              \tikzhistogram(1+5,6.79);
+                              \tikzhistogram(1+6,7.04);
+                              \tikzhistogram(1+7,7.20);
+                              \tikzhistogram(1+8,7.65);
+                              \tikzhistogram(1+9,9.07);
+                              \tikzhistogram(1+10,10.36);
+                              \tikzhistogram(1+11,11.66);
+                              \tikzhistogram(1+12,12.75);
+                              \tikzhistogram(1+13,13.43);
+                              \tikzhistogram(1+14,13.91);
+                              \tikzhistogram(1+15,14.35);
+                              \tikzhistogram(1+16,14.94);
+                              \tikzhistogram(1+17,15.61);
+                              \tikzhistogram(1+18,16.39);
+                              \tikzhistogram(1+19,17.37);
+                              \tikzhistogram(1+20,20.50);
+                              \tikzhistogram(1+21,23.27);
+                  \tikzhistogram(1+22,24.65);
+                              
+                              \reddot(1+0,5.66);
+                              \reddot(1+1,5.81);
+                              \reddot(1+2,6.23);
+                              \reddot(1+3,6.78);
+                              \reddot(1+4,7.38);
+                              \reddot(1+5,7.93);
+                              \reddot(1+6,8.51);
+                              \reddot(1+7,9.01);
+                              \reddot(1+8,10.02);
+                              \reddot(1+9,11.91);
+                              \reddot(1+10,13.56);
+                              \reddot(1+11,14.79);
+                              \reddot(1+12,16.07);
+                              \reddot(1+13,16.74);
+                              \reddot(1+14,17.82);
+                              \reddot(1+15,18.15);
+                              \reddot(1+16,19.57);
+                              \reddot(1+17,20.24);
+                              \reddot(1+18,21.52);
+                              \reddot(1+19,22.72);
+                              \reddot(1+20,26.95);
+                              \reddot(1+21,28.91);
+                              \reddot(1+22,31.33);
+      
+                          \end{tikzpicture}
+                          %
+                          \quad
+                          %
+                          \begin{tikzpicture}[baseline=-5cm,xscale=\xscale,yscale=\debtyscale]
+                              %\node (O) at (0,0) {};
+                              %% Graph of Change %%
+                              %\draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+                              \node at ({(\xmin+\xmax)/2},{\dymin-1.25}) {Graph of change \ $\Delta y$ (deficit)};
+                              %
+                              %% Draw horizontal lines at major and minor y-values
+                              \foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+                                  \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              \foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+                                  \draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                              %
+                              %% Draw and label x and y axes
+                              \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [right] {\xunits};
+                              \draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above]{\dyunits};
+                              %\foreach \i in {1,...,\xmax}
+                                  %\node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+                              \node[below,yshift=-2pt] at (1, \dymin) {\tiny $2000$};
+                              \node[below,yshift=-2pt] at (21, \dymin) {\tiny $2020$};
+                              \foreach \i in {\dymin,...,\dymax}
+                                  \node[left,xshift=-2pt] at (0,\i) {\small $\i$};
+                              
+                              \foreach \i in {1,...,\xmax}
+                                  \draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+                              
+                              \tikzhistogram(1+0,-0.24);
+                              \tikzhistogram(1+1,-0.13);
+                              \tikzhistogram(1+2,0.16);
+                              \tikzhistogram(1+3,0.37);
+                              \tikzhistogram(1+4,0.41);
+                              \tikzhistogram(1+5,0.32);
+                              \tikzhistogram(1+6,0.25);
+                              \tikzhistogram(1+7,0.16);
+                              \tikzhistogram(1+8,0.45);
+                              \tikzhistogram(1+9,1.42);
+                              \tikzhistogram(1+10,1.29);
+                              \tikzhistogram(1+11,1.3);
+                              \tikzhistogram(1+12,1.09);
+                              \tikzhistogram(1+13,0.68);
+                              \tikzhistogram(1+14,0.48);
+                              \tikzhistogram(1+15,0.44);
+                              \tikzhistogram(1+16,0.59);
+                              \tikzhistogram(1+17,0.67);
+                              \tikzhistogram(1+18,0.78);
+                              \tikzhistogram(1+19,0.98);
+                              \tikzhistogram(1+20,3.13);
+                              \tikzhistogram(1+21,2.77);
+                              \tikzhistogram(1+22,1.38);
+                          \end{tikzpicture}
+                          %%%% END EXAMPLE DEBT/DEFICIT %%%% 
+                      </latex-image>
+                  </image>
+      
+              </paragraphs>    
+      
+      
+          <p>
+            In most examples, we will only be given one of these types of graphs, and we will need to create the other type of graph. In the next example you are only given the graph of the total value (<m>y</m>), and asked to find the graph of the change (<m>\Delta y</m>).
+          </p>
+      
+      
+              <exploration xml:id="ex-using-total-value-to-compute-change" >
+                  <title>Using Total Value to Compute Change</title>
+                  
+            <introduction>
+              <p>
+                The graph of gas price as a function of the day <m>x</m> is given below on the left.  
+              </p>
+              <image xml:id="image_totalchange_2given">
+                
+                
+                <latex-image>
+                  %%%% EXAMPLE 2 %%%%
+                  %\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+                  \def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.45},#2) rectangle ({#1-0.45},0); \draw[draw,thick] ({#1+0.45},#2) rectangle ({#1-0.45},0); \node[draw,fill=blue, circle,inner sep=2pt] at (#1,#2) {};}
+                  \def \xmin {0}
+                  \def \xmax {7}
+                  \def \xunits {day}
+                  \def \yunits {cost}
+                  \def \dyunits{change in cost}
+                  %% Information about the total (y) graph
+                  \def \ymin {0}								%% First height to be be drawn with dashed lines
+                  \def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+                  \def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+                  \def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+                  \def \ymax {6}
+                  %% Information about the change (\Delta y) graph
+                  \def \dymin {-3}
+                  \def \dysecondmajoraxis {-2}
+                  \def \dyfirstminoraxis  {-2.5}
+                  \def \dysecondminoraxis {-1.5}
+                  \def \dymax {3}
+                  \def \xscale{0.8*0.8}
+                  \def \yscale{0.8}
+      
+                  \begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+                    %% Graph of Total %%
+                    \draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+                    \node at ({(\xmin+\xmax)/2},{\ymin-1.75}) {Graph of Total \ $y$};
+                    %
+                    %% Draw horizontal lines at major and minor y-values
+                    \foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+                      \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                    \foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+                      \draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                    %
+                    %% Draw and label x and y axes
+                    \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+                    \draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+                    \foreach \i in {1,...,\xmax}
+                      \node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+                    \foreach \i in {\ymin,...,\ymax}
+                      \node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+                    
+                    \foreach \i in {1,...,\xmax}
+                      \draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+                    
+                    %\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+                      
+                    \tikzhistogram(1,2);
+                    \tikzhistogram(2,3.5);
+                    \tikzhistogram(3,4);
+                    \tikzhistogram(4,3);
+                    \tikzhistogram(5,4.5);
+                    \tikzhistogram(6,2);
+                    \tikzhistogram(7,3.5);
+                    
+                  \end{tikzpicture}
+                  %
+                  \quad
+                  %
+                  \begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+                    %% Graph of Change %%
+                    \draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+                    \node at ({(\xmin+\xmax)/2},{\dymin-1.75}) {Graph of Change \ $\Delta y$};
+                    %
+                    %% Draw horizontal lines at major and minor y-values
+                    \foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+                      \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                    \foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+                      \draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                    %
+                    %% Draw and label x and y axes
+                    \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+                    \draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+                    \foreach \i in {1,...,\xmax}
+                      \node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+                    \foreach \i in {\dymin,...,\dymax}
+                      \node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+                    
+                    \foreach \i in {1,...,\xmax}
+                      \draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+                    
+                    
+                    %\tikzhistogram(1,0);
+                    %\tikzhistogram(2,-.25);
+                    %\tikzhistogram(3,-.5);
+                    %\tikzhistogram(4,.5);
+                    %\tikzhistogram(5,2);
+                    %\tikzhistogram(6,.5);
+                    %\tikzhistogram(7,.5);
+                    
+                  \end{tikzpicture}
+                  %%%% END EXAMPLE 2 %%%% 
+                </latex-image>
+              </image>
+            </introduction>
+            <task>
+              <statement>
+                <p>
+                  What is the cost of gas (y) on days 5 and 6? What is the change of cost (<m>\Delta y</m>) between days 5 and 6?
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  From our graph, we see that <m>f(5) = 4.5</m> and that <m>f(6) = 2</m>.  That means that the change is 
+                  <me>
+                    \Delta y = f(6) - f(5) = 2 - 4.5 = -2.5
+                  </me>
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Write down a table giving the actual price <m>y</m> and change in price <m>\Delta y</m> on all seven days. 
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  <me>
+                    \begin{array}{c|c|c|c|c|c|c|c}
+                      \text{day }(x)
+                          &amp;  1 
+                          &amp;  2   
+                          &amp;  3  
+                          &amp;  4  
+                          &amp;  5 
+                          &amp;  6 
+                          &amp;  7  
+                      \\ \hline
+                      \text{price }(y) 
+                          &amp;  2
+                          &amp;  3.5
+                          &amp;  4
+                          &amp;  3
+                          &amp;  4.5
+                          &amp;  2
+                          &amp;  3.5
+                      \\ \hline
+                      \text{change in gas }(\Delta y) 
+                          &amp; N/A  
+                          &amp;  1.50 
+                          &amp;  0.50 
+                          &amp; -1.00 
+                          &amp;  1.50 
+                          &amp; -2.50 
+                          &amp;  1.50
+                    \end{array}
+                  </me>            
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Graph the <q>Change in Cost</q> function.  (Use the graph provided on the right).
+                </p>
+              </statement>
+              <solution>
+                <image xml:id="image_totalchange_2sln">
+                  
+                  
+                  <latex-image>
+                    %%%% EXAMPLE 2 %%%%
+                    %\def \tikzhistogram (#1,#2){	\draw[draw=black,thick,fill=blue,opacity=0.65] (#1,#2) rectangle ({#1-1},0) ;}
+                    \def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+0.45},#2) rectangle ({#1-0.45},0); \draw[draw,thick] ({#1+0.45},#2) rectangle ({#1-0.45},0); \node[draw,fill=blue, circle,inner sep=2pt] at (#1,#2) {};}
+                    \def \xmin {0}
+                    \def \xmax {7}
+                    \def \xunits {day}
+                    \def \yunits {cost}
+                    \def \dyunits{change in cost}
+                    %% Information about the total (y) graph
+                    \def \ymin {0}								%% First height to be be drawn with dashed lines
+                    \def \ysecondmajoraxis {1}		%% Second height to be be drawn with dashed lines
+                    \def \yfirstminoraxis  {0.5}	%% First line to be drawn with dotted lines
+                    \def \ysecondminoraxis {1.5}	%% Second lin eto be drawn with dotted lines
+                    \def \ymax {6}
+                    %% Information about the change (\Delta y) graph
+                    \def \dymin {-3}
+                    \def \dysecondmajoraxis {-2}
+                    \def \dyfirstminoraxis  {-2.5}
+                    \def \dysecondminoraxis {-1.5}
+                    \def \dymax {3}
+                    \def \xscale{0.8*0.8}
+                    \def \yscale{0.8}
+      
+                    \begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+                      %% Graph of Total %%
+                      \draw ({\xmin-1},{\ymin-1}) rectangle ({\xmax+1.5},{\ymax+1.25});
+                      \node at ({(\xmin+\xmax)/2},{\ymin-1.75}) {Graph of Total \ $y$};
+                      %
+                      %% Draw horizontal lines at major and minor y-values
+                      \foreach \i in {\ymin,\ysecondmajoraxis,...,\ymax}
+                        \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                      \foreach \i in {\yfirstminoraxis,\ysecondminoraxis,...,\ymax}
+                        \draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                      %
+                      %% Draw and label x and y axes
+                      \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+                      \draw[axes,-latex] (0,{\ymin}) -- (0,{\ymax+0.5}) node [above right] {\yunits};
+                      \foreach \i in {1,...,\xmax}
+                        \node[below,fill=white,yshift=-2pt] at (\i, 0) {\small $\i$};
+                      \foreach \i in {\ymin,...,\ymax}
+                        \node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+                      
+                      \foreach \i in {1,...,\xmax}
+                        \draw[vertical gridlines] (\i, {\ymin}) -- (\i, {\ymax+0.25});
+                      
+                      %\draw[draw=black,thick,fill=blue,opacity=0.75] (1,4) rectangle ({1-1},0);
+                        
+                      \tikzhistogram(1,2);
+                      \tikzhistogram(2,3.5);
+                      \tikzhistogram(3,4);
+                      \tikzhistogram(4,3);
+                      \tikzhistogram(5,4.5);
+                      \tikzhistogram(6,2);
+                      \tikzhistogram(7,3.5);
+                      
+                    \end{tikzpicture}
+                    %
+                    \quad
+                    %
+                    \begin{tikzpicture}[xscale=\xscale,yscale=\yscale]
+                      %% Graph of Change %%
+                      \draw ({\xmin-1.5},{\dymin-1}) rectangle ({\xmax+1.5},{\dymax+1.25});
+                      \node at ({(\xmin+\xmax)/2},{\dymin-1.75}) {Graph of Change \ $\Delta y$};
+                      %
+                      %% Draw horizontal lines at major and minor y-values
+                      \foreach \i in {\dymin,\dysecondmajoraxis,...,\dymax}
+                        \draw[major gridlines] (\xmin,\i)--({\xmax+1},\i);
+                      \foreach \i in {\dyfirstminoraxis,\dysecondminoraxis,...,\dymax}
+                        \draw[minor gridlines] (\xmin,\i)--({\xmax+1},\i);
+                      %
+                      %% Draw and label x and y axes
+                      \draw[axes,-latex] ({\xmin},0) -- ({\xmax+1},0) node [below] {\xunits};
+                      \draw[axes,latex-latex] (0,{\dymin-0.5}) -- (0,{\dymax+0.5})  node[above right]{\dyunits};
+                      \foreach \i in {1,...,\xmax}
+                        \node[below,fill=white,yshift=-6pt] at (\i, \dymin) {\small $\i$};
+                      \foreach \i in {\dymin,...,\dymax}
+                        \node[left,fill=white,xshift=-2pt] at (0,\i) {\small $\i$};
+                      
+                      \foreach \i in {1,...,\xmax}
+                        \draw[vertical gridlines] (\i, {\dymin-0.25}) -- (\i, {\dymax+0.25});
+                      
+                      \tikzhistogram(2,1.5);
+                      \tikzhistogram(3,0.5);
+                      \tikzhistogram(4,-1);
+                      \tikzhistogram(5,1.5);
+                      \tikzhistogram(6,-2.5);
+                      \tikzhistogram(7,1.5);
+                      
+                    \end{tikzpicture}
+                    %%%% END EXAMPLE 2 %%%% 
+                  </latex-image>
+                </image>
+              </solution>
+            </task>
+              </exploration>
+      
+          <p>
+            Often, we are working with <em>formulas</em> that define (or model) the quantity of interest. 
+          </p>
+      
+              <exploration xml:id="ex-changes-and-formulas">
+                  <title>Changes and Formulas</title>
+      
+            <introduction>
+              <p>
+                Suppose that on day <m>x</m>, the value of a certain stock is given by <m>f(x) = x-0.1x^{2}</m>.
+              </p>
+            </introduction> 
+      
+            <task>
+              <statement>
+                <p>
+                  Use the formula you are given to fill in the following table.
+                  Note that the difference between consecutive days <m>x</m> is given by <m>\Delta x = 1</m>.
+                  <me>
+                    \begin{array}{c|c|c|c|c|c|c|c}
+                      \text{day } (x)
+                          &amp;  1 
+                          &amp;  2   
+                          &amp;  3  
+                          &amp;  4  
+                          &amp;  5 
+                          &amp;  6 
+                          &amp;  7  
+                      \\ \hline
+                      price \ (y)
+                          &amp;  \quad
+                          &amp;  \quad
+                          &amp;  \quad
+                          &amp;  \quad
+                          &amp;  \quad
+                          &amp;  \quad 
+                          &amp;  \quad  
+                      \\ \hline
+                      \text{change in price } (\Delta y) 
+                          &amp;   
+                          &amp;  
+                          &amp;  
+                          &amp;  
+                          &amp;  
+                          &amp;  
+                          &amp; 
+                    \end{array}
+                  </me>            
+                </p>
+                <p>
+                   <em>Hint:</em> You can use the <q>Table</q> mode of a graphing calculator to speed this up significantly.
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  <me>
+                    \begin{array}{c|c|c|c|c|c|c|c}
+                      \text{day }(x)
+                          &amp;  1 
+                          &amp;  2   
+                          &amp;  3  
+                          &amp;  4  
+                          &amp;  5 
+                          &amp;  6 
+                          &amp;  7  
+                      \\ \hline
+                      \text{price }(y) 
+                          &amp;  f(1) = 0.9
+                          &amp;  f(2) = 1.6
+                          &amp;  f(3) = 2.1
+                          &amp;  f(4) = 2.4
+                          &amp;  f(5) = 2.5
+                          &amp;  f(6) = 2.4
+                          &amp;  f(7) = 2.1
+                      \\ \hline
+                      \text{change in price }(\Delta y) 
+                          &amp; N/A  
+                          &amp; f(2) - f(1) = 0.7
+                          &amp; f(3) - f(2) = 0.5
+                          &amp; f(4) - f(3) = 0.3
+                          &amp; f(5) - f(4) = 0.1
+                          &amp; f(6) - f(5) = -0.1
+                          &amp; f(7) - f(6) = -0.3
+                    \end{array}
+                  </me>                      
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Note that the change <m>\Delta y = y_2 - y_1 = f(x_2) - f(x_1)</m> implicitly depends on the distance <m>\Delta x=x_2-x_1</m>. Here, all our x values are consecutive, but you could imagine computing <m>\Delta y</m> (the change in <m>y</m>) in different increments, such as for <m>x=1,3,5,7</m>.
+                </p>
+                <p>
+                  Using the same function <m>f(x) = x-0.1x^{2}</m> as above, complete the following table.
+                  Note that the difference between consecutive days <m>x</m> is now given by <m>\Delta x = 2</m>.
+                  <me>
+                    \begin{array}{c|c|c|c|c}
+                      \text{day }(x)
+                          &amp;  1 
+                          &amp;  3  
+                          &amp;  5 
+                          &amp;  7  
+                      \\ \hline
+                      price\ (y)
+                          &amp;  \quad
+                          &amp;  \quad
+                          &amp;  \quad
+                          &amp;  \quad
+                      \\ \hline
+                      \text{change in price }(\Delta y) 
+                          &amp;  
+                          &amp;  
+                          &amp;  
+                          &amp; 
+                    \end{array}
+                  </me>            
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  <me>
+                    \begin{array}{c|c|c|c|c|c|c|c}
+                      \text{day }(x)
+                          &amp;  1 
+                          &amp;  3  
+                          &amp;  5 
+                          &amp;  7  
+                      \\ \hline
+                      \text{price }(y) 
+                          &amp;  f(1) = 0.9
+                          &amp;  f(3) = 2.1
+                          &amp;  f(5) = 2.5
+                          &amp;  f(7) = 2.1
+                      \\ \hline
+                      \text{change in price }(\Delta y) 
+                          &amp; N/A  
+                          &amp; f(3) - f(1) = 1.2
+                          &amp; f(5) - f(3) = 0.4
+                          &amp; f(7) - f(5) = -0.4
+                    \end{array}
+                  </me>                      
+                </p>
+              </solution>
+            </task>
+              </exploration>
+      
+          <!--insight>
+            <title>Computing Change over Longer Intervals of Time</title>
+            
+            <p>
+                      Re-making the table for different <m>\Delta x</m> can be tedious, but the relationship between <m>\Delta y</m> and <m>\Delta x</m> will be a central question in calculus.
+                  </p>
+      
+                  <p>
+                      To decribe <m>\Delta y</m> algebraically, use the function <m>f(x) = x-0.1x^{2}</m> to simplify the expression <me>\Delta y = f(x + \Delta x) - f(x)</me>
+                  </p>
+      
+            
+          </insight-->
+      
+          </section>
+      
+      
+        <section xml:id="sec-changeinxy">
+          <title>*Connecting <m>\Delta y</m> and <m>\Delta x</m></title>
+          
+          <aside>
+            <p>
+              This section is inspired by Thompson's <em>Calculus Made Easy</em>
+            </p>
+          </aside>
+      
+          <p>
+            We can now introduce one of the central ideas in calculus, which we will come back in more detail in Part III of the class.  
+            For now, our main goal is to better see the connection between change graphs (which have clear economic and business applications) and functions and their combinations (which does not).
+          </p>
+          <p>
+            There are three key ideas.  
+            <ol>
+              <li>
+                <p>
+                  The independent variable <m>x</m> and dependent variable <m>y</m> both change and grow.
+                </p>
+              </li>
+              <li>
+                <p>
+                  The change in input <m>x</m> is written (denoted) <m>\Delta x</m>, and the change in output <m>y</m> is written <m>\Delta y</m>
+                </p>
+              </li>
+              <li>
+                <p>
+                  Because <m>x</m> and <m>y</m> are related by some function <m>y=f(x)</m>, then <m>\Delta y</m> and <m>\Delta x</m> are aso related. 
+                </p>
+              </li>
+            </ol>
+            Our goal is to understand how to find <m>\Delta y</m> from <m>x</m> and <m>\Delta x</m> and, eventually, to understand the relationship between <m>\Delta y</m> and <m>\Delta x</m>.
+          </p>
+      
+          <p>We can make these ideas precise in a definition</p>
+          <definition xml:id="def-Deltayfromx1x2">
+            <statement>
+              <p>
+                Given a function <m>y=f(x)</m> and two inputs <m>x_1,x_2</m>, and corresponding outputs <m>y_1 = f(x_1)</m> and <m>y_2=f(x_2)</m>, we say that the <em>change in <m>y</m> between <m>x_1</m> and <m>x_2</m></em> is written <m>\Delta y</m>. 
+                There are three different, but equivalent, ways that we will think about <m>\Delta y</m>
+                <mdn>
+                  <mrow> \Delta y \amp = y_2 - y_1 </mrow>
+                  <mrow> \Delta y \amp = f(x_2) - f(x_1)</mrow>
+                  <mrow> \Delta y \amp = f(x_1 + \Delta x) - f(x_1)</mrow>
+                </mdn>
+                These first two are saying the same thing because we always write <m>y_1 = f(x_1)</m> and <m>y_2=f(x_2)</m>.
+                We need the third equation when we only know only <m>x_1</m> and <m>\Delta x = x_2-x_1</m>, but not <m>x_2</m>.  In that case, we solve for <m>x_2 = x_1 + \Delta x</m>, and compute <m>y_2 = f(x_2) = f(x_1+\Delta x)</m>.
+              </p>
+              
+            </statement>
+          </definition>
+          <exploration xml:id="ex_deltay_variable">
+            <introduction>
+              <p>
+                Suppose that <m>y = f(x) = x^2</m>, that <m>x_1</m> and <m>x_2</m> are two unknown inputs, and that <m>\Delta x = x_2-x_1</m> is the change in input.
+              </p>
+            </introduction>
+            <task>
+              <statement>
+                <p> 
+                  Find the value <m>y_1</m> of the function at input <m>x_1</m>
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  To find the value of <m>y=f(x)</m> at <m>x=x_1</m>, just plug this value into our function <m>f(x)=x^2</m>
+                  <me>y_1 = f(x_1) = \Big(x_1\Big)^2</me>
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Find the value <m>y_2</m> of the function at input <m>x_2</m>.
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  As before, we could just plug <m>x=x_2</m> into our function <m>f(x) = x^2</m> to get
+                  <me>y_2 = f(x_2) = \Big(x_2\Big)^2</me>
+                  But we can get a more informative answer by using the fact that because <m>\Delta x = x_2 - x_1</m>, then <m>x_2 = x_1 + \Delta x</m>.  Plugging this into our equation gives
+                  <md>
+                    <mrow> y_2 \amp = f(x_1 + \Delta x)</mrow>
+                    <mrow> \amp = \Big(x_1 + \Delta x\Big)^2 </mrow>
+                    <mrow> \amp = \Big(x_1 + \Delta x\Big)\cdot \Big(x_1 + \Delta x\Big)</mrow>
+                    <mrow> y_2 \amp = (x_1)^2 + 2(x_1)(\Delta x) + (\Delta x)^2</mrow>
+                  </md>
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Find <m>\Delta y</m> in terms of <m>\Delta x</m> and <m>x_1</m>
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  Recall that <m>\Delta y</m> is just the change in <m>y</m> that occurs as a result of changing the input from <m>x_1</m> to <m>x_2</m>.  Mathematically, this gives us 
+                  <md>
+                    <mrow> \Delta y \amp = \Big(y_2\Big) - \Big(y_1\Big)</mrow>
+                  </md>
+                  Using our work above, we know <m>y_1 = (x_1)^2</m> and that <m>y_2 = (x_1)^2 + 2(x_1)(\Delta x) + (\Delta x)^2</m>.  This gives us 
+                  <md>
+                    <mrow> \Delta y \amp = \Big(y_2\Big) - \Big(y_1\Big)</mrow>
+                    <mrow>          \amp = \Big((x_1)^2 + 2(x_1)(\Delta x) + (\Delta x)^2\Big) - (x_1)^2</mrow>
+                    <mrow> \Delta y \amp = 2(x_1)(\Delta x)+(\Delta x)^2</mrow>
+                  </md>
+                  We now have a formula for how the change in output <m>\Delta y</m> depends on the change in input <m>\Delta x</m>
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Find an equation for <m>\dfrac{\Delta y}{\Delta x}</m>.  
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  We have already see that 
+                  <md>
+                    <mrow> \Delta y \amp = 2(x_1)(\Delta x)+(\Delta x)^2</mrow>
+                  </md>
+                  We can factor a term of <m>\Delta x</m> out of the right hand side. 
+                  <md>
+                    <mrow> \Delta y \amp = (\Delta x)\cdot \Big(2(x_1)+(\Delta x)\Big)</mrow>
+                  </md>
+                  Now, we can divide both sides by <m>\Delta x</m> to get a <m>\frac{\Delta y}{\Delta x}</m> on the left hand side.
+                  <md>
+                    <mrow> \dfrac{\Delta y}{\Delta x} \amp =  2(x_1)+(\Delta x)</mrow>
+                  </md>
+                  We will see what this term really means later in the course, when we discuss rates of change and slopes.  
+                </p>
+              </solution>
+            </task>
+          </exploration>
+          <p>
+            In the next chapter, we will see a special case of <m>\frac{\Delta y}{\Delta x}</m> when we review linear functions.  We will also introduce a number of functions that play an important role in economics and business. We close with a quick example using the total cost function <m>C(x)</m>
+          </p>
+          <exploration xml:id="ex_deltay_numerical">
+            <introduction>
+              <p>
+                Suppose that <m>C(x)= 0.01 x^2 - x+ 50</m> gives the total cost of purchasing <m>x</m> barrels of oil. 
+              </p>
+              <p>
+                In the past, you have purchased <m>x=300</m> barrels of oil each month. But now you are thinking of buying a bit more oil.  You want to know how much your costs will change as a result of this increase in purchase volume. 
+              </p>
+            </introduction>
+            <task>
+              <statement>
+                <p>
+                  Find the cost of <m>300</m> barrels of oil.  
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  <m>C(300) = 0.01(300)^2 - 300 + 50 = 650</m>
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Find the change in cost <m>\Delta C</m> between <m>x_1=300</m> barrels and <m>x_2=400</m> barrels.
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  The formula for change in cost is <me>\Delta C = C_2 - C_1</me>
+                  Here, the first cost is the cost of 300 barrels
+                  <me>C_1 = C(300) = 0.01(300)^2 - 300 + 50 = 650</me>
+                  The second cost is the cost of 600 barrels
+                  <me>C_2 = C(400) = 0.01(400)^2 - 400 + 50 = 1250  </me>
+                  The change in the cost is therefore 
+                  <me>\Delta C = C(400) - C(300) = 1250 - 650 = 600</me>
+                  The <m>\Delta x=100</m> additional barrels will increase the total cost by $600 (an average of $6 per barrel).
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  Suppose you want to increase your purchase volume from <m>x_1=300</m> by <m>\Delta x = 10</m> barrels. What is the change in cost going to be?
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  We want to compare the cost of 
+                  <me>
+                    x_1=300
+                  </me> 
+                  and 
+                  <me>
+                    x_2 = 300+\Delta x = 300+10=310
+                  </me> 
+                  barrels of oil.  We can compute the costs separately, and then subtract them.
+                  <md>
+                    <mrow>C_1 \amp= C(300) = 650 </mrow>
+                    <mrow>C_2 \amp= C(300+10) = C(310) = 0.01(310)^2 - 310 + 50 = 701 </mrow>
+                  </md>
+                  Subtracting these total costs gives us the change in cost 
+                  <me> \Delta C = C_2 - C_1 = C(310)- C(300) =51</me>
+                  The cost will increase <m>\Delta C = 51</m> dollars
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  You are not sure how much you want to increase the purchase by.  In other words, <m>x_1=300</m>, but <m>\Delta x</m> is unknown. 
+                  Find an equation for the change in cost <m>\Delta C</m>.
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  We want to find <me>\Delta C = C_2 - C_1 = C(x_2) - C(x_1)</me>.
+                  We know that <m>x_1 = 300</m>, but we do not know <m>x_2</m>.  Therefore, we must write <me>x_2 = x_1 + \Delta x= 300 + \Delta x</me>
+                </p>
+                <p>
+                  We can now compute <m>C_1</m> and <m>C_2</m>
+                  <me>C_1 = C(300) = 0.01(300)^2 - 300 + 50 = 650</me>
+                  and 
+                  <md>
+                    <mrow>C_2 \amp = C\Big(300 + \Delta x\Big)</mrow>
+                    <mrow>\amp = 0.01\Big(300 + \Delta x\Big)^2 - \Big(300 + \Delta x\Big) + 50 </mrow>
+                    <mrow>\amp = 0.01\Big(300\cdot 300 + 2\cdot 300\cdot \Delta x + (\Delta x)^2\Big) - \Big(300 + \Delta x\Big) + 50 </mrow>
+                    <mrow>\amp = 900 + 6\cdot \Delta x + 0.01(\Delta x)^2 - 300 - \Delta x + 50 </mrow>
+                    <mrow>\amp = 650 + 5\cdot \Delta x + 0.01(\Delta x)^2  </mrow>
+                  </md>
+                  We have found that 
+                  <md>
+                    <mrow> C_1 \amp = 650 </mrow>
+                    <mrow> C_2 \amp = 650 + 5\cdot \Delta x + 0.01(\Delta x)^2  </mrow>
+                  </md>
+                  We can now compute 
+                  <md>
+                    <mrow>\Delta C \amp = C_2 - C_1 </mrow>
+                    <mrow>\amp = \Big(650+5\Delta x + 0.01(\Delta x)^2\Big) - \Big(650\Big)</mrow>
+                    <mrow>\Delta C \amp = 5\Delta x + 0.01(\Delta x)^2 </mrow>
+                  </md>
+                  
+                </p>
+      
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  You are not sure how much you want to increase the purchase by.  In other words, <m>x_1=300</m>, but <m>\Delta x</m> is unknown. 
+                  Find an equation for <m>\dfrac{\Delta C}{\Delta x}</m>.          
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  We found above that for <m>C(x) =  0.01 x^2 - x+ 50</m>,  <m>x_1=300</m>, and unknown (arbitarary) <m>\Delta x</m> that 
+                    <me> \Delta C = 5\Delta x + 0.01(\Delta x)^2 </me>
+                  To find <m>\frac{\Delta C}{\Delta x}</m>, we first need to factor <m>\Delta x</m> out of every term on the right side. 
+                   <me> \Delta C = \Delta x(5 + 0.01 \Delta x) </me>
+                  Now we can divide both sides by <m>\Delta x</m>
+                  <me> \dfrac{\Delta C}{\Delta x} = 5 + 0.01 \Delta x </me>
+                </p>
+              </solution>
+            </task>
+            <task>
+              <statement>
+                <p>
+                  You want to look at how changing quantity impacts the change in cost in general.  In other words, find a formula for <m>\Delta C</m> and <m>\frac{\Delta C}{\Delta x}</m> terms of an <em>unknown</em> starting quantity <m>x_1</m> and <em>unknown</em> change <m>\Delta x</m>.
+                </p>
+              </statement>
+              <solution>
+                <p>
+                  We want to find <me>\Delta C = C_2 - C_1 = C(x_2) - C(x_1)</me>.
+                  We do not know <m>x_1,x_2</m>, so we must write <me>x_2 = x_1 + \Delta x</me>
+                </p>
+                <p>
+                  We can now compute <m>C_1</m> and <m>C_2</m>
+                  <me>C_1 = C(x_1) = 0.01(x_1)^2 - x_1 + 50 </me>
+                  and 
+                  <md>
+                    <mrow>C_2 \amp = C\Big(x_1 + \Delta x\Big)</mrow>
+                    <mrow>\amp = 0.01\Big(x_1 + \Delta x\Big)^2 - \Big(x_1 + \Delta x\Big) + 50 </mrow>
+                    <mrow>\amp = 0.01\Big(x_1\cdot x_1 + 2\cdot x_1\cdot \Delta x + (\Delta x)^2\Big) - \Big(x_1 + \Delta x\Big) + 50 </mrow>
+                    <mrow>\amp = 0.01{x_1}^2 + 0.02x_1\cdot \Delta x + 0.01(\Delta x)^2 - x_1 - \Delta x + 50 </mrow>
+                  </md>
+                  We have found that 
+                  <md>
+                    <mrow>C_1 \amp = 0.01(x_1)^2 - x_1 + 50</mrow>
+                    <mrow>C_2 \amp = 0.01{x_1}^2 + 0.02x_1\cdot \Delta x + 0.01(\Delta x)^2 - x_1 - \Delta x + 50</mrow>
+                  </md>
+                  We can now compute 
+                  <md>
+                    <mrow>\Delta C \amp = C_2 - C_1 </mrow>
+                    <mrow>\amp = \Big(0.01{x_1}^2 + 0.02x_1\cdot \Delta x + 0.01(\Delta x)^2 - x_1 - \Delta x + 50   \Big) - \Big(0.01(x_1)^2 - x_1 + 50\Big)</mrow>
+                    <mrow>\Delta C \amp = 0.02x_1\cdot \Delta x + 0.01(\Delta x)^2 - \Delta x   </mrow>
+                  </md>
+                  To find <m>\frac{\Delta C}{\Delta x}</m>, we need to factor a <m>\Delta x</m> out of every term on the right, and then divide by it. 
+                  <me>\Delta C  = (\Delta x) \Big( 0.02x_1 + 0.01 \Delta x - 1\Big)  </me>
+                  <me> \dfrac{\Delta C}{\Delta x}  =  0.02x_1 + 0.01 \Delta x - 1 </me>
+                </p>
+      
+              </solution>
+            </task>
+          </exploration>
+        </section>
+      </chapter>
+      

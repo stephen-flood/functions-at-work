@@ -1,0 +1,40 @@
+I am writing a textbook, and I need vignettes that I can place at the beginning of each chapter. Use the CHAPTER below to produce these vignettes using the TASK description that follows. 
+<CHAPTER>
+</CHAPTER>
+<TASK> 
+Write **8** story-driven business vignettes in the format 
+"**<A/An>** **<Agent>** adjusts **<input with units>** by **<amount>** over **<time/context>**; **<output with units>** responds by **<pattern/amount/behavior>** — **<interpretation tag>**." 
+
+**Chapter focus/Key concepts:** 
+- Extract concepts from definitions, section headings, and the **narative** portion of examples. 
+- Concepts should be expressed ONLY in WORDS. 
+
+**Coverage & variety:** 
+- Include at least **one** vignette each for the key concepts relevant to this chapter 
+- Vary industries (retail, staffing, logistics, software, healthcare, energy, finance). 
+
+**Constraints:** 
+- Use **specific numbers and units** (e.g., “after 40 hours,” “past 50 units,” “2% per month”). 
+- Keep things **concise**: simple numbers and units, within a real-world context. 
+- Make the **applied domain** explicit or obvious (feasibility, thresholds, constraints). 
+- Keep each vignette to **1–2 sentences**, ending with a short **interpretation using mathematical language from the section**. - Keep it short and direct: ≤ 20–25 words total, avoid compound clauses. 
+- Use small, round numbers and simple units, at most one easy decimal like 0.5. 
+- Keep arithmetic obvious (e.g., $1/day for 30 days → $30). 
+
+**Output format:** 
+- Bullet list of 8 vignettes in text 
+- The same vignettes typeset in PreTeXt. Use newlines when typesetting pretext lists: Use 
+	 <ul> 
+		<li><p> ... ; \n 
+			... -- \n 
+			... \n 
+		</p></li> \n 
+	... </ul>
+
+**Example of tone (do not reuse content):** 
+- A city raises a congestion fee by $1 during rush hour; traffic volume drops until a floor where only essential trips remain — limits in every day life. 
+- A software firm increases ad spend by $500 this week; new trials rise by ~12 at the current level for an increase of about 40 dollars per trial — an everyday rate of change. 
+- A plant chooses production \(q\) under a 300-unit capacity; profit rises then falls as overtime costs kick in — use calculus to balance constraints. 
+- A fulfillment center raises pickers’ hours by 10 per day; average lead time falls sharply at first then flattens — diminishing returns and concavity in action. 
+- A utility bill includes a graph of daily use; total usage is the area under price — that's because area equals net change. 
+</TASK>

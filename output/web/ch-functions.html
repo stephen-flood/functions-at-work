@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Functions of Economics</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="og:image" content="http://webwork.bridgew.edu/oer/functions_at_work/external/logo_gpt4.png">
+<meta property="book:title" content="Functions at Work">
+<meta property="book:author" content="Stephen Flood">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link href="_static/pretext/css/pretext.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/shell_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/banner_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/toc_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/style_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
+<style>
+#to_the_student-5-2-1 { counter-set: to_the_student-5-2-1 0; }
+#to_the_student-5-2-1 > li::marker { content: ""counter(to_the_student-5-2-1,decimal)"."; }
+#to_the_student-5-2-1 > li { counter-increment: to_the_student-5-2-1; }
+#to_the_student-7-4-1 { counter-set: to_the_student-7-4-1 0; }
+#to_the_student-7-4-1 > li::marker { content: ""counter(to_the_student-7-4-1,decimal)"."; }
+#to_the_student-7-4-1 > li { counter-increment: to_the_student-7-4-1; }
+#sec-function-concepts-13-2 { counter-set: sec-function-concepts-13-2 0; }
+#sec-function-concepts-13-2 > li::marker { content: ""counter(sec-function-concepts-13-2,decimal)"."; }
+#sec-function-concepts-13-2 > li { counter-increment: sec-function-concepts-13-2; }
+#sec-changeinxy-4-1 { counter-set: sec-changeinxy-4-1 0; }
+#sec-changeinxy-4-1 > li::marker { content: ""counter(sec-changeinxy-4-1,decimal)"."; }
+#sec-changeinxy-4-1 > li { counter-increment: sec-changeinxy-4-1; }
+#sec-algebra-linear-equations-8-3 { counter-set: sec-algebra-linear-equations-8-3 0; }
+#sec-algebra-linear-equations-8-3 > li::marker { content: ""counter(sec-algebra-linear-equations-8-3,decimal)"."; }
+#sec-algebra-linear-equations-8-3 > li { counter-increment: sec-algebra-linear-equations-8-3; }
+#sec-algebra-linear-demandprice-2-1 { counter-set: sec-algebra-linear-demandprice-2-1 0; }
+#sec-algebra-linear-demandprice-2-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-2-1,decimal)"."; }
+#sec-algebra-linear-demandprice-2-1 > li { counter-increment: sec-algebra-linear-demandprice-2-1; }
+#sec-algebra-linear-demandprice-5-1 { counter-set: sec-algebra-linear-demandprice-5-1 0; }
+#sec-algebra-linear-demandprice-5-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-5-1,decimal)"."; }
+#sec-algebra-linear-demandprice-5-1 > li { counter-increment: sec-algebra-linear-demandprice-5-1; }
+#think-economically-with-units-7-1 { counter-set: think-economically-with-units-7-1 0; }
+#think-economically-with-units-7-1 > li::marker { content: ""counter(think-economically-with-units-7-1,decimal)"."; }
+#think-economically-with-units-7-1 > li { counter-increment: think-economically-with-units-7-1; }
+#sec_quadratic_functions-3-2-1 { counter-set: sec_quadratic_functions-3-2-1 0; }
+#sec_quadratic_functions-3-2-1 > li::marker { content: ""counter(sec_quadratic_functions-3-2-1,decimal)"."; }
+#sec_quadratic_functions-3-2-1 > li { counter-increment: sec_quadratic_functions-3-2-1; }
+#assemblage-continuous-inequalities-4-1 { counter-set: assemblage-continuous-inequalities-4-1 0; }
+#assemblage-continuous-inequalities-4-1 > li::marker { content: ""counter(assemblage-continuous-inequalities-4-1,decimal)"."; }
+#assemblage-continuous-inequalities-4-1 > li { counter-increment: assemblage-continuous-inequalities-4-1; }
+#sect_whatdoesrevenueteach-3-1 { counter-set: sect_whatdoesrevenueteach-3-1 0; }
+#sect_whatdoesrevenueteach-3-1 > li::marker { content: ""counter(sect_whatdoesrevenueteach-3-1,decimal)"."; }
+#sect_whatdoesrevenueteach-3-1 > li { counter-increment: sect_whatdoesrevenueteach-3-1; }
+#assemblage-rational-inequalities-4-1 { counter-set: assemblage-rational-inequalities-4-1 0; }
+#assemblage-rational-inequalities-4-1 > li::marker { content: ""counter(assemblage-rational-inequalities-4-1,decimal)"."; }
+#assemblage-rational-inequalities-4-1 > li { counter-increment: assemblage-rational-inequalities-4-1; }
+#example_interactivelimit_intuitive-3-1-1-2 { counter-set: example_interactivelimit_intuitive-3-1-1-2 0; }
+#example_interactivelimit_intuitive-3-1-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-1-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-1-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-1-1-2; }
+#example_interactivelimit_intuitive-3-2-1-2 { counter-set: example_interactivelimit_intuitive-3-2-1-2 0; }
+#example_interactivelimit_intuitive-3-2-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-2-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-2-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-2-1-2; }
+#sec-ComputingLimitsNumerically-3-3 { counter-set: sec-ComputingLimitsNumerically-3-3 0; }
+#sec-ComputingLimitsNumerically-3-3 > li::marker { content: ""counter(sec-ComputingLimitsNumerically-3-3,decimal)"."; }
+#sec-ComputingLimitsNumerically-3-3 > li { counter-increment: sec-ComputingLimitsNumerically-3-3; }
+#sec_slope-4-1-1-2-3 { counter-set: sec_slope-4-1-1-2-3 0; }
+#sec_slope-4-1-1-2-3 > li::marker { content: ""counter(sec_slope-4-1-1-2-3,decimal)"."; }
+#sec_slope-4-1-1-2-3 > li { counter-increment: sec_slope-4-1-1-2-3; }
+#assemblage-connectingslopeandtangent-2-1 { counter-set: assemblage-connectingslopeandtangent-2-1 0; }
+#assemblage-connectingslopeandtangent-2-1 > li::marker { content: ""counter(assemblage-connectingslopeandtangent-2-1,decimal)"."; }
+#assemblage-connectingslopeandtangent-2-1 > li { counter-increment: assemblage-connectingslopeandtangent-2-1; }
+#assemblage-secantlines-2-1-4-1-6 { counter-set: assemblage-secantlines-2-1-4-1-6 0; }
+#assemblage-secantlines-2-1-4-1-6 > li::marker { content: ""counter(assemblage-secantlines-2-1-4-1-6,decimal)"."; }
+#assemblage-secantlines-2-1-4-1-6 > li { counter-increment: assemblage-secantlines-2-1-4-1-6; }
+#sec_slopealgebraically-5-2 { counter-set: sec_slopealgebraically-5-2 0; }
+#sec_slopealgebraically-5-2 > li::marker { content: ""counter(sec_slopealgebraically-5-2,decimal)"."; }
+#sec_slopealgebraically-5-2 > li { counter-increment: sec_slopealgebraically-5-2; }
+#sec_basicrules1-35-2-1 { counter-set: sec_basicrules1-35-2-1 0; }
+#sec_basicrules1-35-2-1 > li::marker { content: ""counter(sec_basicrules1-35-2-1,decimal)"."; }
+#sec_basicrules1-35-2-1 > li { counter-increment: sec_basicrules1-35-2-1; }
+#sec_generalizedpowerrule-14-1 { counter-set: sec_generalizedpowerrule-14-1 0; }
+#sec_generalizedpowerrule-14-1 > li::marker { content: ""counter(sec_generalizedpowerrule-14-1,decimal)"."; }
+#sec_generalizedpowerrule-14-1 > li { counter-increment: sec_generalizedpowerrule-14-1; }
+#sec-chainrule-3-2 { counter-set: sec-chainrule-3-2 0; }
+#sec-chainrule-3-2 > li::marker { content: ""counter(sec-chainrule-3-2,decimal)"."; }
+#sec-chainrule-3-2 > li { counter-increment: sec-chainrule-3-2; }
+#sec-chainrule-13-1 { counter-set: sec-chainrule-13-1 0; }
+#sec-chainrule-13-1 > li::marker { content: ""counter(sec-chainrule-13-1,decimal)"."; }
+#sec-chainrule-13-1 > li { counter-increment: sec-chainrule-13-1; }
+#sec_understandingextrema-7-1 { counter-set: sec_understandingextrema-7-1 0; }
+#sec_understandingextrema-7-1 > li::marker { content: ""counter(sec_understandingextrema-7-1,decimal)"."; }
+#sec_understandingextrema-7-1 > li { counter-increment: sec_understandingextrema-7-1; }
+#thm-maxminonlyat-1-1-4 { counter-set: thm-maxminonlyat-1-1-4 0; }
+#thm-maxminonlyat-1-1-4 > li::marker { content: ""counter(thm-maxminonlyat-1-1-4,decimal)"."; }
+#thm-maxminonlyat-1-1-4 > li { counter-increment: thm-maxminonlyat-1-1-4; }
+#def-localmaximin-1-2 { counter-set: def-localmaximin-1-2 0; }
+#def-localmaximin-1-2 > li::marker { content: ""counter(def-localmaximin-1-2,decimal)"."; }
+#def-localmaximin-1-2 > li { counter-increment: def-localmaximin-1-2; }
+#thm-increasingfunction-1-2 { counter-set: thm-increasingfunction-1-2 0; }
+#thm-increasingfunction-1-2 > li::marker { content: ""counter(thm-increasingfunction-1-2,decimal)"."; }
+#thm-increasingfunction-1-2 > li { counter-increment: thm-increasingfunction-1-2; }
+#assemblage-maxminmethod-2-2 { counter-set: assemblage-maxminmethod-2-2 0; }
+#assemblage-maxminmethod-2-2 > li::marker { content: ""counter(assemblage-maxminmethod-2-2,decimal)"."; }
+#assemblage-maxminmethod-2-2 > li { counter-increment: assemblage-maxminmethod-2-2; }
+#thm-firstderivativetest-2-2 { counter-set: thm-firstderivativetest-2-2 0; }
+#thm-firstderivativetest-2-2 > li::marker { content: ""counter(thm-firstderivativetest-2-2,decimal)"."; }
+#thm-firstderivativetest-2-2 > li { counter-increment: thm-firstderivativetest-2-2; }
+#sec_understandingextrema-24-1 { counter-set: sec_understandingextrema-24-1 0; }
+#sec_understandingextrema-24-1 > li::marker { content: ""counter(sec_understandingextrema-24-1,decimal)"."; }
+#sec_understandingextrema-24-1 > li { counter-increment: sec_understandingextrema-24-1; }
+#assemblage-absolutemaxmin-2-4 { counter-set: assemblage-absolutemaxmin-2-4 0; }
+#assemblage-absolutemaxmin-2-4 > li::marker { content: ""counter(assemblage-absolutemaxmin-2-4,decimal)"."; }
+#assemblage-absolutemaxmin-2-4 > li { counter-increment: assemblage-absolutemaxmin-2-4; }
+#assemblage-findingconcavity-2-1 { counter-set: assemblage-findingconcavity-2-1 0; }
+#assemblage-findingconcavity-2-1 > li::marker { content: ""counter(assemblage-findingconcavity-2-1,decimal)"."; }
+#assemblage-findingconcavity-2-1 > li { counter-increment: assemblage-findingconcavity-2-1; }
+#sec_seconderivativeconcavityandchange-8-1 { counter-set: sec_seconderivativeconcavityandchange-8-1 0; }
+#sec_seconderivativeconcavityandchange-8-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-8-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-8-1 > li { counter-increment: sec_seconderivativeconcavityandchange-8-1; }
+#sec_seconderivativeconcavityandchange-12-1 { counter-set: sec_seconderivativeconcavityandchange-12-1 0; }
+#sec_seconderivativeconcavityandchange-12-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-12-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-12-1 > li { counter-increment: sec_seconderivativeconcavityandchange-12-1; }
+#sec_seconderivativeconcavityandchange-16-1 { counter-set: sec_seconderivativeconcavityandchange-16-1 0; }
+#sec_seconderivativeconcavityandchange-16-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-16-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-16-1 > li { counter-increment: sec_seconderivativeconcavityandchange-16-1; }
+#ex_antiderivative1-2-2-1-2 { counter-set: ex_antiderivative1-2-2-1-2 0; }
+#ex_antiderivative1-2-2-1-2 > li::marker { content: ""counter(ex_antiderivative1-2-2-1-2,decimal)"."; }
+#ex_antiderivative1-2-2-1-2 > li { counter-increment: ex_antiderivative1-2-2-1-2; }
+#insight_understandingintnotatino-4-1 { counter-set: insight_understandingintnotatino-4-1 0; }
+#insight_understandingintnotatino-4-1 > li::marker { content: ""counter(insight_understandingintnotatino-4-1,decimal)"."; }
+#insight_understandingintnotatino-4-1 > li { counter-increment: insight_understandingintnotatino-4-1; }
+#sec_geometricarea-5-1 { counter-set: sec_geometricarea-5-1 0; }
+#sec_geometricarea-5-1 > li::marker { content: ""counter(sec_geometricarea-5-1,decimal)"."; }
+#sec_geometricarea-5-1 > li { counter-increment: sec_geometricarea-5-1; }
+#sec_geometricarea-13-1 { counter-set: sec_geometricarea-13-1 0; }
+#sec_geometricarea-13-1 > li::marker { content: ""counter(sec_geometricarea-13-1,decimal)"."; }
+#sec_geometricarea-13-1 > li { counter-increment: sec_geometricarea-13-1; }
+#def-absolutenetarea-1-1-6 { counter-set: def-absolutenetarea-1-1-6 0; }
+#def-absolutenetarea-1-1-6 > li::marker { content: ""counter(def-absolutenetarea-1-1-6,decimal)"."; }
+#def-absolutenetarea-1-1-6 > li { counter-increment: def-absolutenetarea-1-1-6; }
+#ex_graphicalarea3-4-2-4-2 { counter-set: ex_graphicalarea3-4-2-4-2 0; }
+#ex_graphicalarea3-4-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-4-2-4-2,decimal)"."; }
+#ex_graphicalarea3-4-2-4-2 > li { counter-increment: ex_graphicalarea3-4-2-4-2; }
+#ex_graphicalarea3-5-2-4-2 { counter-set: ex_graphicalarea3-5-2-4-2 0; }
+#ex_graphicalarea3-5-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-5-2-4-2,decimal)"."; }
+#ex_graphicalarea3-5-2-4-2 > li { counter-increment: ex_graphicalarea3-5-2-4-2; }
+#sec_fundamentaltheorem-4-1 { counter-set: sec_fundamentaltheorem-4-1 0; }
+#sec_fundamentaltheorem-4-1 > li::marker { content: ""counter(sec_fundamentaltheorem-4-1,decimal)"."; }
+#sec_fundamentaltheorem-4-1 > li { counter-increment: sec_fundamentaltheorem-4-1; }
+#ex-review-distributefactor-7-2-1-1 { counter-set: ex-review-distributefactor-7-2-1-1 0; }
+#ex-review-distributefactor-7-2-1-1 > li::marker { content: ""counter(ex-review-distributefactor-7-2-1-1,decimal)"."; }
+#ex-review-distributefactor-7-2-1-1 > li { counter-increment: ex-review-distributefactor-7-2-1-1; }
+</style>
+</head>
+<body id="functions_at_work" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/logo_gpt4.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="home.html"><span class="title">Functions at Work:</span> <span class="subtitle">Business Calculus</span></a></h1>
+<p class="byline">Stephen Flood</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"></span><span class="treebuttons"><a class="previous-button button" href="part-algebra.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="part-algebra.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="ch-combiningfns.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+
+\newcommand{\red}[1]{   {\color{red}   #1}   }
+\newcommand{\blue}[1]{  {\color{blue}  #1}  }
+\newcommand{\green}[1]{ {\color{green} #1} }
+
+\newcommand{\ddx}[1]{ \dfrac{d}{dx} \Big[ #1 \Big]  } 
+\newcommand{\ddt}[1]{ \dfrac{d}{dt} \Big[ #1 \Big]  } 
+\newcommand{\ddu}[1]{ \dfrac{d}{du} \Big[ #1 \Big]  } 
+\newcommand{\ddxfrac}[1]{ \dfrac{d}{dx} \left[ #1 \right]  } 
+\newcommand{\D}[1]{ \Big[ #1 \Big]'  } 
+
+\newcommand{\intdx}[1]{{\,\int#1\,\,dx}}
+\newcommand{\dint}[1]{\displaystyle\intdx{#1}}
+
+\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 parts"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-2.html" class="internal"><span class="title">Copyright Information</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-3.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="to_the_student.html" class="internal"><span class="title">How to use this book</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part contains-active">
+<div class="toc-title-box"><a href="part-algebra.html" class="internal"><span class="codenumber">I</span> <span class="title">Algebra For Business</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter active">
+<div class="toc-title-box"><a href="ch-functions.html" class="internal"><span class="codenumber">1</span> <span class="title">Functions of Economics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-function-concepts" class="internal"><span class="codenumber">1.1</span> <span class="title">Function Concepts</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-functions-readinggraphs" class="internal"><span class="codenumber">1.2</span> <span class="title">Graphs of Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-combiningfns.html" class="internal"><span class="codenumber">2</span> <span class="title">Working with Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-combining_functions" class="internal"><span class="codenumber">2.1</span> <span class="title">Combining Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec_graphsoftotalsandchanges" class="internal"><span class="codenumber">2.2</span> <span class="title">*Graphs of Totals and Changes</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-changeinxy" class="internal"><span class="codenumber">2.3</span> <span class="title">*Connecting <span class="process-math">\(\Delta y\)</span> and <span class="process-math">\(\Delta x\)</span></span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-algebra_linearfunctions.html" class="internal"><span class="codenumber">3</span> <span class="title">Lines and Linear Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-equations" class="internal"><span class="codenumber">3.1</span> <span class="title">Finding the Equation of a Line</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-demandprice" class="internal"><span class="codenumber">3.2</span> <span class="title">Demand Price and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algeba-linear-cost" class="internal"><span class="codenumber">3.3</span> <span class="title">Item Cost, Total Cost, and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-applied_domain" class="internal"><span class="codenumber">3.4</span> <span class="title">Models and Applied Domains</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_polynomials_and_rationals.html" class="internal"><span class="codenumber">4</span> <span class="title">Polynomial and Rational Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_quadratic_functions" class="internal"><span class="codenumber">4.1</span> <span class="title">Quadratic and Polynomial Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_revenue" class="internal"><span class="codenumber">4.2</span> <span class="title">Revenue with Fair Pricing</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec-understandingprofit" class="internal"><span class="codenumber">4.3</span> <span class="title">Understanding Profit</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_rationalfns" class="internal"><span class="codenumber">4.4</span> <span class="title">Rational Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_exponentials.html" class="internal"><span class="codenumber">5</span> <span class="title">Compound Interest and Depreciation</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_introducing_exponentials" class="internal"><span class="codenumber">5.1</span> <span class="title">Exponential Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_percent_change" class="internal"><span class="codenumber">5.2</span> <span class="title">Percents and Percent Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_compound_interest" class="internal"><span class="codenumber">5.3</span> <span class="title">Compound Interest and Depreciation</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_logarithms.html" class="internal"><span class="codenumber">6</span> <span class="title">Logarithms and Solving for Time</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-inverses" class="internal"><span class="codenumber">6.1</span> <span class="title">Inverse Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_logartims" class="internal"><span class="codenumber">6.2</span> <span class="title">Logarithms Undo Exponentials</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-lawsoflogs" class="internal"><span class="codenumber">6.3</span> <span class="title">Laws of Logarithms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_solvingfortime" class="internal"><span class="codenumber">6.4</span> <span class="title">Solving Compound Interest for Time</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-logapplications" class="internal"><span class="codenumber">6.5</span> <span class="title">Applications of Logarithms</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-rates.html" class="internal"><span class="codenumber">II</span> <span class="title">Change and Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_limits.html" class="internal"><span class="codenumber">7</span> <span class="title">Limits</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec_readingdynamically" class="internal"><span class="codenumber">7.1</span> <span class="title">Reading Graphs Dynamically</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-econlimits" class="internal"><span class="codenumber">7.2</span> <span class="title">Macroeconomics and Mostly Continuous Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-ComputingLimitsNumerically" class="internal"><span class="codenumber">7.3</span> <span class="title">Computing Limits Numerically</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_totalschanges.html" class="internal"><span class="codenumber">8</span> <span class="title">Average Rates of Change</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec-AROC" class="internal"><span class="codenumber">8.1</span> <span class="title">Average Rates of Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec_graphsofrateschangesandtotals" class="internal"><span class="codenumber">8.2</span> <span class="title">Graphs of Rates, Changes, and Totals</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_totalschanges.html#sec_velocityAndIROC" class="internal"><span class="codenumber">8.3</span> <span class="title">Velocity and Instantaneous Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_totalschanges.html#subsec-speedradar" class="internal"><span class="codenumber">8.3.1</span> <span class="title">Measuring Speed with Radar</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_tangentsecant.html" class="internal"><span class="codenumber">9</span> <span class="title">Understanding Slope</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope" class="internal"><span class="codenumber">9.1</span> <span class="title">Slopes and Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope-6" class="internal"><span class="codenumber">9.1.1</span> <span class="title">Understand Rates by Studying Slopes</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_secantangent" class="internal"><span class="codenumber">9.2</span> <span class="title">Approximating Slope with Secant Lines</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slopealgebraically" class="internal"><span class="codenumber">9.3</span> <span class="title">Defining Slope Algebraically</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec-slopefunction" class="internal"><span class="codenumber">9.4</span> <span class="title">Defining a Slope Function</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#subsec-derivativenotation" class="internal"><span class="codenumber">9.4.1</span> <span class="title">Interpreting the Meaning of <span class="process-math">\(f'(x)\)</span></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_basicderivativerules.html" class="internal"><span class="codenumber">10</span> <span class="title">Slope Shortcuts for Basic Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec_basicrules1" class="internal"><span class="codenumber">10.1</span> <span class="title">Basic Derivative Rules</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec-derivativesexplog" class="internal"><span class="codenumber">10.2</span> <span class="title">Derivatives of Exponentials and Logarithms</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_marginalcost.html" class="internal"><span class="codenumber">11</span> <span class="title">Derivatives and Business</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_marginalcost.html#sec-marginalcost" class="internal"><span class="codenumber">11.1</span> <span class="title">Marginal Cost</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_productquotientrule.html" class="internal"><span class="codenumber">12</span> <span class="title">Product and Quotient Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_productrule" class="internal"><span class="codenumber">12.1</span> <span class="title">Derivatives of Products</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_quotientrule" class="internal"><span class="codenumber">12.2</span> <span class="title">Derivatives of Fractions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_chainrule.html" class="internal"><span class="codenumber">13</span> <span class="title">The Chain Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec_generalizedpowerrule" class="internal"><span class="codenumber">13.1</span> <span class="title">The Generalized Power Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-chainrule" class="internal"><span class="codenumber">13.2</span> <span class="title">The Chain Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-derivativesummary" class="internal"><span class="codenumber">13.3</span> <span class="title">List of All Derivative Rules</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-applyingslopes.html" class="internal"><span class="codenumber">III</span> <span class="title">Applying Marginals and Slopes</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-maxmin.html" class="internal"><span class="codenumber">14</span> <span class="title">Finding Maxima and Minima</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_understandingextrema" class="internal"><span class="codenumber">14.1</span> <span class="title">Finding Local Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_absolutemaxmin" class="internal"><span class="codenumber">14.2</span> <span class="title">Finding Absolute Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_maximaminimaandchangegraphs" class="internal"><span class="codenumber">14.3</span> <span class="title">Maxima, Minima, and Change Graphs</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-secondderivatives.html" class="internal"><span class="codenumber">15</span> <span class="title">Dimishing Returns and Changing Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-secondderivative" class="internal"><span class="codenumber">15.1</span> <span class="title">The Second Derivative</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-concavity" class="internal"><span class="codenumber">15.2</span> <span class="title">Concavity and Graphs</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec_seconderivativeconcavityandchange" class="internal"><span class="codenumber">15.3</span> <span class="title">The Second Derivative and Change Graphs</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-integrals.html" class="internal"><span class="codenumber">IV</span> <span class="title">Integral Calculus</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_antiderivatives.html" class="internal"><span class="codenumber">16</span> <span class="title">Antiderivatives</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec_undoingderivatives" class="internal"><span class="codenumber">16.1</span> <span class="title">Undoing Derivatives</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-indefiniteintegrals" class="internal"><span class="codenumber">16.2</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-applyingantiderivatives" class="internal"><span class="codenumber">16.3</span> <span class="title">Applying Antiderivatives</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_introducingarea.html" class="internal"><span class="codenumber">17</span> <span class="title">Understanding Areas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_indefiniteintegrals" class="internal"><span class="codenumber">17.1</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_geometricarea" class="internal"><span class="codenumber">17.2</span> <span class="title">Understanding Geometrically of Area</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_fundamentaltheorem" class="internal"><span class="codenumber">17.3</span> <span class="title">Area, Antiderivatives, and Graphs of Change</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="meta_backmatter.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="algebrareview.html" class="internal"><span class="codenumber">A</span> <span class="title">Algebra Review</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebrareview.html#sec_algebralaw" class="internal"><span class="codenumber">A.1</span> <span class="title">Laws of Algebra</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="algebrareview.html#sec-IntervalsandGraphs" class="internal"><span class="codenumber">A.2</span> <span class="title">Intervals and Graphs</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#interval-notation" class="internal"><span class="codenumber">A.2.1</span> <span class="title">Interval Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#graphs-of-common-functions" class="internal"><span class="codenumber">A.2.2</span> <span class="title">Graphs of Common Functions</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="meta_backmatter-3.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch-functions"><h2 class="heading">
+<span class="type">Chapter</span><span class="space"> </span><span class="codenumber">1</span><span class="space"> </span><span class="title">Functions of Economics</span>
+</h2>
+<section class="section" id="sec-function-concepts"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.1</span><span class="space"> </span><span class="title">Function Concepts</span>
+</h3>
+<div class="para" id="sec-function-concepts-2">In this section, we will briefly review some key function concepts.  However, our main focus will be on beginning to connect these mathematical ideas to the central economic and business concepts, applications, and examples that we will study over the course of this semester.</div>
+<article class="exploration project-like" id="ex-totalcost1"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.1</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex-totalcost1-1">
+<div class="para" id="ex-totalcost1-1-1">If you are manufacturing t-shirts, then the <em class="emphasis">total cost</em> will be a function  of the number of items you make. This is because there will be a rule which, given  of the number of items to be made (the input) tells you a unique total cost in $ (the output).</div> <div class="para" id="ex-totalcost1-1-2">If <span class="process-math">\(x\)</span> represents the number of items, we often write <span class="process-math">\(C(x)\)</span> to denote the total cost of these <span class="process-math">\(x\)</span> items.</div>
+</div>
+<article class="task exercise-like" id="ex-totalcost1-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex-totalcost1-2-1-1">Write the mathematical expression that says "the cumulative cost of making 97 items costs $350.42"</div>
+<div class="solutions"><details id="ex-totalcost1-2-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content"><div class="para" id="ex-totalcost1-2-2-1"><span class="process-math">\(C(97) = 350.42\)</span></div></div></details></div></article><article class="task exercise-like" id="ex-totalcost1-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex-totalcost1-3-1-1">Translate the statment <span class="process-math">\(C(52) = 253.19\)</span> into natural language.</div>
+<div class="solutions"><details id="ex-totalcost1-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="ex-totalcost1-3-2-1">This statement says that the cumulative cost of making 52 items is $253.19.</div></div></details></div></article><article class="task exercise-like" id="ex-totalcost1-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex-totalcost1-4-1-1">Write a mathematical expression that describes the cost of items 53-97 <em class="emphasis">only</em>.  Use the information from the previous parts to find the cost of these items.</div>
+<div class="solutions"><details id="ex-totalcost1-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex-totalcost1-4-2-1">We have seen already that <span class="process-math">\(C(97)\)</span> tells us the cost of items 0-97, and that <span class="process-math">\(C(52)\)</span> tells us the cost of items 0-52.</div> <div class="para logical" id="ex-totalcost1-4-2-2">
+<div class="para">To find the cost of <em class="emphasis">only</em> items 53-97, we must subtract the cost of items 0-52 from the cost of items 0-97. Mathematically, this is written</div>
+<div class="displaymath process-math" id="ex-totalcost1-4-2-2-2">
+\begin{align*}
+\text{Cost of items 53-97} \amp = C(97) - C(52) \\
+\amp = 350.42 - 253.19\\
+\amp = 97.23
+\end{align*}
+</div>
+<div class="para">The total cost of items 53-97 is $97.23.</div>
+</div>
+</div></details></div></article></article><div class="para" id="sec-function-concepts-4">Functions are important because they give us a single language that can describe an enormous number of different situations.</div>
+<div class="para" id="sec-function-concepts-5">The next example uses the same language of functions to describe the very different situation of a very simple investment.</div>
+<details id="example_function_notation_and_investment" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.1</span><span class="period">.</span><span class="space"> </span><span class="title">Function notation and a simple investment..</span>
+</h4></summary><article class="example example-like knowl__content"> <div class="para" id="example_function_notation_and_investment-2">You begin with $1000 in a safe, and add $365 each year, spread out evenly over the year. Furthermore, you commit to keeping this up for ten years. You want to study the value in the safe as a function of time.</div> <div class="para" id="example_function_notation_and_investment-3">To allow the amount of time to vary, we introduce an independent variable. Often, we use <span class="process-math">\(x\)</span> for the independent variable, which in this case is time. We also often use <span class="process-math">\(y\)</span> for the dependent variable, which in this case is the amount saved. Although <span class="process-math">\(x,y\)</span> are common variables, we could also have chosen other letters, such as <span class="process-math">\(v\)</span> for value and <span class="process-math">\(t\)</span> for time.</div> <div class="para logical" id="example_function_notation_and_investment-4">
+<div class="para">Putting this together, we get</div>
+<div class="displaymath process-math">
+\begin{equation*}
+y = f(x) = 1000 + 365 x \text{ for }x\text{ in } [0,10]
+\end{equation*}
+</div>
+<div class="para">Reading from left to right, this says that the output balance <span class="process-math">\(y\)</span> in $ is equal to a function of the input time <span class="process-math">\(x\text{,}\)</span> and that we will use the letter <span class="process-math">\(f\)</span> to refer this function.</div>
+</div> <div class="para" id="example_function_notation_and_investment-5">It also says that this function is defined by a <em class="emphasis">rule</em>, which says to take the number of years <span class="process-math">\(x\text{,}\)</span> to multiply that by 365, and then to add $1000.</div> <div class="para" id="example_function_notation_and_investment-6">Finally, that sentence says that this rule applies only when the input <span class="process-math">\(x\)</span> is in the closed interval <span class="process-math">\([0,10]\text{,}\)</span> which means that <span class="process-math">\(x\)</span> can be any number in the interval <span class="process-math">\(0\leq x\leq 10\text{.}\)</span> In other words, this rule specifies its <em class="alert">domain</em>.</div> <div class="para" id="example_function_notation_and_investment-7">Because our savings are spread out <em class="emphasis">evenly over the year</em>, we can find the value of our savings after “four and a half years”, as well as finding the value after three years exactly. In other words, the domain of our savings function contains decimals like <span class="process-math">\(4.5\)</span> years, as well as whole numbers like <span class="process-math">\(3\)</span> years. This even will us to find the amount in the safe after <span class="process-math">\(40\)</span> <em class="alert">days</em>.  Assuming that there are 365 days in a year, day <span class="process-math">\(40\)</span> happens at <em class="alert">year</em> <span class="process-math">\(x=\frac{40}{365}=0.1096\text{.}\)</span>
+</div></article></details><article class="exploration project-like" id="ex-savedaily"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.2</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex-savedaily-1"><div class="para" id="ex-savedaily-1-1">Suppose that you  begin with $1000 in a safe, and add $365 each year for ten years, spread out evenly over the year.</div></div>
+<article class="task exercise-like" id="ex-savedaily-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex-savedaily-2-1-1">Write the equation for the value in the safe as a function of time.</div>
+<div class="solutions"><details id="ex-savedaily-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex-savedaily-2-2-1">
+<div class="para">This problem does not specify the variables that we should use for our function.  If <span class="process-math">\(y\)</span> represents value and <span class="process-math">\(x\)</span> represents time in years, then we have the same equation tjat that we found in <a href="ch-functions.html#example_function_notation_and_investment" class="xref" data-knowl="./knowl/xref/example_function_notation_and_investment.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.1: Function notation and a simple investment.">Example 1.1</a>.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/example_function_notation_and_investment.html">
+\begin{equation*}
+y = f(x) = 1000 + 365 x \text{ for }x\text{ in } [0,10]
+\end{equation*}
+</div>
+<div class="para">If we instead used <span class="process-math">\(v\)</span> for value and <span class="process-math">\(t\)</span> for time, the equation would become</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/example_function_notation_and_investment.html">
+\begin{equation*}
+v = f(t) = 1000 + 365 t \text{ for }t\text{ in } [0,10]
+\end{equation*}
+</div>
+<div class="para">We could also use any other variables we decided were most appropriate.</div>
+</div></div></details></div></article><article class="task exercise-like" id="ex-savedaily-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex-savedaily-3-1-1">Graph the value of your savings as a function of time.</div>
+<div class="solutions"><details id="ex-savedaily-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex-savedaily-3-2-1">We are told that this rule only applies between year <span class="process-math">\(x=0\)</span> and year <span class="process-math">\(x=10\text{.}\)</span> That means that we should start our graph at <span class="process-math">\((0,f(0))\text{,}\)</span> and end it at <span class="process-math">\((10,f(10))\text{.}\)</span> In this case, the value is a linear function, so we can complete the graph by connecting these points.</div> <figure class="figure figure-like" id="fig_algebra_domainrange"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/algebra_domainrange.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">1.2<span class="period">.</span></span><span class="space"> </span></figcaption></figure>
+</div></details></div></article><article class="task exercise-like" id="ex-savedaily-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex-savedaily-4-1-1">Find the value of savings after four and a half years.</div>
+<div class="solutions"><details id="ex-savedaily-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex-savedaily-4-2-1">
+<div class="para">We know the value after <span class="process-math">\(x\)</span> years is equal to <span class="process-math">\(f(x) = 1000 + 365 x 
+\text{.}\)</span> To find the value after <span class="process-math">\(x=4.5\)</span> years, we simply compute</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(4.5) = 1000 + 365\cdot 4.5 = 2642.5\text{.}
+\end{equation*}
+</div>
+</div></div></details></div></article><article class="task exercise-like" id="ex-savedaily-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex-savedaily-5-1-1">Find the value of savings after 40 <em class="alert">days</em>.</div>
+<div class="solutions"><details id="ex-savedaily-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex-savedaily-5-2-1">We know the value after <span class="process-math">\(x\)</span> years is equal to <span class="process-math">\(f(x) = 1000 + 365 x 
+\text{.}\)</span>
+</div> <div class="para logical" id="ex-savedaily-5-2-2">
+<div class="para">To apply this rule, we must first convert 40 <em class="alert">days</em> to <em class="emphasis">years</em>.  In a standard calendar year, there are 365 days, so 1 day = 1/365 year.  So day 40 is just a little bit over 10% of a year.  More precisely, we can do a unit conversion as follows</div>
+<div class="displaymath process-math" id="ex-savedaily-5-2-2-3">
+\begin{align*}
+40\text{ days } \amp = 40 \text{ days }\cdot \frac{1 \text{ year}}{365\text{ days}} \\
+\amp = \frac{40}{365} \frac{days\cdot year}{days}\\
+\amp = \frac{40}{365} year\\
+\amp = 0.10958\dots year
+\end{align*}
+</div>
+<div class="para">We can now plug this year into our value function</div>
+<div class="displaymath process-math" id="ex-savedaily-5-2-2-4">
+\begin{align*}
+\text{value on day 40} \amp = \text{value in year }0.10958 \\
+\amp = f(0.10958) \\
+\amp = 1000 + 365\cdot 0.10958\\
+\amp = 1039.9967 
+\end{align*}
+</div>
+<div class="para">After 40 days, the value will be approximately $1040.</div>
+</div>
+</div></details></div></article></article><article class="definition definition-like" id="def-domainrange"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3</span><span class="period">.</span>
+</h4>
+<div class="para" id="def-domainrange-1-1">The <dfn class="terminology">domain</dfn> of a function is the set of inputs where the rule is defined.</div> <div class="para" id="def-domainrange-1-2">The <dfn class="terminology">range</dfn> of a function is the set of all outputs that occur.</div></article><div class="para" id="sec-function-concepts-9">In many applications, a rule only “makes sense” for specific inputs. In this case, we talk about the <dfn class="terminology">applied domain</dfn> of the function. For example, you cannot buy a negative number of items, and the price of an item cannot be negative.<details class="ptx-footnote" aria-live="polite" id="sec-function-concepts-9-3"><summary class="ptx-footnote__number" title="Footnote 1.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="sec-function-concepts-9-3">You can pay people to take an item, but in this case it is not correct to call that payment a “price”.</div></details>
+</div>
+<article class="exploration project-like" id="ex-savedaily2"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.3</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex-savedaily2-1"><div class="para" id="ex-savedaily2-1-1">This example continues <a href="ch-functions.html#ex-savedaily" class="xref" data-knowl="./knowl/xref/ex-savedaily.html" data-reveal-label="Reveal" data-close-label="Close" title="Exploration 1.2">Exploration 1.2</a>. In that example, we started with $1000 in savings and added $365 per year for 10 years, spread evenly across the whole year.</div></div>
+<article class="task exercise-like" id="ex-savedaily2-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex-savedaily2-2-1-1">Find the domain of the savings function.</div>
+<div class="solutions"><details id="ex-savedaily2-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="ex-savedaily2-2-2-1">In <a href="ch-functions.html#ex-savedaily" class="xref" data-knowl="./knowl/xref/ex-savedaily.html" data-reveal-label="Reveal" data-close-label="Close" title="Exploration 1.2">Exploration 1.2</a>, we are explicitly told that our savings function is not defined before year 0, and not defined after year 10. In other words, we are explicitly told that the domain of that function is the interval <span class="process-math">\([0,10]\text{,}\)</span> or equivalently, the set <span class="process-math">\(0\leq x \leq 10\)</span>
+</div></div></details></div></article><article class="task exercise-like" id="ex-savedaily2-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex-savedaily2-3-1-1">Find the range of the savings function.</div>
+<div class="solutions">
+<details id="ex-savedaily2-3-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content"><div class="para" id="ex-savedaily2-3-2-1">The range of the savings function is the set of all values that will occur in the account. The smallest value that will occur is $1000, and the largest value that will occur is $4,650.  That means that the <em class="emphasis">range</em> is the set of all numbers between those values.  In interval notation, this is <span class="process-math">\([1000,4650]\text{.}\)</span>
+</div></div></details><details id="ex-savedaily2-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex-savedaily2-3-3-1">The question of the range in that example is more complex. In words, a number will be in the range of our savings function if there is that amount in the safe at some year <span class="process-math">\(x\)</span> between 0 and 10.</div> <div class="para" id="ex-savedaily2-3-3-2">If you think about it, you’ll never have a value of $900 in your account since it starts at $1000 and increases. You’ll also never have  $1,000,000 in your account, since you are only adding about a dollar a day for 10 years. In other words, the numbers 900 and $1,000,000 are not in the range of our savings function.</div> <div class="para" id="ex-savedaily2-3-3-3">On the other hand, the value $1000 will definitely be in the range because you start on the first day of the first year with <span class="process-math">\(1000=f(0)\)</span> dollars in your account. And  $4,650 will be in the range because you end the 10th year with <span class="process-math">\(4650=f(10)=1000+365\cdot 10\)</span> in your account. Finally, every value between 1000 and 4650 will also be in the range, because you are continuously adding money to the account. But does that mean only the values for whole number years?  What about fractional years?   To answer that question, it helps to look at the graph of the savings function.</div> <div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/algebra_domainrange2.svg" role="img" class="contained"></div> <div class="para logical" id="ex-savedaily2-3-3-5">
+<div class="para">In the graph of our function, we see that the value is added continuously (uniformly), so all <span class="process-math">\(y\)</span> values between 1000 and 4650 can be achieved. Thus, the domain is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+1000 \leq y \leq 4650
+\end{equation*}
+</div>
+<div class="para">In interval notation, this is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+[1000,4650]
+\end{equation*}
+</div>
+</div>
+</div></details>
+</div></article></article><div class="para" id="sec-function-concepts-11">The concept of domain is very important in mathematics.  For example, there is an important difference between a function defined using a table, and a function defined using a formula. When you have a function defined using a table, the domain is restricted to the inputs given for all practical purposes. But when you have a function defined using a formula, the domain includes every input where the function is defined.</div>
+<article class="exploration project-like" id="ex_domaintablevsfmla"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.4</span><span class="period">.</span><span class="space"> </span><span class="title">Functions defined by tables and formulas.</span>
+</h4>
+<div class="introduction" id="ex_domaintablevsfmla-2"><div class="para" id="ex_domaintablevsfmla-2-1">In this example, we will look at the difference in working with the “same” function <span class="process-math">\(y = -2x + 13\)</span> numerically (when it is given by a few values in a table) and algebraically (using a formula).</div></div>
+<article class="task exercise-like" id="ex_domaintablevsfmla-3"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="introduction" id="ex_domaintablevsfmla-3-1"><div class="para" id="ex_domaintablevsfmla-3-1-1">Let <span class="process-math">\(f(x)\)</span> be defined by the following table  <div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(x\)</span></td>
+<td class="l m b0 r0 l0 t0 lines">1</td>
+<td class="l m b0 r0 l0 t0 lines">2</td>
+<td class="l m b0 r0 l0 t0 lines">3</td>
+<td class="l m b0 r0 l0 t0 lines">4</td>
+<td class="l m b0 r0 l0 t0 lines">5</td>
+<td class="l m b0 r0 l0 t0 lines">6</td>
+<td class="l m b0 r0 l0 t0 lines">7</td>
+<td class="l m b0 r0 l0 t0 lines">8</td>
+<td class="l m b0 r0 l0 t0 lines">9</td>
+<td class="l m b0 r0 l0 t0 lines">10</td>
+</tr>
+<tr>
+<td class="l m b0 r0 l0 t0 lines"><span class="process-math">\(f(x)\)</span></td>
+<td class="l m b0 r0 l0 t0 lines">11</td>
+<td class="l m b0 r0 l0 t0 lines">9</td>
+<td class="l m b0 r0 l0 t0 lines">7</td>
+<td class="l m b0 r0 l0 t0 lines">5</td>
+<td class="l m b0 r0 l0 t0 lines">3</td>
+<td class="l m b0 r0 l0 t0 lines">1</td>
+<td class="l m b0 r0 l0 t0 lines">-1</td>
+<td class="l m b0 r0 l0 t0 lines">-3</td>
+<td class="l m b0 r0 l0 t0 lines">-5</td>
+<td class="l m b0 r0 l0 t0 lines">-7</td>
+</tr>
+</table></div>
+</div></div>
+<article class="task exercise-like" id="ex_domaintablevsfmla-3-2"><h6 class="heading"><span class="codenumber">(i)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-3-2-1-1">Graph this function, and give its domain.</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-3-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_domaintablevsfmla-3-2-2-1">The only thing the problem gives us is 10 different points on the curve, one for each pair of input <span class="process-math">\(x\)</span> and output <span class="process-math">\(y\text{.}\)</span>  The best we can do with this information is to plot these points separately.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/ex_domaintablevsfmla1.svg" role="img" class="contained"></div> <div class="para" id="ex_domaintablevsfmla-3-2-2-3">The function is only defined for <span class="process-math">\(x=1,2,3,4,5,6,7,8,9,10\text{,}\)</span> so that is the domain of the function.</div>
+</div></details></div></article><article class="task exercise-like" id="ex_domaintablevsfmla-3-3"><h6 class="heading"><span class="codenumber">(ii)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-3-3-1-1">Solve the equation <span class="process-math">\(f(x)&gt;0\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-3-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_domaintablevsfmla-3-3-2-1">Look at the table for all <span class="process-math">\(x\)</span> values where the corresponding output <span class="process-math">\(y=f(x)\)</span> is greater than <span class="process-math">\(y=0\text{.}\)</span>  This is true for <span class="process-math">\(x=1,2,3,4,5,6\)</span>
+</div> <div class="para" id="ex_domaintablevsfmla-3-3-2-2">Alternatively, draw the line <span class="process-math">\(y=0\)</span> and pick the <span class="process-math">\(x\)</span> values where the dot is above the line.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/ex_domaintablevsfmla2.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_domaintablevsfmla-3-4"><h6 class="heading"><span class="codenumber">(iii)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-3-4-1-1">Evaluate <span class="process-math">\(f(z)\)</span> where <span class="process-math">\(z=3\)</span>
+</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-3-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="ex_domaintablevsfmla-3-4-2-1"><span class="process-math">\(f(3)=7\)</span></div></div></details></div></article><article class="task exercise-like" id="ex_domaintablevsfmla-3-5"><h6 class="heading"><span class="codenumber">(iv)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-3-5-1-1">Solve <span class="process-math">\(f(z)=3\)</span>
+</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-3-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="ex_domaintablevsfmla-3-5-2-1">
+<span class="process-math">\(f(5) = 3\text{,}\)</span> so the solution is <span class="process-math">\(z=5\)</span>
+</div></div></details></div></article></article><article class="task exercise-like" id="ex_domaintablevsfmla-4"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="introduction" id="ex_domaintablevsfmla-4-1"><div class="para" id="ex_domaintablevsfmla-4-1-1">Let <span class="process-math">\(f(x) = -2x +13\)</span>
+</div></div>
+<article class="task exercise-like" id="ex_domaintablevsfmla-4-2"><h6 class="heading"><span class="codenumber">(i)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-4-2-1-1">Graph this function, and give its domain.</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-4-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_domaintablevsfmla-4-2-2-1"></div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/ex_domaintablevsfmla3.svg" role="img" class="contained"></div> <div class="para logical" id="ex_domaintablevsfmla-4-2-2-3">
+<div class="para">The function is defined <em class="emphasis">at every point</em> below the curve.  That means that the function is <em class="emphasis">also</em> defined at <span class="process-math">\(x=1.2\text{,}\)</span> and at <span class="process-math">\(x=-5\text{,}\)</span> and so on. To express this, we can say in words <em class="emphasis">the domain is the set of all real numbers between <span class="process-math">\(-\infty\)</span> and <span class="process-math">\(\infty\)</span></em>, <em class="alert">including all decimal numbers in between</em>. We can also write this in interval notation by writing that the domain is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Big(-\infty, \infty\Big)
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_domaintablevsfmla-4-3"><h6 class="heading"><span class="codenumber">(ii)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-4-3-1-1">Solve the equation <span class="process-math">\(f(x)&gt;0\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-4-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_domaintablevsfmla-4-3-2-1">
+<div class="para">We can solve the inequality as follows</div>
+<div class="displaymath process-math" id="ex_domaintablevsfmla-4-3-2-1-1">
+\begin{align*}
+f(x) \amp &gt; 0 \\
+-2x + 13 \amp &gt; 0\\
+13 \amp &gt; 2x \amp \text{add } 2x\text{ to both sides} \\
+6.5 \amp &gt; x \amp \text{divide by positive 2}
+\end{align*}
+</div>
+<div class="para">We can also look at the graph of our function, draw the line <span class="process-math">\(y=0\text{,}\)</span> and take all <span class="process-math">\(x\)</span> values where the function is above the line. From the graph below, this is the set of <span class="process-math">\(x\)</span> to the left of 6.5.  In interval notation, this is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Big(-\infty, 6.5\Big)
+\end{equation*}
+</div>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/ex_domaintablevsfmla4.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_domaintablevsfmla-4-4"><h6 class="heading"><span class="codenumber">(iii)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-4-4-1-1">Evaluate <span class="process-math">\(f(z)\)</span> where <span class="process-math">\(z=3\)</span>
+</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-4-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="ex_domaintablevsfmla-4-4-2-1"><span class="process-math">\(f(3) = -2(3) + 13 = -6 + 13 = 7\)</span></div></div></details></div></article><article class="task exercise-like" id="ex_domaintablevsfmla-4-5"><h6 class="heading"><span class="codenumber">(iv)</span></h6>
+<div class="para" id="ex_domaintablevsfmla-4-5-1-1">Solve <span class="process-math">\(f(z)=3\)</span>
+</div>
+<div class="solutions"><details id="ex_domaintablevsfmla-4-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_domaintablevsfmla-4-5-2-1">
+<div class="para">Solving the equation we get</div>
+<div class="displaymath process-math" id="ex_domaintablevsfmla-4-5-2-1-1">
+\begin{align*}
+f(x) \amp = 3\\
+-2x+13\amp = 3\\
+-2x    \amp = -10\\
+x \amp = 5
+\end{align*}
+</div>
+<div class="para">We can double check this by plugging our answer back into our function and check that the output is indeed <span class="process-math">\(3\text{.}\)</span>
+</div>
+</div></div></details></div></article></article></article><div class="para logical" id="sec-function-concepts-13">
+<div class="para">There are also certain <em class="emphasis">forbidden computations</em>.</div>
+<ol class="decimal" id="sec-function-concepts-13-2">
+<li id="sec-function-concepts-13-2-1"><div class="para" id="sec-function-concepts-13-2-1-1">
+<em class="alert">Dividing by Zero:</em> For any numerator <span class="process-math">\(a\text{,}\)</span> the fraction <span class="process-math">\(\dfrac{a}{0}\)</span> is <em class="alert">undefined</em>.  We often express this by writing <span class="process-math">\(\ \dfrac{\#}{0} \quad DNE\)</span>
+</div></li>
+<li id="sec-function-concepts-13-2-2"><div class="para" id="sec-function-concepts-13-2-2-1">
+<em class="alert">Square Roots of Negative Numbers:</em> The square root of any negative number is undefined. For example, <span class="process-math">\(\ \sqrt{-1}\quad DNE\text{.}\)</span>
+</div></li>
+</ol>
+<div class="para">For the purposes of this course, a function is defined on an input as long as neither of the above computations occur.</div>
+</div>
+<article class="exploration project-like" id="ex-finddomainfromrule"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.5</span><span class="period">.</span>
+</h4>
+<article class="task exercise-like" id="ex-finddomainfromrule-1"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex-finddomainfromrule-1-1-1">Write the domain of <span class="process-math">\(f(x) = \dfrac{2}{3-x}\)</span> in interval notation.</div>
+<div class="solutions"><details id="ex-finddomainfromrule-1-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex-finddomainfromrule-1-2-1">A fraction <span class="process-math">\(\dfrac{A}{B}\)</span> is defined as long as the denominator <span class="process-math">\(B\neq 0\text{.}\)</span>
+</div> <div class="para" id="ex-finddomainfromrule-1-2-2">That means that the fraction <span class="process-math">\(\dfrac{2}{3-x}\)</span> is defined if and only if the denominator <span class="process-math">\(3-x \neq 0\text{.}\)</span>
+</div> <div class="para" id="ex-finddomainfromrule-1-2-3">Rewriting this, we see that the the fraction is defined if and only if <span class="process-math">\(3 \neq x\text{.}\)</span>
+</div> <div class="para" id="ex-finddomainfromrule-1-2-4">To write this in interval notation, draw the points where the function <em class="emphasis">is</em> defined on a number line. Use an open circle at <span class="process-math">\(x=3\)</span> to <em class="emphasis">exclude</em> that value, and draw a thick line to include all other numbers</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/img_finddomain_1.svg" role="img" class="contained"></div> <div class="para" id="ex-finddomainfromrule-1-2-6">We can now read the domain off of our number line. The function is defined on the interval <span class="process-math">\((-\infty,3)\cup(3,\infty)\)</span>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex-finddomainfromrule-2"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex-finddomainfromrule-2-1-1">Write the domain of <span class="process-math">\(g(x) = \sqrt{x}\ \)</span> in interval notation.</div>
+<div class="solutions"><details id="ex-finddomainfromrule-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex-finddomainfromrule-2-2-1">A fraction <span class="process-math">\(\sqrt{\ A\ }\)</span> is defined as long as the denominator <span class="process-math">\(A\geq 0\text{.}\)</span>
+</div> <div class="para" id="ex-finddomainfromrule-2-2-2">That means that the fraction <span class="process-math">\(\sqrt{x}\)</span> is defined if and only if the inside <span class="process-math">\(x \geq 0\text{.}\)</span>
+</div> <div class="para" id="ex-finddomainfromrule-2-2-3">To write this in interval notation, draw the points where the function <em class="emphasis">is</em> defined on a number line. Use a closed circle at <span class="process-math">\(x=0\)</span> to <em class="emphasis">include</em> that value, and draw a thick line to the right to include all positive numbers.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/img_finddomain_2.svg" role="img" class="contained"></div> <div class="para" id="ex-finddomainfromrule-2-2-5">We can now read the domain off of our number line. The function is defined on the interval <span class="process-math">\([0,\infty)\)</span>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex-finddomainfromrule-3"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex-finddomainfromrule-3-1-1">Write the domain of <span class="process-math">\(h(x) = 3x^2 - 2x + 5\ \)</span> in interval notation.</div>
+<div class="solutions"><details id="ex-finddomainfromrule-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex-finddomainfromrule-3-2-1">At first, this problem can be confusing, because it doesn’t have any fractions or roots. But actually, that makes this example very easy.</div> <div class="para" id="ex-finddomainfromrule-3-2-2">We are able to multiply, add, and subtract any real number. In other words, the function is defined for <em class="emphasis">all</em> inputs. To write this in interval notation, fill in the <em class="emphasis">entire</em> real line.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/img_finddomain_3.svg" role="img" class="contained"></div> <div class="para" id="ex-finddomainfromrule-3-2-4">We can now read the domain off of our number line. The function is defined on the interval <span class="process-math">\((-\infty,\infty)\)</span>
+</div>
+</div></details></div></article></article></section><section class="section" id="sec-functions-readinggraphs"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.2</span><span class="space"> </span><span class="title">Graphs of Functions</span>
+</h3>
+<div class="para" id="sec-functions-readinggraphs-2">Nothing is truly constant in economics, business, and life. Time and quantities change, and things like cost, revenue and profit change along with them.</div>
+<div class="para" id="sec-functions-readinggraphs-3">In terms of functions, we can say that changing the <em class="emphasis">input</em>  changes the <em class="emphasis">output</em>. On a graph, that means that moving the input <span class="process-math">\(x\)</span> left and right causes the output <span class="process-math">\(y\)</span> to go up and down.</div>
+<iframe id="sec-functions-readinggraphs-4" width="600" height="600" src="sec-functions-readinggraphs-4-if.html"></iframe><div class="instructions"><details id="sec-functions-readinggraphs-4-2" class="solution-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Instructions<span class="period">.</span></span></h4></summary><div class="solution-like knowl__content"><div class="para logical" id="sec-functions-readinggraphs-4-2-1">
+<div class="para">
+<em class="alert">Graphs show how Functions Change</em> Use the interactive graphic below to get comfortable reading graphs dynamically.</div>
+<ul class="disc" id="sec-functions-readinggraphs-4-2-1-2">
+<li id="sec-functions-readinggraphs-4-2-1-2-1"><div class="para" id="sec-functions-readinggraphs-4-2-1-2-1-1">The slider changes the input <span class="process-math">\(x\text{.}\)</span>
+</div></li>
+<li id="sec-functions-readinggraphs-4-2-1-2-2"><div class="para" id="sec-functions-readinggraphs-4-2-1-2-2-1">The graphic shows the corresponding point on the graph and output <span class="process-math">\(y\)</span> (height).</div></li>
+<li id="sec-functions-readinggraphs-4-2-1-2-3"><div class="para" id="sec-functions-readinggraphs-4-2-1-2-3-1">Move the slider back and forth. See how changing the input <span class="process-math">\(x\)</span>-value left and right forces the height (<span class="process-math">\(y\)</span>-value) to go up and down.</div></li>
+</ul>
+</div></div></details></div>
+<details id="sec-functions-readinggraphs-5" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.4</span><span class="period">.</span>
+</h4></summary><article class="example example-like knowl__content"><div class="para" id="sec-functions-readinggraphs-5-1">Here is a static version of the interactive graphic above.</div> <div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/algebra_functionsandchange.svg" role="img" class="contained"></div></article></details><div class="para" id="sec-functions-readinggraphs-6">Reading graphs dynamically will play an essential role in the course, beginning in <a href="ch_limits.html" class="internal" title="Chapter 7: Limits">Chapter 7</a>. But this skill also plays an important role in answering much more basic questions about graphs.</div>
+<article class="exploration project-like" id="ex-reading_graphs"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">1.6</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex-reading_graphs-1">
+<div class="para" id="ex-reading_graphs-1-1">The graph of a function <span class="process-math">\(f\)</span> is given below.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/algebra_readinggraphs.svg" role="img" class="contained"></div>
+</div>
+<article class="task exercise-like" id="ex-reading_graphs-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex-reading_graphs-2-1-1">Compute <span class="process-math">\(f(0)\text{,}\)</span> <span class="process-math">\(f(2)\text{,}\)</span> <span class="process-math">\(f(4)\text{,}\)</span> and <span class="process-math">\(f(5)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex-reading_graphs-2-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content"><div class="para" id="ex-reading_graphs-2-2-1">
+<span class="process-math">\(f(0)=1\text{,}\)</span> <span class="process-math">\(f(2)=4\text{,}\)</span> <span class="process-math">\(f(4)=0\text{,}\)</span> and <span class="process-math">\(f(5)=2\)</span>
+</div></div></details></div></article><article class="task exercise-like" id="ex-reading_graphs-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex-reading_graphs-3-1-1">For what <span class="process-math">\(x\)</span> is <span class="process-math">\(f(x)=2\text{?}\)</span>  For what  <span class="process-math">\(x\)</span> is <span class="process-math">\(f(x)=3\text{?}\)</span> For what  <span class="process-math">\(x\)</span> is <span class="process-math">\(f(x)=0\text{?}\)</span>
+</div>
+<div class="solutions">
+<details id="ex-reading_graphs-3-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content">
+<div class="para" id="ex-reading_graphs-3-2-1">
+<span class="process-math">\(f(x)=2\)</span> when <span class="process-math">\(x=1\)</span> or when <span class="process-math">\(x=3\)</span> or when <span class="process-math">\(x=5\text{.}\)</span>
+</div> <div class="para" id="ex-reading_graphs-3-2-2">
+<span class="process-math">\(f(x)=3\)</span> when <span class="process-math">\(x=1.5\)</span> or when <span class="process-math">\(x=2.5\text{.}\)</span>
+</div> <div class="para" id="ex-reading_graphs-3-2-3">
+<span class="process-math">\(f(x)=0\)</span> when <span class="process-math">\(x=4\text{.}\)</span>
+</div>
+</div></details><details id="ex-reading_graphs-3-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/algebra_readinggraphs_sln1.svg" role="img" class="contained"></div> <div class="para" id="ex-reading_graphs-3-3-2">Remember that the equation <span class="process-math">\(f(x)=2\)</span> means that you are looking for the <em class="emphasis">inputs</em> <span class="process-math">\(x\)</span> which correspond to an <em class="emphasis">output</em> of <span class="process-math">\(2\text{.}\)</span> Looking at the graph, we see that <span class="process-math">\(f(1)=2\)</span> and that <span class="process-math">\(f(3)=2\)</span> and that <span class="process-math">\(f(5)=2\text{.}\)</span>  That means that the solution set is <span class="process-math">\(x=1\ or\ x=3\ or\ x=5\text{.}\)</span>
+</div> <aside class="aside aside-like" id="ex-reading_graphs-3-3-3"><div class="para" id="ex-reading_graphs-3-3-3-1">
+<em class="alert">Note:</em> Endpoints require special care. In this case, there was a <em class="emphasis">filled in dot</em> at the point <span class="process-math">\((5,2)\text{,}\)</span> which means that <span class="process-math">\(f(5)\)</span> is defined and equal to 2. If there was an <em class="emphasis">open circle</em> at the point, then the function would be defined <em class="emphasis">near</em> <span class="process-math">\(x=5\text{,}\)</span> but not <em class="emphasis">at</em> <span class="process-math">\(x=5\text{.}\)</span>
+</div></aside> <div class="para" id="ex-reading_graphs-3-3-4">Similarly, solving the equation <span class="process-math">\(f(x) = 3\)</span> means finding the inputs <span class="process-math">\(x\)</span> that correspond to an output (height) <span class="process-math">\(y\)</span> of 3. Looking at the graph, we see that <span class="process-math">\(f(1.5)=3\)</span> and <span class="process-math">\(f(2.5)=3\text{.}\)</span>  That means that the solutions set is <span class="process-math">\(x=1.5\ or\ x=2.5\)</span>
+</div> <div class="para" id="ex-reading_graphs-3-3-5">Finally, solving <span class="process-math">\(f(x) = 0\)</span> means finding the inputs <span class="process-math">\(x\)</span> that have a height <span class="process-math">\(y\)</span> of zero.  Looking at the graph, this happens only for <span class="process-math">\(x=4\text{.}\)</span>
+</div>
+</div></details>
+</div></article><article class="task exercise-like" id="ex-reading_graphs-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex-reading_graphs-4-1-1">For what  <span class="process-math">\(x\)</span> is <span class="process-math">\(f(x)\lt 2\text{?}\)</span>
+</div>
+<div class="solutions">
+<details id="ex-reading_graphs-4-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content"><div class="para" id="ex-reading_graphs-4-2-1">The output of the function is <em class="emphasis">strictly less than</em> 2 on the set <span class="process-math">\([0,1)\bigcup(3,5)\text{,}\)</span> or equivalently when <span class="process-math">\(0\leq x\leq 1\ or\ 3\leq x\leq 5\text{.}\)</span>
+</div></div></details><details id="ex-reading_graphs-4-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/algebra_readinggraphs_sln2.svg" role="img" class="contained"></div> <div class="para" id="ex-reading_graphs-4-3-2">Remember that the equation <span class="process-math">\(f(x)\lt 2\)</span> means that you are looking for the <em class="emphasis">inputs</em> <span class="process-math">\(x\)</span> which correspond to an output of <em class="emphasis">strictly less than</em> <span class="process-math">\(2\text{.}\)</span> To understand this inequality, follow the graph of the function, moving through  <span class="process-math">\(x\)</span>-values from left to right.</div> <div class="para" id="ex-reading_graphs-4-3-3">Above <span class="process-math">\(x=0\text{,}\)</span> the height is <span class="process-math">\(1\)</span> which is less than <span class="process-math">\(2\text{.}\)</span> Moving right, the height of the function increases, but stays below <span class="process-math">\(2\)</span> until we reach <span class="process-math">\(x=1\text{.}\)</span> That means that the function is <em class="emphasis">less than</em> or <em class="emphasis">equal to</em> 2 on the interval <span class="process-math">\([0,1]\text{.}\)</span> But because we want the height to be <em class="emphasis">strictly less than</em> 2, we must exclude 1, giving us the interval <span class="process-math">\([0,1)\text{.}\)</span>
+</div> <div class="para" id="ex-reading_graphs-4-3-4">Similarly, the height is also less than 2 between <span class="process-math">\(x=3\)</span> and <span class="process-math">\(x=5\text{,}\)</span> and equal to 2 at those endpoints, so the function is <em class="emphasis">strictly less than</em> 2 on the interval <span class="process-math">\((3,5)\)</span>
+</div> <div class="para" id="ex-reading_graphs-4-3-5">Putting it all together, we have that <span class="process-math">\(f(x)\lt 2\)</span> on the set <span class="process-math">\([0,1)\bigcup (3,5)\text{,}\)</span> or equivalently when <span class="process-math">\(0\leq x\lt 1\ or\ 3\lt x\lt 5\text{.}\)</span>
+</div>
+</div></details>
+</div></article><article class="task exercise-like" id="ex-reading_graphs-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex-reading_graphs-5-1-1">For what  <span class="process-math">\(x\)</span> is <span class="process-math">\(f(x)\leq 3\text{?}\)</span>
+</div>
+<div class="solutions">
+<details id="ex-reading_graphs-5-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content"><div class="para" id="ex-reading_graphs-5-2-1">Remember that the equation <span class="process-math">\(f(x)\leq 2\)</span> means that you are looking for the <em class="emphasis">inputs</em> <span class="process-math">\(x\)</span> which correspond to an output of <em class="emphasis">less than</em> or <em class="emphasis">equal to</em> <span class="process-math">\(3\text{.}\)</span> This happens for values of <span class="process-math">\(x\)</span> satisfying <span class="process-math">\(0\leq x\leq 1.5\ or\ 2.5 \leq x\text{.}\)</span> In interval notation, this corresponds to the set <span class="process-math">\([0,1.5]\bigcup [2.5,5]\text{.}\)</span>
+</div></div></details><details id="ex-reading_graphs-5-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/algebra_readinggraphs_sln3.svg" role="img" class="contained"></div></div></details>
+</div></article><article class="task exercise-like" id="ex-reading_graphs-6"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" id="ex-reading_graphs-6-1-1">For what  <span class="process-math">\(x\)</span> is <span class="process-math">\(f(x)&gt;0\text{?}\)</span>
+</div>
+<div class="solutions"><details id="ex-reading_graphs-6-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content"><div class="para" id="ex-reading_graphs-6-2-1">The inequality <span class="process-math">\(f(x)\gt 0\)</span> is true for all inputs that correspond to an output that is strictly greater than 0. This is true for all values of <span class="process-math">\(x\)</span> <em class="emphasis">except</em> <span class="process-math">\(x=4\text{.}\)</span> So this is true for values of <span class="process-math">\(x\)</span> in the interval <span class="process-math">\([0,4)\bigcup(4,5]\text{.}\)</span>
+</div></div></details></div></article><article class="task exercise-like" id="ex-reading_graphs-7"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" id="ex-reading_graphs-7-1-1">What is the domain and range of <span class="process-math">\(f\text{?}\)</span>
+</div>
+<div class="solutions"><details id="ex-reading_graphs-7-2" class="answer solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Answer</span><span class="period">.</span></summary><div class="answer solution-like knowl__content">
+<div class="para" id="ex-reading_graphs-7-2-1">The domain of <span class="process-math">\(f(x)\)</span> is the set of <span class="process-math">\(x\)</span>-values where the function is defined.  In this example, the function is defined starting at <span class="process-math">\(x=0\)</span> and stopping at <span class="process-math">\(x=5\text{.}\)</span> Therefore the domain is <span class="process-math">\([0,5]\text{.}\)</span>
+</div> <div class="para" id="ex-reading_graphs-7-2-2">The range of <span class="process-math">\(f(x)\)</span> is the set of <span class="process-math">\(y\)</span>-values that are output by the function.  Looking at the function, note that you can achieve outputs as small as <span class="process-math">\(f(x)=0\)</span> (at <span class="process-math">\(x=4\)</span>) and as large as <span class="process-math">\(f(x)=4\)</span> (at <span class="process-math">\(x=2\)</span>), as well as every output between those <span class="process-math">\(y\)</span>-values. Furthermore, no larger or smaller <span class="process-math">\(y\)</span> can be achieved.  As a result, the range of the function is the interval <span class="process-math">\([0,4]\text{.}\)</span>
+</div>
+</div></details></div></article></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="part-algebra.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch-combiningfns.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="feedback-link" href="mailto:sflood@bridgew.edu?subject=TEXTBOOK%20FEEDBACK%20-%20Business%20Calculus" target="_blank">Feedback</a><a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+\hypertarget {home}{}
+\contentsline {chapter}{How to use this book}{7}{chapter*.1}%
+\contentsline {chapter}{Acknowledgements}{9}{chapter*.8}%
+\contentsline {part}{I\hspace {1em}Algebra For Business}{13}{part.10}%
+\contentsline {chapter}{\numberline {1}Functions of Economics}{15}{chapter.11}%
+\contentsline {section}{\numberline {1.1}Function Concepts}{15}{section.12}%
+\contentsline {section}{\numberline {1.2}Graphs of Functions}{25}{section.53}%
+\contentsline {chapter}{\numberline {2}Working with Functions}{29}{chapter.67}%
+\contentsline {section}{\numberline {2.1}Combining Functions}{29}{section.68}%
+\contentsline {section}{\numberline {2.2}\textasteriskcentered {}Graphs of Totals and Changes}{34}{section.88}%
+\contentsline {section}{\numberline {2.3}\textasteriskcentered {}Connecting \(\Delta y\) and \(\Delta x\)}{38}{section.100}%
+\contentsline {chapter}{\numberline {3}Lines and Linear Functions}{45}{chapter.124}%
+\contentsline {section}{\numberline {3.1}Finding the Equation of a Line}{45}{section.125}%
+\contentsline {section}{\numberline {3.2}Demand Price and Linear Functions}{49}{section.138}%
+\contentsline {section}{\numberline {3.3}Item Cost, Total Cost, and Linear Functions}{56}{section.169}%
+\contentsline {section}{\numberline {3.4}Models and Applied Domains}{63}{section.203}%
+\contentsline {chapter}{\numberline {4}Polynomial and Rational Functions}{65}{chapter.208}%
+\contentsline {section}{\numberline {4.1}Quadratic and Polynomial Functions}{65}{section.209}%
+\contentsline {section}{\numberline {4.2}Revenue with Fair Pricing}{72}{section.245}%
+\contentsline {section}{\numberline {4.3}Understanding Profit}{79}{section.272}%
+\contentsline {section}{\numberline {4.4}Rational Functions}{84}{section.293}%
+\contentsline {chapter}{\numberline {5}Compound Interest and Depreciation}{87}{chapter.301}%
+\contentsline {section}{\numberline {5.1}Exponential Functions}{87}{section.302}%
+\contentsline {section}{\numberline {5.2}Percents and Percent Change}{92}{section.317}%
+\contentsline {section}{\numberline {5.3}Compound Interest and Depreciation}{96}{section.339}%
+\contentsline {chapter}{\numberline {6}Logarithms and Solving for Time}{107}{chapter.385}%
+\contentsline {section}{\numberline {6.1}Inverse Functions}{107}{section.386}%
+\contentsline {section}{\numberline {6.2}Logarithms Undo Exponentials}{110}{section.398}%
+\contentsline {section}{\numberline {6.3}Laws of Logarithms}{114}{section.425}%
+\contentsline {section}{\numberline {6.4}Solving Compound Interest for Time}{115}{section.431}%
+\contentsline {section}{\numberline {6.5}Applications of Logarithms}{123}{section.450}%
+\contentsline {part}{II\hspace {1em}Change and Rates}{127}{part.465}%
+\contentsline {chapter}{\numberline {7}Limits}{129}{chapter.466}%
+\contentsline {section}{\numberline {7.1}Reading Graphs Dynamically}{129}{section.467}%
+\contentsline {section}{\numberline {7.2}Macroeconomics and Mostly Continuous Functions}{134}{section.496}%
+\contentsline {section}{\numberline {7.3}Computing Limits Numerically}{136}{section.504}%
+\contentsline {chapter}{\numberline {8}Average Rates of Change}{141}{chapter.519}%
+\contentsline {section}{\numberline {8.1}Average Rates of Change}{141}{section.520}%
+\contentsline {section}{\numberline {8.2}Graphs of Rates, Changes, and Totals}{144}{section.530}%
+\contentsline {section}{\numberline {8.3}Velocity and Instantaneous Rates of Change}{146}{section.541}%
+\contentsline {subsection}{\numberline {8.3.1}Measuring Speed with Radar}{147}{subsection.542}%
+\contentsline {chapter}{\numberline {9}Understanding Slope}{149}{chapter.547}%
+\contentsline {section}{\numberline {9.1}Slopes and Rates of Change}{149}{section.548}%
+\contentsline {subsection}{\numberline {9.1.1}Understand Rates by Studying Slopes}{150}{subsection.552}%
+\contentsline {section}{\numberline {9.2}Approximating Slope with Secant Lines}{156}{section.576}%
+\contentsline {section}{\numberline {9.3}Defining Slope Algebraically}{159}{section.593}%
+\contentsline {section}{\numberline {9.4}Defining a Slope Function}{162}{section.606}%
+\contentsline {subsection}{\numberline {9.4.1}Interpreting the Meaning of \(f'(x)\)}{166}{subsection.626}%
+\contentsline {chapter}{\numberline {10}Slope Shortcuts for Basic Functions}{173}{chapter.637}%
+\contentsline {section}{\numberline {10.1}Basic Derivative Rules}{174}{section.638}%
+\contentsline {section}{\numberline {10.2}Derivatives of Exponentials and Logarithms}{186}{section.680}%
+\contentsline {chapter}{\numberline {11}Derivatives and Business}{191}{chapter.697}%
+\contentsline {section}{\numberline {11.1}Marginal Cost}{191}{section.698}%
+\contentsline {chapter}{\numberline {12}Product and Quotient Rule}{197}{chapter.715}%
+\contentsline {section}{\numberline {12.1}Derivatives of Products}{197}{section.717}%
+\contentsline {section}{\numberline {12.2}Derivatives of Fractions}{202}{section.728}%
+\contentsline {chapter}{\numberline {13}The Chain Rule}{207}{chapter.739}%
+\contentsline {section}{\numberline {13.1}The Generalized Power Rule}{208}{section.741}%
+\contentsline {section}{\numberline {13.2}The Chain Rule}{213}{section.764}%
+\contentsline {section}{\numberline {13.3}List of All Derivative Rules}{218}{section.788}%
+\contentsline {part}{III\hspace {1em}Applying Marginals and Slopes}{221}{part.790}%
+\contentsline {chapter}{\numberline {14}Finding Maxima and Minima}{223}{chapter.791}%
+\contentsline {section}{\numberline {14.1}Finding Local Extrema}{223}{section.792}%
+\contentsline {section}{\numberline {14.2}Finding Absolute Extrema}{234}{section.850}%
+\contentsline {section}{\numberline {14.3}Maxima, Minima, and Change Graphs}{238}{section.869}%
+\contentsline {chapter}{\numberline {15}Dimishing Returns and Changing Rates}{241}{chapter.875}%
+\contentsline {section}{\numberline {15.1}The Second Derivative}{241}{section.876}%
+\contentsline {section}{\numberline {15.2}Concavity and Graphs}{244}{section.891}%
+\contentsline {section}{\numberline {15.3}The Second Derivative and Change Graphs}{249}{section.915}%
+\contentsline {part}{IV\hspace {1em}Integral Calculus}{253}{part.935}%
+\contentsline {chapter}{\numberline {16}Antiderivatives}{255}{chapter.936}%
+\contentsline {section}{\numberline {16.1}Undoing Derivatives}{255}{section.937}%
+\contentsline {section}{\numberline {16.2}Indefinite Integrals}{261}{section.962}%
+\contentsline {section}{\numberline {16.3}Applying Antiderivatives}{263}{section.977}%
+\contentsline {chapter}{\numberline {17}Understanding Areas}{269}{chapter.996}%
+\contentsline {section}{\numberline {17.1}Indefinite Integrals}{269}{section.997}%
+\contentsline {section}{\numberline {17.2}Understanding Geometrically of Area}{273}{section.1015}%
+\contentsline {section}{\numberline {17.3}Area, Antiderivatives, and Graphs of Change}{281}{section.1052}%
+\contentsline {chapter}{\numberline {A}Algebra Review}{289}{appendix.1065}%
+\contentsline {section}{\numberline {A.1}Laws of Algebra}{289}{section.1066}%
+\contentsline {section}{\numberline {A.2}Intervals and Graphs}{294}{section.1100}%
+\contentsline {subsection}{\numberline {A.2.1}Interval Notation}{294}{subsection.1101}%
+\contentsline {subsection}{\numberline {A.2.2}Graphs of Common Functions}{295}{subsection.1102}%
+\contentsline {part}{Back Matter}{297}{section*.1103}%
+\contentsfinish 

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<frontmatter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="frontmatter">
+  <titlepage>
+    <author>
+      <personname>Stephen Flood</personname>
+      <department>Mathematics</department>
+      <institution>Bridgewater State University</institution>
+    </author>
+    <date><today/></date>
+  </titlepage>
+
+  <colophon>
+    <title>Copyright Information</title>
+    
+    
+    <!-- <website>
+      <name><c>Gradient Grove</c></name>
+      <address>http://gradientgrove.org/stephenflood</address>
+    </website> -->
+
+    <copyright>
+      <year>2025</year>
+      <holder>Stephen Flood</holder>
+      <minilicense><image source="by-nc-sa.png" /></minilicense> 
+      <shortlicense>
+        <image source="by-nc-sa.png" width="15%"/> 
+        This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
+        To view a copy of this license, visit
+        <url 
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          visual="creativecommons.org/licenses/by-nc-sa/4.0">
+          CreativeCommons.org</url>
+      </shortlicense>
+    </copyright>
+
+  </colophon>
+
+  <dedication>
+    <p>
+      Dedicated to the champions of Open Educational Resources at Bridgewater State University and beyond, 
+      and to the developers of <pretext /> who developed and maintain the software that made this book possible. 
+    </p>
+  </dedication>
+
+  <!-- Avoid elements that should have a number  -->
+  <preface xml:id="to_the_student">
+    <title>How to use this book</title>
+    <p>
+      Welcome to Business Calculus.  
+      You are beginning an exciting adventure into a new kind of mathematics, one with more applications than you have seen in your previous courses, and one which will require new kinds of practice and problem solving. 
+    </p>
+    <p>
+      This book is the result of many years of teaching and refining this course, with a particular focus on highlighting a variety of ways that this course can be of service to you in your future studies. 
+    </p>
+    <p>
+      The large number of examples with full solutions are intended to aid you in your study of the topic.  
+    </p>
+    <paragraphs>
+      <title>The Promise of Active Reading</title>
+      <p>
+        In the online version of this book, the statement of a problem is shown, but the solution starts out hidden.  
+        When you see a question like this, 
+        <ol>
+          <li>Think about the meaning of the question.  <em>What</em> do the terms used mean?  <em>Why</em> is this question being asked.  Go back to the previous definitions and explanations to refresh yourself.
+          </li>
+          <li>Try to answer the question yourself by hand, on a piece of paper.  Do you know <em>How</em> to start?  Do you get stuck at some point?</li>
+          <li>Once you've been trying for a little bit, then look at the <em>Solution</em>.  Did you get the same answer?  What steps does the solution use?  Why does it use those steps? </li>
+        </ol> 
+      </p>
+      <p>
+        This might seem like a lot of extra work, since the solutions are already right there in the text, and you already have many other problems and assignments to get to.   
+      </p>
+      <aside>
+        <p>
+          One practical resource is <url href="https://www.amazon.com/Make-Stick-Science-Successful-Learning/dp/0674729013">Make It Stick: The Science of Successful Learning</url> by Brown et.al.
+        </p>
+      </aside>
+      <p>
+        In fact, spending time thinking and struggling is an important part of how humans learn.  This has been studied extensively in the theory of learning.  
+        The importance of thinking for yourself has also been recognized by great thinkers over thousands of years. 
+      </p>
+    </paragraphs>
+    <paragraphs>
+      <title>The Danger of Passive Reading</title>
+      <p>
+        As Arthur Melzer writes in <em>Philosophy Betwen the Lines</em>, 
+      </p>
+      <blockquote>
+        <p>
+          <q>A book is a strange and unseemly thing.  It delivers into one person's hands the distilled essence of another's thinking.</q>
+        </p>
+        <p>
+          <q>
+            The first danger of reading books is that it allows you to skip too many stages, shortcutting the proper intellectual development....
+            Before you have had a chance to face the questions and live with them a while, you have seen the answers. 
+            Books give a false sense of knowledge ... on the belief that you know what you have only read. 
+          </q>
+        </p>
+        <p>
+          <em>Philosophy Between the Lines</em>, page 211.
+        </p>
+      </blockquote>
+      <p>
+        Melzer also quotes another author (Schopenhauer) who observes that 
+      </p>
+      <blockquote>
+        <p>
+          <q>
+            When we read, another person thinks for us: we merely repeat his mental process.... So it comes that if anyone spends almost the whole day reading ... he gradually loses the capacity for thinking; just as the man who always rides, at last forgets how to walk.
+          </q>
+        </p>
+      </blockquote>
+
+      <p>So reading is pointless?</p>
+      <p>No: we learn quickly with listening and immitation.
+          But we gain the best, most durable learning (like the knowledge you will need during a test)  
+          by wrestling with questions and concepts ourselves.</p>
+
+    </paragraphs>
+    
+  
+    <paragraphs>
+      <title>Course Overview</title>
+
+      <p>
+        Mathematical knowledge has been described as <em>synthetic</em>.
+        This is both because we learn mathematics by doing, and because we must incorproate each new concept into a broader system of knowledge.
+        <fn>
+          Much more can be said about this, which gets into the broader foundations of mathematics.  You can read a little bit about this <url href="https://en.wikipedia.org/wiki/Analytic%E2%80%93synthetic_distinction">online</url>.
+        </fn> 
+      </p>
+      <p>
+        Mastery of <em>College Algebra</em>, or an equivalent class, is absolutely essential for success in this course, and <em> will be assumed throughout</em>.  
+        If you would like a brief summary of selected formluas and ideas from algebra, see <xref ref="algebrareview"/>.
+        If your algebraic skills are weaker, talk to your instructor to obtain resources for additional practice.
+      </p>
+      <p>
+        The goal of this course is to provide a first introduction to two related topics
+        <ol>
+          <li>
+            <p>
+              In <xref ref="part-algebra"/> , we will discuss a range of applications of mathematics, including algebra, to economics and business contexts.
+            </p>
+            <p>
+              Most of the mathematical techniques in this section should be familiar, although the applications will not. 
+              The main exception to this will be <xref first="ch_exponentials" last="ch_logarithms"/>, where we will introduce the mathematics of exponential and logarithmic functions in some detail. 
+            </p>
+          </li>
+          <li>
+            <p>
+              In <xref first="part-rates" last="part-integrals"/>, we will introduce and apply mathemtical techniques for studing change, rates, and area. 
+              These tools will teach us a <em>method for calculation</em> of rates and areas, and are therefore often given the name <alert>calculus</alert>.
+            </p>
+          </li>
+        </ol>
+      </p>      
+    </paragraphs>
+
+  </preface>
+
+  <acknowledgement>
+    <title>Acknowledgements</title>
+    <p>
+      This book was written during a one semester sabbatical at Bridgewater State University during the Fall of 2022, and expanded during the following few semesters.  
+      There may be a range of typographical errors, formatting issues, and so on.  
+      If you believe that you have found a mistake, or if you have just found a place where the explanations can be improved or expanded, please contact the author at <email>sflood@bridgew.edu</email>. 
+    </p>
+    <p>
+      The material on graphs of totals and changes is based on previous work in collaboration with my colleague Karen Duseau, also of Bridgewater State University, and funded by a QuAC <em>Course Development Summer Grant</em>.
+      I also learned the terminology of AROC and IROC tables from Karen Duseau.
+    </p>
+    <p>
+      To the best of my knowledge, the other examples and exposition in this book are newly written, and are based on ideas in common use.  
+      However, it is always possible that something from a textbook or other resource I have used in the past has been unintentionally incorporated in some form or another.  
+      If you believe this may have happened, please contact the author at <email>sflood@bridgew.edu</email>, and I will happily correct the oversight. 
+    </p>
+  </acknowledgement>
+
+</frontmatter>
+

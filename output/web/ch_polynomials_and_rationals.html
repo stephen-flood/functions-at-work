@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Polynomial and Rational Functions</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="og:image" content="http://webwork.bridgew.edu/oer/functions_at_work/external/logo_gpt4.png">
+<meta property="book:title" content="Functions at Work">
+<meta property="book:author" content="Stephen Flood">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><link href="_static/pretext/css/pretext_search.css" rel="stylesheet" type="text/css">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link href="_static/pretext/css/pretext.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/shell_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/banner_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/toc_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/style_default.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/setcolors.css" rel="stylesheet" type="text/css">
+<style>
+#to_the_student-5-2-1 { counter-set: to_the_student-5-2-1 0; }
+#to_the_student-5-2-1 > li::marker { content: ""counter(to_the_student-5-2-1,decimal)"."; }
+#to_the_student-5-2-1 > li { counter-increment: to_the_student-5-2-1; }
+#to_the_student-7-4-1 { counter-set: to_the_student-7-4-1 0; }
+#to_the_student-7-4-1 > li::marker { content: ""counter(to_the_student-7-4-1,decimal)"."; }
+#to_the_student-7-4-1 > li { counter-increment: to_the_student-7-4-1; }
+#sec-function-concepts-13-2 { counter-set: sec-function-concepts-13-2 0; }
+#sec-function-concepts-13-2 > li::marker { content: ""counter(sec-function-concepts-13-2,decimal)"."; }
+#sec-function-concepts-13-2 > li { counter-increment: sec-function-concepts-13-2; }
+#sec-changeinxy-4-1 { counter-set: sec-changeinxy-4-1 0; }
+#sec-changeinxy-4-1 > li::marker { content: ""counter(sec-changeinxy-4-1,decimal)"."; }
+#sec-changeinxy-4-1 > li { counter-increment: sec-changeinxy-4-1; }
+#sec-algebra-linear-equations-8-3 { counter-set: sec-algebra-linear-equations-8-3 0; }
+#sec-algebra-linear-equations-8-3 > li::marker { content: ""counter(sec-algebra-linear-equations-8-3,decimal)"."; }
+#sec-algebra-linear-equations-8-3 > li { counter-increment: sec-algebra-linear-equations-8-3; }
+#sec-algebra-linear-demandprice-2-1 { counter-set: sec-algebra-linear-demandprice-2-1 0; }
+#sec-algebra-linear-demandprice-2-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-2-1,decimal)"."; }
+#sec-algebra-linear-demandprice-2-1 > li { counter-increment: sec-algebra-linear-demandprice-2-1; }
+#sec-algebra-linear-demandprice-5-1 { counter-set: sec-algebra-linear-demandprice-5-1 0; }
+#sec-algebra-linear-demandprice-5-1 > li::marker { content: ""counter(sec-algebra-linear-demandprice-5-1,decimal)"."; }
+#sec-algebra-linear-demandprice-5-1 > li { counter-increment: sec-algebra-linear-demandprice-5-1; }
+#think-economically-with-units-7-1 { counter-set: think-economically-with-units-7-1 0; }
+#think-economically-with-units-7-1 > li::marker { content: ""counter(think-economically-with-units-7-1,decimal)"."; }
+#think-economically-with-units-7-1 > li { counter-increment: think-economically-with-units-7-1; }
+#sec_quadratic_functions-3-2-1 { counter-set: sec_quadratic_functions-3-2-1 0; }
+#sec_quadratic_functions-3-2-1 > li::marker { content: ""counter(sec_quadratic_functions-3-2-1,decimal)"."; }
+#sec_quadratic_functions-3-2-1 > li { counter-increment: sec_quadratic_functions-3-2-1; }
+#assemblage-continuous-inequalities-4-1 { counter-set: assemblage-continuous-inequalities-4-1 0; }
+#assemblage-continuous-inequalities-4-1 > li::marker { content: ""counter(assemblage-continuous-inequalities-4-1,decimal)"."; }
+#assemblage-continuous-inequalities-4-1 > li { counter-increment: assemblage-continuous-inequalities-4-1; }
+#sect_whatdoesrevenueteach-3-1 { counter-set: sect_whatdoesrevenueteach-3-1 0; }
+#sect_whatdoesrevenueteach-3-1 > li::marker { content: ""counter(sect_whatdoesrevenueteach-3-1,decimal)"."; }
+#sect_whatdoesrevenueteach-3-1 > li { counter-increment: sect_whatdoesrevenueteach-3-1; }
+#assemblage-rational-inequalities-4-1 { counter-set: assemblage-rational-inequalities-4-1 0; }
+#assemblage-rational-inequalities-4-1 > li::marker { content: ""counter(assemblage-rational-inequalities-4-1,decimal)"."; }
+#assemblage-rational-inequalities-4-1 > li { counter-increment: assemblage-rational-inequalities-4-1; }
+#example_interactivelimit_intuitive-3-1-1-2 { counter-set: example_interactivelimit_intuitive-3-1-1-2 0; }
+#example_interactivelimit_intuitive-3-1-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-1-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-1-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-1-1-2; }
+#example_interactivelimit_intuitive-3-2-1-2 { counter-set: example_interactivelimit_intuitive-3-2-1-2 0; }
+#example_interactivelimit_intuitive-3-2-1-2 > li::marker { content: ""counter(example_interactivelimit_intuitive-3-2-1-2,decimal)"."; }
+#example_interactivelimit_intuitive-3-2-1-2 > li { counter-increment: example_interactivelimit_intuitive-3-2-1-2; }
+#sec-ComputingLimitsNumerically-3-3 { counter-set: sec-ComputingLimitsNumerically-3-3 0; }
+#sec-ComputingLimitsNumerically-3-3 > li::marker { content: ""counter(sec-ComputingLimitsNumerically-3-3,decimal)"."; }
+#sec-ComputingLimitsNumerically-3-3 > li { counter-increment: sec-ComputingLimitsNumerically-3-3; }
+#sec_slope-4-1-1-2-3 { counter-set: sec_slope-4-1-1-2-3 0; }
+#sec_slope-4-1-1-2-3 > li::marker { content: ""counter(sec_slope-4-1-1-2-3,decimal)"."; }
+#sec_slope-4-1-1-2-3 > li { counter-increment: sec_slope-4-1-1-2-3; }
+#assemblage-connectingslopeandtangent-2-1 { counter-set: assemblage-connectingslopeandtangent-2-1 0; }
+#assemblage-connectingslopeandtangent-2-1 > li::marker { content: ""counter(assemblage-connectingslopeandtangent-2-1,decimal)"."; }
+#assemblage-connectingslopeandtangent-2-1 > li { counter-increment: assemblage-connectingslopeandtangent-2-1; }
+#assemblage-secantlines-2-1-4-1-6 { counter-set: assemblage-secantlines-2-1-4-1-6 0; }
+#assemblage-secantlines-2-1-4-1-6 > li::marker { content: ""counter(assemblage-secantlines-2-1-4-1-6,decimal)"."; }
+#assemblage-secantlines-2-1-4-1-6 > li { counter-increment: assemblage-secantlines-2-1-4-1-6; }
+#sec_slopealgebraically-5-2 { counter-set: sec_slopealgebraically-5-2 0; }
+#sec_slopealgebraically-5-2 > li::marker { content: ""counter(sec_slopealgebraically-5-2,decimal)"."; }
+#sec_slopealgebraically-5-2 > li { counter-increment: sec_slopealgebraically-5-2; }
+#sec_basicrules1-35-2-1 { counter-set: sec_basicrules1-35-2-1 0; }
+#sec_basicrules1-35-2-1 > li::marker { content: ""counter(sec_basicrules1-35-2-1,decimal)"."; }
+#sec_basicrules1-35-2-1 > li { counter-increment: sec_basicrules1-35-2-1; }
+#sec_generalizedpowerrule-14-1 { counter-set: sec_generalizedpowerrule-14-1 0; }
+#sec_generalizedpowerrule-14-1 > li::marker { content: ""counter(sec_generalizedpowerrule-14-1,decimal)"."; }
+#sec_generalizedpowerrule-14-1 > li { counter-increment: sec_generalizedpowerrule-14-1; }
+#sec-chainrule-3-2 { counter-set: sec-chainrule-3-2 0; }
+#sec-chainrule-3-2 > li::marker { content: ""counter(sec-chainrule-3-2,decimal)"."; }
+#sec-chainrule-3-2 > li { counter-increment: sec-chainrule-3-2; }
+#sec-chainrule-13-1 { counter-set: sec-chainrule-13-1 0; }
+#sec-chainrule-13-1 > li::marker { content: ""counter(sec-chainrule-13-1,decimal)"."; }
+#sec-chainrule-13-1 > li { counter-increment: sec-chainrule-13-1; }
+#sec_understandingextrema-7-1 { counter-set: sec_understandingextrema-7-1 0; }
+#sec_understandingextrema-7-1 > li::marker { content: ""counter(sec_understandingextrema-7-1,decimal)"."; }
+#sec_understandingextrema-7-1 > li { counter-increment: sec_understandingextrema-7-1; }
+#thm-maxminonlyat-1-1-4 { counter-set: thm-maxminonlyat-1-1-4 0; }
+#thm-maxminonlyat-1-1-4 > li::marker { content: ""counter(thm-maxminonlyat-1-1-4,decimal)"."; }
+#thm-maxminonlyat-1-1-4 > li { counter-increment: thm-maxminonlyat-1-1-4; }
+#def-localmaximin-1-2 { counter-set: def-localmaximin-1-2 0; }
+#def-localmaximin-1-2 > li::marker { content: ""counter(def-localmaximin-1-2,decimal)"."; }
+#def-localmaximin-1-2 > li { counter-increment: def-localmaximin-1-2; }
+#thm-increasingfunction-1-2 { counter-set: thm-increasingfunction-1-2 0; }
+#thm-increasingfunction-1-2 > li::marker { content: ""counter(thm-increasingfunction-1-2,decimal)"."; }
+#thm-increasingfunction-1-2 > li { counter-increment: thm-increasingfunction-1-2; }
+#assemblage-maxminmethod-2-2 { counter-set: assemblage-maxminmethod-2-2 0; }
+#assemblage-maxminmethod-2-2 > li::marker { content: ""counter(assemblage-maxminmethod-2-2,decimal)"."; }
+#assemblage-maxminmethod-2-2 > li { counter-increment: assemblage-maxminmethod-2-2; }
+#thm-firstderivativetest-2-2 { counter-set: thm-firstderivativetest-2-2 0; }
+#thm-firstderivativetest-2-2 > li::marker { content: ""counter(thm-firstderivativetest-2-2,decimal)"."; }
+#thm-firstderivativetest-2-2 > li { counter-increment: thm-firstderivativetest-2-2; }
+#sec_understandingextrema-24-1 { counter-set: sec_understandingextrema-24-1 0; }
+#sec_understandingextrema-24-1 > li::marker { content: ""counter(sec_understandingextrema-24-1,decimal)"."; }
+#sec_understandingextrema-24-1 > li { counter-increment: sec_understandingextrema-24-1; }
+#assemblage-absolutemaxmin-2-4 { counter-set: assemblage-absolutemaxmin-2-4 0; }
+#assemblage-absolutemaxmin-2-4 > li::marker { content: ""counter(assemblage-absolutemaxmin-2-4,decimal)"."; }
+#assemblage-absolutemaxmin-2-4 > li { counter-increment: assemblage-absolutemaxmin-2-4; }
+#assemblage-findingconcavity-2-1 { counter-set: assemblage-findingconcavity-2-1 0; }
+#assemblage-findingconcavity-2-1 > li::marker { content: ""counter(assemblage-findingconcavity-2-1,decimal)"."; }
+#assemblage-findingconcavity-2-1 > li { counter-increment: assemblage-findingconcavity-2-1; }
+#sec_seconderivativeconcavityandchange-8-1 { counter-set: sec_seconderivativeconcavityandchange-8-1 0; }
+#sec_seconderivativeconcavityandchange-8-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-8-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-8-1 > li { counter-increment: sec_seconderivativeconcavityandchange-8-1; }
+#sec_seconderivativeconcavityandchange-12-1 { counter-set: sec_seconderivativeconcavityandchange-12-1 0; }
+#sec_seconderivativeconcavityandchange-12-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-12-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-12-1 > li { counter-increment: sec_seconderivativeconcavityandchange-12-1; }
+#sec_seconderivativeconcavityandchange-16-1 { counter-set: sec_seconderivativeconcavityandchange-16-1 0; }
+#sec_seconderivativeconcavityandchange-16-1 > li::marker { content: ""counter(sec_seconderivativeconcavityandchange-16-1,decimal)"."; }
+#sec_seconderivativeconcavityandchange-16-1 > li { counter-increment: sec_seconderivativeconcavityandchange-16-1; }
+#ex_antiderivative1-2-2-1-2 { counter-set: ex_antiderivative1-2-2-1-2 0; }
+#ex_antiderivative1-2-2-1-2 > li::marker { content: ""counter(ex_antiderivative1-2-2-1-2,decimal)"."; }
+#ex_antiderivative1-2-2-1-2 > li { counter-increment: ex_antiderivative1-2-2-1-2; }
+#insight_understandingintnotatino-4-1 { counter-set: insight_understandingintnotatino-4-1 0; }
+#insight_understandingintnotatino-4-1 > li::marker { content: ""counter(insight_understandingintnotatino-4-1,decimal)"."; }
+#insight_understandingintnotatino-4-1 > li { counter-increment: insight_understandingintnotatino-4-1; }
+#sec_geometricarea-5-1 { counter-set: sec_geometricarea-5-1 0; }
+#sec_geometricarea-5-1 > li::marker { content: ""counter(sec_geometricarea-5-1,decimal)"."; }
+#sec_geometricarea-5-1 > li { counter-increment: sec_geometricarea-5-1; }
+#sec_geometricarea-13-1 { counter-set: sec_geometricarea-13-1 0; }
+#sec_geometricarea-13-1 > li::marker { content: ""counter(sec_geometricarea-13-1,decimal)"."; }
+#sec_geometricarea-13-1 > li { counter-increment: sec_geometricarea-13-1; }
+#def-absolutenetarea-1-1-6 { counter-set: def-absolutenetarea-1-1-6 0; }
+#def-absolutenetarea-1-1-6 > li::marker { content: ""counter(def-absolutenetarea-1-1-6,decimal)"."; }
+#def-absolutenetarea-1-1-6 > li { counter-increment: def-absolutenetarea-1-1-6; }
+#ex_graphicalarea3-4-2-4-2 { counter-set: ex_graphicalarea3-4-2-4-2 0; }
+#ex_graphicalarea3-4-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-4-2-4-2,decimal)"."; }
+#ex_graphicalarea3-4-2-4-2 > li { counter-increment: ex_graphicalarea3-4-2-4-2; }
+#ex_graphicalarea3-5-2-4-2 { counter-set: ex_graphicalarea3-5-2-4-2 0; }
+#ex_graphicalarea3-5-2-4-2 > li::marker { content: ""counter(ex_graphicalarea3-5-2-4-2,decimal)"."; }
+#ex_graphicalarea3-5-2-4-2 > li { counter-increment: ex_graphicalarea3-5-2-4-2; }
+#sec_fundamentaltheorem-4-1 { counter-set: sec_fundamentaltheorem-4-1 0; }
+#sec_fundamentaltheorem-4-1 > li::marker { content: ""counter(sec_fundamentaltheorem-4-1,decimal)"."; }
+#sec_fundamentaltheorem-4-1 > li { counter-increment: sec_fundamentaltheorem-4-1; }
+#ex-review-distributefactor-7-2-1-1 { counter-set: ex-review-distributefactor-7-2-1-1 0; }
+#ex-review-distributefactor-7-2-1-1 > li::marker { content: ""counter(ex-review-distributefactor-7-2-1-1,decimal)"."; }
+#ex-review-distributefactor-7-2-1-1 > li { counter-increment: ex-review-distributefactor-7-2-1-1; }
+</style>
+</head>
+<body id="functions_at_work" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/logo_gpt4.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="home.html"><span class="title">Functions at Work:</span> <span class="subtitle">Business Calculus</span></a></h1>
+<p class="byline">Stephen Flood</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"></span><span class="treebuttons"><a class="previous-button button" href="ch-algebra_linearfunctions.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="part-algebra.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="ch_exponentials.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+
+\newcommand{\red}[1]{   {\color{red}   #1}   }
+\newcommand{\blue}[1]{  {\color{blue}  #1}  }
+\newcommand{\green}[1]{ {\color{green} #1} }
+
+\newcommand{\ddx}[1]{ \dfrac{d}{dx} \Big[ #1 \Big]  } 
+\newcommand{\ddt}[1]{ \dfrac{d}{dt} \Big[ #1 \Big]  } 
+\newcommand{\ddu}[1]{ \dfrac{d}{du} \Big[ #1 \Big]  } 
+\newcommand{\ddxfrac}[1]{ \dfrac{d}{dx} \left[ #1 \right]  } 
+\newcommand{\D}[1]{ \Big[ #1 \Big]'  } 
+
+\newcommand{\intdx}[1]{{\,\int#1\,\,dx}}
+\newcommand{\dint}[1]{\displaystyle\intdx{#1}}
+
+\def \tikzhistogram (#1,#2){\draw[fill=blue,opacity=0.3] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \draw[draw,thick] ({#1+((\xtwo-\xmin)/5)},#2) rectangle ({#1-((\xtwo-\xmin)/5)},0); \node[draw,fill=blue, circle,inner sep=2.5pt] at (#1,#2) {};}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth3 parts"><ul class="structural contains-active toc-item-list">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-2.html" class="internal"><span class="title">Copyright Information</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-3.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="to_the_student.html" class="internal"><span class="title">How to use this book</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-part contains-active">
+<div class="toc-title-box"><a href="part-algebra.html" class="internal"><span class="codenumber">I</span> <span class="title">Algebra For Business</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-functions.html" class="internal"><span class="codenumber">1</span> <span class="title">Functions of Economics</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-function-concepts" class="internal"><span class="codenumber">1.1</span> <span class="title">Function Concepts</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-functions.html#sec-functions-readinggraphs" class="internal"><span class="codenumber">1.2</span> <span class="title">Graphs of Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-combiningfns.html" class="internal"><span class="codenumber">2</span> <span class="title">Working with Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-combining_functions" class="internal"><span class="codenumber">2.1</span> <span class="title">Combining Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec_graphsoftotalsandchanges" class="internal"><span class="codenumber">2.2</span> <span class="title">*Graphs of Totals and Changes</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-combiningfns.html#sec-changeinxy" class="internal"><span class="codenumber">2.3</span> <span class="title">*Connecting <span class="process-math">\(\Delta y\)</span> and <span class="process-math">\(\Delta x\)</span></span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-algebra_linearfunctions.html" class="internal"><span class="codenumber">3</span> <span class="title">Lines and Linear Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-equations" class="internal"><span class="codenumber">3.1</span> <span class="title">Finding the Equation of a Line</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algebra-linear-demandprice" class="internal"><span class="codenumber">3.2</span> <span class="title">Demand Price and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-algeba-linear-cost" class="internal"><span class="codenumber">3.3</span> <span class="title">Item Cost, Total Cost, and Linear Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-algebra_linearfunctions.html#sec-applied_domain" class="internal"><span class="codenumber">3.4</span> <span class="title">Models and Applied Domains</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter active">
+<div class="toc-title-box"><a href="ch_polynomials_and_rationals.html" class="internal"><span class="codenumber">4</span> <span class="title">Polynomial and Rational Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_quadratic_functions" class="internal"><span class="codenumber">4.1</span> <span class="title">Quadratic and Polynomial Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_revenue" class="internal"><span class="codenumber">4.2</span> <span class="title">Revenue with Fair Pricing</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec-understandingprofit" class="internal"><span class="codenumber">4.3</span> <span class="title">Understanding Profit</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_polynomials_and_rationals.html#sec_rationalfns" class="internal"><span class="codenumber">4.4</span> <span class="title">Rational Functions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_exponentials.html" class="internal"><span class="codenumber">5</span> <span class="title">Compound Interest and Depreciation</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_introducing_exponentials" class="internal"><span class="codenumber">5.1</span> <span class="title">Exponential Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_percent_change" class="internal"><span class="codenumber">5.2</span> <span class="title">Percents and Percent Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_exponentials.html#sec_compound_interest" class="internal"><span class="codenumber">5.3</span> <span class="title">Compound Interest and Depreciation</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_logarithms.html" class="internal"><span class="codenumber">6</span> <span class="title">Logarithms and Solving for Time</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-inverses" class="internal"><span class="codenumber">6.1</span> <span class="title">Inverse Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_logartims" class="internal"><span class="codenumber">6.2</span> <span class="title">Logarithms Undo Exponentials</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-lawsoflogs" class="internal"><span class="codenumber">6.3</span> <span class="title">Laws of Logarithms</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec_solvingfortime" class="internal"><span class="codenumber">6.4</span> <span class="title">Solving Compound Interest for Time</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_logarithms.html#sec-logapplications" class="internal"><span class="codenumber">6.5</span> <span class="title">Applications of Logarithms</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-rates.html" class="internal"><span class="codenumber">II</span> <span class="title">Change and Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_limits.html" class="internal"><span class="codenumber">7</span> <span class="title">Limits</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec_readingdynamically" class="internal"><span class="codenumber">7.1</span> <span class="title">Reading Graphs Dynamically</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-econlimits" class="internal"><span class="codenumber">7.2</span> <span class="title">Macroeconomics and Mostly Continuous Functions</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_limits.html#sec-ComputingLimitsNumerically" class="internal"><span class="codenumber">7.3</span> <span class="title">Computing Limits Numerically</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_totalschanges.html" class="internal"><span class="codenumber">8</span> <span class="title">Average Rates of Change</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec-AROC" class="internal"><span class="codenumber">8.1</span> <span class="title">Average Rates of Change</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_totalschanges.html#sec_graphsofrateschangesandtotals" class="internal"><span class="codenumber">8.2</span> <span class="title">Graphs of Rates, Changes, and Totals</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_totalschanges.html#sec_velocityAndIROC" class="internal"><span class="codenumber">8.3</span> <span class="title">Velocity and Instantaneous Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_totalschanges.html#subsec-speedradar" class="internal"><span class="codenumber">8.3.1</span> <span class="title">Measuring Speed with Radar</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_tangentsecant.html" class="internal"><span class="codenumber">9</span> <span class="title">Understanding Slope</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope" class="internal"><span class="codenumber">9.1</span> <span class="title">Slopes and Rates of Change</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slope-6" class="internal"><span class="codenumber">9.1.1</span> <span class="title">Understand Rates by Studying Slopes</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_secantangent" class="internal"><span class="codenumber">9.2</span> <span class="title">Approximating Slope with Secant Lines</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_tangentsecant.html#sec_slopealgebraically" class="internal"><span class="codenumber">9.3</span> <span class="title">Defining Slope Algebraically</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="ch_tangentsecant.html#sec-slopefunction" class="internal"><span class="codenumber">9.4</span> <span class="title">Defining a Slope Function</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="ch_tangentsecant.html#subsec-derivativenotation" class="internal"><span class="codenumber">9.4.1</span> <span class="title">Interpreting the Meaning of <span class="process-math">\(f'(x)\)</span></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_basicderivativerules.html" class="internal"><span class="codenumber">10</span> <span class="title">Slope Shortcuts for Basic Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec_basicrules1" class="internal"><span class="codenumber">10.1</span> <span class="title">Basic Derivative Rules</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_basicderivativerules.html#sec-derivativesexplog" class="internal"><span class="codenumber">10.2</span> <span class="title">Derivatives of Exponentials and Logarithms</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_marginalcost.html" class="internal"><span class="codenumber">11</span> <span class="title">Derivatives and Business</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_marginalcost.html#sec-marginalcost" class="internal"><span class="codenumber">11.1</span> <span class="title">Marginal Cost</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_productquotientrule.html" class="internal"><span class="codenumber">12</span> <span class="title">Product and Quotient Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_productrule" class="internal"><span class="codenumber">12.1</span> <span class="title">Derivatives of Products</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_productquotientrule.html#sec_quotientrule" class="internal"><span class="codenumber">12.2</span> <span class="title">Derivatives of Fractions</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_chainrule.html" class="internal"><span class="codenumber">13</span> <span class="title">The Chain Rule</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec_generalizedpowerrule" class="internal"><span class="codenumber">13.1</span> <span class="title">The Generalized Power Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-chainrule" class="internal"><span class="codenumber">13.2</span> <span class="title">The Chain Rule</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_chainrule.html#sec-derivativesummary" class="internal"><span class="codenumber">13.3</span> <span class="title">List of All Derivative Rules</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-applyingslopes.html" class="internal"><span class="codenumber">III</span> <span class="title">Applying Marginals and Slopes</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-maxmin.html" class="internal"><span class="codenumber">14</span> <span class="title">Finding Maxima and Minima</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_understandingextrema" class="internal"><span class="codenumber">14.1</span> <span class="title">Finding Local Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_absolutemaxmin" class="internal"><span class="codenumber">14.2</span> <span class="title">Finding Absolute Extrema</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-maxmin.html#sec_maximaminimaandchangegraphs" class="internal"><span class="codenumber">14.3</span> <span class="title">Maxima, Minima, and Change Graphs</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch-secondderivatives.html" class="internal"><span class="codenumber">15</span> <span class="title">Dimishing Returns and Changing Rates</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-secondderivative" class="internal"><span class="codenumber">15.1</span> <span class="title">The Second Derivative</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec-concavity" class="internal"><span class="codenumber">15.2</span> <span class="title">Concavity and Graphs</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch-secondderivatives.html#sec_seconderivativeconcavityandchange" class="internal"><span class="codenumber">15.3</span> <span class="title">The Second Derivative and Change Graphs</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-part">
+<div class="toc-title-box"><a href="part-integrals.html" class="internal"><span class="codenumber">IV</span> <span class="title">Integral Calculus</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_antiderivatives.html" class="internal"><span class="codenumber">16</span> <span class="title">Antiderivatives</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec_undoingderivatives" class="internal"><span class="codenumber">16.1</span> <span class="title">Undoing Derivatives</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-indefiniteintegrals" class="internal"><span class="codenumber">16.2</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_antiderivatives.html#sec-applyingantiderivatives" class="internal"><span class="codenumber">16.3</span> <span class="title">Applying Antiderivatives</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="ch_introducingarea.html" class="internal"><span class="codenumber">17</span> <span class="title">Understanding Areas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_indefiniteintegrals" class="internal"><span class="codenumber">17.1</span> <span class="title">Indefinite Integrals</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_geometricarea" class="internal"><span class="codenumber">17.2</span> <span class="title">Understanding Geometrically of Area</span></a></div></li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="ch_introducingarea.html#sec_fundamentaltheorem" class="internal"><span class="codenumber">17.3</span> <span class="title">Area, Antiderivatives, and Graphs of Change</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="meta_backmatter.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix">
+<div class="toc-title-box"><a href="algebrareview.html" class="internal"><span class="codenumber">A</span> <span class="title">Algebra Review</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="algebrareview.html#sec_algebralaw" class="internal"><span class="codenumber">A.1</span> <span class="title">Laws of Algebra</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="algebrareview.html#sec-IntervalsandGraphs" class="internal"><span class="codenumber">A.2</span> <span class="title">Intervals and Graphs</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#interval-notation" class="internal"><span class="codenumber">A.2.1</span> <span class="title">Interval Notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="algebrareview.html#graphs-of-common-functions" class="internal"><span class="codenumber">A.2.2</span> <span class="title">Graphs of Common Functions</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="meta_backmatter-3.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="chapter" id="ch_polynomials_and_rationals"><h2 class="heading">
+<span class="type">Chapter</span><span class="space"> </span><span class="codenumber">4</span><span class="space"> </span><span class="title">Polynomial and Rational Functions</span>
+</h2>
+<section class="introduction" id="ch_polynomials_and_rationals-2"><div class="para" id="ch_polynomials_and_rationals-2-1">In the previous sections, we have discussed the mathematics of lines, and applications to item price and total cost functions. But linear functions are not powerful enough to model other important concepts, such as <em class="emphasis">revenue</em> and <em class="emphasis">profit</em>. Before we introduce these concepts, we first breifly review quadratic and polynoimal functions.</div> <div class="para" id="ch_polynomials_and_rationals-2-2">The concepts in this and the previous chapter are inter-related in complex ways.  The following diagram summarizes the relationships between the main concepts in this section and the preceeding section.  Refer back to this diagram from time to time to help organize your thoughts.</div> <div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/image_conceptmap_pricerevenuecostprofit.svg" role="img" class="contained"></div></section><section class="section" id="sec_quadratic_functions"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">4.1</span><span class="space"> </span><span class="title">Quadratic and Polynomial Functions</span>
+</h3>
+<article class="definition definition-like" id="def-monomial"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-monomial-1-1"><ul class="disc" id="def-monomial-1-1-1">
+<li id="def-monomial-1-1-1-1"><div class="para" id="def-monomial-1-1-1-1-1">A <dfn class="terminology">monomial</dfn> with variable <span class="process-math">\(x\)</span> is some number times a power of <span class="process-math">\(x\text{.}\)</span>
+</div></li>
+<li id="def-monomial-1-1-1-2"><div class="para" id="def-monomial-1-1-1-2-1">A <dfn class="terminology">polynomial</dfn> is a sum of monomials with positive integer powers.  The <dfn class="terminology">degree</dfn> of a polynomial is the largest power that occurs.</div></li>
+<li id="def-monomial-1-1-1-3"><div class="para" id="def-monomial-1-1-1-3-1">A <dfn class="terminology">quadratic</dfn> function is a polynomial with maximum degree 2.</div></li>
+</ul></div></article><details id="sec_quadratic_functions-3" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.2</span><span class="period">.</span><span class="space"> </span><span class="title">Basic polynomial terms.</span>
+</h4></summary><article class="example example-like knowl__content"> <div class="para logical" id="sec_quadratic_functions-3-2"><ol class="decimal" id="sec_quadratic_functions-3-2-1">
+<li id="sec_quadratic_functions-3-2-1-1"><div class="para" id="sec_quadratic_functions-3-2-1-1-1">
+<span class="process-math">\(3x^2\)</span> is a monomial of degree 2.</div></li>
+<li id="sec_quadratic_functions-3-2-1-2"><div class="para" id="sec_quadratic_functions-3-2-1-2-1">
+<span class="process-math">\(0.1 x^4\)</span> is a monomial of degree 4.</div></li>
+<li id="sec_quadratic_functions-3-2-1-3"><div class="para" id="sec_quadratic_functions-3-2-1-3-1">
+<span class="process-math">\(3x^7 - 2.5 x^1 + 3\)</span> is a polynomial of degree 7.</div></li>
+<li id="sec_quadratic_functions-3-2-1-4"><div class="para" id="sec_quadratic_functions-3-2-1-4-1">
+<span class="process-math">\(-0.4x^2 + 10.2 x + 15\)</span> is a quadratic function.</div></li>
+</ol></div></article></details><article class="definition definition-like" id="def-roots"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.3</span><span class="period">.</span>
+</h4>
+<div class="para" id="def-roots-1-1">Let <span class="process-math">\(f(x)\)</span> be any function. The <dfn class="terminology">roots</dfn> of <span class="process-math">\(f(x)\)</span> are those inputs <span class="process-math">\(x\)</span> such <span class="process-math">\(f(x) = 0\text{.}\)</span>  Graphically, the roots of a function are the <span class="process-math">\(x\)</span>-values where the function intersects the <span class="process-math">\(x\)</span>-axis, and are also called the function’s <dfn class="terminology"><span class="process-math">\(x\)</span>-intercepts</dfn>.</div></article><article class="proposition theorem-like" id="prop-quadraticroot"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">4.4</span><span class="period">.</span><span class="space"> </span><span class="title">The Quadratic Formula.</span>
+</h4>
+<div class="para logical" id="prop-quadraticroot-2-1">
+<div class="para">If <span class="process-math">\(a,b,c\)</span> are real numbers, then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+a x^2 + b x + c = 0 \text{ if and only if } x = \dfrac{-b\pm \sqrt{b^2-4ac}}{2a} 
+\end{equation*}
+</div>
+</div> <div class="para" id="prop-quadraticroot-2-2">In particular, if  <span class="process-math">\(f(x) = a x^2 + b x + c\)</span> is any quadratic function, the roots of <span class="process-math">\(f\)</span> can be found using the quadratic formula.</div></article><div class="para" id="sec_quadratic_functions-6">The shape of the quadratic is determined by the leading coefficient <span class="process-math">\(a\text{.}\)</span> The curve opens up if <span class="process-math">\(a\gt 0\text{,}\)</span> and the curve opens down if <span class="process-math">\(a\lt 0\text{.}\)</span>
+</div>
+<details id="eg_polynomialoptions" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.5</span><span class="period">.</span><span class="space"> </span><span class="title">Quadratics can open up or down.</span>
+</h4></summary><article class="example example-like knowl__content"> <div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/img_quadraticshape.svg" role="img" class="contained"></div></article></details><article class="definition definition-like" id="def-vertex"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.6</span><span class="period">.</span>
+</h4>
+<div class="para" id="def-vertex-1-1">The <dfn class="terminology">vertex</dfn> of a quadratic is the point in the middle of the curve about which the curve is symmetric. If <span class="process-math">\(a\gt 0\text{,}\)</span> it is the point on the curve with the <em class="emphasis">smallest</em> <span class="process-math">\(y\)</span>-value If <span class="process-math">\(a\lt 0\text{,}\)</span> it is the point on the curve with the <em class="emphasis">largest</em> <span class="process-math">\(y\)</span>-value.</div></article><div class="para" id="sec_quadratic_functions-9">If the quadratic function has vertex <span class="process-math">\((h,k)\text{,}\)</span> the biggest or smallest <em class="emphasis">output</em> will be <span class="process-math">\(y=k\text{.}\)</span>  This extreme output will occur when the <em class="emphasis">input</em> is <span class="process-math">\(x=h\text{.}\)</span>
+</div>
+<figure class="figure figure-like" id="fig_quadraticfeatures"><div class="image-box" style="width: 40%; margin-left: 30%; margin-right: 30%;"><img src="generated/latex-image/img_quadraticfeatures.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">4.7<span class="period">.</span></span><span class="space"> </span>Features of a Quadratic Function</figcaption></figure><details id="sec_quadratic_functions-11" class="example example-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.8</span><span class="period">.</span><span class="space"> </span><span class="title">Vertices can be maxima or minima.</span>
+</h4></summary><article class="example example-like knowl__content"> <div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/img_quadraticvertex.svg" role="img" class="contained"></div></article></details><div class="para" id="sec_quadratic_functions-12">Most quadratics that we see in this course will pass through the <span class="process-math">\(x-axis\text{.}\)</span>  In this case, there are two ways to find the vertex of a quadratic.  One is easier to remember, and one is easier to use.</div>
+<div class="para" id="sec_quadratic_functions-13">Notice that <em class="emphasis">quadratic</em> functions have a perfect reflection symmetry through the vertex <span class="process-math">\((h,k)\text{.}\)</span> That means that the vertex is <em class="emphasis">half way between</em> the two roots, or equivalently the vertice’s <span class="process-math">\(x\)</span>-value <span class="process-math">\(h\)</span> is the <em class="emphasis">average of the roots</em> of the function (if they exist).</div>
+<div class="para" id="sec_quadratic_functions-14">That means you can find the <span class="process-math">\(x\)</span>-value of a vertex, denoted <span class="process-math">\(h\text{,}\)</span> by first finding the roots (using the quadratic equation), and then by averaging them. To find the <span class="process-math">\(y\)</span>-value of the vertex, plug <span class="process-math">\(h\)</span> into the equation for the quadratic.  In other words, <span class="process-math">\(k=f(h)\text{.}\)</span>
+</div>
+<div class="para" id="sec_quadratic_functions-15">There is also a shortcut for finding the <span class="process-math">\(x\)</span>-value of a vertex.</div>
+<article class="proposition theorem-like" id="prop-quadraticvertex"><h4 class="heading">
+<span class="type">Proposition</span><span class="space"> </span><span class="codenumber">4.9</span><span class="period">.</span>
+</h4>
+<div class="para" id="prop-quadraticvertex-1-1">Suppose that <span class="process-math">\(f(x)=ax^2+ bx + c\)</span> is a quadratic function.  Then the vertex is located at the point <span class="process-math">\((h,k)\)</span> with <span class="process-math">\(x\)</span>-value <span class="process-math">\(h=\dfrac{-b}{2a}\)</span> is the average of the <span class="process-math">\(x\)</span>-intercepts, and <span class="process-math">\(y\)</span>-value <span class="process-math">\(k = f(h)\text{,}\)</span> which is equal to <span class="process-math">\(k=c-\dfrac{b^2}{4a}\text{.}\)</span>
+</div></article><details id="prop-quadraticvertex-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="prop-quadraticvertex-2-1">We have already noticed that <span class="process-math">\(h\)</span> is the average of the roots by the symmetry of the quadratic function.</div> <div class="para logical" id="prop-quadraticvertex-2-2">
+<div class="para">Recall also that the <em class="emphasis">roots</em> of the function <span class="process-math">\(f(x)=ax^2+ bx + c\)</span> are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x_1 = \dfrac{-b + \sqrt{b^2 - 4ac}}{2a}= \dfrac{-b}{2a} + \dfrac{\sqrt{b^2 - 4ac}}{2a} 
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x_2 = \dfrac{-b - \sqrt{b^2 - 4ac}}{2a}= \dfrac{-b}{2a} - \dfrac{\sqrt{b^2 - 4ac}}{2a} \text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="prop-quadraticvertex-2-3">
+<div class="para">To find the average of those roots, simply compute</div>
+<div class="displaymath process-math" id="prop-quadraticvertex-2-3-1">
+\begin{align*}
+h  \amp =  \frac{1}{2} (x_1 + x_2) \\
+\amp = \frac{1}{2} \left( \dfrac{-b}{2a} + \dfrac{\sqrt{b^2 - 4ac}}{2a} + \dfrac{-b}{2a} - \dfrac{\sqrt{b^2 - 4ac}}{2a} \right)  \\
+\amp = \frac{1}{2} \left( \dfrac{-b}{2a}  + \dfrac{-b}{2a} + \dfrac{\sqrt{b^2 - 4ac}}{2a} - \dfrac{\sqrt{b^2 - 4ac}}{2a} \right)  \\
+\amp = \frac{1}{2} \left( \dfrac{-b}{2a}  + \dfrac{-b}{2a} + 0 \right)\\
+\amp = \frac{1}{2} \left( \dfrac{-2b}{2a}\right)\\
+h \amp = \frac{-b}{2a}
+\end{align*}
+</div>
+</div> <div class="para logical" id="prop-quadraticvertex-2-4">
+<div class="para">To find the <span class="process-math">\(y\)</span>-value of the vertex, simply plug <span class="process-math">\(h=\frac{-b}{2a}\)</span> into the original function <span class="process-math">\(f(x)=ax^2 + bx + c\text{.}\)</span>  That gives</div>
+<div class="displaymath process-math" id="prop-quadraticvertex-2-4-4">
+\begin{align*}
+k \amp = f(h) = f\left(\dfrac{-b}{2a}\right)\\
+\amp = a \left(\dfrac{-b}{2a}\right)^2 + b\left(\dfrac{-b}{2a}\right) + c \\
+\amp =  a \left(\dfrac{b^2}{4a^2}\right) + b\left(\dfrac{-b}{2a}\right) + c\\
+\amp = \dfrac{a b^2}{4a^2}  + \dfrac{-b^2}{2a} + c\\
+\amp = \dfrac{b^2}{4a}  + \dfrac{-b^2}{2a} + c\\
+\amp = \dfrac{b^2}{4a}  + \dfrac{-2b^2}{4a} + c\\
+k \amp = \dfrac{-b^2}{4a} + c = c - \dfrac{-b^2}{4a}
+\end{align*}
+</div>
+</div></article></details><article class="assemblage assemblage-like" id="assemblage-quadratics"><h4 class="heading"><span class="title">Quadratic Functions.</span></h4>
+<div class="para logical" id="assemblage-quadratics-2"><ul class="disc" id="assemblage-quadratics-2-1">
+<li id="assemblage-quadratics-2-1-1"><div class="para" id="assemblage-quadratics-2-1-1-1">Have the form <span class="process-math">\(f(x) = ax^2 + bx + c\)</span>
+</div></li>
+<li id="assemblage-quadratics-2-1-2"><div class="para" id="assemblage-quadratics-2-1-2-1">The curve opens up if <span class="process-math">\(a&gt;0\text{,}\)</span> and the curve opens down if <span class="process-math">\(a&lt;0\text{.}\)</span>
+</div></li>
+<li id="assemblage-quadratics-2-1-3"><div class="para logical" id="assemblage-quadratics-2-1-3-1">
+<div class="para">You can find the <span class="process-math">\(x\)</span>-intercepts using the quadratic formula:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = 0\text{ if and only if }x = \dfrac{-b\pm \sqrt{b^2-4ac}}{2a}
+\end{equation*}
+</div>
+</div></li>
+<li id="assemblage-quadratics-2-1-4"><div class="para" id="assemblage-quadratics-2-1-4-1">The vertex is located at <span class="process-math">\((h,k)\)</span> <span class="process-math">\(\phantom{.}\)</span> where <span class="process-math">\(h=\frac{-b}{2a}\)</span> is the average of the <span class="process-math">\(x\)</span>-intercepts, and <span class="process-math">\(k = f(h)\text{.}\)</span>
+</div></li>
+<li id="assemblage-quadratics-2-1-5"><div class="para" id="assemblage-quadratics-2-1-5-1">The max/min <em class="emphasis">output</em> is <span class="process-math">\(k\text{,}\)</span> and occurs when the <em class="emphasis">input</em> is <span class="process-math">\(h\text{.}\)</span>
+</div></li>
+<li id="assemblage-quadratics-2-1-6"><div class="para" id="assemblage-quadratics-2-1-6-1">You can visualize <em class="emphasis">any</em> quadratic as a cup that opens up (if <span class="process-math">\(a \gt 0\)</span>) or opens down (if <span class="process-math">\(a \lt 0\)</span>).</div></li>
+<li id="assemblage-quadratics-2-1-7"><div class="para" id="assemblage-quadratics-2-1-7-1">You can find the <span class="process-math">\(y\)</span>-intercept by evaluating <span class="process-math">\(f\)</span> at <span class="process-math">\(0\text{.}\)</span>  In other words, the <span class="process-math">\(y\)</span>-intercept is <span class="process-math">\(y=f(0)\)</span>
+</div></li>
+</ul></div></article><div class="para" id="sec_quadratic_functions-18">To solve polynomial inequalities, start with a sketch of the function. The key idea is that <em class="emphasis">any</em> quadratic looks like one of the two examples from <a href="ch_polynomials_and_rationals.html#eg_polynomialoptions" class="xref" data-knowl="./knowl/xref/eg_polynomialoptions.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 4.5: Quadratics can open up or down">Example 4.5</a>.  Then, use the formulas above to fill in <span class="process-math">\(x\)</span>-intercepts and the coordinate of the vertex.  Finally, use your sketch to answer the question.</div>
+<article class="exploration project-like" id="ex_analyze_polynomial"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">4.1</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_analyze_polynomial-1"><div class="para" id="ex_analyze_polynomial-1-1">Let <span class="process-math">\(f(x)=-x^2 + 3x -2 \text{.}\)</span>
+</div></div>
+<article class="task exercise-like" id="ex_analyze_polynomial-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_analyze_polynomial-2-1-1">Solve <span class="process-math">\(f(x) =0\)</span>
+</div>
+<div class="solutions"><details id="ex_analyze_polynomial-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_analyze_polynomial-2-2-1">We must solve the equation <span class="process-math">\(-x^2 + 3x -2 = 0\text{.}\)</span> We can do this by factoring, or by using the quadratic equation.</div> <div class="para" id="ex_analyze_polynomial-2-2-2">Using the quadratic equation <span class="process-math">\(x = \dfrac{-3 \pm \sqrt{3^2 - 4\cdot (-1) \cdot (-2)}}{2\cdot(-1)}\text{,}\)</span> we get that <span class="process-math">\(x=1\)</span> or <span class="process-math">\(x=2\text{.}\)</span>
+</div> <div class="para logical" id="ex_analyze_polynomial-2-2-3">
+<div class="para">We will evenutally need to solve equations by factoring, so this is a good time to start practicing.  We will rewrite the equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+-x^2 + 3x -2 = 0 \text{.}
+\end{equation*}
+</div>
+<div class="para">It is easiest to factor when the leading term is just  <span class="process-math">\(x^2\text{.}\)</span>  Here, the leading coefficient is <span class="process-math">\(-1\text{,}\)</span> so we should divide each term on the left by <span class="process-math">\(-1\text{.}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(-1)\cdot \Big(\frac{-1}{-1}x^2 + \frac{3}{-1}x -\frac{2}{-1}\Big) = 0 
+\end{equation*}
+</div>
+<div class="para">Essentially, we are "un-distributing" the leading term of <span class="process-math">\(-1\text{.}\)</span>  Simplifying the equation down, we now get</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(-1)\cdot \Big(x^2 -3 x +2 \Big) = 0 
+\end{equation*}
+</div>
+<div class="para">Now we can factor the quadratic inside.  We want to find some numbers <span class="process-math">\(d_1,d_2\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x^2 - 3x + 2 = (x+d_1)(x+d_2) = x^2 + (d_1+d_2)x + d_1\cdot d_2\text{.}
+\end{equation*}
+</div>
+<div class="para">In other words, we want numbers that add to <span class="process-math">\(-3\)</span> and multiply to positive <span class="process-math">\(2\text{.}\)</span>  Trying <span class="process-math">\(d_1=-1\)</span> and <span class="process-math">\(d_2=-2\text{,}\)</span> we get <span class="process-math">\(-1+-2=-3\)</span> and <span class="process-math">\((-1)(-2)=2\)</span> as desired.  That means we can rewrite our original equation as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(-1)\cdot \Big(x-1\Big)\Big(x-2\Big) = 0 
+\end{equation*}
+</div>
+<div class="para">But the product of two numbers can only equal zero if the individual numbers are zero.  That means that the equation is equivalent to <em class="emphasis">either</em> having <span class="process-math">\(x-1=0\)</span> <em class="emphasis">or</em> having <span class="process-math">\(x-2=0\text{.}\)</span>
+</div>
+</div> <div class="para" id="ex_analyze_polynomial-2-2-4">In other words, this is equivalent to having <span class="process-math">\(x=1\)</span> or <span class="process-math">\(x=2\text{,}\)</span> which are the two <span class="process-math">\(x\)</span>-intercepts of our quadratic.</div>
+</div></details></div></article><article class="task exercise-like" id="ex_analyze_polynomial-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_analyze_polynomial-3-1-1">Find the vertex of <span class="process-math">\(f(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_analyze_polynomial-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_analyze_polynomial-3-2-1">Remember that there  are two ways to find the <span class="process-math">\(x\)</span>-value of the vertex.</div> <div class="para logical" id="ex_analyze_polynomial-3-2-2">
+<div class="para">Because the vertex is the average of the roots, and because we have already found that the roots are <span class="process-math">\(x=1\)</span> and <span class="process-math">\(x=2\text{,}\)</span> the vertex has <span class="process-math">\(x\)</span>-value</div>
+<div class="displaymath process-math">
+\begin{equation*}
+h=\dfrac{1+2}{2} = 1.5\text{.}
+\end{equation*}
+</div>
+</div> <div class="para" id="ex_analyze_polynomial-3-2-3">On the other hand, for <em class="emphasis">quadratics only</em>, we have a nice formula, that <span class="process-math">\(h=\dfrac{-b}{2a} = \dfrac{-3}{2\cdot (-1)}= 1.5\)</span>
+</div> <div class="para logical" id="ex_analyze_polynomial-3-2-4">
+<div class="para">To find the <span class="process-math">\(y\)</span>-value of the vertex <span class="process-math">\(k\text{,}\)</span> just compute <span class="process-math">\(k = f(h) \)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+k = -(1.5)^2 + 3(1.5) - 2 = 0.25
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_analyze_polynomial-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_analyze_polynomial-4-1-1">Sketch a graph of <span class="process-math">\(f(x)\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_analyze_polynomial-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_analyze_polynomial-4-2-1">Recall that the shape of a quadratic depends only on the coefficient <span class="process-math">\(a\)</span>	of <span class="process-math">\(x^2\text{.}\)</span>  Because <span class="process-math">\(a=-1\lt 0\text{,}\)</span> the graph of the function is a parabola that opens down.</div> <div class="para" id="ex_analyze_polynomial-4-2-2">We have also already found the <span class="process-math">\(x\)</span>-intercepts <span class="process-math">\(x=1\)</span> and <span class="process-math">\(x=2\)</span> and the vertex <span class="process-math">\((1.5,0.25)\text{.}\)</span>  Putting this all together we get the following picture:</div> <div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/img-quadexplore-1.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_analyze_polynomial-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex_analyze_polynomial-5-1-1">Solve the inequality <span class="process-math">\(f(x)&gt;0\text{.}\)</span>
+</div>
+<div class="solutions"><details id="ex_analyze_polynomial-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_analyze_polynomial-5-2-1">To solve this inequality, we first need the graph from the previous step.  Notice that solving the equation <span class="process-math">\(f(x)\gt 0\)</span> is the same thing as looking for the <em class="emphasis">values of <span class="process-math">\(x\)</span> which result in a height of greater than <span class="process-math">\(0\)</span></em>. Let’s look at what this means on the picture:</div> <div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/latex-image/img-quadexplore-2.svg" role="img" class="contained"></div> <div class="para" id="ex_analyze_polynomial-5-2-3">We can see that the function outputs values <em class="emphasis">strictly</em> greater than <span class="process-math">\(0\)</span> if and only if <span class="process-math">\(1\lt x\lt 2\text{,}\)</span> which corresponds to the interval <span class="process-math">\((1,2)\)</span>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_analyze_polynomial-6"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" id="ex_analyze_polynomial-6-1-1">Find the maximum <span class="process-math">\(y\)</span>-value that the function achieves.  At what <span class="process-math">\(x-\)</span>value does the function achieve this output?</div>
+<div class="solutions"><details id="ex_analyze_polynomial-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_analyze_polynomial-6-2-1">Again, the key is to look at the sketch of the function.  Because the coefficient <span class="process-math">\(a\)</span> of <span class="process-math">\(x^2\)</span> is negative, the curve opens down, and the largest <span class="process-math">\(y\)</span> output occurs at the vertex.  We have already shown that the vertex is <span class="process-math">\((1.5,0.25)\text{.}\)</span>
+</div> <div class="para" id="ex_analyze_polynomial-6-2-2">That means a maximum output of <span class="process-math">\(y=0.25\)</span> occurs at the <span class="process-math">\(x\)</span>-value <span class="process-math">\(x=1.5\text{.}\)</span>
+</div>
+</div></details></div></article></article><div class="para" id="sec_quadratic_functions-20">In the previous example, we have seen a technique that we will use in a variety of contexts during this course.</div>
+<article class="assemblage assemblage-like" id="assemblage-continuous-inequalities"><h4 class="heading"><span class="title">Solving Inequalities of Continuous Functions.</span></h4>
+<div class="para" id="assemblage-continuous-inequalities-2">Suppose that <span class="process-math">\(f(x)\)</span> is <em class="emphasis">any</em> function.</div>
+<div class="para" id="assemblage-continuous-inequalities-3">To solve an inequality such as  <span class="process-math">\(f(x) \gt 0\text{,}\)</span> or <span class="process-math">\(f(x) \lt 0\text{,}\)</span> follow the following steps:</div>
+<div class="para logical" id="assemblage-continuous-inequalities-4"><ol class="decimal" id="assemblage-continuous-inequalities-4-1">
+<li id="assemblage-continuous-inequalities-4-1-1"><div class="para" id="assemblage-continuous-inequalities-4-1-1-1">Solve the inequality <span class="process-math">\(f(x) = 0\text{.}\)</span>
+</div></li>
+<li id="assemblage-continuous-inequalities-4-1-2"><div class="para" id="assemblage-continuous-inequalities-4-1-2-1">Draw a number line, and label the <span class="process-math">\(x\)</span>-values where the solutions occur.</div></li>
+<li id="assemblage-continuous-inequalities-4-1-3">
+<div class="para" id="assemblage-continuous-inequalities-4-1-3-1">Notice that you have divided the <span class="process-math">\(x\)</span>-axis into several different intervals. Now, look at <em class="emphasis">each interval</em> separately.</div>
+<div class="para" id="assemblage-continuous-inequalities-4-1-3-2">For each interval, use a graph, a calculator, or some other technique to decide whether the inequality is true or false on that interval.</div>
+</li>
+<li id="assemblage-continuous-inequalities-4-1-4"><div class="para" id="assemblage-continuous-inequalities-4-1-4-1">Write your final answer down in interval notation, <em class="emphasis">excluding</em> the endpoints (using parentheses).</div></li>
+</ol></div>
+<div class="para" id="assemblage-continuous-inequalities-5">To solve an inequality like <span class="process-math">\(f(x)\geq 0\)</span> or <span class="process-math">\(f(x)\leq 0\text{,}\)</span> repeat the same steps but <em class="emphasis">include</em> the endpoints (using square brackets).</div></article></section><section class="section" id="sec_revenue"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">4.2</span><span class="space"> </span><span class="title">Revenue with Fair Pricing</span>
+</h3>
+<article class="definition definition-like" id="def-revenue"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.10</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-revenue-1-1">
+<div class="para">
+<dfn class="terminology">Revenue</dfn> is the total amount of money you take in from selling a number of items. In this class, we’ll focus on fair pricing - where <em class="emphasis">everything</em> is sold at the same unit price. In this case, we have a simple equation:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)
+\end{equation*}
+</div>
+</div></article><article class="exploration project-like" id="explore_revenuefromprofit"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">4.2</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="explore_revenuefromprofit-1"><div class="para" id="explore_revenuefromprofit-1-1">In a certain market, you will sell 15 items when the item price is 4 $/item, and you will sell 20 items when the item price is 2 $/item.</div></div>
+<article class="task exercise-like" id="explore_revenuefromprofit-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="explore_revenuefromprofit-2-1-1">Find the Revenue in the scenerio (possible universe) where you sell 15 items.</div>
+<div class="solutions"><details id="explore_revenuefromprofit-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="explore_revenuefromprofit-2-2-1">To find revenue, we need to apply <a href="ch_polynomials_and_rationals.html#def-revenue" class="xref" data-knowl="./knowl/xref/def-revenue.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 4.10">Definition 4.10</a>.  That means we need to multiply quantity and price.</div> <div class="para" id="explore_revenuefromprofit-2-2-2">In the scenario (possible universe) where we sell 15 items at 4$/item, our total revenue will be <span class="process-math">\(R(15) = 15\cdot 4 = 60\$\text{.}\)</span>
+</div>
+</div></details></div></article><article class="task exercise-like" id="explore_revenuefromprofit-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="explore_revenuefromprofit-3-1-1">Find the Revenue in the scenerio (possible universe) where you sell 20 items.</div>
+<div class="solutions"><details id="explore_revenuefromprofit-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="explore_revenuefromprofit-3-2-1">Again, we must use <a href="ch_polynomials_and_rationals.html#def-revenue" class="xref" data-knowl="./knowl/xref/def-revenue.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 4.10">Definition 4.10</a>.</div> <div class="para" id="explore_revenuefromprofit-3-2-2">In the scenario where we sell 20 items at 2$/item, our total revenue will be <span class="process-math">\(R(20) = 20\cdot 2 = 40\$\text{.}\)</span>
+</div>
+</div></details></div></article><article class="task exercise-like" id="explore_revenuefromprofit-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="explore_revenuefromprofit-4-1-1">But there are infinitely many possible universes <span class="process-math">\(x\)</span> that we need to compare! When the universe depends on the number of items <span class="process-math">\(x\)</span> sold, we often call <span class="process-math">\(x\)</span> the <em class="emphasis">quantity</em>.</div> <div class="para" id="explore_revenuefromprofit-4-1-2">Find a formula that you the revenue <span class="process-math">\(R(x)\)</span> as a function of the number of items <span class="process-math">\(x\)</span> to be sold.</div>
+<div class="solutions"><details id="explore_revenuefromprofit-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="explore_revenuefromprofit-4-2-1">
+<div class="para">To find revenue, we need to apply <a href="ch_polynomials_and_rationals.html#def-revenue" class="xref" data-knowl="./knowl/xref/def-revenue.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 4.10">Definition 4.10</a>.  That means we need to multiply quantity and price.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-revenue.html">
+\begin{equation*}
+\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)
+\end{equation*}
+</div>
+</div> <div class="para" id="explore_revenuefromprofit-4-2-2">In this question, we are told to use <span class="process-math">\(x\)</span> to represent the <em class="emphasis">quantity</em>, or number of items.</div> <div class="para" id="explore_revenuefromprofit-4-2-3">We must also find the <em class="emphasis">price</em> as a function of <span class="process-math">\(x\text{.}\)</span> In fact, we have already done that for <em class="alert">exactly these numbers</em> in the solution to <a href="ch-algebra_linearfunctions.html#explore_pricefn1" class="xref" data-knowl="./knowl/xref/explore_pricefn1.html" data-reveal-label="Reveal" data-close-label="Close" title="Exploration 3.5">Exploration 3.5</a>.</div> <div class="para" id="explore_revenuefromprofit-4-2-4">In that example, we used the point-slope form of the line to show that the <em class="emphasis">item price</em> function is  <span class="process-math">\(p = -0.4 x + 10\text{.}\)</span>
+</div> <div class="para logical" id="explore_revenuefromprofit-4-2-5">
+<div class="para">But we need to find the <em class="emphasis">Revenue</em>, plugging in the above values into the equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="explore_revenuefromprofit-4-2-6">
+<div class="para">That means that in any universe <span class="process-math">\(x\text{,}\)</span> the total revenue will be given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}
+R(x)  &amp;=  \Big(\text{price}\Big) \cdot \Big(\text{quantity}\Big) \\
+&amp;=  \Big(p(x) \Big) \cdot \Big(x\Big) \\
+&amp;=  \Big(-0.4 x + 10\Big)\cdot \Big(x\Big) \\ 
+&amp;=  -0.4x^2 + 10x\end{aligned}
+\end{equation*}
+</div>
+</div>
+</div></details></div></article></article><div class="para" id="sec_revenue-4">Once you have found a revenue function, you can answer a range of questions by translating the question into a more familiar algebraic question.</div>
+<article class="exploration project-like" id="explore_analyzerevenue1"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">4.3</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="explore_analyzerevenue1-1"><div class="para" id="explore_analyzerevenue1-1-1">Suppose that the revenue of in the scenario where <span class="process-math">\(x\)</span> items are sold is given by the function <span class="process-math">\(R(x) = -0.4x^2 + 10x\)</span>
+</div></div>
+<article class="task exercise-like" id="explore_analyzerevenue1-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="explore_analyzerevenue1-2-1-1">Find the scenarios (quantities <span class="process-math">\(x\)</span>) where you make no revenue.</div>
+<div class="solutions"><details id="explore_analyzerevenue1-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="explore_analyzerevenue1-2-2-1">
+<div class="para">Solve</div>
+<div class="displaymath process-math">
+\begin{equation*}
+0 = R(x) = -0.4x^2 +10x 
+\end{equation*}
+</div>
+</div> <div class="para logical" id="explore_analyzerevenue1-2-2-2">
+<div class="para">There are several ways to solve this equation.</div>
+<dl class="description-list">
+<dt id="explore_analyzerevenue1-2-2-2-1-1">Quadratic Equation</dt>
+<dd><div class="para logical" id="explore_analyzerevenue1-2-2-2-1-1-2">
+<div class="para">Use the quadratic equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x = \dfrac{-b \pm \sqrt{b^2 - 4 a c}}{2a}
+\end{equation*}
+</div>
+<div class="para">with <span class="process-math">\(a=-0.4\text{,}\)</span> <span class="process-math">\(b=10\text{,}\)</span> and <span class="process-math">\(c=0\)</span>
+</div>
+</div></dd>
+<dt id="explore_analyzerevenue1-2-2-2-1-2">Solving by Factoring</dt>
+<dd>
+<div class="para logical" id="explore_analyzerevenue1-2-2-2-1-2-2">
+<div class="para">We know that a product <span class="process-math">\(a\cdot b= 0\)</span> if and only if <span class="process-math">\(a=0\)</span> or <span class="process-math">\(b=0\text{.}\)</span> So to solve the equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+-0.4x^2 + 10x = 0
+\end{equation*}
+</div>
+<div class="para">since we have 0 on the right, we should try factoring the left side. Because both terms have an <span class="process-math">\(x\text{,}\)</span> we can factor <span class="process-math">\(x\)</span> out of both terms.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x\cdot (-0.4x + 10 ) = 0
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="explore_analyzerevenue1-2-2-2-1-2-3">
+<div class="para">This product can equal zero if and only if <em class="emphasis">either</em>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x=0
+\end{equation*}
+</div>
+<div class="para"><em class="emphasis">or</em></div>
+<div class="displaymath process-math">
+\begin{equation*}
+-0.4x + 10 = 0\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" id="explore_analyzerevenue1-2-2-2-1-2-4">There are two quantities where revenue equals zero.  The first point is <span class="process-math">\(x=0\)</span>
+</div>
+<div class="para logical" id="explore_analyzerevenue1-2-2-2-1-2-5">
+<div class="para">To find the second point, solve the second equation for <span class="process-math">\(x\)</span>
+</div>
+<div class="displaymath process-math" id="explore_analyzerevenue1-2-2-2-1-2-5-2">
+\begin{align*}
+-0.4x \amp + 10 \amp = \amp 0  \\
+\amp - 10 \amp \amp - 10 \\
+\amp \\
+-0.4x \amp \amp  = \amp -10  \\
+\div -0.4 \amp \amp \div -0.4 \\
+\amp \\
+x \amp \amp = \amp 25
+\end{align*}
+</div>
+</div>
+<div class="para" id="explore_analyzerevenue1-2-2-2-1-2-6">The revenue equals zero when <span class="process-math">\(x=0\)</span> or <span class="process-math">\(x=25\text{.}\)</span>
+</div>
+</dd>
+</dl>
+</div>
+</div></details></div></article><article class="task exercise-like" id="explore_analyzerevenue1-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="explore_analyzerevenue1-3-1-1">For what scenarios (values of <span class="process-math">\(x\)</span>) is your revenue positive? Give your answer in interval notation.</div>
+<div class="solutions"><details id="explore_analyzerevenue1-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="explore_analyzerevenue1-3-2-1">The revenue function is a quadratic with negative leading coefficient, so it is a parabola that opens down, which goes through the <span class="process-math">\(x\)</span>-axis at the break-even points.  This allows us to create a quick sketch of the function.</div> <div class="para" id="explore_analyzerevenue1-3-2-2">Using this sketch, we can solve the inequality <span class="process-math">\(R(x)\gt 0\text{,}\)</span> and see that it is true for <span class="process-math">\(0\lt x \lt 25\text{.}\)</span>  In interval notation, this is written <span class="process-math">\((0,25)\text{.}\)</span>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/img_rev_eg1a.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="explore_analyzerevenue1-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="explore_analyzerevenue1-4-1-1">For what scenario (value of <span class="process-math">\(x\)</span>) is your revenue maximized?</div>
+<div class="solutions"><details id="explore_analyzerevenue1-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="explore_analyzerevenue1-4-2-1">Because revenue is a quadratic polynomial with negative leading coefficient, the maximum revenue occurs at the vertex <span class="process-math">\((h,k)\text{.}\)</span>
+</div> <div class="para" id="explore_analyzerevenue1-4-2-2">Recall also that the x-value of the vertex is located at the average of the two x-interceps.  In other words, revenue is maximized at <span class="process-math">\(x=\dfrac{0+25}{2} = 12.5\)</span> items.</div>
+</div></details></div></article></article><div class="para" id="sec_revenue-6">We can now put together everything we have done so far in this class into a single example (exploration). Make sure that you are able to do problems like this on your own, since they are common quiz and exam questions.</div>
+<article class="exploration project-like" id="explore_revenuefrompricedata"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">4.4</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="explore_revenuefrompricedata-1"><div class="para" id="explore_revenuefrompricedata-1-1">Suppose you sell 100 items at 12 $/item and 500 items at 4 $/item.  Suppose also that price is linear.</div></div>
+<article class="task exercise-like" id="explore_revenuefrompricedata-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="explore_revenuefrompricedata-2-1-1">Find an equation <span class="process-math">\(p(x)\)</span> for price as a function of <span class="process-math">\(x\text{.}\)</span> Give the units of each number in your equation for your price function <span class="process-math">\(p\text{.}\)</span>
+</div>
+<div class="solutions"><details id="explore_revenuefrompricedata-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="explore_revenuefrompricedata-2-2-1">
+<div class="para">To find the equation of a linear price function, use the point-slope form of the line</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) = m (x-x_1) + p_1
+\end{equation*}
+</div>
+<div class="para">Note that we are told that <span class="process-math">\(x_1=100\)</span> items are sold when the item price is <span class="process-math">\(p_1=12\text{,}\)</span> and that <span class="process-math">\(x_2=500\)</span> items are sold when the price is <span class="process-math">\(p_2=4\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="explore_revenuefrompricedata-2-2-2">
+<div class="para">That gives us a slope</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{\Delta p}{\Delta x} = \dfrac{p_2-p_1}{x_2-x_1} = \dfrac{4-12}{500-100} = \dfrac{-8}{400} = -0.02
+\end{equation*}
+</div>
+<div class="para">Putting it all together we get</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) = -0.02 (x-100) + 12 = \dots = -0.02x + 14
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="explore_revenuefrompricedata-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="explore_revenuefrompricedata-3-1-1">Find an equation <span class="process-math">\(R(x)\)</span> for total revenue as a function of <span class="process-math">\(x\text{.}\)</span> What are the units of your total revenue function <span class="process-math">\(R\text{?}\)</span>
+</div>
+<div class="solutions"><details id="explore_revenuefrompricedata-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="explore_revenuefrompricedata-3-2-1">
+<div class="para">To find revenue, we need to apply <a href="ch_polynomials_and_rationals.html#def-revenue" class="xref" data-knowl="./knowl/xref/def-revenue.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 4.10">Definition 4.10</a>.  That means we need to multiply quantity and price.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-revenue.html">
+\begin{equation*}
+\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)
+\end{equation*}
+</div>
+</div> <div class="para" id="explore_revenuefrompricedata-3-2-2">In this question, we are told to use <span class="process-math">\(x\)</span> to represent the <em class="emphasis">quantity</em>, or number of items.</div> <div class="para" id="explore_revenuefrompricedata-3-2-3">In the first part of this question, we have already found that the price that will result in <span class="process-math">\(x\)</span> items being sold is <span class="process-math">\(p(x) = -0.02x + 14\)</span>
+</div> <div class="para logical" id="explore_revenuefrompricedata-3-2-4">
+<div class="para">To find the <em class="emphasis">total Revenue</em> of scenario <span class="process-math">\(x\text{,}\)</span> plug the above values into the equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{Revenue} = \Big(\text{Item Price}\Big) \cdot \Big(\text{\# Items}\Big)\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="explore_revenuefrompricedata-3-2-5">
+<div class="para">In any universe <span class="process-math">\(x\text{,}\)</span> the total revenue will be given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}
+R(x)  &amp;=  \Big(\text{price}\Big) \cdot \Big(\text{quantity}\Big) \\
+&amp;=  \Big(p(x) \Big) \cdot \Big(x\Big) \\
+&amp;=  \Big( -0.02x + 14\Big)\cdot \Big(x\Big) \\ 
+&amp;=   -0.02x^2 + 14x\end{aligned}
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="explore_revenuefrompricedata-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="explore_revenuefrompricedata-4-1-1">Evaluate <span class="process-math">\(p(600)\)</span> and <span class="process-math">\(R(600)\text{.}\)</span> What are the units of each of these quantities? What do they mean?</div>
+<div class="solutions"><details id="explore_revenuefrompricedata-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="explore_revenuefrompricedata-4-2-1">Recall that <span class="process-math">\(p(600)\)</span> is the item price at which <span class="process-math">\(x=600\)</span> items will be sold, and <span class="process-math">\(R(600)\)</span> will be the <em class="emphasis">total</em> revenue from that scenario.</div> <div class="para" id="explore_revenuefrompricedata-4-2-2">In the scenario where <span class="process-math">\(x=600\)</span> items are sold, <span class="process-math">\(p(600) = -0.02x + 14 = 2\text{.}\)</span>  In other words, each item will be sold for $<span class="process-math">\(2\)</span>
+</div> <div class="para" id="explore_revenuefrompricedata-4-2-3">In this scenario, the total revenue will be <span class="process-math">\(600\)</span> items times <span class="process-math">\(2\)</span> dollars, which equals $<span class="process-math">\(1200\)</span> of total revenue.</div> <div class="para" id="explore_revenuefrompricedata-4-2-4">Equivalently, <span class="process-math">\(R(600) = -0.02\cdot (600)^2 + 14 \cdot (600) = \dots = 1200\)</span> dollars.</div>
+</div></details></div></article><article class="task exercise-like" id="explore_revenuefrompricedata-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="explore_revenuefrompricedata-5-1-1">Compare the total revenue you can earn from the scenario (possible universe) where you sell 100 units, with the scenario where you sell 500 units, and with the scenario where you sell 600 units. Which of these three scenarios yields the highest total revenue?</div>
+<div class="solutions"><details id="explore_revenuefrompricedata-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="explore_revenuefrompricedata-5-2-1">
+<div class="para">We have already seen that <span class="process-math">\(R(600) = 1200\text{.}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+R(100) = -0.02\cdot (100)^2 + 14 \cdot (100) = 1200
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+R(500) = -0.02\cdot (500)^2 + 14 \cdot (500) = 2000
+\end{equation*}
+</div>
+</div> <div class="para" id="explore_revenuefrompricedata-5-2-2">Note that you will earn the same amount of revenue from selling <span class="process-math">\(x=100\)</span> items as you will from selling <span class="process-math">\(x=600\)</span> items.  However, you will earn even more revenue from selling <span class="process-math">\(x=500\)</span> items.</div>
+</div></details></div></article><article class="task exercise-like" id="explore_revenuefrompricedata-6"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" id="explore_revenuefrompricedata-6-1-1">Find the number (quantity) of items <span class="process-math">\(x\)</span> that yields highest total revenue. What item price <span class="process-math">\(p\)</span> will result in the highest total revenue? s</div>
+<div class="solutions"><details id="explore_revenuefrompricedata-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="explore_revenuefrompricedata-6-2-1">
+<div class="para">Note that the total revenue function is a quadratic function with negative leading coefficient.  That means that the largest revenue will occur at the vertex.  To find the vertex, either find and average the roots, or use the formula <span class="process-math">\(h = \dfrac{-b}{2a}\text{.}\)</span>  In this case,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+h = \dfrac{-14}{2\cdot(-.02)} = 350
+\end{equation*}
+</div>
+<div class="para">The maximum revenue will occur when 350 items are sold.</div>
+</div> <div class="para logical" id="explore_revenuefrompricedata-6-2-2">
+<div class="para">To find the price at which 350 items are sold, use the item price function.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(350) = -0.02\cdot (350) + 14 = 7 
+\end{equation*}
+</div>
+<div class="para">The maximum revenue will occur when the item price is 7 $/item.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+R(350) = \dots = 350 \cdot 7 = 2450
+\end{equation*}
+</div>
+<div class="para">The maximum revenue achieved will be 2,450 dollars.</div>
+</div>
+</div></details></div></article></article><details id="sect_whatdoesrevenueteach" class="insight remark-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Application</span><span class="space"> </span><span class="codenumber">4.11</span><span class="period">.</span><span class="space"> </span><span class="title">What does the Revenue Function Teach Us?</span>
+</h4></summary><article class="insight remark-like knowl__content"> <div class="para" id="sect_whatdoesrevenueteach-2">As soon as you decide on how much you want to sell each item for, and print the price tag, you are locked into that price until you decide to print a new price tag. Because the quantity you sell will change depending on the price you choose, it is important to think through the implications of your choice <dfn class="terminology">before</dfn> you make that decision. In practice, this usually means a multi-step process:</div> <div class="para logical" id="sect_whatdoesrevenueteach-3"><ol class="decimal" id="sect_whatdoesrevenueteach-3-1">
+<li id="sect_whatdoesrevenueteach-3-1-1"><div class="para" id="sect_whatdoesrevenueteach-3-1-1-1">Do market research to decide how many units you are likely to sell at different item prices.</div></li>
+<li id="sect_whatdoesrevenueteach-3-1-2"><div class="para" id="sect_whatdoesrevenueteach-3-1-2-1">Use this information to get a function for price as a function of the scenario <span class="process-math">\(x\text{.}\)</span> This gives a model of how the price changes depending on which possible scenario you are in.</div></li>
+<li id="sect_whatdoesrevenueteach-3-1-3"><div class="para" id="sect_whatdoesrevenueteach-3-1-3-1">The revenue for each scenario <span class="process-math">\(x\)</span> is the product of that <span class="process-math">\(x\)</span> by the scenario’s item price.</div></li>
+</ol></div> <div class="para" id="sect_whatdoesrevenueteach-4">You then compare the different values of Revenue <span class="process-math">\(R\text{,}\)</span> and select the scenario (possible universe) that works best for you. In this case, the meaning of the change in revenue <span class="process-math">\(\Delta R\)</span> between different values of <span class="process-math">\(x\)</span> is a bit complex. Here, <span class="process-math">\(\Delta R\)</span> represents how much revenue would have changed if you had chosen a different possible universe <span class="process-math">\(x\text{,}\)</span> by deciding to sell additional units by lowering the fixed unit cost that everyone pays.</div> <div class="para" id="sect_whatdoesrevenueteach-5">In other words, the maximum revenue occurs when increasing the quantity <span class="process-math">\(x\)</span> stops increasing the total revenue and starts decreasing the total revenue, because <span class="process-math">\(\Delta R\)</span> stops being positive and starts being negative. This is an important feature, and we’ll come back to this later in the semester.</div> <div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/image_totalchange_revenue1.svg" role="img" class="contained"></div></article></details><details id="graphsintimevsitems" class="insight remark-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Application</span><span class="space"> </span><span class="codenumber">4.12</span><span class="period">.</span><span class="space"> </span><span class="title">Graphs of Changes in Time vs Items.</span>
+</h4></summary><article class="insight remark-like knowl__content"> <div class="para" id="graphsintimevsitems-2">You may have noticed a little bit of a change in how we are thinking about price and revenue versus how we thought about gas prices earlier in the semester. The gas prices <span class="process-math">\(G\)</span> is a function of time, so the change in gas price <span class="process-math">\(\Delta G\)</span> simply measures how much the price has changed between two days. But for price and revenue, the different values of <span class="process-math">\(x\)</span> correspond to different and <em class="emphasis">incompatible</em> scenarios where you imagine selling a different number of units.</div> <div class="para" id="graphsintimevsitems-3">To see how these fit together, imagine you are running a sequence of experiments where on day 1, you set the price so you sell 1 unit. Then, on day 2, you set the price so you sell 2 units, and so on. In this experiment <span class="process-math">\(\Delta R\)</span> measures the change in revenue as you move between different days, which each correspond to a different scenario (possible universe).</div> <div class="para" id="graphsintimevsitems-4">Just remember - with revenue your goal isn’t the experiment itself. You want to <em class="emphasis">use</em> this thought experiment to find the single scenerio <span class="process-math">\(x\)</span> where you have the best revenue.</div></article></details></section><section class="section" id="sec-understandingprofit"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">4.3</span><span class="space"> </span><span class="title">Understanding Profit</span>
+</h3>
+<div class="para" id="sec-understandingprofit-2">The most important concept for the applications we will is the idea of different <em class="emphasis">possible universes</em>, which we often call <em class="emphasis">scenarios</em>.</div>
+<div class="para" id="sec-understandingprofit-3">The goal of planning is to figure out what the <em class="emphasis">best</em> possible world would look like, and how to achieve that possible world.</div>
+<div class="para" id="sec-understandingprofit-4">In a market economy, businesses must make a <dfn class="terminology">profit</dfn>, by ensuring that all of the money they take (their total revenue) in is greater than all of the money they spend (their total cost).  In this case, finding the best possible world means finding the scenario where the profit is the greatest.</div>
+<article class="definition definition-like" id="def-profit"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.13</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-profit-1-1">
+<div class="para">The <dfn class="terminology">profit</dfn> of a particiular possible world is the total revenue of that scenerio minus the total cost of that scenerio.  In other words,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\text{Profit} = \text{Revenue} - \text{Cost}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="def-profit-1-2">
+<div class="para">Recall that we write <span class="process-math">\(R(x)\)</span> to denote the total revenue in the scenerio where <span class="process-math">\(x\)</span> items are sold, and <span class="process-math">\(C(x)\)</span> to denote the total cost of the scenerio where <span class="process-math">\(x\)</span> items are sold.  Following that notation, we write <span class="process-math">\(P(x)\)</span> for the total profit of this scenerio, and have the equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(x) = R(x) - C(x)
+\end{equation*}
+</div>
+</div> <div class="para" id="def-profit-1-3">You <dfn class="terminology">break even</dfn> when your Revenue equals your Cost.  In other words, you break even at those quanitites <span class="process-math">\(x\)</span> which make the profit <span class="process-math">\(P(x)=0\text{.}\)</span>
+</div></article><details id="sec-understandingprofit-6" class="insight remark-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Application</span><span class="space"> </span><span class="codenumber">4.14</span><span class="period">.</span><span class="space"> </span><span class="title">Approaching Word Problems.</span>
+</h4></summary><article class="insight remark-like knowl__content"> <div class="para logical" id="sec-understandingprofit-6-2">
+<div class="para">When you read an economics problem, always try to translate it into mathematical language.  For example, suppose that you have been asked to <em class="emphasis">find all quantities where you make a profit</em>. You might think through the question as follows:</div>
+<ul class="disc" id="sec-understandingprofit-6-2-2">
+<li id="sec-understandingprofit-6-2-2-1"><div class="para" id="sec-understandingprofit-6-2-2-1-1">Remember that we use the variable <span class="process-math">\(x\)</span> to represent the <em class="emphasis">quanitity</em> of items sold in any scenerio.</div></li>
+<li id="sec-understandingprofit-6-2-2-2"><div class="para" id="sec-understandingprofit-6-2-2-2-1">Remember that we write <span class="process-math">\(P(x)\)</span> for the total <em class="emphasis">profit</em> of the scenario.</div></li>
+<li id="sec-understandingprofit-6-2-2-3"><div class="para" id="sec-understandingprofit-6-2-2-3-1">
+<em class="emphasis">Think carefully</em> and realize that you make a profit if and only if <em class="emphasis">the total profit is greater than 0</em>.</div></li>
+<li id="sec-understandingprofit-6-2-2-4"><div class="para" id="sec-understandingprofit-6-2-2-4-1">That means the question is asking you to find an equation for the profit function <span class="process-math">\(P(x)\text{,}\)</span> and to solve the equation <span class="process-math">\(P(x)\gt 0\text{,}\)</span> using the techinques from <a href="ch_polynomials_and_rationals.html#assemblage-continuous-inequalities" class="xref" data-knowl="./knowl/xref/assemblage-continuous-inequalities.html" data-reveal-label="Reveal" data-close-label="Close" title="Summary: Solving Inequalities of Continuous Functions">Solving Inequalities of Continuous Functions</a>.</div></li>
+</ul>
+</div></article></details><article class="exploration project-like" id="ex_profit_fromRC"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">4.5</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_profit_fromRC-1"><div class="para logical" id="ex_profit_fromRC-1-1">
+<div class="para">You are developing a new product line. You have already found equations for the total revenue and total cost in a variety of scenarios, based on the total number of items to be sold.  Suppose that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+R(x) = -x^2 + 5x
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+C(x) = x+2
+\end{equation*}
+</div>
+</div></div>
+<article class="task exercise-like" id="ex_profit_fromRC-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_profit_fromRC-2-1-1">Find an equation for the profit function.</div>
+<div class="solutions"><details id="ex_profit_fromRC-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_profit_fromRC-2-2-1">
+<div class="para">Recall <a href="ch_polynomials_and_rationals.html#def-profit" class="xref" data-knowl="./knowl/xref/def-profit.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 4.13">Definition 4.13</a>.  Write down the definition of profit</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-profit.html">
+\begin{equation*}
+P(x) = R(x) - C(x)
+\end{equation*}
+</div>
+</div> <div class="para logical" id="ex_profit_fromRC-2-2-2">
+<div class="para">Next, replace <span class="process-math">\(R(x)\)</span> with <span class="process-math">\((-x^2 + 5x)\)</span> and <span class="process-math">\(C(x)\)</span> with <span class="process-math">\((x+2)\text{.}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(x) = (-x^2 + 5x) - (x+2)
+\end{equation*}
+</div>
+<div class="para">Note that the parentheses are very important -- you must subtract both the <span class="process-math">\(x\)</span> and the fixed cost <span class="process-math">\(2\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="ex_profit_fromRC-2-2-3">
+<div class="para">Finally, simplify the expression</div>
+<div class="displaymath process-math" id="ex_profit_fromRC-2-2-3-1">
+\begin{align*}
+P(x) \amp =  (-x^2 + 5x) - (x+2)\\
+\amp = -x^2 + 5x -x -2\\
+\amp = -x^2 + 4x -2
+\end{align*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_profit_fromRC-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_profit_fromRC-3-1-1">Find the break even points.</div>
+<div class="solutions"><details id="ex_profit_fromRC-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_profit_fromRC-3-2-1">
+<div class="para">Recall that breaking even is the same thing as having <span class="process-math">\(P(x) = 0\text{.}\)</span>  Using the equation above, we want to solve</div>
+<div class="displaymath process-math">
+\begin{equation*}
+-x^2 + 4x -2 = 0
+\end{equation*}
+</div>
+</div> <div class="para" id="ex_profit_fromRC-3-2-2">Recall that we can often solve quadratic equations by factoring or using the quadratic equation.  But this case, the function does not factor nicely, so we must use the quadratic equation.</div> <div class="para logical" id="ex_profit_fromRC-3-2-3">
+<div class="para">You break even when the quantities are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x = \dfrac{-4 \pm \sqrt{4^2 - 4\cdot (-1)\cdot (-2)} }{2(-1)}
+\end{equation*}
+</div>
+<div class="para">Using a calculator, we see that you break even when <span class="process-math">\(x=0.5857\dots\)</span> or <span class="process-math">\(x=3.4142\dots\)</span>
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_profit_fromRC-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_profit_fromRC-4-1-1">Sketch a graph of the profit function</div>
+<div class="solutions"><details id="ex_profit_fromRC-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_profit_fromRC-4-2-1">You can graph the function using a graphing calculator, or you can use your knowledge of quadratic functions and the <span class="process-math">\(x\)</span>-intercepts you have found above.</div> <div class="para" id="ex_profit_fromRC-4-2-2">Because the profit function is a quadratic with negative  leading coefficient <span class="process-math">\(a=-1\text{,}\)</span> it is a parabola that opens down. Furthermore, the parabola goes through the <span class="process-math">\(x\)</span>-axis at <span class="process-math">\(x=0.5857\dots\)</span> and <span class="process-math">\(x=3.4142\dots\text{,}\)</span> and the parabola is symmetric around the vertex which is half way between those points. Taken together, we get the following image.</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/ex_profit_fromRC-4-2-3.svg" role="img" class="contained"></div>
+</div></details></div></article><article class="task exercise-like" id="ex_profit_fromRC-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex_profit_fromRC-5-1-1">Find all quantities where you make a profit.  Write your answer in interval notation.</div>
+<div class="solutions"><details id="ex_profit_fromRC-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_profit_fromRC-5-2-1">Solve the inequality <span class="process-math">\(P(x)\gt 0\)</span> by looking at the break even points, and the graph of the profit function.</div> <div class="para" id="ex_profit_fromRC-5-2-2">From this graph, we see that the profit is positive when <span class="process-math">\(x\)</span> is between <span class="process-math">\(x=0.5857\dots\)</span> and <span class="process-math">\(x=3.4142\dots\text{,}\)</span> which is equivalent to having <span class="process-math">\(x\)</span> in the interval <span class="process-math">\((0.5857\dots,3.4142\dots)\)</span>
+</div> <div class="image-box" style="width: 50%; margin-left: 25%; margin-right: 25%;"><img src="generated/latex-image/ex_profit_fromRC-5-2-3.svg" role="img" class="contained"></div>
+</div></details></div></article></article><details id="insight_rounding" class="insight remark-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<span class="type">Application</span><span class="space"> </span><span class="codenumber">4.15</span><span class="period">.</span><span class="space"> </span><span class="title">To Round or Not to Round?</span>
+</h4></summary><article class="insight remark-like knowl__content"> <div class="para" id="insight_rounding-2">In the previous example, we found that the break even quantities were  <span class="process-math">\(x=0.5857\dots\)</span> or <span class="process-math">\(x=3.4142\dots\text{.}\)</span>  But you cannot sell <span class="process-math">\(0.587\)</span> units, so what does this answer mean practically?</div> <div class="para" id="insight_rounding-3">Unfortunately, this depends a lot on the specific context of your specific application.</div> <div class="para" id="insight_rounding-4">In the simple case of $ profit as a result of <span class="process-math">\(x\)</span> items given above, you will only be able to make a profit by selling <span class="process-math">\(x=1\)</span> items, <span class="process-math">\(x=2\)</span> items, or <span class="process-math">\(x=3\)</span> items, since any integer larger or smaller than these will result in a negative profit.</div> <div class="para" id="insight_rounding-5">But the power of mathematics is that the same tools can be used to answer questions in very different contexts.  For example, suppose instead that <span class="process-math">\(x\)</span> was the number of <em class="emphasis">thousands</em> of items sold.  In other words, suppose that <span class="process-math">\(P(5)\)</span> is the profit from selling <em class="emphasis">five thousand</em> items.  In that case, you will break even when you sell <span class="process-math">\(x=0.5857\dots\)</span> <em class="emphasis">thousand</em> items or <span class="process-math">\(x=3.4142\dots\)</span> <em class="emphasis">thousand</em> items.  In that case, you would need to sell between <span class="process-math">\(586\)</span> items and <span class="process-math">\(340\)</span> items to make a proift.</div> <div class="para" id="insight_rounding-6">Other applications require even greater precision.  For example, currency exchange rates are often given to at least four decimal places.  But what if you are investing millions of dollars in a foreign currency?  Then the fifth, sixth, etc decimal places will suddenly be more important.</div> <div class="para" id="insight_rounding-7">In a <em class="emphasis">mathematics</em> class, we will generally try to keep as much precision as possible.  In any specific <em class="emphasis">application</em>, you should think carefully and consult generally accepted practices related to rounding.</div></article></details><article class="exploration project-like" id="ex_profit_from_pricecost"><h4 class="heading">
+<span class="type">Exploration</span><span class="space"> </span><span class="codenumber">4.6</span><span class="period">.</span>
+</h4>
+<div class="introduction" id="ex_profit_from_pricecost-1">
+<div class="para" id="ex_profit_from_pricecost-1-1">You are planning to open a business selling ornamental pins. After a few weeks of experimenting with the price, you decide that during the average week, you can sell 100 pins at $11 per pin, and 200 pins at $1 per pin. Suppose also that uppose that it costs $500 to rent the production line, and $3 to make each pin.</div> <div class="para" id="ex_profit_from_pricecost-1-2">Finally, after looking at a graph of some additional data, you decide that demand price is a linear function.</div>
+</div>
+<article class="task exercise-like" id="ex_profit_from_pricecost-2"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" id="ex_profit_from_pricecost-2-1-1">Find the item price <span class="process-math">\(p(x)\)</span> as a function of the quantity <span class="process-math">\(x\)</span> to be sold.</div>
+<div class="solutions"><details id="ex_profit_from_pricecost-2-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_profit_from_pricecost-2-2-1">
+<div class="para">To find the equation of a linear function, use the point-slope form of the line</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) = m (x-x_1) + p_1
+\end{equation*}
+</div>
+<div class="para">Note that we are told that <span class="process-math">\(x_1=100\)</span> items are sold when the item price is <span class="process-math">\(p_1=11\text{,}\)</span> and that <span class="process-math">\(x_2=200\)</span> items are sold when the price is <span class="process-math">\(p_2=1\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="ex_profit_from_pricecost-2-2-2">
+<div class="para">That gives us a slope</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m = \dfrac{\Delta p}{\Delta x} = \dfrac{p_2-p_1}{x_2-x_1} = \dfrac{1-11}{200-100} = \dfrac{-10}{100} = -0.1
+\end{equation*}
+</div>
+<div class="para">Putting it all together we get</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x) = -0.1 (x-100) + 11 = \dots = -0.1x + 21
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_profit_from_pricecost-3"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" id="ex_profit_from_pricecost-3-1-1">Find the total profit function <span class="process-math">\(P(x)\)</span> as a function of the total number of items to be sold.</div>
+<div class="solutions"><details id="ex_profit_from_pricecost-3-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_profit_from_pricecost-3-2-1">
+<div class="para">Recall from <a href="ch_polynomials_and_rationals.html#def-profit" class="xref" data-knowl="./knowl/xref/def-profit.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 4.13">Definition 4.13</a> that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-profit.html">
+\begin{equation*}
+\text{Profit} = \text{Revenue} - \text{Cost}
+\end{equation*}
+</div>
+<div class="para">That means to find <span class="process-math">\(P(x)\text{,}\)</span> we must first find equations for <span class="process-math">\(R(x)\)</span> and <span class="process-math">\(C(x)\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="ex_profit_from_pricecost-3-2-2">
+<div class="para">To find the equation for Revenue, recall from <a href="ch_polynomials_and_rationals.html#def-revenue" class="xref" data-knowl="./knowl/xref/def-revenue.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 4.10">Definition 4.10</a> that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-revenue.html">
+\begin{equation*}
+\text{Revenue} = \Big(\text{\# Items}\Big) \cdot \Big(\text{Item Cost}\Big)
+\end{equation*}
+</div>
+<div class="para">We write <span class="process-math">\(x\)</span> for the number of items, and we have already found that the item price is <span class="process-math">\(p(x) = -0.1x + 21 \)</span> in the scenerio where <span class="process-math">\(x\)</span> items are sold.  That means we just multiply <span class="process-math">\(x\)</span> by <span class="process-math">\(p(x)\)</span> to get revenue.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/def-revenue.html">
+\begin{equation*}
+R(x) = \Big(x\Big) \cdot \Big(-0.1x + 21\Big) = -0.1x^2 + 21x
+\end{equation*}
+</div>
+</div> <div class="para logical" id="ex_profit_from_pricecost-3-2-3">
+<div class="para">To find the total cost, recall our approach from <a href="ch-algebra_linearfunctions.html#explore_totalcost1" class="xref" data-knowl="./knowl/xref/explore_totalcost1.html" data-reveal-label="Reveal" data-close-label="Close" title="Exploration 3.8: Finding the total cost function">Exploration 3.8</a>.  If you are going to sell <span class="process-math">\(x\)</span> items, you must pay a fixed cost of <span class="process-math">\(500\)</span> dollars, as well as <span class="process-math">\(3\)</span>$ for each item <span class="process-math">\(x\text{.}\)</span>  That gives us a total cost function</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/explore_totalcost1.html">
+\begin{equation*}
+C(x) = 500 + 3x
+\end{equation*}
+</div>
+</div> <div class="para logical" id="ex_profit_from_pricecost-3-2-4">
+<div class="para">We can now combine the total revenue and total cost functions to get the profit function.</div>
+<div class="displaymath process-math" id="ex_profit_from_pricecost-3-2-4-1">
+\begin{align*}
+\text{Profit} \amp = \text{Revenue} - \text{Cost} \\
+P(x) \amp = R(x) - C(x) \\
+\amp = ( -0.1x^2 + 21x) - (500 + 3x)  \\
+\amp = -0.1x^2 + 21x - 500 - 3x\\
+P(x) \amp = -0.1x^2 + 18x - 500
+\end{align*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_profit_from_pricecost-4"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" id="ex_profit_from_pricecost-4-1-1">What is the total profit if you sell 100 units?  What if you sell no units?</div>
+<div class="solutions"><details id="ex_profit_from_pricecost-4-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ex_profit_from_pricecost-4-2-1">
+<div class="para">In the scenario (possible universe) where <span class="process-math">\(x=100\)</span> items are sold, the <em class="emphasis">total profit</em> (which includes all revenue minus all cost) will be</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(100) =  -0.1 (100)^2 + 18 (100) - 500 = 300
+\end{equation*}
+</div>
+</div> <div class="para logical" id="ex_profit_from_pricecost-4-2-2">
+<div class="para">In the scenario (possible universe) where <span class="process-math">\(x=0\)</span> items are sold, the <em class="emphasis">total profit</em> (which includes all revenue minus all cost) will be</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(0) =  -0.1 (0)^2 + 18 (0) - 500 = -500
+\end{equation*}
+</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_profit_from_pricecost-5"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" id="ex_profit_from_pricecost-5-1-1">Find the number of units <span class="process-math">\(x\)</span> where you will break even.</div>
+<div class="solutions"><details id="ex_profit_from_pricecost-5-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ex_profit_from_pricecost-5-2-1">
+<div class="para">To break even is to have exactly zero profit <span class="process-math">\(P(x)=0\text{.}\)</span>  That means solving the equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+-0.1x^2 + 18x - 500 = 0
+\end{equation*}
+</div>
+<div class="para">You can solve this equation using the quadratic equation or by factoring.  This function does not have a nice factorization, so we use the quadratic equation</div>
+<div class="displaymath process-math">
+\begin{equation*}
+x = \dfrac{ -18 \pm \sqrt{18^2 - 4\cdot (-0.1)\cdot (-500)} }{2\cdot (-1)}
+\end{equation*}
+</div>
+<div class="para">This gives us <span class="process-math">\(x=34.32\dots\)</span> or <span class="process-math">\(x=145.68\)</span>
+</div>
+</div></div></details></div></article><article class="task exercise-like" id="ex_profit_from_pricecost-6"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" id="ex_profit_from_pricecost-6-1-1">What is the number of units <span class="process-math">\(x\)</span> needed to maximize profit?  What is the maximum profit?</div>
+<div class="solutions"><details id="ex_profit_from_pricecost-6-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="ex_profit_from_pricecost-6-2-1">Because profit is a quadratic that opens down, the maximum profit occurs at the vertex <span class="process-math">\((h,k)\text{,}\)</span> which is located half way between the two roots.</div> <div class="para logical" id="ex_profit_from_pricecost-6-2-2">
+<div class="para">That means we can find <span class="process-math">\(h\)</span> by averaging  <span class="process-math">\(x=34.32\dots\)</span> and <span class="process-math">\(x=145.68\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+h = \dfrac{34.32 + 145.68}{2} = \dfrac{180}{2} = 90
+\end{equation*}
+</div>
+<div class="para">The maximum profit occurs when <span class="process-math">\(h=90\)</span> items are sold.</div>
+</div> <div class="para logical" id="ex_profit_from_pricecost-6-2-3">
+<div class="para">To find the maximum profit, plug this into the function <span class="process-math">\(P(x)\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(90) = -0.1 \cdot  (90)^2 + 18\cdot (90) - 500 = 310
+\end{equation*}
+</div>
+<div class="para">The maximum profit you can achieve in any possible world (number of quanitites sold) is $<span class="process-math">\(310\text{.}\)</span>  That total profit is achieved in the scenario where you set the price so that <span class="process-math">\(x=90\)</span> items are sold.</div>
+</div>
+</div></details></div></article><article class="task exercise-like" id="ex_profit_from_pricecost-7"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" id="ex_profit_from_pricecost-7-1-1">What is the number of units <span class="process-math">\(x\)</span> needed to maximize profit?  What is the maximum profit?</div></article></article></section><section class="section" id="sec_rationalfns"><h3 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">4.4</span><span class="space"> </span><span class="title">Rational Functions</span>
+</h3>
+<article class="definition definition-like" id="def-rationalfunction"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.16</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="def-rationalfunction-1-1">
+<div class="para">A function <span class="process-math">\(f(x)\)</span> is a <dfn class="terminology">rational function</dfn> if <span class="process-math">\(f(x)\)</span> can be written as a fraction of polynomials. In other words, a rational function <span class="process-math">\(f(x)\)</span> can be written as a fraction</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \dfrac{p(x)}{q(x)}
+\end{equation*}
+</div>
+<div class="para">where the numerator and denominator <span class="process-math">\(p(x)\)</span> and  <span class="process-math">\(q(x)\)</span> are both polynomials.</div>
+</div> <div class="para" id="def-rationalfunction-1-2">Because <em class="emphasis">division by 0</em> is undefined, there are often values of <span class="process-math">\(x\)</span> which make a function <dfn class="terminology">undefined</dfn>.  For such an input <span class="process-math">\(x\text{,}\)</span> we say that <span class="process-math">\(f(x)\ DNE\text{.}\)</span>
+</div></article><div class="para" id="sec_rationalfns-3">Every polynomial is a rational function (with denominator <span class="process-math">\(q(x)=1\)</span>), but not every rational function is a polynomial.</div>
+<article class="assemblage assemblage-like" id="assemblage-rational-inequalities"><h4 class="heading"><span class="title">Solving Inequalities of Rational Functions.</span></h4>
+<div class="para" id="assemblage-rational-inequalities-2">Suppose that <span class="process-math">\(f(x)\)</span> is a rational function.  In other words, suppose that <span class="process-math">\(f(x) = \dfrac{p(x)}{q(x)}\)</span> where the numerator and denominator <span class="process-math">\(p(x)\)</span> and  <span class="process-math">\(q(x)\)</span> are both polynomials.</div>
+<div class="para" id="assemblage-rational-inequalities-3">To solve an inequality such as  <span class="process-math">\(f(x) \gt 0\text{,}\)</span> <span class="process-math">\(f(x) \lt 0\text{,}\)</span> <span class="process-math">\(f(x)\geq 0\text{,}\)</span> or <span class="process-math">\(f(x)\leq 0\)</span> follow the following steps:</div>
+<div class="para logical" id="assemblage-rational-inequalities-4"><ol class="decimal" id="assemblage-rational-inequalities-4-1">
+<li id="assemblage-rational-inequalities-4-1-1">
+<div class="para" id="assemblage-rational-inequalities-4-1-1-1">Solve the inequality <span class="process-math">\(f(x) = 0\text{,}\)</span> by finding all inputs that make the <em class="emphasis">numerator</em> <span class="process-math">\(p(x)\)</span> equal to <span class="process-math">\(0\text{.}\)</span>
+</div>
+<div class="para" id="assemblage-rational-inequalities-4-1-1-2">Draw a number line, and label the <span class="process-math">\(x\)</span>-values where the solutions occur. Use an open circle if the inequality is <span class="process-math">\(\gt\)</span> or <span class="process-math">\(\lt\text{,}\)</span> or a closed circle if the inequality is <span class="process-math">\(\geq\)</span> or <span class="process-math">\(\leq\text{.}\)</span>
+</div>
+</li>
+<li id="assemblage-rational-inequalities-4-1-2">
+<div class="para" id="assemblage-rational-inequalities-4-1-2-1">Find any inputs <span class="process-math">\(x\)</span> where the function is undefined (such that <span class="process-math">\(f(x)\ DNE\)</span>). In other words, find all values of <span class="process-math">\(x\)</span> which make the <em class="emphasis">denominator</em> <span class="process-math">\(q(x)\)</span> equal <span class="process-math">\(0\text{.}\)</span>
+</div>
+<div class="para" id="assemblage-rational-inequalities-4-1-2-2">Label the <span class="process-math">\(x\)</span>-values where the function <span class="process-math">\(DNE\)</span> on your number line using open circles.</div>
+</li>
+<li id="assemblage-rational-inequalities-4-1-3"><div class="para" id="assemblage-rational-inequalities-4-1-3-1">For each interval, use a graph, a calculator, or some other technique to decide whether the inequality is true or false on that interval.</div></li>
+<li id="assemblage-rational-inequalities-4-1-4"><div class="para" id="assemblage-rational-inequalities-4-1-4-1">Write your final answer down in interval notation.  <em class="emphasis">include</em> all endpoints with closed circles (use square brackets), and <em class="emphasis">exclude</em> all endpoints with open circles (use parentheses).</div></li>
+</ol></div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="ch-algebra_linearfunctions.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="ch_exponentials.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="feedback-link" href="mailto:sflood@bridgew.edu?subject=TEXTBOOK%20FEEDBACK%20-%20Business%20Calculus" target="_blank">Feedback</a><a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>
